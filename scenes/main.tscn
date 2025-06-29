@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://cbwl707m1w334"]
+[gd_scene load_steps=3 format=3 uid="uid://bvxig3hnfv4jt"]
 
-[node name="Node3D" type="Node3D"]
+[ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_0wfyh")
+
+[node name="XRPlayer" parent="." instance=ExtResource("2_sugp2")]
