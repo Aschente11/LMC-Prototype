@@ -5,4 +5,7 @@
 [node name="Bed" type="Node3D"]
 
 [node name="Bed Single" parent="." instance=ExtResource("1_6bevh")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="Bed Single2" parent="." instance=ExtResource("1_6bevh")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.77345, 0, 0.000989676)

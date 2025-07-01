@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cji387p80amm8"]
+
+[ext_resource type="PackedScene" uid="uid://bw8dd6f3886s1" path="res://assets/Low Poly Furniture/Chairs/Chair C.fbx" id="1_tsr3x"]
+
+[node name="Chair" type="Node3D"]
+
+[node name="Chair C" parent="." instance=ExtResource("1_tsr3x")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

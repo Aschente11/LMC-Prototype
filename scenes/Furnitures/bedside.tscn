@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://efhycwudhik2"]
+
+[ext_resource type="PackedScene" uid="uid://bi4la0movkkbv" path="res://assets/Low Poly Furniture/Drawers/Drawer B.fbx" id="1_53pl5"]
+
+[node name="Bedside" type="Node3D"]
+
+[node name="Drawer B" parent="." instance=ExtResource("1_53pl5")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
