@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bvxig3hnfv4jt"]
+[gd_scene load_steps=44 format=3 uid="uid://bvxig3hnfv4jt"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -15,14 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://b8q2irnnfslf2" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-normal.jpg" id="9_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://b7vvwv852dkny" path="res://assets/Low Poly Furniture/Doors/Door A.fbx" id="12_muem4"]
 [ext_resource type="PackedScene" uid="uid://bjqltx86e8ryh" path="res://assets/Low Poly Furniture/Kitchen/Cupboard A.fbx" id="13_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://btf7o1yinqmpn" path="res://scenes/Furnitures/Kitchen_Tabletop.tscn" id="14_pm3ni"]
 [ext_resource type="PackedScene" uid="uid://b3pofw0id37um" path="res://assets/Low Poly Furniture/Kitchen/Cupboard B.fbx" id="16_vxglm"]
-[ext_resource type="PackedScene" uid="uid://bjmv7pkvp5mko" path="res://assets/Low Poly Furniture/Kitchen/Cupboard C.fbx" id="17_2f3dj"]
-[ext_resource type="PackedScene" uid="uid://csmasgae6rkms" path="res://assets/Low Poly Furniture/Kitchen/Cupboard D.fbx" id="18_yq6so"]
-[ext_resource type="PackedScene" uid="uid://d4kmqiq7dm44h" path="res://assets/Low Poly Furniture/Kitchen/Cupboard E.fbx" id="19_fv21b"]
-[ext_resource type="PackedScene" uid="uid://b7wdykas2s1q8" path="res://assets/Low Poly Furniture/Kitchen/Cupboard F.fbx" id="20_tel4y"]
-[ext_resource type="PackedScene" uid="uid://dc7qqdfbeyfqg" path="res://scenes/cupboard_c.tscn" id="21_2f3dj"]
-[ext_resource type="PackedScene" uid="uid://bdpa687lqnuts" path="res://assets/Low Poly Furniture/Kitchen/Cupboard Sink.fbx" id="21_qkpxi"]
-[ext_resource type="PackedScene" uid="uid://b08w40exi1o6i" path="res://assets/Low Poly Furniture/Kitchen/Dishwasher.fbx" id="22_5q0nq"]
+[ext_resource type="PackedScene" uid="uid://s5gjejv5fen7" path="res://scenes/Furnitures/Bed.tscn" id="21_og1vs"]
 [ext_resource type="PackedScene" uid="uid://hc04mj15s55d" path="res://assets/Low Poly Furniture/Lights/Ceiling Light.fbx" id="23_dgi5k"]
 [ext_resource type="AudioStream" uid="uid://dm6vjaowvorvl" path="res://assets/sfx/yippee-tbh.mp3" id="24_vxglm"]
 [ext_resource type="Script" uid="uid://cxy8oxoldmaoc" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter_manager.gd" id="25_2f3dj"]
@@ -201,11 +196,13 @@ skeleton = NodePath("../../..")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00995541, 0, 7.24681e-15)
 shape = SubResource("BoxShape3D_yq6so")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.455, 2.55479, -10.0027)
-shape = SubResource("BoxShape3D_2f3dj")
-
 [node name="Furniture" type="Node3D" parent="."]
+
+[node name="KitchenTabletop" parent="Furniture" instance=ExtResource("14_pm3ni")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, -5.68718, 0.942585, 6.78365)
+
+[node name="KitchenTabletop2" parent="Furniture" instance=ExtResource("14_pm3ni")]
+transform = Transform3D(-0.3, 0, -2.62268e-08, 0, 0.3, 0, 2.62268e-08, 0, -0.3, -7.95622, 0.942585, 9.09318)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Furniture"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0324392, 3.58249, -3.29889)
@@ -217,40 +214,22 @@ sky_mode = 1
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.2, 0.171, -0.009, 10)
 
 [node name="Cupboard A" parent="Furniture" instance=ExtResource("13_dp3eg")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.36871, 3.53432, 6.3355)
+transform = Transform3D(-0.249999, 0, 0.000754854, 0, 0.25, 0, -0.000754854, 0, -0.249999, -7.89983, 3.53432, 9.36808)
 
 [node name="Cupboard B" parent="Furniture" instance=ExtResource("16_vxglm")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.31937, 3.48621, 7.12305)
+transform = Transform3D(-0.249999, 0, 0.000754854, 0, 0.25, 0, -0.000754854, 0, -0.249999, -8.68723, 3.48621, 9.31637)
 
 [node name="Cupboard B2" parent="Furniture" instance=ExtResource("16_vxglm")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.31985, 3.48664, 5.35723)
-
-[node name="Cupboard C" parent="Furniture" instance=ExtResource("17_2f3dj")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.19036, 0.780284, 5.40647)
-
-[node name="Cupboard D" parent="Furniture" instance=ExtResource("18_yq6so")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.25471, 0.759056, 7.4948)
-
-[node name="Cupboard Sink" parent="Furniture" instance=ExtResource("21_qkpxi")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.50987, 1.02303, 6.53693)
-
-[node name="Cupboard E" parent="Furniture" instance=ExtResource("19_fv21b")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.069, 0.692, -0.186907)
-
-[node name="Cupboard C3" parent="Furniture" instance=ExtResource("21_2f3dj")]
-transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.711215, 0.927003, 5.8846)
-
-[node name="Cupboard F" parent="Furniture" instance=ExtResource("20_tel4y")]
-transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.069, 0.74, -3.59291)
-
-[node name="Dishwasher" parent="Furniture" instance=ExtResource("22_5q0nq")]
-transform = Transform3D(-1.5299e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5299e-08, 3.069, 0.664, -6.88891)
+transform = Transform3D(-0.249999, 0, 0.000754854, 0, 0.25, 0, -0.000754854, 0, -0.249999, -6.92142, 3.48664, 9.32218)
 
 [node name="Ceiling Light" parent="Furniture" instance=ExtResource("23_dgi5k")]
 transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -0.0771818, 3.8335, -3.28706)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light"]
 transform = Transform3D(4.44444, 0, 0, 0, 4.44444, 0, 0, 0, 4.44444, 0, -0.793325, 0)
+
+[node name="Bed" parent="Furniture" instance=ExtResource("21_og1vs")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.4143, 0.698286, -8.34562)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yc10j")

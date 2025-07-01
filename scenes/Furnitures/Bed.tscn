@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://s5gjejv5fen7"]
+
+[ext_resource type="PackedScene" uid="uid://vkbyf76lr806" path="res://assets/Low Poly Furniture/Beds/Bed Single.fbx" id="1_6bevh"]
+
+[node name="Bed" type="Node3D"]
+
+[node name="Bed Single" parent="." instance=ExtResource("1_6bevh")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
