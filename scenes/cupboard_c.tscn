@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc7qqdfbeyfqg"]
+
+[ext_resource type="PackedScene" uid="uid://bjmv7pkvp5mko" path="res://assets/Low Poly Furniture/Kitchen/Cupboard C.fbx" id="1_umlir"]
+[ext_resource type="PackedScene" uid="uid://bddj5m7ull6g0" path="res://addons/godot-xr-tools/interactables/interactable_handle.tscn" id="2_t51qw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6a23d"]
+size = Vector3(1.21216, 1, 1)
+
+[node name="Cupboard C" instance=ExtResource("1_umlir")]
+
+[node name="InteractableHandle" parent="." index="2" instance=ExtResource("2_t51qw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableHandle" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.226877, 0.594345, 0.856432)
+shape = SubResource("BoxShape3D_6a23d")

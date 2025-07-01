@@ -1,30 +1,60 @@
-[gd_scene load_steps=28 format=3 uid="uid://bvxig3hnfv4jt"]
+[gd_scene load_steps=50 format=3 uid="uid://bvxig3hnfv4jt"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
 [ext_resource type="Texture2D" uid="uid://cch4178fvpwtc" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_baseColor.jpg" id="3_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://02w3eaoutnsd" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_specularLevel.jpg" id="4_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://44bxquvggmos" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_normal.jpg" id="4_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bykexfm5nad2i" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_roughness.jpg" id="5_o6xl0"]
 [ext_resource type="Texture2D" uid="uid://hm07br2u6yis" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-diffuse.jpg" id="6_trceg"]
 [ext_resource type="Texture2D" uid="uid://ikro6b4d54j5" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-ao.jpg" id="7_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://p6vxlfnbn3w3" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Color.jpg" id="7_y6deb"]
 [ext_resource type="Texture2D" uid="uid://dlohbfrsc2qks" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-specular.jpg" id="8_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://dn1p63kntkvho" path="res://assets/textures/Plaster001-4K/Plaster001_4K_NormalGL.jpg" id="8_og1vs"]
+[ext_resource type="Texture2D" uid="uid://37j83cwlfteh" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Roughness.jpg" id="9_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://b8q2irnnfslf2" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-normal.jpg" id="9_jbj1t"]
 [ext_resource type="PackedScene" uid="uid://b7vvwv852dkny" path="res://assets/Low Poly Furniture/Doors/Door A.fbx" id="12_muem4"]
 [ext_resource type="PackedScene" uid="uid://bjqltx86e8ryh" path="res://assets/Low Poly Furniture/Kitchen/Cupboard A.fbx" id="13_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://b3pofw0id37um" path="res://assets/Low Poly Furniture/Kitchen/Cupboard B.fbx" id="16_vxglm"]
+[ext_resource type="PackedScene" uid="uid://bjmv7pkvp5mko" path="res://assets/Low Poly Furniture/Kitchen/Cupboard C.fbx" id="17_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://csmasgae6rkms" path="res://assets/Low Poly Furniture/Kitchen/Cupboard D.fbx" id="18_yq6so"]
+[ext_resource type="PackedScene" uid="uid://d4kmqiq7dm44h" path="res://assets/Low Poly Furniture/Kitchen/Cupboard E.fbx" id="19_fv21b"]
+[ext_resource type="PackedScene" uid="uid://b7wdykas2s1q8" path="res://assets/Low Poly Furniture/Kitchen/Cupboard F.fbx" id="20_tel4y"]
+[ext_resource type="PackedScene" uid="uid://dc7qqdfbeyfqg" path="res://scenes/cupboard_c.tscn" id="21_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://bdpa687lqnuts" path="res://assets/Low Poly Furniture/Kitchen/Cupboard Sink.fbx" id="21_qkpxi"]
+[ext_resource type="PackedScene" uid="uid://b08w40exi1o6i" path="res://assets/Low Poly Furniture/Kitchen/Dishwasher.fbx" id="22_5q0nq"]
+[ext_resource type="PackedScene" uid="uid://hc04mj15s55d" path="res://assets/Low Poly Furniture/Lights/Ceiling Light.fbx" id="23_dgi5k"]
+[ext_resource type="AudioStream" uid="uid://dm6vjaowvorvl" path="res://assets/sfx/yippee-tbh.mp3" id="24_vxglm"]
+[ext_resource type="Script" uid="uid://cxy8oxoldmaoc" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter_manager.gd" id="25_2f3dj"]
+[ext_resource type="Script" uid="uid://ek4xpaefjlux" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter.gd" id="26_yq6so"]
+[ext_resource type="Shader" uid="uid://dn36xw56c7i80" path="res://shaders/main.gdshader" id="27_fv21b"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tipki"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8jky"]
 albedo_texture = ExtResource("3_tbgi4")
+metallic = 1.0
+metallic_texture = ExtResource("4_pm3ni")
 roughness_texture = ExtResource("5_o6xl0")
 normal_enabled = true
 normal_texture = ExtResource("4_tefeu")
-uv1_scale = Vector3(1, 3, 1)
+uv1_scale = Vector3(3.505, 6.5, 1)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_85g3d"]
-material = SubResource("StandardMaterial3D_tipki")
+[sub_resource type="PlaneMesh" id="PlaneMesh_kmb1v"]
+material = SubResource("StandardMaterial3D_j8jky")
 size = Vector2(15, 30)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_choun"]
 data = PackedVector3Array(4, 0, 4, -4, 0, 4, 4, 0, -4, -4, 0, 4, -4, 0, -4, 4, 0, -4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuf3a"]
+albedo_texture = ExtResource("7_y6deb")
+roughness_texture = ExtResource("9_2wyq8")
+normal_enabled = true
+normal_texture = ExtResource("8_og1vs")
+uv1_scale = Vector3(2, 3.55, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pibwh"]
+material = SubResource("StandardMaterial3D_fuf3a")
+size = Vector2(15, 30)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85g3d"]
 albedo_texture = ExtResource("6_trceg")
@@ -83,6 +113,9 @@ material = SubResource("StandardMaterial3D_jbj1t")
 size = Vector2(30, 5)
 orientation = 0
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_trceg"]
+data = PackedVector3Array(0, -2.5, -15, 0, -2.5, 15, 0, 2.5, -15, 0, -2.5, 15, 0, 2.5, 15, 0, 2.5, -15)
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ld40"]
 
 [sub_resource type="Sky" id="Sky_gqmmt"]
@@ -92,73 +125,165 @@ sky_material = SubResource("ProceduralSkyMaterial_0ld40")
 background_mode = 2
 sky = SubResource("Sky_gqmmt")
 
+[sub_resource type="QuadMesh" id="QuadMesh_tel4y"]
+custom_aabb = AABB(-5000, -5000, -5000, 10000, 10000, 10000)
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkpxi"]
+render_priority = 0
+shader = ExtResource("27_fv21b")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0wfyh")
 
 [node name="XRPlayer" parent="." instance=ExtResource("2_sugp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02621, 0)
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="Room" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45546, 0, -13.5785)
-mesh = SubResource("PlaneMesh_85g3d")
+mesh = SubResource("PlaneMesh_kmb1v")
+skeleton = NodePath("../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_choun")
 debug_fill = false
 
-[node name="Walls" type="Node3D" parent="."]
+[node name="Ceiling" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -3.455, 4.255, -13.578)
+mesh = SubResource("PlaneMesh_pibwh")
+skeleton = NodePath("../..")
 
-[node name="Front" type="MeshInstance3D" parent="Walls"]
+[node name="Walls" type="Node3D" parent="Room"]
+
+[node name="Front" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.455, 2.49351, 1.414)
 mesh = SubResource("PlaneMesh_tbgi4")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Front"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Front"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Front/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Front/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_ya4ey")
 
-[node name="Back" type="MeshInstance3D" parent="Walls"]
+[node name="Back" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.455, 2.49351, -28.5299)
 mesh = SubResource("PlaneMesh_a8y0u")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Back"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Back"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Back/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Back/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jkv2x")
 
-[node name="Right" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, -13.608)
+[node name="Right" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, -13.588)
 mesh = SubResource("PlaneMesh_trceg")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Right"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Right"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Right/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Right/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_muem4")
 
-[node name="Left" type="MeshInstance3D" parent="Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9494, 2.494, -13.608)
+[node name="Left" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 2.494, -13.58)
 mesh = SubResource("PlaneMesh_dp3eg")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Walls/Left"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Left"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/Left/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_muem4")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Left/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_trceg")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2.22605, 4.89798, -11.0709)
+[node name="Furniture" type="Node3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Furniture"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.0324392, 3.58249, -3.29889)
+light_color = Color(0.998425, 0.887855, 0.87691, 1)
 light_energy = 0.25
 sky_mode = 1
 
-[node name="Door A" parent="." instance=ExtResource("12_muem4")]
-transform = Transform3D(0.35, 0, 0, 0, 0.3, 0, 0, 0, 0.2, 0.171084, -0.00860971, 1.41604)
+[node name="Door A" parent="Furniture" instance=ExtResource("12_muem4")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.2, 0.171084, -0.00860971, 1.41604)
+
+[node name="Cupboard A" parent="Furniture" instance=ExtResource("13_dp3eg")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.36871, 3.53432, 0.0364044)
+
+[node name="Cupboard B" parent="Furniture" instance=ExtResource("16_vxglm")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.31937, 3.48621, 0.82396)
+
+[node name="Cupboard B2" parent="Furniture" instance=ExtResource("16_vxglm")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.31985, 3.48664, -0.94186)
+
+[node name="Cupboard C" parent="Furniture" instance=ExtResource("17_2f3dj")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.19036, 0.780284, -0.892621)
+
+[node name="Cupboard D" parent="Furniture" instance=ExtResource("18_yq6so")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.25471, 0.759056, 1.19571)
+
+[node name="Cupboard Sink" parent="Furniture" instance=ExtResource("21_qkpxi")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.50987, 1.02303, 0.237842)
+
+[node name="Cupboard E" parent="Furniture" instance=ExtResource("19_fv21b")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.069, 0.692, -6.486)
+
+[node name="Cupboard C3" parent="Furniture" instance=ExtResource("21_2f3dj")]
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 0.711215, 0.927003, -0.414492)
+
+[node name="Cupboard F" parent="Furniture" instance=ExtResource("20_tel4y")]
+transform = Transform3D(-1.09278e-08, 0, -0.25, 0, 0.25, 0, 0.25, 0, -1.09278e-08, 3.069, 0.74, -9.892)
+
+[node name="Dishwasher" parent="Furniture" instance=ExtResource("22_5q0nq")]
+transform = Transform3D(-1.5299e-08, 0, -0.35, 0, 0.35, 0, 0.35, 0, -1.5299e-08, 3.069, 0.664, -13.188)
+
+[node name="Ceiling Light" parent="Furniture" instance=ExtResource("23_dgi5k")]
+transform = Transform3D(0.225, 0, 0, 0, 0.225, 0, 0, 0, 0.225, -0.0771818, 3.8335, -3.28706)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light"]
+transform = Transform3D(4.44444, 0, 0, 0, 4.44444, 0, 0, 0, 4.44444, 0, -0.793325, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yc10j")
 
-[node name="Cupboard A" parent="." instance=ExtResource("13_dp3eg")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.51082, 0.685583, -7.9762)
+[node name="Teleport" type="Node3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Teleport"]
+stream = ExtResource("24_vxglm")
+
+[node name="FadeMesh" type="MeshInstance3D" parent="Teleport"]
+visible = false
+mesh = SubResource("QuadMesh_tel4y")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_qkpxi")
+
+[node name="TeleporterManager" type="Node3D" parent="Teleport" node_paths=PackedStringArray("current_location", "xr_origin", "xr_camera", "xr_left_function_pointer", "xr_right_function_pointer", "audio_node", "fade_mesh")]
+script = ExtResource("25_2f3dj")
+current_location = NodePath("Front Door")
+enabled = true
+xr_origin = NodePath("../../XRPlayer/XROrigin3D")
+xr_camera = NodePath("../../XRPlayer/XROrigin3D/XRCamera3D")
+xr_left_function_pointer = NodePath("../../XRPlayer/XROrigin3D/XRController3DLeft/FunctionPointer")
+xr_right_function_pointer = NodePath("../../XRPlayer/XROrigin3D/XRController3DRight/FunctionPointer")
+audio_node = NodePath("../AudioStreamPlayer3D")
+fade_mesh = NodePath("../FadeMesh")
+metadata/_custom_type_script = "uid://cxy8oxoldmaoc"
+
+[node name="Front Door" type="Node3D" parent="Teleport/TeleporterManager" node_paths=PackedStringArray("connected_teleporters")]
+script = ExtResource("26_yq6so")
+teleporter_name = "Front Door"
+connected_teleporters = [NodePath("../Window")]
+metadata/_custom_type_script = "uid://ek4xpaefjlux"
+
+[node name="Window" type="Node3D" parent="Teleport/TeleporterManager" node_paths=PackedStringArray("connected_teleporters")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.89612)
+script = ExtResource("26_yq6so")
+teleporter_name = "Window"
+teleporter_enabled = true
+teleporter_position = Vector3(0, 0, -6.89612)
+connected_teleporters = [NodePath("../Front Door")]
+metadata/_custom_type_script = "uid://ek4xpaefjlux"
