@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ws3pw8g3w1v"]
+
+[ext_resource type="PackedScene" uid="uid://cr2t0l0yhtn88" path="res://assets/Low Poly Furniture/Kitchen/Fridge B.fbx" id="1_hjddh"]
+
+[node name="Fridge" type="Node3D"]
+
+[node name="Fridge B" parent="." instance=ExtResource("1_hjddh")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
