@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://du2vn3nhn1mob"]
+
+[ext_resource type="PackedScene" uid="uid://bdpa687lqnuts" path="res://assets/Low Poly Furniture/Kitchen/Cupboard Sink.fbx" id="1_m4wuj"]
+[ext_resource type="PackedScene" uid="uid://dejbnfosvrma6" path="res://assets/Low Poly Furniture/Kitchen/Oven.fbx" id="2_imx26"]
+[ext_resource type="PackedScene" uid="uid://d4kmqiq7dm44h" path="res://assets/Low Poly Furniture/Kitchen/Cupboard E.fbx" id="3_3fgdo"]
+[ext_resource type="PackedScene" uid="uid://b08w40exi1o6i" path="res://assets/Low Poly Furniture/Kitchen/Dishwasher.fbx" id="4_3luqg"]
+
+[node name="CookingStation" type="Node3D"]
+
+[node name="Cupboard E2" parent="." instance=ExtResource("3_3fgdo")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.26721, 0, 0.0476081)
+
+[node name="Cupboard Sink" parent="." instance=ExtResource("1_m4wuj")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.950343, 0.388623, -0.338233)
+
+[node name="Dishwasher" parent="." instance=ExtResource("4_3luqg")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.135537, -0.26973, -0.0988706)
+
+[node name="Oven" parent="." instance=ExtResource("2_imx26")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.22623, 0.26, -0.121984)

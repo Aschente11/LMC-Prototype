@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2qin016k7dgl"]
+
+[ext_resource type="PackedScene" uid="uid://hc04mj15s55d" path="res://assets/Low Poly Furniture/Lights/Ceiling Light.fbx" id="1_rp6uk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tppks"]
+
+[node name="Ceiling Light" instance=ExtResource("1_rp6uk")]
+
+[node name="Ceiling light" parent="." index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_tppks")

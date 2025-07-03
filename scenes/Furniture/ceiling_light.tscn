@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlac4kfroxrdv"]
+
+[ext_resource type="PackedScene" uid="uid://d2qin016k7dgl" path="res://scenes/Furniture/ceiling_light_mesh.tscn" id="1_ic041"]
+
+[node name="Ceiling Light" type="Node3D"]
+
+[node name="Ceiling Light" parent="." instance=ExtResource("1_ic041")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.397764, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37115e-08, 1, 0, -1, -4.37115e-08, 0.0447426, -0.141571, -0.0118303)
+light_color = Color(0.998425, 0.887855, 0.87691, 1)
+light_energy = 0.25
+sky_mode = 1

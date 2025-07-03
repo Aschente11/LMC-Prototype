@@ -5,4 +5,4 @@
 [node name="Bedside" type="Node3D"]
 
 [node name="Drawer B" parent="." instance=ExtResource("1_53pl5")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
