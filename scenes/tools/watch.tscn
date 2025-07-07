@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://yre2l37gclhc"]
+
+[ext_resource type="PackedScene" uid="uid://ctdlkskaetfnt" path="res://assets/tools/uploads_files_5352861_apple+watch.fbx" id="1_i2kmm"]
+
+[node name="Watch" type="Node3D"]
+
+[node name="uploads_files_5352861_apple+watch" parent="." instance=ExtResource("1_i2kmm")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, 0)
