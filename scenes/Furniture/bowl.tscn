@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://u07p8ro5kxsh"]
+
+[ext_resource type="PackedScene" uid="uid://vb4ojj2i13tl" path="res://assets/Low Poly Furniture/Miscellaneous/Bowl.fbx" id="1_ld1q0"]
+[ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="2_lqlbt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qgjtn"]
+size = Vector3(0.682983, 0.374786, 0.782227)
+
+[node name="Bowl" type="Node3D"]
+
+[node name="Bowl" parent="." instance=ExtResource("1_ld1q0")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[node name="OISStrikeReceiver" type="Node3D" parent="."]
+script = ExtResource("2_lqlbt")
+group = "hand"
+requirement = 1.0
+metadata/_custom_type_script = "uid://cci3xkvnplit7"
+
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506592, 0.0485992, -0.00146484)
+shape = SubResource("BoxShape3D_qgjtn")

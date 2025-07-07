@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddn1k2bsb5800"]
+
+[ext_resource type="PackedScene" uid="uid://vuy68sw7h2ev" path="res://assets/Low Poly Furniture/Shelves/Shelf A.fbx" id="1_wy58l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d46qi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jjorx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2glw"]
+
+[node name="Shelf A" instance=ExtResource("1_wy58l")]
+
+[node name="Shelf A _001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_d46qi")
+
+[node name="Shelf A _002" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_jjorx")
+surface_material_override/1 = SubResource("StandardMaterial3D_j2glw")

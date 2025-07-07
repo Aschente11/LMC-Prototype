@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://7gggc2q1txg1"]
+
+[ext_resource type="PackedScene" uid="uid://cxue6f7fp5su8" path="res://assets/Low Poly Furniture/Tables/Table D.fbx" id="1_ddsl6"]
+
+[node name="Table D" type="Node3D"]
+
+[node name="Table D" parent="." instance=ExtResource("1_ddsl6")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

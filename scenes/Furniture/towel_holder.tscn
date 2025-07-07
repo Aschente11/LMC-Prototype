@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn0r03b8jh8r6"]
+
+[ext_resource type="PackedScene" uid="uid://2md50en71x6s" path="res://assets/Low Poly Furniture/Bathroom/Towel Holder.fbx" id="1_dqgs2"]
+
+[node name="Towel Holder" type="Node3D"]
+
+[node name="Towel Holder" parent="." instance=ExtResource("1_dqgs2")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

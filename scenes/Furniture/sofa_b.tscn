@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7f6r4xgugck2"]
+
+[ext_resource type="PackedScene" uid="uid://dqlwh0k2j0eyj" path="res://assets/Low Poly Furniture/Sofas/Sofa B.fbx" id="1_oxnqj"]
+
+[node name="Sofa B" type="Node3D"]
+
+[node name="Sofa B" parent="." instance=ExtResource("1_oxnqj")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://1jqdi10kvjb3"]
+
+[ext_resource type="PackedScene" uid="uid://bq6mfi4jkywig" path="res://assets/Low Poly Furniture/Lights/Wall Light.fbx" id="1_1h2ld"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhixp"]
+
+[node name="Wall Light" instance=ExtResource("1_1h2ld")]
+
+[node name="Wall Light" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xhixp")

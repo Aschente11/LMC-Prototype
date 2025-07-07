@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyj20vbwq2jgh"]
+
+[ext_resource type="PackedScene" uid="uid://cc8pmxdqj2oi7" path="res://assets/Low Poly Furniture/Doors/Door B.fbx" id="1_7nr2h"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Door B" parent="." instance=ExtResource("1_7nr2h")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.2, 0, 0, 0)

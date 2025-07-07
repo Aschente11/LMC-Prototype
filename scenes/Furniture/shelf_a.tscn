@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://u7dt2n2oudx4"]
+
+[ext_resource type="PackedScene" uid="uid://ddn1k2bsb5800" path="res://scenes/Furniture/shelf_a_mesh.tscn" id="1_wrbjd"]
+
+[node name="Shelf A" type="Node3D"]
+
+[node name="Shelf A2" parent="." instance=ExtResource("1_wrbjd")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://lqx8txlbq7em"]
+
+[ext_resource type="PackedScene" uid="uid://3omer4rqptkq" path="res://assets/Low Poly Furniture/Bathroom/Sink.fbx" id="1_sdcaj"]
+
+[node name="Sink" type="Node3D"]
+
+[node name="Sink" parent="." instance=ExtResource("1_sdcaj")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

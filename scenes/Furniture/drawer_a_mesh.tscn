@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://b4g6jlhjrcnmp"]
+
+[ext_resource type="PackedScene" uid="uid://n30qot77lsms" path="res://assets/Low Poly Furniture/Drawers/Drawer A.fbx" id="1_nd1mc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6k5a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jlg2l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8u3jb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lst2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s78h7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc6xx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0d0l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ka1k"]
+
+[node name="Drawer A" instance=ExtResource("1_nd1mc")]
+
+[node name="Drawer A" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_c6k5a")
+
+[node name="Drawer A_001" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_c6k5a")
+surface_material_override/1 = SubResource("StandardMaterial3D_jlg2l")
+
+[node name="Drawer A_002" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_c6k5a")
+surface_material_override/1 = SubResource("StandardMaterial3D_8u3jb")
+
+[node name="Drawer A_003" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_c6k5a")
+surface_material_override/1 = SubResource("StandardMaterial3D_6lst2")
+
+[node name="Drawer A_004" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_c6k5a")
+surface_material_override/1 = SubResource("StandardMaterial3D_s78h7")
+
+[node name="Drawer A_005" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_c6k5a")
+surface_material_override/1 = SubResource("StandardMaterial3D_gc6xx")
+
+[node name="Drawer A_006" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_c6k5a")
+surface_material_override/1 = SubResource("StandardMaterial3D_x0d0l")
+
+[node name="Drawer A_007" parent="." index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_c6k5a")
+surface_material_override/1 = SubResource("StandardMaterial3D_7ka1k")

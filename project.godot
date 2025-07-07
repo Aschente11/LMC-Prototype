@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="LMC Prototype"
-run/main_scene="uid://bvxig3hnfv4jt"
+run/main_scene="uid://cd7xdpifxc61b"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

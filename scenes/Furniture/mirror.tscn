@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmor22wqca33f"]
+
+[ext_resource type="PackedScene" uid="uid://fpgw8lhkwymi" path="res://assets/Low Poly Furniture/Miscellaneous/Mirror B.fbx" id="1_75m7i"]
+
+[node name="Mirror" type="Node3D"]
+
+[node name="Mirror B" parent="." instance=ExtResource("1_75m7i")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

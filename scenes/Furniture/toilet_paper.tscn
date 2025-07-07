@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b021xt3o6pe7d"]
+
+[ext_resource type="PackedScene" uid="uid://dfu1mu06ee04h" path="res://assets/Low Poly Furniture/Bathroom/Toilet Rolls.fbx" id="1_6fvwd"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Toilet Rolls" parent="." instance=ExtResource("1_6fvwd")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://csecy3vkqhh4m"]
+
+[ext_resource type="PackedScene" uid="uid://clc3o4m7ugjv7" path="res://assets/Low Poly Furniture/Bathroom/Bath.fbx" id="1_scjes"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Bath" parent="." instance=ExtResource("1_scjes")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
