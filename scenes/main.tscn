@@ -250,8 +250,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.38634, 0.412218, 6.72886)
 [node name="Chair3" parent="Furniture" instance=ExtResource("22_2f3dj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.38634, 0.412218, 5.22271)
 
-[node name="Fridge" parent="Furniture" instance=ExtResource("23_vxglm")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.356, 1.74456, 2.83165)
+[node name="Fridge B" parent="Furniture" instance=ExtResource("23_vxglm")]
+transform = Transform3D(0.00154461, 0, 0.299996, 0, 0.3, 0, -0.299996, 0, 0.00154461, -4.38399, 1.74609, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yc10j")

@@ -1,8 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1ws3pw8g3w1v"]
+[gd_scene load_steps=5 format=3 uid="uid://d1ws3pw8g3w1v"]
 
 [ext_resource type="PackedScene" uid="uid://cr2t0l0yhtn88" path="res://assets/Low Poly Furniture/Kitchen/Fridge B.fbx" id="1_hjddh"]
+[ext_resource type="Script" uid="uid://bb8kuvwsdnh4c" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_directional_swipe_receiver.gd" id="2_pctap"]
+[ext_resource type="Script" uid="uid://yuxho2akpjbt" path="res://scripts/fridge_door_controller.gd" id="3_door_controller"]
 
-[node name="Fridge" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_yhlms"]
+radius = 0.0234639
 
-[node name="Fridge B" parent="." instance=ExtResource("1_hjddh")]
+[node name="Fridge B" instance=ExtResource("1_hjddh")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="FridgeDoorController" type="Node3D" parent="Fridge B_001" index="0"]
+script = ExtResource("3_door_controller")
+door_open_speed = 3.0
+
+[node name="OISWipeReceiver" type="Node3D" parent="Fridge B_001" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.84217e-14, 0, 2.84217e-14, 1, -0.0014103, 1.66978e-09, -0.0140071)
+script = ExtResource("2_pctap")
+group = "hand"
+metadata/_custom_type_script = "uid://bb8kuvwsdnh4c"
+
+[node name="Area3D" type="Area3D" parent="Fridge B_001/OISWipeReceiver" index="0"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fridge B_001/OISWipeReceiver/Area3D" index="0"]
+shape = SubResource("SphereShape3D_yhlms")
