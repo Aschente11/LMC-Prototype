@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=10 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_4irtq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="4_mvv4w"]
 [ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="5_wrvet"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="6_mvv4w"]
+[ext_resource type="PackedScene" uid="uid://yre2l37gclhc" path="res://scenes/tools/watch.tscn" id="7_mvv4w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrvet"]
 transparency = 1
@@ -49,3 +50,6 @@ hand_material_override = SubResource("StandardMaterial3D_mvv4w")
 [node name="FunctionPointer" parent="XROrigin3D/XRController3DRight" instance=ExtResource("3_wrvet")]
 
 [node name="FunctionTeleport" parent="XROrigin3D/XRController3DRight" instance=ExtResource("5_wrvet")]
+
+[node name="Watch" parent="XROrigin3D/XRController3DRight" instance=ExtResource("7_mvv4w")]
+transform = Transform3D(0.0744061, 0.0871823, 0.99341, 0.0701014, -0.994164, 0.0819978, 0.994761, 0.0635383, -0.0800835, 0.0301411, -0.0505257, 0.168639)
