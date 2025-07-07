@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dgntcenmdo8mk"]
+[gd_scene load_steps=3 format=3 uid="uid://dgntcenmdo8mk"]
 
 [ext_resource type="PackedScene" uid="uid://bxyo0siqi41ci" path="res://assets/Low Poly Furniture/Tables/Desk.fbx" id="1_e8bct"]
 
-[node name="Desk" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_e8bct"]
+size = Vector3(2.46527, 1, 1.07288)
+
+[node name="Desk" type="StaticBody3D"]
 
 [node name="Desk" parent="." instance=ExtResource("1_e8bct")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.471039, 0, -0.251038)
+shape = SubResource("BoxShape3D_e8bct")

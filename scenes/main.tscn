@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=102 format=3 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://cn5yhjlvnee" path="res://scenes/Furniture/drawer_a.tscn" id="39_dnhof"]
 [ext_resource type="PackedScene" uid="uid://ci5t6ina3gv5a" path="res://scenes/Furniture/bin.tscn" id="40_1v6qk"]
 [ext_resource type="PackedScene" uid="uid://cmor22wqca33f" path="res://scenes/Furniture/mirror.tscn" id="45_augu2"]
+[ext_resource type="PackedScene" uid="uid://ckfitvtsa3jl0" path="res://scenes/tools/phone.tscn" id="46_bu4jf"]
 [ext_resource type="PackedScene" uid="uid://b7f6r4xgugck2" path="res://scenes/Furniture/sofa_b.tscn" id="46_j2jfr"]
 [ext_resource type="PackedScene" uid="uid://7gggc2q1txg1" path="res://scenes/Furniture/table_d.tscn" id="47_bjg73"]
 [ext_resource type="PackedScene" uid="uid://u07p8ro5kxsh" path="res://scenes/Furniture/bowl.tscn" id="47_bu4jf"]
@@ -327,7 +328,7 @@ shader_parameter/albedo = Color(0, 0, 0, 1)
 script = ExtResource("1_0wfyh")
 
 [node name="XRPlayer" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.402665, 1.02621, 8.28789)
+transform = Transform3D(-0.999175, 0, -0.0406201, 0, 1, 0, 0.0406201, 0, -0.999175, -0.359089, 1.04854, -2.23477)
 
 [node name="Room" type="Node3D" parent="."]
 
@@ -583,6 +584,9 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.635
 
 [node name="Desk" parent="Furniture" instance=ExtResource("49_o7ddy")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.782722, -3.43434)
+
+[node name="Phone" parent="Furniture/Desk" instance=ExtResource("46_bu4jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00063, 0.763975, 0.233396)
 
 [node name="Bedside" parent="Furniture" instance=ExtResource("50_0loja")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.3518, 0.558045, -5.39464)
