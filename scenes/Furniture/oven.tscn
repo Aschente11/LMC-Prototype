@@ -1,8 +1,7 @@
-[gd_scene load_steps=15 format=4 uid="uid://du2vn3nhn1mob"]
+[gd_scene load_steps=16 format=4 uid="uid://dw7f4mewy0xek"]
 
-[ext_resource type="PackedScene" uid="uid://bdpa687lqnuts" path="res://assets/Low Poly Furniture/Kitchen/Cupboard Sink.fbx" id="1_m4wuj"]
-[ext_resource type="PackedScene" uid="uid://d4kmqiq7dm44h" path="res://assets/Low Poly Furniture/Kitchen/Cupboard E.fbx" id="3_3fgdo"]
-[ext_resource type="PackedScene" uid="uid://b08w40exi1o6i" path="res://assets/Low Poly Furniture/Kitchen/Dishwasher.fbx" id="4_3luqg"]
+[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_cxihq"]
+[ext_resource type="Script" uid="uid://cag688wpsfi6m" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_attach_receiver.gd" id="2_q2h5j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pva7w"]
 resource_name = "White"
@@ -202,36 +201,53 @@ shadow_mesh = SubResource("ArrayMesh_k5fq2")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oaqh8"]
 points = PackedVector3Array(0.0163571, 0.00224286, 0.0320539, -0.0160416, -0.000328521, -0.00033848, -0.0165571, 0.00224286, 0.0320539, 0.0163571, -0.00135714, 0.0320539, 0.0163571, 0.00224286, -0.000857145, -0.0165571, -0.00135714, 0.0320539, 0.0158416, -0.000328521, -0.00033848, -0.0165571, 0.00224286, -0.000857145, -0.0165571, -0.00135714, 0.0289677, 0.0163571, -0.00135714, 0.0289677, 0.0163571, 0.000185966, -0.000857145)
 
-[node name="CookingStation" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3g5h"]
+size = Vector3(2.83044, 2.2381, 2.12793)
 
-[node name="Cupboard E2" parent="." instance=ExtResource("3_3fgdo")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.26721, 0, 0.0476081)
+[sub_resource type="BoxShape3D" id="BoxShape3D_pgb8s"]
+size = Vector3(3.5011, 4.29907, 3.33914)
 
-[node name="Cupboard Sink" parent="." instance=ExtResource("1_m4wuj")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.950343, 0.388623, -0.338233)
+[node name="Oven" type="RigidBody3D"]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("1_cxihq")
+metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
-[node name="Dishwasher" parent="." instance=ExtResource("4_3luqg")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.135537, -0.26973, -0.0988706)
-
-[node name="Oven" type="Node3D" parent="."]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.22623, 0.26, -0.121984)
-
-[node name="Oven" type="MeshInstance3D" parent="Oven"]
+[node name="Oven" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7oqy7")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Oven/Oven"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Oven"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Oven/Oven/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Oven/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_5fh7l")
 
-[node name="Oven_001" type="MeshInstance3D" parent="Oven"]
+[node name="Oven_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0.000736713, -3.36474, 1.1445)
 mesh = SubResource("ArrayMesh_uwtxv")
 skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Oven/Oven_001"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Oven_001"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Oven/Oven_001/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Oven_001/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_oaqh8")
+
+[node name="OISAttachReceiver" type="Node3D" parent="."]
+script = ExtResource("2_q2h5j")
+buffer = 0.002
+is_primary_attacher = true
+replacement_object_path = "res://scenes/Furniture/Kitchen/cooking_station_attached.tscn"
+group = "cook"
+metadata/_custom_type_script = "uid://cag688wpsfi6m"
+
+[node name="Area3D" type="Area3D" parent="OISAttachReceiver"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISAttachReceiver/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00372171, 0.619049, -0.563965)
+shape = SubResource("BoxShape3D_o3g5h")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0165403, -1.27698, -0.405777)
+shape = SubResource("BoxShape3D_pgb8s")

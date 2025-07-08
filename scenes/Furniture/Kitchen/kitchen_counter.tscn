@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://btf7o1yinqmpn"]
+[gd_scene load_steps=5 format=3 uid="uid://btf7o1yinqmpn"]
 
 [ext_resource type="PackedScene" uid="uid://d4kmqiq7dm44h" path="res://assets/Low Poly Furniture/Kitchen/Cupboard E.fbx" id="1_6gteo"]
 [ext_resource type="PackedScene" uid="uid://b7wdykas2s1q8" path="res://assets/Low Poly Furniture/Kitchen/Cupboard F.fbx" id="2_38fvw"]
 [ext_resource type="PackedScene" uid="uid://csmasgae6rkms" path="res://assets/Low Poly Furniture/Kitchen/Cupboard D.fbx" id="3_sikx0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sikx0"]
+size = Vector3(5.20177, 1.36884, 0.940186)
 
 [node name="KitchenCounter" type="Node3D"]
 
@@ -18,3 +21,9 @@ transform = Transform3D(0.42, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.31827, -0.0268333, -
 [node name="Cupboard E" parent="." instance=ExtResource("1_6gteo")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.46267, -0.0962218, 0.00868028)
 visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.233528, -0.281525, -0.326294)
+shape = SubResource("BoxShape3D_sikx0")

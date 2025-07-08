@@ -1,26 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://u07p8ro5kxsh"]
+[gd_scene load_steps=6 format=3 uid="uid://u07p8ro5kxsh"]
 
 [ext_resource type="PackedScene" uid="uid://vb4ojj2i13tl" path="res://assets/Low Poly Furniture/Miscellaneous/Bowl.fbx" id="1_ld1q0"]
+[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_qgjtn"]
 [ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="2_lqlbt"]
+[ext_resource type="Script" uid="uid://dq86gvhe6d20d" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_item.gd" id="4_1h8eo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qgjtn"]
-size = Vector3(0.682983, 0.374786, 0.782227)
+size = Vector3(0.682983, 0.219591, 0.782227)
 
 [node name="Bowl" type="Node3D"]
 
-[node name="Bowl" parent="." instance=ExtResource("1_ld1q0")]
+[node name="XRToolsPickable" type="RigidBody3D" parent="."]
+script = ExtResource("1_qgjtn")
+metadata/_custom_type_script = "uid://bs5crmi43kekt"
+
+[node name="Bowl" parent="XRToolsPickable" instance=ExtResource("1_ld1q0")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 
-[node name="OISStrikeReceiver" type="Node3D" parent="."]
+[node name="OISStrikeReceiver" type="Node3D" parent="XRToolsPickable"]
 script = ExtResource("2_lqlbt")
 group = "hand"
 requirement = 1.0
 metadata/_custom_type_script = "uid://cci3xkvnplit7"
 
-[node name="Area3D" type="Area3D" parent="OISStrikeReceiver"]
+[node name="Area3D" type="Area3D" parent="XRToolsPickable/OISStrikeReceiver"]
 collision_layer = 536870912
 collision_mask = 536870912
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506592, 0.0485992, -0.00146484)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRToolsPickable/OISStrikeReceiver/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506592, 0.127529, -0.00146484)
 shape = SubResource("BoxShape3D_qgjtn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XRToolsPickable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00506592, 0.0735158, -0.00146484)
+shape = SubResource("BoxShape3D_qgjtn")
+
+[node name="InventoryItem" type="Node3D" parent="XRToolsPickable" node_paths=PackedStringArray("defined_mesh", "defined_collision_shape")]
+script = ExtResource("4_1h8eo")
+defined_mesh = NodePath("../Bowl")
+defined_collision_shape = NodePath("../OISStrikeReceiver/Area3D/CollisionShape3D")
+metadata/_custom_type_script = "uid://dq86gvhe6d20d"

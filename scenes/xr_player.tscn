@@ -28,7 +28,11 @@ albedo_color = Color(0.313726, 1, 1, 0.52549)
 
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="XROrigin3D"]
 top_level = true
+collision_layer = 524288
+collision_mask = 1023
 script = ExtResource("6_mvv4w")
+player_height_min = 0.5
+player_height_max = 2.25
 metadata/_custom_type_script = "uid://bqqdxydvmjgir"
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
@@ -44,6 +48,7 @@ hand_material_override = SubResource("StandardMaterial3D_wrvet")
 [node name="FunctionPointer" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("3_wrvet")]
 
 [node name="FunctionTeleport" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("5_wrvet")]
+teleport_button_action = "primary_click"
 
 [node name="OISActorComponent" type="Node3D" parent="XROrigin3D/XRController3DLeft"]
 script = ExtResource("6_ecy5y")
@@ -77,6 +82,7 @@ hand_material_override = SubResource("StandardMaterial3D_mvv4w")
 [node name="FunctionPointer" parent="XROrigin3D/XRController3DRight" instance=ExtResource("3_wrvet")]
 
 [node name="FunctionTeleport" parent="XROrigin3D/XRController3DRight" instance=ExtResource("5_wrvet")]
+teleport_button_action = "primary_click"
 
 [node name="OISActorComponent" type="Node3D" parent="XROrigin3D/XRController3DRight"]
 script = ExtResource("6_ecy5y")
