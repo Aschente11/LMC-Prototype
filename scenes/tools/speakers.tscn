@@ -21,6 +21,7 @@ picked_up_layer = 65541
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="JBL GO4" parent="XRToolsPickable" instance=ExtResource("1_ronjv")]
+transform = Transform3D(-0.0030715, 0.998751, 0.0498796, 0.974966, -0.0080991, 0.222209, 0.222335, 0.0493134, -0.973723, -0.0513444, 0.0152276, 0)
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="XRToolsPickable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109424, 0.0658917, -0.00454712)
@@ -28,3 +29,4 @@ shape = SubResource("BoxShape3D_hoqvh")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="XRToolsPickable"]
 stream = ExtResource("2_ii17s")
+max_db = 6.0

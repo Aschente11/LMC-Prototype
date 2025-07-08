@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=31 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
@@ -31,13 +31,41 @@ albedo_color = Color(0.313726, 1, 1, 0.52549)
 radius = 0.1
 height = 0.2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p0fh"]
+transparency = 1
+albedo_color = Color(0.608, 0.887, 0.976, 0.138)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.13
+
 [sub_resource type="SphereMesh" id="SphereMesh_3s1yg"]
 radius = 0.1
 height = 0.2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1mew7"]
+transparency = 1
+albedo_color = Color(0.608, 0.887, 0.976, 0.138)
+emission_enabled = true
+emission = Color(0.188235, 0.917647, 0, 1)
+emission_energy_multiplier = 0.13
+
 [sub_resource type="SphereMesh" id="SphereMesh_mc5w1"]
 radius = 0.1
 height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wk61l"]
+transparency = 1
+albedo_color = Color(0.608, 0.887, 0.976, 0.138)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.13
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chwf4"]
+transparency = 1
+albedo_color = Color(0.608, 0.887, 0.976, 0.138)
+emission_enabled = true
+emission = Color(0.188235, 0.917647, 0, 1)
+emission_energy_multiplier = 0.13
 
 [sub_resource type="SphereMesh" id="SphereMesh_ujsbv"]
 radius = 0.1
@@ -47,9 +75,23 @@ height = 0.2
 radius = 0.1
 height = 0.2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3s1yg"]
+transparency = 1
+albedo_color = Color(0.608, 0.887, 0.976, 0.138)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.13
+
 [sub_resource type="SphereMesh" id="SphereMesh_5i8cc"]
 radius = 0.1
 height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mc5w1"]
+transparency = 1
+albedo_color = Color(0.608, 0.887, 0.976, 0.138)
+emission_enabled = true
+emission = Color(0.188235, 0.917647, 0, 1)
+emission_energy_multiplier = 0.13
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_7p0fh")
@@ -168,7 +210,7 @@ grab_distance = 0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/InventorySystem/Slot_0_0"]
 mesh = SubResource("SphereMesh_chwf4")
-surface_material_override/0 = ExtResource("13_wk61l")
+surface_material_override/0 = SubResource("StandardMaterial3D_7p0fh")
 
 [node name="Slot_0_1" type="Node3D" parent="XROrigin3D/InventorySystem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
@@ -180,7 +222,7 @@ grab_distance = 0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/InventorySystem/Slot_0_1"]
 mesh = SubResource("SphereMesh_3s1yg")
-surface_material_override/0 = ExtResource("13_wk61l")
+surface_material_override/0 = SubResource("StandardMaterial3D_1mew7")
 
 [node name="Slot_1_0" type="Node3D" parent="XROrigin3D/InventorySystem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -192,12 +234,13 @@ grab_distance = 0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/InventorySystem/Slot_1_0"]
 mesh = SubResource("SphereMesh_mc5w1")
-surface_material_override/0 = ExtResource("13_wk61l")
+surface_material_override/0 = SubResource("StandardMaterial3D_wk61l")
 
 [node name="Slot_1_1" type="Node3D" parent="XROrigin3D/InventorySystem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.3, 0)
 script = ExtResource("11_7p0fh")
 snap_zone_radius = 0.1
+slot_material_override = SubResource("StandardMaterial3D_chwf4")
 
 [node name="SnapZone" parent="XROrigin3D/InventorySystem/Slot_1_1" instance=ExtResource("12_1mew7")]
 grab_distance = 0.1
@@ -216,7 +259,7 @@ grab_distance = 0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/InventorySystem/Slot_2_0"]
 mesh = SubResource("SphereMesh_twgfx")
-surface_material_override/0 = ExtResource("13_wk61l")
+surface_material_override/0 = SubResource("StandardMaterial3D_3s1yg")
 
 [node name="Slot_2_1" type="Node3D" parent="XROrigin3D/InventorySystem"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.6, 0)
@@ -228,4 +271,4 @@ grab_distance = 0.1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/InventorySystem/Slot_2_1"]
 mesh = SubResource("SphereMesh_5i8cc")
-surface_material_override/0 = ExtResource("13_wk61l")
+surface_material_override/0 = SubResource("StandardMaterial3D_mc5w1")

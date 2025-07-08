@@ -4,5 +4,5 @@
 transparency = 1
 albedo_color = Color(0.608, 0.887, 0.976, 0.138)
 emission_enabled = true
-emission = Color(0.661418, 0.82862, 0.593207, 1)
+emission = Color(0.188235, 0.917647, 0, 1)
 emission_energy_multiplier = 0.13
