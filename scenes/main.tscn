@@ -49,7 +49,7 @@
 [ext_resource type="PackedScene" uid="uid://b7f6r4xgugck2" path="res://scenes/Furniture/sofa_b.tscn" id="46_j2jfr"]
 [ext_resource type="PackedScene" uid="uid://7gggc2q1txg1" path="res://scenes/Furniture/table_d.tscn" id="47_bjg73"]
 [ext_resource type="PackedScene" uid="uid://u07p8ro5kxsh" path="res://scenes/Furniture/bowl.tscn" id="47_bu4jf"]
-[ext_resource type="PackedScene" uid="uid://5qhiw1awoago" path="res://scenes/tools/speakers.tscn" id="47_o7ddy"]
+[ext_resource type="PackedScene" uid="uid://5fir7lge76ll" path="res://scenes/tools/speakers.tscn" id="47_o7ddy"]
 [ext_resource type="PackedScene" uid="uid://u7dt2n2oudx4" path="res://scenes/Furniture/shelf_a.tscn" id="48_bu4jf"]
 [ext_resource type="PackedScene" uid="uid://dgntcenmdo8mk" path="res://scenes/Furniture/desk.tscn" id="49_o7ddy"]
 [ext_resource type="PackedScene" uid="uid://efhycwudhik2" path="res://scenes/Furniture/Bedroom/drawer.tscn" id="50_0loja"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=25 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
+[ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_4irtq"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_wrvet"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="4_mvv4w"]
@@ -51,6 +52,7 @@ radius = 0.1
 height = 0.2
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_7p0fh")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 
