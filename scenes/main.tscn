@@ -45,11 +45,14 @@
 [ext_resource type="PackedScene" uid="uid://cn5yhjlvnee" path="res://scenes/Furniture/drawer_a.tscn" id="39_dnhof"]
 [ext_resource type="PackedScene" uid="uid://ci5t6ina3gv5a" path="res://scenes/Furniture/bin.tscn" id="40_1v6qk"]
 [ext_resource type="PackedScene" uid="uid://cmor22wqca33f" path="res://scenes/Furniture/mirror.tscn" id="45_augu2"]
+[ext_resource type="PackedScene" uid="uid://ckfitvtsa3jl0" path="res://scenes/tools/phone.tscn" id="46_bu4jf"]
 [ext_resource type="PackedScene" uid="uid://b7f6r4xgugck2" path="res://scenes/Furniture/sofa_b.tscn" id="46_j2jfr"]
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="47_1v6qk"]
 [ext_resource type="PackedScene" uid="uid://7gggc2q1txg1" path="res://scenes/Furniture/table_d.tscn" id="47_bjg73"]
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="48_0loja"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="48_augu2"]
+[ext_resource type="PackedScene" uid="uid://u07p8ro5kxsh" path="res://scenes/Furniture/bowl.tscn" id="47_bu4jf"]
+[ext_resource type="PackedScene" uid="uid://5fir7lge76ll" path="res://scenes/tools/speakers.tscn" id="47_o7ddy"]
 [ext_resource type="PackedScene" uid="uid://u7dt2n2oudx4" path="res://scenes/Furniture/shelf_a.tscn" id="48_bu4jf"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="49_ids8r"]
 [ext_resource type="PackedScene" uid="uid://dgntcenmdo8mk" path="res://scenes/Furniture/desk.tscn" id="49_o7ddy"]
@@ -723,6 +726,12 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.635
 
 [node name="Desk" parent="Furniture" instance=ExtResource("49_o7ddy")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.782722, -3.43434)
+
+[node name="Phone" parent="Furniture/Desk" instance=ExtResource("46_bu4jf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00063, 0.763975, 0.233396)
+
+[node name="Speakers" parent="Furniture/Desk" instance=ExtResource("47_o7ddy")]
+transform = Transform3D(-0.0160422, -0.959143, -0.282468, 0.999476, -0.00743754, -0.0315086, 0.0281204, -0.282825, 0.958759, -0.266615, 0.583448, 0.283104)
 
 [node name="Bedside" parent="Furniture" instance=ExtResource("50_0loja")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.3518, 0.558045, -5.39464)

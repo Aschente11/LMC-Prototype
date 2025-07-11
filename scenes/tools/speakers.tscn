@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://5fir7lge76ll"]
+
+[ext_resource type="Script" uid="uid://b7yix8k0sj6ui" path="res://scripts/speakers.gd" id="1_hoqvh"]
+[ext_resource type="PackedScene" uid="uid://ccptvyxnx5yf4" path="res://assets/tools/bluetooth-speaker-jbl-go4/source/JBL GO4.glb" id="1_ronjv"]
+[ext_resource type="AudioStream" uid="uid://vhrg3lkuuymy" path="res://assets/sfx/again.mp3" id="2_ii17s"]
+[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="3_4bwle"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hoqvh"]
+size = Vector3(0.159443, 0.143937, 0.172913)
+
+[node name="speakers" type="Node3D"]
+script = ExtResource("1_hoqvh")
+
+[node name="XRToolsPickable" type="RigidBody3D" parent="."]
+collision_layer = 5
+collision_mask = 5
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("3_4bwle")
+picked_up_layer = 65541
+metadata/_custom_type_script = "uid://bs5crmi43kekt"
+
+[node name="JBL GO4" parent="XRToolsPickable" instance=ExtResource("1_ronjv")]
+transform = Transform3D(-0.0030715, 0.998751, 0.0498796, 0.974966, -0.0080991, 0.222209, 0.222335, 0.0493134, -0.973723, -0.0513444, 0.0152276, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="XRToolsPickable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0109424, 0.0658917, -0.00454712)
+shape = SubResource("BoxShape3D_hoqvh")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="XRToolsPickable"]
+stream = ExtResource("2_ii17s")
+max_db = 6.0
