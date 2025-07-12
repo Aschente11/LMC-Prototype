@@ -5,4 +5,4 @@
 [node name="smartwatch" instance=ExtResource("1_vntjt")]
 
 [node name="GalaxyWatch" parent="." index="0"]
-transform = Transform3D(2.19812, -0.0910352, -3.97927e-09, 0, -9.61651e-08, 2.2, -0.0910352, -2.19812, -9.60827e-08, 0, 0, 0)
+transform = Transform3D(2.24807, -0.093104, -4.06971e-09, 0, -9.83506e-08, 2.25, -0.093104, -2.24807, -9.82664e-08, 0, 0, 0)

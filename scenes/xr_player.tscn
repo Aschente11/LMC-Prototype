@@ -121,7 +121,7 @@ hand_material_override = SubResource("StandardMaterial3D_wrvet")
 [node name="FunctionPointer" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("3_wrvet")]
 
 [node name="FunctionTeleport" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("5_wrvet")]
-teleport_button_action = "primary_click"
+teleport_button_action = "primary_touch"
 
 [node name="OISActorComponent" type="Node3D" parent="XROrigin3D/XRController3DLeft"]
 script = ExtResource("6_ecy5y")
@@ -155,7 +155,7 @@ hand_material_override = SubResource("StandardMaterial3D_mvv4w")
 [node name="FunctionPointer" parent="XROrigin3D/XRController3DRight" instance=ExtResource("3_wrvet")]
 
 [node name="FunctionTeleport" parent="XROrigin3D/XRController3DRight" instance=ExtResource("5_wrvet")]
-teleport_button_action = "primary_click"
+teleport_button_action = "primary_touch"
 
 [node name="OISActorComponent" type="Node3D" parent="XROrigin3D/XRController3DRight"]
 script = ExtResource("6_ecy5y")
@@ -179,7 +179,7 @@ collision_mask = 536870912
 shape = SubResource("SphereShape3D_sxhyq")
 
 [node name="smartwatch" parent="XROrigin3D/XRController3DRight" instance=ExtResource("11_1mew7")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0598534, -0.0513343, 0.173687)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0598534, -0.049871, 0.175468)
 
 [node name="InventorySystem" type="Node3D" parent="XROrigin3D" node_paths=PackedStringArray("inventory_toggler_hand")]
 transform = Transform3D(-0.00406662, -0.999992, 0, 0.999992, -0.00406662, 0, 0, 0, 1, 0.29965, 0.872173, -0.536814)
