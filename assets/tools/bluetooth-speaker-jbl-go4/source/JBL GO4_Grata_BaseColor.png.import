@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl5dhho5b5r4r"
+uid="uid://be3hdyem2io2y"
 path.s3tc="res://.godot/imported/JBL GO4_Grata_BaseColor.png-cb4cd9d78d01bc9da013d69611c5f0eb.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "07ca25b8efdafae151e66ea08856ed3b"
 }
 
 [deps]

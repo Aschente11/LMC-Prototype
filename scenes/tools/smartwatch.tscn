@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyu5exn7vgfy8"]
+
+[ext_resource type="PackedScene" uid="uid://nq52jpvlfsbs" path="res://assets/tools/smartwatch.fbx" id="1_vntjt"]
+
+[node name="smartwatch" instance=ExtResource("1_vntjt")]
+
+[node name="GalaxyWatch" parent="." index="0"]
+transform = Transform3D(2.19812, -0.0910352, -3.97927e-09, 0, -9.61651e-08, 2.2, -0.0910352, -2.19812, -9.60827e-08, 0, 0, 0)

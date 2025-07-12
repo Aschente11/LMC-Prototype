@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=129 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -49,10 +49,9 @@
 [ext_resource type="PackedScene" uid="uid://b7f6r4xgugck2" path="res://scenes/Furniture/sofa_b.tscn" id="46_j2jfr"]
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="47_1v6qk"]
 [ext_resource type="PackedScene" uid="uid://7gggc2q1txg1" path="res://scenes/Furniture/table_d.tscn" id="47_bjg73"]
+[ext_resource type="PackedScene" uid="uid://5fir7lge76ll" path="res://scenes/tools/speakers.tscn" id="47_o7ddy"]
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="48_0loja"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="48_augu2"]
-[ext_resource type="PackedScene" uid="uid://u07p8ro5kxsh" path="res://scenes/Furniture/bowl.tscn" id="47_bu4jf"]
-[ext_resource type="PackedScene" uid="uid://5fir7lge76ll" path="res://scenes/tools/speakers.tscn" id="47_o7ddy"]
 [ext_resource type="PackedScene" uid="uid://u7dt2n2oudx4" path="res://scenes/Furniture/shelf_a.tscn" id="48_bu4jf"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="49_ids8r"]
 [ext_resource type="PackedScene" uid="uid://dgntcenmdo8mk" path="res://scenes/Furniture/desk.tscn" id="49_o7ddy"]
@@ -67,6 +66,9 @@
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="58_ro3en"]
 [ext_resource type="PackedScene" uid="uid://dtjk66bj36vw1" path="res://assets/Low Poly Furniture/Kitchen/Kitchen Roll.fbx" id="59_152kg"]
 [ext_resource type="Script" uid="uid://cag688wpsfi6m" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_attach_receiver.gd" id="59_od4ux"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
+size = Vector3(15.7303, 0.130249, 20.6996)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8jky"]
 albedo_texture = ExtResource("3_tbgi4")
@@ -474,24 +476,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.403, 0, 8.288)
 
 [node name="Room" type="Node3D" parent="."]
 
-[node name="Floor" type="MeshInstance3D" parent="Room"]
+[node name="Floor4" type="StaticBody3D" parent="Room"]
+
+[node name="FloorCollision" type="CollisionShape3D" parent="Room/Floor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55865, -0.0801392, 0.0826721)
+shape = SubResource("BoxShape3D_1epgm")
+
+[node name="Floor" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, 6.04379)
 mesh = SubResource("PlaneMesh_kmb1v")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Floor2" type="MeshInstance3D" parent="Room"]
+[node name="Floor2" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, -6.26832)
 mesh = SubResource("PlaneMesh_fuf3a")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="Floor3" type="MeshInstance3D" parent="Room"]
+[node name="Floor3" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603302, 0, -0.238458)
 mesh = SubResource("PlaneMesh_c6pm6")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CR Floor" type="MeshInstance3D" parent="Room"]
+[node name="CR Floor" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87657, 0, -0.254821)
 mesh = SubResource("PlaneMesh_5poiv")
+skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, 6.04379)
@@ -674,7 +683,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.777
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.25476, 0.920756, 9.19054)
 
 [node name="Fridge" parent="Furniture" instance=ExtResource("21_5q0nq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1145, 1.62741, 2.99923)
+transform = Transform3D(-0.0325795, 0, 0.999469, 0, 1, 0, -0.999469, 0, -0.0325795, -10.2025, 1.37408, 3.25731)
 
 [node name="Light Switch" parent="Furniture" instance=ExtResource("22_dgi5k")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1.34665, 2.18294, 9.95747)
