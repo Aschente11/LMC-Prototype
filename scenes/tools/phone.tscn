@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckfitvtsa3jl0"]
+[gd_scene load_steps=5 format=3 uid="uid://ckfitvtsa3jl0"]
 
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_fdwo1"]
 [ext_resource type="PackedScene" uid="uid://cp62f72oik2mm" path="res://assets/tools/iphone-16-pro-max/source/ip16promax.glb" id="1_fsqbe"]
+[ext_resource type="Script" uid="uid://dq86gvhe6d20d" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_item.gd" id="3_txr4e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_txr4e"]
 size = Vector3(0.429917, 0.551975, 0.439128)
@@ -18,3 +19,9 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0102693, 0.0305538, 0.0115815)
 shape = SubResource("BoxShape3D_txr4e")
+
+[node name="InventoryItem" type="Node3D" parent="." node_paths=PackedStringArray("defined_mesh", "defined_collision_shape")]
+script = ExtResource("3_txr4e")
+defined_mesh = NodePath("../ip16promax")
+defined_collision_shape = NodePath("../CollisionShape3D")
+metadata/_custom_type_script = "uid://dq86gvhe6d20d"

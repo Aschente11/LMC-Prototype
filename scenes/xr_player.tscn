@@ -121,7 +121,7 @@ hand_material_override = SubResource("StandardMaterial3D_wrvet")
 [node name="FunctionPointer" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("3_wrvet")]
 
 [node name="FunctionTeleport" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("5_wrvet")]
-teleport_button_action = "primary_touch"
+teleport_button_action = "primary"
 
 [node name="OISActorComponent" type="Node3D" parent="XROrigin3D/XRController3DLeft"]
 script = ExtResource("6_ecy5y")
@@ -155,7 +155,7 @@ hand_material_override = SubResource("StandardMaterial3D_mvv4w")
 [node name="FunctionPointer" parent="XROrigin3D/XRController3DRight" instance=ExtResource("3_wrvet")]
 
 [node name="FunctionTeleport" parent="XROrigin3D/XRController3DRight" instance=ExtResource("5_wrvet")]
-teleport_button_action = "primary_touch"
+teleport_button_action = "primary"
 
 [node name="OISActorComponent" type="Node3D" parent="XROrigin3D/XRController3DRight"]
 script = ExtResource("6_ecy5y")
