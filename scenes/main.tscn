@@ -690,7 +690,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.777
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.25476, 0.920756, 9.19054)
 
 [node name="Fridge" parent="Furniture" instance=ExtResource("21_5q0nq")]
-transform = Transform3D(-0.0325795, 0, 0.999469, 0, 1, 0, -0.999469, 0, -0.0325795, -10.2025, 1.37408, 3.25731)
+transform = Transform3D(0.0368356, 0, 0.999321, 0, 1, 0, -0.999321, 0, 0.0368356, -10.1742, 1.14834, 3.25862)
 
 [node name="Light Switch" parent="Furniture" instance=ExtResource("22_dgi5k")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1.34665, 2.18294, 9.95747)
@@ -946,7 +946,4 @@ metadata/_custom_type_script = "uid://ek4xpaefjlux"
 transform = Transform3D(-0.0303292, 0, -0.99954, 0, 1, 0, 0.99954, 0, -0.0303292, -5.69739, 1.40957, 6.04809)
 
 [node name="knife" parent="." instance=ExtResource("70_mlv25")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.30013, 2.00888, 5.71546)
-
-[node name="knife2" parent="." instance=ExtResource("70_mlv25")]
 transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.76397, 1.41585, 5.71333)

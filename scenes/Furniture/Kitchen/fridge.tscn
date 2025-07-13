@@ -1,10 +1,15 @@
-[gd_scene load_steps=19 format=4 uid="uid://d1ws3pw8g3w1v"]
+[gd_scene load_steps=28 format=4 uid="uid://d1ws3pw8g3w1v"]
 
-[ext_resource type="Script" uid="uid://cas501l6y6p2k" path="res://scripts/door_handle.gd" id="1_2gkej"]
+[ext_resource type="Script" uid="uid://bolnrvlsf08tl" path="res://scripts/fridge.gd" id="1_amwlr"]
+[ext_resource type="Script" uid="uid://dn1f3syxj25u4" path="res://addons/godot-xr-tools/interactables/interactable_handle.gd" id="1_wiql6"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_rbiym"]
 [ext_resource type="Animation" uid="uid://daqddcrbpam0c" path="res://addons/godot-xr-tools/hands/animations/right/Grip 1.res" id="3_2gkej"]
 [ext_resource type="Animation" uid="uid://dqa0h82y3qn1t" path="res://addons/godot-xr-tools/hands/animations/left/Grip 1.res" id="3_wiql6"]
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_wiql6"]
+[ext_resource type="Script" uid="uid://bb8kuvwsdnh4c" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_directional_swipe_receiver.gd" id="7_amwlr"]
+[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="8_k31p6"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="9_uxfnv"]
+[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="10_35ron"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpjh0"]
 resource_name = "White"
@@ -27,7 +32,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_rbiym"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_bkaoe"]
 resource_name = "Cube_008"
 _surfaces = [{
 "aabb": AABB(-0.0236564, -0.00212242, -0.0541973, 0.0397634, 0.0222303, 0.100509),
@@ -78,7 +83,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_wiql6"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_k8ahg"]
 resource_name = "Cube_128"
 _surfaces = [{
 "aabb": AABB(-0.0217438, -0.00618097, -0.00388266, 0.0359381, 0.00464899, 0.04843),
@@ -110,12 +115,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rs0a3")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_rbiym"]
-size = Vector3(0.0352631, 0.00741577, 0.0457458)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_rbiym"]
-radius = 0.120797
-
 [sub_resource type="ArrayMesh" id="ArrayMesh_gp550"]
 _surfaces = [{
 "aabb": AABB(-0.0217438, -0.00618097, -0.0520567, 0.0359381, 0.00464899, 0.0468538),
@@ -142,7 +141,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_2gkej"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_wwe5c"]
 resource_name = "Cube_127"
 _surfaces = [{
 "aabb": AABB(-0.0217438, -0.00618097, -0.0520567, 0.0359381, 0.00464899, 0.0468538),
@@ -174,76 +173,183 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gp550")
 
-[sub_resource type="Resource" id="Resource_tejn6"]
+[sub_resource type="Animation" id="Animation_2gkej"]
+resource_name = "open_fridge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fridge main/upper door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.49, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.00929097, -4.06121e-10), Vector3(-0.0156449, -0.0215537, -9.42141e-10)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fridge main/upper door:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.49, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(4.38748e-09, 1.9087e-08, -0.451883), Vector3(2.46813e-30, 2.11758e-22, -1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_wiql6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fridge main/upper door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fridge main/upper door:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(7.31167e-08, 3.23421e-08, -2.30867)]
+}
+
+[sub_resource type="Animation" id="Animation_amwlr"]
+resource_name = "close_fridge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fridge main/upper door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.51, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0156449, -0.0215537, -9.42141e-10), Vector3(0, -0.01, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fridge main/upper door:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.5708), Vector3(0, 0, -0.472984), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amwlr"]
+_data = {
+&"RESET": SubResource("Animation_wiql6"),
+&"close_fridge": SubResource("Animation_amwlr"),
+&"open_fridge": SubResource("Animation_2gkej")
+}
+
+[sub_resource type="Resource" id="Resource_rbiym"]
 script = ExtResource("4_wiql6")
 closed_pose = ExtResource("3_wiql6")
 metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 
-[sub_resource type="Resource" id="Resource_amwlr"]
+[sub_resource type="Resource" id="Resource_2gkej"]
 script = ExtResource("4_wiql6")
 closed_pose = ExtResource("3_2gkej")
 metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2gkej"]
-size = Vector3(1.05444, 2.59225, 0.764771)
+size = Vector3(0.830078, 2.09808, 0.619202)
 
-[node name="FridgeMain" type="StaticBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_amwlr"]
+size = Vector3(1, 0.313232, 0.448669)
 
-[node name="Fridge Main Mesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, -1.09278e-06, 25, 0, -25, -1.09278e-06, 0, 0, 0)
-mesh = SubResource("ArrayMesh_rbiym")
+[sub_resource type="SphereMesh" id="SphereMesh_4j2h7"]
+radius = 0.2
+height = 0.4
+
+[node name="fridge" type="Node3D"]
+script = ExtResource("1_amwlr")
+
+[node name="Fridge" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_wiql6")
+metadata/_custom_type_script = "uid://dn1f3syxj25u4"
+
+[node name="Fridge main" type="MeshInstance3D" parent="Fridge"]
+transform = Transform3D(21, 0, 0, 0, -9.17939e-07, 21, 0, -21, -9.17939e-07, 0, 0, 0)
+mesh = SubResource("ArrayMesh_bkaoe")
 skeleton = NodePath("")
 
-[node name="Fridge upper door" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-axis_lock_linear_x = true
-axis_lock_linear_y = true
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-mass = 5.0
-gravity_scale = 0.0
-
-[node name="Upperdoor mesh" type="MeshInstance3D" parent="Fridge upper door"]
-transform = Transform3D(25, 0, 0, 0, 25, -8.88178e-14, 0, 8.88178e-14, 25, 0, 0, 0)
-mesh = SubResource("ArrayMesh_wiql6")
+[node name="upper door" type="MeshInstance3D" parent="Fridge/Fridge main"]
+transform = Transform3D(-0.672716, 0.739901, 3.23421e-08, -0.739901, -0.672716, -7.31167e-08, -3.23421e-08, -7.31167e-08, 1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_k8ahg")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fridge upper door"]
-transform = Transform3D(25, 0, 0, 0, 25, -2.27374e-13, 0, 2.27374e-13, 25, -0.110317, -0.0886381, 0.470015)
-shape = SubResource("BoxShape3D_rbiym")
-
-[node name="Door handle" type="Area3D" parent="Fridge upper door" node_paths=PackedStringArray("door_rigidbody")]
-script = ExtResource("1_2gkej")
-door_rigidbody = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Fridge upper door/Door handle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.250525, -0.173456, 0.0412937)
-shape = SubResource("SphereShape3D_rbiym")
-
-[node name="Fridge lower door" type="MeshInstance3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, -1.09278e-06, 25, 0, -25, -1.09278e-06, 0, 0, 0)
-mesh = SubResource("ArrayMesh_2gkej")
+[node name="lower door" type="MeshInstance3D" parent="Fridge/Fridge main"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0)
+mesh = SubResource("ArrayMesh_wwe5c")
 skeleton = NodePath("")
 
-[node name="XRToolsGrabPointHandLeft" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.992003, -0.126216, 0, 0.126216, 0.992003, 0.262427, 0.101009, 0.129762)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fridge"]
+libraries = {
+&"": SubResource("AnimationLibrary_amwlr")
+}
+
+[node name="XRToolsGrabPointLeft" type="Marker3D" parent="Fridge"]
+transform = Transform3D(1, 0, 0, 0, 0.984131, -0.177445, 0, 0.177445, 0.984131, 0.213365, 0.0997082, 0.0930803)
 script = ExtResource("2_rbiym")
-hand_pose = SubResource("Resource_tejn6")
+hand_pose = SubResource("Resource_rbiym")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
-[node name="XRToolsGrabPointRight" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.991734, -0.128311, 0, 0.128311, 0.991734, 0.262427, 0.101009, 0.129762)
+[node name="XRToolsGrabPointRight" type="Marker3D" parent="Fridge"]
+transform = Transform3D(1, 0, 0, 0, 0.983741, -0.179592, 0, 0.179592, 0.983741, 0.216674, 0.106486, 0.0946914)
 script = ExtResource("2_rbiym")
 hand = 1
-hand_pose = SubResource("Resource_amwlr")
+hand_pose = SubResource("Resource_2gkej")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0919189, -0.0896759, -0.177067)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0849609, -0.111664, -0.150299)
 shape = SubResource("BoxShape3D_2gkej")
 
-[node name="HingeJoint3D" type="HingeJoint3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.548708, 0.448676, 0.0608252)
-node_a = NodePath("..")
-node_b = NodePath("../Fridge upper door")
-angular_limit/enable = true
+[node name="OISDirectionalSwipeReceiver" type="Node3D" parent="Fridge"]
+script = ExtResource("7_amwlr")
+group = "hand"
+metadata/_custom_type_script = "uid://bb8kuvwsdnh4c"
+
+[node name="Area3D" type="Area3D" parent="Fridge/OISDirectionalSwipeReceiver"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fridge/OISDirectionalSwipeReceiver/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146973, 0.118286, 0.0245667)
+shape = SubResource("BoxShape3D_amwlr")
+
+[node name="InventorySlot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0925428, 0.397896, -0.0203012)
+script = ExtResource("8_k31p6")
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot" instance=ExtResource("9_uxfnv")]
+grab_distance = 0.2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot"]
+mesh = SubResource("SphereMesh_4j2h7")
+surface_material_override/0 = ExtResource("10_35ron")
+
+[connection signal="action_started" from="Fridge/OISDirectionalSwipeReceiver" to="." method="_on_ois_directional_swipe_receiver_action_started"]
