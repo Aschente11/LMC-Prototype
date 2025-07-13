@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var text: MeshInstance3D = $text
-@export var full_text: String = "Today's to-do list:\n  - cook bfast\n  - draw a house\n  - clean my shit"
+@export var full_text: String = "Things to do today:\n  1. cook bfast\n  2. draw a house\n  3. clean my shi\n 4. sleep early"
 @export var wipes_per_letter: int = 3  # Number of wipes needed to reveal one letter
 
 var current_text: String = ""
