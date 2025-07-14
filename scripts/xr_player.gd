@@ -6,7 +6,8 @@ extends Node3D
 
 func _ready() -> void:
 	add_to_group("player")
-	GlobalVar.stimulation_changed.connect(_on_stimulation_changed)
+	GlobalVar.stimulation_increase.connect(_on_stimulation_changed)
+	GlobalVar.stimulation_decrease.connect(_on_stimulation_changed)
 
 func _on_stimulation_changed(new_value: int) -> void:
 	# Create a timer for 2-second delay

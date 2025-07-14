@@ -12,5 +12,5 @@ func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress
 		anim_player.play("apple_slice")
 		sound_effect.play()
 		is_cut += 1
-	GlobalVar.increase_stimulation()
+		GlobalVar.increase_stimulation()
 	

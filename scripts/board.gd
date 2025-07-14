@@ -97,6 +97,8 @@ func _reveal_next_letter():
 			writing_sfx.stop()
 			is_audio_paused = false
 			audio_position = 0.0
+			GlobalVar.decrease_stimulation()
+
  
 func _on_ois_wipe_receiver_action_in_progress(requirement: Variant, total_progress: Variant) -> void: 
 	_handle_wipe_input()
@@ -105,6 +107,3 @@ func _on_ois_wipe_receiver_action_completed(requirement: Variant, total_progress
 	# Stop wiping activity
 	is_actively_wiping = false
 	_stop_writing_sound()
-	
-	# Optional: reveal final letter when completed 
-	pass
