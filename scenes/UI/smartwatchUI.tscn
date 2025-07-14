@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://d33xafpspfy8g"]
+
+[ext_resource type="Texture2D" uid="uid://bhem26tmp2qnp" path="res://assets/others/smartwatchUI.png" id="1_a3skt"]
+[ext_resource type="Texture2D" uid="uid://c51sohagu4euo" path="res://assets/others/marker.png" id="2_emsh6"]
+
+[node name="SmartwatchUi" type="Node2D"]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 576.0
+offset_bottom = 509.0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_a3skt")
+expand_mode = 1
+stretch_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
+position = Vector2(335, 114)
+rotation = -2.53073
+scale = Vector2(0.254245, 0.391236)
+texture = ExtResource("2_emsh6")

@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://bb1oj52yyc6so"]
+[gd_scene load_steps=14 format=4 uid="uid://bb1oj52yyc6so"]
 
 [ext_resource type="Script" uid="uid://bwa647s8fywx2" path="res://scripts/board.gd" id="1_l7qyt"]
 [ext_resource type="Texture2D" uid="uid://b7xhf5fa0d82x" path="res://assets/tools/whiteboard_low-poly/textures/White_board_baseColor.png" id="1_ofyuy"]
 [ext_resource type="Texture2D" uid="uid://dydcqxfgf2dum" path="res://assets/tools/whiteboard_low-poly/textures/White_board_metallicRoughness.png" id="2_nmcum"]
 [ext_resource type="Texture2D" uid="uid://chfr6m7s1n1d1" path="res://assets/tools/whiteboard_low-poly/textures/White_board_normal.png" id="3_l7qyt"]
 [ext_resource type="Script" uid="uid://bgbpjxxlqrp4" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_wipe_receiver.gd" id="4_nmcum"]
+[ext_resource type="AudioStream" uid="uid://y7fium8yj1tb" path="res://assets/sfx/writing.mp3" id="6_ddbq5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7qyt"]
 albedo_color = Color(0, 0, 0, 1)
@@ -101,6 +102,9 @@ collision_mask = 536870912
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OISWipeReceiver/Area3D"]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.0170749, 0.00763494)
 shape = SubResource("BoxShape3D_l7qyt")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_ddbq5")
 
 [connection signal="action_completed" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_completed"]
 [connection signal="action_in_progress" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_in_progress"]
