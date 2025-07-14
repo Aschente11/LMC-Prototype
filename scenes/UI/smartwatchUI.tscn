@@ -16,7 +16,7 @@ expand_mode = 1
 stretch_mode = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(335, 114)
-rotation = -2.53073
+position = Vector2(375, 154)
+rotation = -2.1869
 scale = Vector2(0.254245, 0.391236)
 texture = ExtResource("2_emsh6")

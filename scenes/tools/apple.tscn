@@ -422,4 +422,5 @@ metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 [node name="sfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("8_7emso")
 
+[connection signal="action_completed" from="Apple/OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_completed"]
 [connection signal="action_started" from="Apple/OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_started"]
