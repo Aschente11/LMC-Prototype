@@ -744,7 +744,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.635
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.782722, -3.43434)
 
 [node name="Phone" parent="Furniture/Desk" instance=ExtResource("46_bu4jf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00063, 0.763975, 0.233396)
+transform = Transform3D(-0.998751, 0.045582, -0.0204656, 0.0279164, 0.169357, -0.985159, -0.0414395, -0.9845, -0.170418, -0.830726, 1.61723, 0.0961859)
 
 [node name="Speakers" parent="Furniture/Desk" instance=ExtResource("47_o7ddy")]
 transform = Transform3D(-0.0160422, -0.959143, -0.282468, 0.999476, -0.00743754, -0.0315086, 0.0281204, -0.282825, 0.958759, -0.266615, 0.583448, 0.283104)

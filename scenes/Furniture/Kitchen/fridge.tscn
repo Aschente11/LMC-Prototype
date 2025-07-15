@@ -175,30 +175,6 @@ shadow_mesh = SubResource("ArrayMesh_gp550")
 
 [sub_resource type="Animation" id="Animation_wiql6"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Fridge main/upper door:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Fridge main/upper door:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(7.31167e-08, 3.23421e-08, -2.30867)]
-}
 
 [sub_resource type="Animation" id="Animation_amwlr"]
 resource_name = "close_fridge"
@@ -275,7 +251,7 @@ metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 size = Vector3(0.830078, 2.09808, 0.619202)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_amwlr"]
-size = Vector3(1, 0.313232, 0.448669)
+size = Vector3(0.070076, 0.166382, 0.125046)
 
 [sub_resource type="SphereMesh" id="SphereMesh_4j2h7"]
 radius = 0.2
@@ -296,7 +272,7 @@ mesh = SubResource("ArrayMesh_bkaoe")
 skeleton = NodePath("")
 
 [node name="upper door" type="MeshInstance3D" parent="Fridge/Fridge main"]
-transform = Transform3D(-0.672716, 0.739901, 3.23421e-08, -0.739901, -0.672716, -7.31167e-08, -3.2342e-08, -7.31167e-08, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_k8ahg")
 skeleton = NodePath("")
 
@@ -337,11 +313,11 @@ collision_layer = 536870912
 collision_mask = 536870912
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fridge/OISDirectionalSwipeReceiver/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146973, 0.118286, 0.0245667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218341, 0.0448608, 0.14576)
 shape = SubResource("BoxShape3D_amwlr")
 
 [node name="InventorySlot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0925428, 0.397896, -0.0203012)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.093, 0.398, -0.2)
 script = ExtResource("8_k31p6")
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
