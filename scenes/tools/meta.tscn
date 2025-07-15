@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsupuweunu8ri"]
+
+[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_5etgv"]
+[ext_resource type="PackedScene" uid="uid://bbrabegioknvy" path="res://assets/tools/meta_quest_3/scene.gltf" id="2_opdg4"]
+[ext_resource type="Script" uid="uid://dq86gvhe6d20d" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_item.gd" id="3_opdg4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a02lh"]
+size = Vector3(0.261047, 0.219421, 0.342674)
+
+[node name="Meta" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_5etgv")
+metadata/_custom_type_script = "uid://bs5crmi43kekt"
+
+[node name="meta_mesh" parent="." instance=ExtResource("2_opdg4")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000579834, 0.000457764, -5.72205e-05)
+shape = SubResource("BoxShape3D_a02lh")
+
+[node name="InventoryItem" type="Node3D" parent="." node_paths=PackedStringArray("defined_mesh", "defined_collision_shape")]
+script = ExtResource("3_opdg4")
+defined_mesh = NodePath("../meta_mesh")
+defined_collision_shape = NodePath("../CollisionShape3D")
+preferred_scale = 0.55
+object_rotation_adjustment = Vector3(10, -15, -90)
+metadata/_custom_type_script = "uid://dq86gvhe6d20d"

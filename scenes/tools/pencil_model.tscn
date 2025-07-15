@@ -237,6 +237,8 @@ skeleton = NodePath("")
 script = ExtResource("2_7ubrv")
 defined_mesh = NodePath("../pencil mesh")
 defined_collision_shape = NodePath("../CollisionShape3D")
+preferred_scale = 0.85
+object_rotation_adjustment = Vector3(45, -45, 0)
 metadata/_custom_type_script = "uid://dq86gvhe6d20d"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

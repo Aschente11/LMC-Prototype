@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=135 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -29,10 +29,12 @@
 [ext_resource type="PackedScene" uid="uid://d1ws3pw8g3w1v" path="res://scenes/Furniture/Kitchen/fridge.tscn" id="21_5q0nq"]
 [ext_resource type="PackedScene" uid="uid://s5gjejv5fen7" path="res://scenes/Furniture/Bedroom/bed.tscn" id="21_og1vs"]
 [ext_resource type="PackedScene" uid="uid://bb1oj52yyc6so" path="res://scenes/tools/board.tscn" id="21_r4e17"]
+[ext_resource type="PackedScene" uid="uid://o1nfmqbymovr" path="res://scenes/others/cardboardBox.tscn" id="22_a82wo"]
 [ext_resource type="PackedScene" uid="uid://b63336v121wu1" path="res://scenes/Furniture/Kitchen/light_switch.tscn" id="22_dgi5k"]
 [ext_resource type="AudioStream" uid="uid://dm6vjaowvorvl" path="res://assets/sfx/yippee-tbh.mp3" id="24_vxglm"]
 [ext_resource type="PackedScene" uid="uid://m4kk61d6ikla" path="res://scenes/Furniture/windows.tscn" id="24_yq6so"]
 [ext_resource type="Script" uid="uid://cxy8oxoldmaoc" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter_manager.gd" id="25_2f3dj"]
+[ext_resource type="PackedScene" uid="uid://dsupuweunu8ri" path="res://scenes/tools/meta.tscn" id="26_gdvew"]
 [ext_resource type="Script" uid="uid://ek4xpaefjlux" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter.gd" id="26_yq6so"]
 [ext_resource type="Shader" uid="uid://dn36xw56c7i80" path="res://shaders/main.gdshader" id="27_fv21b"]
 [ext_resource type="PackedScene" uid="uid://cyj20vbwq2jgh" path="res://scenes/Furniture/cr_door.tscn" id="31_nvyfr"]
@@ -643,6 +645,20 @@ mesh = SubResource("PlaneMesh_155or")
 [node name="Sketchfab_Scene" parent="Room" instance=ExtResource("21_r4e17")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.47318, 1.76928, -2.55024)
 
+[node name="CardboardBox" parent="Room" instance=ExtResource("22_a82wo")]
+transform = Transform3D(0.998603, -0.0528414, 0, 0.0528414, 0.998603, 0, 0, 0, 1, -9.41352, 0.387674, -5.44379)
+
+[node name="Speakers" parent="Room/CardboardBox" instance=ExtResource("47_o7ddy")]
+transform = Transform3D(0.0688335, 0.95741, 0.280408, 0.997232, -0.0581096, -0.0463906, -0.0281204, 0.282825, -0.958759, -0.084116, -0.178699, 0.103086)
+
+[node name="Phone" parent="Room/CardboardBox" instance=ExtResource("46_bu4jf")]
+transform = Transform3D(0.0596304, 0.991169, 0.118442, 0.0248001, 0.117146, -0.992805, -0.997912, 0.0621388, -0.0175956, -0.0511522, -0.0601424, 0.330057)
+
+[node name="Pencil_Model" parent="Room/CardboardBox" instance=ExtResource("48_152kg")]
+transform = Transform3D(0.997345, 0.0528414, -0.0501214, -0.0527748, 0.998603, 0.00265221, 0.0501916, -3.72529e-09, 0.99874, 0.167356, -0.0669073, -0.19866)
+
+[node name="Meta" parent="Room/CardboardBox" instance=ExtResource("26_gdvew")]
+
 [node name="Furniture" type="Node3D" parent="."]
 
 [node name="Ceiling Light" parent="Furniture" instance=ExtResource("14_vxglm")]
@@ -742,15 +758,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.635
 
 [node name="Desk" parent="Furniture" instance=ExtResource("49_o7ddy")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.782722, -3.43434)
-
-[node name="Phone" parent="Furniture/Desk" instance=ExtResource("46_bu4jf")]
-transform = Transform3D(-0.998751, 0.045582, -0.0204656, 0.0279164, 0.169357, -0.985159, -0.0414395, -0.9845, -0.170418, -0.830726, 1.61723, 0.0961859)
-
-[node name="Speakers" parent="Furniture/Desk" instance=ExtResource("47_o7ddy")]
-transform = Transform3D(-0.0160422, -0.959143, -0.282468, 0.999476, -0.00743754, -0.0315086, 0.0281204, -0.282825, 0.958759, -0.266615, 0.583448, 0.283104)
-
-[node name="Pencil_Model" parent="Furniture/Desk" instance=ExtResource("48_152kg")]
-transform = Transform3D(-0.464286, 0, 0.885686, 0, 1, 0, -0.885686, 0, -0.464286, -1.07658, 0.719225, 0)
 
 [node name="Bedside" parent="Furniture" instance=ExtResource("50_0loja")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.3518, 0.558045, -5.39464)

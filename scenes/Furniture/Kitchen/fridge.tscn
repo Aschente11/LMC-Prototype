@@ -272,7 +272,6 @@ mesh = SubResource("ArrayMesh_bkaoe")
 skeleton = NodePath("")
 
 [node name="upper door" type="MeshInstance3D" parent="Fridge/Fridge main"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_k8ahg")
 skeleton = NodePath("")
 
