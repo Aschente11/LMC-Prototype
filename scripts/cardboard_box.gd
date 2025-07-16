@@ -7,7 +7,8 @@ signal box_emptied  # Custom signal
 var object_count: int = 3
 
 func _process(delta: float) -> void:
-	print("object:", object_count)
+	#print("object:", object_count)
+	pass
 
 func _ready() -> void:
 	detection_area.body_exited.connect(_on_body_exited)

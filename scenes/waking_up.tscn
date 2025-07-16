@@ -1,0 +1,843 @@
+[gd_scene load_steps=105 format=3 uid="uid://bmntx5vgfext1"]
+
+[ext_resource type="Script" uid="uid://dk63rhrf1fcgj" path="res://scripts/waking_up.gd" id="1_gfqyt"]
+[ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_gfqyt"]
+[ext_resource type="Texture2D" uid="uid://cch4178fvpwtc" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_baseColor.jpg" id="3_sckrn"]
+[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="3_xr8u2"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="4_07lh0"]
+[ext_resource type="Texture2D" uid="uid://02w3eaoutnsd" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_specularLevel.jpg" id="4_8sril"]
+[ext_resource type="Texture2D" uid="uid://44bxquvggmos" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_normal.jpg" id="5_3eryo"]
+[ext_resource type="Script" uid="uid://dcpfx4msftq33" path="res://scripts/qte_manager.gd" id="6_07lh0"]
+[ext_resource type="Texture2D" uid="uid://bykexfm5nad2i" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_roughness.jpg" id="6_dpeja"]
+[ext_resource type="Texture2D" uid="uid://7bljh8e18a2x" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Color.jpg" id="7_a740g"]
+[ext_resource type="PackedScene" uid="uid://dfkuuokensmj1" path="res://scenes/UI/qte_layer.tscn" id="7_ln8bc"]
+[ext_resource type="Script" uid="uid://cljyjsip713od" path="res://scripts/wake_up_event.gd" id="7_ncvxg"]
+[ext_resource type="Texture2D" uid="uid://c3e3ci04ak5yh" path="res://assets/textures/Tiles009-4K/Tiles009_4K_AmbientOcclusion.jpg" id="8_imbos"]
+[ext_resource type="Texture2D" uid="uid://chibr5vli2kq8" path="res://assets/textures/Tiles009-4K/Tiles009_4K_NormalGL.jpg" id="9_2y35h"]
+[ext_resource type="Texture2D" uid="uid://ixiikv87pfp2" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Roughness.jpg" id="10_tghf6"]
+[ext_resource type="Texture2D" uid="uid://p6vxlfnbn3w3" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Color.jpg" id="11_51sj5"]
+[ext_resource type="Texture2D" uid="uid://dn1p63kntkvho" path="res://assets/textures/Plaster001-4K/Plaster001_4K_NormalGL.jpg" id="12_vnjos"]
+[ext_resource type="Texture2D" uid="uid://37j83cwlfteh" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Roughness.jpg" id="13_o730c"]
+[ext_resource type="Texture2D" uid="uid://hm07br2u6yis" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-diffuse.jpg" id="14_20o5r"]
+[ext_resource type="Texture2D" uid="uid://ikro6b4d54j5" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-ao.jpg" id="15_4ab36"]
+[ext_resource type="Texture2D" uid="uid://dlohbfrsc2qks" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-specular.jpg" id="16_usk6h"]
+[ext_resource type="Texture2D" uid="uid://b8q2irnnfslf2" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-normal.jpg" id="17_6mnce"]
+[ext_resource type="Texture2D" uid="uid://cb6ktadnm3ti2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_Color.jpg" id="18_6vrsk"]
+[ext_resource type="Texture2D" uid="uid://dorwhoxqeak2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_NormalGL.jpg" id="19_w5gya"]
+[ext_resource type="Texture2D" uid="uid://bq74u34pmsq54" path="res://assets/textures/Tiles003-4K/Tiles003_4K_Roughness.jpg" id="20_qcx1q"]
+[ext_resource type="PackedScene" uid="uid://bb1oj52yyc6so" path="res://scenes/tools/board.tscn" id="21_ya5c8"]
+[ext_resource type="PackedScene" uid="uid://o1nfmqbymovr" path="res://scenes/others/cardboardBox.tscn" id="22_3kcso"]
+[ext_resource type="PackedScene" uid="uid://5fir7lge76ll" path="res://scenes/tools/speakers.tscn" id="23_3k24g"]
+[ext_resource type="PackedScene" uid="uid://ckfitvtsa3jl0" path="res://scenes/tools/phone.tscn" id="24_75dmc"]
+[ext_resource type="PackedScene" uid="uid://bw44mftmte1vr" path="res://scenes/tools/pencil_model.tscn" id="25_btu3i"]
+[ext_resource type="PackedScene" uid="uid://dsupuweunu8ri" path="res://scenes/tools/meta.tscn" id="26_a412u"]
+[ext_resource type="PackedScene" uid="uid://dlac4kfroxrdv" path="res://scenes/Furniture/ceiling_light.tscn" id="27_mwvre"]
+[ext_resource type="PackedScene" uid="uid://ckp3opsts403i" path="res://scenes/Furniture/door.tscn" id="28_g5clu"]
+[ext_resource type="PackedScene" uid="uid://s5gjejv5fen7" path="res://scenes/Furniture/Bedroom/bed.tscn" id="30_sd2l4"]
+[ext_resource type="PackedScene" uid="uid://m4kk61d6ikla" path="res://scenes/Furniture/windows.tscn" id="36_v1r7a"]
+[ext_resource type="PackedScene" uid="uid://cyj20vbwq2jgh" path="res://scenes/Furniture/cr_door.tscn" id="37_c22vf"]
+[ext_resource type="PackedScene" uid="uid://dgntcenmdo8mk" path="res://scenes/Furniture/desk.tscn" id="51_mvxlr"]
+[ext_resource type="PackedScene" uid="uid://efhycwudhik2" path="res://scenes/Furniture/Bedroom/drawer.tscn" id="52_3jjve"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gfqyt"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+dof_blur_amount = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xr8u2"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_07lh0"]
+material = SubResource("StandardMaterial3D_xr8u2")
+size = Vector2(2.59, 1.065)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07lh0"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ln8bc"]
+material = SubResource("StandardMaterial3D_07lh0")
+
+[sub_resource type="TextMesh" id="TextMesh_xr8u2"]
+text = "I don't want to wake up... 
+but I have to."
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ln8bc"]
+viewport_path = NodePath("XRPlayer/XROrigin3D/XRCamera3D/QTE/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2662"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_ln8bc")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_oofti"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ln8bc"]
+transparency = 1
+albedo_color = Color(0.313726, 1, 1, 0.52549)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncvxg"]
+transparency = 1
+albedo_color = Color(0.313726, 1, 1, 0.52549)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ln8bc"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+dof_blur_amount = 1.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ncvxg"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+dof_blur_amount = 0.5
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_t2662"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+dof_blur_amount = 0.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_oofti"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+
+[sub_resource type="Animation" id="Animation_oofti"]
+resource_name = "Blinking"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:attributes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.1, 2.5, 2.76667, 3),
+"transitions": PackedFloat32Array(2.82843, 1, 1, 1, 2.92817),
+"update": 0,
+"values": [SubResource("CameraAttributesPractical_ln8bc"), SubResource("CameraAttributesPractical_ncvxg"), SubResource("CameraAttributesPractical_t2662"), SubResource("CameraAttributesPractical_oofti"), SubResource("CameraAttributesPractical_gfqyt")]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -0.566205, -0.805268, 1, 1, 0, -0.771, -0.805, 2.1, 1, 0, -0.566, -0.805, 3, 1, 0, -1.336, -0.805)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.448876, -0.796395, 1, 1, 0, 0.669, -0.796, 2.1, 1, 0, 0.449, -0.796, 3, 1, 0, 1.24, -0.796)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("XROrigin3D/XRCamera3D/wake up:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("XROrigin3D/XRCamera3D/QTE:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rkkpu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:attributes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CameraAttributesPractical_gfqyt")]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -0.566205, -0.805268)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.448876, -0.796395)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("XROrigin3D/XRCamera3D/wake up:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("XROrigin3D/XRCamera3D/QTE:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qm03u"]
+_data = {
+&"Blinking": SubResource("Animation_oofti"),
+&"RESET": SubResource("Animation_rkkpu")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
+size = Vector3(15.7303, 0.130249, 20.6996)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8jky"]
+albedo_texture = ExtResource("3_sckrn")
+metallic = 1.0
+metallic_texture = ExtResource("4_8sril")
+roughness_texture = ExtResource("6_dpeja")
+normal_enabled = true
+normal_texture = ExtResource("5_3eryo")
+uv1_scale = Vector3(3.505, 6.5, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kmb1v"]
+material = SubResource("StandardMaterial3D_j8jky")
+size = Vector2(15, 8.005)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fuf3a"]
+material = SubResource("StandardMaterial3D_j8jky")
+size = Vector2(15, 7.505)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pibwh"]
+albedo_texture = ExtResource("3_sckrn")
+metallic = 1.0
+metallic_texture = ExtResource("4_8sril")
+roughness_texture = ExtResource("6_dpeja")
+normal_enabled = true
+normal_texture = ExtResource("5_3eryo")
+uv1_scale = Vector3(1.6, 3.575, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_c6pm6"]
+material = SubResource("StandardMaterial3D_pibwh")
+size = Vector2(6.805, 4.565)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5he1u"]
+albedo_texture = ExtResource("7_a740g")
+roughness_texture = ExtResource("10_tghf6")
+normal_enabled = true
+normal_texture = ExtResource("9_2y35h")
+ao_enabled = true
+ao_texture = ExtResource("8_imbos")
+uv1_scale = Vector3(6.205, 3.755, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5poiv"]
+material = SubResource("StandardMaterial3D_5he1u")
+size = Vector2(8.15, 4.53)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2cjbq"]
+size = Vector3(15, 0.07, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuf3a"]
+albedo_texture = ExtResource("11_51sj5")
+roughness_texture = ExtResource("13_o730c")
+normal_enabled = true
+normal_texture = ExtResource("12_vnjos")
+uv1_scale = Vector3(2, 3.55, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pibwh"]
+material = SubResource("StandardMaterial3D_fuf3a")
+size = Vector2(15, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm6hj"]
+albedo_texture = ExtResource("14_20o5r")
+metallic = 1.0
+metallic_texture = ExtResource("16_usk6h")
+normal_enabled = true
+normal_texture = ExtResource("17_6mnce")
+ao_enabled = true
+ao_texture = ExtResource("15_4ab36")
+uv1_scale = Vector3(17.033, 3.671, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tbgi4"]
+material = SubResource("StandardMaterial3D_tm6hj")
+size = Vector2(15, 5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ya4ey"]
+data = PackedVector3Array(7.5, 0, 2.5, -7.5, 0, 2.5, 7.5, 0, -2.5, -7.5, 0, 2.5, -7.5, 0, -2.5, 7.5, 0, -2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kf5aa"]
+albedo_texture = ExtResource("14_20o5r")
+metallic = 1.0
+metallic_texture = ExtResource("16_usk6h")
+normal_enabled = true
+normal_texture = ExtResource("17_6mnce")
+ao_enabled = true
+ao_texture = ExtResource("15_4ab36")
+uv1_scale = Vector3(17.033, 3.671, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a8y0u"]
+material = SubResource("StandardMaterial3D_kf5aa")
+size = Vector2(15, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2f3dj"]
+size = Vector3(15, 0.1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5ykj"]
+albedo_texture = ExtResource("14_20o5r")
+metallic = 1.0
+metallic_texture = ExtResource("16_usk6h")
+normal_enabled = true
+normal_texture = ExtResource("17_6mnce")
+ao_enabled = true
+ao_texture = ExtResource("15_4ab36")
+uv1_scale = Vector3(17.033, 3.671, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_trceg"]
+material = SubResource("StandardMaterial3D_t5ykj")
+size = Vector2(20, 5)
+orientation = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yq6so"]
+size = Vector3(0.1, 5, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e755i"]
+albedo_texture = ExtResource("14_20o5r")
+metallic = 1.0
+metallic_texture = ExtResource("16_usk6h")
+normal_enabled = true
+normal_texture = ExtResource("17_6mnce")
+ao_enabled = true
+ao_texture = ExtResource("15_4ab36")
+uv1_scale = Vector3(17.033, 3.671, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dp3eg"]
+material = SubResource("StandardMaterial3D_e755i")
+size = Vector2(20, 5)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro3en"]
+albedo_texture = ExtResource("14_20o5r")
+metallic = 1.0
+metallic_texture = ExtResource("16_usk6h")
+normal_enabled = true
+normal_texture = ExtResource("17_6mnce")
+ao_enabled = true
+ao_texture = ExtResource("15_4ab36")
+uv1_scale = Vector3(17.033, 3.671, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_od4ux"]
+material = SubResource("StandardMaterial3D_ro3en")
+size = Vector2(8.215, 4.35)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhfw6"]
+size = Vector3(8.22962, 4.28375, 0.0406971)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1epgm"]
+albedo_texture = ExtResource("18_6vrsk")
+roughness_texture = ExtResource("20_qcx1q")
+normal_enabled = true
+normal_texture = ExtResource("19_w5gya")
+uv1_scale = Vector3(5.63, 2.795, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_152kg"]
+material = SubResource("StandardMaterial3D_1epgm")
+size = Vector2(8.215, 4.35)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4e17"]
+albedo_texture = ExtResource("18_6vrsk")
+roughness_texture = ExtResource("20_qcx1q")
+normal_enabled = true
+normal_texture = ExtResource("19_w5gya")
+uv1_scale = Vector3(2.965, 3.055, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y57op"]
+material = SubResource("StandardMaterial3D_r4e17")
+size = Vector2(4.52, 5)
+orientation = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlv25"]
+albedo_texture = ExtResource("18_6vrsk")
+roughness_texture = ExtResource("20_qcx1q")
+normal_enabled = true
+normal_texture = ExtResource("19_w5gya")
+uv1_scale = Vector3(5.63, 2.69, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a82wo"]
+material = SubResource("StandardMaterial3D_mlv25")
+size = Vector2(8.215, 4.35)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdvew"]
+albedo_texture = ExtResource("14_20o5r")
+metallic = 1.0
+metallic_texture = ExtResource("16_usk6h")
+normal_enabled = true
+normal_texture = ExtResource("17_6mnce")
+ao_enabled = true
+ao_texture = ExtResource("15_4ab36")
+uv1_scale = Vector3(1.155, 2.965, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kjtvk"]
+material = SubResource("StandardMaterial3D_gdvew")
+size = Vector2(0.96, 4.58)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xrs0c"]
+size = Vector3(1, 0.0231934, 4.56912)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xljpf"]
+albedo_texture = ExtResource("14_20o5r")
+metallic = 1.0
+metallic_texture = ExtResource("16_usk6h")
+normal_enabled = true
+normal_texture = ExtResource("17_6mnce")
+ao_enabled = true
+ao_texture = ExtResource("15_4ab36")
+uv1_scale = Vector3(3.915, 0.885, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_j4bwh"]
+material = SubResource("StandardMaterial3D_xljpf")
+size = Vector2(3.58, 1.46)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ksmap"]
+size = Vector3(3.544, 0.023, 1.418)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ygd8o"]
+material = SubResource("StandardMaterial3D_xljpf")
+size = Vector2(3.58, 1.595)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2s0kr"]
+size = Vector3(3.544, 0.023, 1.61017)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xaipn"]
+albedo_texture = ExtResource("18_6vrsk")
+roughness_texture = ExtResource("20_qcx1q")
+normal_enabled = true
+normal_texture = ExtResource("19_w5gya")
+ao_texture = ExtResource("15_4ab36")
+uv1_scale = Vector3(1.675, -0.64, 0)
+uv1_offset = Vector3(0, -0.275, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ndrjj"]
+material = SubResource("StandardMaterial3D_xaipn")
+size = Vector2(4.555, 0.96)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih3m7"]
+albedo_texture = ExtResource("18_6vrsk")
+roughness_texture = ExtResource("20_qcx1q")
+normal_enabled = true
+normal_texture = ExtResource("19_w5gya")
+uv1_scale = Vector3(0.585, -2.265, 1)
+uv1_offset = Vector3(0, 0.105, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_11yus"]
+material = SubResource("StandardMaterial3D_ih3m7")
+size = Vector2(1.595, 3.58)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6ruc"]
+albedo_texture = ExtResource("18_6vrsk")
+roughness_texture = ExtResource("20_qcx1q")
+normal_enabled = true
+normal_texture = ExtResource("19_w5gya")
+uv1_scale = Vector3(0.585, -2.265, 1)
+uv1_offset = Vector3(-1.612, 2.71, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_155or"]
+material = SubResource("StandardMaterial3D_b6ruc")
+size = Vector2(1.53, 3.58)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ld40"]
+
+[sub_resource type="Sky" id="Sky_gqmmt"]
+sky_material = SubResource("ProceduralSkyMaterial_0ld40")
+
+[sub_resource type="Environment" id="Environment_yc10j"]
+background_mode = 2
+sky = SubResource("Sky_gqmmt")
+
+[node name="Waking Up" type="Node3D"]
+script = ExtResource("1_gfqyt")
+
+[node name="XRPlayer" type="Node3D" parent="."]
+transform = Transform3D(-3.53704e-09, -0.767546, -0.640994, -3.35505e-08, 0.640994, -0.767546, 1, 1.87908e-08, -2.80188e-08, -10.184, 0.983079, -8.05212)
+
+[node name="XROrigin3D" type="XROrigin3D" parent="XRPlayer"]
+
+[node name="XRToolsPlayerBody" type="CharacterBody3D" parent="XRPlayer/XROrigin3D"]
+top_level = true
+script = ExtResource("2_gfqyt")
+metadata/_custom_type_script = "uid://bqqdxydvmjgir"
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XRPlayer/XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.105043, 0, 0)
+attributes = SubResource("CameraAttributesPractical_gfqyt")
+fov = 51.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRPlayer/XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, -1.92966e-11, -2.4139e-09, -2.4139e-09, -0.0159865, -0.999872, -1.92966e-11, 0.999872, -0.0159865, 0, -0.566205, -0.805268)
+mesh = SubResource("PlaneMesh_07lh0")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XRPlayer/XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, -1.92983e-11, -2.4139e-09, -2.4139e-09, -0.0159866, -0.999872, -1.92983e-11, 0.999872, -0.0159866, 0, 0.448876, -0.796395)
+mesh = SubResource("PlaneMesh_07lh0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="XRPlayer/XROrigin3D/XRCamera3D"]
+transform = Transform3D(1.42, -5.32907e-15, 3.55271e-15, 0, 1.42, -7.47624e-16, 3.55271e-15, -7.47624e-16, 1.42, 0.0732703, 0.231474, -0.397363)
+mesh = SubResource("SphereMesh_ln8bc")
+
+[node name="wake up" type="MeshInstance3D" parent="XRPlayer/XROrigin3D/XRCamera3D"]
+transform = Transform3D(0.44, -2.66454e-15, 3.55271e-15, -2.66454e-15, 0.44, -2.31658e-16, 3.55271e-15, -2.31658e-16, 0.44, 0.0152278, -0.239599, -0.772709)
+mesh = SubResource("TextMesh_xr8u2")
+
+[node name="QTE" type="Node3D" parent="XRPlayer/XROrigin3D/XRCamera3D"]
+transform = Transform3D(0.375, -4.44089e-15, 1.77636e-15, 0, 0.00589059, -0.374954, 7.99361e-15, 0.374954, 0.00589059, 0, -0.087656, -0.793575)
+
+[node name="SubViewport" type="SubViewport" parent="XRPlayer/XROrigin3D/XRCamera3D/QTE"]
+size = Vector2i(1152, 648)
+
+[node name="QTE_LAYER" parent="XRPlayer/XROrigin3D/XRCamera3D/QTE/SubViewport" instance=ExtResource("7_ln8bc")]
+unique_name_in_owner = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XRPlayer/XROrigin3D/XRCamera3D/QTE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_t2662")
+mesh = SubResource("PlaneMesh_oofti")
+
+[node name="XRController3DLeft" type="XRController3D" parent="XRPlayer/XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XRPlayer/XROrigin3D/XRController3DLeft" instance=ExtResource("3_xr8u2")]
+hand_material_override = SubResource("StandardMaterial3D_ln8bc")
+
+[node name="XRController3DRight" type="XRController3D" parent="XRPlayer/XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="XRPlayer/XROrigin3D/XRController3DRight" instance=ExtResource("4_07lh0")]
+hand_material_override = SubResource("StandardMaterial3D_ncvxg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="XRPlayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_qm03u")
+}
+
+[node name="QTE" type="Node" parent="XRPlayer"]
+script = ExtResource("6_07lh0")
+
+[node name="wake up" type="Node" parent="XRPlayer"]
+script = ExtResource("7_ncvxg")
+event_name = "wake up"
+metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
+
+[node name="Room" type="Node3D" parent="."]
+
+[node name="Floor4" type="StaticBody3D" parent="Room"]
+
+[node name="FloorCollision" type="CollisionShape3D" parent="Room/Floor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55865, -0.0801392, 0.0826721)
+shape = SubResource("BoxShape3D_1epgm")
+
+[node name="Floor" type="MeshInstance3D" parent="Room/Floor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, 6.04379)
+mesh = SubResource("PlaneMesh_kmb1v")
+skeleton = NodePath("../../..")
+
+[node name="Floor2" type="MeshInstance3D" parent="Room/Floor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, -6.26832)
+mesh = SubResource("PlaneMesh_fuf3a")
+skeleton = NodePath("../../..")
+
+[node name="Floor3" type="MeshInstance3D" parent="Room/Floor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603302, 0, -0.238458)
+mesh = SubResource("PlaneMesh_c6pm6")
+skeleton = NodePath("../../..")
+
+[node name="CR Floor" type="MeshInstance3D" parent="Room/Floor4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87657, 0, -0.254821)
+mesh = SubResource("PlaneMesh_5poiv")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, 6.04379)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0292759, -6.05233)
+shape = SubResource("BoxShape3D_2cjbq")
+
+[node name="Ceiling" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -3.455, 4.255, 0.002)
+mesh = SubResource("PlaneMesh_pibwh")
+skeleton = NodePath("../..")
+
+[node name="Walls" type="Node3D" parent="Room"]
+
+[node name="Front" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.455, 2.494, 10)
+mesh = SubResource("PlaneMesh_tbgi4")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Front"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Front/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ya4ey")
+
+[node name="Back" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.455, 2.494, -10)
+mesh = SubResource("PlaneMesh_a8y0u")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Back"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Back/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00268555, -0.060791)
+shape = SubResource("BoxShape3D_2f3dj")
+
+[node name="Right" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, 0)
+mesh = SubResource("PlaneMesh_trceg")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Right"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Right/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000125408, 0, -1.09708e-11)
+shape = SubResource("BoxShape3D_yq6so")
+
+[node name="Left" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 2.494, 0)
+mesh = SubResource("PlaneMesh_dp3eg")
+skeleton = NodePath("../../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Left"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room/Walls/Left/StaticBody3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00995541, 0, 7.24681e-15)
+shape = SubResource("BoxShape3D_yq6so")
+
+[node name="Bath Front" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.898, 2.149, 2.046)
+mesh = SubResource("PlaneMesh_od4ux")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Bath Front"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00871038, 0.0153201, 0.03561)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Bath Front/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00364304, 0.0389099, -0.0240955)
+shape = SubResource("BoxShape3D_xhfw6")
+
+[node name="Inside Bath Front" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.898, 2.149, 2.01398)
+mesh = SubResource("PlaneMesh_152kg")
+
+[node name="Inside Bath Left" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9397, 2.494, -0.248238)
+mesh = SubResource("PlaneMesh_y57op")
+skeleton = NodePath("../../..")
+
+[node name="Inside Bath Back" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.898, 2.14911, -2.47817)
+mesh = SubResource("PlaneMesh_a82wo")
+
+[node name="Bath Back" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.898, 2.14889, -2.5102)
+mesh = SubResource("PlaneMesh_od4ux")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Bath Back"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00871038, 0.0153201, 0.03561)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Bath Back/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999996, -1.35003e-13, 0, 1.35003e-13, 0.999996, 0.0235977, 0.0389099, -0.0291376)
+shape = SubResource("BoxShape3D_xhfw6")
+
+[node name="Above Door" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.78871, 4.05571, -0.23165)
+mesh = SubResource("PlaneMesh_kjtvk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Above Door"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Above Door/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00622559, -0.000259399)
+shape = SubResource("BoxShape3D_xrs0c")
+
+[node name="Door Left" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.789, 1.78702, 1.32196)
+mesh = SubResource("PlaneMesh_j4bwh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Door Left"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Door Left/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00408947, -0.00899625, 0.0229034)
+shape = SubResource("BoxShape3D_ksmap")
+
+[node name="Door Right" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.789, 1.78702, -1.72171)
+mesh = SubResource("PlaneMesh_ygd8o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Door Right"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Door Right/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00540984, 0, 0.0119383)
+shape = SubResource("BoxShape3D_2s0kr")
+
+[node name="Above Inside Door" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, -2.78871, 4.05571, -0.23165)
+mesh = SubResource("PlaneMesh_ndrjj")
+
+[node name="Inside Door Left" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-4.37114e-08, -1, -3.82137e-15, 4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, 4.37114e-08, -2.789, 1.78702, -1.70511)
+mesh = SubResource("PlaneMesh_11yus")
+
+[node name="Inside Door Right" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-4.37114e-08, -1, 3.82137e-15, 4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, 4.37114e-08, -2.789, 1.78702, 1.27952)
+mesh = SubResource("PlaneMesh_155or")
+
+[node name="Sketchfab_Scene" parent="Room" instance=ExtResource("21_ya5c8")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.47318, 1.76928, -2.55024)
+
+[node name="CardboardBox" parent="Room" instance=ExtResource("22_3kcso")]
+transform = Transform3D(0.998603, -0.0528414, 0, 0.0528414, 0.998603, 0, 0, 0, 1, -9.41352, 0.387674, -5.44379)
+
+[node name="Speakers" parent="Room/CardboardBox" instance=ExtResource("23_3k24g")]
+transform = Transform3D(0.0688335, 0.95741, 0.280408, 0.997232, -0.0581096, -0.0463906, -0.0281204, 0.282825, -0.958759, -0.084116, -0.178699, 0.103086)
+
+[node name="Phone" parent="Room/CardboardBox" instance=ExtResource("24_75dmc")]
+transform = Transform3D(0.0596304, 0.991169, 0.118442, 0.0248001, 0.117146, -0.992805, -0.997912, 0.0621388, -0.0175956, -0.0511522, -0.0601424, 0.330057)
+
+[node name="Pencil_Model" parent="Room/CardboardBox" instance=ExtResource("25_btu3i")]
+transform = Transform3D(0.997345, 0.0528414, -0.0501214, -0.0527748, 0.998603, 0.00265221, 0.0501916, -3.72529e-09, 0.99874, 0.167356, -0.0669073, -0.19866)
+
+[node name="Meta" parent="Room/CardboardBox" instance=ExtResource("26_a412u")]
+
+[node name="Furniture" type="Node3D" parent="."]
+
+[node name="Ceiling Light" parent="Furniture" instance=ExtResource("27_mwvre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0306931, 3.73148, 6.31422)
+
+[node name="Ceiling Light2" parent="Furniture" instance=ExtResource("27_mwvre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87649, 3.73148, 6.31422)
+
+[node name="Ceiling Light4" parent="Furniture" instance=ExtResource("27_mwvre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.876, 3.731, -6.665)
+
+[node name="Ceiling Light3" parent="Furniture" instance=ExtResource("27_mwvre")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494399, 3.73148, -6.66538)
+
+[node name="Front Door" parent="Furniture" instance=ExtResource("28_g5clu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, -0.009, 10)
+
+[node name="Bed" parent="Furniture" instance=ExtResource("30_sd2l4")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.0976, 0.427202, -7.17728)
+
+[node name="Windows" parent="Furniture" instance=ExtResource("36_v1r7a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96148, 2.31515, -9.9894)
+
+[node name="CR Door" parent="Furniture" instance=ExtResource("37_c22vf")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8152, 1.66, -0.296329)
+
+[node name="Desk" parent="Furniture" instance=ExtResource("51_mvxlr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.782722, -3.43434)
+
+[node name="Bedside" parent="Furniture" instance=ExtResource("52_3jjve")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.3518, 0.558045, -5.39464)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yc10j")
+
+[connection signal="failed_qte" from="XRPlayer/QTE" to="XRPlayer/wake up" method="_on_qte_fail"]
+[connection signal="success_qte" from="XRPlayer/QTE" to="XRPlayer/wake up" method="_on_qte_success"]

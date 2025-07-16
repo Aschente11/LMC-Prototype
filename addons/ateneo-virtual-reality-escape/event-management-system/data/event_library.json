@@ -16,5 +16,13 @@
 			"unpack things_Done"
 		],
 		"Oneshot": false
+	},
+	"wake up": {
+		"EventCategory": "ACTION",
+		"EventPrerequisiteFlags": [],
+		"EventCompletionFlags": [
+			"wake up_Done"
+		],
+		"Oneshot": false
 	}
 }

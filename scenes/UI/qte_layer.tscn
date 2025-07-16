@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfkuuokensmj1"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6pwki"]
+blend_mode = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_lfu3l"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwxhj"]
+font_size = 80
+
+[node name="QTE_LAYER" type="Node"]
+process_mode = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+material = SubResource("CanvasItemMaterial_6pwki")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QTE_TIMER" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 325.0
+offset_bottom = 55.0
+text = "TIMER: 0"
+label_settings = SubResource("LabelSettings_lfu3l")
+
+[node name="QTE_ACTION_TIMER" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 325.0
+offset_bottom = 110.0
+text = "NEXT ACTION TIMER: 0"
+label_settings = SubResource("LabelSettings_lfu3l")
+
+[node name="QTE" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 435.0
+offset_bottom = 165.0
+text = "QTE: "
+label_settings = SubResource("LabelSettings_lfu3l")
+
+[node name="QTE_PLAYER" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_top = 165.0
+offset_right = 435.0
+offset_bottom = 220.0
+text = "PLAYER QTE: "
+label_settings = SubResource("LabelSettings_lfu3l")
+
+[node name="QTE_FEEDBACK" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
+offset_top = 220.0
+offset_right = 1152.0
+offset_bottom = 330.0
+text = "GET READY"
+label_settings = SubResource("LabelSettings_bwxhj")
+horizontal_alignment = 1
+vertical_alignment = 1
