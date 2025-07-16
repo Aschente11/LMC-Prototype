@@ -10,4 +10,5 @@ func _on_event_ended() -> void:
 	need_unpack_text.visible = false
 	
 	var tired_text = get_tree().get_first_node_in_group("tired_text")
+	await get_tree().create_timer(6.0).timeout
 	tired_text.visible = true

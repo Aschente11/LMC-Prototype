@@ -1,22 +1,114 @@
-[gd_scene load_steps=3 format=3 uid="uid://d33xafpspfy8g"]
+[gd_scene load_steps=7 format=3 uid="uid://d33xafpspfy8g"]
 
 [ext_resource type="Texture2D" uid="uid://bhem26tmp2qnp" path="res://assets/others/smartwatchUI.png" id="1_a3skt"]
 [ext_resource type="Texture2D" uid="uid://c51sohagu4euo" path="res://assets/others/marker.png" id="2_emsh6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3skt"]
+bg_color = Color(0.301961, 0.301961, 0.301961, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glu47"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_emsh6"]
+bg_color = Color(0.303233, 0.303233, 0.303233, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q30e2"]
+bg_color = Color(1, 1, 0, 1)
+
 [node name="SmartwatchUi" type="Node2D"]
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
 offset_right = 576.0
 offset_bottom = 509.0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="StimulatioinBar" type="TextureRect" parent="Control/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("1_a3skt")
 expand_mode = 1
 stretch_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
-position = Vector2(375, 154)
-rotation = -2.1869
+[node name="Marker" type="Sprite2D" parent="Control/MarginContainer"]
+z_index = 2
+position = Vector2(335, 114)
+rotation = -2.53247
 scale = Vector2(0.254245, 0.391236)
 texture = ExtResource("2_emsh6")
+
+[node name="Physical progress" type="ProgressBar" parent="Control"]
+layout_mode = 2
+offset_left = 181.0
+offset_top = 137.0
+offset_right = 418.0
+offset_bottom = 187.0
+rotation = 0.526599
+theme_override_styles/background = SubResource("StyleBoxFlat_a3skt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_glu47")
+max_value = 4.0
+step = 1.0
+value = 2.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Control/Physical progress"]
+layout_mode = 0
+offset_left = 50.8852
+offset_top = 3.96208
+offset_right = 190.885
+offset_bottom = 45.9621
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "PHYSICAL"
+
+[node name="Emotional progress" type="ProgressBar" parent="Control"]
+layout_mode = 2
+offset_left = 149.0
+offset_top = 193.0
+offset_right = 386.0
+offset_bottom = 243.0
+rotation = 0.526599
+theme_override_styles/background = SubResource("StyleBoxFlat_emsh6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q30e2")
+max_value = 4.0
+step = 1.0
+value = 2.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="Control/Emotional progress"]
+layout_mode = 0
+offset_left = 31.5243
+offset_top = 2.4939
+offset_right = 208.524
+offset_bottom = 44.4939
+theme_override_colors/font_color = Color(0, 0, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "EMOTIONAL"
+
+[node name="Under" type="Label" parent="Control"]
+z_index = 1
+layout_mode = 0
+offset_left = 112.0
+offset_top = 89.0
+offset_right = 688.0
+offset_bottom = 167.0
+rotation = 0.544517
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 57
+text = "_"
+
+[node name="Over" type="Label" parent="Control"]
+z_index = 1
+layout_mode = 0
+offset_left = 446.0
+offset_top = 271.0
+offset_right = 1022.0
+offset_bottom = 349.0
+rotation = 0.544517
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 57
+text = "_"

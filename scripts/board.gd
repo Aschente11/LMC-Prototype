@@ -98,6 +98,7 @@ func _reveal_next_letter():
 			is_audio_paused = false
 			audio_position = 0.0
 			GlobalVar.decrease_stimulation()
+			GlobalVar.increase_emotional()
 
  
 func _on_ois_wipe_receiver_action_in_progress(requirement: Variant, total_progress: Variant) -> void: 
