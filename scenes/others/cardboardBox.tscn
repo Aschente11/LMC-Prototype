@@ -1,4 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://o1nfmqbymovr"]
+[gd_scene load_steps=9 format=4 uid="uid://o1nfmqbymovr"]
+
+[ext_resource type="Script" uid="uid://bpxdkq8onhqqq" path="res://scripts/unpack_things.gd" id="1_6u52s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bisv"]
 resource_name = "Material.010"
@@ -47,6 +49,9 @@ size = Vector3(0.728516, 0.698456, 0.0269775)
 [sub_resource type="BoxShape3D" id="BoxShape3D_6u52s"]
 size = Vector3(0.9375, 0.698456, 0.0269775)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_21pyn"]
+size = Vector3(0.625603, 0.531433, 0.869751)
+
 [node name="box" type="StaticBody3D"]
 
 [node name="Box 2_001" type="MeshInstance3D" parent="."]
@@ -74,3 +79,17 @@ shape = SubResource("BoxShape3D_6u52s")
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.00343397, -0.340443, -0.0013558)
 shape = SubResource("BoxShape3D_6u52s")
+
+[node name="Unpack things" type="Node" parent="."]
+script = ExtResource("1_6u52s")
+event_name = "unpack things"
+metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
+
+[node name="Detection Area" type="Area3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0071907, -0.00900269, -0.00164795)
+shape = SubResource("BoxShape3D_21pyn")
+
+[connection signal="event_ended" from="Unpack things" to="Unpack things" method="_on_event_ended"]

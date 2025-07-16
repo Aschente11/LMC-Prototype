@@ -1,9 +1,7 @@
 extends Node3D
 
-
 @onready var anim_player: AnimationPlayer = $Apple/AnimationPlayer
 @onready var sound_effect: AudioStreamPlayer3D = $sfx
-
 
 var is_cut = 0
 

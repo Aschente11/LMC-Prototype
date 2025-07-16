@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=135 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -72,7 +72,6 @@
 [ext_resource type="Script" uid="uid://cag688wpsfi6m" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_attach_receiver.gd" id="59_od4ux"]
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/apple.tscn" id="69_y57op"]
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/knife.tscn" id="70_mlv25"]
-[ext_resource type="PackedScene" uid="uid://d2vnt8ct0llal" path="res://scenes/others/dialogue.tscn" id="73_kjtvk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -479,7 +478,7 @@ shader_parameter/albedo = Color(0, 0, 0, 1)
 script = ExtResource("1_0wfyh")
 
 [node name="XRPlayer" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.403, 0, 8.288)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.04143, 1.09375, -5.69613)
 
 [node name="Room" type="Node3D" parent="."]
 
@@ -955,7 +954,3 @@ transform = Transform3D(-0.0303292, 0, -0.99954, 0, 1, 0, 0.99954, 0, -0.0303292
 
 [node name="knife" parent="." instance=ExtResource("70_mlv25")]
 transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.76397, 1.41585, 5.71333)
-
-[node name="Dialogue" parent="." instance=ExtResource("73_kjtvk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.827575, 0.101738, -6.98455)
-dialogue_key = "player"

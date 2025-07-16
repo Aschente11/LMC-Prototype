@@ -18,15 +18,15 @@
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="13_wk61l"]
 [ext_resource type="AudioStream" uid="uid://dqyjjg0qmnyv8" path="res://assets/sfx/watch_notif.mp3" id="16_wk61l"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_3s1yg"]
-viewport_path = NodePath("XROrigin3D/DialogueViewport")
+[sub_resource type="TextMesh" id="TextMesh_3s1yg"]
+text = "I'm hungry. I'll go make breakfast."
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujsbv"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_3s1yg")
+[sub_resource type="TextMesh" id="TextMesh_ujsbv"]
+text = "Now that I'm fulll, 
+I should go unpack my things."
 
-[sub_resource type="QuadMesh" id="QuadMesh_twgfx"]
-material = SubResource("StandardMaterial3D_ujsbv")
+[sub_resource type="TextMesh" id="TextMesh_mc5w1"]
+text = "Unpacking made me tired. Time for bed."
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrvet"]
 transparency = 1
@@ -124,9 +124,20 @@ metadata/_custom_type_script = "uid://bqqdxydvmjgir"
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 
-[node name="DialogueMesh" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.134728, -1.07044)
-mesh = SubResource("QuadMesh_twgfx")
+[node name="make bfast" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)
+visible = false
+mesh = SubResource("TextMesh_3s1yg")
+
+[node name="need to unpack" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)
+visible = false
+mesh = SubResource("TextMesh_ujsbv")
+
+[node name="tired" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)
+visible = false
+mesh = SubResource("TextMesh_mc5w1")
 
 [node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"

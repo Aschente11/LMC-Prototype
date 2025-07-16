@@ -1,3 +1,20 @@
 {
-
+	"make bfast": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [],
+		"EventCompletionFlags": [
+			"make bfast_Done"
+		],
+		"Oneshot": false
+	},
+	"unpack things": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [
+			"make bfast_Done"
+		],
+		"EventCompletionFlags": [
+			"unpack things_Done"
+		],
+		"Oneshot": false
+	}
 }

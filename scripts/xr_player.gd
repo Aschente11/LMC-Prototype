@@ -3,9 +3,15 @@ extends Node3D
 @onready var right_hand: XRController3D = $XROrigin3D/XRController3DRight
 @onready var left_hand: XRController3D = $XROrigin3D/XRController3DLeft
 @onready var watch_sfx: AudioStreamPlayer3D = $watchNotif
+@onready var make_bfast_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/make bfast"
+@onready var need_unpack_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/need to unpack"
+@onready var tired_text: MeshInstance3D = $XROrigin3D/XRCamera3D/tired
 
 func _ready() -> void:
 	add_to_group("player")
+	make_bfast_text.add_to_group("make_bfast_text")
+	need_unpack_text.add_to_group("need_unpack_text")
+	tired_text.add_to_group("tired_text")
 	GlobalVar.stimulation_increase.connect(_on_stimulation_changed)
 	GlobalVar.stimulation_decrease.connect(_on_stimulation_changed)
 
