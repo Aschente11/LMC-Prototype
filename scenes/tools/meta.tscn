@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsupuweunu8ri"]
 
-[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_5etgv"]
+[ext_resource type="Script" uid="uid://b5h44u2114ij4" path="res://scripts/meta.gd" id="1_opdg4"]
 [ext_resource type="PackedScene" uid="uid://bbrabegioknvy" path="res://assets/tools/meta_quest_3/scene.gltf" id="2_opdg4"]
 [ext_resource type="Script" uid="uid://dq86gvhe6d20d" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_item.gd" id="3_opdg4"]
 
@@ -8,9 +8,9 @@
 size = Vector3(0.261047, 0.219421, 0.342674)
 
 [node name="Meta" type="RigidBody3D"]
-collision_layer = 4
-collision_mask = 5
-script = ExtResource("1_5etgv")
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_opdg4")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="meta_mesh" parent="." instance=ExtResource("2_opdg4")]

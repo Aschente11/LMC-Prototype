@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=4 uid="uid://bw44mftmte1vr"]
 
-[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_3mtmf"]
+[ext_resource type="Script" uid="uid://bm4d5gx7q5nrg" path="res://scripts/pencil_model.gd" id="1_xy7to"]
 [ext_resource type="Script" uid="uid://dq86gvhe6d20d" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_item.gd" id="2_7ubrv"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="3_gpxiy"]
 [ext_resource type="Animation" uid="uid://bi1l6lre2w2lp" path="res://addons/godot-xr-tools/hands/animations/left/Hold.res" id="4_s7p8w"]
@@ -223,9 +223,9 @@ metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 radius = 0.0454186
 
 [node name="Pencil_Model" type="RigidBody3D"]
-collision_layer = 5
-collision_mask = 5
-script = ExtResource("1_3mtmf")
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_xy7to")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="pencil mesh" type="MeshInstance3D" parent="."]

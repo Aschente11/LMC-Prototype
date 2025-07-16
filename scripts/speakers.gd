@@ -7,6 +7,7 @@ extends Node3D
 var is_playing: bool = false
 
 func _ready():
+	add_to_group("tool")
 	# Connect to the pickable's action signals
 	pickable.action_pressed.connect(_on_action_pressed)
 	

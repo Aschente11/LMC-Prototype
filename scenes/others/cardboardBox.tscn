@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://o1nfmqbymovr"]
+[gd_scene load_steps=10 format=4 uid="uid://o1nfmqbymovr"]
 
 [ext_resource type="Script" uid="uid://bpxdkq8onhqqq" path="res://scripts/unpack_things.gd" id="1_6u52s"]
+[ext_resource type="Script" uid="uid://dbcw2arwkc24o" path="res://scripts/cardboard_box.gd" id="1_21pyn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bisv"]
 resource_name = "Material.010"
@@ -50,9 +51,10 @@ size = Vector3(0.728516, 0.698456, 0.0269775)
 size = Vector3(0.9375, 0.698456, 0.0269775)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21pyn"]
-size = Vector3(0.625603, 0.531433, 0.869751)
+size = Vector3(0.725676, 0.695114, 0.947662)
 
 [node name="box" type="StaticBody3D"]
+script = ExtResource("1_21pyn")
 
 [node name="Box 2_001" type="MeshInstance3D" parent="."]
 transform = Transform3D(35, 0, 0, 0, -2.0352e-06, 35, 0, -46.56, -1.5299e-06, 0, 0, 0)
@@ -89,7 +91,7 @@ metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0071907, -0.00900269, -0.00164795)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000300471, -0.0242386, 0.00196838)
 shape = SubResource("BoxShape3D_21pyn")
 
 [connection signal="event_ended" from="Unpack things" to="Unpack things" method="_on_event_ended"]
