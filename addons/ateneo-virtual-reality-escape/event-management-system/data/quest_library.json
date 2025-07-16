@@ -1,0 +1,58 @@
+{
+	"Wake up": {
+		"QuestDescription": {
+			"Name": "",
+			"Description": ""
+		},
+		"QuestCompletionTracker": {
+			"": []
+		},
+		"QuestCompletionFlags": [
+			"Wake up_Done"
+		]
+	},
+	"Make breakfast": {
+		"QuestDescription": {
+			"Name": "",
+			"Description": ""
+		},
+		"QuestCompletionTracker": {
+			"": [],
+			"Wake up": [
+				"Wake up_Done",
+				"Unpack things_Done",
+				"Sleep_Done",
+				""
+			]
+		},
+		"QuestCompletionFlags": [
+			"Make breakfast_Done"
+		]
+	},
+	"Unpack things": {
+		"QuestDescription": {
+			"Name": "",
+			"Description": ""
+		},
+		"QuestCompletionTracker": {
+			"": [
+				"Make breakfast_Done"
+			]
+		},
+		"QuestCompletionFlags": [
+			"Unpack things_Done"
+		]
+	},
+	"Sleep": {
+		"QuestDescription": {
+			"Name": "",
+			"Description": ""
+		},
+		"QuestCompletionTracker": {
+			"": []
+		},
+		"QuestCompletionFlags": [
+			"Sleep_Done"
+		]
+	}
+}

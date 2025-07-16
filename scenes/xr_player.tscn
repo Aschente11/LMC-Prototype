@@ -1,9 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=38 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_4irtq"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_wrvet"]
+[ext_resource type="PackedScene" uid="uid://davy6rcgexk3q" path="res://scenes/UI/dialogueUI.tscn" id="4_3s1yg"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="4_mvv4w"]
 [ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="5_wrvet"]
 [ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="6_ecy5y"]
@@ -16,6 +17,16 @@
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="12_1mew7"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="13_wk61l"]
 [ext_resource type="AudioStream" uid="uid://dqyjjg0qmnyv8" path="res://assets/sfx/watch_notif.mp3" id="16_wk61l"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3s1yg"]
+viewport_path = NodePath("XROrigin3D/DialogueViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujsbv"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_3s1yg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_twgfx"]
+material = SubResource("StandardMaterial3D_ujsbv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrvet"]
 transparency = 1
@@ -95,6 +106,8 @@ emission_enabled = true
 emission = Color(0.188235, 0.917647, 0, 1)
 emission_energy_multiplier = 0.13
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3s1yg"]
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_7p0fh")
 
@@ -110,6 +123,10 @@ player_height_max = 2.25
 metadata/_custom_type_script = "uid://bqqdxydvmjgir"
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="DialogueMesh" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.134728, -1.07044)
+mesh = SubResource("QuadMesh_twgfx")
 
 [node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
@@ -283,6 +300,18 @@ grab_distance = 0.1
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/InventorySystem/Slot_2_1"]
 mesh = SubResource("SphereMesh_5i8cc")
 surface_material_override/0 = SubResource("StandardMaterial3D_mc5w1")
+
+[node name="DialogueViewport" type="SubViewport" parent="XROrigin3D"]
+transparent_bg = true
+
+[node name="DialogueUI" parent="XROrigin3D/DialogueViewport" instance=ExtResource("4_3s1yg")]
+
+[node name="Area3D" type="Area3D" parent="XROrigin3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/Area3D"]
+shape = SubResource("BoxShape3D_3s1yg")
 
 [node name="watchNotif" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("16_wk61l")
