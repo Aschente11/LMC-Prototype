@@ -11,4 +11,8 @@ func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress
 		sound_effect.play()
 		is_cut += 1
 		GlobalVar.increase_stimulation()
+		GlobalVar.increase_physical()
+		GlobalVar.increase_physical()
+		GlobalVar.increase_emotional()
+		GlobalVar.increase_emotional()
 	
