@@ -1,7 +1,9 @@
 {
 	"make bfast": {
 		"EventCategory": "DIALOGUE",
-		"EventPrerequisiteFlags": [],
+		"EventPrerequisiteFlags": [
+			"wake up_Done"
+		],
 		"EventCompletionFlags": [
 			"make bfast_Done"
 		],
