@@ -1,4 +1,8 @@
 extends Node
+
+@onready var left_controller : XRController3D = $"../XROrigin3D/XRController3DLeft"
+@onready var right_controller : XRController3D = $"../XROrigin3D/XRController3DRight"
+
 # Source: https://www.youtube.com/watch?v=MfS73MPZBrM
 enum QTE_STATES { START, RUNNING, FAILED, SUCCESS, STOPPED }
 var QTE_STATUS : QTE_STATES = QTE_STATES.STOPPED
@@ -11,8 +15,6 @@ var QTE_FEEDBACK: Label
 
 # VR Input tracking
 var xr_interface: XRInterface
-var left_controller: XRController3D
-var right_controller: XRController3D
 var by_button_pressed_last_frame: bool = false
 
 # Debug variables
@@ -24,13 +26,13 @@ var POSSIBLE_ACTIONS : Array = [
 ]
 var CURRENT_QTE : Array = []
 var PLAYER_QTE : Array = []
-var QTE_SIZE : int = 1
+var QTE_SIZE : int = 4
 var QTE_MAX_SIZE : int = 8
 var QTE_INCREMENTER : int = 0
-var QTE_TIME_LIMIT : float = 10 #seconds to finish the qte
-var QTE_ACTION_TIME_LIMIT : float = 5 #seconds between the actions
-var QTE_TIMER : float = 10
-var QTE_ACTION_TIMER : float = 5
+var QTE_TIME_LIMIT : float = 8 #seconds to finish the qte
+var QTE_ACTION_TIME_LIMIT : float = 2 #seconds between the actions
+var QTE_TIMER : float = 8
+var QTE_ACTION_TIMER : float = 2
 signal success_qte
 signal failed_qte
 
@@ -50,10 +52,6 @@ func _ready() -> void:
 	else:
 		print("No XR interface found!")
 	
-	# Find VR controllers in the scene
-	# You'll need to adjust these paths based on your VR scene structure
-	left_controller = get_node_or_null("XROrigin3D/LeftController")
-	right_controller = get_node_or_null("XRPlayer/XROrigin3D/XRController3DRight")
 	
 	if not left_controller:
 		print("Left controller not found!")
@@ -64,7 +62,7 @@ func _ready() -> void:
 	if debug_enabled:
 		create_debug_label()
 
-# Fixed VR button checking - using correct button names for OpenXR
+# Fixed VR button checking - ONLY for debug display, no input handling
 func check_vr_button_pressed(button_name: String) -> bool:
 	if not xr_interface or not xr_interface.is_initialized():
 		return false
@@ -85,19 +83,13 @@ func check_vr_button_pressed(button_name: String) -> bool:
 	if left_controller:
 		left_pressed = left_controller.is_button_pressed(actual_button_name)
 		button_pressed = left_pressed
-		# Print statement for left controller button press
-		if left_pressed:
-			print("LEFT CONTROLLER - Button pressed: ", actual_button_name)
 	
 	if right_controller:
 		right_pressed = right_controller.is_button_pressed(actual_button_name)
 		if not button_pressed:
 			button_pressed = right_pressed
-		# Print statement for right controller button press
-		if right_pressed:
-			print("RIGHT CONTROLLER - Button pressed: ", actual_button_name)
 	
-	# Update debug info
+	# Update debug info ONLY
 	if debug_enabled and debug_label:
 		var debug_text = "VR Button Debug:\n"
 		debug_text += "Button: " + button_name + "\n"
@@ -151,16 +143,12 @@ func toggle_debug() -> void:
 		if debug_label:
 			debug_label.visible = false
 
-# Updated _input function to handle VR input properly
-func _input(event : InputEvent) -> void:
-	if QTE_STATUS == QTE_STATES.RUNNING:
-		# Handle VR input
-		if is_vr_button_just_pressed("by_button"):
-			handle_qte_input()
+# REMOVED: _input function - we'll handle input in _process instead
 
 # Separate function to handle QTE input logic
 func handle_qte_input() -> void:
 	if PLAYER_QTE.size() < CURRENT_QTE.size():
+		print("QTE Input registered - Player action: ", PLAYER_QTE.size() + 1)
 		PLAYER_QTE.push_back(CURRENT_QTE[PLAYER_QTE.size()])
 		print("Player QTE: ", PLAYER_QTE)
 		print("Current QTE: ", CURRENT_QTE)
@@ -189,9 +177,15 @@ func handle_qte_input() -> void:
 				stop_qte()
 	
 func _process(delta:float) -> void:
-	# Update debug info continuously
+	# Update debug info continuously (but don't handle input here)
 	if debug_enabled:
-		check_vr_button_pressed("by_button")  # This will update the debug label
+		check_vr_button_pressed("by_button")  # Only for debug display now
+	
+	# Handle VR input ONLY during QTE
+	if QTE_STATUS == QTE_STATES.RUNNING:
+		# Use the "just pressed" logic to prevent multiple inputs
+		if is_vr_button_just_pressed("by_button"):
+			handle_qte_input()
 	
 	if QTE_STATUS == QTE_STATES.RUNNING:
 		QTE_TIMER -= delta
@@ -205,15 +199,12 @@ func _process(delta:float) -> void:
 			QTE_STATUS = QTE_STATES.FAILED
 			if QTE_FEEDBACK:
 				QTE_FEEDBACK.text = "FAILED!! :("
-			failed_qte.emit()
 			stop_qte()
 			
 func stop_qte() -> void:
 	await get_tree().create_timer(2).timeout
 	QTE_STATUS = QTE_STATES.STOPPED
-	var Instance = get_tree().root.find_child("QTE_LAYER", true, false)
-	if Instance:
-		Instance.queue_free()
+	failed_qte.emit()
 			
 func start_qte() -> void:
 	if QTE_STATUS != QTE_STATES.STOPPED:
@@ -247,6 +238,6 @@ func start_qte() -> void:
 	await get_tree().create_timer(1).timeout
 	
 	if QTE_FEEDBACK:
-		QTE_FEEDBACK.text = "Go!"
+		QTE_FEEDBACK.text = "'B'"
 		
 	QTE_STATUS = QTE_STATES.RUNNING
