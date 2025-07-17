@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://bmntx5vgfext1"]
+[gd_scene load_steps=106 format=3 uid="uid://bmntx5vgfext1"]
 
 [ext_resource type="Script" uid="uid://dk63rhrf1fcgj" path="res://scripts/waking_up.gd" id="1_gfqyt"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_gfqyt"]
@@ -36,6 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://s5gjejv5fen7" path="res://scenes/Furniture/Bedroom/bed.tscn" id="30_sd2l4"]
 [ext_resource type="PackedScene" uid="uid://m4kk61d6ikla" path="res://scenes/Furniture/windows.tscn" id="36_v1r7a"]
 [ext_resource type="PackedScene" uid="uid://cyj20vbwq2jgh" path="res://scenes/Furniture/cr_door.tscn" id="37_c22vf"]
+[ext_resource type="AudioStream" uid="uid://bff7a6t5tisk7" path="res://assets/sfx/alarm.mp3" id="39_ncvxg"]
 [ext_resource type="PackedScene" uid="uid://dgntcenmdo8mk" path="res://scenes/Furniture/desk.tscn" id="51_mvxlr"]
 [ext_resource type="PackedScene" uid="uid://efhycwudhik2" path="res://scenes/Furniture/Bedroom/drawer.tscn" id="52_3jjve"]
 
@@ -104,7 +105,7 @@ dof_blur_far_distance = 0.01
 
 [sub_resource type="Animation" id="Animation_oofti"]
 resource_name = "Blinking"
-length = 3.0
+length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -123,14 +124,14 @@ tracks/1/enabled = true
 tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, -0.566205, -0.805268, 1, 1, 0, -0.771, -0.805, 2.1, 1, 0, -0.566, -0.805, 3, 1, 0, -1.336, -0.805)
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -0.566205, -0.805268, 1, 1, 0, -0.771, -0.805, 2.1, 1, 0, -0.566, -0.805, 3, 1, 0, -1.336, -0.805, 3.5, 1, 0, -0.566, -0.805)
 tracks/2/type = "position_3d"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.448876, -0.796395, 1, 1, 0, 0.669, -0.796, 2.1, 1, 0, 0.449, -0.796, 3, 1, 0, 1.24, -0.796)
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.448876, -0.796395, 1, 1, 0, 0.669, -0.796, 2.1, 1, 0, 0.449, -0.796, 3, 1, 0, 1.24, -0.796, 3.5, 1, 0, 0.449, -0.796)
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
@@ -138,10 +139,10 @@ tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -150,10 +151,10 @@ tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -162,10 +163,10 @@ tracks/5/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -596,7 +597,6 @@ size = Vector2i(1152, 648)
 unique_name_in_owner = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XRPlayer/XROrigin3D/XRCamera3D/QTE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_t2662")
 mesh = SubResource("PlaneMesh_oofti")
 
@@ -838,6 +838,9 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.35
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yc10j")
+
+[node name="Alarm" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("39_ncvxg")
 
 [connection signal="failed_qte" from="XRPlayer/QTE" to="XRPlayer/wake up" method="_on_qte_fail"]
 [connection signal="success_qte" from="XRPlayer/QTE" to="XRPlayer/wake up" method="_on_qte_success"]

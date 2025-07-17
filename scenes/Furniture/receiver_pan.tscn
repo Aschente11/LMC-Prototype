@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=4 uid="uid://c0m0oq2dtsimn"]
+[gd_scene load_steps=11 format=4 uid="uid://dbdoqijou25gg"]
 
-[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_74x70"]
-[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_0mahc"]
-[ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="3_qghua"]
-[ext_resource type="Script" uid="uid://dk87jglam1c5g" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_detach_receiver.gd" id="4_0mahc"]
+[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_lntfg"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_a1ue1"]
+[ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="3_3rvxn"]
+[ext_resource type="Script" uid="uid://cag688wpsfi6m" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_attach_receiver.gd" id="4_xfxeb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pug7l"]
 resource_name = "Grey 2"
@@ -17,7 +17,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0.626662, 0.391626, 0.241164, 1)
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ag8v7"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_xhfw6"]
 _surfaces = [{
 "aabb": AABB(-0.00557705, -0.00557705, -0.00118965, 0.0158943, 0.0111541, 0.00197262),
 "format": 34359742465,
@@ -43,7 +43,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_ci2pb"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_ialph"]
 resource_name = "Cylinder_034"
 _surfaces = [{
 "aabb": AABB(-0.00557705, -0.00557705, -0.00118965, 0.0158943, 0.0111541, 0.00197262),
@@ -73,60 +73,56 @@ _surfaces = [{
 "vertex_data": PackedByteArray("oTFXPKoNBzr8qgK6pAkpPKoNBzpDmeO5iRcqPATsF7pDmeO5oTFXPATsFzpDmeO5pAkpPKoNB7pDmeO5oTFXPKoNB7r8qgK6oTFXPATsF7pDmeO5oTFXPATsF7q1Thw6iRcqPKoNB7oPLS06iRcqPATsFzq1Thw6oTFXPKoNBzoPLS06oTFXPATsFzq1Thw6pAkpPKoNBzq1Thw6pAkpPKoNB7q1Thw6oTFXPKoNBzoPLS06oTFXPATsF7pDmeO5oTFXPATsF7q1Thw6oTFXPKoNB7r8qgK6oTFXPKoNBzr8qgK6oTFXPATsF7pDmeO5iRcqPATsF7pDmeO5iRcqPKoNB7oPLS06oTFXPATsF7q1Thw6pAkpPKoNB7q1Thw6pAkpPKoNB7pDmeO5pAkpPKoNBzq1Thw6pAkpPKoNB7q1Thw6pAkpPKoNBzpDmeO5pAkpPKoNB7pDmeO5iRcqPATsFzq1Thw6oTFXPATsFzpDmeO5oTFXPATsFzq1Thw6oTFXPKoNBzr8qgK6oTFXPKoNBzoPLS06oTFXPATsFzpDmeO5oTFXPATsFzq1Thw6iRcqPKoNBzr8qgK6iRcqPKoNB7r8qgK6pAkpPDLw/7kjORU6pAkpPDLw/zkjORU6pAkpPDLw/zkgbtW5pAkpPDLw/7kgbtW5pAkpPKoNBzpDmeO5pAkpPKoNB7pDmeO5oTFXPKoNB7oPLS06iRcqPKoNBzoPLS06g7lZPCE7kLkzvbo5g7lZPCE7kDkzvbo5g7lZPCE7kDkgcku5g7lZPCE7kLkgcku5iRcqPATsF7q1Thw6pAkpPKoNBzq1Thw6pAkpPDLw/zkjORU6pAkpPDLw/zkgbtW5pAkpPDLw/7kgbtW5pAkpPDLw/7kjORU6pAkpPKoNB7q1Thw6iRcqPKoNBzoPLS06pAkpPKoNBzq1Thw6pAkpPKoNBzpDmeO5iRcqPKoNBzr8qgK6iRcqPATsFzpDmeO5iRcqPATsF7pDmeO5iRcqPKoNB7r8qgK6iRcqPATsF7q1Thw6g7lZPCE7kDkzvbo5g7lZPCE7kDkgcku5g7lZPCE7kLkgcku5g7lZPCE7kLkzvbo5oTFXPKoNB7oPLS06pAkpPKoNBzpDmeO5iRcqPATsFzpDmeO5iRcqPATsFzq1Thw6pAkpPKoNBzq1Thw6iRcqPKoNBzr8qgK6iRcqPKoNB7r8qgK6iRcqPKoNB7oPLS06iRcqPKoNBzoPLS06iRcqPATsF7pDmeO5pAkpPKoNB7pDmeO5pAkpPKoNB7q1Thw6iRcqPATsF7q1Thw6oTFXPATsFzpDmeO5g7lZPCE7kDkgcku5g7lZPCE7kDkzvbo5oTFXPATsFzq1Thw6g7lZPCE7kDkgcku5oTFXPKoNB7r8qgK6g7lZPCE7kLkgcku5g7lZPCE7kLkzvbo5oTFXPKoNB7oPLS06g7lZPCE7kDkzvbo5g7lZPCE7kLkzvbo5g7lZPCE7kLkgcku5oTFXPATsF7pDmeO5oTFXPATsF7q1Thw6oTFXPKoNB7oPLS06iRcqPATsF7q1Thw6iRcqPKoNB7oPLS06iRcqPKoNBzoPLS06oTFXPKoNBzoPLS06iRcqPATsFzpDmeO5iRcqPKoNBzr8qgK6oTFXPKoNBzr8qgK6oTFXPKoNB7r8qgK6iRcqPKoNB7r8qgK6iRcqPATsFzq1Thw6iRcqPATsFzpDmeO5//////9///8AAP+//3////+/AAD/v////7////9//98AAP+//3//////////f////78AAP+/////f/8//78AgP9//3//fwCA/3//v/9//5//f/9//38AgP9//7//f/+f/z//f/9/AID/P/9//38AgOnU/3//fwCA1OiqUbZjJI6p0dRotmMkjtToqlG2YySO//8Vq/9/AID/fwAA//////9/AAD/////VFVVVQAg/4//fwAA/////1RVVVUAIP+PqiqqKv7f/+8AAP9//v///wAA/3/9////AAAAgP////8AAP5//////1RVqar/H/7v/3//////////f////////9ToVK5InCSOqdEql0icJI7U6FSuSJwkjqnRKpdInCSO//////9//////////3///wAA/3/+////AAD/f/7///8AAP9//v8AgAAA/3/9/wCAAAD/f/7/AIAAAP9/+/8AgP9//3//fwCA/3//f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgP9/AAD/////AAAAgP////8AAACA/////wAAAID/////AAD+f/////8AAP5//////wAA/n//////VFWpqv8f/u9UVamq/x/+76oqVNX/3/+PqipU1f/f/4+qKlTV/9//j6oqqir+3//vqiqqKv7f/+9UVVVVACD/j6nRKpdInCSO1OhUrkicJI7U6KpRtmMkjqnR1Gi2YySOqdHUaLZjJI7/P/+///////8//7///////z//v///////P/+//////wAA/7//f///AAD/v/9/////P/9//38AgP8//3//fwCA/z//P///////P/8///////8//z///////z//P//////p1BWrFauKlenUFasVq4qV6dQVqxWripXp1BWrFauKlf//Fav/fwCA//8Vq/9/AID//xWr/38AgOnU/3//fwCA6dT/f/9/AIDp1P9//38AgOnU6lTqVIqV6dTqVOpUipXp1OpU6lSKlenU6lTqVIqV/3//P/+/AID/f/8//78AgP9//z//vwCA/3//v/9//5//f/+//3//n/+/////f//f/7////9//9//v////3//3/+/AAD/v////78AAP+/////f/////////9/////////")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_ag8v7")
+shadow_mesh = SubResource("ArrayMesh_xhfw6")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_bn3qx"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y57op"]
 size = Vector3(0.694092, 0.377418, 0.321282)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qghua"]
-size = Vector3(1.19397, 0.511917, 0.630981)
+[sub_resource type="BoxShape3D" id="BoxShape3D_od4ux"]
+size = Vector3(0.695984, 0.302856, 0.378876)
 
-[node name="Pan Attached" type="RigidBody3D"]
+[node name="Pan2" type="RigidBody3D"]
+transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, 0, 0, 0)
 collision_layer = 4
 collision_mask = 196615
-script = ExtResource("1_74x70")
+script = ExtResource("1_lntfg")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="Pan" type="MeshInstance3D" parent="."]
 transform = Transform3D(30, 0, 0, 0, -1.31134e-06, 30, 0, -30, -1.31134e-06, 0, -0.0837661, 0)
-mesh = SubResource("ArrayMesh_ci2pb")
+mesh = SubResource("ArrayMesh_ialph")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.167607, 0.0481849, -0.000699043)
-shape = SubResource("BoxShape3D_bn3qx")
+shape = SubResource("BoxShape3D_y57op")
 debug_fill = false
 
-[node name="HighlightRing" parent="." instance=ExtResource("2_0mahc")]
+[node name="HighlightRing" parent="." instance=ExtResource("2_a1ue1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0158556, 0)
 
 [node name="XRToolsGrabPointHand" type="Marker3D" parent="."]
-transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, 0.287833, -0.0620939, 0.0971599)
-script = ExtResource("3_qghua")
+transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, 0.287833, -0.0941828, 0.0971599)
+script = ExtResource("3_3rvxn")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
 [node name="XRToolsGrabPointHand2" type="Marker3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.28582, -0.0648703, -0.106527)
-script = ExtResource("3_qghua")
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.28582, -0.0927913, -0.106527)
+script = ExtResource("3_3rvxn")
 hand = 1
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
-[node name="Pan2" type="MeshInstance3D" parent="."]
-transform = Transform3D(30, 0, 0, 0, -1.31134e-06, -30, 0, 30, -1.31134e-06, 0, -0.0463892, 0)
-mesh = SubResource("ArrayMesh_ci2pb")
-skeleton = NodePath("")
+[node name="OISAttachReceiver" type="Node3D" parent="."]
+script = ExtResource("4_xfxeb")
+is_primary_attacher = true
+replacement_object_path = "res://scenes/Furniture/pan_attached.tscn"
+group = "cook"
+metadata/_custom_type_script = "uid://cag688wpsfi6m"
 
-[node name="OISDetachReceiver" type="Node3D" parent="."]
-script = ExtResource("4_0mahc")
-primary_replacement_object_path = "res://scenes/Furniture/pan.tscn"
-secondary_replacement_object_path = "res://scenes/Furniture/receiver_pan.tscn"
-group = "hand"
-metadata/_custom_type_script = "uid://dk87jglam1c5g"
-
-[node name="Area3D" type="Area3D" parent="OISDetachReceiver"]
+[node name="Area3D" type="Area3D" parent="OISAttachReceiver"]
 collision_layer = 536870912
 collision_mask = 536870912
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OISDetachReceiver/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0969849, -0.102669, 0.163147)
-shape = SubResource("BoxShape3D_qghua")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISAttachReceiver/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.167813, 0.0557251, -0.0059104)
+shape = SubResource("BoxShape3D_od4ux")

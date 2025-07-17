@@ -170,6 +170,32 @@ func _physics_process(delta):
 		$Target.mesh.size = Vector2(ws, ws)
 		$Target/Player_figure.scale = Vector3(ws, ws, ws)
 
+	#if controller and controller.get_is_active() and \
+		#controller.is_button_pressed(teleport_button_action) and \
+		#(controller.get_vector2("primary").x <= -0.95 or \
+		#controller.get_vector2("primary").x >= 0.95):
+			#
+			#var teleport_global_transform : Transform3D = $Teleport.global_transform
+			#var target_global_origin := teleport_global_transform.origin
+			#var up := player_body.up_player
+			#var down := -up.normalized() / ws
+			#var normal = floor_normal
+			## update target and colour
+			#var target_basis := Basis()
+			#target_basis.y = normal
+			#target_basis.x = teleport_global_transform.basis.x.slide(normal).normalized()
+			#target_basis.z = target_basis.x.cross(target_basis.y)
+#
+			#if controller.get_vector2("primary").x >= 0.96:
+				#teleport_rotation -= deg_to_rad(45)
+			#elif controller.get_vector2("primary").x >= 0.96:
+				#teleport_rotation += deg_to_rad(45)
+				#
+			#target_basis = target_basis.rotated(normal, teleport_rotation)
+			#last_target_transform.basis = target_basis
+			#last_target_transform.origin = target_global_origin + up * 0.001
+			#$Target.global_transform = last_target_transform
+
 	if controller and controller.get_is_active() and \
 			controller.is_button_pressed(teleport_button_action) and \
 			(controller.get_vector2("primary").y <= -0.3 or \
@@ -304,10 +330,10 @@ func _physics_process(delta):
 				color = cant_teleport_color
 
 			# check our axis to see if we need to rotate
-			if controller.get_vector2("primary").x <= -0.96:
-				teleport_rotation -= deg_to_rad(45)
-			elif controller.get_vector2("primary").x >= 0.96:
-				teleport_rotation += deg_to_rad(45)
+			#if controller.get_vector2("primary").x <= -0.96:
+				#teleport_rotation -= deg_to_rad(45)
+			#elif controller.get_vector2("primary").x >= 0.96:
+				#teleport_rotation += deg_to_rad(45)
 
 			# update target and colour
 			var target_basis := Basis()

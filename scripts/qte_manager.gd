@@ -1,9 +1,7 @@
 extends Node
-
 # Source: https://www.youtube.com/watch?v=MfS73MPZBrM
 enum QTE_STATES { START, RUNNING, FAILED, SUCCESS, STOPPED }
 var QTE_STATUS : QTE_STATES = QTE_STATES.STOPPED
-
 var QTE_LAYER : Node
 var QTE_TIMER_LABEL: Label
 var QTE_ACTION_TIMER_LABEL: Label
@@ -11,29 +9,168 @@ var QTE_LABEL : Label
 var QTE_PLAYER_LABEL: Label
 var QTE_FEEDBACK: Label
 
+# VR Input tracking
+var xr_interface: XRInterface
+var left_controller: XRController3D
+var right_controller: XRController3D
+var by_button_pressed_last_frame: bool = false
+
+# Debug variables
+var debug_enabled: bool = true
+var debug_label: Label
+
 var POSSIBLE_ACTIONS : Array = [
 	"by_button"
 ]
 var CURRENT_QTE : Array = []
 var PLAYER_QTE : Array = []
-
 var QTE_SIZE : int = 1
 var QTE_MAX_SIZE : int = 8
 var QTE_INCREMENTER : int = 0
-
 var QTE_TIME_LIMIT : float = 10 #seconds to finish the qte
 var QTE_ACTION_TIME_LIMIT : float = 5 #seconds between the actions
 var QTE_TIMER : float = 10
 var QTE_ACTION_TIMER : float = 5
-
 signal success_qte
 signal failed_qte
 
 func _ready() -> void:
 	QTE_LAYER = %QTE_LAYER
 	
+	# Initialize VR interface
+	xr_interface = XRServer.find_interface("OpenXR")
+	if not xr_interface:
+		xr_interface = XRServer.find_interface("OpenVR")
+	
+	if xr_interface:
+		print("XR Interface found: ", xr_interface.get_name())
+		# Make sure the interface is initialized
+		if not xr_interface.is_initialized():
+			xr_interface.initialize()
+	else:
+		print("No XR interface found!")
+	
+	# Find VR controllers in the scene
+	# You'll need to adjust these paths based on your VR scene structure
+	left_controller = get_node_or_null("XROrigin3D/LeftController")
+	right_controller = get_node_or_null("XRPlayer/XROrigin3D/XRController3DRight")
+	
+	if not left_controller:
+		print("Left controller not found!")
+	if not right_controller:
+		print("Right controller not found!")
+	
+	# Create debug label if debugging is enabled
+	if debug_enabled:
+		create_debug_label()
+
+# Fixed VR button checking - using correct button names for OpenXR
+func check_vr_button_pressed(button_name: String) -> bool:
+	if not xr_interface or not xr_interface.is_initialized():
+		return false
+	
+	var button_pressed = false
+	var left_pressed = false
+	var right_pressed = false
+	
+	# Map the action name to actual OpenXR button names
+	var actual_button_name = ""
+	match button_name:
+		"by_button":
+			actual_button_name = "by_button"  # This should match your OpenXR action map
+		_:
+			actual_button_name = button_name
+	
+	# Check both controllers for the button
+	if left_controller:
+		left_pressed = left_controller.is_button_pressed(actual_button_name)
+		button_pressed = left_pressed
+		# Print statement for left controller button press
+		if left_pressed:
+			print("LEFT CONTROLLER - Button pressed: ", actual_button_name)
+	
+	if right_controller:
+		right_pressed = right_controller.is_button_pressed(actual_button_name)
+		if not button_pressed:
+			button_pressed = right_pressed
+		# Print statement for right controller button press
+		if right_pressed:
+			print("RIGHT CONTROLLER - Button pressed: ", actual_button_name)
+	
+	# Update debug info
+	if debug_enabled and debug_label:
+		var debug_text = "VR Button Debug:\n"
+		debug_text += "Button: " + button_name + "\n"
+		debug_text += "Actual Button: " + actual_button_name + "\n"
+		debug_text += "Left Controller: " + ("PRESSED" if left_pressed else "NOT PRESSED") + "\n"
+		debug_text += "Right Controller: " + ("PRESSED" if right_pressed else "NOT PRESSED") + "\n"
+		debug_text += "Overall: " + ("PRESSED" if button_pressed else "NOT PRESSED") + "\n"
+		debug_text += "XR Interface: " + (xr_interface.get_name() if xr_interface else "NONE") + "\n"
+		debug_text += "XR Initialized: " + ("YES" if xr_interface and xr_interface.is_initialized() else "NO") + "\n"
+		debug_text += "Left Controller Found: " + ("YES" if left_controller else "NO") + "\n"
+		debug_text += "Right Controller Found: " + ("YES" if right_controller else "NO")
+		debug_label.text = debug_text
+	
+	return button_pressed
+
+func is_vr_button_just_pressed(button_name: String) -> bool:
+	var current_pressed = check_vr_button_pressed(button_name)
+	var just_pressed = current_pressed and not by_button_pressed_last_frame
+	by_button_pressed_last_frame = current_pressed
+	
+	# Debug output for just pressed events
+	if debug_enabled and just_pressed:
+		print("VR Button JUST PRESSED: ", button_name)
+	
+	return just_pressed
+
+func create_debug_label() -> void:
+	# Create a debug label that shows VR button status
+	debug_label = Label.new()
+	debug_label.name = "VRDebugLabel"
+	debug_label.position = Vector2(10, 10)
+	debug_label.size = Vector2(400, 300)
+	debug_label.add_theme_color_override("font_color", Color.WHITE)
+	debug_label.add_theme_color_override("font_shadow_color", Color.BLACK)
+	debug_label.add_theme_constant_override("shadow_offset_x", 2)
+	debug_label.add_theme_constant_override("shadow_offset_y", 2)
+	debug_label.z_index = 1000  # Make sure it's on top
+	
+	# Add to the scene tree
+	get_tree().root.add_child(debug_label)
+	print("Debug label created and added to scene")
+
+func toggle_debug() -> void:
+	debug_enabled = !debug_enabled
+	if debug_enabled:
+		if not debug_label:
+			create_debug_label()
+		else:
+			debug_label.visible = true
+	else:
+		if debug_label:
+			debug_label.visible = false
+
+# Updated _input function to handle VR input properly
 func _input(event : InputEvent) -> void:
 	if QTE_STATUS == QTE_STATES.RUNNING:
+		# Handle VR input
+		if is_vr_button_just_pressed("by_button"):
+			handle_qte_input()
+
+# Separate function to handle QTE input logic
+func handle_qte_input() -> void:
+	if PLAYER_QTE.size() < CURRENT_QTE.size():
+		PLAYER_QTE.push_back(CURRENT_QTE[PLAYER_QTE.size()])
+		print("Player QTE: ", PLAYER_QTE)
+		print("Current QTE: ", CURRENT_QTE)
+		
+		if QTE_PLAYER_LABEL:
+			QTE_PLAYER_LABEL.text = str(PLAYER_QTE)
+		
+		QTE_ACTION_TIMER = QTE_ACTION_TIME_LIMIT
+		
+		# Check if QTE is complete
 		if PLAYER_QTE == CURRENT_QTE:
 			print("Success")
 			QTE_STATUS = QTE_STATES.SUCCESS
@@ -47,28 +184,27 @@ func _input(event : InputEvent) -> void:
 					QTE_FEEDBACK.text = "YIPPIE"
 				await get_tree().create_timer(1).timeout
 				var Instance = get_tree().root.find_child("QTE_LAYER", true, false)
-				Instance.queue_free()
+				if Instance:
+					Instance.queue_free()
 				stop_qte()
-				#STOP QTE
-		elif Input.is_action_just_pressed(CURRENT_QTE[PLAYER_QTE.size()]):
-			PLAYER_QTE.push_back(CURRENT_QTE[PLAYER_QTE.size()])
-			print(PLAYER_QTE)
-			if QTE_PLAYER_LABEL:
-				QTE_PLAYER_LABEL.text = str(PLAYER_QTE)
-			QTE_ACTION_TIMER = QTE_ACTION_TIME_LIMIT
-			
+	
 func _process(delta:float) -> void:
+	# Update debug info continuously
+	if debug_enabled:
+		check_vr_button_pressed("by_button")  # This will update the debug label
+	
 	if QTE_STATUS == QTE_STATES.RUNNING:
 		QTE_TIMER -= delta
 		QTE_ACTION_TIMER -= delta
 		if QTE_TIMER_LABEL:
-			QTE_TIMER_LABEL.text = "QTE TINER: " + str(floor(QTE_TIMER * 100) / 100)
+			QTE_TIMER_LABEL.text = "QTE TIMER: " + str(floor(QTE_TIMER * 100) / 100)
 		if QTE_ACTION_TIMER_LABEL:
 			QTE_ACTION_TIMER_LABEL.text = "QTE NEXT ACTION: " + str(floor(QTE_ACTION_TIMER * 100) / 100)
 		if PLAYER_QTE != CURRENT_QTE && (QTE_TIMER <= 0 || QTE_ACTION_TIMER <= 0):
 			print("FAILED!!! :'(")
 			QTE_STATUS = QTE_STATES.FAILED
-			QTE_FEEDBACK.text = "FAILED!! :("
+			if QTE_FEEDBACK:
+				QTE_FEEDBACK.text = "FAILED!! :("
 			failed_qte.emit()
 			stop_qte()
 			
@@ -77,7 +213,7 @@ func stop_qte() -> void:
 	QTE_STATUS = QTE_STATES.STOPPED
 	var Instance = get_tree().root.find_child("QTE_LAYER", true, false)
 	if Instance:
-			Instance.queue_free()
+		Instance.queue_free()
 			
 func start_qte() -> void:
 	if QTE_STATUS != QTE_STATES.STOPPED:
@@ -92,12 +228,13 @@ func start_qte() -> void:
 		QTE_FEEDBACK = Instance.find_child("QTE_FEEDBACK", true, false)
 		print("QTE initialized")
 		
-		
 	QTE_STATUS = QTE_STATES.START
 	QTE_TIMER = QTE_TIME_LIMIT
 	QTE_ACTION_TIMER = QTE_ACTION_TIME_LIMIT
 	CURRENT_QTE = []
 	PLAYER_QTE = []
+	by_button_pressed_last_frame = false  # Reset button state
+	
 	for length in QTE_SIZE:
 		CURRENT_QTE.push_back(POSSIBLE_ACTIONS.pick_random())
 	
@@ -105,7 +242,7 @@ func start_qte() -> void:
 		QTE_LABEL.text = str(CURRENT_QTE)
 		
 	if QTE_FEEDBACK:
-		QTE_FEEDBACK.text = "GET READY!"
+		QTE_FEEDBACK.text = "WAKE ME UP:(("
 		
 	await get_tree().create_timer(1).timeout
 	
@@ -113,4 +250,3 @@ func start_qte() -> void:
 		QTE_FEEDBACK.text = "Go!"
 		
 	QTE_STATUS = QTE_STATES.RUNNING
-	pass

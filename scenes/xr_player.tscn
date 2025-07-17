@@ -21,8 +21,8 @@
 [sub_resource type="TextMesh" id="TextMesh_3s1yg"]
 text = "I'm hungry. I'll go make breakfast."
 
-[sub_resource type="TextMesh" id="TextMesh_ujsbv"]
-text = "Now that I'm fulll, 
+[sub_resource type="TextMesh" id="TextMesh_chwf4"]
+text = "Now that I'm full, 
 I should go unpack my things."
 
 [sub_resource type="TextMesh" id="TextMesh_mc5w1"]
@@ -132,7 +132,7 @@ mesh = SubResource("TextMesh_3s1yg")
 [node name="need to unpack" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)
 visible = false
-mesh = SubResource("TextMesh_ujsbv")
+mesh = SubResource("TextMesh_chwf4")
 
 [node name="tired" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)

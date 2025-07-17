@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://o1nfmqbymovr"]
+[gd_scene load_steps=13 format=4 uid="uid://o1nfmqbymovr"]
 
 [ext_resource type="Script" uid="uid://bpxdkq8onhqqq" path="res://scripts/unpack_things.gd" id="1_6u52s"]
 [ext_resource type="Script" uid="uid://dbcw2arwkc24o" path="res://scripts/cardboard_box.gd" id="1_21pyn"]
 [ext_resource type="AudioStream" uid="uid://x0i1o4n7d740" path="res://assets/sfx/unpack.mp3" id="3_odx2j"]
 [ext_resource type="AudioStream" uid="uid://cfkfivvej6u7o" path="res://assets/sfx/tired.mp3" id="4_1unat"]
+[ext_resource type="Script" uid="uid://cl2wge3pvr4ew" path="res://scenes/others/sleep.gd" id="5_i5l6a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bisv"]
 resource_name = "Material.010"
@@ -84,7 +85,7 @@ shape = SubResource("BoxShape3D_6u52s")
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.00343397, -0.340443, -0.0013558)
 shape = SubResource("BoxShape3D_6u52s")
 
-[node name="unpack things" type="Node" parent="."]
+[node name="Unpack things" type="Node" parent="."]
 script = ExtResource("1_6u52s")
 event_name = "unpack things"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
@@ -102,4 +103,9 @@ stream = ExtResource("3_odx2j")
 [node name="tired" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1unat")
 
-[connection signal="box_emptied" from="." to="unpack things" method="_on_event_ended"]
+[node name="sleep" type="Node" parent="."]
+script = ExtResource("5_i5l6a")
+event_name = "sleep"
+metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
+
+[connection signal="event_ended" from="Unpack things" to="Unpack things" method="_on_event_ended"]

@@ -1,6 +1,7 @@
 extends Node3D
 
 var xr_interface: XRInterface
+@onready var alarm: AudioStreamPlayer3D = $Alarm
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,8 +20,13 @@ func _ready():
 	await get_tree().create_timer(1).timeout
 
 	$XRPlayer/QTE.start_qte()
+	alarm.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
+
+
+func _on_wake_up_event_started() -> void:
+	pass # Replace with function body.

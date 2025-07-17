@@ -7,17 +7,18 @@
 		"EventCompletionFlags": [
 			"make bfast_Done"
 		],
-		"Oneshot": false
+		"Oneshot": true
 	},
 	"unpack things": {
 		"EventCategory": "DIALOGUE",
 		"EventPrerequisiteFlags": [
-			"make bfast_Done"
+			"make bfast_Done",
+			"wake up_Done"
 		],
 		"EventCompletionFlags": [
 			"unpack things_Done"
 		],
-		"Oneshot": false
+		"Oneshot": true
 	},
 	"wake up": {
 		"EventCategory": "ACTION",
@@ -25,6 +26,17 @@
 		"EventCompletionFlags": [
 			"wake up_Done"
 		],
-		"Oneshot": false
+		"Oneshot": true
+	},
+	"sleep": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [
+			"unpack things_Done",
+			""
+		],
+		"EventCompletionFlags": [
+			"sleep_Done"
+		],
+		"Oneshot": true
 	}
 }

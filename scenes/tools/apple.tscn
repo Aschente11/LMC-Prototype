@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://dm1pp5ptm48op"]
+[gd_scene load_steps=30 format=4 uid="uid://dm1pp5ptm48op"]
 
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_13wu3"]
 [ext_resource type="Script" uid="uid://dk6w5e5iwrqdf" path="res://scripts/apple.gd" id="1_bnc1m"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://8b3rtomuc1gj" path="res://assets/sfx/apple_cut.mp3" id="8_7emso"]
 [ext_resource type="Animation" uid="uid://d1xnpyc08njjx" path="res://addons/godot-xr-tools/hands/animations/right/Grip 4.res" id="8_pnyyg"]
 [ext_resource type="Script" uid="uid://bmph4dbmr65ya" path="res://scripts/wake_up.gd" id="9_pnyyg"]
+[ext_resource type="AudioStream" uid="uid://cotvb3asvqqj8" path="res://assets/sfx/make_bfast.mp3" id="10_n5q3g"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5h5vi"]
 resource_name = "ai_Gala_Apple"
@@ -427,6 +428,9 @@ stream = ExtResource("8_7emso")
 script = ExtResource("9_pnyyg")
 event_name = "make bfast"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
+
+[node name="make_bfast" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_n5q3g")
 
 [connection signal="action_completed" from="Apple/OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_completed"]
 [connection signal="action_ended" from="Apple/OISStrikeReceiver" to="make bfast" method="_on_ois_strike_receiver_action_ended"]
