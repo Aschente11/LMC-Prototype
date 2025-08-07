@@ -4,20 +4,28 @@ extends Node3D
 @onready var cat_model: MeshInstance3D = $Muchkin1_002
 
 var is_looping = false
-var global_scene
 
 func _ready() -> void:
-	# Connect to stimulation signals
-	GlobalVar.stimulation_increase.connect(_on_stimulation_changed)
-	GlobalVar.stimulation_decrease.connect(_on_stimulation_changed)
+	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
+	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
 	
-	# Initially hide the cat
 	cat_model.visible = false
 	
-	# Check initial stimulation state
+	# Check initial stimulation state with a small delay to ensure everything is ready
+	call_deferred("check_initial_state")
+
+func check_initial_state() -> void:
 	_on_stimulation_changed(GlobalVar.stimulation)
 
-func _on_stimulation_changed(new_stimulation_value):
+# Connect to the same signals as the smartwatch for consistency
+func _on_stimulation_increase(new_value: int) -> void:
+	_on_stimulation_changed(new_value)
+
+func _on_stimulation_decrease(new_value: int) -> void:
+	_on_stimulation_changed(new_value)
+
+func _on_stimulation_changed(new_stimulation_value: int) -> void:
+	
 	if new_stimulation_value >= 1 and not is_looping:
 		# Show cat and start animation
 		cat_model.visible = true
@@ -27,23 +35,22 @@ func _on_stimulation_changed(new_stimulation_value):
 		cat_model.visible = false
 		stop_looping()
 
-func start_looping():
+func start_looping() -> void:
 	if is_looping:
 		return  # Already looping
 	
 	is_looping = true
 	_loop_animation()
 
-func stop_looping():
+func stop_looping() -> void:
 	is_looping = false
 	cat_animation.stop()
 	animation_sound.stop()
 
-func _loop_animation():
+func _loop_animation() -> void:
+	
 	while is_looping:
-		if not is_looping:  # Check again in case it changed
-			break
-			
+		# Play animation
 		cat_animation.play("Take 001")
 		await get_tree().create_timer(1.0).timeout
 		
@@ -51,24 +58,22 @@ func _loop_animation():
 			break
 		
 		# Play the sounds 3 times
-		animation_sound.play()
-		var audio_length = animation_sound.stream.get_length()
-		await get_tree().create_timer(audio_length - 0.25).timeout
+		for i in range(3):
+			if not is_looping:
+				break
+				
+			animation_sound.play()
+			var audio_length = animation_sound.stream.get_length()
+			var wait_time = audio_length - 0.25 if i < 2 else audio_length
+			await get_tree().create_timer(wait_time).timeout
 		
 		if not is_looping:
 			break
-			
-		animation_sound.play()
-		await get_tree().create_timer(audio_length - 0.25).timeout
 		
-		if not is_looping:
-			break
-			
-		animation_sound.play()
-		await get_tree().create_timer(audio_length).timeout
-		
-		if not is_looping:
-			break
-			
+		# Wait for animation to finish
 		await cat_animation.animation_finished
+		
+		if not is_looping:
+			break
+			
 		await get_tree().create_timer(0.5).timeout
