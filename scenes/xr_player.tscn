@@ -329,4 +329,4 @@ shape = SubResource("BoxShape3D_3s1yg")
 stream = ExtResource("16_wk61l")
 
 [node name="OiiaioooooiaiFin" parent="." instance=ExtResource("18_3s1yg")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.22169, -0.178464, -1.21147)
+transform = Transform3D(1.44616, 0, 0.398259, 0, 1.5, 0, -0.398259, 0, 1.44616, 0.437585, -0.0258927, -1.44465)
