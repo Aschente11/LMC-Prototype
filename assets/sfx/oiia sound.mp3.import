@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dffn2ersw8p1b"
+path="res://.godot/imported/oiia sound.mp3-85f106762b43730a470c0e4043f2635f.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/oiia sound.mp3"
+dest_files=["res://.godot/imported/oiia sound.mp3-85f106762b43730a470c0e4043f2635f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

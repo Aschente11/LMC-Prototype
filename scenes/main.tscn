@@ -399,7 +399,7 @@ shader_parameter/albedo = Color(0, 0, 0, 1)
 script = ExtResource("1_0wfyh")
 
 [node name="XRPlayer" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.04143, 1.09375, -5.69613)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.04143, 1.09375, -5.2531)
 
 [node name="Room" type="Node3D" parent="."]
 
