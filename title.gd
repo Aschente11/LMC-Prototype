@@ -2,11 +2,25 @@ extends Node3D
 
 @onready var title_text: MeshInstance3D = $TitleText
 @onready var bg_sounds: AudioStreamPlayer3D = $BGsounds
+@onready var knife: MeshInstance3D = $knife
+@onready var cat: MeshInstance3D = $cat
 
 # Store original position and rotation
 var original_position: Vector3
 var original_rotation: Vector3
 var time_passed: float = 0.0
+
+# Knife animation properties
+@export var knife_rotation_speed: Vector3 = Vector3(0, 0, 90)
+@export var knife_orbit_center: Vector3 = Vector3(0, 50, 0)
+@export var knife_orbit_radius: float = 25.0
+@export var knife_orbit_speed: float = 1.0
+
+# Cat animation properties
+@export var cat_rotation_speed: Vector3 = Vector3(90, 0, 0)  # Rotate around Y-axis
+@export var cat_orbit_center: Vector3 = Vector3(0, 50, 0)    # Center point for cat orbit
+@export var cat_orbit_radius: float = 30.0                   # Radius of cat's orbit
+@export var cat_orbit_speed: float = 0.8                     # Speed of cat's orbit
 
 func _ready():
 	# Store the original transform
@@ -19,14 +33,40 @@ func _ready():
 func _process(delta):
 	time_passed += delta
 	
-	# Method 1: Simple vertical bounce with sine wave
+	# Animate title text
 	simple_bounce()
 	
-	# Method 2: More complex bouncing with scaling (uncomment to use instead)
-	# complex_bounce()
+	# Animate knife
+	animate_knife()
 	
-	# Method 3: Bouncing with rotation (uncomment to use instead)
-	# bounce_with_rotation()
+	# Animate cat
+	animate_cat()
+
+# Knife animation function (unchanged)
+func animate_knife():
+	# Rotate the knife on its own axis
+	knife.rotation_degrees += knife_rotation_speed * get_process_delta_time()
+	
+	# Orbit around the specified center point
+	var angle = time_passed * knife_orbit_speed
+	
+	# Calculate orbital position
+	knife.position.x = knife_orbit_center.x + cos(angle) * knife_orbit_radius
+	knife.position.z = knife_orbit_center.z + sin(angle) * knife_orbit_radius
+	knife.position.y = knife_orbit_center.y
+
+# Cat animation function - orbits around Z-axis
+func animate_cat():
+	# Rotate the cat on its own axis (around Y-axis for a natural spinning motion)
+	cat.rotation_degrees += cat_rotation_speed * get_process_delta_time()
+	
+	# Orbit around the Z-axis (circular motion in X-Y plane)
+	var angle = time_passed * cat_orbit_speed
+	
+	# Calculate orbital position (orbiting around Z-axis means moving in X-Y plane)
+	cat.position.x = cat_orbit_center.x + cos(angle) * cat_orbit_radius
+	cat.position.y = cat_orbit_center.y + sin(angle) * cat_orbit_radius
+	cat.position.z = cat_orbit_center.z
 
 # Simple vertical bouncing
 func simple_bounce():
