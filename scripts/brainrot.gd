@@ -56,10 +56,10 @@ func _ready() -> void:
 	
 	# Check initial stimulation state with a small delay to ensure everything is ready
 	call_deferred("check_initial_state")
-	
+
 func check_initial_state() -> void:
 	_on_stimulation_changed(GlobalVar.stimulation)
-	
+
 func _on_stimulation_increase(new_value: int) -> void:
 	_on_stimulation_changed(new_value)
 
@@ -191,8 +191,8 @@ func show_mesh_and_play_audio(pair: Dictionary) -> void:
 	# Show the mesh
 	mesh.visible = true
 	
-	# Make the mesh face the player
-	face_player(mesh)
+	# Make the mesh have random rotation
+	randomize_rotation(mesh)
 	
 	# Play the corresponding audio and store reference
 	if audio and audio.stream:
@@ -215,13 +215,12 @@ func position_mesh_around_player(mesh: MeshInstance3D) -> void:
 	mesh.global_position = spawn_position
 	print("Positioned mesh '", mesh.name, "' at: ", spawn_position, " (distance: ", distance, ", player at: ", player_position, ")")
 
-func face_player(mesh: MeshInstance3D) -> void:
-	# Calculate direction from mesh to player
-	var direction = (player_position - mesh.global_position).normalized()
-	
-	# Only rotate on Y axis to face player (assuming meshes should stay upright)
-	var target_rotation = Vector3(0, atan2(direction.x, direction.z), 0)
-	mesh.rotation = target_rotation
+func randomize_rotation(mesh: MeshInstance3D) -> void:
+	var random_x = randf() * 2 * PI
+	var random_y = randf() * 2 * PI
+	var random_z = randf() * 2 * PI
+	mesh.rotation = Vector3(random_x, random_y, random_z)
+
 
 # Public functions to control the system
 func reset_distraction() -> void:

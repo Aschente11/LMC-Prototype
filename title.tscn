@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=4 uid="uid://beqhw45ofd705"]
+[gd_scene load_steps=18 format=4 uid="uid://beqhw45ofd705"]
 
 [ext_resource type="Script" uid="uid://8wjg0qrrgrm1" path="res://title.gd" id="1_oyqm6"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="1_y7k74"]
 [ext_resource type="AudioStream" uid="uid://xegchyrw6dc2" path="res://assets/sfx/bgsound.mp3" id="3_kpexm"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="4_3xoar"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 sky_top_color = Color(0.4, 0.7, 1, 1)
@@ -182,14 +183,18 @@ transform = Transform3D(10, 0, 0, 0, 3, 0, 0, 0, 10, -100, 12, -90)
 mesh = SubResource("PlaneMesh_2")
 surface_material_override/0 = SubResource("StandardMaterial3D_2")
 
-[node name="TitleText" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 0, 53.4582, -6.41162)
-mesh = SubResource("TextMesh_kpexm")
-
 [node name="BGsounds" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_kpexm")
+volume_db = 50.0
+max_db = 6.0
+
+[node name="TitleText" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 0, 53.4582, -8.2561)
+mesh = SubResource("TextMesh_kpexm")
 
 [node name="Pan" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 390.442, 920.628, 0, -920.628, 390.442, 0, 50.607, -9.38307)
+transform = Transform3D(1000, 0, 0, 0, 390.442, 920.628, 0, -920.628, 390.442, 0, 50.607, -11.2276)
 mesh = SubResource("ArrayMesh_kpexm")
 skeleton = NodePath("")
+
+[node name="StartXR" parent="." instance=ExtResource("4_3xoar")]

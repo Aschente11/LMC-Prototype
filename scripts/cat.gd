@@ -15,6 +15,7 @@ func _ready() -> void:
 	# Check initial stimulation state with a small delay to ensure everything is ready
 	call_deferred("check_initial_state")
 
+
 func check_initial_state() -> void:
 	_on_stimulation_changed(GlobalVar.stimulation)
 

@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://cklvi7bmc0l5f"]
+[gd_scene load_steps=7 format=4 uid="uid://de5xxxh868oy7"]
 
-[ext_resource type="Script" uid="uid://byns8uce7op05" path="res://scripts/bombardino.gd" id="1_u35e5"]
+[ext_resource type="Script" uid="uid://byns8uce7op05" path="res://scripts/brainrot.gd" id="1_u35e5"]
 [ext_resource type="Texture2D" uid="uid://c42adwffi52t0" path="res://assets/others/distractions/tung-tung-tung-sahur/source/tung tung tung sahur_0.png" id="1_xji16"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_naovk"]
