@@ -782,5 +782,8 @@ metadata/_custom_type_script = "uid://ek4xpaefjlux"
 [node name="apple" parent="." instance=ExtResource("69_y57op")]
 transform = Transform3D(-0.0303292, 0, -0.99954, 0, 1, 0, 0.99954, 0, -0.0303292, -5.69739, 1.40957, 6.04809)
 
+[node name="apple2" parent="." instance=ExtResource("69_y57op")]
+transform = Transform3D(-0.0303292, 0, -0.99954, 0, 1, 0, 0.99954, 0, -0.0303292, -5.69739, 1.40957, 6.39836)
+
 [node name="knife" parent="." instance=ExtResource("70_mlv25")]
 transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.76397, 1.41585, 5.71333)

@@ -9,6 +9,7 @@ func _ready() -> void:
 	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
 	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
 	
+	
 	cat_model.visible = false
 	
 	# Check initial stimulation state with a small delay to ensure everything is ready
@@ -77,3 +78,16 @@ func _loop_animation() -> void:
 			break
 			
 		await get_tree().create_timer(0.5).timeout
+
+# Minimal poof effect - just add this to your existing code
+func appear_with_poof() -> void:
+	cat_model.visible = true
+	cat_model.scale = Vector3.ZERO
+	
+	var tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_BACK)
+	tween.tween_property(cat_model, "scale", Vector3.ONE, 0.6)
+	
+	await tween.finished
+	start_looping()

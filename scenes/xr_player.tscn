@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=40 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
@@ -18,6 +18,7 @@
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="13_wk61l"]
 [ext_resource type="AudioStream" uid="uid://dqyjjg0qmnyv8" path="res://assets/sfx/watch_notif.mp3" id="16_wk61l"]
 [ext_resource type="PackedScene" uid="uid://cg865kbis0jwn" path="res://scenes/distractions/cat.tscn" id="18_3s1yg"]
+[ext_resource type="PackedScene" uid="uid://cylh5ue2xytlo" path="res://scenes/distractions/brainrots.tscn" id="19_mc5w1"]
 
 [sub_resource type="TextMesh" id="TextMesh_3s1yg"]
 text = "I'm hungry. I'll go make breakfast."
@@ -123,6 +124,11 @@ player_height_min = 0.5
 player_height_max = 2.25
 metadata/_custom_type_script = "uid://bqqdxydvmjgir"
 
+[node name="brainrots" parent="XROrigin3D" instance=ExtResource("19_mc5w1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10059, 0.150929, -0.160681)
+spawn_radius = 0.5
+spawn_height_offset = 0.5
+
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 
 [node name="make bfast" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
@@ -139,6 +145,9 @@ mesh = SubResource("TextMesh_chwf4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)
 visible = false
 mesh = SubResource("TextMesh_mc5w1")
+
+[node name="OiiaioooooiaiFin" parent="XROrigin3D/XRCamera3D" instance=ExtResource("18_3s1yg")]
+transform = Transform3D(1.44616, 0, 0.398259, 0, 1.5, 0, -0.398259, 0, 1.44616, 0.369222, -0.361581, -1.42721)
 
 [node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
@@ -327,6 +336,3 @@ shape = SubResource("BoxShape3D_3s1yg")
 
 [node name="watchNotif" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("16_wk61l")
-
-[node name="OiiaioooooiaiFin" parent="." instance=ExtResource("18_3s1yg")]
-transform = Transform3D(1.44616, 0, 0.398259, 0, 1.5, 0, -0.398259, 0, 1.44616, 0.437585, -0.0258927, -1.44465)

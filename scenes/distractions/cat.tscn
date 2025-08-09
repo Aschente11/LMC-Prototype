@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://cg865kbis0jwn"]
 
 [ext_resource type="Script" uid="uid://bsjce0pwi2h6i" path="res://scripts/cat.gd" id="1_wp4ue"]
-[ext_resource type="Texture2D" uid="uid://cf3ag7125x75d" path="res://assets/others/oiiaioooooiai-cat/textures/Muchkin2_BaseColor.png" id="2_36tou"]
+[ext_resource type="Texture2D" uid="uid://cf3ag7125x75d" path="res://assets/others/distractions/oiiaioooooiai-cat/textures/Muchkin2_BaseColor.png" id="2_36tou"]
 [ext_resource type="AudioStream" uid="uid://dffn2ersw8p1b" path="res://assets/sfx/oiia sound.mp3" id="3_wp4ue"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcl6t"]
