@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=43 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
@@ -20,14 +20,26 @@
 [ext_resource type="PackedScene" uid="uid://cg865kbis0jwn" path="res://scenes/distractions/cat.tscn" id="18_3s1yg"]
 [ext_resource type="PackedScene" uid="uid://cylh5ue2xytlo" path="res://scenes/distractions/brainrots.tscn" id="19_mc5w1"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujsbv"]
+no_depth_test = true
+
 [sub_resource type="TextMesh" id="TextMesh_3s1yg"]
+material = SubResource("StandardMaterial3D_ujsbv")
 text = "I'm hungry. I'll go make breakfast."
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_twgfx"]
+no_depth_test = true
+
 [sub_resource type="TextMesh" id="TextMesh_chwf4"]
+material = SubResource("StandardMaterial3D_twgfx")
 text = "Now that I'm full, 
 I should go unpack my things."
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5i8cc"]
+no_depth_test = true
+
 [sub_resource type="TextMesh" id="TextMesh_mc5w1"]
+material = SubResource("StandardMaterial3D_5i8cc")
 text = "Unpacking made me tired. Time for bed."
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrvet"]
@@ -183,6 +195,9 @@ collision_mask = 536870912
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRController3DLeft/OISActorComponent/OISColliderArea3D/Area3D"]
 shape = SubResource("SphereShape3D_323tq")
 
+[node name="smartwatch" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("11_1mew7")]
+transform = Transform3D(0.000441457, 0.00871536, -0.999962, 0.050591, 0.998681, 0.00872654, 0.998719, -0.0505929, -4.37097e-08, -0.0564887, -0.0534834, 0.178663)
+
 [node name="XRController3DRight" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 
@@ -219,6 +234,7 @@ shape = SubResource("SphereShape3D_sxhyq")
 
 [node name="smartwatch" parent="XROrigin3D/XRController3DRight" instance=ExtResource("11_1mew7")]
 transform = Transform3D(-4.37114e-08, 3.60561e-16, 1, -0.00178025, 0.999998, -7.78149e-11, -0.999998, -0.00178025, -4.37113e-08, 0.0585523, -0.0535223, 0.177899)
+visible = false
 
 [node name="InventorySystem" type="Node3D" parent="XROrigin3D" node_paths=PackedStringArray("inventory_toggler_hand")]
 transform = Transform3D(-0.00406662, -0.999992, 0, 0.999992, -0.00406662, 0, 0, 0, 1, 0.29965, 0.872173, -0.536814)

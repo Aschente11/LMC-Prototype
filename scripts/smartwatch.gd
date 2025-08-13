@@ -28,6 +28,7 @@ func _ready() -> void:
 	# Set pivot points to center for proper scaling
 	setup_center_pivots()
 
+
 func setup_center_pivots() -> void:
 	# For TextureRect (stimulation_bar)
 	stimulation_bar.pivot_offset = stimulation_bar.size / 2
