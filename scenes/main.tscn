@@ -789,5 +789,5 @@ transform = Transform3D(-0.0303292, 0, -0.99954, 0, 1, 0, 0.99954, 0, -0.0303292
 [node name="knife" parent="." instance=ExtResource("70_mlv25")]
 transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.76397, 1.41585, 5.71333)
 
-[node name="VRClockScene" parent="." instance=ExtResource("70_a82wo")]
+[node name="clock" parent="." instance=ExtResource("70_a82wo")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.98311, 3.41081, -0.658281)
