@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=131 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -71,8 +71,6 @@
 [ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="70_a82wo"]
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/knife.tscn" id="70_mlv25"]
 [ext_resource type="Texture2D" uid="uid://bj08u75nm868b" path="res://assets/textures/new-york-city-manhattan.jpg" id="71_a82wo"]
-[ext_resource type="PackedScene" uid="uid://dc7p0kxwee1cn" path="res://scenes/distractions/Thought_bubbles.tscn" id="72_gdvew"]
-[ext_resource type="PackedScene" uid="uid://b6ryo5s76kbco" path="res://scenes/distractions/Thought_bubblesV2.tscn" id="73_kjtvk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -842,9 +840,3 @@ transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.9831
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xrs0c")
-
-[node name="ThoughtBubbles" parent="." instance=ExtResource("72_gdvew")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54227, 1.51379, -7.17492)
-
-[node name="ThoughtBubblesV2" parent="." instance=ExtResource("73_kjtvk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74934, 0.99269, -8.01425)

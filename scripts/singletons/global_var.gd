@@ -1,6 +1,6 @@
 extends Node
 
-var stimulation = 0
+var stimulation = 2
 var physical = 2
 var emotional = 2
 
