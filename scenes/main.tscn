@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=130 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -32,11 +32,11 @@
 [ext_resource type="PackedScene" uid="uid://o1nfmqbymovr" path="res://scenes/others/cardboardBox.tscn" id="22_a82wo"]
 [ext_resource type="PackedScene" uid="uid://b63336v121wu1" path="res://scenes/Furniture/Kitchen/light_switch.tscn" id="22_dgi5k"]
 [ext_resource type="AudioStream" uid="uid://dm6vjaowvorvl" path="res://assets/sfx/yippee-tbh.mp3" id="24_vxglm"]
-[ext_resource type="PackedScene" uid="uid://m4kk61d6ikla" path="res://scenes/Furniture/windows.tscn" id="24_yq6so"]
 [ext_resource type="Script" uid="uid://cxy8oxoldmaoc" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter_manager.gd" id="25_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://dsupuweunu8ri" path="res://scenes/tools/meta.tscn" id="26_gdvew"]
 [ext_resource type="Script" uid="uid://ek4xpaefjlux" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter.gd" id="26_yq6so"]
 [ext_resource type="Shader" uid="uid://dn36xw56c7i80" path="res://shaders/main.gdshader" id="27_fv21b"]
+[ext_resource type="PackedScene" uid="uid://lbdlwao4nkbv" path="res://scenes/Furniture/Bedroom/windows.tscn" id="27_mlv25"]
 [ext_resource type="PackedScene" uid="uid://cyj20vbwq2jgh" path="res://scenes/Furniture/cr_door.tscn" id="31_nvyfr"]
 [ext_resource type="PackedScene" uid="uid://fvr0v4d8fhpa" path="res://scenes/Furniture/wall_light.tscn" id="32_ty1g6"]
 [ext_resource type="PackedScene" uid="uid://csecy3vkqhh4m" path="res://scenes/Furniture/bathtub.tscn" id="33_j2jfr"]
@@ -70,6 +70,7 @@
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/apple.tscn" id="69_y57op"]
 [ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="70_a82wo"]
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/knife.tscn" id="70_mlv25"]
+[ext_resource type="Texture2D" uid="uid://dytlewh6vbx4a" path="res://assets/textures/zawiszy_czarnego_4k.hdr" id="71_a82wo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -160,10 +161,14 @@ uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a8y0u"]
 material = SubResource("StandardMaterial3D_kf5aa")
-size = Vector2(15, 5)
+size = Vector2(13, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2f3dj"]
-size = Vector3(15, 0.1, 5)
+size = Vector3(16.5981, 0.1, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mlv25"]
+material = SubResource("StandardMaterial3D_kf5aa")
+size = Vector2(5, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5ykj"]
 albedo_texture = ExtResource("6_trceg")
@@ -181,7 +186,7 @@ size = Vector2(20, 5)
 orientation = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yq6so"]
-size = Vector3(0.1, 5, 20)
+size = Vector3(0.1, 5, 21.673)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e755i"]
 albedo_texture = ExtResource("6_trceg")
@@ -195,7 +200,12 @@ uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dp3eg"]
 material = SubResource("StandardMaterial3D_e755i")
-size = Vector2(20, 5)
+size = Vector2(18, 5)
+orientation = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gdvew"]
+material = SubResource("StandardMaterial3D_e755i")
+size = Vector2(5, 2)
 orientation = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro3en"]
@@ -378,15 +388,6 @@ metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 radius = 0.2
 height = 0.4
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0ld40"]
-
-[sub_resource type="Sky" id="Sky_gqmmt"]
-sky_material = SubResource("ProceduralSkyMaterial_0ld40")
-
-[sub_resource type="Environment" id="Environment_yc10j"]
-background_mode = 2
-sky = SubResource("Sky_gqmmt")
-
 [sub_resource type="QuadMesh" id="QuadMesh_tel4y"]
 custom_aabb = AABB(-5000, -5000, -5000, 10000, 10000, 10000)
 size = Vector2(2, 2)
@@ -395,6 +396,17 @@ size = Vector2(2, 2)
 render_priority = 0
 shader = ExtResource("27_fv21b")
 shader_parameter/albedo = Color(0, 0, 0, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gdvew"]
+panorama = ExtResource("71_a82wo")
+
+[sub_resource type="Sky" id="Sky_kjtvk"]
+sky_material = SubResource("PanoramaSkyMaterial_gdvew")
+
+[sub_resource type="Environment" id="Environment_xrs0c"]
+background_mode = 2
+sky = SubResource("Sky_kjtvk")
+sky_rotation = Vector3(0, 5.75261, 0)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0wfyh")
@@ -455,15 +467,20 @@ skeleton = NodePath("../../..")
 shape = SubResource("ConcavePolygonShape3D_ya4ey")
 
 [node name="Back" type="MeshInstance3D" parent="Room/Walls"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.455, 2.494, -10)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.08006, 2.494, -10)
 mesh = SubResource("PlaneMesh_a8y0u")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Back"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Back/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00268555, -0.060791)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.799072, -0.00268555, -0.060791)
 shape = SubResource("BoxShape3D_2f3dj")
+
+[node name="Back2" type="MeshInstance3D" parent="Room/Walls/Back"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.59626, 0, 2.25997)
+mesh = SubResource("PlaneMesh_mlv25")
+skeleton = NodePath("../../../..")
 
 [node name="Right" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, 0)
@@ -477,15 +494,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000125408, 0, -1.09708e-11)
 shape = SubResource("BoxShape3D_yq6so")
 
 [node name="Left" type="MeshInstance3D" parent="Room/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 2.494, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 2.494, 1.29432)
 mesh = SubResource("PlaneMesh_dp3eg")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Left"]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Room/Walls/Left/StaticBody3D"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00995541, 0, 7.24681e-15)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.00995541, 0, -0.836487)
 shape = SubResource("BoxShape3D_yq6so")
+
+[node name="Left2" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 0.311011, -7.5639)
+mesh = SubResource("PlaneMesh_gdvew")
+skeleton = NodePath("../../..")
 
 [node name="Bath Front" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.898, 2.149, 2.046)
@@ -581,6 +603,12 @@ transform = Transform3D(0.997345, 0.0528414, -0.0501214, -0.0527748, 0.998603, 0
 
 [node name="Meta" parent="Room/CardboardBox" instance=ExtResource("26_gdvew")]
 
+[node name="window" parent="Room" instance=ExtResource("27_mlv25")]
+transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -9.75761, 1.13639, -10.0423)
+
+[node name="window2" parent="Room" instance=ExtResource("27_mlv25")]
+transform = Transform3D(-1.00536e-07, 0, 2.3, 0, 2.3, 0, -2.3, 0, -1.00536e-07, -11.0015, 1.13639, -8.76971)
+
 [node name="Furniture" type="Node3D" parent="."]
 
 [node name="Ceiling Light" parent="Furniture" instance=ExtResource("14_vxglm")]
@@ -632,9 +660,6 @@ transform = Transform3D(0.0368356, 0, 0.999321, 0, 1, 0, -0.999321, 0, 0.0368356
 
 [node name="Light Switch" parent="Furniture" instance=ExtResource("22_dgi5k")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1.34665, 2.18294, 9.95747)
-
-[node name="Windows" parent="Furniture" instance=ExtResource("24_yq6so")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.96148, 2.31515, -9.9894)
 
 [node name="CR Door" parent="Furniture" instance=ExtResource("31_nvyfr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8152, 1.66, -0.296329)
@@ -738,9 +763,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36625, 1.5554, 7.28742)
 [node name="Kitchen Roll" parent="Furniture/Kitchen Roll" instance=ExtResource("59_152kg")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_yc10j")
-
 [node name="Teleport" type="Node3D" parent="."]
 visible = false
 
@@ -791,3 +813,6 @@ transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0,
 
 [node name="clock" parent="." instance=ExtResource("70_a82wo")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.98311, 3.41081, -0.658281)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xrs0c")
