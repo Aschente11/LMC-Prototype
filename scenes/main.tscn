@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=133 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -71,6 +71,8 @@
 [ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="70_a82wo"]
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/knife.tscn" id="70_mlv25"]
 [ext_resource type="Texture2D" uid="uid://bj08u75nm868b" path="res://assets/textures/new-york-city-manhattan.jpg" id="71_a82wo"]
+[ext_resource type="PackedScene" uid="uid://dc7p0kxwee1cn" path="res://scenes/distractions/Thought_bubbles.tscn" id="72_gdvew"]
+[ext_resource type="PackedScene" uid="uid://b6ryo5s76kbco" path="res://scenes/distractions/Thought_bubblesV2.tscn" id="73_kjtvk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -182,11 +184,16 @@ uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_trceg"]
 material = SubResource("StandardMaterial3D_t5ykj")
-size = Vector2(20, 5)
+size = Vector2(13, 5)
 orientation = 0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yq6so"]
-size = Vector3(0.1, 5, 21.673)
+size = Vector3(0.1, 5, 25.7281)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xrs0c"]
+material = SubResource("StandardMaterial3D_t5ykj")
+size = Vector2(3.5, 5)
+orientation = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e755i"]
 albedo_texture = ExtResource("6_trceg")
@@ -406,7 +413,7 @@ sky_material = SubResource("PanoramaSkyMaterial_gdvew")
 [sub_resource type="Environment" id="Environment_xrs0c"]
 background_mode = 2
 sky = SubResource("Sky_kjtvk")
-sky_rotation = Vector3(0, 0, 0.151844)
+sky_rotation = Vector3(0.151844, -1.96873, 0.151844)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0wfyh")
@@ -483,15 +490,25 @@ mesh = SubResource("PlaneMesh_mlv25")
 skeleton = NodePath("../../../..")
 
 [node name="Right" type="MeshInstance3D" parent="Room/Walls"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, -3.679)
 mesh = SubResource("PlaneMesh_trceg")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Right"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Right/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000125408, 0, -1.09708e-11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000124454, 0, -2.02755)
 shape = SubResource("BoxShape3D_yq6so")
+
+[node name="Right2" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, 8.83054)
+mesh = SubResource("PlaneMesh_xrs0c")
+skeleton = NodePath("../../..")
+
+[node name="Right3" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-1, 0, 8.74228e-08, -8.74227e-08, -0.00139622, -0.999999, 1.22062e-10, -0.999999, 0.00139622, 4.013, -0.510135, 4.8822)
+mesh = SubResource("PlaneMesh_xrs0c")
+skeleton = NodePath("../../..")
 
 [node name="Left" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 2.494, 1.29432)
@@ -609,6 +626,12 @@ transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -9.75761, 1.13639, -10.
 [node name="window2" parent="Room" instance=ExtResource("27_mlv25")]
 transform = Transform3D(-1.00536e-07, 0, 2.3, 0, 2.3, 0, -2.3, 0, -1.00536e-07, -11.0015, 1.13639, -8.76971)
 
+[node name="window3" parent="Room" instance=ExtResource("27_mlv25")]
+transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 4.06718, 1.13639, 6.01836)
+
+[node name="window4" parent="Room" instance=ExtResource("27_mlv25")]
+transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 4.06718, 1.13639, 3.847)
+
 [node name="Furniture" type="Node3D" parent="."]
 
 [node name="Ceiling Light" parent="Furniture" instance=ExtResource("14_vxglm")]
@@ -697,8 +720,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35583, 2.29459, -2.22375)
 [node name="Sofa B" parent="Furniture" instance=ExtResource("46_j2jfr")]
 transform = Transform3D(-0.788011, 0, -0.615661, 0, 1, 0, 0.615661, 0, -0.788011, 2.33788, 0.513104, 8.21607)
 
+[node name="Sofa B2" parent="Furniture" instance=ExtResource("46_j2jfr")]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 2.15734, 0.513104, 1.64369)
+
 [node name="Table D" parent="Furniture" instance=ExtResource("47_bjg73")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.32087, 0.372935, 4.35018)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.32087, 0.372935, 4.98802)
 
 [node name="Shelf A" parent="Furniture" instance=ExtResource("48_bu4jf")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.63536, 1.57937, 9.54904)
@@ -724,7 +750,7 @@ mesh = SubResource("ArrayMesh_dabrm")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Furniture/Mug"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0901794, 0.0361633, -0.0165825)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.511076, 0.0361633, -0.229498)
 shape = SubResource("BoxShape3D_ids8r")
 
 [node name="GrabPointHandLeft" parent="Furniture/Mug" instance=ExtResource("48_augu2")]
@@ -816,3 +842,9 @@ transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.9831
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xrs0c")
+
+[node name="ThoughtBubbles" parent="." instance=ExtResource("72_gdvew")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.54227, 1.51379, -7.17492)
+
+[node name="ThoughtBubblesV2" parent="." instance=ExtResource("73_kjtvk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.74934, 0.99269, -8.01425)

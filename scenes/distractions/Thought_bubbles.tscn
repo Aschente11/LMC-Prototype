@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc7p0kxwee1cn"]
+
+[ext_resource type="FontFile" uid="uid://n5cd37mmqxvl" path="res://assets/others/fonts/LuckiestGuy-Regular.ttf" id="1_g4wf6"]
+[ext_resource type="Script" uid="uid://uiqmdejxvfds" path="res://scripts/thought_bubbles.gd" id="1_rfqrn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_text"]
+transparency = 1
+albedo_color = Color(1, 0, 0.0166664, 1)
+emission_enabled = true
+emission = Color(0.21, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_main"]
+material = SubResource("StandardMaterial3D_text")
+text = "OMG DID I DO MY DAILIES TODAY???"
+font = ExtResource("1_g4wf6")
+font_size = 28
+
+[node name="ThoughtBubbles" type="Node3D"]
+
+[node name="MainText" type="MeshInstance3D" parent="."]
+mesh = SubResource("TextMesh_main")
+skeleton = NodePath("")
+script = ExtResource("1_rfqrn")

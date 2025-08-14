@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6ryo5s76kbco"]
+
+[ext_resource type="FontFile" uid="uid://df0wumln7g1d4" path="res://assets/others/fonts/Fredoka-VariableFont_wdth,wght.ttf" id="1_n3imp"]
+[ext_resource type="Script" uid="uid://c5w3igp7qr037" path="res://scripts/thought_bubblesV2.gd" id="2_n3imp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_text"]
+transparency = 1
+albedo_color = Color(1, 0.55, 0, 1)
+emission_enabled = true
+emission = Color(0.21, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_lubke"]
+material = SubResource("StandardMaterial3D_text")
+text = "OMG DID I DO MY DAILIES TODAY???"
+font = ExtResource("1_n3imp")
+font_size = 28
+
+[node name="ThoughtBubblesV2" type="Node3D"]
+
+[node name="MainText" type="MeshInstance3D" parent="."]
+mesh = SubResource("TextMesh_lubke")
+skeleton = NodePath("")
+script = ExtResource("2_n3imp")
