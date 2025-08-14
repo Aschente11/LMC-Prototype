@@ -70,7 +70,7 @@
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/apple.tscn" id="69_y57op"]
 [ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="70_a82wo"]
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/knife.tscn" id="70_mlv25"]
-[ext_resource type="Texture2D" uid="uid://dytlewh6vbx4a" path="res://assets/textures/zawiszy_czarnego_4k.hdr" id="71_a82wo"]
+[ext_resource type="Texture2D" uid="uid://bj08u75nm868b" path="res://assets/textures/new-york-city-manhattan.jpg" id="71_a82wo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -406,7 +406,7 @@ sky_material = SubResource("PanoramaSkyMaterial_gdvew")
 [sub_resource type="Environment" id="Environment_xrs0c"]
 background_mode = 2
 sky = SubResource("Sky_kjtvk")
-sky_rotation = Vector3(0, 5.75261, 0)
+sky_rotation = Vector3(0, 0, 0.151844)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0wfyh")
