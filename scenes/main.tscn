@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=132 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -67,10 +67,11 @@
 [ext_resource type="PackedScene" uid="uid://dtjk66bj36vw1" path="res://assets/Low Poly Furniture/Kitchen/Kitchen Roll.fbx" id="59_152kg"]
 [ext_resource type="PackedScene" uid="uid://53x8obp0rqj7" path="res://scenes/Furniture/pan.tscn" id="61_y57op"]
 [ext_resource type="PackedScene" uid="uid://dbdoqijou25gg" path="res://scenes/Furniture/receiver_pan.tscn" id="62_mlv25"]
-[ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/apple.tscn" id="69_y57op"]
+[ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="69_y57op"]
 [ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="70_a82wo"]
-[ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/knife.tscn" id="70_mlv25"]
+[ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="70_mlv25"]
 [ext_resource type="Texture2D" uid="uid://bj08u75nm868b" path="res://assets/textures/new-york-city-manhattan.jpg" id="71_a82wo"]
+[ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="72_gdvew"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -785,7 +786,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36625, 1.5554, 7.28742)
 
 [node name="Kitchen Roll" parent="Furniture/Kitchen Roll" instance=ExtResource("59_152kg")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.240867, 0, 2.08217)
 
 [node name="Teleport" type="Node3D" parent="."]
 visible = false
@@ -840,3 +841,6 @@ transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.9831
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xrs0c")
+
+[node name="toaster" parent="." instance=ExtResource("72_gdvew")]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, -5.61357, 1.36149, 8.49247)

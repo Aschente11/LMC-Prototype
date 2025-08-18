@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://o2hiqedn77l1"]
+
+[ext_resource type="Script" uid="uid://pmc7imp60in7" path="res://addons/godot-xr-tools/objects/snap_zone.gd" id="1_7kcax"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_fk2by"]
+[ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="3_s8nx5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s8nx5"]
+radius = 0.3
+
+[node name="BreadSnapZone" type="Area3D"]
+script = ExtResource("1_7kcax")
+metadata/_custom_type_script = "uid://pmc7imp60in7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_s8nx5")
+
+[node name="HighlightRing" parent="." instance=ExtResource("2_fk2by")]
+
+[node name="Bread" parent="." instance=ExtResource("3_s8nx5")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0165777, -0.000194527, 0.000658214)

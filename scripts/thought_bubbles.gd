@@ -6,6 +6,7 @@ extends MeshInstance3D
 	"Omg i havent done my dailies",
 	"Why did I do that ughhhh",
 	"What is life even about",
+	"Did i forget something",
 ]
 var base_scale: Vector3
 var time_passed: float = 0.0
