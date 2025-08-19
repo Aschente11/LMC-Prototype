@@ -66,9 +66,9 @@ script = ExtResource("6_l4hpy")
 closed_pose = ExtResource("7_jraab")
 metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 
-[node name="bread" type="RigidBody3D" groups=["bread"]]
+[node name="bread" type="RigidBody3D"]
 collision_layer = 4
-collision_mask = 5
+collision_mask = 7
 script = ExtResource("1_rfe7c")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
