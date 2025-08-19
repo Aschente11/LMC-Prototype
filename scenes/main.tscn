@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=134 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -72,6 +72,8 @@
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="70_mlv25"]
 [ext_resource type="Texture2D" uid="uid://bj08u75nm868b" path="res://assets/textures/new-york-city-manhattan.jpg" id="71_a82wo"]
 [ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="72_gdvew"]
+[ext_resource type="PackedScene" uid="uid://dcj3aeqvitt61" path="res://scenes/tools/kitchen/plate.tscn" id="73_kjtvk"]
+[ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="74_xrs0c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -843,4 +845,10 @@ transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.9831
 environment = SubResource("Environment_xrs0c")
 
 [node name="toaster" parent="." instance=ExtResource("72_gdvew")]
-transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, -5.61357, 1.36149, 8.49247)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61357, 1.36149, 7.63023)
+
+[node name="plate2" parent="." instance=ExtResource("73_kjtvk")]
+transform = Transform3D(1.0176, 0, 0, 0, 1.0176, 0, 0, 0, 1.0176, -5.65379, 1.32104, 6.94697)
+
+[node name="bread" parent="." instance=ExtResource("74_xrs0c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31352, 1.3697, 6.69074)

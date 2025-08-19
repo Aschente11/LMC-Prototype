@@ -1,7 +1,7 @@
 extends Node
 
 # Change these to float for decimal values
-var stimulation = 2.0
+var stimulation = 0.0
 var physical = 2.0
 var emotional = 2.0
 
@@ -12,8 +12,6 @@ signal physical_decrease(new_value)
 signal emotional_increase(new_value)
 signal emotional_decrease(new_value)
 
-func _process(delta: float) -> void:
-	print(physical)
 	
 func increase_stimulation():
 	stimulation += 1

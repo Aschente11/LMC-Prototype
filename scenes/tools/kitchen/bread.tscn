@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=4 uid="uid://cch11f1ho00a4"]
+[gd_scene load_steps=15 format=4 uid="uid://cch11f1ho00a4"]
 
-[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_c1wjm"]
+[ext_resource type="Script" uid="uid://cd1v1ii700u3s" path="res://scenes/tools/kitchen/bread.gd" id="1_rfe7c"]
 [ext_resource type="Texture2D" uid="uid://12nfaalj3xjv" path="res://assets/tools/bread/source/Toast/Toast_C.png" id="2_yfsp3"]
 [ext_resource type="Texture2D" uid="uid://ccn1fehfcwihc" path="res://assets/tools/bread/source/Toast/Toast_N.png" id="3_hv3f8"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="4_eajaq"]
 [ext_resource type="Animation" uid="uid://dhjb0e334tfwl" path="res://addons/godot-xr-tools/hands/animations/left/Pinch Flat.res" id="5_rfe7c"]
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="6_l4hpy"]
 [ext_resource type="Animation" uid="uid://dg4v7rqiaje2h" path="res://addons/godot-xr-tools/hands/animations/right/Pinch Flat.res" id="7_jraab"]
+[ext_resource type="PackedScene" uid="uid://dh8grd7s3n8kg" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_snap.tscn" id="8_rfe7c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s484w"]
 resource_name = "Toast"
@@ -65,8 +66,10 @@ script = ExtResource("6_l4hpy")
 closed_pose = ExtResource("7_jraab")
 metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 
-[node name="Bread" type="RigidBody3D" groups=["bread"]]
-script = ExtResource("1_c1wjm")
+[node name="bread" type="RigidBody3D" groups=["bread"]]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_rfe7c")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="Bread_Slice" type="MeshInstance3D" parent="."]
@@ -80,13 +83,18 @@ shape = SubResource("BoxShape3D_eajaq")
 
 [node name="XRToolsGrabPointLeft" type="Marker3D" parent="."]
 transform = Transform3D(0.38523, 0, 0.922821, -0.0530891, 0.998344, 0.0221619, -0.921292, -0.0575292, 0.384592, -0.0630038, 0.0942955, 0.0675445)
+visible = false
 script = ExtResource("4_eajaq")
 hand_pose = SubResource("Resource_4h2cu")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
 [node name="XRToolsGrabPointHand" type="Marker3D" parent="."]
 transform = Transform3D(-0.306792, 0, 0.951777, 0, 1, 0, -0.951777, 0, -0.306792, -0.0609636, 0.0963512, -0.0645841)
+visible = false
 script = ExtResource("4_eajaq")
 hand = 1
 hand_pose = SubResource("Resource_s6g0a")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
+[node name="GrabPointSnap" parent="." instance=ExtResource("8_rfe7c")]
+require_group = "bread"
