@@ -2,8 +2,12 @@ extends Node3D
 
 @onready var anim_player: AnimationPlayer = $Apple/AnimationPlayer
 @onready var sound_effect: AudioStreamPlayer3D = $sfx
+@onready var apple = $Apple
 
 var is_cut = 0
+
+func _ready() -> void:
+	apple.add_to_group("food")
 
 func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress: Variant) -> void:
 	if is_cut == 0:
