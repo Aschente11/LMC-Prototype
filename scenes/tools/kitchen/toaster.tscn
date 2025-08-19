@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://behhwuvqmx4wt"]
+[gd_scene load_steps=52 format=4 uid="uid://behhwuvqmx4wt"]
 
 [ext_resource type="Script" uid="uid://cpve7iqi4pd6l" path="res://scripts/toaster.gd" id="1_av462"]
 [ext_resource type="Texture2D" uid="uid://c8eojc43a6h0f" path="res://assets/tools/toaster/textures/toaster_low_main_BaseColor.png" id="1_m6p7k"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://o2hiqedn77l1" path="res://scenes/tools/kitchen/BreadSnapZone.tscn" id="6_j1se6"]
 [ext_resource type="AudioStream" uid="uid://c07vwsa4ht2rr" path="res://assets/sfx/toaster-on.mp3" id="7_m0p8r"]
 [ext_resource type="AudioStream" uid="uid://8f2cfn7djh7p" path="res://assets/sfx/toaster-done.mp3" id="8_iubw7"]
-[ext_resource type="PackedScene" uid="uid://bxbrsw7y4kbgp" path="res://scenes/others/timerCircle.tscn" id="9_iubw7"]
+[ext_resource type="PackedScene" uid="uid://l6oclp7kyb6q" path="res://scenes/others/timerRing.tscn" id="9_iubw7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nu23j"]
 resource_name = "main"
@@ -903,6 +903,18 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4k22u")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_iubw7"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpmsq"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_iubw7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jpmsq"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_jpmsq")
+
 [node name="toaster" type="RigidBody3D"]
 script = ExtResource("1_av462")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
@@ -1026,7 +1038,14 @@ transform = Transform3D(11.065, 0, 0, 0, -4.83666e-07, 11.065, 0, -11.065, -4.83
 mesh = SubResource("ArrayMesh_iubw7")
 skeleton = NodePath("")
 
-[node name="TimerCircle3D" parent="." instance=ExtResource("9_iubw7")]
-transform = Transform3D(-6.77527e-09, -0.155, 0, 0.155, -6.77527e-09, 0, 0, 0, 0.155, -0.145415, 0.123334, 0.0176326)
+[node name="timer" type="MeshInstance3D" parent="."]
+transform = Transform3D(-9.83506e-09, 0, -0.225, 0, 0.225, 0, 0.225, 0, -9.83506e-09, -0.13478, 0.0813458, 0.0673376)
+mesh = SubResource("QuadMesh_jpmsq")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1080, 1080)
+
+[node name="TimerRing" parent="SubViewport" instance=ExtResource("9_iubw7")]
 
 [connection signal="action_started" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_started"]

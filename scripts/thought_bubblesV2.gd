@@ -4,10 +4,11 @@ extends Node3D
 @export var wave_frequency: float = 1.1  # How many waves across the text (lower = longer waves)
 @export var character_spacing: float = 0.15  # Space between characters
 @export var possible_texts: Array[String] = [
-	"tengenengenengeneng", 
+	"nae niga nae nae niga niga nae nae",
 	"I was a girl in a village doing alright~",
 	"lizard lizard lizard lizard lizard lizard lizard",
 	"meow meow meow meow",
+	"yo phone linging yo phone linging big boy come pick up yo fone",
 ]
 var character_meshes: Array[MeshInstance3D] = []
 var base_positions: Array[Vector3] = []
