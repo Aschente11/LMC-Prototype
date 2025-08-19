@@ -114,6 +114,6 @@ func _trigger_continuous_haptics():
 	if not eating_foods.is_empty():
 		trigger_haptic_feedback()
 
-func trigger_haptic_feedback(duration: float = 0.15, frequency: float = 0.5, amplitude: float = 0.8) -> void:
+func trigger_haptic_feedback(duration: float = 0.1, frequency: float = 0.3, amplitude: float = 0.4) -> void:
 	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 	left_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
