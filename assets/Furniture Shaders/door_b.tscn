@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://b67u76au542yv"]
+
+[ext_resource type="PackedScene" uid="uid://cc8pmxdqj2oi7" path="res://assets/Low Poly Furniture/Doors/Door B.fbx" id="1_d73gg"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_1c044"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_sa00j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3oijc"]
+render_priority = 0
+shader = ExtResource("2_1c044")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v1dic"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_3oijc")
+shader = ExtResource("3_sa00j")
+shader_parameter/color = Color(0.62, 0.39, 0.24, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r0rcg"]
+render_priority = 0
+shader = ExtResource("2_1c044")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvqxr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_r0rcg")
+shader = ExtResource("3_sa00j")
+shader_parameter/color = Color(0.55, 0.33, 0.19, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Door B" instance=ExtResource("1_d73gg")]
+
+[node name="Door B" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_v1dic")
+
+[node name="Door B_001" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_cvqxr")

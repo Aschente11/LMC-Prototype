@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=152 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -21,7 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://ckp3opsts403i" path="res://scenes/Furniture/door.tscn" id="15_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://kh7sb5q48xi0" path="res://scenes/Furniture/Kitchen/cupboards.tscn" id="16_yq6so"]
 [ext_resource type="PackedScene" uid="uid://cji387p80amm8" path="res://scenes/Furniture/Kitchen/chair.tscn" id="18_fv21b"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="18_j4bwh"]
 [ext_resource type="Texture2D" uid="uid://cb6ktadnm3ti2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_Color.jpg" id="18_vchkt"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="19_ksmap"]
 [ext_resource type="PackedScene" uid="uid://du2vn3nhn1mob" path="res://scenes/Furniture/Kitchen/cooking_station.tscn" id="19_tel4y"]
 [ext_resource type="Texture2D" uid="uid://dorwhoxqeak2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_NormalGL.jpg" id="19_txyw0"]
 [ext_resource type="PackedScene" uid="uid://btf7o1yinqmpn" path="res://scenes/Furniture/Kitchen/kitchen_counter.tscn" id="20_qkpxi"]
@@ -91,9 +93,39 @@ uv1_scale = Vector3(3.505, 6.5, 1)
 material = SubResource("StandardMaterial3D_j8jky")
 size = Vector2(15, 8.005)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ksmap"]
+render_priority = 0
+shader = ExtResource("18_j4bwh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ndrjj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ksmap")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.506, 0.473, 0.351, 0)
+shader_parameter/base_texture = ExtResource("3_tbgi4")
+shader_parameter/specular = Color(0.435, 0.245, 0.122, 1)
+shader_parameter/specular_texture = ExtResource("4_pm3ni")
+shader_parameter/fresnel = Color(0.292, 0.164, 0.079, 0.21)
+shader_parameter/fresnel_texture = ExtResource("4_tefeu")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_fuf3a"]
 material = SubResource("StandardMaterial3D_j8jky")
 size = Vector2(15, 7.505)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ih3m7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ksmap")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.506, 0.473, 0.351, 0)
+shader_parameter/base_texture = ExtResource("3_tbgi4")
+shader_parameter/specular = Color(0.435, 0.245, 0.122, 1)
+shader_parameter/specular_texture = ExtResource("4_pm3ni")
+shader_parameter/fresnel = Color(0.292, 0.164, 0.079, 0.21)
+shader_parameter/fresnel_texture = ExtResource("4_tefeu")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pibwh"]
 albedo_texture = ExtResource("3_tbgi4")
@@ -107,6 +139,19 @@ uv1_scale = Vector3(1.6, 3.575, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_c6pm6"]
 material = SubResource("StandardMaterial3D_pibwh")
 size = Vector2(6.805, 4.565)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b6ruc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ksmap")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.506, 0.473, 0.351, 0)
+shader_parameter/base_texture = ExtResource("3_tbgi4")
+shader_parameter/specular = Color(0.435, 0.245, 0.122, 1)
+shader_parameter/specular_texture = ExtResource("4_pm3ni")
+shader_parameter/fresnel = Color(0.292, 0.164, 0.079, 0.21)
+shader_parameter/fresnel_texture = ExtResource("4_tefeu")
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5he1u"]
 albedo_texture = ExtResource("7_qkpxi")
@@ -124,7 +169,12 @@ size = Vector2(8.15, 4.53)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cjbq"]
 size = Vector3(15, 0.07, 20)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4bwh"]
+render_priority = 0
+shader = ExtResource("18_j4bwh")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuf3a"]
+next_pass = SubResource("ShaderMaterial_j4bwh")
 albedo_texture = ExtResource("7_y6deb")
 roughness_texture = ExtResource("9_2wyq8")
 normal_enabled = true
@@ -149,6 +199,23 @@ uv1_scale = Vector3(17.033, 3.671, 1)
 material = SubResource("StandardMaterial3D_tm6hj")
 size = Vector2(15, 5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygd8o"]
+render_priority = 0
+shader = ExtResource("18_j4bwh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2s0kr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ygd8o")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
+shader_parameter/base_texture = ExtResource("6_trceg")
+shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
+shader_parameter/specular_texture = ExtResource("8_jkv2x")
+shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
+shader_parameter/fresnel_texture = ExtResource("9_jbj1t")
+shader_parameter/uv_scale = Vector2(17, 3.74)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ya4ey"]
 data = PackedVector3Array(7.5, 0, 2.5, -7.5, 0, 2.5, 7.5, 0, -2.5, -7.5, 0, 2.5, -7.5, 0, -2.5, 7.5, 0, -2.5)
 
@@ -171,7 +238,20 @@ size = Vector3(16.5981, 0.1, 5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mlv25"]
 material = SubResource("StandardMaterial3D_kf5aa")
-size = Vector2(5, 2)
+size = Vector2(2.465, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xaipn"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ygd8o")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
+shader_parameter/base_texture = ExtResource("6_trceg")
+shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
+shader_parameter/specular_texture = ExtResource("8_jkv2x")
+shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
+shader_parameter/fresnel_texture = ExtResource("9_jbj1t")
+shader_parameter/uv_scale = Vector2(3.035, 1.92)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5ykj"]
 albedo_texture = ExtResource("6_trceg")
@@ -196,6 +276,42 @@ material = SubResource("StandardMaterial3D_t5ykj")
 size = Vector2(3.5, 5)
 orientation = 0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_11yus"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ygd8o")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
+shader_parameter/base_texture = ExtResource("6_trceg")
+shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
+shader_parameter/specular_texture = ExtResource("8_jkv2x")
+shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
+shader_parameter/fresnel_texture = ExtResource("9_jbj1t")
+shader_parameter/uv_scale = Vector2(3.43, 4.11)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ih3m7"]
+material = SubResource("StandardMaterial3D_t5ykj")
+size = Vector2(3.5, 4.285)
+orientation = 0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_155or"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ygd8o")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
+shader_parameter/base_texture = ExtResource("6_trceg")
+shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
+shader_parameter/specular_texture = ExtResource("8_jkv2x")
+shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
+shader_parameter/fresnel_texture = ExtResource("9_jbj1t")
+shader_parameter/uv_scale = Vector2(3.035, 4.86)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dp3eg"]
+material = SubResource("StandardMaterial3D_kf5aa")
+size = Vector2(18, 5)
+orientation = 0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e755i"]
 albedo_texture = ExtResource("6_trceg")
 metallic = 1.0
@@ -205,11 +321,6 @@ normal_texture = ExtResource("9_jbj1t")
 ao_enabled = true
 ao_texture = ExtResource("7_a8y0u")
 uv1_scale = Vector3(17.033, 3.671, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_dp3eg"]
-material = SubResource("StandardMaterial3D_e755i")
-size = Vector2(18, 5)
-orientation = 0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gdvew"]
 material = SubResource("StandardMaterial3D_e755i")
@@ -281,6 +392,19 @@ uv1_scale = Vector3(1.155, 2.965, 1)
 material = SubResource("StandardMaterial3D_gdvew")
 size = Vector2(0.96, 4.58)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtx2l"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ygd8o")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
+shader_parameter/base_texture = ExtResource("6_trceg")
+shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
+shader_parameter/specular_texture = ExtResource("8_jkv2x")
+shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
+shader_parameter/fresnel_texture = ExtResource("9_jbj1t")
+shader_parameter/uv_scale = Vector2(3.035, 4.86)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_xrs0c"]
 size = Vector3(1, 0.0231934, 4.56912)
 
@@ -298,12 +422,38 @@ uv1_scale = Vector3(3.915, 0.885, 1)
 material = SubResource("StandardMaterial3D_xljpf")
 size = Vector2(3.58, 1.46)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_63lxy"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ygd8o")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
+shader_parameter/base_texture = ExtResource("6_trceg")
+shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
+shader_parameter/specular_texture = ExtResource("8_jkv2x")
+shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
+shader_parameter/fresnel_texture = ExtResource("9_jbj1t")
+shader_parameter/uv_scale = Vector2(7.49, 2.395)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ksmap"]
 size = Vector3(3.544, 0.023, 1.418)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ygd8o"]
 material = SubResource("StandardMaterial3D_xljpf")
 size = Vector2(3.58, 1.595)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhjs"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ygd8o")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
+shader_parameter/base_texture = ExtResource("6_trceg")
+shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
+shader_parameter/specular_texture = ExtResource("8_jkv2x")
+shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
+shader_parameter/fresnel_texture = ExtResource("9_jbj1t")
+shader_parameter/uv_scale = Vector2(7.49, 2.395)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2s0kr"]
 size = Vector3(3.544, 0.023, 1.61017)
@@ -385,6 +535,20 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vqlck")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfu41"]
+render_priority = 0
+shader = ExtResource("18_j4bwh")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r4ag1"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_bfu41")
+shader = ExtResource("19_ksmap")
+shader_parameter/color = Color(0.601686, 0.442794, 0.156603, 1)
+shader_parameter/specular = Color(0.381231, 0.281308, 0.0929288, 0.5)
+shader_parameter/fresnel = Color(0.351139, 0.102987, 0.102364, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ids8r"]
 size = Vector3(0.412537, 0.411804, 0.437553)
 
@@ -434,16 +598,19 @@ shape = SubResource("BoxShape3D_1epgm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, 6.04379)
 mesh = SubResource("PlaneMesh_kmb1v")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_ndrjj")
 
 [node name="Floor2" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, -6.26832)
 mesh = SubResource("PlaneMesh_fuf3a")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_ih3m7")
 
 [node name="Floor3" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603302, 0, -0.238458)
 mesh = SubResource("PlaneMesh_c6pm6")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_b6ruc")
 
 [node name="CR Floor" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87657, 0, -0.254821)
@@ -468,6 +635,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.455, 2.494, 10)
 mesh = SubResource("PlaneMesh_tbgi4")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Front"]
 
@@ -478,6 +646,7 @@ shape = SubResource("ConcavePolygonShape3D_ya4ey")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.08006, 2.494, -10)
 mesh = SubResource("PlaneMesh_a8y0u")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Back"]
 
@@ -486,14 +655,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.799072, -0.00268555, -0.06
 shape = SubResource("BoxShape3D_2f3dj")
 
 [node name="Back2" type="MeshInstance3D" parent="Room/Walls/Back"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.59626, 0, 2.25997)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72447, 0, 2.25997)
 mesh = SubResource("PlaneMesh_mlv25")
 skeleton = NodePath("../../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_xaipn")
 
 [node name="Right" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, -3.679)
 mesh = SubResource("PlaneMesh_trceg")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Right"]
 
@@ -505,16 +676,19 @@ shape = SubResource("BoxShape3D_yq6so")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, 8.83054)
 mesh = SubResource("PlaneMesh_xrs0c")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_11yus")
 
 [node name="Right3" type="MeshInstance3D" parent="Room/Walls"]
-transform = Transform3D(-1, 0, 8.74228e-08, -8.74227e-08, -0.00139622, -0.999999, 1.22062e-10, -0.999999, 0.00139622, 4.013, -0.510135, 4.8822)
-mesh = SubResource("PlaneMesh_xrs0c")
+transform = Transform3D(-1, 0, 8.74228e-08, -8.74227e-08, -0.00139622, -0.999999, 1.22062e-10, -0.999999, 0.00139622, 4.013, -0.510135, 4.94733)
+mesh = SubResource("PlaneMesh_ih3m7")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_155or")
 
 [node name="Left" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 2.494, 1.29432)
 mesh = SubResource("PlaneMesh_dp3eg")
 skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Left"]
 
@@ -524,12 +698,14 @@ shape = SubResource("BoxShape3D_yq6so")
 
 [node name="Left2" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 0.311011, -7.5639)
+visible = false
 mesh = SubResource("PlaneMesh_gdvew")
 skeleton = NodePath("../../..")
 
 [node name="Bath Front" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.898, 2.149, 2.046)
 mesh = SubResource("PlaneMesh_od4ux")
+surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Bath Front"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00871038, 0.0153201, 0.03561)
@@ -554,6 +730,7 @@ mesh = SubResource("PlaneMesh_a82wo")
 [node name="Bath Back" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.898, 2.14889, -2.5102)
 mesh = SubResource("PlaneMesh_od4ux")
+surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Bath Back"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.00871038, 0.0153201, 0.03561)
@@ -565,6 +742,7 @@ shape = SubResource("BoxShape3D_xhfw6")
 [node name="Above Door" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.78871, 4.05571, -0.23165)
 mesh = SubResource("PlaneMesh_kjtvk")
+surface_material_override/0 = SubResource("ShaderMaterial_vtx2l")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Above Door"]
 
@@ -575,6 +753,7 @@ shape = SubResource("BoxShape3D_xrs0c")
 [node name="Door Left" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.789, 1.78702, 1.32196)
 mesh = SubResource("PlaneMesh_j4bwh")
+surface_material_override/0 = SubResource("ShaderMaterial_63lxy")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Door Left"]
 
@@ -585,6 +764,7 @@ shape = SubResource("BoxShape3D_ksmap")
 [node name="Door Right" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.789, 1.78702, -1.72171)
 mesh = SubResource("PlaneMesh_ygd8o")
+surface_material_override/0 = SubResource("ShaderMaterial_fjhjs")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Walls/Door Right"]
 
@@ -622,10 +802,10 @@ transform = Transform3D(0.997345, 0.0528414, -0.0501214, -0.0527748, 0.998603, 0
 [node name="Meta" parent="Room/CardboardBox" instance=ExtResource("26_gdvew")]
 
 [node name="window" parent="Room" instance=ExtResource("27_mlv25")]
-transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -9.75761, 1.13639, -10.0423)
+transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -9.75761, 1.13639, -10.0743)
 
 [node name="window2" parent="Room" instance=ExtResource("27_mlv25")]
-transform = Transform3D(-1.00536e-07, 0, 2.3, 0, 2.3, 0, -2.3, 0, -1.00536e-07, -11.0015, 1.13639, -8.76971)
+transform = Transform3D(-1.00536e-07, 0, 2.3, 0, 2.3, 0, -2.3, 0, -1.00536e-07, -11.0015, 1.13639, -8.81036)
 
 [node name="window3" parent="Room" instance=ExtResource("27_mlv25")]
 transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 4.06718, 1.13639, 6.01836)
@@ -642,10 +822,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0306931, 3.73148, 6.31422)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87649, 3.73148, 6.31422)
 
 [node name="Ceiling Light4" parent="Furniture" instance=ExtResource("14_vxglm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.876, 3.731, -6.665)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.876, 3.69889, -6.665)
 
 [node name="Ceiling Light3" parent="Furniture" instance=ExtResource("14_vxglm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494399, 3.73148, -6.66538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494399, 3.70293, -6.66538)
 
 [node name="Front Door" parent="Furniture" instance=ExtResource("15_2f3dj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, -0.009, 10)
@@ -657,7 +837,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.715
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1903, 3.32267, 7.43887)
 
 [node name="Bed" parent="Furniture" instance=ExtResource("21_og1vs")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.0976, 0.427202, -7.17728)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.96277, 0.427202, -7.17728)
 
 [node name="Barstools" type="Node3D" parent="Furniture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.06202, 0.412218, 8.37873)
@@ -689,7 +869,7 @@ transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1.3466
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8152, 1.66, -0.296329)
 
 [node name="Wall Light" parent="Furniture" instance=ExtResource("32_ty1g6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.12674, 2.65895, -2.33956)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.12674, 2.65895, -2.35893)
 
 [node name="Bathtub" parent="Furniture" instance=ExtResource("33_j2jfr")]
 transform = Transform3D(-6.86269e-08, 0, 1, 0, 1, 0, -1.57, 0, -4.37114e-08, -10.255, 1.14102, 1.24977)
@@ -731,13 +911,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.3208
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.63536, 1.57937, 9.54904)
 
 [node name="Desk" parent="Furniture" instance=ExtResource("49_o7ddy")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.782722, -3.43434)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.818642, -3.43434)
 
 [node name="Bedside" parent="Furniture" instance=ExtResource("50_0loja")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.3518, 0.558045, -5.39464)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2078, 0.558045, -5.39464)
 
 [node name="Mug" type="RigidBody3D" parent="Furniture"]
-transform = Transform3D(-0.333807, 0, -0.942641, 0, 1, 0, 0.942641, 0, -0.333807, 2.98016, 0.905952, 4.25309)
+transform = Transform3D(-0.333807, 0, -0.942641, 0, 1, 0, 0.942641, 0, -0.333807, 2.98016, 0.913003, 4.25309)
 collision_layer = 4
 collision_mask = 196615
 freeze_mode = 1
@@ -749,6 +929,7 @@ metadata/_custom_type_script = "uid://bs5crmi43kekt"
 transform = Transform3D(50, 0, 0, 0, -2.18557e-06, 50, 0, -50, -2.18557e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_dabrm")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_r4ag1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Furniture/Mug"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.511076, 0.0361633, -0.229498)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://btf7o1yinqmpn"]
+[gd_scene load_steps=6 format=3 uid="uid://btf7o1yinqmpn"]
 
 [ext_resource type="PackedScene" uid="uid://d4kmqiq7dm44h" path="res://assets/Low Poly Furniture/Kitchen/Cupboard E.fbx" id="1_6gteo"]
+[ext_resource type="PackedScene" uid="uid://jvibwk5tiywe" path="res://assets/Furniture Shaders/cupboard_e.tscn" id="1_mdlkv"]
 [ext_resource type="PackedScene" uid="uid://b7wdykas2s1q8" path="res://assets/Low Poly Furniture/Kitchen/Cupboard F.fbx" id="2_38fvw"]
 [ext_resource type="PackedScene" uid="uid://csmasgae6rkms" path="res://assets/Low Poly Furniture/Kitchen/Cupboard D.fbx" id="3_sikx0"]
 
@@ -9,7 +10,7 @@ size = Vector3(5.20177, 1.36884, 0.940186)
 
 [node name="KitchenCounter" type="Node3D"]
 
-[node name="Cupboard E2" parent="." instance=ExtResource("1_6gteo")]
+[node name="Cupboard E3" parent="." instance=ExtResource("1_mdlkv")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -1.55687, -0.0958509, 0.0104326)
 
 [node name="Cupboard F" parent="." instance=ExtResource("2_38fvw")]

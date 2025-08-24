@@ -1,10 +1,39 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2qin016k7dgl"]
+[gd_scene load_steps=8 format=3 uid="uid://d2qin016k7dgl"]
 
 [ext_resource type="PackedScene" uid="uid://hc04mj15s55d" path="res://assets/Low Poly Furniture/Lights/Ceiling Light.fbx" id="1_rp6uk"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_8ro23"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_8hbxd"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tppks"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_njgk8"]
+render_priority = 0
+shader = ExtResource("2_8ro23")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_18oip"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_njgk8")
+shader = ExtResource("3_8hbxd")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_okadi"]
+render_priority = 0
+shader = ExtResource("2_8ro23")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hkn54"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_okadi")
+shader = ExtResource("3_8hbxd")
+shader_parameter/color = Color(0.983438, 0.92982, 0.868697, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [node name="Ceiling Light" instance=ExtResource("1_rp6uk")]
 
 [node name="Ceiling light" parent="." index="0"]
-surface_material_override/1 = SubResource("StandardMaterial3D_tppks")
+surface_material_override/0 = SubResource("ShaderMaterial_18oip")
+surface_material_override/1 = SubResource("ShaderMaterial_hkn54")

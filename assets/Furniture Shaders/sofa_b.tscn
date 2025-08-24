@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://44eys7esgj5d"]
+
+[ext_resource type="PackedScene" uid="uid://dqlwh0k2j0eyj" path="res://assets/Low Poly Furniture/Sofas/Sofa B.fbx" id="1_875c4"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_kooht"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_6eaa2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5tac0"]
+render_priority = 0
+shader = ExtResource("2_kooht")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohsdi"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_5tac0")
+shader = ExtResource("3_6eaa2")
+shader_parameter/color = Color(0.61, 0.17, 0.12, 1)
+shader_parameter/specular = Color(0.543535, 0.125204, 9.62615e-08, 0.5)
+shader_parameter/fresnel = Color(0.382996, 0, 0.194429, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w61s8"]
+render_priority = 0
+shader = ExtResource("2_kooht")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q5of6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_w61s8")
+shader = ExtResource("3_6eaa2")
+shader_parameter/color = Color(0.62, 0.39, 0.24, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Sofa B" instance=ExtResource("1_875c4")]
+
+[node name="Sofa B" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ohsdi")
+surface_material_override/1 = SubResource("ShaderMaterial_q5of6")

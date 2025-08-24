@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=4 uid="uid://o1nfmqbymovr"]
+[gd_scene load_steps=15 format=4 uid="uid://o1nfmqbymovr"]
 
 [ext_resource type="Script" uid="uid://bpxdkq8onhqqq" path="res://scripts/unpack_things.gd" id="1_6u52s"]
 [ext_resource type="Script" uid="uid://dbcw2arwkc24o" path="res://scripts/cardboard_box.gd" id="1_21pyn"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_cowb0"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_7kowo"]
 [ext_resource type="AudioStream" uid="uid://x0i1o4n7d740" path="res://assets/sfx/unpack.mp3" id="3_odx2j"]
 [ext_resource type="AudioStream" uid="uid://cfkfivvej6u7o" path="res://assets/sfx/tired.mp3" id="4_1unat"]
 
@@ -43,8 +45,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ix3qp")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6u52s"]
-albedo_color = Color(0.532654, 0.375164, 0.198141, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mxq8i"]
+render_priority = 0
+shader = ExtResource("2_cowb0")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bxllv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_mxq8i")
+shader = ExtResource("3_7kowo")
+shader_parameter/color = Color(0.53, 0.37, 0.19, 1)
+shader_parameter/specular = Color(0.454, 0.229, 0.138, 0.492)
+shader_parameter/fresnel = Color(0.395368, 0, 0.10169, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr8cn"]
 size = Vector3(0.728516, 0.698456, 0.0269775)
@@ -62,26 +75,31 @@ script = ExtResource("1_21pyn")
 transform = Transform3D(35, 0, 0, 0, -2.0352e-06, 35, 0, -46.56, -1.5299e-06, 0, 0, 0)
 mesh = SubResource("ArrayMesh_qr8cn")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_6u52s")
+surface_material_override/0 = SubResource("ShaderMaterial_bxllv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00195313, 0.00247782, -0.46283)
+visible = false
 shape = SubResource("BoxShape3D_qr8cn")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00195313, 0.00247782, 0.463024)
+visible = false
 shape = SubResource("BoxShape3D_qr8cn")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.339996, 0.00247782, -0.0013558)
+visible = false
 shape = SubResource("BoxShape3D_6u52s")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.345403, 0.00247782, -0.0013558)
+visible = false
 shape = SubResource("BoxShape3D_6u52s")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.00343397, -0.340443, -0.0013558)
+visible = false
 shape = SubResource("BoxShape3D_6u52s")
 
 [node name="unpack things" type="Node" parent="."]
@@ -90,6 +108,7 @@ event_name = "unpack things"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
 [node name="Detection Area" type="Area3D" parent="."]
+visible = false
 collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Area"]
