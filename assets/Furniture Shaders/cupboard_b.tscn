@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://c4fnreetp07n8"]
+
+[ext_resource type="PackedScene" uid="uid://b3pofw0id37um" path="res://assets/Low Poly Furniture/Kitchen/Cupboard B.fbx" id="1_m2lwe"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_ethti"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_a878p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_ethti")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onu7b"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_a878p")
+shader_parameter/color = Color(0.544974, 0.544974, 0.544974, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.259151, 0.184807, 0.0762073, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3kv4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_a878p")
+shader_parameter/color = Color(0.544974, 0.544974, 0.544974, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.259151, 0.184807, 0.0762073, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id3k2"]
+render_priority = 0
+shader = ExtResource("2_ethti")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xmgqo"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_a878p")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6506"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_a878p")
+shader_parameter/color = Color(0.544974, 0.544974, 0.544974, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.259151, 0.184807, 0.0762073, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0l07h"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_a878p")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Cupboard B" instance=ExtResource("1_m2lwe")]
+
+[node name="Cupboard B" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_onu7b")
+
+[node name="Cupboard B_001" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_s3kv4")
+surface_material_override/1 = SubResource("ShaderMaterial_xmgqo")
+
+[node name="Cupboard B_002" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_u6506")
+surface_material_override/1 = SubResource("ShaderMaterial_0l07h")

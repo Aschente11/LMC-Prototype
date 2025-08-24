@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6rxqstr2kq4d"]
+
+[ext_resource type="PackedScene" uid="uid://fpgw8lhkwymi" path="res://assets/Low Poly Furniture/Miscellaneous/Mirror B.fbx" id="1_8d57h"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_phsjn"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_osqfw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_phsjn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b5qxk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_osqfw")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrlmu"]
+render_priority = 0
+shader = ExtResource("2_phsjn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fcro"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xrlmu")
+shader = ExtResource("3_osqfw")
+shader_parameter/color = Color(0.22, 0.51, 0.52, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Mirror B" instance=ExtResource("1_8d57h")]
+
+[node name="Mirror B" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_b5qxk")
+surface_material_override/1 = SubResource("ShaderMaterial_1fcro")

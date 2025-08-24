@@ -1,8 +1,10 @@
-[gd_scene load_steps=27 format=4 uid="uid://d1ws3pw8g3w1v"]
+[gd_scene load_steps=36 format=4 uid="uid://d1ws3pw8g3w1v"]
 
 [ext_resource type="Script" uid="uid://bolnrvlsf08tl" path="res://scripts/fridge.gd" id="1_amwlr"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_rbiym"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_uxfnv"]
 [ext_resource type="Animation" uid="uid://daqddcrbpam0c" path="res://addons/godot-xr-tools/hands/animations/right/Grip 1.res" id="3_2gkej"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_35ron"]
 [ext_resource type="Animation" uid="uid://dqa0h82y3qn1t" path="res://addons/godot-xr-tools/hands/animations/left/Grip 1.res" id="3_wiql6"]
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_wiql6"]
 [ext_resource type="Script" uid="uid://bb8kuvwsdnh4c" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_directional_swipe_receiver.gd" id="7_amwlr"]
@@ -49,6 +51,20 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_alhel")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_uxfnv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uxfnv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_35ron")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bls18"]
 resource_name = "Grey 2"
@@ -114,6 +130,30 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rs0a3")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_35ron"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_35ron")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id3k2"]
+render_priority = 0
+shader = ExtResource("2_uxfnv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxtxr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_35ron")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_gp550"]
 _surfaces = [{
 "aabb": AABB(-0.0217438, -0.00618097, -0.0520567, 0.0359381, 0.00464899, 0.0468538),
@@ -171,6 +211,26 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gp550")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4j2h7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_35ron")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u7b76"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_35ron")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_wiql6"]
 length = 0.001
@@ -267,15 +327,20 @@ collision_mask = 5
 transform = Transform3D(21, 0, 0, 0, -9.17939e-07, 21, 0, -21, -9.17939e-07, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bkaoe")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_uxfnv")
 
 [node name="upper door" type="MeshInstance3D" parent="Fridge/Fridge main"]
 mesh = SubResource("ArrayMesh_k8ahg")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_35ron")
+surface_material_override/1 = SubResource("ShaderMaterial_nxtxr")
 
 [node name="lower door" type="MeshInstance3D" parent="Fridge/Fridge main"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.42109e-14, 0, 1.42109e-14, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wwe5c")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_4j2h7")
+surface_material_override/1 = SubResource("ShaderMaterial_u7b76")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fridge"]
 libraries = {

@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://ddntx2u0mxnx1"]
+
+[ext_resource type="PackedScene" uid="uid://d0nqw28stvrk1" path="res://assets/Low Poly Furniture/Bathroom/Toilet.fbx" id="1_fasip"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_4riyu"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_q7haf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_4riyu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1opkm"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_q7haf")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrlmu"]
+render_priority = 0
+shader = ExtResource("2_4riyu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rl3pn"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xrlmu")
+shader = ExtResource("3_q7haf")
+shader_parameter/color = Color(0.22, 0.51, 0.52, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gt4hy"]
+render_priority = 0
+shader = ExtResource("2_4riyu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fasip"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_gt4hy")
+shader = ExtResource("3_q7haf")
+shader_parameter/color = Color(0.254611, 0.494925, 0.558056, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("2_4riyu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ty2wc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_q7haf")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Toilet" instance=ExtResource("1_fasip")]
+
+[node name="Toilet" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_1opkm")
+surface_material_override/1 = SubResource("ShaderMaterial_rl3pn")
+surface_material_override/2 = SubResource("ShaderMaterial_fasip")
+surface_material_override/3 = SubResource("ShaderMaterial_ty2wc")

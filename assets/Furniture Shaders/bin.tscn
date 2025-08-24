@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://d05f2uj86rov1"]
+
+[ext_resource type="PackedScene" uid="uid://yxtxau6pw8s3" path="res://assets/Low Poly Furniture/Miscellaneous/Bin.fbx" id="1_86r6l"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_0608n"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_boqpg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("2_0608n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yd8ms"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_boqpg")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Bin" instance=ExtResource("1_86r6l")]
+
+[node name="Bin" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_yd8ms")

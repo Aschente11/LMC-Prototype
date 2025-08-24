@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://cup3jhhdll0fd"]
+
+[ext_resource type="PackedScene" uid="uid://2md50en71x6s" path="res://assets/Low Poly Furniture/Bathroom/Towel Holder.fbx" id="1_tdisg"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_lr63m"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_w45ym"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lt4f"]
+render_priority = 0
+shader = ExtResource("2_lr63m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3g4vs"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8lt4f")
+shader = ExtResource("3_w45ym")
+shader_parameter/color = Color(0.29, 0.36, 0.55, 1)
+shader_parameter/specular = Color(0.155283, 0.292429, 0.530946, 0.5)
+shader_parameter/fresnel = Color(0.319594, 0.0523933, 0.348592, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("2_lr63m")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6wsk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_w45ym")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Towel Holder" instance=ExtResource("1_tdisg")]
+
+[node name="Towel holder" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_3g4vs")
+surface_material_override/1 = SubResource("ShaderMaterial_v6wsk")

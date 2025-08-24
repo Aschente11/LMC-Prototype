@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://2fwaqae7mn1j"]
+
+[ext_resource type="PackedScene" uid="uid://b08w40exi1o6i" path="res://assets/Low Poly Furniture/Kitchen/Dishwasher.fbx" id="1_u4guc"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_0kcmw"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_7kove"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_0kcmw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u4guc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_7kove")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("2_0kcmw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_valy1"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_7kove")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0kcmw"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_7kove")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Dishwasher" instance=ExtResource("1_u4guc")]
+
+[node name="Dishwasher" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_u4guc")
+surface_material_override/1 = SubResource("ShaderMaterial_valy1")
+
+[node name="Dishwasher_001" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_0kcmw")

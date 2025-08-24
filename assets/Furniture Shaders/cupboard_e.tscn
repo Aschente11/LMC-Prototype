@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://jvibwk5tiywe"]
+[gd_scene load_steps=8 format=3 uid="uid://jvibwk5tiywe"]
 
 [ext_resource type="PackedScene" uid="uid://d4kmqiq7dm44h" path="res://assets/Low Poly Furniture/Kitchen/Cupboard E.fbx" id="1_fp7tr"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_w2dtn"]
@@ -13,8 +13,8 @@ render_priority = 0
 next_pass = SubResource("ShaderMaterial_f3rr2")
 shader = ExtResource("3_hnnev")
 shader_parameter/color = Color(0.544974, 0.544974, 0.544974, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.259151, 0.184807, 0.0762073, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -27,50 +27,8 @@ render_priority = 0
 next_pass = SubResource("ShaderMaterial_id3k2")
 shader = ExtResource("3_hnnev")
 shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fp7tr"]
-render_priority = 0
-shader = ExtResource("2_w2dtn")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2dtn"]
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_fp7tr")
-shader = ExtResource("3_hnnev")
-shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnnev"]
-render_priority = 0
-shader = ExtResource("2_w2dtn")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojll0"]
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_hnnev")
-shader = ExtResource("3_hnnev")
-shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
-shader_parameter/uv_scale = Vector2(1, 1)
-shader_parameter/uv_offset = Vector2(0, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tp637"]
-render_priority = 0
-shader = ExtResource("2_w2dtn")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1knr"]
-render_priority = 0
-next_pass = SubResource("ShaderMaterial_tp637")
-shader = ExtResource("3_hnnev")
-shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
-shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -82,12 +40,12 @@ surface_material_override/1 = SubResource("ShaderMaterial_gexae")
 
 [node name="Cupboard E_001" parent="." index="1"]
 surface_material_override/0 = SubResource("ShaderMaterial_kjmup")
-surface_material_override/1 = SubResource("ShaderMaterial_w2dtn")
+surface_material_override/1 = SubResource("ShaderMaterial_gexae")
 
 [node name="Cupboard E_002" parent="." index="2"]
 surface_material_override/0 = SubResource("ShaderMaterial_kjmup")
-surface_material_override/1 = SubResource("ShaderMaterial_ojll0")
+surface_material_override/1 = SubResource("ShaderMaterial_gexae")
 
 [node name="Cupboard E_003" parent="." index="3"]
 surface_material_override/0 = SubResource("ShaderMaterial_kjmup")
-surface_material_override/1 = SubResource("ShaderMaterial_u1knr")
+surface_material_override/1 = SubResource("ShaderMaterial_gexae")

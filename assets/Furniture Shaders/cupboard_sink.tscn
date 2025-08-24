@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=3 uid="uid://cgvdj3uscrh3u"]
+
+[ext_resource type="PackedScene" uid="uid://bdpa687lqnuts" path="res://assets/Low Poly Furniture/Kitchen/Cupboard Sink.fbx" id="1_sa88t"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_hc0ek"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_ij471"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_hc0ek")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bmwep"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_ij471")
+shader_parameter/color = Color(0.544974, 0.544974, 0.544974, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.259151, 0.184807, 0.0762073, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id3k2"]
+render_priority = 0
+shader = ExtResource("2_hc0ek")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpekj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_ij471")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("2_hc0ek")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u1a3g"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_ij471")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34dpf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_ij471")
+shader_parameter/color = Color(0.544974, 0.544974, 0.544974, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.259151, 0.184807, 0.0762073, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2fvg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_ij471")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_338g5"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_ij471")
+shader_parameter/color = Color(0.544974, 0.544974, 0.544974, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.259151, 0.184807, 0.0762073, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ludxf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_ij471")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Cupboard Sink" instance=ExtResource("1_sa88t")]
+
+[node name="Cupboard sink" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_bmwep")
+surface_material_override/1 = SubResource("ShaderMaterial_lpekj")
+surface_material_override/2 = SubResource("ShaderMaterial_u1a3g")
+
+[node name="Cupboard sink_001" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_34dpf")
+surface_material_override/1 = SubResource("ShaderMaterial_a2fvg")
+
+[node name="Cupboard sink_002" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_338g5")
+surface_material_override/1 = SubResource("ShaderMaterial_ludxf")
