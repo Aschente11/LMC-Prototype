@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://c57kip41gu7jt"]
+
+[ext_resource type="PackedScene" uid="uid://clc3o4m7ugjv7" path="res://assets/Low Poly Furniture/Bathroom/Bath.fbx" id="1_khx08"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_hiy84"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_gt1j3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_hiy84")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtef2"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_gt1j3")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id3k2"]
+render_priority = 0
+shader = ExtResource("2_hiy84")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbe8n"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_gt1j3")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("2_hiy84")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ugu46"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_gt1j3")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Bath" instance=ExtResource("1_khx08")]
+
+[node name="Bath" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_vtef2")
+surface_material_override/1 = SubResource("ShaderMaterial_dbe8n")
+surface_material_override/2 = SubResource("ShaderMaterial_ugu46")

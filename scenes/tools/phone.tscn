@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckfitvtsa3jl0"]
+[gd_scene load_steps=6 format=3 uid="uid://ckfitvtsa3jl0"]
 
 [ext_resource type="PackedScene" uid="uid://cp62f72oik2mm" path="res://assets/tools/iphone-16-pro-max/source/ip16promax.glb" id="1_fsqbe"]
 [ext_resource type="Script" uid="uid://d3fu34k7j26aq" path="res://scripts/phone.gd" id="1_txr4e"]
+[ext_resource type="PackedScene" uid="uid://bk68yq3cintl1" path="res://assets/Furniture Shaders/phone.tscn" id="2_c1jqq"]
 [ext_resource type="Script" uid="uid://dq86gvhe6d20d" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_item.gd" id="3_txr4e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_txr4e"]
@@ -14,8 +15,12 @@ script = ExtResource("1_txr4e")
 second_hand_grab = 1
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
+[node name="Phone" parent="." instance=ExtResource("2_c1jqq")]
+transform = Transform3D(0.2, 0, 0, 0, -8.74228e-09, -0.2, 0, 0.2, -8.74227e-09, 0, -0.0726265, 0)
+
 [node name="ip16promax" parent="." instance=ExtResource("1_fsqbe")]
 transform = Transform3D(0.186603, 0.0198288, -0.0691832, -0.05, 0.174002, -0.08499, 0.0517638, 0.0965926, 0.167303, 0, 0, 0)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00312637, -0.00111503, -0.00230397)

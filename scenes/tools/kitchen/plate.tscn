@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://dcj3aeqvitt61"]
+[gd_scene load_steps=9 format=4 uid="uid://dcj3aeqvitt61"]
 
 [ext_resource type="PackedScene" uid="uid://o2hiqedn77l1" path="res://scenes/tools/kitchen/BreadSnapZone.tscn" id="1_kdm1s"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="1_rnggg"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="2_ly1d1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wy2e"]
 resource_name = "plate"
@@ -42,12 +44,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lugde")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lq0nw"]
+render_priority = 0
+shader = ExtResource("1_rnggg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o80cs"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_lq0nw")
+shader = ExtResource("2_ly1d1")
+shader_parameter/color = Color(0.674815, 0.674815, 0.674815, 1)
+shader_parameter/specular = Color(0.442106, 0.191283, 0.391312, 0.5)
+shader_parameter/fresnel = Color(0.0552053, 0.218981, 0.291509, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [node name="plate2" type="Node3D"]
 
 [node name="plate" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yt5kl")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_o80cs")
 
 [node name="BreadSnapZone" parent="." instance=ExtResource("1_kdm1s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0403532, 0)

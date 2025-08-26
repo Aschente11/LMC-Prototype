@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqo5db0jkya17"]
+
+[ext_resource type="PackedScene" uid="uid://bbrabegioknvy" path="res://assets/tools/meta_quest_3/scene.gltf" id="1_x721f"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_p1be1"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_lrxs7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ve7d"]
+render_priority = 0
+shader = ExtResource("2_p1be1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdfi2"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_7ve7d")
+shader = ExtResource("3_lrxs7")
+shader_parameter/color = Color(0.697218, 0.699646, 0.706283, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_x721f")]
+
+[node name="Object_4" parent="Sketchfab_model/root/GLTF_SceneRootNode/Quest3HMD_0" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_hdfi2")

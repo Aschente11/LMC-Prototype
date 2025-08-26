@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwnywqy67fow3"]
+
+[ext_resource type="PackedScene" uid="uid://klebvjjjc3ss" path="res://assets/Low Poly Furniture/Miscellaneous/Light Switch.fbx" id="1_hvxd4"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_uwq4h"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_eg0qv"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aoynp"]
+render_priority = 0
+shader = ExtResource("2_uwq4h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w2fmp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_aoynp")
+shader = ExtResource("3_eg0qv")
+shader_parameter/color = Color(0.81, 0.81, 0.81, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.14471, 0.195866, 0.317678, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sjc7l"]
+render_priority = 0
+shader = ExtResource("2_uwq4h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yow1d"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_sjc7l")
+shader = ExtResource("3_eg0qv")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Light Switch" instance=ExtResource("1_hvxd4")]
+
+[node name="Light switch" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_w2fmp")
+surface_material_override/1 = SubResource("ShaderMaterial_yow1d")

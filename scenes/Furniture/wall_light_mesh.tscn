@@ -1,10 +1,35 @@
-[gd_scene load_steps=3 format=3 uid="uid://1jqdi10kvjb3"]
+[gd_scene load_steps=7 format=3 uid="uid://1jqdi10kvjb3"]
 
 [ext_resource type="PackedScene" uid="uid://bq6mfi4jkywig" path="res://assets/Low Poly Furniture/Lights/Wall Light.fbx" id="1_1h2ld"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_brop3"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_8ukqp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhixp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_brop3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m0o0a"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_8ukqp")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_brop3"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_8ukqp")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [node name="Wall Light" instance=ExtResource("1_1h2ld")]
 
 [node name="Wall Light" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_xhixp")
+surface_material_override/0 = SubResource("ShaderMaterial_m0o0a")
+surface_material_override/1 = SubResource("ShaderMaterial_brop3")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://ckp3opsts403i"]
 
-[ext_resource type="PackedScene" uid="uid://b7vvwv852dkny" path="res://assets/Low Poly Furniture/Doors/Door A.fbx" id="1_6k6a6"]
+[ext_resource type="PackedScene" uid="uid://dj2036653gf2d" path="res://assets/Furniture Shaders/door_a.tscn" id="1_dx16y"]
 
 [node name="Front Door" type="Node3D"]
 
-[node name="Door A" parent="." instance=ExtResource("1_6k6a6")]
+[node name="Door A2" parent="." instance=ExtResource("1_dx16y")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.2, 0, 0, 0)

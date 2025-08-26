@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://ktfs3m14u8tm"]
+
+[ext_resource type="PackedScene" uid="uid://c85drgcarax1" path="res://assets/Low Poly Furniture/Bathroom/Toilet Roll Holder.fbx" id="1_0jhob"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_ti1oy"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_ta3h2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_ti1oy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m37ic"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_ta3h2")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("2_ti1oy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_clxe5"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_ta3h2")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Toilet Roll Holder" instance=ExtResource("1_0jhob")]
+
+[node name="Toilet roll holder" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_m37ic")
+surface_material_override/1 = SubResource("ShaderMaterial_clxe5")
