@@ -4,6 +4,7 @@ extends Node3D
 @onready var bg_sounds: AudioStreamPlayer3D = $BGsounds
 @onready var knife: MeshInstance3D = $knife
 @onready var cat: MeshInstance3D = $cat
+@onready var start_animation = $AnimationPlayer
 
 # Store original position and rotation
 var original_position: Vector3
@@ -29,6 +30,7 @@ func _ready():
 	
 	# Start background sounds
 	bg_sounds.play()
+	start_animation.play("start")
 
 func _process(delta):
 	time_passed += delta

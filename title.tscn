@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://beqhw45ofd705"]
+[gd_scene load_steps=35 format=4 uid="uid://beqhw45ofd705"]
 
 [ext_resource type="Script" uid="uid://8wjg0qrrgrm1" path="res://title.gd" id="1_oyqm6"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="1_y7k74"]
@@ -282,6 +282,44 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="Animation" id="Animation_mom7w"]
+resource_name = "start"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pan:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.991382, 0, 0), Vector3(5.34071, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7lgly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pan:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.991382, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0824t"]
+_data = {
+&"RESET": SubResource("Animation_7lgly"),
+&"start": SubResource("Animation_mom7w")
+}
+
 [node name="Title" type="Node3D"]
 script = ExtResource("1_oyqm6")
 
@@ -341,7 +379,7 @@ transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 
 mesh = SubResource("TextMesh_kpexm")
 
 [node name="Pan" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 390.442, 920.628, 0, -920.628, 390.442, 0, 50.607, -11.2276)
+transform = Transform3D(1000, 0, 0, 0, 547.534, 836.784, 0, -836.784, 547.534, 0, 50.607, -11.2276)
 mesh = SubResource("ArrayMesh_kpexm")
 skeleton = NodePath("")
 
@@ -369,3 +407,8 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 51.8043, 0)
 mesh = SubResource("ArrayMesh_7lgly")
 skeleton = NodePath("")
 blend_shapes/body.Muchkin1 = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0824t")
+}
