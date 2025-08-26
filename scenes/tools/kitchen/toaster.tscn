@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://behhwuvqmx4wt"]
+[gd_scene load_steps=56 format=4 uid="uid://behhwuvqmx4wt"]
 
 [ext_resource type="Script" uid="uid://cpve7iqi4pd6l" path="res://scripts/toaster.gd" id="1_av462"]
 [ext_resource type="Texture2D" uid="uid://c8eojc43a6h0f" path="res://assets/tools/toaster/textures/toaster_low_main_BaseColor.png" id="1_m6p7k"]

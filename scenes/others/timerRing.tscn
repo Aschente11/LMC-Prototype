@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://l6oclp7kyb6q"]
 
-[ext_resource type="Script" uid="uid://dehrkunx63chw" path="res://scripts/timerRing.gd" id="1_3kgvf"]
+[ext_resource type="Script" path="res://scripts/timerRing.gd" id="1_3kgvf"]
 [ext_resource type="Texture2D" uid="uid://cwfcdmy2tt4fr" path="res://assets/textures/TimerBar.png" id="2_e7ivy"]
 [ext_resource type="Texture2D" uid="uid://f2jt72ywncyo" path="res://assets/textures/TimerProgressBar.png" id="3_byafl"]
 
