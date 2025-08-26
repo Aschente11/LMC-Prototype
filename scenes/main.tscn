@@ -74,13 +74,13 @@
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="70_mlv25"]
 [ext_resource type="Texture2D" uid="uid://bj08u75nm868b" path="res://assets/textures/new-york-city-manhattan.jpg" id="71_a82wo"]
 [ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="72_gdvew"]
-[ext_resource type="PackedScene" uid="uid://do5i12wv2yd7m" path="res://scenes/tools/kitchen/coffee.tscn" id="74_xljpf"]
+[ext_resource type="PackedScene" uid="uid://dcj3aeqvitt61" path="res://scenes/tools/kitchen/plate.tscn" id="73_kjtvk"]
 [ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="74_xrs0c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8jky"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4bwh"]
 albedo_texture = ExtResource("3_tbgi4")
 metallic = 1.0
 metallic_texture = ExtResource("4_pm3ni")
@@ -90,7 +90,7 @@ normal_texture = ExtResource("4_tefeu")
 uv1_scale = Vector3(3.505, 6.5, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kmb1v"]
-material = SubResource("StandardMaterial3D_j8jky")
+material = SubResource("StandardMaterial3D_j4bwh")
 size = Vector2(15, 8.005)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ksmap"]
@@ -111,7 +111,7 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_fuf3a"]
-material = SubResource("StandardMaterial3D_j8jky")
+material = SubResource("StandardMaterial3D_j4bwh")
 size = Vector2(15, 7.505)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ih3m7"]
@@ -127,7 +127,7 @@ shader_parameter/fresnel_texture = ExtResource("4_tefeu")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pibwh"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygd8o"]
 albedo_texture = ExtResource("3_tbgi4")
 metallic = 1.0
 metallic_texture = ExtResource("4_pm3ni")
@@ -137,7 +137,7 @@ normal_texture = ExtResource("4_tefeu")
 uv1_scale = Vector3(1.6, 3.575, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_c6pm6"]
-material = SubResource("StandardMaterial3D_pibwh")
+material = SubResource("StandardMaterial3D_ygd8o")
 size = Vector2(6.805, 4.565)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b6ruc"]
@@ -153,7 +153,7 @@ shader_parameter/fresnel_texture = ExtResource("4_tefeu")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5he1u"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2s0kr"]
 albedo_texture = ExtResource("7_qkpxi")
 roughness_texture = ExtResource("10_j8jky")
 normal_enabled = true
@@ -163,7 +163,7 @@ ao_texture = ExtResource("8_5q0nq")
 uv1_scale = Vector3(6.205, 3.755, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5poiv"]
-material = SubResource("StandardMaterial3D_5he1u")
+material = SubResource("StandardMaterial3D_2s0kr")
 size = Vector2(8.15, 4.53)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2cjbq"]
@@ -173,7 +173,7 @@ size = Vector3(15, 0.07, 20)
 render_priority = 0
 shader = ExtResource("18_j4bwh")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuf3a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xaipn"]
 next_pass = SubResource("ShaderMaterial_j4bwh")
 albedo_texture = ExtResource("7_y6deb")
 roughness_texture = ExtResource("9_2wyq8")
@@ -182,10 +182,10 @@ normal_texture = ExtResource("8_og1vs")
 uv1_scale = Vector3(2, 3.55, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_pibwh"]
-material = SubResource("StandardMaterial3D_fuf3a")
+material = SubResource("StandardMaterial3D_xaipn")
 size = Vector2(15, 20)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm6hj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ndrjj"]
 albedo_texture = ExtResource("6_trceg")
 metallic = 1.0
 metallic_texture = ExtResource("8_jkv2x")
@@ -196,16 +196,16 @@ ao_texture = ExtResource("7_a8y0u")
 uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tbgi4"]
-material = SubResource("StandardMaterial3D_tm6hj")
+material = SubResource("StandardMaterial3D_ndrjj")
 size = Vector2(15, 5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygd8o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfu41"]
 render_priority = 0
 shader = ExtResource("18_j4bwh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2s0kr"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ygd8o")
+next_pass = SubResource("ShaderMaterial_bfu41")
 shader = ExtResource("19_ksmap")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
 shader_parameter/base_texture = ExtResource("6_trceg")
@@ -219,7 +219,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ya4ey"]
 data = PackedVector3Array(7.5, 0, 2.5, -7.5, 0, 2.5, 7.5, 0, -2.5, -7.5, 0, 2.5, -7.5, 0, -2.5, 7.5, 0, -2.5)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kf5aa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4ag1"]
 albedo_texture = ExtResource("6_trceg")
 metallic = 1.0
 metallic_texture = ExtResource("8_jkv2x")
@@ -230,19 +230,19 @@ ao_texture = ExtResource("7_a8y0u")
 uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a8y0u"]
-material = SubResource("StandardMaterial3D_kf5aa")
+material = SubResource("StandardMaterial3D_r4ag1")
 size = Vector2(13, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2f3dj"]
 size = Vector3(16.5981, 0.1, 5)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mlv25"]
-material = SubResource("StandardMaterial3D_kf5aa")
+material = SubResource("StandardMaterial3D_r4ag1")
 size = Vector2(2.465, 2)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xaipn"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ygd8o")
+next_pass = SubResource("ShaderMaterial_bfu41")
 shader = ExtResource("19_ksmap")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
 shader_parameter/base_texture = ExtResource("6_trceg")
@@ -253,7 +253,7 @@ shader_parameter/fresnel_texture = ExtResource("9_jbj1t")
 shader_parameter/uv_scale = Vector2(3.035, 1.92)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5ykj"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0wtd"]
 albedo_texture = ExtResource("6_trceg")
 metallic = 1.0
 metallic_texture = ExtResource("8_jkv2x")
@@ -264,7 +264,7 @@ ao_texture = ExtResource("7_a8y0u")
 uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_trceg"]
-material = SubResource("StandardMaterial3D_t5ykj")
+material = SubResource("StandardMaterial3D_v0wtd")
 size = Vector2(13, 5)
 orientation = 0
 
@@ -272,13 +272,13 @@ orientation = 0
 size = Vector3(0.1, 5, 25.7281)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xrs0c"]
-material = SubResource("StandardMaterial3D_t5ykj")
+material = SubResource("StandardMaterial3D_v0wtd")
 size = Vector2(3.5, 5)
 orientation = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_11yus"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ygd8o")
+next_pass = SubResource("ShaderMaterial_bfu41")
 shader = ExtResource("19_ksmap")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
 shader_parameter/base_texture = ExtResource("6_trceg")
@@ -290,13 +290,13 @@ shader_parameter/uv_scale = Vector2(3.43, 4.11)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ih3m7"]
-material = SubResource("StandardMaterial3D_t5ykj")
+material = SubResource("StandardMaterial3D_v0wtd")
 size = Vector2(3.5, 4.285)
 orientation = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_155or"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ygd8o")
+next_pass = SubResource("ShaderMaterial_bfu41")
 shader = ExtResource("19_ksmap")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
 shader_parameter/base_texture = ExtResource("6_trceg")
@@ -308,11 +308,11 @@ shader_parameter/uv_scale = Vector2(3.035, 4.86)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dp3eg"]
-material = SubResource("StandardMaterial3D_kf5aa")
+material = SubResource("StandardMaterial3D_r4ag1")
 size = Vector2(18, 5)
 orientation = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e755i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgvw8"]
 albedo_texture = ExtResource("6_trceg")
 metallic = 1.0
 metallic_texture = ExtResource("8_jkv2x")
@@ -323,11 +323,11 @@ ao_texture = ExtResource("7_a8y0u")
 uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gdvew"]
-material = SubResource("StandardMaterial3D_e755i")
+material = SubResource("StandardMaterial3D_sgvw8")
 size = Vector2(5, 2)
 orientation = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro3en"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nfnn"]
 albedo_texture = ExtResource("6_trceg")
 metallic = 1.0
 metallic_texture = ExtResource("8_jkv2x")
@@ -338,13 +338,13 @@ ao_texture = ExtResource("7_a8y0u")
 uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_od4ux"]
-material = SubResource("StandardMaterial3D_ro3en")
+material = SubResource("StandardMaterial3D_6nfnn")
 size = Vector2(8.215, 4.35)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xhfw6"]
 size = Vector3(8.22962, 4.28375, 0.0406971)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1epgm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ue30"]
 albedo_texture = ExtResource("18_vchkt")
 roughness_texture = ExtResource("20_vc5cj")
 normal_enabled = true
@@ -352,10 +352,10 @@ normal_texture = ExtResource("19_txyw0")
 uv1_scale = Vector3(5.63, 2.795, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_152kg"]
-material = SubResource("StandardMaterial3D_1epgm")
+material = SubResource("StandardMaterial3D_4ue30")
 size = Vector2(8.215, 4.35)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4e17"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k42av"]
 albedo_texture = ExtResource("18_vchkt")
 roughness_texture = ExtResource("20_vc5cj")
 normal_enabled = true
@@ -363,11 +363,11 @@ normal_texture = ExtResource("19_txyw0")
 uv1_scale = Vector3(2.965, 3.055, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_y57op"]
-material = SubResource("StandardMaterial3D_r4e17")
+material = SubResource("StandardMaterial3D_k42av")
 size = Vector2(4.52, 5)
 orientation = 0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mlv25"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gr8w0"]
 albedo_texture = ExtResource("18_vchkt")
 roughness_texture = ExtResource("20_vc5cj")
 normal_enabled = true
@@ -375,10 +375,10 @@ normal_texture = ExtResource("19_txyw0")
 uv1_scale = Vector3(5.63, 2.69, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a82wo"]
-material = SubResource("StandardMaterial3D_mlv25")
+material = SubResource("StandardMaterial3D_gr8w0")
 size = Vector2(8.215, 4.35)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdvew"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_673bd"]
 albedo_texture = ExtResource("6_trceg")
 metallic = 1.0
 metallic_texture = ExtResource("8_jkv2x")
@@ -389,12 +389,12 @@ ao_texture = ExtResource("7_a8y0u")
 uv1_scale = Vector3(1.155, 2.965, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kjtvk"]
-material = SubResource("StandardMaterial3D_gdvew")
+material = SubResource("StandardMaterial3D_673bd")
 size = Vector2(0.96, 4.58)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vtx2l"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ygd8o")
+next_pass = SubResource("ShaderMaterial_bfu41")
 shader = ExtResource("19_ksmap")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
 shader_parameter/base_texture = ExtResource("6_trceg")
@@ -408,7 +408,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 [sub_resource type="BoxShape3D" id="BoxShape3D_xrs0c"]
 size = Vector3(1, 0.0231934, 4.56912)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xljpf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akjxb"]
 albedo_texture = ExtResource("6_trceg")
 metallic = 1.0
 metallic_texture = ExtResource("8_jkv2x")
@@ -419,12 +419,12 @@ ao_texture = ExtResource("7_a8y0u")
 uv1_scale = Vector3(3.915, 0.885, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_j4bwh"]
-material = SubResource("StandardMaterial3D_xljpf")
+material = SubResource("StandardMaterial3D_akjxb")
 size = Vector2(3.58, 1.46)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_63lxy"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ygd8o")
+next_pass = SubResource("ShaderMaterial_bfu41")
 shader = ExtResource("19_ksmap")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
 shader_parameter/base_texture = ExtResource("6_trceg")
@@ -439,12 +439,12 @@ shader_parameter/uv_offset = Vector2(0, 0)
 size = Vector3(3.544, 0.023, 1.418)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ygd8o"]
-material = SubResource("StandardMaterial3D_xljpf")
+material = SubResource("StandardMaterial3D_akjxb")
 size = Vector2(3.58, 1.595)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fjhjs"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_ygd8o")
+next_pass = SubResource("ShaderMaterial_bfu41")
 shader = ExtResource("19_ksmap")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
 shader_parameter/base_texture = ExtResource("6_trceg")
@@ -458,7 +458,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2s0kr"]
 size = Vector3(3.544, 0.023, 1.61017)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xaipn"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrx01"]
 albedo_texture = ExtResource("18_vchkt")
 roughness_texture = ExtResource("20_vc5cj")
 normal_enabled = true
@@ -468,10 +468,10 @@ uv1_scale = Vector3(1.675, -0.64, 0)
 uv1_offset = Vector3(0, -0.275, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ndrjj"]
-material = SubResource("StandardMaterial3D_xaipn")
+material = SubResource("StandardMaterial3D_vrx01")
 size = Vector2(4.555, 0.96)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ih3m7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uevf"]
 albedo_texture = ExtResource("18_vchkt")
 roughness_texture = ExtResource("20_vc5cj")
 normal_enabled = true
@@ -480,10 +480,10 @@ uv1_scale = Vector3(0.585, -2.265, 1)
 uv1_offset = Vector3(0, 0.105, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_11yus"]
-material = SubResource("StandardMaterial3D_ih3m7")
+material = SubResource("StandardMaterial3D_1uevf")
 size = Vector2(1.595, 3.58)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6ruc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tc087"]
 albedo_texture = ExtResource("18_vchkt")
 roughness_texture = ExtResource("20_vc5cj")
 normal_enabled = true
@@ -492,7 +492,7 @@ uv1_scale = Vector3(0.585, -2.265, 1)
 uv1_offset = Vector3(-1.612, 2.71, 0)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_155or"]
-material = SubResource("StandardMaterial3D_b6ruc")
+material = SubResource("StandardMaterial3D_tc087")
 size = Vector2(1.53, 3.58)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0cgu"]
@@ -501,7 +501,7 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(0.906332, 0.709639, 0.28566, 1)
 emission_enabled = true
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_vqlck"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_73205"]
 _surfaces = [{
 "aabb": AABB(-0.00470758, -0.00262038, -0.00265148, 0.00679889, 0.00524076, 0.00543319),
 "format": 34359742465,
@@ -533,15 +533,15 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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xtsCO8Y04LmhbWy692TNOr804DlunKM692TNOr804DnlK866lv+oOhygrjkOkdq6CheEOaSFI65mQSe7ZqpKuKSFI65lxC27VzYpuq/3vLplxC27w1muuKSFI65GebO6b8kIu6FWA7tGebO6b8kIu6FWA7v6mSw7CRCGu1hYAi9GebO6CRCGu1hYAi/6mSw7bWWTuw9C9i5oTTY7fYN4uxh037poTTY7w1muuKSFI676mSw7w1muuKSFI65GebO6ZqpKuKSFI65lxC27bskIu8ieBTtlxC27SEVnu673vDplxC27WjYpuq/3vDplxC27VzYpuq/3vLplxC27b8kIu8WeBbtlxC27SEVnu6z3vLplxC27WjYpuq/3vDplxC27ZqpKuKSFI65lxC27CheEOaSFI65mQSe7SEVnu673vDplxC27bskIu8ieBTtlxC27b8kIu8WeBbtlxC27SEVnu6z3vLplxC27XC91u9PL2LpmQSe7SEVnu6z3vLplxC27GzSHu0a6AS9lxC27XC91u9fL2DpmQSe74QqRu0DO+C5mQSe7GzSHu0a6AS9lxC27SEVnu673vDplxC27b8kIu09MGbtmQSe7ChzjudjL2LpmQSe7VzYpuq/3vLplxC27b8kIu8WeBbtlxC27w1muuKSFI65GebO6bskIu6NWAztGebO6b8kIu2gBHrtoTTY7b8kIu6zWDbtoTTY7n/cRug2XyLpoTTY7fYN4uxh037poTTY79hRtuwiXyLpoTTY70r+pOaSFI65oTTY7mqehOKSFI65oTTY7n/cRugyXyDpoTTY7+3rIuRt03zpoTTY7bskIu67WDTtoTTY7bskIu2wBHjtoTTY7fYN4uxt03zpoTTY79hRtuwqXyDpoTTY7bWWTuw9C9i5oTTY7fYN4uxt03zpoTTY7DlCLu+4B/y5oTTY7bskIu6NWAztGebO6F8ULOqSFI66Knyk7F8ULOqSFI66ZEQ+7b8kIu7O6K7uKnyk7b8kIu7O6K7uZEQ+7E0Kau67U7i6Knyk7E0Kau67U7i6ZEQ+7bskIu7i6KzuKnyk7bskIu7i6KzuZEQ+7bskIu2wBHjtoTTY7+3rIuRt03zpoTTY7+3rIuRt03zpoTTY7j7F1uajc8jqKnyk70r+pOaSFI65oTTY7+3rIuR1037poTTY70r+pOaSFI65oTTY7F8ULOqSFI66Knyk7+3rIuR1037poTTY7j7F1uarc8rqKnyk7b8kIu2gBHrtoTTY7fYN4uxh037poTTY7b8kIu2gBHrtoTTY7b8kIu7O6K7uKnyk7bWWTuw9C9i5oTTY7fYN4uxh037poTTY74xuBu6Xc8rqKnyk7bWWTuw9C9i5oTTY7E0Kau67U7i6Knyk7fYN4uxt03zpoTTY7fYN4uxt03zpoTTY74xuBu6jc8jqKnyk7bskIu7i6KzuKnyk7bskIu2wBHjtoTTY7bskIu6NWAzv6mSw7bskIu6NWAztGebO6bskIu67WDTtoTTY7n/cRugyXyDpoTTY7jaovupS9uTr6mSw7n/cRugyXyDpoTTY7mqehOKSFI65oTTY7w1muuKSFI676mSw7mqehOKSFI65oTTY7n/cRug2XyLpoTTY7jaovupa9ubr6mSw7n/cRug2XyLpoTTY7b8kIu6zWDbtoTTY7b8kIu6FWA7v6mSw7b8kIu6zWDbtoTTY79hRtuwiXyLpoTTY7O6hlu5G9ubr6mSw79hRtuwiXyLpoTTY7DlCLu+4B/y5oTTY7CRCGu1hYAi/6mSw7DlCLu+4B/y5oTTY79hRtuwqXyDpoTTY7bskIu6NWAzv6mSw7O6hlu5O9uTr6mSw79hRtuwqXyDpoTTY7bskIu67WDTtoTTY7j7F1uajc8jqZEQ+7bskIu7i6KzuZEQ+7CheEOaSFI65mQSe7F8ULOqSFI66ZEQ+7j7F1uajc8jqZEQ+7j7F1uarc8rqZEQ+7F8ULOqSFI66ZEQ+7CheEOaSFI65mQSe7b8kIu7O6K7uZEQ+7j7F1uarc8rqZEQ+74xuBu6Xc8rqZEQ+7b8kIu7O6K7uZEQ+7b8kIu09MGbtmQSe7E0Kau67U7i6ZEQ+74xuBu6Xc8rqZEQ+74QqRu0DO+C5mQSe74xuBu6jc8jqZEQ+7E0Kau67U7i6ZEQ+7bskIu1NMGTtmQSe7bskIu7i6KzuZEQ+74xuBu6jc8jqZEQ+7DxzjudfL2DpmQSe7bskIu1NMGTtmQSe7bskIu8ieBTtlxC27WjYpuq/3vDplxC27lv+oOhygrjmXAbA6lv+oOiSgrrmXAbA66MnBOiSgrrmXAbA66MnBOhygrjmXAbA6KiLGOhygrjmXAbA6KiLGOiSgrrmXAbA66MnBOsY04Lm0Thc6xtsCO8Y04Lm0Thc6xtsCO8Y04LlX40g66MnBOsY04LlX40g66MnBOsY04LmhbWy6lv+oOsY04LlunKM66MnBOsY04LlunKM6lv+oOsY04LlX40g66MnBOsY04LkjAY+6xtsCO8Y04LkjAY+6xtsCO8Y04LlR2ZW692TNOsY04LnlK8666MnBOsY04LnlK866lv+oOsY04LkjAY+6lv+oOsY04LnlK866Ye+EORygrjlunKM6Ye+EOSSgrrlunKM6Ye+EOSSgrrlX40g6Ye+EORygrjlX40g66MnBOsY04LlX40g6xtsCO8Y04Lm2k1Y6xtsCO8Y04LlX40g66MnBOsY04LlunKM692TNOsY04LlunKM6lv+oOr804DkjAY+6BYS2Ob804DkjAY+6BYS2Ob804DnlK866lv+oOr804DnlK866BYS2OcY04LlunKM6lv+oOsY04LlunKM6lv+oOsY04LlX40g6BYS2OcY04LlX40g6xtsCO7804Dm2k1Y66MnBOr804DlX40g6xtsCO7804DlX40g66MnBOr804DlunKM6KiLGOiSgrrkOkdq6KiLGOhygrjkOkdq66MnBOhygrjkOkdq66MnBOiSgrrkOkdq6lv+oOiSgrrkOkdq6lv+oOhygrjkOkdq6BYS2ORygrjkOkdq6BYS2OSSgrrkOkdq6xtsCO7804Dm0Thc66MnBOr804Dm0Thc66MnBOr804DmhbWy66MnBOr804DlX40g6xtsCO7804DlX40g6xtsCO7804DmhbWy6xtsCO7804DkjAY+66MnBOr804DkjAY+6lv+oOr804DlX40g66MnBOr804DlunKM6lv+oOr804DlunKM6lv+oOr804DkjAY+6lv+oOr804DnlK8666MnBOr804DnlK866Wg4JOxygrjm0Thc6Wg4JOxygrjmhbWy6Wg4JOySgrrmhbWy6Wg4JOxygrjlX40g6Wg4JOySgrrlX40g6Wg4JOySgrrkcDkg6Wg4JOxygrjkcDkg6Wg4JOxygrjlX40g6Wg4JOySgrrlX40g6FkvbOhygrjlMzdG6GEvbOiSgrrlMzdG6BYS2OcY04LkjAY+6lv+oOsY04LkjAY+6BYS2OcY04LnlK866lv+oOr804DlunKM6BYS2Ob804DlunKM6BYS2Ob804DlX40g6lv+oOr804DlX40g6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xtsCO8Y04LlX40g6Wg4JOxygrjlX40g6Wg4JOxygrjkcDkg6xtsCO7804Dm2k1Y6xtsCO7804DlX40g6fSV8pXylQO19JXylfKVA7X0lglqCWkDtfSWCWoJaQO2CWoHagdq90oJagdqB2r3SfKWB2oHaQK18pYHagdpArYHafKV8pb6SgdqCWoJavpKB2nylfKW+koHaglqCWr6SC/TaHKkdlNwL9CTjmB8m2tocC/T+M53P2hzzC30lvdL/f/9/fSVArf9//399JUCt/3//f30lQK3/f/9/fSVArXylgdqB2kCtglqB2oHavdLQOqLngdq90i7FoueB2kCtgdqCWoJavpKB2nylfKW+kqLnLsV8pb6SoufQOoJavpIuxVwYfSVArdA6XBh9Jb3SfKV9JX0lQK2CWn0lfSW90lwY0DqCWkDtXBguxXylQO19JYJaglpA7X0lfKV8pUDtfKV9JX0lQK18pX0lfSVArYJafSV9Jb3Sglp9JX0lvdLDarpM/ReYnTuVRLO1Ra2zRLPDamlFnrO6TDuV2hdvnbpMO5XaF2+dRLPDamlFnrM7lUSztUWts8Nqukz9F5id+sp9JQU1fKX/fwAAAAD/v+xEiR1mJhrZfKX6SgQ1fKVUVVVV/z//36oqqir/P//fdWITO0AllNNUVVVV/z//36oqqir/P//f/z//f/9/////P/9//3///wAA/7//f///AAD/v/9///91YuvEmNka2VRVqar/v//fqipU1f+//9/6yoHa+sp8pexEdeK+2pTTfKUEtfrKfKWqKlTV/7//31RVqar/v//f//////9/AID//////38AgP//////fwCA//////9/AIDwultT1UiUm/+//7//v/+fWtMNxSm3lJta0w3FKbeUm1rT8TrVSJSb8LqjrCm3lJvwultT1UiUmwAA/7//f///AAD/v/9/////P/9//3////8//3//f///AAD/v/9///8AAP+//3////8//3//f////z//f/9/////f/9//38AgP9//3//fwCA/3//f/9/AID/f/9//38AgP+/AADlwBn//7///zR+jN//vwAA5MAZ/////7//f/7/////v/9/////v/9//3/+//9//3//f/7//3//f/9//v//v/9//3/+/30lfKV8pUDtglqB2oHavdKCWoHagdq90oHafKV8pb6Sgdp8pXylvpLaHAv0/jOdzwAA//99Jb3S8wvaHA80mc/aHPMLfSW90v9//399JUCt/3//f30lQK2CWn0lfSW90oJagdqB2r3SglqB2oHavdKCWoHagdq90nylgdqB2kCtLsWi54HaQK2B2nylfKW+koHafKV8pb6Sgdp8pXylvpKB2oJaglq+knylfSV9JUCtfKV9JX0lQK18pX0lfSVArYJafSV9Jb3SLsVcGH0lQK19JYJaglpA7X0lglqCWkDtfSWCWoJaQO19JXylfKVA7VwY0DqCWkDtRLM7lRFNJLX/f/9/eCVDrTuVukx8JUStukzDarwUz5nDarpM/ReYncNqRLN2JUCtO5VEs7VFrbP/f/9/eCVDrf9//394JUOt/3//f3glQ61EszuVEU0ktbpMw2q8FM+Z/38AAAAA/7//f///////v/9//v////+//3///////7////9//38AgFrTDcUpt5Sb/7//P/8//59pmKOsVkhA/1rTlOd1fijk/7///zR+jN8L9NocqR2U3Av02hypHZTcC/TaHKkdlNx9JXylfKVA7XylgdqB2kCtfKWB2oHaQK2B2oJaglq+koHaglqCWr6S/3//f3glQ63/f/9/eCVDrX0lglqCWkDtfSWCWoJaQO0AAP//fSW90gAA//99Jb3SAAD//30lvdIAAP//fSW90gAA//99Jb3SAAD//30lvdIAAP//fSW90gv0JOOYHybaC/Qk45gfJ9oL9CTjmB8n2tocC/T+M53P2hwL9P4znc/aHPMLfSW90toc8wt9Jb3S8wvaHA80ms/zC9ocDzSaz/ML2hwPNJrP8wsk48I4ls7zCyTjwjiWzvMLJOPCOJbO8wsk48I4ls4k4/MLkR8v2iTj8wuRHy/aJOPzC5EfL9ok4/MLkR8v2v9//399JUCt/3//f30lQK3/f/9/eCVDrf9//394JUOt/3//f3glQ63/f/9/eCVDrf9//394JUOt/3//f3glQ63/f/9/eCVDrf9//394JUOt/3//f3glQ63/f/9/eCVDrf9//394JUOt/3//f3glQ63/f/9/eCVDrf9//394JUOt/3//f3glQ63/f/9/eCVDrYJafSV9Jb3SgdqCWoJavpKB2oJaglq+koJafSV9Jb3Sglp9JX0lvdJ9JXylfKVA7X0lfKV8pUDtfKWB2oHaQK18pYHagdpArTuVRLO1Ra2zO5VEs7VFrbNEszuVEU0ktUSzO5URTSS1RLM7lRFNJLVEs8NqaUWes0Szw2ppRZ6zRLPDamlFnrM7lbpMfCVErTuVukx8JUStO5W6THwlRK3DarpM/ReYncNqukz9F5idw2q6TP0XmJ26TMNqvBTPmbpMw2q8FM+ZukzDarwUz5m6TDuV2hdvnbpMO5XaF2+dukw7ldoXb53DakSzdiVArcNqRLN2JUCtw2pEs3YlQK3DakSzdiVArXylfSV9JUCtfKV9JX0lQK3DarpM/ReYncNqukz9F5idukzDarwUz5m6TMNqvBTPmbpMw2q8FM+Zukw7ldoXb526TDuV2hdvnbpMO5XaF2+dw2pEs3YlQK3DakSzdiVArcNqRLN2JUCtO5VEs7VFrbM7lUSztUWtszuVRLO1Ra2zRLM7lRFNJLVEszuVEU0ktUSzO5URTSS1RLPDamlFnrNEs8NqaUWes0Szw2ppRZ6zO5W6THwlRK07lbpMfCVErTuVukx8JUStO5W6THwlRK0uxaLngdpArS7FoueB2kCtoucuxXylvpKi5y7FfKW+kqLnLsV8pb6SoufQOoJavpKi59A6glq+kqLn0DqCWr6SLsVcGH0lQK0uxVwYfSVArdA6XBh9Jb3S0DpcGH0lvdLQOlwYfSW90lwY0DqCWkDtXBjQOoJaQO1cGC7FfKVA7VwYLsV8pUDtXBguxXylQO3QOqLngdq90tA6oueB2r3S0Dqi54HavdIk4wv0fSW90iTjC/R9Jb3SJOML9H0lvdIk4wv0fSW90v9//3//f/7//3//f/9/////f/9//3////9//3//f/7//3//f/9//v//f/9//3////9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/vwAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f////38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9///////+//3///////7//f///////v/9///////+//38AAAAA/7//fwAAAAD/v/9/AAAAAP+//38AAAAA/7//f/7/////v/9//v////+//3/+/////7//f/7/////v///////f/7///////9//////////3//////////f/7///////9//v///////3//////////f/////////9/////f///////v/9///////+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+//3///////7//f///////v/9///////+/////f/9/AID///9//38AgP///3//fwCA////f/9/AID///9//38AgAAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/////v/9//v////+//3/+//9/AAAAAP+//38AAAAA/7//fwAAAAD/v/9///////+//3///////7//f///////v/9///////+/AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f///AAD/f/9///8AAP9//3///wAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+//7//f/9//v//v/9//3/+//9///////+//3///////7//f///////v6oqqir/P//fqiqqKv8//99UVVVV/z//31RVVVX/P//fqipU1f+//9+qKlTV/7//31RVqar/v//fVFWpqv+//99UVVVV/z//31RVVVX/P//f/3//P7uBkN//f/8/u4GQ3/9//z+7gZDf/3//P7uBkN+qKqoq/z//36oqqir/P//fqipU1f+//9+qKlTV/7//3/+/AADkwBn//78AAOTAGf//vwAA5MAZ/1RVqar/v//fVFWpqv+//9//v/+//7//n/+//7//v/+f/7//v/+//5//f/+/IT8g//9//78hPyD//3//vyE/IP//f/+/IT8g//+//7//v/+f/7//v/+//5//v/+//7//n/+//7//v/+f/7//P/8//5//v/8//z//n/+//z//P/+f/7//P/8//5//v///NH6M3/+///80fozf/7///zR+jN//v/8//z//n/+//z//P/+f/7//P/8//591YhM7hCsy03ViEzs2MjLTdWITO28k2dN1YhM7ix7Q1exEiR1mJifU7ESJHWYmGtnsRIkdZiYn1OxEiR2iK0XPdWLrxJjZJ9R1YuvEmNka2XVi68SY2SfUdWLrxFzURc/sRHXietQy0+xEdeLIzTLT7ER14o/b2dPsRHXic+HQ1VrTahistzn/WtNqGKy3Of9a02oYrLc5/1rT8TrVSJSbWtPxOtVIlJvwultT1UiUm2mYW1N8gSrkaZhbU3yBKuRpmFtTfIEq5FrTlOd1fijkWtOU53V+KORpmKOsVkhA/2mYo6xWSED/8LqjrCm3lJvwuqOsKbeUmwAA/7//f///AAD/v/9/////P/8//z//3/8//z//P//f/z//P/8//9//P/8//z//3/8//3//f////z//f/9/////P/+//7//3/8//7//v//f/z//v/+//9//P/+//7//3/+///80fozf/7///zR+jN//v///NH6M3/9//z+7gZDf/3//P7uBkN//f/8/u4GQ3/9//z+7gZDf/z//P/8//9//P/8//z//3/8//z//P//f/z//P/8//9//P/9//3////8//3//f////z//v/+//9//P/+//7//3/8//7//v//f/z//v/+//9//vwAA5MAZ//+/AADlwBn//78AAOTAGf8AAP+//3///wAA/7//f////3//vyE/IP//f/+/IT8g//9//78hPyD//3//vyE/IP//v/+//7//n/+//7//v/+f/7//v/+//5//v/+//7//n/+//z//P/+f/7//P/8//5//v/8//z//n/+//z//P/+f/3//PyE/3YD/f/8/IT/dgP9//z8hP92A/3//PyE/3YD/v///5MDlgP+////kwOWA/7///+TA5YD/v///5MDlgP+/AAA0fnKg/78AADR+cqD/vwAANH5yoP+/AAA0fnKg////f/9/AID///9//38AgP///3//fwCA////f/9/AID/f/+/u4FuoP9//7+7gW6g/3//v7uBbqD/f/+/u4FuoP8//3//f////z//f/9///8AAP+//3///wAA/7//f////z//P/8//9//P/8//z//3/8//z//P//f/z//P/8//9//P/+//7//3/8//7//v//f/z//v/+//9//P/+//7//3/rKfSUENXyl+sp9JQQ1fKX6yn0lBDV8pf//gdr/f/7///+B2v9//////4Ha/3/+////gdr/f/7/+sqB2vrKfKX6yoHa+sp8pfrKgdr6ynyl//+CWv9/AID//4Ja/38AgP//glr/fwCA//+CWv9/AIB8pQS1+sp8pXylBLX6ynylfKUEtfrKfKV8pf9//3/+/3yl/3//f///fKX/f/9//v98pf9//3/+/3yl+koENXylfKX6SgQ1fKV8pfpKBDV8pYHa/3//fwCAgdr/f/9/AICB2v9//38AgIHa/3//fwCA/7//v/+//5//v/+//7//n/+//7//v/+f/7//v/+//5//v/8//z//n/+//z//P/+f/7//P/8//5//v/8//z//n/+/AADkwBn//78AAOTAGf//vwAA5MAZ//+/AADkwBn//7///zR+jN//v///NH6M3/+///80fozf/7///zR+jN//f/+/IT8g//9//78hPyD//3//vyE/IP//f/+/IT8g//9//z+7gZDf/3//P7uBkN//f/8/u4GQ3/9//z+7gZDf/7//P/8//5//v/8//j/+n/+//z//P/+f/7//P/8//5//v/+//7//n/+//7/+v/+f/7//v/+//5//v/+//7//nw==")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_vqlck")
+shadow_mesh = SubResource("ArrayMesh_73205")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bfu41"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0tljd"]
 render_priority = 0
 shader = ExtResource("18_j4bwh")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r4ag1"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_bfu41")
+next_pass = SubResource("ShaderMaterial_0tljd")
 shader = ExtResource("19_ksmap")
 shader_parameter/color = Color(0.601686, 0.442794, 0.156603, 1)
 shader_parameter/specular = Color(0.381231, 0.281308, 0.0929288, 0.5)
@@ -572,12 +572,12 @@ shader_parameter/albedo = Color(0, 0, 0, 1)
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gdvew"]
 panorama = ExtResource("71_a82wo")
 
-[sub_resource type="Sky" id="Sky_kjtvk"]
+[sub_resource type="Sky" id="Sky_mgpkq"]
 sky_material = SubResource("PanoramaSkyMaterial_gdvew")
 
 [sub_resource type="Environment" id="Environment_xrs0c"]
 background_mode = 2
-sky = SubResource("Sky_kjtvk")
+sky = SubResource("Sky_mgpkq")
 sky_rotation = Vector3(0.151844, -1.96873, 0.151844)
 
 [node name="Main" type="Node3D"]
@@ -789,17 +789,21 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.473
 
 [node name="CardboardBox" parent="Room" instance=ExtResource("22_a82wo")]
 transform = Transform3D(0.998603, -0.0528414, 0, 0.0528414, 0.998603, 0, 0, 0, 1, -9.41352, 0.387674, -5.44379)
+collision_mask = 65542
 
 [node name="Speakers" parent="Room/CardboardBox" instance=ExtResource("47_o7ddy")]
-transform = Transform3D(0.0688335, 0.95741, 0.280408, 0.997232, -0.0581096, -0.0463906, -0.0281204, 0.282825, -0.958759, -0.084116, -0.178699, 0.103086)
+transform = Transform3D(0.0688335, 0.95741, 0.280408, 0.997232, -0.0581096, -0.0463906, -0.0281204, 0.282825, -0.958759, -0.0807428, -0.11497, 0.103086)
 
 [node name="Phone" parent="Room/CardboardBox" instance=ExtResource("46_bu4jf")]
 transform = Transform3D(-0.337249, -0.884012, 0.323708, 0.0680324, 0.320067, 0.944949, -0.938954, 0.340706, -0.047801, -0.0511522, -0.0601424, 0.308663)
+picked_up_layer = 65542
 
 [node name="Pencil_Model" parent="Room/CardboardBox" instance=ExtResource("48_152kg")]
 transform = Transform3D(0.997345, 0.0528414, -0.0501214, -0.0527748, 0.998603, 0.00265221, 0.0501916, -3.72529e-09, 0.99874, 0.167356, -0.0669073, -0.19866)
+picked_up_layer = 65542
 
 [node name="Meta" parent="Room/CardboardBox" instance=ExtResource("26_gdvew")]
+picked_up_layer = 65542
 
 [node name="window" parent="Room" instance=ExtResource("27_mlv25")]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -9.75761, 1.13639, -10.0743)
@@ -1028,8 +1032,8 @@ environment = SubResource("Environment_xrs0c")
 [node name="toaster" parent="." instance=ExtResource("72_gdvew")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61357, 1.36149, 7.63023)
 
+[node name="plate2" parent="." instance=ExtResource("73_kjtvk")]
+transform = Transform3D(1.0176, 0, 0, 0, 1.0176, 0, 0, 0, 1.0176, -5.65379, 1.32104, 6.94697)
+
 [node name="bread" parent="." instance=ExtResource("74_xrs0c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31352, 1.3697, 6.69074)
-
-[node name="coffee" parent="." instance=ExtResource("74_xljpf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36083, 1.47741, 5.32684)
