@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://iql24ddnlvra" path="res://scripts/mouth.gd" id="5_mc5w1"]
 [ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="5_wrvet"]
 [ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="6_ecy5y"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="6_mc5w1"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="6_mvv4w"]
 [ext_resource type="AudioStream" uid="uid://qmevnuxpi71q" path="res://assets/sfx/eating.mp3" id="6_ujsbv"]
 [ext_resource type="Script" uid="uid://cji1tdhhvihrj" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_single_controller_asm.gd" id="7_cibq4"]
@@ -33,14 +34,23 @@ text = "Unpacking made me tired. Time for bed."
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujsbv"]
 size = Vector3(0.453125, 0.486328, 0.535156)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujsbv"]
+render_priority = 0
+shader = ExtResource("6_mc5w1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrvet"]
+next_pass = SubResource("ShaderMaterial_ujsbv")
 transparency = 1
 albedo_color = Color(0.313726, 1, 1, 0.52549)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_323tq"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twgfx"]
+render_priority = 0
+shader = ExtResource("6_mc5w1")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mvv4w"]
+next_pass = SubResource("ShaderMaterial_twgfx")
 transparency = 1
 albedo_color = Color(0.313726, 1, 1, 0.52549)
 

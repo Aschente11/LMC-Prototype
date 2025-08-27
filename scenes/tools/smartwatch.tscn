@@ -1,17 +1,28 @@
-[gd_scene load_steps=36 format=4 uid="uid://cyu5exn7vgfy8"]
+[gd_scene load_steps=43 format=4 uid="uid://cyu5exn7vgfy8"]
 
 [ext_resource type="Texture2D" uid="uid://bhem26tmp2qnp" path="res://assets/others/smartwatchUI.png" id="1_btis5"]
 [ext_resource type="Script" uid="uid://be0om5l06qdr4" path="res://scripts/smartwatch.gd" id="1_jvnqj"]
 [ext_resource type="Texture2D" uid="uid://c51sohagu4euo" path="res://assets/others/marker.png" id="2_jvnqj"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_lhfxo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_286on"]
+render_priority = 0
+shader = ExtResource("2_lhfxo")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rd3w"]
 resource_name = "WatchBase"
+next_pass = SubResource("ShaderMaterial_286on")
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.686275, 0.701961, 0.733333, 1)
 emission_enabled = true
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mw1v2"]
+render_priority = 0
+shader = ExtResource("2_lhfxo")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hdwuo"]
 resource_name = "Watch Back"
+next_pass = SubResource("ShaderMaterial_mw1v2")
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.0399907, 0.0399907, 0.0399907, 1)
 emission_enabled = true
@@ -143,7 +154,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_omg8r")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m4yh8"]
+render_priority = 0
+shader = ExtResource("2_lhfxo")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tifp"]
+next_pass = SubResource("ShaderMaterial_m4yh8")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_7dnen"]
 _surfaces = [{
@@ -177,7 +193,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7dnen")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2hhy"]
+render_priority = 0
+shader = ExtResource("2_lhfxo")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ooes4"]
+next_pass = SubResource("ShaderMaterial_q2hhy")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_u2avt"]
 _surfaces = [{
@@ -211,8 +232,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_u2avt")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bpnv7"]
+render_priority = 0
+shader = ExtResource("2_lhfxo")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al5ca"]
 resource_name = "Band"
+next_pass = SubResource("ShaderMaterial_bpnv7")
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.694118, 0.717647, 0.764706, 1)
 emission_enabled = true
@@ -353,7 +379,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e8dem")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0rxla"]
+render_priority = 0
+shader = ExtResource("2_lhfxo")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv0v0"]
+next_pass = SubResource("ShaderMaterial_0rxla")
 albedo_color = Color(0.223529, 0.647059, 0.803922, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vntjt"]

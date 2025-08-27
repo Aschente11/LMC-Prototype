@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://barpi16l33v5p"]
+
+[ext_resource type="PackedScene" uid="uid://bi4la0movkkbv" path="res://assets/Low Poly Furniture/Drawers/Drawer B.fbx" id="1_jha48"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_2j3n8"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_otccf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umxex"]
+render_priority = 0
+shader = ExtResource("2_2j3n8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6oi5n"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_umxex")
+shader = ExtResource("3_otccf")
+shader_parameter/color = Color(0.62, 0.39, 0.24, 1)
+shader_parameter/specular = Color(0.459184, 0.226145, 0.11232, 0.5)
+shader_parameter/fresnel = Color(0.339047, 0.126405, 2.40654e-08, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y51ow"]
+render_priority = 0
+shader = ExtResource("2_2j3n8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sqca4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_y51ow")
+shader = ExtResource("3_otccf")
+shader_parameter/color = Color(0.62, 0.39, 0.24, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mswla"]
+render_priority = 0
+shader = ExtResource("2_2j3n8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avpdp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_mswla")
+shader = ExtResource("3_otccf")
+shader_parameter/color = Color(0.76, 0.52, 0.35, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Drawer B" instance=ExtResource("1_jha48")]
+
+[node name="Drawer B" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_6oi5n")
+
+[node name="Drawer B_001" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_sqca4")
+surface_material_override/1 = SubResource("ShaderMaterial_avpdp")
+
+[node name="Drawer B_002" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_sqca4")
+surface_material_override/1 = SubResource("ShaderMaterial_avpdp")
+
+[node name="Drawer B_003" parent="." index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_sqca4")
+surface_material_override/1 = SubResource("ShaderMaterial_avpdp")

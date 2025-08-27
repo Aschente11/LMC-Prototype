@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl6mvtu2kpwew"]
+
+[ext_resource type="PackedScene" uid="uid://bw8dd6f3886s1" path="res://assets/Low Poly Furniture/Chairs/Chair C.fbx" id="1_ab8cl"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_r44pr"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_vo683"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("2_r44pr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i75st"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_vo683")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm11h"]
+render_priority = 0
+shader = ExtResource("2_r44pr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6g6k4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_wm11h")
+shader = ExtResource("3_vo683")
+shader_parameter/color = Color(0.61, 0.17, 0.12, 1)
+shader_parameter/specular = Color(0.552363, 2.40654e-07, 0.305143, 0.5)
+shader_parameter/fresnel = Color(0.374839, 1.49205e-06, 0.234457, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Chair C" instance=ExtResource("1_ab8cl")]
+
+[node name="Chair C" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_i75st")
+surface_material_override/1 = SubResource("ShaderMaterial_6g6k4")

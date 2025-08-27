@@ -1,8 +1,10 @@
-[gd_scene load_steps=24 format=4 uid="uid://cdrmm7xmotkk8"]
+[gd_scene load_steps=30 format=4 uid="uid://cdrmm7xmotkk8"]
 
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_nnhoa"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_eykfv"]
 [ext_resource type="Script" uid="uid://cgettxdui2mmi" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_one_hand_tool_asm.gd" id="2_n4l37"]
 [ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="3_n4l37"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_uc0ts"]
 [ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="3_v01hk"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="6_v01hk"]
 [ext_resource type="Animation" uid="uid://plad1r85f7ws" path="res://addons/godot-xr-tools/hands/animations/left/Grip.res" id="7_nrcgi"]
@@ -47,6 +49,20 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nrcgi")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_eykfv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28dhj"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_uc0ts")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.259151, 0.184807, 0.0762073, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bccce"]
 resource_name = "Material.003"
 cull_mode = 2
@@ -85,8 +101,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fugbg")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkd56"]
-albedo_color = Color(0.970214, 0.777385, 0.408153, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eykfv"]
+render_priority = 0
+shader = ExtResource("2_eykfv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc0ts"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_eykfv")
+shader = ExtResource("3_uc0ts")
+shader_parameter/color = Color(0.97, 0.77, 0.4, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5fp5a"]
 resource_name = "Material"
@@ -126,8 +153,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_x7b5m")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nnhoa"]
-albedo_color = Color(0, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4g1dc"]
+render_priority = 0
+shader = ExtResource("2_eykfv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otruq"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_4g1dc")
+shader = ExtResource("3_uc0ts")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x7b5m"]
 size = Vector3(0.0130386, 0.188248, 0.0189209)
@@ -155,18 +193,19 @@ metadata/_custom_type_script = "uid://bs5crmi43kekt"
 transform = Transform3D(5.73206e-18, 1.31134e-10, 0.001, 0.003, -1.31134e-10, 0, 1.31134e-10, 0.003, -4.37114e-11, 0, 0.0990086, 0)
 mesh = SubResource("ArrayMesh_pkd56")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_28dhj")
 
 [node name="middle" type="MeshInstance3D" parent="knife edge mesh"]
 transform = Transform3D(2.73593, 0, 0, 0, 3.38787, 0, 0, 9.09495e-13, 4.78987, -14.0514, -2.32386, 0)
 mesh = SubResource("ArrayMesh_1i1cn")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_pkd56")
+surface_material_override/0 = SubResource("ShaderMaterial_uc0ts")
 
 [node name="handle" type="MeshInstance3D" parent="knife edge mesh"]
 transform = Transform3D(1.51853, 0, 0, 0, 1.51853, 0, 0, 4.54747e-13, 5.67166, -45.7731, -1.88092, 1.90735e-06)
 mesh = SubResource("ArrayMesh_viixc")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_nnhoa")
+surface_material_override/0 = SubResource("ShaderMaterial_otruq")
 
 [node name="OISActorComponent" type="Node3D" parent="."]
 script = ExtResource("3_v01hk")

@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://50ptpuwywwfu"]
+
+[ext_resource type="PackedScene" uid="uid://vkbyf76lr806" path="res://assets/Low Poly Furniture/Beds/Bed Single.fbx" id="1_bc76e"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_3ts5x"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_pyd5j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gt4hy"]
+render_priority = 0
+shader = ExtResource("2_3ts5x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5hn3l"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_gt4hy")
+shader = ExtResource("3_pyd5j")
+shader_parameter/color = Color(0.623529, 0.392157, 0.235294, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yh0u5"]
+render_priority = 0
+shader = ExtResource("2_3ts5x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y2nxt"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_yh0u5")
+shader = ExtResource("3_pyd5j")
+shader_parameter/color = Color(0.81, 0.81, 0.81, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm11h"]
+render_priority = 0
+shader = ExtResource("2_3ts5x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppm4q"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_wm11h")
+shader = ExtResource("3_pyd5j")
+shader_parameter/color = Color(0.61, 0.17, 0.12, 1)
+shader_parameter/specular = Color(0.552363, 2.40654e-07, 0.305143, 0.5)
+shader_parameter/fresnel = Color(0.374839, 1.49205e-06, 0.234457, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Bed Single" instance=ExtResource("1_bc76e")]
+
+[node name="Bed single" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_5hn3l")
+surface_material_override/1 = SubResource("ShaderMaterial_y2nxt")
+surface_material_override/2 = SubResource("ShaderMaterial_ppm4q")

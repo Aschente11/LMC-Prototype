@@ -1,17 +1,23 @@
-[gd_scene load_steps=52 format=4 uid="uid://behhwuvqmx4wt"]
+[gd_scene load_steps=53 format=4 uid="uid://behhwuvqmx4wt"]
 
 [ext_resource type="Script" uid="uid://cpve7iqi4pd6l" path="res://scripts/toaster.gd" id="1_av462"]
 [ext_resource type="Texture2D" uid="uid://c8eojc43a6h0f" path="res://assets/tools/toaster/textures/toaster_low_main_BaseColor.png" id="1_m6p7k"]
 [ext_resource type="Texture2D" uid="uid://12nfaalj3xjv" path="res://assets/tools/bread/source/Toast/Toast_C.png" id="2_od7tv"]
 [ext_resource type="Texture2D" uid="uid://ccn1fehfcwihc" path="res://assets/tools/bread/source/Toast/Toast_N.png" id="3_av462"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="3_jpmsq"]
 [ext_resource type="Script" uid="uid://bgbpjxxlqrp4" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_wipe_receiver.gd" id="5_2bhy8"]
 [ext_resource type="PackedScene" uid="uid://o2hiqedn77l1" path="res://scenes/tools/kitchen/BreadSnapZone.tscn" id="6_j1se6"]
 [ext_resource type="AudioStream" uid="uid://c07vwsa4ht2rr" path="res://assets/sfx/toaster-on.mp3" id="7_m0p8r"]
 [ext_resource type="AudioStream" uid="uid://8f2cfn7djh7p" path="res://assets/sfx/toaster-done.mp3" id="8_iubw7"]
 [ext_resource type="PackedScene" uid="uid://l6oclp7kyb6q" path="res://scenes/others/timerRing.tscn" id="9_iubw7"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a7kvt"]
+render_priority = 0
+shader = ExtResource("3_jpmsq")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nu23j"]
 resource_name = "main"
+next_pass = SubResource("ShaderMaterial_a7kvt")
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_m6p7k")
 emission_enabled = true
@@ -354,8 +360,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_muixw")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e674p"]
+render_priority = 0
+shader = ExtResource("3_jpmsq")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s484w"]
 resource_name = "Toast"
+next_pass = SubResource("ShaderMaterial_e674p")
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2_od7tv")
 emission_enabled = true
@@ -398,8 +409,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2bhy8")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uosfe"]
+render_priority = 0
+shader = ExtResource("3_jpmsq")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_od7tv"]
 resource_name = "Toast"
+next_pass = SubResource("ShaderMaterial_uosfe")
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("2_od7tv")
 emission_enabled = true

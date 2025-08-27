@@ -1,0 +1,158 @@
+[gd_scene load_steps=17 format=3 uid="uid://b7wqepy5elphs"]
+
+[ext_resource type="PackedScene" uid="uid://ccptvyxnx5yf4" path="res://assets/tools/bluetooth-speaker-jbl-go4/source/JBL GO4.glb" id="1_x6imk"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_1qvrb"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_iboo1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_80mj6"]
+render_priority = 0
+shader = ExtResource("2_1qvrb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2mv2x"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_80mj6")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.607084, 0.374302, 0.607691, 1)
+shader_parameter/specular = Color(0.319441, 0.31076, 0.0848509, 0.5)
+shader_parameter/fresnel = Color(0.400852, 0, 0.0095514, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id3k2"]
+render_priority = 0
+shader = ExtResource("2_1qvrb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q32kb"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oohpy"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ui4gt"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5orko"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_syxo4"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wcn1t"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1aofr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_65vrp"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hqy7c"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nb8ry"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("3_iboo1")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="JBL GO4" instance=ExtResource("1_x6imk")]
+
+[node name="Speaker" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_2mv2x")
+
+[node name="ScoccaInferiore" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_q32kb")
+
+[node name="ScoccaSuperiore" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_oohpy")
+
+[node name="ModulettoStrap" parent="." index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_ui4gt")
+
+[node name="Logo" parent="." index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_5orko")
+
+[node name="BordoLogo" parent="." index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_syxo4")
+
+[node name="TastinI" parent="." index="6"]
+surface_material_override/0 = SubResource("ShaderMaterial_wcn1t")
+
+[node name="GO4" parent="." index="7"]
+surface_material_override/0 = SubResource("ShaderMaterial_1aofr")
+
+[node name="Strap" parent="." index="8"]
+surface_material_override/0 = SubResource("ShaderMaterial_65vrp")
+
+[node name="Fibbietta" parent="." index="9"]
+surface_material_override/0 = SubResource("ShaderMaterial_hqy7c")
+
+[node name="Piedini" parent="." index="10"]
+surface_material_override/0 = SubResource("ShaderMaterial_nb8ry")

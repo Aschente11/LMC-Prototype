@@ -1,9 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwx7pt4f3hqqv"]
+[gd_scene load_steps=14 format=3 uid="uid://cwx7pt4f3hqqv"]
 
 [ext_resource type="Script" uid="uid://buw5o0awarb0n" path="res://scripts/clock.gd" id="1_clock_script"]
 [ext_resource type="FontFile" uid="uid://8fjjt0xbh4w0" path="res://assets/others/fonts/Seven Segment.ttf" id="2_8a1a4"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_o77nq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r08u5"]
+render_priority = 0
+shader = ExtResource("2_o77nq")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uldht"]
+next_pass = SubResource("ShaderMaterial_r08u5")
 albedo_color = Color(0.43, 0.43, 0.43, 1)
 metallic = 0.3
 roughness = 0.4
@@ -16,7 +22,12 @@ size = Vector3(1, 0.05, 0.05)
 material = SubResource("StandardMaterial3D_uldht")
 size = Vector3(0.4, 0.05, 0.05)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x3ejf"]
+render_priority = 0
+shader = ExtResource("2_o77nq")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a1a4"]
+next_pass = SubResource("ShaderMaterial_x3ejf")
 albedo_color = Color(0.05, 0.05, 0.05, 1)
 metallic = 0.1
 roughness = 0.8

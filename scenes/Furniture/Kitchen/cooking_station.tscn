@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://du2vn3nhn1mob"]
+[gd_scene load_steps=27 format=4 uid="uid://du2vn3nhn1mob"]
 
-[ext_resource type="PackedScene" uid="uid://bdpa687lqnuts" path="res://assets/Low Poly Furniture/Kitchen/Cupboard Sink.fbx" id="1_m4wuj"]
-[ext_resource type="PackedScene" uid="uid://d4kmqiq7dm44h" path="res://assets/Low Poly Furniture/Kitchen/Cupboard E.fbx" id="3_3fgdo"]
-[ext_resource type="PackedScene" uid="uid://b08w40exi1o6i" path="res://assets/Low Poly Furniture/Kitchen/Dishwasher.fbx" id="4_3luqg"]
+[ext_resource type="PackedScene" uid="uid://jvibwk5tiywe" path="res://assets/Furniture Shaders/cupboard_e.tscn" id="1_dd7b2"]
+[ext_resource type="PackedScene" uid="uid://cgvdj3uscrh3u" path="res://assets/Furniture Shaders/cupboard_sink.tscn" id="2_awwc5"]
+[ext_resource type="PackedScene" uid="uid://2fwaqae7mn1j" path="res://assets/Furniture Shaders/dishwasher.tscn" id="3_5fh7l"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="4_5fh7l"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="5_oaqh8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pva7w"]
 resource_name = "White"
@@ -134,6 +136,62 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_inol7")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("4_5fh7l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oaqh8"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("5_oaqh8")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.0456958, 0.210895, 0.333007, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wm11h"]
+render_priority = 0
+shader = ExtResource("4_5fh7l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2io8r"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_wm11h")
+shader = ExtResource("5_oaqh8")
+shader_parameter/color = Color(0.61, 0.17, 0.12, 1)
+shader_parameter/specular = Color(0.552363, 2.40654e-07, 0.305143, 0.5)
+shader_parameter/fresnel = Color(0.374839, 1.49205e-06, 0.234457, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_id3k2"]
+render_priority = 0
+shader = ExtResource("4_5fh7l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4ehr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_id3k2")
+shader = ExtResource("5_oaqh8")
+shader_parameter/color = Color(0.32, 0.32, 0.32, 1)
+shader_parameter/specular = Color(0.161087, 0.314437, 0.440062, 0.5)
+shader_parameter/fresnel = Color(0.116184, 0.208959, 0.291957, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("4_5fh7l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xg5d6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("5_oaqh8")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5fh7l"]
 points = PackedVector3Array(-0.0148699, -0.0121587, -0.00117668, 0.0176942, -0.00475126, 0.00620578, 0.0173811, -0.0094, 0.00583748, 0.0181282, 0.0215619, -0.0377587, -0.0184587, 0.0215619, 0.00672044, -0.0177081, -0.0094, -0.0368168, 0.0173811, -0.0094, -0.0368168, -0.0184587, 0.0215619, -0.0377587, 0.0175971, 0.0210724, 0.00609568, -0.0184587, -0.0100033, 0.00672044, 0.0152592, -0.0121587, -0.000457535, 0.0139288, -0.00114034, 0.0072, 0.0177192, -0.00406438, -0.037241, -0.0101304, 0.0167302, 0.0072, 0.0118661, 0.0160407, 0.0072, -0.0135659, -0.0018267, 0.0072, 0.0179, -0.004153, -0.0140988, 0.00911695, -0.00526481, 0.0072, 0.0145429, -0.0121587, -0.00117668, 0.0139288, 0.0126058, 0.0072, -0.00875408, -0.00526481, 0.0072, -0.0135659, 0.0132953, 0.0072, 0.00980337, 0.0167302, 0.0072, 0.0111797, -0.00457845, 0.0072)
 
@@ -199,18 +257,32 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k5fq2")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrlmu"]
+render_priority = 0
+shader = ExtResource("4_5fh7l")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5fh7l"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xrlmu")
+shader = ExtResource("5_oaqh8")
+shader_parameter/color = Color(0.22, 0.51, 0.52, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oaqh8"]
 points = PackedVector3Array(0.0163571, 0.00224286, 0.0320539, -0.0160416, -0.000328521, -0.00033848, -0.0165571, 0.00224286, 0.0320539, 0.0163571, -0.00135714, 0.0320539, 0.0163571, 0.00224286, -0.000857145, -0.0165571, -0.00135714, 0.0320539, 0.0158416, -0.000328521, -0.00033848, -0.0165571, 0.00224286, -0.000857145, -0.0165571, -0.00135714, 0.0289677, 0.0163571, -0.00135714, 0.0289677, 0.0163571, 0.000185966, -0.000857145)
 
 [node name="CookingStation" type="Node3D"]
 
-[node name="Cupboard E2" parent="." instance=ExtResource("3_3fgdo")]
+[node name="Cupboard E3" parent="." instance=ExtResource("1_dd7b2")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.26721, 0, 0.0476081)
 
-[node name="Cupboard Sink" parent="." instance=ExtResource("1_m4wuj")]
+[node name="Cupboard Sink2" parent="." instance=ExtResource("2_awwc5")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.950343, 0.388623, -0.338233)
 
-[node name="Dishwasher" parent="." instance=ExtResource("4_3luqg")]
+[node name="Dishwasher2" parent="." instance=ExtResource("3_5fh7l")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.135537, -0.26973, -0.0988706)
 
 [node name="Oven" type="Node3D" parent="."]
@@ -220,6 +292,10 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.22623, 0.26, -0.12198
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7oqy7")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_oaqh8")
+surface_material_override/1 = SubResource("ShaderMaterial_2io8r")
+surface_material_override/2 = SubResource("ShaderMaterial_c4ehr")
+surface_material_override/3 = SubResource("ShaderMaterial_xg5d6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Oven/Oven"]
 
@@ -230,6 +306,8 @@ shape = SubResource("ConvexPolygonShape3D_5fh7l")
 transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0.000736713, -3.36474, 1.1445)
 mesh = SubResource("ArrayMesh_uwtxv")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_5fh7l")
+surface_material_override/1 = SubResource("ShaderMaterial_xg5d6")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Oven/Oven_001"]
 

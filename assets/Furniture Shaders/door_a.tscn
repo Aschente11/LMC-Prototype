@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://dj2036653gf2d"]
+
+[ext_resource type="PackedScene" uid="uid://b7vvwv852dkny" path="res://assets/Low Poly Furniture/Doors/Door A.fbx" id="1_guthu"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_41knq"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_78d3x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lxlj"]
+render_priority = 0
+shader = ExtResource("2_41knq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuptd"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_8lxlj")
+shader = ExtResource("3_78d3x")
+shader_parameter/color = Color(0.62, 0.39, 0.24, 1)
+shader_parameter/specular = Color(0.365103, 0.286268, 0.154988, 0.5)
+shader_parameter/fresnel = Color(0.309613, 0.150237, 0.0758368, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xrlmu"]
+render_priority = 0
+shader = ExtResource("2_41knq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pulbt"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_xrlmu")
+shader = ExtResource("3_78d3x")
+shader_parameter/color = Color(0.22, 0.51, 0.52, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wj0vi"]
+render_priority = 0
+shader = ExtResource("2_41knq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t45re"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_wj0vi")
+shader = ExtResource("3_78d3x")
+shader_parameter/color = Color(0.55, 0.33, 0.19, 1)
+shader_parameter/specular = Color(0.38217, 0.278986, 0.127041, 0.5)
+shader_parameter/fresnel = Color(0.316532, 0.144877, 0.067091, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Door A" instance=ExtResource("1_guthu")]
+
+[node name="Door A" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_xuptd")
+surface_material_override/1 = SubResource("ShaderMaterial_pulbt")
+
+[node name="Door A_001" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_t45re")

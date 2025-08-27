@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://duj5ayanfxmtw"]
+
+[ext_resource type="PackedScene" uid="uid://dtjk66bj36vw1" path="res://assets/Low Poly Furniture/Kitchen/Kitchen Roll.fbx" id="1_70hyh"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_n25ew"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_14fy3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f3rr2"]
+render_priority = 0
+shader = ExtResource("2_n25ew")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vybfc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f3rr2")
+shader = ExtResource("3_14fy3")
+shader_parameter/color = Color(0.605274, 0.605274, 0.605274, 1)
+shader_parameter/specular = Color(0.172926, 0.304698, 0.472124, 0.5)
+shader_parameter/fresnel = Color(0.259151, 0.184807, 0.0762073, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckd2k"]
+render_priority = 0
+shader = ExtResource("2_n25ew")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovmuk"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ckd2k")
+shader = ExtResource("3_14fy3")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.0887296, 0.204213, 0.335836, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Kitchen Roll" instance=ExtResource("1_70hyh")]
+
+[node name="Kitchen Roll" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_vybfc")
+surface_material_override/1 = SubResource("ShaderMaterial_ovmuk")

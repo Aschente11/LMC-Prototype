@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=4 uid="uid://lbdlwao4nkbv"]
+[gd_scene load_steps=18 format=4 uid="uid://lbdlwao4nkbv"]
+
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="1_54vki"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="2_xh3c8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vi2e3"]
-load_path = "res://.godot/imported/#WIN0003_Textures_COL_2k.png-c419fcc5aada03968475965a0b060a42.s3tc.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q4bco"]
-load_path = "res://.godot/imported/#WIN0003_Textures_ROUGH_2k.png-1a9b5e6a1a3d1397fc3060bc21d8f1b2.s3tc.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_54vki"]
-load_path = "res://.godot/imported/#WIN0003_Textures_NRML_2k.png-69e373cee80c4dc6c0e88c3b8e9f5165.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u837f"]
 resource_name = "#WIN0003_Textures"
@@ -56,11 +56,25 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_8xkst")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_54vki"]
+render_priority = 0
+shader = ExtResource("1_54vki")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xh3c8"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_54vki")
+shader = ExtResource("2_xh3c8")
+shader_parameter/color = Color(0.241156, 0.241156, 0.241156, 1)
+shader_parameter/specular = Color(0.192993, 0.322688, 0.3618, 0.5)
+shader_parameter/fresnel = Color(0, 0.181195, 0.442103, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vi2e3"]
 resource_name = "#WIN0003_Textures"
 transparency = 1
 cull_mode = 2
-albedo_color = Color(1, 1, 1, 0.027451)
+albedo_color = Color(0, 0, 0, 0.027451)
 albedo_texture = SubResource("CompressedTexture2D_vi2e3")
 metallic = 1.0
 metallic_texture = SubResource("CompressedTexture2D_q4bco")
@@ -138,11 +152,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_cup5t")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2d48e"]
+render_priority = 0
+shader = ExtResource("1_54vki")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mdfsv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_2d48e")
+shader = ExtResource("2_xh3c8")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
 [node name="window" type="Node3D"]
 
 [node name="frame" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_dyqoc")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_xh3c8")
 metadata/extras = {
 "ant_landscape": {}
 }
@@ -159,6 +188,7 @@ metadata/extras = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.839518, 0.550126, 0.0181614)
 mesh = SubResource("ArrayMesh_4ihyk")
 skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_mdfsv")
 metadata/extras = {
 "ant_landscape": {}
 }

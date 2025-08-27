@@ -8,4 +8,4 @@
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_energy = 0.4
+light_energy = 0.15
