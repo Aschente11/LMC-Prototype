@@ -97,12 +97,12 @@ material = SubResource("StandardMaterial3D_07lh0")
 text = "I don't want to wake up... 
 but I have to."
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ln8bc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_x0gt7"]
 viewport_path = NodePath("XRPlayer/XROrigin3D/XRCamera3D/QTE/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2662"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_ln8bc")
+albedo_texture = SubResource("ViewportTexture_x0gt7")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_oofti"]
 
