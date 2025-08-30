@@ -31,6 +31,10 @@ var spawn_interval: float = 1.5  # How often new texts appear
 var display_duration: float = 2.0  # How long texts stay visible after fully typed
 var typewriter_speed: float = 0.04  # Time between each letter
 var spawn_range: Vector3 = Vector3(2.0, 1.5, 3.0)  # x_range, y_range, z_distance
+@onready var left_watch: Node3D = $XROrigin3D/XRController3DLeft/smartwatch
+@onready var right_watch: Node3D = $XROrigin3D/XRController3DRight/smartwatch
+
+var watch_is_left: bool = true
 
 func _ready() -> void:
 	add_to_group("player")
@@ -110,6 +114,16 @@ func _on_stimulation_changed(new_value: int) -> void:
 	timer.one_shot = true
 	timer.timeout.connect(_on_delay_timeout)
 	timer.start()
+	
+func _process(delta: float) -> void:
+	if left_hand and left_hand.get_is_active() and left_hand.is_button_pressed("ax_button"):
+		await left_hand.button_released
+		if right_watch.visible:
+			right_watch.hide()
+			left_watch.show()
+		else:
+			left_watch.hide()
+			right_watch.show()
 
 func start_text_spawning() -> void:
 	is_spawning_texts = true
