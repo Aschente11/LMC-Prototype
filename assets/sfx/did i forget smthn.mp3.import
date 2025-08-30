@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://crwfbgsjpf4a1"
+path="res://.godot/imported/did i forget smthn.mp3-b9a88691e37bd6bb1d1a9deee212f82d.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/did i forget smthn.mp3"
+dest_files=["res://.godot/imported/did i forget smthn.mp3-b9a88691e37bd6bb1d1a9deee212f82d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

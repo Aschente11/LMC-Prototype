@@ -50,7 +50,6 @@ material = SubResource("StandardMaterial3D_o77nq")
 size = Vector2(0.9, 0.4)
 
 [node name="Clock" type="Node3D"]
-script = ExtResource("1_clock_script")
 
 [node name="Frame" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
@@ -74,6 +73,7 @@ mesh = SubResource("BoxMesh_o77nq")
 [node name="Time" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0129952, 0.0153529)
 mesh = SubResource("QuadMesh_tmh21")
+script = ExtResource("1_clock_script")
 
 [node name="SubViewport" type="SubViewport" parent="Time"]
 own_world_3d = true

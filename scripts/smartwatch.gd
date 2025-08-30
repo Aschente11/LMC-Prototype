@@ -3,7 +3,8 @@ extends Node3D
 @onready var stimulation_bar: TextureRect = $GalaxyWatch/screen/SubViewport/Control/MarginContainer/StimulatioinBar
 @onready var physical_bar: ProgressBar = $"GalaxyWatch/screen/SubViewport/Control/Physical progress"
 @onready var emotional_bar: ProgressBar = $"GalaxyWatch/screen/SubViewport/Control/Emotional progress"
-
+@onready var time_screen = $"GalaxyWatch/time screen"
+@onready var bar_screen = $GalaxyWatch/screen
 
 # Store original values
 var original_bar_scale: Vector2
@@ -36,6 +37,17 @@ func setup_center_pivots() -> void:
 	# Sprite2D uses centered property or we can adjust the position
 	if marker.centered == false:
 		marker.centered = true
+
+
+	
+# Screen switching logic
+func toggle_screen() -> void:
+	if bar_screen.visible:
+		time_screen.visible = true
+		bar_screen.visible = false
+	elif time_screen.visible:
+		bar_screen.visible = true
+		time_screen.visible = false
 
 func _on_stimulation_increase(new_value: int) -> void:
 	await get_tree().create_timer(4.0).timeout
@@ -110,3 +122,7 @@ func _on_emotional_increase(new_value: int) -> void:
 func _on_emotional_decrease(new_value: int) -> void:
 	await get_tree().create_timer(4.0).timeout
 	emotional_bar.value -= 1
+
+
+func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress: Variant) -> void:
+	toggle_screen()

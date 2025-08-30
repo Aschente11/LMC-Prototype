@@ -5,14 +5,32 @@ extends Node3D
 @onready var make_bfast_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/make bfast"
 @onready var need_unpack_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/need to unpack"
 @onready var tired_text: MeshInstance3D = $XROrigin3D/XRCamera3D/tired
+@onready var camera = $XROrigin3D/XRCamera3D
 
-var random_thoughts = preload("res://scenes/distractions/Random_thoughts.tscn")
-var brainrot_thoughts = preload("res://scenes/distractions/Brainrot_thoughts.tscn")
+# Text configuration class
+class TextConfig:
+	var text: String
+	var audio: AudioStreamPlayer3D
+	var mesh_template: MeshInstance3D
+	var spawn_weight: float  # Probability weight for random selection
+	
+	func _init(p_text: String, p_audio: AudioStreamPlayer3D, p_mesh: MeshInstance3D, p_weight: float = 1.0):
+		text = p_text
+		audio = p_audio
+		mesh_template = p_mesh
+		spawn_weight = p_weight
 
-# New variables for thought management
-var thought_spawn_timer: Timer
-var active_thoughts: Array[Node] = []
-var is_spawning_thoughts: bool = false
+# Text system variables
+var text_configs: Array[TextConfig] = []
+var text_spawn_timer: Timer
+var active_text_instances: Array[Node] = []
+var is_spawning_texts: bool = false
+
+# Customizable settings
+var spawn_interval: float = 1.5  # How often new texts appear
+var display_duration: float = 2.0  # How long texts stay visible after fully typed
+var typewriter_speed: float = 0.04  # Time between each letter
+var spawn_range: Vector3 = Vector3(2.0, 1.5, 3.0)  # x_range, y_range, z_distance
 
 func _ready() -> void:
 	add_to_group("player")
@@ -20,8 +38,11 @@ func _ready() -> void:
 	need_unpack_text.add_to_group("need_unpack_text")
 	tired_text.add_to_group("tired_text")
 	
-	# Setup the thought spawning timer
-	setup_thought_timer()
+	# Setup text configurations
+	setup_text_configs()
+	
+	# Setup timer
+	setup_text_spawn_timer()
 	
 	# Debug: Print current stimulation level
 	print("Current stimulation level: ", GlobalVar.stimulation)
@@ -32,28 +53,55 @@ func _ready() -> void:
 	if GlobalVar.stimulation_decrease.connect(_on_stimulation_changed) != OK:
 		print("Failed to connect stimulation_decrease signal")
 	
-	# Check initial stimulation level and start spawning if needed
-	if GlobalVar.stimulation >= 2:
-		print("Initial stimulation level is >= 2, starting thought spawning")
-		start_spawning_thoughts()
+	# Check initial stimulation level
+	call_deferred("check_initial_state")
 
-func setup_thought_timer() -> void:
-	thought_spawn_timer = Timer.new()
-	add_child(thought_spawn_timer)
-	thought_spawn_timer.wait_time = 3.0
-	thought_spawn_timer.timeout.connect(_on_spawn_thought)
-	# Don't start the timer yet - it will start when stimulation reaches 2
+func setup_text_configs() -> void:
+	# Add your text configurations here - easy to add new ones!
+	text_configs.append(TextConfig.new(
+		"Did I forget something?", 
+		$"XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn/forget audio",
+		$"XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn",
+		1.0  # Normal spawn weight
+	))
+	
+	# Add your new text - just add the audio node to your scene first
+	text_configs.append(TextConfig.new(
+		"What is life even about?",
+		$"XROrigin3D/XRCamera3D/overthinkings/What is life/What is life",  # You'll need to add this audio node
+		$"XROrigin3D/XRCamera3D/overthinkings/What is life",  # You'll need to add this mesh node
+		0.8  # Slightly less common than the first text
+	))
+	
+	# Hide all template texts initially
+	for config in text_configs:
+		if config.mesh_template:
+			config.mesh_template.visible = false
+
+func setup_text_spawn_timer() -> void:
+	text_spawn_timer = Timer.new()
+	add_child(text_spawn_timer)
+	text_spawn_timer.wait_time = spawn_interval
+	text_spawn_timer.timeout.connect(_on_text_spawn_timer_timeout)
+
+func check_initial_state() -> void:
+	_on_stimulation_changed(GlobalVar.stimulation)
+
+func _on_stimulation_increase(new_value: int) -> void:
+	_on_stimulation_changed(new_value)
+
+func _on_stimulation_decrease(new_value: int) -> void:
+	_on_stimulation_changed(new_value)
 
 func _on_stimulation_changed(new_value: int) -> void:
-	print("Stimulation changed to: ", new_value)  # Debug print
+	print("Stimulation changed to: ", new_value)
 	
-	# Handle thought spawning based on stimulation level
-	if new_value >= 2 and not is_spawning_thoughts:
-		print("Starting to spawn thoughts")  # Debug print
-		start_spawning_thoughts()
-	elif new_value < 2 and is_spawning_thoughts:
-		print("Stopping thought spawning")  # Debug print
-		stop_spawning_thoughts()
+	if new_value >= 2 and not is_spawning_texts:
+		print("Starting text spawning cycle")
+		start_text_spawning()
+	elif new_value < 2 and is_spawning_texts:
+		print("Stopping text spawning cycle")
+		stop_text_spawning()
 	
 	# Your existing haptic feedback logic
 	var timer = Timer.new()
@@ -63,82 +111,144 @@ func _on_stimulation_changed(new_value: int) -> void:
 	timer.timeout.connect(_on_delay_timeout)
 	timer.start()
 
-func start_spawning_thoughts() -> void:
-	is_spawning_thoughts = true
-	thought_spawn_timer.start()
-	# Spawn the first thought immediately
-	_on_spawn_thought()
+func start_text_spawning() -> void:
+	is_spawning_texts = true
+	text_spawn_timer.start()
+	# Spawn the first text immediately
+	spawn_random_text()
 
-func stop_spawning_thoughts() -> void:
-	is_spawning_thoughts = false
-	thought_spawn_timer.stop()
-	remove_all_thoughts()
+func stop_text_spawning() -> void:
+	is_spawning_texts = false
+	text_spawn_timer.stop()
+	cleanup_all_text_instances()
 
-func _on_spawn_thought() -> void:
-	print("Attempting to spawn thought")  # Debug print
-	
-	# Check if we have valid scene resources
-	if not random_thoughts or not brainrot_thoughts:
-		print("Error: Thought scenes not loaded properly")
+func _on_text_spawn_timer_timeout() -> void:
+	if is_spawning_texts:
+		spawn_random_text()
+
+func spawn_random_text() -> void:
+	if text_configs.is_empty():
+		print("No text configurations available")
 		return
 	
-	# Randomly choose between random_thoughts and brainrot_thoughts
-	var thought_scene: PackedScene
-	if randi() % 2 == 0:
-		thought_scene = random_thoughts
-		print("Spawning random thought")
-	else:
-		thought_scene = brainrot_thoughts
-		print("Spawning brainrot thought")
-	
-	# Instantiate the thought
-	var thought_instance = thought_scene.instantiate()
-	
-	if not thought_instance:
-		print("Error: Failed to instantiate thought scene")
+	# Select random text based on weights
+	var selected_config = select_weighted_random_text()
+	if not selected_config:
 		return
 	
-	# Add to the scene
-	add_child(thought_instance)
-	
-	# Get the XR camera (player head) position
-	var camera = $XROrigin3D/XRCamera3D
-	var player_pos = camera.global_position
-	var player_forward = -camera.global_transform.basis.z
-	
-	# Position the thought in front of and around the player
-	var spawn_distance = randf_range(1.5, 3.0)  # Distance from player
-	var angle_offset = randf_range(-PI/3, PI/3)  # Random angle (-60 to +60 degrees)
-	var height_offset = randf_range(-0.5, 1.0)   # Height variation
-	
-	# Calculate spawn position
-	var spawn_direction = player_forward.rotated(Vector3.UP, angle_offset)
-	var spawn_pos = player_pos + spawn_direction * spawn_distance
-	spawn_pos.y += height_offset
-	
-	# Set the thought position
-	thought_instance.global_position = spawn_pos
-	
-	# Optional: Make the thought face the player
-	thought_instance.look_at(player_pos, Vector3.UP)
-	
-	# Keep track of active thoughts
-	active_thoughts.append(thought_instance)
-	
-	print("Thought spawned at position: ", spawn_pos)
-	print("Thought spawned successfully. Active thoughts: ", active_thoughts.size())
+	# Create and show the text
+	var text_instance = create_text_instance(selected_config)
+	if text_instance:
+		show_text_instance(text_instance, selected_config)
 
-func remove_all_thoughts() -> void:
-	print("Removing all thoughts. Count: ", active_thoughts.size())
+func select_weighted_random_text() -> TextConfig:
+	# Calculate total weight
+	var total_weight = 0.0
+	for config in text_configs:
+		total_weight += config.spawn_weight
 	
-	# Remove all active thought instances
-	for thought in active_thoughts:
-		if is_instance_valid(thought):
-			thought.queue_free()
+	# Random selection based on weight
+	var random_value = randf() * total_weight
+	var current_weight = 0.0
 	
-	# Clear the array
-	active_thoughts.clear()
+	for config in text_configs:
+		current_weight += config.spawn_weight
+		if random_value <= current_weight:
+			return config
+	
+	# Fallback to first config
+	return text_configs[0]
 
+func create_text_instance(config: TextConfig) -> MeshInstance3D:
+	var new_instance = MeshInstance3D.new()
+	
+	# Copy mesh and material from template
+	if config.mesh_template and config.mesh_template.mesh:
+		new_instance.mesh = config.mesh_template.mesh.duplicate()
+	if config.mesh_template and config.mesh_template.material_override:
+		new_instance.material_override = config.mesh_template.material_override
+	
+	# Add to scene
+	camera.add_child(new_instance)
+	new_instance.visible = false
+	
+	# Track instance
+	active_text_instances.append(new_instance)
+	
+	return new_instance
+
+func show_text_instance(text_instance: MeshInstance3D, config: TextConfig) -> void:
+	# Position randomly
+	position_text_randomly(text_instance)
+	
+	# Make visible and play audio
+	text_instance.visible = true
+	if config.audio:
+		config.audio.play()
+	
+	# Start typewriter animation
+	await animate_typewriter_text(text_instance, config.text)
+	
+	# Wait for display duration
+	await get_tree().create_timer(display_duration).timeout
+	
+	# Clean up
+	cleanup_text_instance(text_instance)
+
+func animate_typewriter_text(text_instance: MeshInstance3D, full_text: String) -> void:
+	var text_mesh = text_instance.mesh as TextMesh
+	if not text_mesh:
+		print("Error: text instance doesn't have a TextMesh")
+		return
+	
+	# Clear text initially
+	text_mesh.text = ""
+	
+	# Animate each character
+	for i in range(full_text.length()):
+		if not is_spawning_texts or not is_instance_valid(text_instance):
+			break
+		
+		text_mesh.text = full_text.substr(0, i + 1)
+		await get_tree().create_timer(typewriter_speed).timeout
+	
+	# Ensure full text is shown
+	if is_spawning_texts and is_instance_valid(text_instance):
+		text_mesh.text = full_text
+
+func position_text_randomly(text_instance: MeshInstance3D) -> void:
+	# Generate random position
+	var random_x = randf_range(-spawn_range.x/2, spawn_range.x/2)
+	var random_y = randf_range(-spawn_range.y/2, spawn_range.y/2)
+	
+	text_instance.position = Vector3(random_x, random_y, -spawn_range.z)
+	
+	# Random rotation for variety
+	text_instance.rotation_degrees = Vector3(
+		randf_range(-10, 10),
+		randf_range(-10, 10),
+		randf_range(-10, 10)
+	)
+
+func cleanup_text_instance(text_instance: MeshInstance3D) -> void:
+	if is_instance_valid(text_instance):
+		active_text_instances.erase(text_instance)
+		text_instance.queue_free()
+
+func cleanup_all_text_instances() -> void:
+	for instance in active_text_instances:
+		if is_instance_valid(instance):
+			instance.queue_free()
+	active_text_instances.clear()
+
+# Easy way to add new text configurations at runtime
+func add_text_config(text: String, audio: AudioStreamPlayer3D, mesh_template: MeshInstance3D, weight: float = 1.0) -> void:
+	var config = TextConfig.new(text, audio, mesh_template, weight)
+	text_configs.append(config)
+	if mesh_template:
+		mesh_template.visible = false
+
+# Your existing functions
 func _on_delay_timeout() -> void:
 	trigger_double_haptic_feedback()
 
@@ -151,8 +261,6 @@ func trigger_double_haptic_feedback() -> void:
 func trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
 	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 
-# Debug function - you can call this to manually test thought spawning
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):  # Space key by default
-		print("Manual thought spawn test")
-		_on_spawn_thought()
+
+func _on_ois_collider_area_3d_body_entered(body: Variant) -> void:
+	trigger_haptic_feedback()

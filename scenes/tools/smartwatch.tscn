@@ -1,9 +1,12 @@
-[gd_scene load_steps=43 format=4 uid="uid://cyu5exn7vgfy8"]
+[gd_scene load_steps=52 format=4 uid="uid://cyu5exn7vgfy8"]
 
 [ext_resource type="Texture2D" uid="uid://bhem26tmp2qnp" path="res://assets/others/smartwatchUI.png" id="1_btis5"]
 [ext_resource type="Script" uid="uid://be0om5l06qdr4" path="res://scripts/smartwatch.gd" id="1_jvnqj"]
 [ext_resource type="Texture2D" uid="uid://c51sohagu4euo" path="res://assets/others/marker.png" id="2_jvnqj"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_lhfxo"]
+[ext_resource type="Script" uid="uid://buw5o0awarb0n" path="res://scripts/clock.gd" id="5_mw1v2"]
+[ext_resource type="FontFile" uid="uid://8fjjt0xbh4w0" path="res://assets/others/fonts/Seven Segment.ttf" id="6_m4yh8"]
+[ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="7_m4yh8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_286on"]
 render_priority = 0
@@ -379,18 +382,27 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e8dem")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lhfxo"]
+albedo_color = Color(0.46, 0.46, 0.46, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vntjt"]
+material = SubResource("StandardMaterial3D_lhfxo")
+top_radius = 0.007
+bottom_radius = 0.007
+height = 0.001
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0rxla"]
 render_priority = 0
 shader = ExtResource("2_lhfxo")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv0v0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_286on"]
 next_pass = SubResource("ShaderMaterial_0rxla")
-albedo_color = Color(0.223529, 0.647059, 0.803922, 1)
+albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_vntjt"]
-material = SubResource("StandardMaterial3D_cv0v0")
-top_radius = 0.008
-bottom_radius = 0.008
+[sub_resource type="CylinderMesh" id="CylinderMesh_mw1v2"]
+material = SubResource("StandardMaterial3D_286on")
+top_radius = 0.007
+bottom_radius = 0.007
 height = 0.001
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_btis5"]
@@ -418,11 +430,27 @@ bg_color = Color(0.303233, 0.303233, 0.303233, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw1v2"]
 bg_color = Color(1, 1, 0, 1)
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_q2hhy"]
+viewport_path = NodePath("GalaxyWatch/time screen/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpnv7"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_q2hhy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_286on"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_bpnv7")
+size = Vector2(0.01, 0.01)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q2hhy"]
+size = Vector3(0.0341339, 0.0312653, 0.0118408)
+
 [node name="Smartwatch" type="Node3D"]
 script = ExtResource("1_jvnqj")
 
 [node name="GalaxyWatch" type="Node3D" parent="."]
-transform = Transform3D(2.19812, -0.0910352, -3.97927e-09, 0, -9.61651e-08, 2.2, -0.0910352, -2.19812, -9.60827e-08, 0, 0, 0)
+transform = Transform3D(2.19812, -0.0910352, -3.97927e-09, 0, -9.61653e-08, 2.2, -0.0910352, -2.19812, -9.60827e-08, 0, 0, 0)
 
 [node name="Frame" type="MeshInstance3D" parent="GalaxyWatch"]
 transform = Transform3D(0.845442, 0.0431943, -1.73449e-08, 0, -4.03664e-07, -0.846545, -0.0431943, 0.845442, -4.03664e-07, -2.43451e-05, -0.00181731, 0.000569882)
@@ -465,8 +493,12 @@ mesh = SubResource("ArrayMesh_q2hhy")
 skeleton = NodePath("")
 
 [node name="bg" type="MeshInstance3D" parent="GalaxyWatch"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000168776, -0.00146418, 0.000435609)
+transform = Transform3D(1.1, 0, -2.22045e-16, 0, 1.1, 7.10543e-15, -2.22045e-16, -3.55271e-15, 1.1, -0.000163872, -0.00134578, 0.000435609)
 mesh = SubResource("CylinderMesh_vntjt")
+
+[node name="corner" type="MeshInstance3D" parent="GalaxyWatch"]
+transform = Transform3D(1.2, -3.72529e-09, 2.22045e-16, 3.72529e-09, 1.2, 1.06581e-14, -4.44089e-16, -1.06581e-14, 1.2, -0.000161396, -0.00128598, 0.000435609)
+mesh = SubResource("CylinderMesh_mw1v2")
 
 [node name="screen" type="MeshInstance3D" parent="GalaxyWatch"]
 transform = Transform3D(-0.897256, 0.441505, 0.00185001, -0.00165998, 0.000816837, -0.999998, -0.441506, -0.897258, -2.64176e-10, -0.000370045, -0.00198467, 0.000634898)
@@ -570,3 +602,43 @@ rotation = 0.544517
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_font_sizes/font_size = 57
 text = "_"
+
+[node name="time screen" type="MeshInstance3D" parent="GalaxyWatch"]
+transform = Transform3D(-0.99683, -0.0096439, -0.0789594, 0.0788573, 0.0105375, -0.996829, 0.0104454, -0.999898, -0.00974365, 0.000278355, -0.0027382, 0.00369494)
+visible = false
+mesh = SubResource("QuadMesh_286on")
+script = ExtResource("5_mw1v2")
+
+[node name="SubViewport" type="SubViewport" parent="GalaxyWatch/time screen"]
+transparent_bg = true
+
+[node name="Control" type="Control" parent="GalaxyWatch/time screen/SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="GalaxyWatch/time screen/SubViewport/Control"]
+layout_mode = 0
+offset_right = 131.0
+offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("6_m4yh8")
+theme_override_font_sizes/font_size = 160
+text = "7:00 AM"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="OISStrikeReceiver" type="Node3D" parent="."]
+script = ExtResource("7_m4yh8")
+group = "hand"
+metadata/_custom_type_script = "uid://cci3xkvnplit7"
+
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000541687, 0.00180817, -0.00262451)
+shape = SubResource("BoxShape3D_q2hhy")
+
+[connection signal="action_started" from="OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_started"]
