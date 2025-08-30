@@ -267,14 +267,28 @@ func _on_delay_timeout() -> void:
 	trigger_double_haptic_feedback()
 
 func trigger_double_haptic_feedback() -> void:
-	trigger_haptic_feedback()
-	watch_sfx.play()
-	await get_tree().create_timer(0.3).timeout
-	trigger_haptic_feedback()
+	if watch_is_left:
+		left_trigger_haptic_feedback()
+		watch_sfx.play()
+		await get_tree().create_timer(0.3).timeout
+		left_trigger_haptic_feedback()
+	else:
+		right_trigger_haptic_feedback()
+		watch_sfx.play()
+		await get_tree().create_timer(0.3).timeout
+		right_trigger_haptic_feedback()
 
-func trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
+func right_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
 	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 
 
+func left_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
+	left_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
+
+
 func _on_ois_collider_area_3d_body_entered(body: Variant) -> void:
-	trigger_haptic_feedback()
+	left_trigger_haptic_feedback()
+
+
+func right_on_ois_collider_area_3d_body_entered(body: Variant) -> void:
+	right_trigger_haptic_feedback()

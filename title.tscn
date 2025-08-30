@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://xegchyrw6dc2" path="res://assets/sfx/bgsound.mp3" id="3_kpexm"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="4_3xoar"]
 [ext_resource type="Texture2D" uid="uid://cf3ag7125x75d" path="res://assets/others/distractions/oiiaioooooiai-cat/textures/Muchkin2_BaseColor.png" id="5_mom7w"]
-[ext_resource type="PackedScene" uid="uid://c5jgrnveygjo7" path="res://scenes/UI/settingsUI.tscn" id="8_jil77"]
+[ext_resource type="PackedScene" path="res://scenes/UI/settingsUI.tscn" id="8_jil77"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 sky_top_color = Color(0.4, 0.7, 1, 1)
