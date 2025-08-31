@@ -69,7 +69,7 @@ func _on_stimulation_decrease(new_value: int) -> void:
 func _on_stimulation_changed(new_stimulation_value: int) -> void:
 	print("Stimulation changed to: ", new_stimulation_value)
 	
-	if new_stimulation_value >= 2 and not is_looping:
+	if new_stimulation_value == 2 and not is_looping:
 		start_looping()
 	elif new_stimulation_value < 2 and is_looping:
 		stop_looping()

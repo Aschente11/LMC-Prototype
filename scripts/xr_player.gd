@@ -5,6 +5,7 @@ extends Node3D
 @onready var make_bfast_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/make bfast"
 @onready var need_unpack_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/need to unpack"
 @onready var tired_text: MeshInstance3D = $XROrigin3D/XRCamera3D/tired
+@onready var change_indicator: Material = $XROrigin3D/XRCamera3D/ChangeIndicator.get_active_material(0)
 
 var random_thoughts = preload("res://scenes/distractions/Random_thoughts.tscn")
 var brainrot_thoughts = preload("res://scenes/distractions/Brainrot_thoughts.tscn")
@@ -27,10 +28,13 @@ func _ready() -> void:
 	print("Current stimulation level: ", GlobalVar.stimulation)
 	
 	# Connect to stimulation signals
-	if GlobalVar.stimulation_increase.connect(_on_stimulation_changed) != OK:
+	if GlobalVar.stimulation_increase.connect(positive_indicator) != OK:
 		print("Failed to connect stimulation_increase signal")
-	if GlobalVar.stimulation_decrease.connect(_on_stimulation_changed) != OK:
+	if GlobalVar.stimulation_decrease.connect(negative_indicator) != OK:
 		print("Failed to connect stimulation_decrease signal")
+		
+	GlobalVar.increase_stimulation()
+	GlobalVar.increase_stimulation()
 	
 	# Check initial stimulation level and start spawning if needed
 	if GlobalVar.stimulation >= 2:
@@ -43,6 +47,20 @@ func setup_thought_timer() -> void:
 	thought_spawn_timer.wait_time = 3.0
 	thought_spawn_timer.timeout.connect(_on_spawn_thought)
 	# Don't start the timer yet - it will start when stimulation reaches 2
+
+func positive_indicator(new_value: int) -> void:
+	change_indicator.set_shader_parameter("color", Color(0, 255, 0, 255))
+	change_indicator.set_shader_parameter("speed", 3.0)
+	_on_stimulation_changed(new_value)
+	await get_tree().create_timer(6.0).timeout
+	change_indicator.set_shader_parameter("speed", 0.0)
+
+func negative_indicator(new_value: int) -> void:
+	change_indicator.set_shader_parameter("color", Color(255, 0, 0, 255))
+	change_indicator.set_shader_parameter("speed", 3.0)
+	_on_stimulation_changed(new_value)
+	await get_tree().create_timer(6.0).timeout
+	change_indicator.set_shader_parameter("speed", 0.0)
 
 func _on_stimulation_changed(new_value: int) -> void:
 	print("Stimulation changed to: ", new_value)  # Debug print

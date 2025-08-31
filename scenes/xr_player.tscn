@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=47 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="6_ecy5y"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="6_mc5w1"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="6_mvv4w"]
+[ext_resource type="Shader" uid="uid://lvicd8a68csa" path="res://shaders/indicator.gdshader" id="6_twgfx"]
 [ext_resource type="Script" uid="uid://cji1tdhhvihrj" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_single_controller_asm.gd" id="7_cibq4"]
 [ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="8_jhdqs"]
 [ext_resource type="Script" uid="uid://du4lpoac66rw" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_system.gd" id="10_sxhyq"]
@@ -39,6 +40,21 @@ resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_ujsbv")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_f34b3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_twgfx"]
+render_priority = 0
+shader = ExtResource("6_twgfx")
+shader_parameter/color = Color(0, 1, 0, 1)
+shader_parameter/color_intensity = 10.0
+shader_parameter/transparency_level = 16.0
+shader_parameter/speed = 3.0
+shader_parameter/zoom_amplitude = 12.555
+shader_parameter/enable = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_ujsbv"]
+material = SubResource("ShaderMaterial_twgfx")
+size = Vector2(2.295, 2)
+orientation = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mc5w1"]
 render_priority = 0
@@ -163,6 +179,7 @@ transform = Transform3D(1.44616, 0, 0.398259, 0, 1.5, 0, -0.398259, 0, 1.44616, 
 
 [node name="Settings" type="Node3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(0.374954, -0.00589025, -1.63898e-08, -1.63918e-08, 7.16508e-16, -0.375, 0.00589025, 0.374954, -2.5747e-10, 0, 0.0268137, -0.450041)
+visible = false
 
 [node name="SubViewport" type="SubViewport" parent="XROrigin3D/XRCamera3D/Settings"]
 size = Vector2i(640, 360)
@@ -172,6 +189,10 @@ size = Vector2i(640, 360)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/Settings"]
 material_override = SubResource("StandardMaterial3D_5i8cc")
 mesh = SubResource("PlaneMesh_f34b3")
+
+[node name="ChangeIndicator" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.833909)
+mesh = SubResource("QuadMesh_ujsbv")
 
 [node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
