@@ -1,0 +1,11 @@
+Model Information:
+* title:	Sticky Note
+* source:	https://sketchfab.com/3d-models/sticky-note-9a40ded59b9f4552965f92b6d06fa603
+* author:	st8770b (https://sketchfab.com/st8770b)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Sticky Note" (https://sketchfab.com/3d-models/sticky-note-9a40ded59b9f4552965f92b6d06fa603) by st8770b (https://sketchfab.com/st8770b) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

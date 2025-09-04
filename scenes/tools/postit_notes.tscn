@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctxayfra0oqf6"]
+
+[ext_resource type="PackedScene" uid="uid://c71q8gsmkppaf" path="res://assets/tools/post_it_notes/scene.gltf" id="1_rxwg3"]
+[ext_resource type="Texture2D" uid="uid://bggv1frdfar0o" path="res://assets/tools/post_it_notes/textures/Post_it_note_baseColor.png" id="2_01n7h"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="3_kh572"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mijr2"]
+render_priority = 0
+shader = ExtResource("3_kh572")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smrgb"]
+next_pass = SubResource("ShaderMaterial_mijr2")
+albedo_texture = ExtResource("2_01n7h")
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_rxwg3")]
+
+[node name="Object_4" parent="Sketchfab_model/root/GLTF_SceneRootNode/SM_post_it_notes_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_smrgb")
+
+[node name="SM_post_it_notes_001_3" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="1"]
+visible = false
+
+[node name="SM_post_it_notes_002_4" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="2"]
+visible = false
+
+[node name="SM_post_it_notes_003_5" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="3"]
+visible = false
+
+[node name="SM_post_it_notes_004_6" parent="Sketchfab_model/root/GLTF_SceneRootNode" index="4"]
+visible = false

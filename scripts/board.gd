@@ -2,7 +2,7 @@ extends Node3D
  
 @onready var text: MeshInstance3D = $text 
 @onready var writing_sfx: AudioStreamPlayer3D = $AudioStreamPlayer3D 
-@export var full_text: String = "Things to do today:\n  1. cook bfast\n  2. draw a house\n  3. clean my shi\n 4. sleep early" 
+@export var full_text: String = "Things to do today:\n  1. cook bfast\n  2. draw a house\n  3. clean up\n 4. sleep early" 
 @export var wipes_per_letter: int = 3  # Number of wipes needed to reveal one letter 
  
 var current_text: String = "" 

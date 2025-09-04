@@ -58,15 +58,15 @@ func _ready() -> void:
 	call_deferred("check_initial_state")
 
 func check_initial_state() -> void:
-	_on_stimulation_changed(GlobalVar.stimulation)
+	_on_stimulation_changed(GlobalVar.stimulation, GlobalVar.stimulation)
 
-func _on_stimulation_increase(new_value: int) -> void:
-	_on_stimulation_changed(new_value)
+func _on_stimulation_increase(old_value: int, new_value: int) -> void:
+	_on_stimulation_changed(old_value, new_value)
 
-func _on_stimulation_decrease(new_value: int) -> void:
-	_on_stimulation_changed(new_value)
+func _on_stimulation_decrease(old_value: int, new_value: int) -> void:
+	_on_stimulation_changed(old_value, new_value)
 
-func _on_stimulation_changed(new_stimulation_value: int) -> void:
+func _on_stimulation_changed(old_value: int, new_stimulation_value: int) -> void:
 	print("Stimulation changed to: ", new_stimulation_value)
 	
 	if new_stimulation_value == 2 and not is_looping:

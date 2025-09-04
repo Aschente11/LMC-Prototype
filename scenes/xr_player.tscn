@@ -5,13 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_4irtq"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_wrvet"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="4_mvv4w"]
+[ext_resource type="PackedScene" uid="uid://c7crsr56myyjd" path="res://scenes/tools/sticky_notes.tscn" id="5_jledq"]
 [ext_resource type="PackedScene" uid="uid://cg8fnhb0wnrix" path="res://scenes/UI/settingsUI.tscn" id="5_ujsbv"]
 [ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="5_wrvet"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_5i8cc"]
 [ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="6_ecy5y"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="6_mc5w1"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="6_mvv4w"]
 [ext_resource type="Shader" uid="uid://lvicd8a68csa" path="res://shaders/indicator.gdshader" id="6_twgfx"]
 [ext_resource type="Script" uid="uid://cji1tdhhvihrj" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_single_controller_asm.gd" id="7_cibq4"]
+[ext_resource type="PackedScene" uid="uid://73drq6v3v2qc" path="res://scenes/UI/indicator_spawner.tscn" id="8_f34b3"]
 [ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="8_jhdqs"]
 [ext_resource type="Script" uid="uid://du4lpoac66rw" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_system.gd" id="10_sxhyq"]
 [ext_resource type="PackedScene" uid="uid://cyu5exn7vgfy8" path="res://scenes/tools/smartwatch.tscn" id="11_1mew7"]
@@ -32,24 +35,14 @@ I should go unpack my things."
 [sub_resource type="TextMesh" id="TextMesh_mc5w1"]
 text = "Unpacking made me tired. Time for bed."
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ujsbv"]
-viewport_path = NodePath("XROrigin3D/XRCamera3D/Settings/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5i8cc"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_ujsbv")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_f34b3"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_twgfx"]
 render_priority = 0
 shader = ExtResource("6_twgfx")
 shader_parameter/color = Color(0, 1, 0, 1)
 shader_parameter/color_intensity = 10.0
 shader_parameter/transparency_level = 16.0
-shader_parameter/speed = 3.0
+shader_parameter/speed = 0.0
 shader_parameter/zoom_amplitude = 12.555
-shader_parameter/enable = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_ujsbv"]
 material = SubResource("ShaderMaterial_twgfx")
@@ -177,22 +170,29 @@ mesh = SubResource("TextMesh_mc5w1")
 [node name="OiiaioooooiaiFin" parent="XROrigin3D/XRCamera3D" instance=ExtResource("18_3s1yg")]
 transform = Transform3D(1.44616, 0, 0.398259, 0, 1.5, 0, -0.398259, 0, 1.44616, 0.369222, -0.361581, -1.42721)
 
-[node name="Settings" type="Node3D" parent="XROrigin3D/XRCamera3D"]
-transform = Transform3D(0.374954, -0.00589025, -1.63898e-08, -1.63918e-08, 7.16508e-16, -0.375, 0.00589025, 0.374954, -2.5747e-10, 0, 0.0268137, -0.450041)
-visible = false
-
-[node name="SubViewport" type="SubViewport" parent="XROrigin3D/XRCamera3D/Settings"]
-size = Vector2i(640, 360)
-
-[node name="Node" parent="XROrigin3D/XRCamera3D/Settings/SubViewport" instance=ExtResource("5_ujsbv")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/Settings"]
-material_override = SubResource("StandardMaterial3D_5i8cc")
-mesh = SubResource("PlaneMesh_f34b3")
+[node name="Sketchfab_Scene" parent="XROrigin3D/XRCamera3D" instance=ExtResource("5_jledq")]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0.320957, -0.124874, -1)
 
 [node name="ChangeIndicator" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.833909)
 mesh = SubResource("QuadMesh_ujsbv")
+
+[node name="Settings" parent="XROrigin3D/XRCamera3D" instance=ExtResource("6_5i8cc")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, -0.1, -1)
+visible = false
+screen_size = Vector2(1280, 768)
+scene = ExtResource("5_ujsbv")
+viewport_size = Vector2(640, 360)
+scene_properties_keys = PackedStringArray()
+
+[node name="Indicators" parent="XROrigin3D/XRCamera3D" instance=ExtResource("6_5i8cc")]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, -0.1, -1)
+screen_size = Vector2(1280, 768)
+scene = ExtResource("8_f34b3")
+viewport_size = Vector2(640, 360)
+scene_properties_keys = PackedStringArray("indicator_spawner.gd", "spread_value", "height_value")
+spread_value = 0.0
+height_value = 0.0
 
 [node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"

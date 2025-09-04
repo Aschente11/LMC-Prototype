@@ -1,0 +1,80 @@
+[gd_scene load_steps=13 format=3 uid="uid://c7crsr56myyjd"]
+
+[ext_resource type="PackedScene" uid="uid://c6gsf4baswr13" path="res://assets/tools/sticky_notes/scene.gltf" id="1_0xu32"]
+[ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="2_6rjmg"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="3_kmpge"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="4_nji3k"]
+[ext_resource type="Shader" uid="uid://b1o67suyqakfh" path="res://shaders/test.gdshader" id="5_6rjmg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jchc"]
+albedo_color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_ia6ag"]
+material = SubResource("StandardMaterial3D_5jchc")
+text = "hello"
+font = ExtResource("2_6rjmg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lpaa7"]
+render_priority = 0
+shader = ExtResource("3_kmpge")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv8tw"]
+next_pass = SubResource("ShaderMaterial_lpaa7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpwho"]
+render_priority = 0
+shader = ExtResource("3_kmpge")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjy55"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_fpwho")
+shader = ExtResource("4_nji3k")
+shader_parameter/color = Color(0.7, 0.12, 0.86, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmpge"]
+render_priority = 0
+shader = ExtResource("5_6rjmg")
+shader_parameter/scale = 1.0
+shader_parameter/outline_spread = 1.0
+shader_parameter/_Color = Color(0, 0, 0, 1)
+shader_parameter/_DepthNormalThreshold = 0.1
+shader_parameter/_DepthNormalThresholdScale = 3.0
+shader_parameter/_DepthThreshold = 1.5
+shader_parameter/_NormalThreshold = 2.0
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_0xu32")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.065, -0.3, -2.908)
+mesh = SubResource("TextMesh_ia6ag")
+
+[node name="STACK2" parent="Sketchfab_model/post_it_fbx/RootNode" index="0"]
+visible = false
+
+[node name="Light" parent="Sketchfab_model/post_it_fbx/RootNode" index="1"]
+visible = false
+
+[node name="Camera" parent="Sketchfab_model/post_it_fbx/RootNode" index="2"]
+visible = false
+
+[node name="FRONT_CURVED" parent="Sketchfab_model/post_it_fbx/RootNode" index="3"]
+visible = false
+
+[node name="single curved" parent="Sketchfab_model/post_it_fbx/RootNode" index="4"]
+visible = false
+
+[node name="SINGLE" parent="Sketchfab_model/post_it_fbx/RootNode" index="5"]
+visible = false
+
+[node name="SINGLE_front_0" parent="Sketchfab_model/post_it_fbx/RootNode/SINGLE" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_gv8tw")
+
+[node name="SINGLE_sides_001_0" parent="Sketchfab_model/post_it_fbx/RootNode/SINGLE" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_mjy55")
+
+[node name="single_front_0" parent="Sketchfab_model/post_it_fbx/RootNode/single" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_kmpge")
