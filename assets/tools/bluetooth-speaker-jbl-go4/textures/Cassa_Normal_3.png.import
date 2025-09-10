@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bg6w0j6ik2xgw"
-path="res://.godot/imported/Cassa_Normal_3.png-294d40295343806dd5bc5ca352301eab.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://assets/tools/bluetooth-speaker-jbl-go4/textures/Cassa_Normal_3.png"
-dest_files=["res://.godot/imported/Cassa_Normal_3.png-294d40295343806dd5bc5ca352301eab.ctex"]
 
 [params]
 
