@@ -15,9 +15,9 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="TextMesh" id="TextMesh_l7qyt"]
 material = SubResource("StandardMaterial3D_l7qyt")
 text = "Task for today:
-     - cook bfast
-     - draw a house
-     - clean up"
+     - cook and eat bfast
+     - unpack things
+     - sleep early"
 font = ExtResource("2_n3gav")
 font_size = 8
 

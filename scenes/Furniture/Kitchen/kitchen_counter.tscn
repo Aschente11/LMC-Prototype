@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://einnkksmyeo0" path="res://assets/Furniture Shaders/cupboard_d.tscn" id="3_mdlkv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sikx0"]
-size = Vector3(5.20177, 1.36884, 0.940186)
+size = Vector3(5.20177, 1.39585, 0.940186)
 
 [node name="KitchenCounter" type="Node3D"]
 
@@ -21,5 +21,5 @@ transform = Transform3D(0.42, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.31827, -0.0268333, -
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.233528, -0.281525, -0.326294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.233528, -0.268022, -0.326294)
 shape = SubResource("BoxShape3D_sikx0")

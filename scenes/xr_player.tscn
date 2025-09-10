@@ -160,7 +160,6 @@ script = ExtResource("1_7p0fh")
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="XROrigin3D"]
 top_level = true
 collision_layer = 524288
-collision_mask = 1023
 script = ExtResource("6_mvv4w")
 player_height_min = 0.5
 player_height_max = 2.25
@@ -174,6 +173,7 @@ visible = false
 
 [node name="make bfast" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)
+visible = false
 mesh = SubResource("TextMesh_3s1yg")
 
 [node name="need to unpack" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
@@ -298,6 +298,7 @@ visible = false
 
 [node name="InventorySystem" type="Node3D" parent="XROrigin3D" node_paths=PackedStringArray("inventory_toggler_hand")]
 transform = Transform3D(-0.00406662, -0.999992, 0, 0.999992, -0.00406662, 0, 0, 0, 1, 0.29965, 0.872173, -0.536814)
+visible = false
 script = ExtResource("10_sxhyq")
 inventory_toggler_hand = NodePath("../XRController3DRight")
 inventory_toggler_button = "ax_button"

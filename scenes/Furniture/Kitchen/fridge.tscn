@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://d1ws3pw8g3w1v"]
+[gd_scene load_steps=37 format=4 uid="uid://d1ws3pw8g3w1v"]
 
 [ext_resource type="Script" uid="uid://bolnrvlsf08tl" path="res://scripts/fridge.gd" id="1_amwlr"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_rbiym"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="8_k31p6"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="9_uxfnv"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="10_35ron"]
+[ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="12_35ron"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpjh0"]
 resource_name = "White"
@@ -234,6 +235,42 @@ shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_wiql6"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OISDirectionalSwipeReceiver/Area3D/CollisionShape3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.931134, -0.00218771, -0.445733)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fridge main/upper door:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Fridge main/upper door:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_amwlr"]
 resource_name = "close_fridge"
@@ -260,6 +297,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -1.5708), Vector3(0, 0, -0.472984), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OISDirectionalSwipeReceiver/Area3D/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.227577, 0.00913715, 0.109272), Vector3(0.982892, 0.0327773, -0.392812)]
 }
 
 [sub_resource type="Animation" id="Animation_2gkej"]
@@ -288,6 +337,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(4.38748e-09, 1.9087e-08, -0.451883), Vector3(2.46813e-30, 2.11758e-22, -1.5708)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OISDirectionalSwipeReceiver/Area3D/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.931134, -0.00218771, -0.445733), Vector3(0.225958, 0.0327773, 0.113533)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_amwlr"]
 _data = {
@@ -310,9 +371,9 @@ metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 size = Vector3(0.830078, 2.09808, 0.619202)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_amwlr"]
-size = Vector3(0.070076, 0.166382, 0.125046)
+size = Vector3(0.070076, 0.0895996, 0.0693359)
 
-[sub_resource type="SphereMesh" id="SphereMesh_4j2h7"]
+[sub_resource type="SphereMesh" id="SphereMesh_uxfnv"]
 radius = 0.2
 height = 0.4
 
@@ -324,7 +385,7 @@ collision_layer = 4
 collision_mask = 5
 
 [node name="Fridge main" type="MeshInstance3D" parent="Fridge"]
-transform = Transform3D(21, 0, 0, 0, -9.17939e-07, 21, 0, -21, -9.17939e-07, 0, 0, 0)
+transform = Transform3D(22, 0, 0, 0, -9.61651e-07, 22, 0, -22, -9.61651e-07, 0, 0, 0)
 mesh = SubResource("ArrayMesh_bkaoe")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_uxfnv")
@@ -365,6 +426,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0849609, -0.111664, -0.150
 shape = SubResource("BoxShape3D_2gkej")
 
 [node name="OISDirectionalSwipeReceiver" type="Node3D" parent="Fridge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.717865, 0.0369285, 0.576918)
 script = ExtResource("7_amwlr")
 group = "hand"
 metadata/_custom_type_script = "uid://bb8kuvwsdnh4c"
@@ -374,19 +436,26 @@ collision_layer = 536870912
 collision_mask = 536870912
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fridge/OISDirectionalSwipeReceiver/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218341, 0.0448608, 0.14576)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.931134, -0.00218771, -0.445733)
 shape = SubResource("BoxShape3D_amwlr")
 
-[node name="InventorySlot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.093, 0.398, -0.2)
+[node name="InventorySlot" type="Node3D" parent="." node_paths=PackedStringArray("default_object")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141744, 0.367792, -0.110584)
 script = ExtResource("8_k31p6")
+default_object = NodePath("Apple")
+group_required = "food"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot" instance=ExtResource("9_uxfnv")]
 grab_distance = 0.2
+snap_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot"]
-mesh = SubResource("SphereMesh_4j2h7")
+visible = false
+mesh = SubResource("SphereMesh_uxfnv")
 surface_material_override/0 = ExtResource("10_35ron")
+
+[node name="Apple" parent="InventorySlot" instance=ExtResource("12_35ron")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00289571, 0.00632951, -0.0229484)
 
 [connection signal="action_started" from="Fridge/OISDirectionalSwipeReceiver" to="." method="_on_ois_directional_swipe_receiver_action_started"]

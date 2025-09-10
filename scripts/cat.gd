@@ -45,7 +45,7 @@ func appear_with_scale() -> void:
 	var tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_BACK)
-	tween.tween_property(cat_model, "scale", Vector3.ONE, 7)  # Increased from 0.6 to 1.2 seconds
+	tween.tween_property(cat_model, "scale", Vector3.ONE, 5) 
 	
 	await tween.finished
 	is_appearing = false

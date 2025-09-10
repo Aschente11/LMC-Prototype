@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://o1nfmqbymovr" path="res://scenes/others/cardboardBox.tscn" id="22_3kcso"]
 [ext_resource type="PackedScene" uid="uid://5fir7lge76ll" path="res://scenes/tools/speakers.tscn" id="23_3k24g"]
 [ext_resource type="PackedScene" uid="uid://ckfitvtsa3jl0" path="res://scenes/tools/phone.tscn" id="24_75dmc"]
-[ext_resource type="PackedScene" uid="uid://bw44mftmte1vr" path="res://scenes/tools/pencil_model.tscn" id="25_btu3i"]
+[ext_resource type="PackedScene" uid="uid://bw44mftmte1vr" path="res://scenes/tools/marker.tscn" id="25_btu3i"]
 [ext_resource type="PackedScene" uid="uid://dsupuweunu8ri" path="res://scenes/tools/meta.tscn" id="26_a412u"]
 [ext_resource type="PackedScene" uid="uid://dlac4kfroxrdv" path="res://scenes/Furniture/ceiling_light.tscn" id="27_mwvre"]
 [ext_resource type="PackedScene" uid="uid://ckp3opsts403i" path="res://scenes/Furniture/door.tscn" id="28_g5clu"]
