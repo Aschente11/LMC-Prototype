@@ -6,7 +6,7 @@ extends Node3D
 @onready var need_unpack_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/need to unpack"
 @onready var tired_text: MeshInstance3D = $XROrigin3D/XRCamera3D/tired
 @onready var change_indicator: Material = $XROrigin3D/XRCamera3D/ChangeIndicator.get_active_material(0)
-@onready var indicators: PackedScene = $XROrigin3D/XRCamera3D/Indicators.scene
+#@onready var indicators: PackedScene = $XROrigin3D/XRCamera3D/Indicators.scene
 @onready var task_manager := $TaskManager
 @onready var notebook: StaticBody3D = $XROrigin3D/XRCamera3D/Notebook
 @onready var xr_camera := $XROrigin3D/XRCamera3D
@@ -185,12 +185,13 @@ func trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, ampl
 	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 	
 func _on_button_pressed(button_name: String):
-	match button_name:
-		"trigger_click":
-			task_manager.refresh_all_tasks()
-		"by_button": 
-			#task_manager.display_tasks()
-			notebook.visible = !notebook.visible
+	if task_manager and notebook:
+		match button_name:
+			"trigger_click":
+				task_manager.refresh_all_tasks()
+			"by_button": 
+				#task_manager.display_tasks()
+				notebook.visible = !notebook.visible
 
 
 func _on_physical_increase(old_value: int, new_value: int):
