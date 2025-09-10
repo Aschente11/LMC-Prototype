@@ -7,6 +7,10 @@ extends Node3D
 @onready var tired_text: MeshInstance3D = $XROrigin3D/XRCamera3D/tired
 @onready var change_indicator: Material = $XROrigin3D/XRCamera3D/ChangeIndicator.get_active_material(0)
 @onready var indicators: PackedScene = $XROrigin3D/XRCamera3D/Indicators.scene
+@onready var task_manager := $TaskManager
+@onready var notebook: StaticBody3D = $XROrigin3D/XRCamera3D/Notebook
+@onready var xr_camera := $XROrigin3D/XRCamera3D
+@onready var indicator_manager := $XROrigin3D/XRCamera3D/FloatingIndicatorManager
 
 var random_thoughts = preload("res://scenes/distractions/Random_thoughts.tscn")
 var brainrot_thoughts = preload("res://scenes/distractions/Brainrot_thoughts.tscn")
@@ -33,11 +37,22 @@ func _ready() -> void:
 		print("Failed to connect stimulation_increase signal")
 	if GlobalVar.stimulation_decrease.connect(trigger_indicator) != OK:
 		print("Failed to connect stimulation_decrease signal")
+		
+	if GlobalVar.physical_increase.connect(_on_physical_increase) != OK:
+		print("Failed to connect physical_increase signal")
+	if GlobalVar.physical_decrease.connect(_on_physical_decrease) != OK:
+		print("Failed to connect physical_decrease signal")
+		
+	if GlobalVar.emotional_increase.connect(_on_emotional_increase) != OK:
+		print("Failed to connect emotional_increase signal")
+	if GlobalVar.emotional_decrease.connect(_on_emotional_decrease) != OK:
+		print("Failed to connect emotional_decrease signal")
 	
 	# Check initial stimulation level and start spawning if needed
 	if GlobalVar.stimulation >= 2:
 		print("Initial stimulation level is >= 2, starting thought spawning")
 		start_spawning_thoughts()
+	
 
 func setup_thought_timer() -> void:
 	thought_spawn_timer = Timer.new()
@@ -47,7 +62,6 @@ func setup_thought_timer() -> void:
 	# Don't start the timer yet - it will start when stimulation reaches 2
 
 # Combine positive and negative indicators + call indicator spawner
-
 func trigger_indicator(old_value: int, new_value: int) -> void:
 	if old_value > new_value: # if decreased, blue
 		change_indicator.set_shader_parameter("color", Color(0, 0, 255, 255))
@@ -56,9 +70,11 @@ func trigger_indicator(old_value: int, new_value: int) -> void:
 	elif old_value == new_value: # if at either extreme, red bc stop!!!
 		change_indicator.set_shader_parameter("color", Color(255, 0, 0, 255))
 		
+	#indicators.spawn_indicator("s", str(new_value))
+	
 	change_indicator.set_shader_parameter("speed", 3.0)
 	_on_stimulation_changed(old_value, new_value)
-	await get_tree().create_timer(6.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	change_indicator.set_shader_parameter("speed", 0.0)
 	
 func _on_stimulation_changed(old_value: int, new_value: int) -> void:
@@ -167,6 +183,43 @@ func trigger_double_haptic_feedback() -> void:
 
 func trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
 	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
+	
+func _on_button_pressed(button_name: String):
+	match button_name:
+		"trigger_click":
+			task_manager.refresh_all_tasks()
+		"by_button": 
+			#task_manager.display_tasks()
+			notebook.visible = !notebook.visible
+
+
+func _on_physical_increase(old_value: int, new_value: int):
+	indicator_manager.show_typed_indicator(
+		Vector3(-0.3, -0.5, -1.0),
+		FloatingIndicatorManager.IndicatorType.PHYSICAL_GAIN
+	)
+
+
+func _on_physical_decrease(old_value: int, new_value: int):
+	indicator_manager.show_typed_indicator(
+		Vector3(-0.3, -0.5, -1.0),
+		FloatingIndicatorManager.IndicatorType.PHYSICAL_LOSS
+	)
+	
+
+func _on_emotional_increase(old_value: int, new_value: int):
+	indicator_manager.show_typed_indicator(
+		Vector3(0.3, -0.5, -1.0),
+		FloatingIndicatorManager.IndicatorType.EMOTIONAL_GAIN
+	)
+
+
+func _on_emotional_decrease(old_value: int, new_value: int):
+	indicator_manager.show_typed_indicator(
+		Vector3(0.3, -0.5, -1.0),
+		FloatingIndicatorManager.IndicatorType.EMOTIONAL_LOSS
+	)
+
 
 # Debug function - you can call this to manually test thought spawning
 func _input(event: InputEvent) -> void:
