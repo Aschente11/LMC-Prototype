@@ -75,9 +75,6 @@ func _ready() -> void:
 	# Check initial stimulation level
 	call_deferred("check_initial_state")
 	# Check initial stimulation level and start spawning if needed
-	if GlobalVar.stimulation >= 2:
-		print("Initial stimulation level is >= 2, starting thought spawning")
-		start_spawning_thoughts()
 	
 
 func setup_text_configs() -> void:
@@ -108,14 +105,6 @@ func setup_text_spawn_timer() -> void:
 	text_spawn_timer.wait_time = spawn_interval
 	text_spawn_timer.timeout.connect(_on_text_spawn_timer_timeout)
 
-func check_initial_state() -> void:
-	_on_stimulation_changed(GlobalVar.stimulation)
-
-func _on_stimulation_increase(new_value: int) -> void:
-	_on_stimulation_changed(new_value)
-
-func _on_stimulation_decrease(new_value: int) -> void:
-	_on_stimulation_changed(new_value)
 
 # Combine positive and negative indicators + call indicator spawner
 func trigger_indicator(old_value: int, new_value: int) -> void:
