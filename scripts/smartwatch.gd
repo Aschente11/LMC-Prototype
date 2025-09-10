@@ -50,7 +50,7 @@ func toggle_screen() -> void:
 		bar_screen.visible = true
 		time_screen.visible = false
 
-func _on_stimulation_increase(new_value: int) -> void:
+func _on_stimulation_increase(old_value: int, new_value: int) -> void:
 	await get_tree().create_timer(4.0).timeout
 	
 	# Check if stimulation count is 0, return to original form
@@ -64,7 +64,7 @@ func _on_stimulation_increase(new_value: int) -> void:
 	
 	animate_sequence(target_position, target_rotation, Tween.TRANS_ELASTIC)
 
-func _on_stimulation_decrease(new_value: int) -> void:
+func _on_stimulation_decrease(old_value: int, new_value: int) -> void:
 	await get_tree().create_timer(4.0).timeout
 	
 	# Check if stimulation count is 0, return to original form
@@ -108,19 +108,19 @@ func animate_sequence(target_position: Vector2, target_rotation: float, move_tra
 	tween.tween_property(marker, "scale", original_marker_scale, 0.3).set_trans(Tween.TRANS_BACK)
 	tween.set_parallel(false)
 
-func _on_physical_increase(new_value: int) -> void:
+func _on_physical_increase(old_value: int, new_value: int) -> void:
 	await get_tree().create_timer(4.0).timeout
 	physical_bar.value += 1
 
-func _on_physical_decrease(new_value: int) -> void:
+func _on_physical_decrease(old_value: int, new_value: int) -> void:
 	await get_tree().create_timer(4.0).timeout
 	physical_bar.value -= 1
 
-func _on_emotional_increase(new_value: int) -> void:
+func _on_emotional_increase(old_value: int, new_value: int) -> void:
 	await get_tree().create_timer(4.0).timeout
 	emotional_bar.value += 1
 
-func _on_emotional_decrease(new_value: int) -> void:
+func _on_emotional_decrease(old_value: int, new_value: int) -> void:
 	await get_tree().create_timer(4.0).timeout
 	emotional_bar.value -= 1
 

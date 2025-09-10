@@ -1,38 +1,57 @@
 extends Node
 
 # Change these to float for decimal values
-var stimulation = 0.0
-var physical = 2.0
-var emotional = 2.0
+var stimulation = 0.0 #[-2, 2]
+var physical = 2.0 #[0, 4]
+var emotional = 2.0 #[0, 4]
 
-signal stimulation_increase(new_value)
-signal stimulation_decrease(new_value)
-signal physical_increase(new_value)
-signal physical_decrease(new_value)
-signal emotional_increase(new_value)
-signal emotional_decrease(new_value)
+signal stimulation_increase(old_value, new_value)
+signal stimulation_decrease(old_value, new_value)
+signal physical_increase(old_value, new_value)
+signal physical_decrease(old_value, new_value)
+signal emotional_increase(old_value, new_value)
+signal emotional_decrease(old_value, new_value)
 
 	
 func increase_stimulation():
+	var old_val = stimulation
 	stimulation += 1
-	stimulation_increase.emit(stimulation)
+	if stimulation == 3:
+		stimulation = 2
+	stimulation_increase.emit(old_val, stimulation)
 
 func decrease_stimulation():
+	var old_val = stimulation
 	stimulation -= 1
-	stimulation_decrease.emit(stimulation)
+	if stimulation == -3:
+		stimulation = -2
+	stimulation_decrease.emit(old_val, stimulation)
 	
 func increase_physical():
+	var old_val = physical
 	physical += 1
-	physical_increase.emit(physical)
-
+	if physical == 5:
+		physical = 4
+	physical_increase.emit(old_val, physical)
+	
 func decrease_physical():
+	var old_val = physical
 	physical -= 1
-	physical_decrease.emit(physical)
+	if physical == -1:
+		physical = 0
+	physical_decrease.emit(old_val, physical)
 	
 func increase_emotional():
+	var old_val = emotional
 	emotional += 1
-	emotional_increase.emit(emotional)
+	if emotional == 5:
+		emotional = 4
+	emotional_increase.emit(old_val, emotional)
 
 func decrease_emotional():
+	var old_val = emotional
 	emotional -= 1
-	emotional_decrease.emit(emotional)
+	if emotional == -1:
+		emotional = 0
+	emotional_decrease.emit(old_val, emotional)
+	

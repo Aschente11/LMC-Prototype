@@ -1,0 +1,75 @@
+[gd_scene load_steps=12 format=3 uid="uid://c18tgsu62tfpv"]
+
+[ext_resource type="PackedScene" uid="uid://v76xkytb01iq" path="res://assets/tools/notebook/scene.gltf" id="1_lcorb"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_mqkop"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_iuey0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g8tr0"]
+render_priority = 0
+shader = ExtResource("2_mqkop")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dnqcr"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_g8tr0")
+shader = ExtResource("3_iuey0")
+shader_parameter/color = Color(0.709804, 0.541176, 0, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g3dax"]
+render_priority = 0
+shader = ExtResource("2_mqkop")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e0kt5"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_g3dax")
+shader = ExtResource("3_iuey0")
+shader_parameter/color = Color(0.709804, 0.541176, 0, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qj33e"]
+render_priority = 0
+shader = ExtResource("2_mqkop")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xb85g"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_qj33e")
+shader = ExtResource("3_iuey0")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ermsw"]
+render_priority = 0
+shader = ExtResource("2_mqkop")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yoaiu"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ermsw")
+shader = ExtResource("3_iuey0")
+shader_parameter/color = Color(0.568627, 0, 0, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Sketchfab_Scene" instance=ExtResource("1_lcorb")]
+
+[node name="Object_4" parent="Sketchfab_model/root/GLTF_SceneRootNode/Plane_0" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_dnqcr")
+
+[node name="Object_5" parent="Sketchfab_model/root/GLTF_SceneRootNode/Plane_0" index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_e0kt5")
+
+[node name="Object_7" parent="Sketchfab_model/root/GLTF_SceneRootNode/Plane_001_1" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_xb85g")
+
+[node name="Object_9" parent="Sketchfab_model/root/GLTF_SceneRootNode/BezierCircle_2" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_yoaiu")

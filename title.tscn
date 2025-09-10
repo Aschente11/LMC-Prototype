@@ -1,12 +1,13 @@
-[gd_scene load_steps=34 format=4 uid="uid://beqhw45ofd705"]
+[gd_scene load_steps=43 format=4 uid="uid://beqhw45ofd705"]
 
 [ext_resource type="Script" uid="uid://8wjg0qrrgrm1" path="res://title.gd" id="1_oyqm6"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="1_y7k74"]
 [ext_resource type="Script" uid="uid://dyruptstoewfx" path="res://addons/godot-xr-tools/functions/function_pointer.gd" id="2_nuqgq"]
 [ext_resource type="AudioStream" uid="uid://xegchyrw6dc2" path="res://assets/sfx/bgsound.mp3" id="3_kpexm"]
 [ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="4_3xoar"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="4_0824t"]
 [ext_resource type="Texture2D" uid="uid://cf3ag7125x75d" path="res://assets/others/distractions/oiiaioooooiai-cat/textures/Muchkin2_BaseColor.png" id="5_mom7w"]
-[ext_resource type="PackedScene" uid="uid://cg8fnhb0wnrix" path="res://scenes/UI/settingsUI.tscn" id="8_jil77"]
+[ext_resource type="Shader" uid="uid://dn36xw56c7i80" path="res://shaders/main.gdshader" id="7_nuqgq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 sky_top_color = Color(0.4, 0.7, 1, 1)
@@ -56,7 +57,12 @@ emission_enabled = true
 emission = Color(0.9, 0.95, 1, 1)
 emission_energy_multiplier = 0.1
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lx2ly"]
+render_priority = 0
+shader = ExtResource("4_0824t")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyqm6"]
+next_pass = SubResource("ShaderMaterial_lx2ly")
 albedo_color = Color(0.76557, 0.642022, 0, 1)
 emission_enabled = true
 emission = Color(1, 0.878431, 0.4, 1)
@@ -67,6 +73,22 @@ material = SubResource("StandardMaterial3D_oyqm6")
 text = "LET ME COOK!"
 font = ExtResource("1_y7k74")
 font_size = 127
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jil77"]
+render_priority = 0
+shader = ExtResource("4_0824t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_16uvt"]
+next_pass = SubResource("ShaderMaterial_jil77")
+emission_enabled = true
+emission = Color(1, 0.878431, 0.4, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="TextMesh" id="TextMesh_upcoo"]
+material = SubResource("StandardMaterial3D_16uvt")
+text = "Press any button to start"
+font = ExtResource("1_y7k74")
+font_size = 80
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pug7l"]
 resource_name = "Grey 2"
@@ -284,8 +306,56 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[node name="Title" type="Node3D"]
+[sub_resource type="Animation" id="Animation_7lgly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pan:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.991382, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mom7w"]
+resource_name = "start"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pan:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.991382, 0, 0), Vector3(5.34071, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0824t"]
+_data = {
+&"RESET": SubResource("Animation_7lgly"),
+&"start": SubResource("Animation_mom7w")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_gjryj"]
+custom_aabb = AABB(-5000, -5000, -5000, 10000, 10000, 10000)
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3ranr"]
+render_priority = 0
+shader = ExtResource("7_nuqgq")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+
+[node name="Title" type="Node3D" node_paths=PackedStringArray("fade_mesh")]
 script = ExtResource("1_oyqm6")
+fade_mesh = NodePath("FadeMesh")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 50, 0)
@@ -356,8 +426,12 @@ max_db = 6.0
 transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 0, 53.4582, -8.2561)
 mesh = SubResource("TextMesh_kpexm")
 
+[node name="TitleText2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 0, 50.3944, -8.2561)
+mesh = SubResource("TextMesh_upcoo")
+
 [node name="Pan" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 390.442, 920.628, 0, -920.628, 390.442, 0, 50.607, -11.2276)
+transform = Transform3D(1000, 0, 0, 0, 547.534, 836.784, 0, -836.784, 547.534, 0, 50.607, -11.2276)
 mesh = SubResource("ArrayMesh_kpexm")
 skeleton = NodePath("")
 
@@ -386,8 +460,15 @@ mesh = SubResource("ArrayMesh_7lgly")
 skeleton = NodePath("")
 blend_shapes/body.Muchkin1 = 0.0
 
-[node name="SubViewport" type="SubViewport" parent="."]
-size = Vector2i(640, 360)
-render_target_update_mode = 4
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0824t")
+}
 
-[node name="CanvasLayer" parent="SubViewport" instance=ExtResource("8_jil77")]
+[node name="FadeMesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("QuadMesh_gjryj")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_3ranr")
+
+[connection signal="button_pressed" from="XROrigin3D/right" to="." method="_on_button_pressed"]

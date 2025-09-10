@@ -13,12 +13,12 @@ size = Vector3(0.159443, 0.143937, 0.172913)
 script = ExtResource("1_hoqvh")
 
 [node name="XRToolsPickable" type="RigidBody3D" parent="."]
-collision_layer = 7
+collision_layer = 65542
 collision_mask = 7
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("3_4bwle")
-picked_up_layer = 65541
+picked_up_layer = 65542
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="JBL GO5" parent="XRToolsPickable" instance=ExtResource("3_v2kmh")]

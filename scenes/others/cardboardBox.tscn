@@ -66,7 +66,7 @@ size = Vector3(0.728516, 0.698456, 0.0269775)
 size = Vector3(0.9375, 0.698456, 0.0269775)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_21pyn"]
-size = Vector3(0.725676, 0.695114, 0.947662)
+size = Vector3(1.05471, 0.809349, 1.11143)
 
 [node name="box" type="StaticBody3D"]
 script = ExtResource("1_21pyn")
@@ -108,11 +108,11 @@ event_name = "unpack things"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
 [node name="Detection Area" type="Area3D" parent="."]
-visible = false
 collision_layer = 2
+collision_mask = 65542
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000300471, -0.0242386, 0.00196838)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0525578, 0.0328789, -0.00491715)
 shape = SubResource("BoxShape3D_21pyn")
 
 [node name="unpack" type="AudioStreamPlayer" parent="."]

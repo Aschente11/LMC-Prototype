@@ -6,6 +6,11 @@ extends Node3D
 @onready var need_unpack_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/need to unpack"
 @onready var tired_text: MeshInstance3D = $XROrigin3D/XRCamera3D/tired
 @onready var camera = $XROrigin3D/XRCamera3D
+@onready var change_indicator: Material = $XROrigin3D/XRCamera3D/ChangeIndicator.get_active_material(0)
+#@onready var indicators: PackedScene = $XROrigin3D/XRCamera3D/Indicators.scene
+@onready var task_manager := $TaskManager
+@onready var notebook: StaticBody3D = $XROrigin3D/XRCamera3D/Notebook
+@onready var indicator_manager := $XROrigin3D/XRCamera3D/FloatingIndicatorManager
 
 # Text configuration class
 class TextConfig:
@@ -52,13 +57,28 @@ func _ready() -> void:
 	print("Current stimulation level: ", GlobalVar.stimulation)
 	
 	# Connect to stimulation signals
-	if GlobalVar.stimulation_increase.connect(_on_stimulation_changed) != OK:
+	if GlobalVar.stimulation_increase.connect(trigger_indicator) != OK:
 		print("Failed to connect stimulation_increase signal")
-	if GlobalVar.stimulation_decrease.connect(_on_stimulation_changed) != OK:
+	if GlobalVar.stimulation_decrease.connect(trigger_indicator) != OK:
 		print("Failed to connect stimulation_decrease signal")
+		
+	if GlobalVar.physical_increase.connect(_on_physical_increase) != OK:
+		print("Failed to connect physical_increase signal")
+	if GlobalVar.physical_decrease.connect(_on_physical_decrease) != OK:
+		print("Failed to connect physical_decrease signal")
+		
+	if GlobalVar.emotional_increase.connect(_on_emotional_increase) != OK:
+		print("Failed to connect emotional_increase signal")
+	if GlobalVar.emotional_decrease.connect(_on_emotional_decrease) != OK:
+		print("Failed to connect emotional_decrease signal")
 	
 	# Check initial stimulation level
 	call_deferred("check_initial_state")
+	# Check initial stimulation level and start spawning if needed
+	if GlobalVar.stimulation >= 2:
+		print("Initial stimulation level is >= 2, starting thought spawning")
+		start_spawning_thoughts()
+	
 
 func setup_text_configs() -> void:
 	# Add your text configurations here - easy to add new ones!
@@ -97,8 +117,24 @@ func _on_stimulation_increase(new_value: int) -> void:
 func _on_stimulation_decrease(new_value: int) -> void:
 	_on_stimulation_changed(new_value)
 
-func _on_stimulation_changed(new_value: int) -> void:
-	print("Stimulation changed to: ", new_value)
+# Combine positive and negative indicators + call indicator spawner
+func trigger_indicator(old_value: int, new_value: int) -> void:
+	if old_value > new_value: # if decreased, blue
+		change_indicator.set_shader_parameter("color", Color(0, 0, 255, 255))
+	elif old_value < new_value: # if increased, orange
+		change_indicator.set_shader_parameter("color", Color(255, 100, 0, 255))
+	elif old_value == new_value: # if at either extreme, red bc stop!!!
+		change_indicator.set_shader_parameter("color", Color(255, 0, 0, 255))
+		
+	#indicators.spawn_indicator("s", str(new_value))
+	
+	change_indicator.set_shader_parameter("speed", 3.0)
+	_on_stimulation_changed(old_value, new_value)
+	await get_tree().create_timer(4.0).timeout
+	change_indicator.set_shader_parameter("speed", 0.0)
+	
+func _on_stimulation_changed(old_value: int, new_value: int) -> void:
+	print("Stimulation changed to: ", new_value)  # Debug print
 	
 	if new_value >= 2 and not is_spawning_texts:
 		print("Starting text spawning cycle")
@@ -280,6 +316,44 @@ func trigger_double_haptic_feedback() -> void:
 
 func right_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
 	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
+	
+func _on_button_pressed(button_name: String):
+	if task_manager and notebook:
+		match button_name:
+			"trigger_click":
+				task_manager.refresh_all_tasks()
+			"by_button": 
+				#task_manager.display_tasks()
+				notebook.visible = !notebook.visible
+
+
+func _on_physical_increase(old_value: int, new_value: int):
+	indicator_manager.show_typed_indicator(
+		Vector3(-0.3, -0.5, -1.0),
+		FloatingIndicatorManager.IndicatorType.PHYSICAL_GAIN
+	)
+
+
+func _on_physical_decrease(old_value: int, new_value: int):
+	indicator_manager.show_typed_indicator(
+		Vector3(-0.3, -0.5, -1.0),
+		FloatingIndicatorManager.IndicatorType.PHYSICAL_LOSS
+	)
+	
+
+func _on_emotional_increase(old_value: int, new_value: int):
+	indicator_manager.show_typed_indicator(
+		Vector3(0.3, -0.5, -1.0),
+		FloatingIndicatorManager.IndicatorType.EMOTIONAL_GAIN
+	)
+
+
+func _on_emotional_decrease(old_value: int, new_value: int):
+	indicator_manager.show_typed_indicator(
+		Vector3(0.3, -0.5, -1.0),
+		FloatingIndicatorManager.IndicatorType.EMOTIONAL_LOSS
+	)
+
 
 
 func left_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:

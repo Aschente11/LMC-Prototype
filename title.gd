@@ -4,11 +4,14 @@ extends Node3D
 @onready var bg_sounds: AudioStreamPlayer3D = $BGsounds
 @onready var knife: MeshInstance3D = $knife
 @onready var cat: MeshInstance3D = $cat
+@onready var start_animation = $AnimationPlayer
 
 # Store original position and rotation
 var original_position: Vector3
 var original_rotation: Vector3
 var time_passed: float = 0.0
+
+@export var fade_mesh : Node3D
 
 # Knife animation properties
 @export var knife_rotation_speed: Vector3 = Vector3(0, 0, 90)
@@ -29,6 +32,7 @@ func _ready():
 	
 	# Start background sounds
 	bg_sounds.play()
+	start_animation.play("start")
 
 func _process(delta):
 	time_passed += delta
@@ -142,3 +146,30 @@ func start_tween_bounce():
 	# You can also chain scale or rotation animations
 	tween.parallel().tween_property(title_text, "scale", Vector3(1.1, 1.1, 1.1), 0.8)
 	tween.parallel().tween_property(title_text, "scale", Vector3(1.0, 1.0, 1.0), 0.8)
+	
+func _on_button_pressed(button: String) -> void:
+	print(button, " has been pressed!")
+	_fade_out()
+	#await get_tree().create_timer(2).timeout
+	print("Changed Scene")
+	get_tree().change_scene_to_file("res://scenes/waking_up.tscn")
+
+
+func _fade_out():
+	if not is_inside_tree():
+		return
+	
+	if is_instance_valid(fade_mesh):
+		var tween = get_tree().create_tween()
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		tween.set_parallel(true)
+		tween.tween_property(fade_mesh.get_surface_override_material(0), "shader_parameter/albedo", Color(0,0,0,1), 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		await tween.finished
+
+func _fade_in():
+	if is_instance_valid(fade_mesh):
+		var tween = get_tree().create_tween()
+		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		tween.set_parallel(true)
+		tween.tween_property(fade_mesh.get_surface_override_material(0), "shader_parameter/albedo", Color(0,0,0,0), 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		await tween.finished

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Notebook
+* source:	https://sketchfab.com/3d-models/notebook-6156c5344c1d4019a3222e43dc7ee813
+* author:	hitheredearjohn (https://sketchfab.com/hitheredearjohn)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Notebook" (https://sketchfab.com/3d-models/notebook-6156c5344c1d4019a3222e43dc7ee813) by hitheredearjohn (https://sketchfab.com/hitheredearjohn) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

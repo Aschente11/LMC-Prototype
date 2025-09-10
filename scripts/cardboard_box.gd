@@ -17,14 +17,15 @@ func _ready() -> void:
 		print("ERROR: Unpack things event not found!")
 
 func _on_body_exited(body: Node3D) -> void:
+	print(body)
 	if should_track_object(body):
 		object_count -= 1
 		
 		if object_count <= 0:
 			print("Box is empty! Emitting signal...")
 			box_emptied.emit()  # Emit the signal
-			GlobalVar.decrease_stimulation()
-			GlobalVar.decrease_stimulation()
+			#GlobalVar.decrease_stimulation()
+			#GlobalVar.decrease_stimulation()
 			GlobalVar.decrease_physical()
 			GlobalVar.decrease_physical()
 			GlobalVar.decrease_physical()

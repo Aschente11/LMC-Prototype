@@ -24,8 +24,6 @@ func _ready():
 		#bread_detection_area.body_exited.connect(_on_bread_exited)
 
 func _on_countdown_finished():
-	"""Called when 14-second countdown finishes"""
-	print("Toaster countdown finished - turning off!")
 	turn_off_device()
 
 func turn_off_device():

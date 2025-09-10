@@ -506,6 +506,7 @@ mesh = SubResource("QuadMesh_lhfxo")
 
 [node name="SubViewport" type="SubViewport" parent="GalaxyWatch/screen"]
 transparent_bg = true
+render_target_update_mode = 4
 
 [node name="Control" type="Control" parent="GalaxyWatch/screen/SubViewport"]
 layout_mode = 3

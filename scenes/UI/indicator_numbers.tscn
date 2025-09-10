@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://bctkc8tja0dee"]
+
+[ext_resource type="Script" uid="uid://bi7ttgxn2r325" path="res://scripts/indicator_numbers.gd" id="1_ao4dj"]
+
+[sub_resource type="Animation" id="Animation_yeaml"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelContainer:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_8r57h"]
+resource_name = "Rise and Fade"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LabelContainer:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.166667, 0.357813, 1)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"remove"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1tnu"]
+_data = {
+&"RESET": SubResource("Animation_yeaml"),
+&"Rise and Fade": SubResource("Animation_8r57h")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ao4dj"]
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Indicator_Numbers" type="Node2D"]
+script = ExtResource("1_ao4dj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_j1tnu")
+}
+
+[node name="LabelContainer" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="LabelContainer"]
+unique_name_in_owner = true
+offset_top = -23.0
+offset_right = 40.0
+text = "123"
+label_settings = SubResource("LabelSettings_ao4dj")

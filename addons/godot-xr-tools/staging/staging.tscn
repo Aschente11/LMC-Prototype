@@ -9,6 +9,7 @@
 
 [node name="Staging" type="Node3D"]
 script = ExtResource("1")
+main_scene = "uid://bmntx5vgfext1"
 
 [node name="Fade" parent="." instance=ExtResource("2_htugy")]
 
@@ -29,6 +30,7 @@ pose = &"aim"
 
 [node name="LoadingScreen" parent="." instance=ExtResource("2")]
 progress = 0.0
+enable_press_to_continue = true
 
 [node name="Scene" type="Node3D" parent="."]
 

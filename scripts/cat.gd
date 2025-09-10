@@ -17,18 +17,19 @@ func _ready() -> void:
 	call_deferred("check_initial_state")
 
 func check_initial_state() -> void:
-	_on_stimulation_changed(GlobalVar.stimulation)
+	_on_stimulation_changed(GlobalVar.stimulation, GlobalVar.stimulation)
 
 # Connect to the same signals as the smartwatch for consistency
-func _on_stimulation_increase(new_value: int) -> void:
-	_on_stimulation_changed(new_value)
+func _on_stimulation_increase(old_value: int, new_value: int) -> void:
+	_on_stimulation_changed(old_value, new_value)
 
-func _on_stimulation_decrease(new_value: int) -> void:
-	_on_stimulation_changed(new_value)
+func _on_stimulation_decrease(old_value: int, new_value: int) -> void:
+	_on_stimulation_changed(old_value, new_value)
 
-func _on_stimulation_changed(new_stimulation_value: int) -> void:
-	if new_stimulation_value >= 1 and not is_looping and not is_appearing:
-		# Show cat with scale animation
+func _on_stimulation_changed(old_value: int, new_stimulation_value: int) -> void:
+	
+	if new_stimulation_value >= 1 and not is_looping:
+		# Show cat and start animation
 		appear_with_scale()
 	elif new_stimulation_value < 1 and is_looping:
 		# Hide cat with scale animation
