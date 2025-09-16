@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://beqhw45ofd705"]
+[gd_scene load_steps=44 format=4 uid="uid://beqhw45ofd705"]
 
 [ext_resource type="Script" uid="uid://8wjg0qrrgrm1" path="res://title.gd" id="1_oyqm6"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="1_y7k74"]

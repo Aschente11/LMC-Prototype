@@ -19,217 +19,61 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Whole apple:visible")
+tracks/0/path = NodePath("RightQuarter_Apple:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RightQuarter_Apple2:rotation")
+tracks/1/path = NodePath("RightQuarter_Apple2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -0.242391)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RightQuarter_Apple2:position")
+tracks/2/path = NodePath("LeftQuarter_Apple:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.0208532, 0, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RightQuarter_Apple2:visible")
+tracks/3/path = NodePath("LeftQuarter_Apple2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.001),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [false, false]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("RightQuarter_Apple:visible")
+tracks/4/path = NodePath("Whole apple:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("LeftQuarter_Apple:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("LeftQuarter_Apple2:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("RightQuarter_Apple:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.0208532, 0, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("LeftQuarter_Apple:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.0240589, -0.000475608, 0.0195063)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("LeftQuarter_Apple2:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.0240589, -0.000475608, 0.0195063)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("RightQuarter_Apple:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, -0.242391)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("LeftQuarter_Apple:rotation")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.65323e-09, 3.13458, -0.242391)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("LeftQuarter_Apple2:rotation")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1.65323e-09, 3.13458, -0.242391)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("apple_collision:disabled")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("RightQuarter_Apple/CollisionShape3D:disabled")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("RightQuarter_Apple2/CollisionShape3D:disabled")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("LeftQuarter_Apple/CollisionShape3D:disabled")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("LeftQuarter_Apple2/CollisionShape3D:disabled")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [true]
 }
 
@@ -239,23 +83,23 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Whole apple:visible")
+tracks/0/path = NodePath("RightQuarter_Apple:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RightQuarter_Apple:visible")
+tracks/1/path = NodePath("RightQuarter_Apple2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -263,23 +107,23 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("RightQuarter_Apple2:visible")
+tracks/2/path = NodePath("LeftQuarter_Apple:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("LeftQuarter_Apple:visible")
+tracks/3/path = NodePath("LeftQuarter_Apple2:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -287,169 +131,13 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("LeftQuarter_Apple2:visible")
+tracks/4/path = NodePath("Whole apple:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("RightQuarter_Apple:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.0113712, 0, -0.0119649), Vector3(0.0113712, 0, -0.0846273), Vector3(0.0113712, 0.0139298, -0.24182)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("RightQuarter_Apple2:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.0113712, 0, -0.0119649), Vector3(0.094035, 0, -0.0119649), Vector3(0.270963, 0.0139298, -0.0119649)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("LeftQuarter_Apple:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.0120415, -0.000475608, 0.0310402), Vector3(-0.0120415, -0.000475608, 0.0979663), Vector3(-0.0120415, 0.0134542, 0.261827)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("LeftQuarter_Apple2:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.0120415, -0.000475608, 0.0310402), Vector3(-0.093704, -0.000475608, 0.0310402), Vector3(-0.270017, 0.0134542, 0.0310402)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("RightQuarter_Apple:rotation")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(7.23278e-09, 0.66251, -0.242391), Vector3(-0.508231, 0.78114, -0.691945), Vector3(-0.907426, 1.52384, -1.75362)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("RightQuarter_Apple2:rotation")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(7.23278e-09, 0.66251, -0.242391), Vector3(0.489106, 0.466445, -0.993215), Vector3(0.662379, 0.0142541, -1.79001)]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("LeftQuarter_Apple:rotation")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(1.71929e-09, -2.4861, -0.242391), Vector3(-0.54245, -2.34965, -0.724299), Vector3(-0.913652, -1.50534, -1.89579)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("LeftQuarter_Apple2:rotation")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.233333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(1.71929e-09, -2.4861, -0.242391), Vector3(0.329025, -2.56382, -0.702507), Vector3(0.651893, -3.06736, -1.69122)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("apple_collision:disabled")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("RightQuarter_Apple/CollisionShape3D:disabled")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("RightQuarter_Apple2/CollisionShape3D:disabled")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("LeftQuarter_Apple/CollisionShape3D:disabled")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("LeftQuarter_Apple2/CollisionShape3D:disabled")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [false]
 }
 
@@ -827,7 +515,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_qrok7")
 
 [node name="RightQuarter_Apple" type="RigidBody3D" parent="."]
-transform = Transform3D(0.970767, 0.240024, 0, -0.240024, 0.970766, 0, 0, 0, 1, 0.0208532, 0, 0)
+transform = Transform3D(0.765402, 0.189248, 0.615097, -0.605514, -0.111952, 0.787921, 0.217974, -0.975525, 0.028904, 0.0113712, 0.0139298, -0.24182)
 visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")
@@ -854,10 +542,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_iic7m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightQuarter_Apple"]
 transform = Transform3D(0.765403, -0.605514, 0.217974, 0.189249, -0.111952, -0.975523, 0.615097, 0.787921, 0.0289039, 0.000240549, -0.00287266, -0.0179024)
 shape = SubResource("BoxShape3D_50kwp")
-disabled = true
 
 [node name="RightQuarter_Apple2" type="RigidBody3D" parent="."]
-transform = Transform3D(0.970767, 0.240024, 0, -0.240024, 0.970767, 0, 0, 0, 1, 0.0208532, 0, 0)
+transform = Transform3D(-0.225996, 0.974063, 0.0112394, -0.769661, -0.171476, -0.614995, -0.597116, -0.147637, 0.788451, 0.270963, 0.0139298, -0.0119649)
 visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")
@@ -890,10 +577,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_iic7m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightQuarter_Apple2"]
 transform = Transform3D(0.765402, -0.605513, 0.217974, 0.189249, -0.111952, -0.975523, 0.615097, 0.787922, 0.0289039, -0.00218391, 0.00312236, 0.0294943)
 shape = SubResource("BoxShape3D_50kwp")
-disabled = true
 
 [node name="LeftQuarter_Apple" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.970743, -0.240019, 0.0070127, -0.240024, 0.970767, -1.65323e-09, -0.0068077, -0.00168322, -0.999975, -0.0240589, -0.000475608, 0.0195063)
+transform = Transform3D(-0.769573, -0.190278, -0.60955, -0.578882, -0.195049, 0.79174, -0.269542, 0.962159, 0.0399561, -0.0120415, 0.0134542, 0.261827)
 visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")
@@ -914,10 +600,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wb1b8")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftQuarter_Apple"]
 transform = Transform3D(0.76552, -0.590162, 0.256298, 0.188811, -0.174754, -0.966336, 0.615086, 0.788144, -0.0223491, -0.000372238, -0.000685185, -0.0178116)
 shape = SubResource("BoxShape3D_50kwp")
-disabled = true
 
 [node name="LeftQuarter_Apple2" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.970743, -0.240019, 0.0070127, -0.240024, 0.970767, -1.65323e-09, -0.0068077, -0.00168322, -0.999975, -0.0240589, -0.000475608, 0.0195063)
+transform = Transform3D(0.164471, -0.984619, -0.0589563, -0.78918, -0.0954981, -0.606692, 0.59173, 0.146311, -0.792747, -0.270017, 0.0134542, 0.0310402)
 visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")
@@ -944,7 +629,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_iic7m")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftQuarter_Apple2"]
 transform = Transform3D(0.789712, -0.602017, 0.118027, 0.0640147, -0.110476, -0.991812, 0.610129, 0.790805, -0.0487057, -0.0138193, -0.00574675, 0.0398714)
 shape = SubResource("BoxShape3D_50kwp")
-disabled = true
 
 [node name="OISStrikeReceiver" type="Node3D" parent="."]
 script = ExtResource("3_xxqyr")

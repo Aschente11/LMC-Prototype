@@ -1,4 +1,4 @@
-[gd_scene load_steps=152 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=151 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -75,7 +75,6 @@
 [ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="72_gdvew"]
 [ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="74_xrs0c"]
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="75_xljpf"]
-[ext_resource type="PackedScene" uid="uid://dcj3aeqvitt61" path="res://scenes/tools/kitchen/plate.tscn" id="76_j4bwh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -1034,6 +1033,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31352, 1.3697, 6.69074)
 
 [node name="Apple" parent="." instance=ExtResource("75_xljpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52473, 1.50377, 5.98096)
-
-[node name="plate" parent="." instance=ExtResource("76_j4bwh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4955, 1.31969, 5.25366)
