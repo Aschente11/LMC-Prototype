@@ -1,21 +1,27 @@
-[gd_scene load_steps=55 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=64 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="2_4irtq"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="3_wrvet"]
+[ext_resource type="AudioStream" uid="uid://crwfbgsjpf4a1" path="res://assets/sfx/did i forget smthn.mp3" id="4_5i8cc"]
+[ext_resource type="FontFile" uid="uid://n5cd37mmqxvl" path="res://assets/others/fonts/LuckiestGuy-Regular.ttf" id="4_f34b3"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="4_mvv4w"]
-[ext_resource type="PackedScene" path="res://scenes/UI/settingsUI.tscn" id="5_ujsbv"]
+[ext_resource type="Material" uid="uid://b2jaelatdoq7w" path="res://assets/textures/overthinkings.tres" id="5_awktg"]
+[ext_resource type="Script" uid="uid://iql24ddnlvra" path="res://scripts/mouth.gd" id="5_mc5w1"]
+[ext_resource type="PackedScene" uid="uid://c5jgrnveygjo7" path="res://scenes/UI/settingsUI.tscn" id="5_ujsbv"]
 [ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="5_wrvet"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="6_5i8cc"]
 [ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="6_ecy5y"]
+[ext_resource type="AudioStream" uid="uid://c3atcbgwujcaq" path="res://assets/sfx/what is life even abt.mp3" id="6_jledq"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="6_mc5w1"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="6_mvv4w"]
 [ext_resource type="Shader" path="res://shaders/indicator.gdshader" id="6_twgfx"]
+[ext_resource type="AudioStream" uid="uid://qmevnuxpi71q" path="res://assets/sfx/eating.mp3" id="6_ujsbv"]
 [ext_resource type="Script" path="res://scripts/floating_indicator_manager.gd" id="7_8qmb4"]
 [ext_resource type="Script" uid="uid://cji1tdhhvihrj" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_single_controller_asm.gd" id="7_cibq4"]
 [ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="8_jhdqs"]
-[ext_resource type="PackedScene" uid="uid://c18tgsu62tfpv" path="res://scenes/tools/handy_dandy_notebook.tscn" id="9_jledq"]
+[ext_resource type="PackedScene" path="res://scenes/tools/handy_dandy_notebook.tscn" id="9_jledq"]
 [ext_resource type="Script" uid="uid://du4lpoac66rw" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_system.gd" id="10_sxhyq"]
 [ext_resource type="PackedScene" uid="uid://cyu5exn7vgfy8" path="res://scenes/tools/smartwatch.tscn" id="11_1mew7"]
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="11_7p0fh"]
@@ -80,19 +86,34 @@ orientation = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_jledq"]
 size = Vector3(0.226288, 0.268921, 0.0637207)
 
+[sub_resource type="TextMesh" id="TextMesh_twgfx"]
+material = ExtResource("5_awktg")
+text = "Did I forget something"
+font = ExtResource("4_f34b3")
+
+[sub_resource type="TextMesh" id="TextMesh_t6eq7"]
+material = ExtResource("5_awktg")
+font = ExtResource("4_f34b3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ujsbv"]
+size = Vector3(0.453125, 0.486328, 0.535156)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mc5w1"]
 render_priority = 0
 shader = ExtResource("6_mc5w1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrvet"]
 next_pass = SubResource("ShaderMaterial_mc5w1")
+transparency = 1
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.313726, 1, 1, 0.52549)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_323tq"]
+radius = 0.107317
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sxhyq"]
+radius = 0.139617
 
 [sub_resource type="SphereMesh" id="SphereMesh_chwf4"]
 radius = 0.1
@@ -224,6 +245,39 @@ transform = Transform3D(1.31134e-08, 1.13247e-08, -0.15, -0.15, 1.13247e-08, -1.
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Notebook"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00291443, 0.00408936, 0.0262451)
 shape = SubResource("BoxShape3D_jledq")
+
+[node name="overthinkings" type="Node3D" parent="XROrigin3D/XRCamera3D"]
+
+[node name="Did I forget smthn" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258535, -1.73671)
+mesh = SubResource("TextMesh_twgfx")
+skeleton = NodePath("../..")
+
+[node name="forget audio" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn"]
+visible = false
+stream = ExtResource("4_5i8cc")
+volume_db = 80.0
+
+[node name="What is life" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings"]
+mesh = SubResource("TextMesh_t6eq7")
+
+[node name="What is life" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/What is life"]
+stream = ExtResource("6_jledq")
+
+[node name="OiiaioooooiaiFin2" parent="XROrigin3D/XRCamera3D" instance=ExtResource("18_3s1yg")]
+transform = Transform3D(1.44616, 0, 0.398259, 0, 1.5, 0, -0.398259, 0, 1.44616, 0.369222, -0.361581, -1.42721)
+
+[node name="Mouth" type="Area3D" parent="XROrigin3D/XRCamera3D"]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("5_mc5w1")
+
+[node name="Eating sfx" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/Mouth"]
+stream = ExtResource("6_ujsbv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Mouth"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.252712, -0.0638555)
+shape = SubResource("BoxShape3D_ujsbv")
 
 [node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
