@@ -1,93 +1,294 @@
 extends Node3D
-#
-#@export var particle_count: int = 500
-#@export var mug_interior_radius: float = 0.4
-#@export var liquid_height: float = 0.3
-#
-#var liquid_particles: GPUParticles3D
-#var is_contained: bool = true
-#
-#func _ready():
-	#setup_liquid_particles()
-#
-#func setup_liquid_particles():
-	#liquid_particles = GPUParticles3D.new()
-	#add_child(liquid_particles)
-	#
-	## Basic particle setup
-	#liquid_particles.emitting = true
-	#liquid_particles.amount = particle_count
-	#liquid_particles.lifetime = 0.0  # Persistent particles
-	#liquid_particles.visibility_aabb = AABB(Vector3(-2, -2, -2), Vector3(4, 4, 4))
-	#
-	## Create the process material
-	#var process_material = ParticleProcessMaterial.new()
-	#
-	## Make particles spawn in a circle inside the mug
-	#process_material.emission_shape = ParticleProcessMaterial.EMISSION_SHAPE_SPHERE
-	#process_material.emission_sphere_radius = mug_interior_radius * 0.8
-	#
-	## Physics
-	#process_material.direction = Vector3(0, -1, 0)
-	#process_material.gravity = Vector3(0, -9.8, 0)
-	#process_material.initial_velocity_min = 0.0
-	#process_material.initial_velocity_max = 0.0
-	#
-	## Appearance
-	#process_material.scale_min = 0.02
-	#process_material.scale_max = 0.03
-	#
-	#liquid_particles.process_material = process_material
-	#
-	## Visual appearance
-	#var material = StandardMaterial3D.new()
-	#material.albedo_color = Color(0.4, 0.2, 0.1, 0.9)  # Coffee color
-	#material.roughness = 0.2
-	#material.metallic = 0.1
-	#liquid_particles.material_override = material
-	#
-	## Mesh for particles
-	#var sphere = SphereMesh.new()
-	#sphere.radius = 0.015
-	#sphere.height = 0.03
-	#liquid_particles.draw_pass_1 = sphere
-#
-## Call this when mug is tilted to make liquid spill
-#func tilt_mug(tilt_angle: Vector3):
-	#if liquid_particles and liquid_particles.process_material:
-		#var process_mat = liquid_particles.process_material as ParticleProcessMaterial
-		#
-		## Apply tilt forces
-		#var tilt_force = Vector3(tilt_angle.z, -9.8, -tilt_angle.x) * 2.0
-		#process_mat.gravity = tilt_force
-		#
-		## If tilted enough, particles can escape container
-		#if abs(tilt_angle.z) > 0.5 or abs(tilt_angle.x) > 0.5:
-			#is_contained = false
-			#enable_spilling()
-#
-#func enable_spilling():
-	## Increase particle spread when spilling
-	#if liquid_particles.process_material:
-		#var process_mat = liquid_particles.process_material as ParticleProcessMaterial
-		#process_mat.initial_velocity_min = 1.0
-		#process_mat.initial_velocity_max = 3.0
-		#process_mat.emission_sphere_radius = mug_interior_radius * 1.5
-#
-## Optional: Add this if you want collision detection for spilled liquid
-#func setup_container_detection():
-	## Create an area to detect when particles leave the mug
-	#var container_area = Area3D.new()
-	#add_child(container_area)
-	#
-	#var collision_shape = CollisionShape3D.new()
-	#var box_shape = BoxShape3D.new()
-	#box_shape.size = Vector3(mug_interior_radius * 2, liquid_height, mug_interior_radius * 2)
-	#collision_shape.shape = box_shape
-	#container_area.add_child(collision_shape)
-	#
-	## Connect signals if needed
-	#container_area.body_exited.connect(_on_liquid_spilled)
-#
-#func _on_liquid_spilled(body):
-	#print("Liquid spilled!")
+@onready var right_hand: XRController3D = $XROrigin3D/XRController3DRight
+@onready var left_hand: XRController3D = $XROrigin3D/XRController3DLeft
+@onready var watch_sfx: AudioStreamPlayer3D = $watchNotif
+@onready var make_bfast_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/make bfast"
+@onready var need_unpack_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/need to unpack"
+@onready var tired_text: MeshInstance3D = $XROrigin3D/XRCamera3D/tired
+@onready var camera = $XROrigin3D/XRCamera3D
+
+# Text configuration class
+class TextConfig:
+	var text: String
+	var audio: AudioStreamPlayer3D
+	var mesh_template: MeshInstance3D
+	var spawn_weight: float  # Probability weight for random selection
+	
+	func _init(p_text: String, p_audio: AudioStreamPlayer3D, p_mesh: MeshInstance3D, p_weight: float = 1.0):
+		text = p_text
+		audio = p_audio
+		mesh_template = p_mesh
+		spawn_weight = p_weight
+
+# Text system variables
+var text_configs: Array[TextConfig] = []
+var text_spawn_timer: Timer
+var active_text_instances: Array[Node] = []
+var is_spawning_texts: bool = false
+
+# Customizable settings
+var spawn_interval: float = 1.5  # How often new texts appear
+var display_duration: float = 2.0  # How long texts stay visible after fully typed
+var typewriter_speed: float = 0.04  # Time between each letter
+var spawn_range: Vector3 = Vector3(2.0, 1.5, 3.0)  # x_range, y_range, z_distance
+@onready var left_watch: Node3D = $XROrigin3D/XRController3DLeft/smartwatch
+@onready var right_watch: Node3D = $XROrigin3D/XRController3DRight/smartwatch
+
+var watch_is_left: bool = true
+
+func _ready() -> void:
+	add_to_group("player")
+	make_bfast_text.add_to_group("make_bfast_text")
+	need_unpack_text.add_to_group("need_unpack_text")
+	tired_text.add_to_group("tired_text")
+	
+	# Setup text configurations
+	setup_text_configs()
+	
+	# Setup timer
+	setup_text_spawn_timer()
+	
+	# Debug: Print current stimulation level
+	print("Current stimulation level: ", GlobalVar.stimulation)
+	
+	# Connect to stimulation signals
+	if GlobalVar.stimulation_increase.connect(_on_stimulation_changed) != OK:
+		print("Failed to connect stimulation_increase signal")
+	if GlobalVar.stimulation_decrease.connect(_on_stimulation_changed) != OK:
+		print("Failed to connect stimulation_decrease signal")
+	
+	# Check initial stimulation level
+	call_deferred("check_initial_state")
+
+func setup_text_configs() -> void:
+	# Add your text configurations here - easy to add new ones!
+	text_configs.append(TextConfig.new(
+		"Did I forget something?", 
+		$"XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn/forget audio",
+		$"XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn",
+		1.0  # Normal spawn weight
+	))
+	
+	# Add your new text - just add the audio node to your scene first
+	text_configs.append(TextConfig.new(
+		"What is life even about?",
+		$"XROrigin3D/XRCamera3D/overthinkings/What is life/What is life",  # You'll need to add this audio node
+		$"XROrigin3D/XRCamera3D/overthinkings/What is life",  # You'll need to add this mesh node
+		0.8  # Slightly less common than the first text
+	))
+	
+	# Hide all template texts initially
+	for config in text_configs:
+		if config.mesh_template:
+			config.mesh_template.visible = false
+
+func setup_text_spawn_timer() -> void:
+	text_spawn_timer = Timer.new()
+	add_child(text_spawn_timer)
+	text_spawn_timer.wait_time = spawn_interval
+	text_spawn_timer.timeout.connect(_on_text_spawn_timer_timeout)
+
+func check_initial_state() -> void:
+	_on_stimulation_changed(GlobalVar.stimulation)
+
+func _on_stimulation_increase(new_value: int) -> void:
+	_on_stimulation_changed(new_value)
+
+func _on_stimulation_decrease(new_value: int) -> void:
+	_on_stimulation_changed(new_value)
+
+func _on_stimulation_changed(new_value: int) -> void:
+	print("Stimulation changed to: ", new_value)
+	
+	if new_value >= 2 and not is_spawning_texts:
+		print("Starting text spawning cycle")
+		start_text_spawning()
+	elif new_value < 2 and is_spawning_texts:
+		print("Stopping text spawning cycle")
+		stop_text_spawning()
+	
+	# Your existing haptic feedback logic
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 2.0
+	timer.one_shot = true
+	timer.timeout.connect(_on_delay_timeout)
+	timer.start()
+	
+func _process(delta: float) -> void:
+	if left_hand and left_hand.get_is_active() and left_hand.is_button_pressed("ax_button"):
+		await left_hand.button_released
+		if right_watch.visible:
+			right_watch.hide()
+			left_watch.show()
+		else:
+			left_watch.hide()
+			right_watch.show()
+
+func start_text_spawning() -> void:
+	is_spawning_texts = true
+	text_spawn_timer.start()
+	# Spawn the first text immediately
+	spawn_random_text()
+
+func stop_text_spawning() -> void:
+	is_spawning_texts = false
+	text_spawn_timer.stop()
+	cleanup_all_text_instances()
+
+func _on_text_spawn_timer_timeout() -> void:
+	if is_spawning_texts:
+		spawn_random_text()
+
+func spawn_random_text() -> void:
+	if text_configs.is_empty():
+		print("No text configurations available")
+		return
+	
+	# Select random text based on weights
+	var selected_config = select_weighted_random_text()
+	if not selected_config:
+		return
+	
+	# Create and show the text
+	var text_instance = create_text_instance(selected_config)
+	if text_instance:
+		show_text_instance(text_instance, selected_config)
+
+func select_weighted_random_text() -> TextConfig:
+	# Calculate total weight
+	var total_weight = 0.0
+	for config in text_configs:
+		total_weight += config.spawn_weight
+	
+	# Random selection based on weight
+	var random_value = randf() * total_weight
+	var current_weight = 0.0
+	
+	for config in text_configs:
+		current_weight += config.spawn_weight
+		if random_value <= current_weight:
+			return config
+	
+	# Fallback to first config
+	return text_configs[0]
+
+func create_text_instance(config: TextConfig) -> MeshInstance3D:
+	var new_instance = MeshInstance3D.new()
+	
+	# Copy mesh and material from template
+	if config.mesh_template and config.mesh_template.mesh:
+		new_instance.mesh = config.mesh_template.mesh.duplicate()
+	if config.mesh_template and config.mesh_template.material_override:
+		new_instance.material_override = config.mesh_template.material_override
+	
+	# Add to scene
+	camera.add_child(new_instance)
+	new_instance.visible = false
+	
+	# Track instance
+	active_text_instances.append(new_instance)
+	
+	return new_instance
+
+func show_text_instance(text_instance: MeshInstance3D, config: TextConfig) -> void:
+	# Position randomly
+	position_text_randomly(text_instance)
+	
+	# Make visible and play audio
+	text_instance.visible = true
+	if config.audio:
+		config.audio.play()
+	
+	# Start typewriter animation
+	await animate_typewriter_text(text_instance, config.text)
+	
+	# Wait for display duration
+	await get_tree().create_timer(display_duration).timeout
+	
+	# Clean up
+	cleanup_text_instance(text_instance)
+
+func animate_typewriter_text(text_instance: MeshInstance3D, full_text: String) -> void:
+	var text_mesh = text_instance.mesh as TextMesh
+	if not text_mesh:
+		print("Error: text instance doesn't have a TextMesh")
+		return
+	
+	# Clear text initially
+	text_mesh.text = ""
+	
+	# Animate each character
+	for i in range(full_text.length()):
+		if not is_spawning_texts or not is_instance_valid(text_instance):
+			break
+		
+		text_mesh.text = full_text.substr(0, i + 1)
+		await get_tree().create_timer(typewriter_speed).timeout
+	
+	# Ensure full text is shown
+	if is_spawning_texts and is_instance_valid(text_instance):
+		text_mesh.text = full_text
+
+func position_text_randomly(text_instance: MeshInstance3D) -> void:
+	# Generate random position
+	var random_x = randf_range(-spawn_range.x/2, spawn_range.x/2)
+	var random_y = randf_range(-spawn_range.y/2, spawn_range.y/2)
+	
+	text_instance.position = Vector3(random_x, random_y, -spawn_range.z)
+	
+	# Random rotation for variety
+	text_instance.rotation_degrees = Vector3(
+		randf_range(-10, 10),
+		randf_range(-10, 10),
+		randf_range(-10, 10)
+	)
+
+func cleanup_text_instance(text_instance: MeshInstance3D) -> void:
+	if is_instance_valid(text_instance):
+		active_text_instances.erase(text_instance)
+		text_instance.queue_free()
+
+func cleanup_all_text_instances() -> void:
+	for instance in active_text_instances:
+		if is_instance_valid(instance):
+			instance.queue_free()
+	active_text_instances.clear()
+
+# Easy way to add new text configurations at runtime
+func add_text_config(text: String, audio: AudioStreamPlayer3D, mesh_template: MeshInstance3D, weight: float = 1.0) -> void:
+	var config = TextConfig.new(text, audio, mesh_template, weight)
+	text_configs.append(config)
+	if mesh_template:
+		mesh_template.visible = false
+
+# Your existing functions
+func _on_delay_timeout() -> void:
+	trigger_double_haptic_feedback()
+
+func trigger_double_haptic_feedback() -> void:
+	if watch_is_left:
+		left_trigger_haptic_feedback()
+		watch_sfx.play()
+		await get_tree().create_timer(0.3).timeout
+		left_trigger_haptic_feedback()
+	else:
+		right_trigger_haptic_feedback()
+		watch_sfx.play()
+		await get_tree().create_timer(0.3).timeout
+		right_trigger_haptic_feedback()
+
+func right_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
+	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
+
+
+func left_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
+	left_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
+
+
+func _on_ois_collider_area_3d_body_entered(body: Variant) -> void:
+	left_trigger_haptic_feedback()
+
+
+func right_on_ois_collider_area_3d_body_entered(body: Variant) -> void:
+	right_trigger_haptic_feedback()
