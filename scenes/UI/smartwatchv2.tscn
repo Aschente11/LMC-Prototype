@@ -1,0 +1,129 @@
+[gd_scene load_steps=18 format=3 uid="uid://d1ygwlnreub02"]
+
+[ext_resource type="Shader" uid="uid://buql5m2dgxymh" path="res://shaders/circularbar.gdshader" id="1_t5cpv"]
+[ext_resource type="FontFile" uid="uid://n5cd37mmqxvl" path="res://assets/others/fonts/LuckiestGuy-Regular.ttf" id="2_1rhei"]
+[ext_resource type="Shader" uid="uid://d0icxoqu5awpm" path="res://shaders/bar.gdshader" id="2_eq21r"]
+
+[sub_resource type="Gradient" id="Gradient_t5cpv"]
+offsets = PackedFloat32Array(0.0880503, 0.371069, 0.433962, 0.522013, 0.603774, 0.72327, 0.842767, 0.968553)
+colors = PackedColorArray(0.976471, 0.254902, 0.266667, 1, 0.152941, 0.490196, 0.631373, 1, 0.564706, 0.745098, 0.427451, 1, 0.564706, 0.745098, 0.427451, 1, 0.564706, 0.745098, 0.427451, 1, 1, 0.423529, 0, 1, 0.952941, 0.447059, 0.172549, 1, 0.976471, 0.254902, 0.266667, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_eq21r"]
+gradient = SubResource("Gradient_t5cpv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eq21r"]
+shader = ExtResource("1_t5cpv")
+shader_parameter/value = 1.0
+shader_parameter/segments = 5
+shader_parameter/radius = 0.475
+shader_parameter/hollow_radius = 0.35
+shader_parameter/margin = 0.045
+shader_parameter/rotation = -0.00999995
+shader_parameter/progress_rotation = -1.0
+shader_parameter/gradient = SubResource("GradientTexture2D_eq21r")
+shader_parameter/use_value_gradient = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_y4nsq"]
+font = ExtResource("2_1rhei")
+font_size = 25
+shadow_size = 0
+
+[sub_resource type="Gradient" id="Gradient_4xtap"]
+offsets = PackedFloat32Array(0, 0.490566, 1)
+colors = PackedColorArray(0.301961, 0.564706, 0.556863, 1, 0.262745, 0.666667, 0.545098, 1, 0.564706, 0.745098, 0.427451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6tslr"]
+gradient = SubResource("Gradient_4xtap")
+
+[sub_resource type="Gradient" id="Gradient_87s2k"]
+colors = PackedColorArray(0.564706, 0.745098, 0.427451, 0.588235, 0.564706, 0.745098, 0.427451, 0.588235)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p76eu"]
+gradient = SubResource("Gradient_87s2k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1rhei"]
+shader = ExtResource("2_eq21r")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 5
+shader_parameter/margin = Vector2(0.205, 0.35)
+shader_parameter/shear_angle = -0.075
+shader_parameter/gradient_x = SubResource("GradientTexture2D_6tslr")
+shader_parameter/gradient_y = SubResource("GradientTexture2D_p76eu")
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+
+[sub_resource type="Gradient" id="Gradient_gxju0"]
+offsets = PackedFloat32Array(0, 0.490566, 1)
+colors = PackedColorArray(0.117647, 0.376471, 0.568627, 1, 0.101961, 0.458824, 0.623529, 1, 0.0862745, 0.541176, 0.678431, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_r7bh5"]
+gradient = SubResource("Gradient_gxju0")
+
+[sub_resource type="Gradient" id="Gradient_kdhs7"]
+offsets = PackedFloat32Array(0.00628931, 1)
+colors = PackedColorArray(0.101961, 0.458824, 0.623529, 0.313726, 0.101961, 0.458824, 0.623529, 0.309804)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b2y53"]
+gradient = SubResource("Gradient_kdhs7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuf8m"]
+shader = ExtResource("2_eq21r")
+shader_parameter/stepify = true
+shader_parameter/value = 1.0
+shader_parameter/count = 5
+shader_parameter/margin = Vector2(0.205, 0.35)
+shader_parameter/shear_angle = -0.075
+shader_parameter/gradient_x = SubResource("GradientTexture2D_r7bh5")
+shader_parameter/gradient_y = SubResource("GradientTexture2D_b2y53")
+shader_parameter/use_value_gradient = true
+shader_parameter/invert = false
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stimulation" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_eq21r")
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 500.0
+
+[node name="Physical Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 109.0
+offset_top = 171.0
+offset_right = 384.0
+offset_bottom = 232.0
+text = "Physical"
+label_settings = SubResource("LabelSettings_y4nsq")
+horizontal_alignment = 1
+
+[node name="Physical" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_1rhei")
+layout_mode = 0
+offset_left = 101.0
+offset_top = 193.0
+offset_right = 392.0
+offset_bottom = 239.0
+
+[node name="Emotional label" type="Label" parent="."]
+offset_left = 110.0
+offset_top = 261.0
+offset_right = 385.0
+offset_bottom = 322.0
+text = "Emotional"
+label_settings = SubResource("LabelSettings_y4nsq")
+horizontal_alignment = 1
+
+[node name="Emotional" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_xuf8m")
+layout_mode = 0
+offset_left = 101.0
+offset_top = 284.0
+offset_right = 392.0
+offset_bottom = 330.0

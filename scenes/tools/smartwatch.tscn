@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://cyu5exn7vgfy8"]
+[gd_scene load_steps=56 format=4 uid="uid://cyu5exn7vgfy8"]
 
 [ext_resource type="Texture2D" uid="uid://bhem26tmp2qnp" path="res://assets/others/smartwatchUI.png" id="1_btis5"]
 [ext_resource type="Script" uid="uid://be0om5l06qdr4" path="res://scripts/smartwatch.gd" id="1_jvnqj"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://buw5o0awarb0n" path="res://scripts/clock.gd" id="5_mw1v2"]
 [ext_resource type="FontFile" uid="uid://8fjjt0xbh4w0" path="res://assets/others/fonts/Seven Segment.ttf" id="6_m4yh8"]
 [ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="7_m4yh8"]
+[ext_resource type="PackedScene" uid="uid://d1ygwlnreub02" path="res://scenes/UI/smartwatchv2.tscn" id="7_q2hhy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_286on"]
 render_priority = 0
@@ -443,6 +444,17 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_bpnv7")
 size = Vector2(0.01, 0.01)
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_bpnv7"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0rxla"]
+viewport_path = NodePath("GalaxyWatch/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_psqn6"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_0rxla")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2hhy"]
 size = Vector3(0.0341339, 0.0312653, 0.0118408)
 
@@ -494,6 +506,7 @@ skeleton = NodePath("")
 
 [node name="bg" type="MeshInstance3D" parent="GalaxyWatch"]
 transform = Transform3D(1.1, 0, -2.22045e-16, 0, 1.1, 7.10543e-15, -2.22045e-16, -3.55271e-15, 1.1, -0.000163872, -0.00134578, 0.000435609)
+visible = false
 mesh = SubResource("CylinderMesh_vntjt")
 
 [node name="corner" type="MeshInstance3D" parent="GalaxyWatch"]
@@ -502,6 +515,7 @@ mesh = SubResource("CylinderMesh_mw1v2")
 
 [node name="screen" type="MeshInstance3D" parent="GalaxyWatch"]
 transform = Transform3D(-0.897256, 0.441505, 0.00185001, -0.00165998, 0.000816837, -0.999998, -0.441506, -0.897258, -2.64176e-10, -0.000370045, -0.00198467, 0.000634898)
+visible = false
 mesh = SubResource("QuadMesh_lhfxo")
 
 [node name="SubViewport" type="SubViewport" parent="GalaxyWatch/screen"]
@@ -626,6 +640,18 @@ offset_bottom = 48.0
 theme_override_fonts/font = ExtResource("6_m4yh8")
 theme_override_font_sizes/font_size = 160
 text = "7:00 AM"
+
+[node name="SubViewport" type="SubViewport" parent="GalaxyWatch"]
+transparent_bg = true
+size = Vector2i(500, 500)
+render_target_update_mode = 4
+
+[node name="Control" parent="GalaxyWatch/SubViewport" instance=ExtResource("7_q2hhy")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GalaxyWatch"]
+transform = Transform3D(-0.2, 1.52855e-15, 1.74846e-08, 0, -0.2, 1.74846e-08, 1.74846e-08, 1.74846e-08, 0.2, 0, -0.002, 0)
+mesh = SubResource("PlaneMesh_bpnv7")
+surface_material_override/0 = SubResource("StandardMaterial3D_psqn6")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
