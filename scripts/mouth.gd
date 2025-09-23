@@ -67,7 +67,9 @@ func _check_for_food():
 				stop_eating(food)
 
 func start_eating(food: Node):
-	eating_foods[food] = 0.0
+	if not food in eating_foods:
+		eating_foods[food] = 0.0  # only set when first added
+		
 	if not eating_sfx.playing: 
 		eating_sfx.play()
 	particles.global_position = food.global_position
@@ -77,10 +79,10 @@ func start_eating(food: Node):
 	if not haptic_timer.is_stopped():
 		haptic_timer.stop()
 	haptic_timer.start()
+
 	
 func stop_eating(food: Node):
 	eating_foods.erase(food)
-	food.scale = Vector3.ONE
 	particles.emitting = false
 	if eating_foods.is_empty():
 		eating_sfx.stop()

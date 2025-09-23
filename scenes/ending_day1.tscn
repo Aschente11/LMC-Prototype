@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://b8iak2x5n7m3p"]
+
+[ext_resource type="Script" uid="uid://dsmilimx1xolo" path="res://scenes/UI/ending_day_1.gd" id="1_c61r2"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_results"]
+[ext_resource type="PackedScene" uid="uid://yvs2e1tqcw2d" path="res://scenes/UI/results.tscn" id="3_sgrbj"]
+[ext_resource type="AudioStream" uid="uid://ndhdsnnumimx" path="res://assets/sfx/game_finished.mp3" id="4_2tpxi"]
+[ext_resource type="PackedScene" uid="uid://clc5dre31iskm" path="res://addons/godot-xr-tools/xr/start_xr.tscn" id="5_1k4u4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_phu5g"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_xbhvy"]
+sky_material = SubResource("ProceduralSkyMaterial_phu5g")
+
+[sub_resource type="Environment" id="Environment_o2u18"]
+background_mode = 2
+sky = SubResource("Sky_xbhvy")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="EndingDay1" type="Node3D"]
+script = ExtResource("1_c61r2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_o2u18")
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("1_results")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22001, -3.53176)
+scene = ExtResource("3_sgrbj")
+viewport_size = Vector2(1080, 800)
+unshaded = true
+scene_properties_keys = PackedStringArray()
+
+[node name="finished_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_2tpxi")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.434064, 0)
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="StartXR" parent="." instance=ExtResource("5_1k4u4")]

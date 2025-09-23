@@ -1,4 +1,4 @@
-[gd_scene load_steps=158 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=160 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -79,6 +79,8 @@
 [ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="77_ksmap"]
 [ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="78_2s0kr"]
 [ext_resource type="PackedScene" uid="uid://c7wh71cg020ti" path="res://scenes/tools/journal.tscn" id="78_ygd8o"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="80_ndrjj"]
+[ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="81_ih3m7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -1096,5 +1098,25 @@ skeleton = NodePath("../..")
 [node name="journal" parent="." instance=ExtResource("78_ygd8o")]
 transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -7.69795, 1.33657, -3.47809)
 
+[node name="sleep" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21711, 0, -13.9972)
+collision_mask = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="sleep"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6944, 0.0365312, 6.17327)
+shape = SubResource("CylinderShape3D_ksmap")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="sleep"]
+transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.70848, 2.48459, 6.22796)
+mesh = SubResource("CylinderMesh_ygd8o")
+skeleton = NodePath("../..")
+
+[node name="SleepViewport" parent="." instance=ExtResource("80_ndrjj")]
+transform = Transform3D(0.0392773, 0, 0.999228, 0, 1, 0, -0.999228, 0, 0.0392773, -6.95032, 0.756904, -9.05644)
+scene = ExtResource("81_ih3m7")
+unshaded = true
+scene_properties_keys = PackedStringArray("sleep.gd")
+
 [connection signal="body_entered" from="bfast" to="." method="_on_bfast_body_entered"]
 [connection signal="body_entered" from="unpacking" to="." method="_on_unpacking_body_entered"]
+[connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]

@@ -6,6 +6,8 @@ var xr_interface: XRInterface
 @onready var need_unpack_sfx = $need_unpack
 @onready var kitchen_area = $bfast
 @onready var unpacking_area = $unpacking
+@onready var sleep_area = $sleep
+@onready var sleep_viewport = $SleepViewport
 var current_stimulation = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +41,12 @@ func _ready():
 	unpacking_area.visible = false
 	unpacking_area.monitoring = false
 	unpacking_area.monitorable = false
+	
+	sleep_area.visible = false
+	sleep_area.monitoring = false
+	sleep_area.monitorable = false
+	
+	sleep_viewport.visible = false
 
 # Add this new function:
 func _on_first_audio_finished():
@@ -89,4 +97,12 @@ func _on_bfast_body_entered(body: Node3D) -> void:
 func _on_unpacking_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") or body.name == "XRToolsPlayerBody":
 		remove_child(unpacking_area)
-		kitchen_area = null
+		unpacking_area = null
+		
+		sleep_area.visible = true
+		sleep_area.monitoring = true
+		sleep_area.monitorable = true
+
+
+func _on_sleep_body_entered(body: Node3D) -> void:
+	sleep_viewport.visible = true
