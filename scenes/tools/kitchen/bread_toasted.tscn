@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=4 uid="uid://c7nkggd8bfhlo"]
 
-[ext_resource type="Script" uid="uid://cf25pto3busbk" path="res://scenes/tools/kitchen/bread_toasted.gd" id="1_8hmxb"]
+[ext_resource type="Script" path="res://scenes/tools/kitchen/bread_toasted.gd" id="1_8hmxb"]
 [ext_resource type="Texture2D" uid="uid://12nfaalj3xjv" path="res://assets/tools/bread/source/Toast/Toast_C.png" id="2_iy0gg"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="3_0p0b3"]
 [ext_resource type="Texture2D" uid="uid://ccn1fehfcwihc" path="res://assets/tools/bread/source/Toast/Toast_N.png" id="4_y2k2s"]

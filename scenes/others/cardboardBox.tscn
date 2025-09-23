@@ -4,7 +4,7 @@
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_cowb0"]
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_7kowo"]
 [ext_resource type="AudioStream" uid="uid://x0i1o4n7d740" path="res://assets/sfx/unpack.mp3" id="3_odx2j"]
-[ext_resource type="AudioStream" uid="uid://cfkfivvej6u7o" path="res://assets/sfx/tired.mp3" id="4_1unat"]
+[ext_resource type="AudioStream" uid="uid://d0uyoh7g02n8d" path="res://assets/sfx/events/Unpacking done.mp3" id="5_i5l6a"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bisv"]
 resource_name = "Material.010"
@@ -113,4 +113,4 @@ shape = SubResource("BoxShape3D_21pyn")
 stream = ExtResource("3_odx2j")
 
 [node name="tired" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_1unat")
+stream = ExtResource("5_i5l6a")

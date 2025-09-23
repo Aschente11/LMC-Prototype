@@ -3,7 +3,9 @@ var xr_interface: XRInterface
 @onready var environment_node = $WorldEnvironment
 @onready var make_bfast_sfx = $wake_up
 @onready var note_tutorial_sfx = $note_tutorial
+@onready var need_unpack_sfx = $need_unpack
 @onready var kitchen_area = $bfast
+@onready var unpacking_area = $unpacking
 var current_stimulation = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -26,8 +28,6 @@ func _ready():
 	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
 	GlobalVar.eating_milestone.connect(_on_eating_milestone)
 
-	kitchen_area.body_entered.connect(_on_kitchen_area_entered)
-
 	# First sequence - breakfast
 	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
 	make_bfast_text.visible = true
@@ -35,11 +35,10 @@ func _ready():
 	
 	# Connect to first audio finished to trigger second sequence
 	make_bfast_sfx.finished.connect(_on_first_audio_finished)
-
-# Kitchen area entered handler
-func _on_kitchen_area_entered(body):
-	if body.is_in_group("player"):
-		kitchen_area.queue_free()
+	
+	unpacking_area.visible = false
+	unpacking_area.monitoring = false
+	unpacking_area.monitorable = false
 
 # Add this new function:
 func _on_first_audio_finished():
@@ -66,5 +65,28 @@ func _on_stimulation_changed(new_stimulation_value: int) -> void:
 	pass
 	
 func _on_eating_milestone(milestone: int):
-	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
-	make_bfast_text.visible = false
+	var need_unpack_text = get_tree().get_first_node_in_group("need_unpack_text")
+	need_unpack_text.visible = true
+	need_unpack_sfx.play()
+		
+	# Create a one-shot timer right here
+	var timer := get_tree().create_timer(13.0) 
+	timer.timeout.connect(func():
+		if need_unpack_text: 
+			need_unpack_text.visible = false
+		)
+
+func _on_bfast_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") or body.name == "XRToolsPlayerBody":
+		remove_child(kitchen_area)
+		kitchen_area = null
+
+		unpacking_area.visible = true
+		unpacking_area.monitoring = true
+		unpacking_area.monitorable = true
+
+
+func _on_unpacking_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") or body.name == "XRToolsPlayerBody":
+		remove_child(unpacking_area)
+		kitchen_area = null

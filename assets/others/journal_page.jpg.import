@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djfgghqv3xc1o"
-path.s3tc="res://.godot/imported/Journal_page1.jpg-1571f95781f53e3fb5339ea717cb6089.s3tc.ctex"
+uid="uid://cwxwn1g1cst23"
+path.bptc="res://.godot/imported/journal_page.jpg-d500ffe4d59142a7f9f4d6eaa55caffe.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,13 +11,13 @@ metadata={
 
 [deps]
 
-source_file="res://assets/others/Journal_page1.jpg"
-dest_files=["res://.godot/imported/Journal_page1.jpg-1571f95781f53e3fb5339ea717cb6089.s3tc.ctex"]
+source_file="res://assets/others/journal_page.jpg"
+dest_files=["res://.godot/imported/journal_page.jpg-d500ffe4d59142a7f9f4d6eaa55caffe.bptc.ctex"]
 
 [params]
 
 compress/mode=2
-compress/high_quality=false
+compress/high_quality=true
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0

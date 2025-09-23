@@ -1,4 +1,4 @@
-[gd_scene load_steps=157 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=158 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -77,6 +77,7 @@
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="75_xljpf"]
 [ext_resource type="AudioStream" uid="uid://dtf726kp6odmr" path="res://assets/sfx/events/Waking up.mp3" id="76_j4bwh"]
 [ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="77_ksmap"]
+[ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="78_2s0kr"]
 [ext_resource type="PackedScene" uid="uid://c7wh71cg020ti" path="res://scenes/tools/journal.tscn" id="78_ygd8o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
@@ -586,7 +587,7 @@ sky_rotation = Vector3(0.151844, -1.96873, 0.151844)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ksmap"]
 height = 0.0917969
-radius = 1.521
+radius = 0.820801
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ksmap"]
 transparency = 1
@@ -597,8 +598,8 @@ emission_energy_multiplier = 2.34
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ygd8o"]
 material = SubResource("StandardMaterial3D_ksmap")
-top_radius = 1.5
-bottom_radius = 1.5
+top_radius = 0.8
+bottom_radius = 0.8
 height = 5.0
 
 [node name="Main" type="Node3D"]
@@ -1045,13 +1046,13 @@ transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.9831
 environment = SubResource("Environment_xrs0c")
 
 [node name="toaster" parent="." instance=ExtResource("72_gdvew")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.61357, 1.36149, 7.63023)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70481, 1.36149, 7.3661)
 
 [node name="bread2" parent="." instance=ExtResource("74_xrs0c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71408, 1.50618, 6.72239)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65055, 1.36271, 6.80867)
 
 [node name="bread" parent="." instance=ExtResource("74_xrs0c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31352, 1.3697, 6.69074)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54926, 1.3697, 6.74431)
 
 [node name="Apple" parent="." instance=ExtResource("75_xljpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52473, 1.50377, 5.98096)
@@ -1064,16 +1065,36 @@ volume_db = 20.0
 stream = ExtResource("77_ksmap")
 volume_db = 20.0
 
+[node name="need_unpack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("78_2s0kr")
+
 [node name="bfast" type="Area3D" parent="."]
+collision_mask = 524289
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bfast"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00702, 0.0365312, 5.99387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6944, 0.0365312, 6.17327)
 shape = SubResource("CylinderShape3D_ksmap")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="bfast"]
-transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -7.99015, 2.48459, 6.04856)
+transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.70848, 2.48459, 6.22796)
+mesh = SubResource("CylinderMesh_ygd8o")
+skeleton = NodePath("../..")
+
+[node name="unpacking" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30221, 0, -11.6773)
+collision_mask = 524289
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="unpacking"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6944, 0.0365312, 6.17327)
+shape = SubResource("CylinderShape3D_ksmap")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="unpacking"]
+transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.70848, 2.48459, 6.22796)
 mesh = SubResource("CylinderMesh_ygd8o")
 skeleton = NodePath("../..")
 
 [node name="journal" parent="." instance=ExtResource("78_ygd8o")]
 transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -7.69795, 1.33657, -3.47809)
+
+[connection signal="body_entered" from="bfast" to="." method="_on_bfast_body_entered"]
+[connection signal="body_entered" from="unpacking" to="." method="_on_unpacking_body_entered"]

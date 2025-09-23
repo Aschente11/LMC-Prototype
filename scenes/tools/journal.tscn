@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_ss4vo"]
 [ext_resource type="Texture2D" uid="uid://cfaqv2h24gcy8" path="res://assets/tools/journal/textures/brown_leather_albedo_4k.png" id="2_hoxse"]
 [ext_resource type="Texture2D" uid="uid://cy1i0kjc6o4t5" path="res://assets/tools/journal/textures/pages2.png" id="3_yt71i"]
-[ext_resource type="Texture2D" uid="uid://djfgghqv3xc1o" path="res://assets/others/Journal_page1.jpg" id="4_4lrre"]
+[ext_resource type="Texture2D" uid="uid://cwxwn1g1cst23" path="res://assets/others/journal_page.jpg" id="5_ss4vo"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="6_s4vb6"]
 [ext_resource type="Animation" uid="uid://cnng6xumhw7cx" path="res://addons/godot-xr-tools/hands/animations/left/Rounded.res" id="7_t12s3"]
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="8_asifu"]
@@ -282,7 +282,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_voyox")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oxfnt"]
-albedo_texture = ExtResource("4_4lrre")
+albedo_texture = ExtResource("5_ss4vo")
 
 [sub_resource type="QuadMesh" id="QuadMesh_ss4vo"]
 material = SubResource("StandardMaterial3D_oxfnt")
@@ -497,7 +497,7 @@ mesh = SubResource("ArrayMesh_5d7bw")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Armature"]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, -2.77556e-17, 0, 2.77556e-17, 0.01, 0.0100921, -2.56504e-11, 0.000586812)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, -5.55112e-17, 0, 5.55112e-17, 0.01, 0.0100653, -2.56504e-11, 0.000586812)
 mesh = SubResource("QuadMesh_ss4vo")
 skeleton = NodePath("../..")
 
