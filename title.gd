@@ -1,4 +1,5 @@
 extends Node3D
+var xr_interface: XRInterface
 
 @onready var title_text: MeshInstance3D = $TitleText
 @onready var bg_sounds: AudioStreamPlayer3D = $BGsounds
@@ -10,6 +11,9 @@ extends Node3D
 var original_position: Vector3
 var original_rotation: Vector3
 var time_passed: float = 0.0
+
+var has_initialized: bool = false
+var was_pressed: bool = false
 
 @export var fade_mesh : Node3D
 
@@ -26,6 +30,18 @@ var time_passed: float = 0.0
 @export var cat_orbit_speed: float = 0.8                     # Speed of cat's orbit
 
 func _ready():
+	xr_interface = XRServer.find_interface("OpenXR")
+	if xr_interface and xr_interface.is_initialized():
+		print("OpenXR initialized successfully!")
+		
+		#Turn-off v-sync!
+		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+		
+		#Change our main viewport output to the HMD
+		get_viewport().use_xr = true
+	else:
+		print("OpenXR not initialized, please check if your headset is connected.")
+		
 	# Store the original transform
 	original_position = title_text.position
 	original_rotation = title_text.rotation_degrees
@@ -33,6 +49,8 @@ func _ready():
 	# Start background sounds
 	bg_sounds.play()
 	start_animation.play("start")
+	await get_tree().create_timer(4).timeout
+	has_initialized = true
 
 func _process(delta):
 	time_passed += delta
@@ -148,11 +166,13 @@ func start_tween_bounce():
 	tween.parallel().tween_property(title_text, "scale", Vector3(1.0, 1.0, 1.0), 0.8)
 	
 func _on_button_pressed(button: String) -> void:
-	print(button, " has been pressed!")
-	_fade_out()
-	#await get_tree().create_timer(2).timeout
-	print("Changed Scene")
-	get_tree().change_scene_to_file("res://scenes/waking_up.tscn")
+	if has_initialized and not was_pressed:
+		print(button, " has been pressed!")
+		was_pressed = true
+		_fade_out()
+		print("Changed Scene")
+		await get_tree().create_timer(2).timeout
+		get_tree().change_scene_to_file("res://scenes/waking_up.tscn")
 
 
 func _fade_out():
@@ -164,12 +184,4 @@ func _fade_out():
 		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		tween.set_parallel(true)
 		tween.tween_property(fade_mesh.get_surface_override_material(0), "shader_parameter/albedo", Color(0,0,0,1), 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
-		await tween.finished
-
-func _fade_in():
-	if is_instance_valid(fade_mesh):
-		var tween = get_tree().create_tween()
-		tween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-		tween.set_parallel(true)
-		tween.tween_property(fade_mesh.get_surface_override_material(0), "shader_parameter/albedo", Color(0,0,0,0), 0.5).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
 		await tween.finished

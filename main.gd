@@ -25,6 +25,7 @@ func _ready():
 	
 	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
 	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
+	GlobalTime.start_time()
 
 func setup_blur_environments():
 	# Store the normal environment

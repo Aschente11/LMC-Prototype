@@ -16,7 +16,7 @@ var time_timer: Timer
 # Game day
 var current_day: int = 1
 
-func _ready():
+func start_time():
 	time_timer = Timer.new()
 	time_timer.wait_time = 7.0  # 7 seconds irl = 10 minutes game time
 	time_timer.autostart = true

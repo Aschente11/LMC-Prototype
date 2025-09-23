@@ -112,6 +112,7 @@ offset_right = 392.0
 offset_bottom = 239.0
 
 [node name="Emotional label" type="Label" parent="."]
+layout_mode = 0
 offset_left = 110.0
 offset_top = 261.0
 offset_right = 385.0

@@ -5,9 +5,9 @@ extends Node3D
 @onready var emotional_bar: ProgressBar = $"GalaxyWatch/screen/SubViewport/Control/Emotional progress"
 @onready var time_screen = $"GalaxyWatch/time screen"
 @onready var bar_screen = $GalaxyWatch/screen
-@onready var stimulation: Material = $GalaxyWatch/SubViewport/Control/Stimulation.get_active_material(0)
-@onready var physical: Material = $GalaxyWatch/SubViewport/Control/Physical.get_active_material(0)
-@onready var emotional: Material = $GalaxyWatch/SubViewport/Control/Emotional.get_active_material(0)
+@onready var stimulation: CanvasItem = $GalaxyWatch/SubViewport/Control/Stimulation
+@onready var physical: CanvasItem = $GalaxyWatch/SubViewport/Control/Physical
+@onready var emotional: CanvasItem = $GalaxyWatch/SubViewport/Control/Emotional
 
 # Store original values
 var original_bar_scale: Vector2
@@ -67,8 +67,8 @@ func _on_stimulation_increase(old_value: int, new_value: int) -> void:
 	
 	#animate_sequence(target_position, target_rotation, Tween.TRANS_ELASTIC)
 	var tween = get_tree().create_tween()
-	tween.tween_property(stimulation, "value", new_value/5.0, 1)
-	tween.tween_callback(stimulation.queue_free)
+	tween.tween_property(stimulation.material, "shader_parameter/value", new_value/5.0, 1)
+	#tween.tween_callback(stimulation.material.queue_free)
 	#stimulation.set_shader_parameter("value", new_value/5.0)
 
 func _on_stimulation_decrease(old_value: int, new_value: int) -> void:
@@ -85,8 +85,8 @@ func _on_stimulation_decrease(old_value: int, new_value: int) -> void:
 	
 	#animate_sequence(target_position, target_rotation, Tween.TRANS_SINE)
 	var tween = get_tree().create_tween()
-	tween.tween_property(stimulation, "value", new_value/5.0, 1)
-	tween.tween_callback(stimulation.queue_free)
+	tween.tween_property(stimulation.material, "shader_parameter/value", new_value/5.0, 1)
+	tween.tween_callback(stimulation.material.queue_free)
 	#stimulation.set_shader_parameter("value", new_value/5.0)
 
 func animate_sequence(target_position: Vector2, target_rotation: float, move_transition: Tween.TransitionType) -> void:
@@ -123,29 +123,29 @@ func _on_physical_increase(old_value: int, new_value: int) -> void:
 	#await get_tree().create_timer(4.0).timeout
 	#physical_bar.value += 1
 	var tween = get_tree().create_tween()
-	tween.tween_property(physical, "value", new_value/5.0, 1)
-	tween.tween_callback(physical.queue_free)
+	tween.tween_property(physical.material, "shader_parameter/value", new_value/5.0, 1)
+	#tween.tween_callback(physical.material.queue_free)
 
 func _on_physical_decrease(old_value: int, new_value: int) -> void:
 	#await get_tree().create_timer(4.0).timeout
 	#physical_bar.value -= 1
 	var tween = get_tree().create_tween()
-	tween.tween_property(physical, "value", new_value/5.0, 1)
-	tween.tween_callback(physical.queue_free)
+	tween.tween_property(physical.material, "shader_parameter/value", new_value/5.0, 1)
+	#tween.tween_callback(physical.material.queue_free)
 
 func _on_emotional_increase(old_value: int, new_value: int) -> void:
 	#await get_tree().create_timer(4.0).timeout
 	#emotional_bar.value += 1
 	var tween = get_tree().create_tween()
-	tween.tween_property(emotional, "value", new_value/5.0, 1)
-	tween.tween_callback(emotional.queue_free)
+	tween.tween_property(emotional.material, "shader_parameter/value", new_value/5.0, 1)
+	#tween.tween_callback(emotional.material.queue_free)
 
 func _on_emotional_decrease(old_value: int, new_value: int) -> void:
 	#await get_tree().create_timer(4.0).timeout
 	#emotional_bar.value -= 1
 	var tween = get_tree().create_tween()
-	tween.tween_property(emotional, "value", new_value/5.0, 1)
-	tween.tween_callback(emotional.queue_free)
+	tween.tween_property(emotional.material, "shader_parameter/value", new_value/5.0, 1)
+	tween.tween_callback(emotional.material.queue_free)
 
 
 func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress: Variant) -> void:
