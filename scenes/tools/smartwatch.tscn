@@ -1,9 +1,9 @@
 [gd_scene load_steps=52 format=4 uid="uid://cyu5exn7vgfy8"]
 
-[ext_resource type="Texture2D" uid="uid://bhem26tmp2qnp" path="res://assets/others/smartwatchUI.png" id="1_btis5"]
 [ext_resource type="Script" uid="uid://be0om5l06qdr4" path="res://scripts/smartwatch.gd" id="1_jvnqj"]
-[ext_resource type="Texture2D" uid="uid://c51sohagu4euo" path="res://assets/others/marker.png" id="2_jvnqj"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_lhfxo"]
+[ext_resource type="Texture2D" uid="uid://cqkmsmuyaq4s" path="res://assets/others/stimulationBar.png" id="3_m4yh8"]
+[ext_resource type="Texture2D" uid="uid://b8cphc31o7ti7" path="res://assets/others/marker.jpg" id="4_q2hhy"]
 [ext_resource type="Script" uid="uid://buw5o0awarb0n" path="res://scripts/clock.gd" id="5_mw1v2"]
 [ext_resource type="FontFile" uid="uid://8fjjt0xbh4w0" path="res://assets/others/fonts/Seven Segment.ttf" id="6_m4yh8"]
 [ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="7_m4yh8"]
@@ -418,16 +418,16 @@ resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_jvnqj")
 size = Vector2(0.019, 0.019)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvnqj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpnv7"]
 bg_color = Color(0.301961, 0.301961, 0.301961, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhfxo"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rxla"]
 bg_color = Color(0, 0, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_286on"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psqn6"]
 bg_color = Color(0.303233, 0.303233, 0.303233, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw1v2"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yg7k"]
 bg_color = Color(1, 1, 0, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_q2hhy"]
@@ -501,7 +501,7 @@ transform = Transform3D(1.2, -3.72529e-09, 2.22045e-16, 3.72529e-09, 1.2, 1.0658
 mesh = SubResource("CylinderMesh_mw1v2")
 
 [node name="screen" type="MeshInstance3D" parent="GalaxyWatch"]
-transform = Transform3D(-0.897256, 0.441505, 0.00185001, -0.00165998, 0.000816837, -0.999998, -0.441506, -0.897258, -2.64176e-10, -0.000370045, -0.00198467, 0.000634898)
+transform = Transform3D(-0.99347, -0.11398, -0.0050262, 0.00232469, 0.0238223, -0.999713, 0.114066, -0.993197, -0.0234017, -0.00150834, -0.00231231, 0.00302949)
 mesh = SubResource("QuadMesh_lhfxo")
 
 [node name="SubViewport" type="SubViewport" parent="GalaxyWatch/screen"]
@@ -516,31 +516,32 @@ offset_bottom = 40.0
 
 [node name="MarginContainer" type="MarginContainer" parent="GalaxyWatch/screen/SubViewport/Control"]
 layout_mode = 0
-offset_right = 576.0
+offset_left = -2.0
+offset_right = 574.0
 offset_bottom = 509.0
+scale = Vector2(1.46016, 1.46016)
 
 [node name="StimulatioinBar" type="TextureRect" parent="GalaxyWatch/screen/SubViewport/Control/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("1_btis5")
+texture = ExtResource("3_m4yh8")
 expand_mode = 1
 stretch_mode = 2
 
 [node name="Marker" type="Sprite2D" parent="GalaxyWatch/screen/SubViewport/Control/MarginContainer"]
 z_index = 2
-position = Vector2(335, 114)
-rotation = -2.53247
-scale = Vector2(0.254245, 0.391236)
-texture = ExtResource("2_jvnqj")
+position = Vector2(152.723, 16.4366)
+scale = Vector2(0.88, 0.88)
+texture = ExtResource("4_q2hhy")
 
 [node name="Physical progress" type="ProgressBar" parent="GalaxyWatch/screen/SubViewport/Control"]
 layout_mode = 0
-offset_left = 181.0
-offset_top = 137.0
-offset_right = 418.0
-offset_bottom = 187.0
-rotation = 0.526599
-theme_override_styles/background = SubResource("StyleBoxFlat_jvnqj")
-theme_override_styles/fill = SubResource("StyleBoxFlat_lhfxo")
+offset_left = 97.0
+offset_top = 134.0
+offset_right = 334.0
+offset_bottom = 184.0
+rotation = 0.000255048
+theme_override_styles/background = SubResource("StyleBoxFlat_bpnv7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0rxla")
 max_value = 4.0
 step = 1.0
 value = 2.0
@@ -558,13 +559,13 @@ text = "PHYSICAL"
 
 [node name="Emotional progress" type="ProgressBar" parent="GalaxyWatch/screen/SubViewport/Control"]
 layout_mode = 0
-offset_left = 149.0
-offset_top = 193.0
-offset_right = 386.0
-offset_bottom = 243.0
-rotation = 0.526599
-theme_override_styles/background = SubResource("StyleBoxFlat_286on")
-theme_override_styles/fill = SubResource("StyleBoxFlat_mw1v2")
+offset_left = 98.0
+offset_top = 201.0
+offset_right = 335.0
+offset_bottom = 251.0
+rotation = 0.000255048
+theme_override_styles/background = SubResource("StyleBoxFlat_psqn6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_3yg7k")
 max_value = 4.0
 step = 1.0
 value = 2.0
@@ -579,30 +580,6 @@ offset_bottom = 44.4939
 theme_override_colors/font_color = Color(0, 0, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "EMOTIONAL"
-
-[node name="Under" type="Label" parent="GalaxyWatch/screen/SubViewport/Control"]
-z_index = 1
-layout_mode = 0
-offset_left = 112.0
-offset_top = 89.0
-offset_right = 688.0
-offset_bottom = 167.0
-rotation = 0.544517
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/font_size = 57
-text = "_"
-
-[node name="Over" type="Label" parent="GalaxyWatch/screen/SubViewport/Control"]
-z_index = 1
-layout_mode = 0
-offset_left = 446.0
-offset_top = 271.0
-offset_right = 1022.0
-offset_bottom = 349.0
-rotation = 0.544517
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/font_size = 57
-text = "_"
 
 [node name="time screen" type="MeshInstance3D" parent="GalaxyWatch"]
 transform = Transform3D(-0.99683, -0.0096439, -0.0789594, 0.0788573, 0.0105375, -0.996829, 0.0104454, -0.999898, -0.00974365, 0.000278355, -0.0027382, 0.00369494)

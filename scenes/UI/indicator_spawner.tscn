@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://73drq6v3v2qc"]
 
-[ext_resource type="Script" uid="uid://c62p8pr5a7ttj" path="res://scenes/UI/indicator_spawner.gd" id="1_urk3t"]
+[ext_resource type="Script" path="res://scenes/UI/indicator_spawner.gd" id="1_urk3t"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

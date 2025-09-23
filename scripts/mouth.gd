@@ -6,6 +6,8 @@ extends Area3D
 @onready var particles: GPUParticles3D = GPUParticles3D.new()
 @onready var right_hand = $"../../XRController3DRight"
 @onready var left_hand = $"../../XRController3DLeft"
+@onready var burp_sfx = $burp
+
 
 var eating_distance: float = 0.25
 var eaten_foods: Array = []
@@ -28,6 +30,7 @@ func _ready() -> void:
 	# Setup particles
 	add_child(particles)
 	setup_particles()
+	GlobalVar.eating_milestone.connect(_on_eating_milestone)
 
 func setup_particles():
 	var material = ParticleProcessMaterial.new()
@@ -98,15 +101,16 @@ func update_eating_foods(delta):
 		# Finish eating
 		if progress >= 1.0:
 			finish_eating(food)
-
 func finish_eating(food: Node):
 	eating_foods.erase(food)
 	eaten_foods.append(food)
+	
+	GlobalVar.add_food_eaten()
+	
 	particles.emitting = false
 	food.queue_free()
 	if eating_foods.is_empty():
 		eating_sfx.stop()
-		# Stop haptic feedback when finished eating
 		haptic_timer.stop()
 
 # New function that gets called repeatedly while eating
@@ -117,3 +121,6 @@ func _trigger_continuous_haptics():
 func trigger_haptic_feedback(duration: float = 0.1, frequency: float = 0.3, amplitude: float = 0.4) -> void:
 	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 	left_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
+
+func _on_eating_milestone(milestone: int):
+	burp_sfx.play()

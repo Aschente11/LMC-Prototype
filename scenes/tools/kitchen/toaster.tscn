@@ -978,7 +978,7 @@ surface_material_override/0 = ExtResource("10_e674p")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0319486, 0.134081, 0)
 visible = false
 script = ExtResource("8_jpmsq")
-default_object = NodePath("bread_toasted")
+default_object = NodePath("bread_toasted2")
 group_required = "toast"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -991,6 +991,6 @@ visible = false
 mesh = SubResource("SphereMesh_uosfe")
 surface_material_override/0 = ExtResource("10_e674p")
 
-[node name="bread_toasted" parent="ToastedBread2" instance=ExtResource("11_a7kvt")]
+[node name="bread_toasted2" parent="ToastedBread2" instance=ExtResource("11_a7kvt")]
 
 [connection signal="action_started" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_started"]

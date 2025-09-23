@@ -1,8 +1,9 @@
 extends Node3D
 var xr_interface: XRInterface
 @onready var environment_node = $WorldEnvironment
-var normal_environment: Environment
-var blur_environment: Environment
+@onready var make_bfast_sfx = $wake_up
+@onready var note_tutorial_sfx = $note_tutorial
+@onready var kitchen_area = $bfast
 var current_stimulation = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -19,49 +20,38 @@ func _ready():
 	else:
 		print("OpenXR not initialized, please check if your headset is connected.")
 	
-	# Setup blur environments
-	setup_blur_environments()
 	call_deferred("check_initial_state")
 	
 	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
 	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
+	GlobalVar.eating_milestone.connect(_on_eating_milestone)
 
-func setup_blur_environments():
-	# Store the normal environment
-	if environment_node.environment:
-		normal_environment = environment_node.environment
-	else:
-		# Create a new environment if none exists
-		normal_environment = Environment.new()
-		environment_node.environment = normal_environment
-	
-	# Create the blur environment
-	create_blur_environment()
+	kitchen_area.body_entered.connect(_on_kitchen_area_entered)
 
-func create_blur_environment():
-	blur_environment = normal_environment.duplicate()
+	# First sequence - breakfast
+	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
+	make_bfast_text.visible = true
+	make_bfast_sfx.play()
 	
-	# Setup blur effects
-	blur_environment.glow_enabled = true
-	blur_environment.glow_intensity = 2.0
-	blur_environment.glow_strength = 1.5
-	blur_environment.glow_mix = 0.9
-	blur_environment.glow_bloom = 0.4
-	blur_environment.glow_blend_mode = Environment.GLOW_BLEND_MODE_SOFTLIGHT
-	
-	# Add fog blur
-	blur_environment.fog_enabled = true
-	blur_environment.fog_mode = Environment.FOG_MODE_EXPONENTIAL
-	blur_environment.fog_density = 0.02
-	blur_environment.fog_light_color = Color(0.9, 0.9, 1.0, 1.0)
-	blur_environment.fog_light_energy = 0.8
-	
-	# Adjust colors for overstimulation effect
-	blur_environment.adjustment_enabled = true
-	blur_environment.adjustment_brightness = 1.2
-	blur_environment.adjustment_contrast = 0.9
-	blur_environment.adjustment_saturation = 0.8
+	# Connect to first audio finished to trigger second sequence
+	make_bfast_sfx.finished.connect(_on_first_audio_finished)
 
+# Kitchen area entered handler
+func _on_kitchen_area_entered(body):
+	if body.is_in_group("player"):
+		kitchen_area.queue_free()
+
+# Add this new function:
+func _on_first_audio_finished():
+	# Hide breakfast text
+	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
+	make_bfast_text.visible = false
+	
+	# Show note tutorial
+	var note_tutorial_text = get_tree().get_first_node_in_group("note_tutorial_text")
+	note_tutorial_text.visible = true
+	note_tutorial_sfx.play()
+	
 func check_initial_state() -> void:
 	_on_stimulation_changed(GlobalVar.stimulation)
 
@@ -73,23 +63,8 @@ func _on_stimulation_decrease(new_value: int) -> void:
 	_on_stimulation_changed(new_value)
 
 func _on_stimulation_changed(new_stimulation_value: int) -> void:
-	if new_stimulation_value == 2:
-		apply_blur_effect()
-	elif new_stimulation_value < 2:
-		remove_blur_effect()
-
-func apply_blur_effect():
-	if environment_node.environment != blur_environment:
-		print("Applying blur effect - stimulation level: ", current_stimulation)
-		
-		# Smooth transition to blur
-		var tween = create_tween()
-		tween.tween_callback(func(): environment_node.environment = blur_environment)
-
-func remove_blur_effect():
-	if environment_node.environment != normal_environment:
-		print("Removing blur effect - stimulation level: ", current_stimulation)
-		
-		# Smooth transition back to normal
-		var tween = create_tween()
-		tween.tween_callback(func(): environment_node.environment = normal_environment)
+	pass
+	
+func _on_eating_milestone(milestone: int):
+	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
+	make_bfast_text.visible = false

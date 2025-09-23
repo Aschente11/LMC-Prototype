@@ -3,6 +3,7 @@ extends Node3D
 @onready var left_hand: XRController3D = $XROrigin3D/XRController3DLeft
 @onready var watch_sfx: AudioStreamPlayer3D = $watchNotif
 @onready var make_bfast_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/make bfast"
+@onready var note_tutorial_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/note tutorial"
 @onready var need_unpack_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/need to unpack"
 @onready var tired_text: MeshInstance3D = $XROrigin3D/XRCamera3D/tired
 @onready var camera = $XROrigin3D/XRCamera3D
@@ -11,6 +12,8 @@ extends Node3D
 @onready var task_manager := $TaskManager
 @onready var notebook: StaticBody3D = $XROrigin3D/XRCamera3D/Notebook
 @onready var indicator_manager := $XROrigin3D/XRCamera3D/FloatingIndicatorManager
+
+var note_tutorial_dismissed: bool = false
 
 # Text configuration class
 class TextConfig:
@@ -32,7 +35,7 @@ var active_text_instances: Array[Node] = []
 var is_spawning_texts: bool = false
 
 # Customizable settings
-var spawn_interval: float = 1.5  # How often new texts appear
+var spawn_interval: float = 3  # How often new texts appear
 var display_duration: float = 2.0  # How long texts stay visible after fully typed
 var typewriter_speed: float = 0.04  # Time between each letter
 var spawn_range: Vector3 = Vector3(2.0, 1.5, 3.0)  # x_range, y_range, z_distance
@@ -44,6 +47,7 @@ var watch_is_left: bool = true
 func _ready() -> void:
 	add_to_group("player")
 	make_bfast_text.add_to_group("make_bfast_text")
+	note_tutorial_text.add_to_group("note_tutorial_text")
 	need_unpack_text.add_to_group("need_unpack_text")
 	tired_text.add_to_group("tired_text")
 	
@@ -149,6 +153,10 @@ func _process(delta: float) -> void:
 		else:
 			left_watch.hide()
 			right_watch.show()
+	if left_hand and left_hand.get_is_active() and left_hand.is_button_pressed("by_button"):
+		if note_tutorial_text.visible:
+			note_tutorial_text.visible = false
+			note_tutorial_dismissed = true
 
 func start_text_spawning() -> void:
 	is_spawning_texts = true
@@ -237,7 +245,6 @@ func show_text_instance(text_instance: MeshInstance3D, config: TextConfig) -> vo
 func animate_typewriter_text(text_instance: MeshInstance3D, full_text: String) -> void:
 	var text_mesh = text_instance.mesh as TextMesh
 	if not text_mesh:
-		print("Error: text instance doesn't have a TextMesh")
 		return
 	
 	# Clear text initially
@@ -312,10 +319,14 @@ func _on_button_pressed(button_name: String):
 			"trigger_click":
 				task_manager.refresh_all_tasks()
 			"by_button": 
-				#task_manager.display_tasks()
-				notebook.visible = !notebook.visible
-
-
+				# First check if note tutorial is visible and dismiss it
+				if note_tutorial_text.visible:
+					note_tutorial_text.visible = false
+					note_tutorial_dismissed = true
+				else:
+					# Only toggle notebook if tutorial was already dismissed or not visible
+					notebook.visible = !notebook.visible
+					
 func _on_physical_increase(old_value: int, new_value: int):
 	indicator_manager.show_typed_indicator(
 		Vector3(-0.3, -0.5, -1.0),

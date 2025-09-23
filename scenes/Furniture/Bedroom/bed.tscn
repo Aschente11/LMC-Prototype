@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://s5gjejv5fen7"]
+[gd_scene load_steps=3 format=3 uid="uid://s5gjejv5fen7"]
 
 [ext_resource type="PackedScene" uid="uid://50ptpuwywwfu" path="res://assets/Furniture Shaders/bed_single.tscn" id="1_ucvcf"]
-[ext_resource type="Script" uid="uid://co2obsna8nuq2" path="res://scripts/sleep.gd" id="2_rls7p"]
 [ext_resource type="AudioStream" uid="uid://cfkfivvej6u7o" path="res://assets/sfx/tired.mp3" id="3_ucvcf"]
 
 [node name="Bed" type="Node3D"]
@@ -14,8 +13,3 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.77345, 0, 0.000989676
 
 [node name="tired" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ucvcf")
-
-[node name="sleep" type="Node" parent="."]
-script = ExtResource("2_rls7p")
-event_name = "sleep"
-metadata/_custom_type_script = "uid://bg8ikbbyucdg6"

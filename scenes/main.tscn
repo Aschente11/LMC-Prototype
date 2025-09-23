@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=157 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -75,6 +75,9 @@
 [ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="72_gdvew"]
 [ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="74_xrs0c"]
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="75_xljpf"]
+[ext_resource type="AudioStream" uid="uid://dtf726kp6odmr" path="res://assets/sfx/events/Waking up.mp3" id="76_j4bwh"]
+[ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="77_ksmap"]
+[ext_resource type="PackedScene" uid="uid://c7wh71cg020ti" path="res://scenes/tools/journal.tscn" id="78_ygd8o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -581,6 +584,23 @@ background_mode = 2
 sky = SubResource("Sky_mgpkq")
 sky_rotation = Vector3(0.151844, -1.96873, 0.151844)
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ksmap"]
+height = 0.0917969
+radius = 1.521
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ksmap"]
+transparency = 1
+albedo_color = Color(0.0500001, 1, 0, 0.0588235)
+emission_enabled = true
+emission = Color(0.00999999, 1, 0.0594999, 1)
+emission_energy_multiplier = 2.34
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ygd8o"]
+material = SubResource("StandardMaterial3D_ksmap")
+top_radius = 1.5
+bottom_radius = 1.5
+height = 5.0
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0wfyh")
 
@@ -1035,3 +1055,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31352, 1.3697, 6.69074)
 
 [node name="Apple" parent="." instance=ExtResource("75_xljpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52473, 1.50377, 5.98096)
+
+[node name="wake_up" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("76_j4bwh")
+volume_db = 20.0
+
+[node name="note_tutorial" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("77_ksmap")
+volume_db = 20.0
+
+[node name="bfast" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="bfast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.00702, 0.0365312, 5.99387)
+shape = SubResource("CylinderShape3D_ksmap")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="bfast"]
+transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -7.99015, 2.48459, 6.04856)
+mesh = SubResource("CylinderMesh_ygd8o")
+skeleton = NodePath("../..")
+
+[node name="journal" parent="." instance=ExtResource("78_ygd8o")]
+transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -7.69795, 1.33657, -3.47809)
