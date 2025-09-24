@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=67 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
@@ -21,11 +21,14 @@
 [ext_resource type="Script" uid="uid://dpc4eg48y7yei" path="res://scripts/floating_indicator_manager.gd" id="7_8qmb4"]
 [ext_resource type="Script" uid="uid://cji1tdhhvihrj" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_single_controller_asm.gd" id="7_cibq4"]
 [ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="8_jhdqs"]
+[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="9_bmmov"]
 [ext_resource type="PackedScene" uid="uid://dsqxcul46odtl" path="res://scenes/tools/handy_dandy_notebook.tscn" id="9_jledq"]
 [ext_resource type="Script" uid="uid://du4lpoac66rw" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_system.gd" id="10_sxhyq"]
 [ext_resource type="PackedScene" uid="uid://cyu5exn7vgfy8" path="res://scenes/tools/smartwatch.tscn" id="11_1mew7"]
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="11_7p0fh"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="11_ltnfw"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="12_1mew7"]
+[ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="12_88mk6"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="13_wk61l"]
 [ext_resource type="AudioStream" uid="uid://dqyjjg0qmnyv8" path="res://assets/sfx/watch_notif.mp3" id="16_wk61l"]
 [ext_resource type="PackedScene" uid="uid://cg865kbis0jwn" path="res://scenes/distractions/cat.tscn" id="18_3s1yg"]
@@ -86,6 +89,10 @@ orientation = 1
 [sub_resource type="BoxShape3D" id="BoxShape3D_jledq"]
 size = Vector3(0.226288, 0.268921, 0.0637207)
 
+[sub_resource type="Resource" id="Resource_qvpqm"]
+script = ExtResource("12_88mk6")
+metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
+
 [sub_resource type="TextMesh" id="TextMesh_twgfx"]
 material = ExtResource("5_awktg")
 text = "Did I forget something"
@@ -98,12 +105,7 @@ font = ExtResource("4_f34b3")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujsbv"]
 size = Vector3(0.453125, 0.486328, 0.535156)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mc5w1"]
-render_priority = 0
-shader = ExtResource("6_mc5w1")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrvet"]
-next_pass = SubResource("ShaderMaterial_mc5w1")
 transparency = 1
 diffuse_mode = 3
 specular_mode = 1
@@ -233,10 +235,11 @@ scene = ExtResource("5_ujsbv")
 viewport_size = Vector2(640, 360)
 scene_properties_keys = PackedStringArray()
 
-[node name="Notebook" type="StaticBody3D" parent="XROrigin3D/XRCamera3D"]
+[node name="Notebook" type="RigidBody3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00692913, 0.161713, -0.514805)
-collision_layer = 4194304
-collision_mask = 0
+collision_layer = 65541
+script = ExtResource("9_bmmov")
+metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="notebook" parent="XROrigin3D/XRCamera3D/Notebook" instance=ExtResource("9_jledq")]
 unique_name_in_owner = true
@@ -245,6 +248,11 @@ transform = Transform3D(1.31134e-08, 1.13247e-08, -0.15, -0.15, 1.13247e-08, -1.
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Notebook"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00291443, 0.00408936, 0.0262451)
 shape = SubResource("BoxShape3D_jledq")
+
+[node name="GrabPointHandRight" parent="XROrigin3D/XRCamera3D/Notebook" instance=ExtResource("11_ltnfw")]
+transform = Transform3D(0.999806, 0, 0.019669, 0, 1, 0, -0.019669, 0, 0.999806, 0.129915, 0.048777, -0.0795848)
+visible = true
+hand_pose = SubResource("Resource_qvpqm")
 
 [node name="overthinkings" type="Node3D" parent="XROrigin3D/XRCamera3D"]
 
@@ -461,6 +469,35 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/Area3D"]
 shape = SubResource("BoxShape3D_3s1yg")
+
+[node name="Journal" type="Node3D" parent="XROrigin3D" node_paths=PackedStringArray("inventory_toggler_hand")]
+transform = Transform3D(-0.00406662, -0.999992, 0, 0.999992, -0.00406662, 0, 0, 0, 1, 0.564771, 1.17106, -0.536814)
+script = ExtResource("10_sxhyq")
+row_count = 1
+column_count = 1
+follow_player_camera = true
+inventory_toggler_hand = NodePath("../XRController3DRight")
+inventory_toggler_button = "ax_button"
+inventory_dictionary = {
+0: [[Object(Node3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"script":ExtResource("11_7p0fh"),"update_slot_settings":false,"slot_enabled":true,"snap_zone_radius":0.1,"default_object":null,"group_required":"","funny_effect":false,"ignore_inventory_item_scale":false,"slot_material_override":ExtResource("13_wk61l"),"snap_zone_mesh":Object(MeshInstance3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"layers":1,"sorting_offset":0.0,"sorting_use_aabb_center":true,"material_override":null,"material_overlay":null,"transparency":0.0,"cast_shadow":1,"extra_cull_margin":0.0,"custom_aabb":AABB(0, 0, 0, 0, 0, 0),"lod_bias":1.0,"ignore_occlusion_culling":false,"gi_mode":1,"gi_lightmap_texel_scale":1.0,"visibility_range_begin":0.0,"visibility_range_begin_margin":0.0,"visibility_range_end":0.0,"visibility_range_end_margin":0.0,"visibility_range_fade_mode":0,"mesh":SubResource("SphereMesh_chwf4"),"skin":null,"skeleton":NodePath(".."),"surface_material_override/0":ExtResource("13_wk61l"),"script":null)
+,"mesh_shape":SubResource("SphereMesh_chwf4"),"snap_zone_scene":ExtResource("12_1mew7"),"snap_zone":Object(Area3D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"physics_interpolation_mode":0,"auto_translate_mode":0,"editor_description":"","transform":Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0),"rotation_edit_mode":0,"rotation_order":2,"top_level":false,"visible":true,"visibility_parent":NodePath(""),"disable_mode":0,"collision_layer":4,"collision_mask":65540,"collision_priority":1.0,"input_ray_pickable":true,"input_capture_on_drag":false,"monitoring":true,"monitorable":true,"priority":0,"gravity_space_override":0,"gravity_point":false,"gravity_point_unit_distance":0.0,"gravity_point_center":Vector3(0, -1, 0),"gravity_direction":Vector3(0, -1, 0),"gravity":9.8,"linear_damp_space_override":0,"linear_damp":0.1,"angular_damp_space_override":0,"angular_damp":0.1,"wind_force_magnitude":0.0,"wind_attenuation_factor":0.0,"wind_source_path":NodePath(""),"audio_bus_override":false,"audio_bus_name":&"Master","reverb_bus_enabled":false,"reverb_bus_name":&"Master","reverb_bus_amount":0.0,"reverb_bus_uniformity":0.0,"script":Resource("res://addons/godot-xr-tools/objects/snap_zone.gd"),"enabled":true,"stash_sound":null,"grab_distance":0.1,"snap_mode":0,"snap_require":"","snap_exclude":"","grab_require":"","grab_exclude":"","initial_object":NodePath(""),"closest_object":null,"picked_up_object":null,"picked_up_ranged":true,"_object_in_grab_area":[])
+,"current_object":null,"is_parented":false)
+, null, null]]
+}
+metadata/_custom_type_script = "uid://du4lpoac66rw"
+
+[node name="Slot_0_0" type="Node3D" parent="XROrigin3D/Journal" node_paths=PackedStringArray("default_object")]
+script = ExtResource("11_7p0fh")
+snap_zone_radius = 0.1
+default_object = NodePath("../../XRCamera3D/Notebook")
+funny_effect = true
+
+[node name="SnapZone" parent="XROrigin3D/Journal/Slot_0_0" instance=ExtResource("12_1mew7")]
+grab_distance = 0.1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/Journal/Slot_0_0"]
+mesh = SubResource("SphereMesh_chwf4")
+surface_material_override/0 = SubResource("StandardMaterial3D_7p0fh")
 
 [node name="watchNotif" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("16_wk61l")

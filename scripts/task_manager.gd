@@ -10,6 +10,7 @@ extends Node3D
 
 var notebook_scene_node: Node3D
 var task_pool: Array[Task] = []
+var is_day_one : bool = true
 
 var active_tasks: Array[Task] = []
 var task_labels: Array[Label3D] = []
@@ -30,7 +31,7 @@ func initialize_task_pool():
 	task_pool.append(Task.new("Make and have breakfast", Task.Priority.HIGH))
 	task_pool.append(Task.new("Make and have lunch", Task.Priority.HIGH))
 	task_pool.append(Task.new("Make and have dinner", Task.Priority.HIGH))
-	task_pool.append(Task.new("Do urgent requirements", Task.Priority.HIGH))
+	task_pool.append(Task.new("Organize schedule", Task.Priority.HIGH))
 	
 	task_pool.append(Task.new("Have a snack", Task.Priority.MEDIUM))
 	task_pool.append(Task.new("Respond to emails", Task.Priority.MEDIUM))
@@ -41,28 +42,36 @@ func initialize_task_pool():
 	
 	task_pool.append(Task.new("Practice drawing fundamentals", Task.Priority.LOW))
 	task_pool.append(Task.new("Organize handouts per course", Task.Priority.LOW))
+	task_pool.append(Task.new("Study", Task.Priority.LOW))
 	task_pool.append(Task.new("Vacuum the entire house", Task.Priority.LOW))
 	task_pool.append(Task.new("Throw the trash", Task.Priority.LOW))
 	task_pool.append(Task.new("Dust furniture", Task.Priority.LOW))
 	task_pool.append(Task.new("Clean the bathroom", Task.Priority.LOW))
+	
+	task_pool.append(Task.new("Unpack", Task.Priority.LOW))
 
 
 func generate_new_tasks():
 	active_tasks.clear()
 	
-	var available_tasks = task_pool.duplicate()
-	
-	for i in range(min(max_active_tasks, available_tasks.size())):
-		var selected_task: Task
+	if is_day_one:
+		active_tasks.append(task_pool[0])
+		active_tasks.append(task_pool[17])
 		
-		if prioritize_high_priority:
-			selected_task =  select_weighted_random_task(available_tasks)
-		else:
-			var random_index = randi() % available_tasks.size()
-			selected_task = available_tasks[random_index]
+	else:
+		var available_tasks = task_pool.duplicate()
+		
+		for i in range(min(max_active_tasks, available_tasks.size())):
+			var selected_task: Task
 			
-		active_tasks.append(selected_task)
-		available_tasks.erase(selected_task)
+			if prioritize_high_priority:
+				selected_task =  select_weighted_random_task(available_tasks)
+			else:
+				var random_index = randi() % available_tasks.size()
+				selected_task = available_tasks[random_index]
+				
+			active_tasks.append(selected_task)
+			available_tasks.erase(selected_task)
 		
 	active_tasks.sort_custom(compare_task_priority)
 
@@ -123,7 +132,7 @@ func create_task_label(task: Task, index: int):
 	
 	if show_priority_indicators:
 		create_priority_indicator(task, index)
-	print("Task label craeted for ", task.text)
+	print("Task label created for ", task.text)
 
 
 func create_priority_indicator(task: Task, index: int):
@@ -151,7 +160,7 @@ func create_priority_indicator(task: Task, index: int):
 	notebook_scene_node.add_child(priority_label)
 	priority_labels.append(priority_label)
 	
-	print("Priority label craeted for ", task.text)
+	print("Priority label created for ", task.text)
 
 
 func clear_task_display():
@@ -169,10 +178,12 @@ func clear_task_display():
 func complete_task(task_index: int):
 	if task_index >= 0 and task_index < active_tasks.size():
 		var completed_task = active_tasks[task_index]
+		completed_task.priority = Task.Priority.DONE
 		print("Task completed: ", completed_task.text, " [", completed_task.get_priority_text(completed_task.priority), "]")
-		active_tasks.remove_at(task_index)
 		
-		add_random_task()
+		#active_tasks.remove_at(task_index)
+		
+		#add_random_task()
 		
 		display_tasks()
 

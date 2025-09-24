@@ -7,11 +7,15 @@ extends Node
 enum QTE_STATES { START, RUNNING, FAILED, SUCCESS, STOPPED }
 var QTE_STATUS : QTE_STATES = QTE_STATES.STOPPED
 var QTE_LAYER : Node
+var QTE_BUTTON_FILL : CanvasItem
+var QTE_BUTTON_TEXT : Label
 var QTE_TIMER_LABEL: Label
 var QTE_ACTION_TIMER_LABEL: Label
 var QTE_LABEL : Label
 var QTE_PLAYER_LABEL: Label
-var QTE_FEEDBACK: Label
+var QTE_FEEDBACK : Label
+
+var FOR_DEBUGGING : MeshInstance3D
 
 # VR Input tracking
 var xr_interface: XRInterface
@@ -38,6 +42,10 @@ signal failed_qte
 
 func _ready() -> void:
 	QTE_LAYER = %QTE_LAYER
+	QTE_BUTTON_FILL = %QTE_BUTTON/CenterContainer/VBoxContainer/TextureRect/FILL
+	QTE_BUTTON_TEXT = %QTE_BUTTON/CenterContainer/VBoxContainer/Label2
+	
+	FOR_DEBUGGING = $"../XROrigin3D/XRCamera3D/QTE/MeshInstance3D"
 	
 	# Initialize VR interface
 	xr_interface = XRServer.find_interface("OpenXR")
@@ -61,6 +69,8 @@ func _ready() -> void:
 	# Create debug label if debugging is enabled
 	if debug_enabled:
 		create_debug_label()
+		
+	FOR_DEBUGGING.visible = false
 
 # Fixed VR button checking - ONLY for debug display, no input handling
 func check_vr_button_pressed(button_name: String) -> bool:
@@ -153,6 +163,11 @@ func handle_qte_input() -> void:
 		print("Player QTE: ", PLAYER_QTE)
 		print("Current QTE: ", CURRENT_QTE)
 		
+		var tween = get_tree().create_tween()
+		tween.tween_property(QTE_BUTTON_FILL.material, "shader_parameter/progress", float(PLAYER_QTE.size())/4.0, 0.1)
+		print(float(PLAYER_QTE.size())/4.0)
+		#QTE_BUTTON_FILL.material.set_shader_parameter("shader_parameter/progress", float(PLAYER_QTE.size())/float(CURRENT_QTE.size()))
+		
 		if QTE_PLAYER_LABEL:
 			QTE_PLAYER_LABEL.text = str(PLAYER_QTE)
 		
@@ -197,8 +212,8 @@ func _process(delta:float) -> void:
 		if PLAYER_QTE != CURRENT_QTE && (QTE_TIMER <= 0 || QTE_ACTION_TIMER <= 0):
 			print("FAILED!!! :'(")
 			QTE_STATUS = QTE_STATES.FAILED
-			if QTE_FEEDBACK:
-				QTE_FEEDBACK.text = "FAILED!! :("
+			if QTE_BUTTON_TEXT:
+				QTE_BUTTON_TEXT.text = "faster!"
 			stop_qte()
 			
 func stop_qte() -> void:

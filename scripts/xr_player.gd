@@ -9,7 +9,7 @@ extends Node3D
 @onready var change_indicator: Material = $XROrigin3D/XRCamera3D/ChangeIndicator.get_active_material(0)
 #@onready var indicators: PackedScene = $XROrigin3D/XRCamera3D/Indicators.scene
 @onready var task_manager := $TaskManager
-@onready var notebook: StaticBody3D = $XROrigin3D/XRCamera3D/Notebook
+@onready var notebook: RigidBody3D = $XROrigin3D/XRCamera3D/Notebook
 @onready var indicator_manager := $XROrigin3D/XRCamera3D/FloatingIndicatorManager
 
 # Text configuration class
@@ -309,11 +309,12 @@ func right_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5
 func _on_button_pressed(button_name: String):
 	if task_manager and notebook:
 		match button_name:
-			"trigger_click":
-				task_manager.refresh_all_tasks()
+			#"trigger_click":
+				#task_manager.refresh_all_tasks()
 			"by_button": 
 				#task_manager.display_tasks()
-				notebook.visible = !notebook.visible
+				#notebook.visible = !notebook.visible
+				task_manager.complete_task(0)
 
 
 func _on_physical_increase(old_value: int, new_value: int):

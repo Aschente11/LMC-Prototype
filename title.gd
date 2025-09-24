@@ -49,7 +49,7 @@ func _ready():
 	# Start background sounds
 	bg_sounds.play()
 	start_animation.play("start")
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(2).timeout
 	has_initialized = true
 
 func _process(delta):
@@ -171,7 +171,7 @@ func _on_button_pressed(button: String) -> void:
 		was_pressed = true
 		_fade_out()
 		print("Changed Scene")
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(1).timeout
 		get_tree().change_scene_to_file("res://scenes/waking_up.tscn")
 
 

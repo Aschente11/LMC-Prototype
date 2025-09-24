@@ -31,6 +31,10 @@ func _ready() -> void:
 	
 	# Set pivot points to center for proper scaling
 	setup_center_pivots()
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(stimulation.material, "shader_parameter/value", GlobalVar.stimulation/5.0, 1)
+	tween.tween_property(physical.material, "shader_parameter/value", GlobalVar.physical/5.0, 1)
 
 
 func setup_center_pivots() -> void:
@@ -86,7 +90,7 @@ func _on_stimulation_decrease(old_value: int, new_value: int) -> void:
 	#animate_sequence(target_position, target_rotation, Tween.TRANS_SINE)
 	var tween = get_tree().create_tween()
 	tween.tween_property(stimulation.material, "shader_parameter/value", new_value/5.0, 1)
-	tween.tween_callback(stimulation.material.queue_free)
+	#tween.tween_callback(stimulation.material.queue_free)
 	#stimulation.set_shader_parameter("value", new_value/5.0)
 
 func animate_sequence(target_position: Vector2, target_rotation: float, move_transition: Tween.TransitionType) -> void:
@@ -145,7 +149,7 @@ func _on_emotional_decrease(old_value: int, new_value: int) -> void:
 	#emotional_bar.value -= 1
 	var tween = get_tree().create_tween()
 	tween.tween_property(emotional.material, "shader_parameter/value", new_value/5.0, 1)
-	tween.tween_callback(emotional.material.queue_free)
+	#tween.tween_callback(emotional.material.queue_free)
 
 
 func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress: Variant) -> void:

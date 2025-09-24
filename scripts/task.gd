@@ -5,7 +5,8 @@ extends Node3D
 enum Priority {
 	LOW,
 	MEDIUM,
-	HIGH
+	HIGH,
+	DONE
 }
 
 var text: String
@@ -25,6 +26,8 @@ func get_priority_color(p: Priority) -> Color:
 			return Color.YELLOW
 		Priority.HIGH:
 			return Color.RED
+		Priority.DONE:
+			return Color.WHITE
 	return Color.WHITE
 
 func get_priority_text(p: Priority) -> String:
@@ -35,6 +38,8 @@ func get_priority_text(p: Priority) -> String:
 			return "MEDIUM"
 		Priority.HIGH:
 			return "HIGH"
+		Priority.DONE:
+			return "DONE"
 	return "UNKNOWN"
 	
 func get_priority_weight(p: Priority) -> int:
@@ -45,4 +50,6 @@ func get_priority_weight(p: Priority) -> int:
 			return 2
 		Priority.LOW:
 			return 1
+		Priority.DONE:
+			return 0
 	return 1

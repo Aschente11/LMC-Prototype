@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyoxl56y3edl"]
+
+[ext_resource type="Texture2D" uid="uid://754q5jwk4ls1" path="res://assets/others/b-filled.png" id="1_fjuxx"]
+[ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="1_tje5h"]
+[ext_resource type="Shader" uid="uid://cn131gjfveqib" path="res://shaders/fill.gdshader" id="2_nhymk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nhymk"]
+font = ExtResource("1_tje5h")
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjc5r"]
+shader = ExtResource("2_nhymk")
+shader_parameter/progress = 0.0
+shader_parameter/overlay_color = Color(0.976471, 0.780392, 0.309804, 0.933333)
+shader_parameter/fill_dir = Vector2(0, -1)
+shader_parameter/alpha_cutoff = 0.01
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Press"
+label_settings = SubResource("LabelSettings_nhymk")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_fjuxx")
+stretch_mode = 5
+
+[node name="FILL" type="TextureRect" parent="CenterContainer/VBoxContainer/TextureRect"]
+material = SubResource("ShaderMaterial_vjc5r")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_fjuxx")
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "quickly to wake up!"
+label_settings = SubResource("LabelSettings_nhymk")
+horizontal_alignment = 1

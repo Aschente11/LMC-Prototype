@@ -1,4 +1,4 @@
-[gd_scene load_steps=155 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=156 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -76,6 +76,7 @@
 [ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="74_xrs0c"]
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="75_xljpf"]
 [ext_resource type="Shader" uid="uid://dvgadwfd5py8" path="res://shaders/aoe.gdshader" id="76_j4bwh"]
+[ext_resource type="Script" uid="uid://d4g0jie5h3d6b" path="res://scripts/aoe.gd" id="77_ksmap"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -1055,9 +1056,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52473, 1.50377, 5.98096)
 [node name="AOE" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.29, 0, 0, 0, 2.29, 0, 0, 0, 2.29, 0.511596, 0.001, -6.40981)
 mesh = SubResource("PlaneMesh_2s0kr")
+script = ExtResource("77_ksmap")
 
 [node name="Area3D" type="Area3D" parent="AOE"]
+collision_mask = 524289
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AOE/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0305176, 0.104187, -0.0192258)
 shape = SubResource("BoxShape3D_xaipn")
+
+[connection signal="area_entered" from="AOE/Area3D" to="AOE" method="_on_area_3d_area_entered"]
