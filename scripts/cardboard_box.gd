@@ -1,20 +1,13 @@
-# In cardboard_box.gd
 extends StaticBody3D
 
 signal box_emptied  # Custom signal
 
 @onready var detection_area: Area3D = $"Detection Area"
+@onready var tired_sfx = $tired
 var object_count: int = 3
 
 func _ready() -> void:
 	detection_area.body_exited.connect(_on_body_exited)
-	
-	# Connect the signal directly to the event's close_event method
-	var unpack_event = get_node("unpack things")
-	if unpack_event:
-		box_emptied.connect(unpack_event.close_event)
-	else:
-		print("ERROR: Unpack things event not found!")
 
 func _on_body_exited(body: Node3D) -> void:
 	print(body)
@@ -31,6 +24,10 @@ func _on_body_exited(body: Node3D) -> void:
 			GlobalVar.decrease_physical()
 			GlobalVar.decrease_emotional()
 			GlobalVar.decrease_emotional()
+			
+			var tired_text = get_tree().get_first_node_in_group("tired_text")
+			tired_text.visible = true
+			tired_sfx.play()
 
 func should_track_object(body: Node3D) -> bool:
 	return body.is_in_group("tool")

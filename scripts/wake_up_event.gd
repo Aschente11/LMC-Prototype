@@ -7,8 +7,8 @@ func _on_qte_success() -> void:
 	anim_player.play("Blinking")
 	await get_tree().create_timer(5).timeout
 	print("Changed Scene")
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
 	close_event()
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 func _on_qte_fail() -> void:
 	$"../QTE".start_qte()

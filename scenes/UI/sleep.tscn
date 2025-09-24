@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://0gk1k2el1m3y"]
+
+[ext_resource type="Script" uid="uid://bmqe6mm5jmyft" path="res://scenes/UI/sleep.gd" id="1_211fl"]
+
+[node name="Sleep" type="Node2D"]
+script = ExtResource("1_211fl")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 161.0
+offset_bottom = 61.0
+text = "GO TO SLEEP"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

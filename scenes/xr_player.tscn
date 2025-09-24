@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=68 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
@@ -30,47 +30,11 @@
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="12_1mew7"]
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="12_88mk6"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="13_wk61l"]
+[ext_resource type="AudioStream" uid="uid://dobwewoc67mhd" path="res://assets/sfx/burp.mp3" id="16_bmmov"]
 [ext_resource type="AudioStream" uid="uid://dqyjjg0qmnyv8" path="res://assets/sfx/watch_notif.mp3" id="16_wk61l"]
 [ext_resource type="PackedScene" uid="uid://cg865kbis0jwn" path="res://scenes/distractions/cat.tscn" id="18_3s1yg"]
 [ext_resource type="Script" uid="uid://bo4nexkdn6v0t" path="res://scripts/task_manager.gd" id="25_awktg"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="26_t6eq7"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jledq"]
-render_priority = 0
-shader = ExtResource("6_mc5w1")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awktg"]
-next_pass = SubResource("ShaderMaterial_jledq")
-no_depth_test = true
-
-[sub_resource type="TextMesh" id="TextMesh_3s1yg"]
-material = SubResource("StandardMaterial3D_awktg")
-text = "I'm hungry. I'll go make breakfast."
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6eq7"]
-render_priority = 0
-shader = ExtResource("6_mc5w1")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qmb4"]
-next_pass = SubResource("ShaderMaterial_t6eq7")
-no_depth_test = true
-
-[sub_resource type="TextMesh" id="TextMesh_chwf4"]
-material = SubResource("StandardMaterial3D_8qmb4")
-text = "Now that I'm full, 
-I should go unpack my things."
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_akq6r"]
-render_priority = 0
-shader = ExtResource("6_mc5w1")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3gh2"]
-next_pass = SubResource("ShaderMaterial_akq6r")
-no_depth_test = true
-
-[sub_resource type="TextMesh" id="TextMesh_mc5w1"]
-material = SubResource("StandardMaterial3D_i3gh2")
-text = "Unpacking made me tired. Time for bed."
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awktg"]
 render_priority = 0
@@ -104,6 +68,64 @@ font = ExtResource("4_f34b3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujsbv"]
 size = Vector3(0.453125, 0.486328, 0.535156)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_awktg"]
+no_depth_test = true
+
+[sub_resource type="TextMesh" id="TextMesh_bmmov"]
+material = SubResource("StandardMaterial3D_awktg")
+text = "Oh wait… I almost forgot. My doctor told 
+me to write things down so they don’t 
+slip away. Kinda feels silly, but… I guess it helps.
+
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bmmov"]
+no_depth_test = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_4sr7x"]
+material = SubResource("StandardMaterial3D_bmmov")
+text = "PRESS Y TO TOGGLE NOTES
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4sr7x"]
+no_depth_test = true
+
+[sub_resource type="TextMesh" id="TextMesh_3s1yg"]
+material = SubResource("StandardMaterial3D_4sr7x")
+text = "Ugh.. mornings.. but I'm starving though. 
+Fine                              "
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ltnfw"]
+no_depth_test = true
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_88mk6"]
+material = SubResource("StandardMaterial3D_ltnfw")
+text = "eat breakfast now."
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qmb4"]
+no_depth_test = true
+
+[sub_resource type="TextMesh" id="TextMesh_chwf4"]
+material = SubResource("StandardMaterial3D_8qmb4")
+text = "That was good. Alright… 
+What was next again? Oh yeah, unpacking. 
+Gotta get that over with."
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i3gh2"]
+no_depth_test = true
+
+[sub_resource type="TextMesh" id="TextMesh_mc5w1"]
+material = SubResource("StandardMaterial3D_i3gh2")
+text = "Finally… that took way more energy 
+than I thought. I’m tired…. 
+maybe I should just call it a night."
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mc5w1"]
+render_priority = 0
+shader = ExtResource("6_mc5w1")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrvet"]
 transparency = 1
@@ -193,28 +215,13 @@ script = ExtResource("1_7p0fh")
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="XROrigin3D"]
 top_level = true
 collision_layer = 524288
-collision_mask = 1023
+collision_mask = 1019
 script = ExtResource("6_mvv4w")
 player_height_min = 0.5
 player_height_max = 2.25
 metadata/_custom_type_script = "uid://bqqdxydvmjgir"
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-
-[node name="make bfast" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)
-visible = false
-mesh = SubResource("TextMesh_3s1yg")
-
-[node name="need to unpack" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)
-visible = false
-mesh = SubResource("TextMesh_chwf4")
-
-[node name="tired" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -2.46825)
-visible = false
-mesh = SubResource("TextMesh_mc5w1")
 
 [node name="OiiaioooooiaiFin" parent="XROrigin3D/XRCamera3D" instance=ExtResource("18_3s1yg")]
 transform = Transform3D(1.44616, 0, 0.398259, 0, 1.5, 0, -0.398259, 0, 1.44616, 0.369222, -0.361581, -1.42721)
@@ -240,10 +247,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00692913, 0.161713, -0.5148
 collision_layer = 65541
 script = ExtResource("9_bmmov")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
+visible = false
+collision_mask = 0
 
 [node name="notebook" parent="XROrigin3D/XRCamera3D/Notebook" instance=ExtResource("9_jledq")]
 unique_name_in_owner = true
-transform = Transform3D(1.31134e-08, 1.13247e-08, -0.15, -0.15, 1.13247e-08, -1.31134e-08, 1.13247e-08, 0.15, 1.13247e-08, 0, 0, 0)
+transform = Transform3D(1.31134e-08, 1.13247e-08, -0.15, -0.15, 1.13247e-08, -1.31134e-08, 1.13247e-08, 0.15, 1.13247e-08, 0, -0.191552, -0.313423)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Notebook"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00291443, 0.00408936, 0.0262451)
@@ -286,6 +295,40 @@ stream = ExtResource("6_ujsbv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Mouth"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.252712, -0.0638555)
 shape = SubResource("BoxShape3D_ujsbv")
+
+[node name="burp" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/Mouth"]
+stream = ExtResource("16_bmmov")
+
+[node name="note tutorial" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0836127, -0.0533591, -3.87888)
+visible = false
+mesh = SubResource("TextMesh_bmmov")
+skeleton = NodePath("../make bfast")
+
+[node name="note tutorial" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/note tutorial"]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0.00254393, -0.460486, 0.0915332)
+mesh = SubResource("TextMesh_4sr7x")
+skeleton = NodePath("../make bfast")
+
+[node name="make bfast" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -3.46676)
+visible = false
+mesh = SubResource("TextMesh_3s1yg")
+
+[node name="make bfast2" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/make bfast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294057, -0.112516, 0.00568652)
+mesh = SubResource("TextMesh_88mk6")
+skeleton = NodePath("../..")
+
+[node name="need to unpack" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -3.46676)
+visible = false
+mesh = SubResource("TextMesh_chwf4")
+
+[node name="tired" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -3.46676)
+visible = false
+mesh = SubResource("TextMesh_mc5w1")
 
 [node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
@@ -363,6 +406,7 @@ transform = Transform3D(-4.37114e-08, 3.60561e-16, 1, -0.00178025, 0.999998, -7.
 
 [node name="InventorySystem" type="Node3D" parent="XROrigin3D" node_paths=PackedStringArray("inventory_toggler_hand")]
 transform = Transform3D(-0.00406662, -0.999992, 0, 0.999992, -0.00406662, 0, 0, 0, 1, 0.29965, 0.872173, -0.536814)
+visible = false
 script = ExtResource("10_sxhyq")
 inventory_toggler_hand = NodePath("../XRController3DRight")
 inventory_toggler_button = "ax_button"

@@ -4,4 +4,3 @@ extends XRToolsPickable
 
 func _ready() -> void:
 	add_to_group("bread")
-	add_to_group("food")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0uyoh7g02n8d"
+path="res://.godot/imported/Unpacking done.mp3-a79650be89b37d3f0df9e3fd4dd2ad3b.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/events/Unpacking done.mp3"
+dest_files=["res://.godot/imported/Unpacking done.mp3-a79650be89b37d3f0df9e3fd4dd2ad3b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

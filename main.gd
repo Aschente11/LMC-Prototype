@@ -1,8 +1,13 @@
 extends Node3D
 var xr_interface: XRInterface
 @onready var environment_node = $WorldEnvironment
-var normal_environment: Environment
-var blur_environment: Environment
+@onready var make_bfast_sfx = $wake_up
+@onready var note_tutorial_sfx = $note_tutorial
+@onready var need_unpack_sfx = $need_unpack
+@onready var kitchen_area = $bfast
+@onready var unpacking_area = $unpacking
+@onready var sleep_area = $sleep
+@onready var sleep_viewport = $SleepViewport
 var current_stimulation = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -19,50 +24,42 @@ func _ready():
 	else:
 		print("OpenXR not initialized, please check if your headset is connected.")
 	
-	# Setup blur environments
-	setup_blur_environments()
 	call_deferred("check_initial_state")
 	
 	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
 	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
 	GlobalTime.start_time()
+	GlobalVar.eating_milestone.connect(_on_eating_milestone)
 
-func setup_blur_environments():
-	# Store the normal environment
-	if environment_node.environment:
-		normal_environment = environment_node.environment
-	else:
-		# Create a new environment if none exists
-		normal_environment = Environment.new()
-		environment_node.environment = normal_environment
+	# First sequence - breakfast
+	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
+	make_bfast_text.visible = true
+	make_bfast_sfx.play()
 	
-	# Create the blur environment
-	create_blur_environment()
+	# Connect to first audio finished to trigger second sequence
+	make_bfast_sfx.finished.connect(_on_first_audio_finished)
+	
+	unpacking_area.visible = false
+	unpacking_area.monitoring = false
+	unpacking_area.monitorable = false
+	
+	sleep_area.visible = false
+	sleep_area.monitoring = false
+	sleep_area.monitorable = false
+	
+	sleep_viewport.visible = false
 
-func create_blur_environment():
-	blur_environment = normal_environment.duplicate()
+# Add this new function:
+func _on_first_audio_finished():
+	# Hide breakfast text
+	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
+	make_bfast_text.visible = false
 	
-	# Setup blur effects
-	blur_environment.glow_enabled = true
-	blur_environment.glow_intensity = 2.0
-	blur_environment.glow_strength = 1.5
-	blur_environment.glow_mix = 0.9
-	blur_environment.glow_bloom = 0.4
-	blur_environment.glow_blend_mode = Environment.GLOW_BLEND_MODE_SOFTLIGHT
+	# Show note tutorial
+	var note_tutorial_text = get_tree().get_first_node_in_group("note_tutorial_text")
+	note_tutorial_text.visible = true
+	note_tutorial_sfx.play()
 	
-	# Add fog blur
-	blur_environment.fog_enabled = true
-	blur_environment.fog_mode = Environment.FOG_MODE_EXPONENTIAL
-	blur_environment.fog_density = 0.02
-	blur_environment.fog_light_color = Color(0.9, 0.9, 1.0, 1.0)
-	blur_environment.fog_light_energy = 0.8
-	
-	# Adjust colors for overstimulation effect
-	blur_environment.adjustment_enabled = true
-	blur_environment.adjustment_brightness = 1.2
-	blur_environment.adjustment_contrast = 0.9
-	blur_environment.adjustment_saturation = 0.8
-
 func check_initial_state() -> void:
 	_on_stimulation_changed(GlobalVar.stimulation)
 
@@ -74,23 +71,39 @@ func _on_stimulation_decrease(new_value: int) -> void:
 	_on_stimulation_changed(new_value)
 
 func _on_stimulation_changed(new_stimulation_value: int) -> void:
-	if new_stimulation_value == 2:
-		apply_blur_effect()
-	elif new_stimulation_value < 2:
-		remove_blur_effect()
-
-func apply_blur_effect():
-	if environment_node.environment != blur_environment:
-		print("Applying blur effect - stimulation level: ", current_stimulation)
+	pass
+	
+func _on_eating_milestone(milestone: int):
+	var need_unpack_text = get_tree().get_first_node_in_group("need_unpack_text")
+	need_unpack_text.visible = true
+	need_unpack_sfx.play()
 		
-		# Smooth transition to blur
-		var tween = create_tween()
-		tween.tween_callback(func(): environment_node.environment = blur_environment)
+	# Create a one-shot timer right here
+	var timer := get_tree().create_timer(13.0) 
+	timer.timeout.connect(func():
+		if need_unpack_text: 
+			need_unpack_text.visible = false
+		)
 
-func remove_blur_effect():
-	if environment_node.environment != normal_environment:
-		print("Removing blur effect - stimulation level: ", current_stimulation)
+func _on_bfast_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") or body.name == "XRToolsPlayerBody":
+		remove_child(kitchen_area)
+		kitchen_area = null
+
+		unpacking_area.visible = true
+		unpacking_area.monitoring = true
+		unpacking_area.monitorable = true
+
+
+func _on_unpacking_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") or body.name == "XRToolsPlayerBody":
+		remove_child(unpacking_area)
+		unpacking_area = null
 		
-		# Smooth transition back to normal
-		var tween = create_tween()
-		tween.tween_callback(func(): environment_node.environment = normal_environment)
+		sleep_area.visible = true
+		sleep_area.monitoring = true
+		sleep_area.monitorable = true
+
+
+func _on_sleep_body_entered(body: Node3D) -> void:
+	sleep_viewport.visible = true

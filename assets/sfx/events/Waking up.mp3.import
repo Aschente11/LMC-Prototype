@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dtf726kp6odmr"
+path="res://.godot/imported/Waking up.mp3-e4cf3869658f74e95569dffb9e4a88df.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/events/Waking up.mp3"
+dest_files=["res://.godot/imported/Waking up.mp3-e4cf3869658f74e95569dffb9e4a88df.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

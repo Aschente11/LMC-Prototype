@@ -1,41 +1,9 @@
 {
-	"make bfast": {
-		"EventCategory": "DIALOGUE",
-		"EventPrerequisiteFlags": [
-			"wake up_Done"
-		],
-		"EventCompletionFlags": [
-			"make bfast_Done"
-		],
-		"Oneshot": true
-	},
-	"unpack things": {
-		"EventCategory": "DIALOGUE",
-		"EventPrerequisiteFlags": [
-			"make bfast_Done",
-			"wake up_Done"
-		],
-		"EventCompletionFlags": [
-			"unpack things_Done"
-		],
-		"Oneshot": true
-	},
 	"wake up": {
 		"EventCategory": "ACTION",
 		"EventPrerequisiteFlags": [],
 		"EventCompletionFlags": [
 			"wake up_Done"
-		],
-		"Oneshot": true
-	},
-	"sleep": {
-		"EventCategory": "DIALOGUE",
-		"EventPrerequisiteFlags": [
-			"unpack things_Done",
-			""
-		],
-		"EventCompletionFlags": [
-			"sleep_Done"
 		],
 		"Oneshot": true
 	}
