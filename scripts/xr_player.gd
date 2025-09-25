@@ -61,20 +61,12 @@ func _ready() -> void:
 	print("Current stimulation level: ", GlobalVar.stimulation)
 	
 	# Connect to stimulation signals
-	if GlobalVar.stimulation_increase.connect(trigger_indicator) != OK:
-		print("Failed to connect stimulation_increase signal")
-	if GlobalVar.stimulation_decrease.connect(trigger_indicator) != OK:
-		print("Failed to connect stimulation_decrease signal")
-		
-	if GlobalVar.physical_increase.connect(_on_physical_increase) != OK:
-		print("Failed to connect physical_increase signal")
-	if GlobalVar.physical_decrease.connect(_on_physical_decrease) != OK:
-		print("Failed to connect physical_decrease signal")
-		
-	if GlobalVar.emotional_increase.connect(_on_emotional_increase) != OK:
-		print("Failed to connect emotional_increase signal")
-	if GlobalVar.emotional_decrease.connect(_on_emotional_decrease) != OK:
-		print("Failed to connect emotional_decrease signal")
+	GlobalVar.stimulation_increase.connect(trigger_indicator)
+	GlobalVar.stimulation_decrease.connect(trigger_indicator)
+	GlobalVar.physical_increase.connect(_on_physical_increase)
+	GlobalVar.physical_decrease.connect(_on_physical_decrease)
+	GlobalVar.emotional_increase.connect(_on_emotional_increase)
+	GlobalVar.emotional_decrease.connect(_on_emotional_decrease)
 	
 	# Check initial stimulation level
 	call_deferred("check_initial_state")
@@ -129,10 +121,10 @@ func trigger_indicator(old_value: int, new_value: int) -> void:
 func _on_stimulation_changed(old_value: int, new_value: int) -> void:
 	print("Stimulation changed to: ", new_value)  # Debug print
 	
-	if new_value >= 2 and not is_spawning_texts:
+	if new_value >= 1 and not is_spawning_texts:
 		print("Starting text spawning cycle")
 		start_text_spawning()
-	elif new_value < 2 and is_spawning_texts:
+	elif new_value < 1 and is_spawning_texts:
 		print("Stopping text spawning cycle")
 		stop_text_spawning()
 	
@@ -318,12 +310,10 @@ func _on_button_pressed(button_name: String):
 		match button_name:
 			#"trigger_click":
 				#task_manager.refresh_all_tasks()
-			"by_button": 
+			"ax_button": 
 				#task_manager.display_tasks()
 				#notebook.visible = !notebook.visible
-				task_manager.complete_task(0)
-
-
+				#task_manager.complete_task(0)
 				# First check if note tutorial is visible and dismiss it
 				if note_tutorial_text.visible:
 					note_tutorial_text.visible = false

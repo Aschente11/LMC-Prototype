@@ -367,6 +367,7 @@ tracker = &"right_hand"
 pose = &"grip"
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.1708)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1")
@@ -408,15 +409,15 @@ volume_db = 50.0
 max_db = 6.0
 
 [node name="TitleText" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 0, 53.4582, -8.2561)
+transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 0, 53.4582, -12.9667)
 mesh = SubResource("TextMesh_kpexm")
 
 [node name="TitleText2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 0, 50.3944, -8.2561)
+transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 0, 50.3944, -12.9667)
 mesh = SubResource("TextMesh_upcoo")
 
 [node name="Pan" type="MeshInstance3D" parent="."]
-transform = Transform3D(1000, 0, 0, 0, 547.534, 836.784, 0, -836.784, 547.534, 0, 50.607, -11.2276)
+transform = Transform3D(1000, 0, 0, 0, 547.534, 836.784, 0, -836.784, 547.534, 0, 50.607, -15.9382)
 mesh = SubResource("ArrayMesh_kpexm")
 skeleton = NodePath("")
 

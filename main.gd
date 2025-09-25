@@ -47,7 +47,7 @@ func _ready():
 	sleep_area.monitoring = false
 	sleep_area.monitorable = false
 	
-	sleep_viewport.visible = false
+	#sleep_viewport.visible = false
 
 # Add this new function:
 func _on_first_audio_finished():

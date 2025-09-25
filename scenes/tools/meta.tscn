@@ -9,8 +9,7 @@
 size = Vector3(0.261047, 0.219421, 0.342674)
 
 [node name="Meta" type="RigidBody3D"]
-collision_layer = 7
-collision_mask = 7
+collision_layer = 4
 script = ExtResource("1_opdg4")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 

@@ -65,7 +65,7 @@ func add_food_eaten():
 	food_eaten.emit(foods_eaten_count)
 	
 	# Check for milestones
-	if foods_eaten_count % 5 == 0:
+	if foods_eaten_count % 4 == 0:
 		eating_milestone.emit(foods_eaten_count)
 		# Increase physical and emotional by 1 every 6 foods
 		increase_physical()

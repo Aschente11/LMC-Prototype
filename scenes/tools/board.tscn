@@ -100,7 +100,7 @@ shape = SubResource("BoxShape3D_ofyuy")
 
 [node name="OISWipeReceiver" type="Node3D" parent="."]
 script = ExtResource("4_nmcum")
-group = "pencil"
+group = "marker"
 metadata/_custom_type_script = "uid://bgbpjxxlqrp4"
 
 [node name="Area3D" type="Area3D" parent="OISWipeReceiver"]

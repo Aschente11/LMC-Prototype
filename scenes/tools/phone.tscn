@@ -9,8 +9,8 @@
 size = Vector3(0.214474, 0.353634, 0.0574748)
 
 [node name="Phone" type="RigidBody3D"]
-collision_layer = 7
-collision_mask = 536870919
+collision_layer = 4
+collision_mask = 536870913
 script = ExtResource("1_txr4e")
 second_hand_grab = 1
 metadata/_custom_type_script = "uid://bs5crmi43kekt"

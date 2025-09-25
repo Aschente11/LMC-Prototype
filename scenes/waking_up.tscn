@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cljyjsip713od" path="res://scripts/wake_up_event.gd" id="7_ncvxg"]
 [ext_resource type="Texture2D" uid="uid://c3e3ci04ak5yh" path="res://assets/textures/Tiles009-4K/Tiles009_4K_AmbientOcclusion.jpg" id="8_imbos"]
 [ext_resource type="Texture2D" uid="uid://chibr5vli2kq8" path="res://assets/textures/Tiles009-4K/Tiles009_4K_NormalGL.jpg" id="9_2y35h"]
+[ext_resource type="AudioStream" uid="uid://wodio3h1pjpf" path="res://assets/sfx/iphone_alarm.mp3" id="10_iv873"]
 [ext_resource type="Texture2D" uid="uid://ixiikv87pfp2" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Roughness.jpg" id="10_tghf6"]
 [ext_resource type="Texture2D" uid="uid://p6vxlfnbn3w3" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Color.jpg" id="11_51sj5"]
 [ext_resource type="Texture2D" uid="uid://dn1p63kntkvho" path="res://assets/textures/Plaster001-4K/Plaster001_4K_NormalGL.jpg" id="12_vnjos"]
@@ -39,7 +40,6 @@
 [ext_resource type="PackedScene" uid="uid://s5gjejv5fen7" path="res://scenes/Furniture/Bedroom/bed.tscn" id="30_sd2l4"]
 [ext_resource type="PackedScene" uid="uid://lbdlwao4nkbv" path="res://scenes/Furniture/Bedroom/windows.tscn" id="35_8sril"]
 [ext_resource type="PackedScene" uid="uid://cyj20vbwq2jgh" path="res://scenes/Furniture/cr_door.tscn" id="37_c22vf"]
-[ext_resource type="AudioStream" uid="uid://bff7a6t5tisk7" path="res://assets/sfx/alarm.mp3" id="39_ncvxg"]
 [ext_resource type="PackedScene" uid="uid://dgntcenmdo8mk" path="res://scenes/Furniture/desk.tscn" id="51_mvxlr"]
 [ext_resource type="PackedScene" uid="uid://efhycwudhik2" path="res://scenes/Furniture/Bedroom/drawer.tscn" id="52_3jjve"]
 [ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="72_ar13x"]
@@ -827,7 +827,7 @@ event_name = "wake up"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
 [node name="Alarm" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("39_ncvxg")
+stream = ExtResource("10_iv873")
 
 [node name="Room" type="Node3D" parent="."]
 

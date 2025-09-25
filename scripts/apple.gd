@@ -16,7 +16,6 @@ func _ready() -> void:
 	apple_slice4.add_to_group("food")
 	
 	visible = true
-	GlobalVar.eating_milestone.connect(_on_eating_milestone)
 
 func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress: Variant) -> void:
 	if is_cut == 0:
@@ -30,7 +29,3 @@ func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress
 		GlobalVar.increase_physical()
 		GlobalVar.increase_emotional()
 		GlobalVar.increase_emotional()
-
-func _on_eating_milestone(milestone: int):
-	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
-	make_bfast_text.visible = false

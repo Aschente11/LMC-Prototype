@@ -114,3 +114,4 @@ stream = ExtResource("3_odx2j")
 
 [node name="tired" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_i5l6a")
+volume_db = 20.0
