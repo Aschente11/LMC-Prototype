@@ -1,25 +1,12 @@
-[gd_scene load_steps=17 format=4 uid="uid://bb1oj52yyc6so"]
+[gd_scene load_steps=14 format=4 uid="uid://bb1oj52yyc6so"]
 
-[ext_resource type="Script" uid="uid://bwa647s8fywx2" path="res://scripts/board.gd" id="1_l7qyt"]
 [ext_resource type="Texture2D" uid="uid://b7xhf5fa0d82x" path="res://assets/tools/whiteboard_low-poly/textures/White_board_baseColor.png" id="1_ofyuy"]
-[ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="2_n3gav"]
 [ext_resource type="Texture2D" uid="uid://dydcqxfgf2dum" path="res://assets/tools/whiteboard_low-poly/textures/White_board_metallicRoughness.png" id="2_nmcum"]
 [ext_resource type="Texture2D" uid="uid://chfr6m7s1n1d1" path="res://assets/tools/whiteboard_low-poly/textures/White_board_normal.png" id="3_l7qyt"]
-[ext_resource type="Script" uid="uid://bgbpjxxlqrp4" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_wipe_receiver.gd" id="4_nmcum"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="5_3qft0"]
-[ext_resource type="AudioStream" uid="uid://y7fium8yj1tb" path="res://assets/sfx/writing.mp3" id="6_ddbq5"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qft0"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="TextMesh" id="TextMesh_l7qyt"]
-material = SubResource("StandardMaterial3D_3qft0")
-text = "Task for today:
-     - cook and eat bfast
-     - unpack things
-     - sleep early"
-font = ExtResource("2_n3gav")
-font_size = 8
+[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="5_n3gav"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="6_3qft0"]
+[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="7_44feu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44feu"]
 render_priority = 0
@@ -77,15 +64,11 @@ shadow_mesh = SubResource("ArrayMesh_vfvmq")
 [sub_resource type="BoxShape3D" id="BoxShape3D_ofyuy"]
 size = Vector3(133.896, 2.6543, 63.265)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_l7qyt"]
-size = Vector3(132.763, 62.2813, 6.95117)
+[sub_resource type="SphereMesh" id="SphereMesh_vdtuq"]
+radius = 0.2
+height = 0.4
 
 [node name="board" type="Node3D"]
-script = ExtResource("1_l7qyt")
-
-[node name="text" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 3.55271e-15, 0, -3.55271e-15, 1, 0, 0, -0.0323409)
-mesh = SubResource("TextMesh_l7qyt")
 
 [node name="board mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 0, 0, 0)
@@ -98,22 +81,50 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0579376, 1.28516, -1.9888)
 shape = SubResource("BoxShape3D_ofyuy")
 
-[node name="OISWipeReceiver" type="Node3D" parent="."]
-script = ExtResource("4_nmcum")
-group = "marker"
-metadata/_custom_type_script = "uid://bgbpjxxlqrp4"
+[node name="InventorySlot1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00200713, -0.999998, 0, 0.999998, 0.00200713, -0.412667, 0.0676656, 0.00341347)
+visible = false
+script = ExtResource("5_n3gav")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
-[node name="Area3D" type="Area3D" parent="OISWipeReceiver"]
-collision_layer = 536870912
-collision_mask = 536870912
+[node name="SnapZone" parent="InventorySlot1" instance=ExtResource("6_3qft0")]
+grab_distance = 0.2
+snap_mode = 1
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OISWipeReceiver/Area3D"]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, -0.0170749, 0.00763494)
-shape = SubResource("BoxShape3D_l7qyt")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_vdtuq")
+surface_material_override/0 = ExtResource("7_44feu")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("6_ddbq5")
+[node name="InventorySlot2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00200713, -0.999998, 0, 0.999998, 0.00200713, -0.0162341, -0.141035, 0.00341347)
+visible = false
+script = ExtResource("5_n3gav")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
-[connection signal="action_completed" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_completed"]
-[connection signal="action_in_progress" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_in_progress"]
-[connection signal="action_started" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_started"]
+[node name="SnapZone" parent="InventorySlot2" instance=ExtResource("6_3qft0")]
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_vdtuq")
+surface_material_override/0 = ExtResource("7_44feu")
+
+[node name="InventorySlot3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00200713, -0.999998, 0, 0.999998, 0.00200713, 0.402147, 0.00944095, 0.00341347)
+visible = false
+script = ExtResource("5_n3gav")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot3" instance=ExtResource("6_3qft0")]
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_vdtuq")
+surface_material_override/0 = ExtResource("7_44feu")

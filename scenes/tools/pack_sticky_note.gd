@@ -8,7 +8,8 @@ extends Area3D
 #var snap_zone: XRToolsSnapZone
 #var inventory_slot: Node3D
 #
-#func _ready():
+func _ready():
+	add_to_group("notes")
 	## Get references to the snap zone and inventory slot
 	#inventory_slot = $InventorySlot
 	#snap_zone = $InventorySlot/SnapZone

@@ -13,6 +13,7 @@ var is_initialized := false
 var wipe_timer: Timer
 
 func _ready():
+	add_to_group("notes")
 	text.visible = false
 	if text.mesh is TextMesh:
 		text.mesh.text = ""
