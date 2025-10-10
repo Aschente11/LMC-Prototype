@@ -346,10 +346,13 @@ shape = SubResource("SphereShape3D_sxhyq")
 [node name="smartwatch" parent="XROrigin3D/XRController3DRight" instance=ExtResource("11_1mew7")]
 transform = Transform3D(-4.37114e-08, 3.60561e-16, 1, -0.00178025, 0.999998, -7.78149e-11, -0.999998, -0.00178025, -4.37113e-08, 0.0585523, -0.0535223, 0.177899)
 
-[node name="InventorySystem" type="Node3D" parent="XROrigin3D" node_paths=PackedStringArray("inventory_toggler_hand")]
+[node name="InventorySystem" type="Node3D" parent="XROrigin3D" node_paths=PackedStringArray("xr_anchor_to_object", "xr_camera_anchor", "inventory_toggler_hand")]
 transform = Transform3D(-0.00406662, -0.999992, 0, 0.999992, -0.00406662, 0, 0, 0, 1, 0.38634, 0.871863, -0.153655)
+visible = false
 script = ExtResource("10_sxhyq")
 follow_player_camera = true
+xr_anchor_to_object = NodePath("..")
+xr_camera_anchor = NodePath("../XRCamera3D")
 inventory_toggler_hand = NodePath("../XRController3DRight")
 inventory_toggler_button = "ax_button"
 inventory_dictionary = {

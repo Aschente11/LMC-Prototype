@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=4 uid="uid://d1yuwmphic0ge"]
+
+[ext_resource type="Script" uid="uid://bj6mb2epyxjnw" path="res://scenes/tools/single_sticky_note.gd" id="1_rpyl8"]
+[ext_resource type="Texture2D" uid="uid://danync6eplgn7" path="res://assets/tools/sticky-notes/source/post_it/IMG_20221127_0001.png" id="2_un84g"]
+[ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="3_cik24"]
+[ext_resource type="Script" uid="uid://bgbpjxxlqrp4" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_wipe_receiver.gd" id="3_un84g"]
+[ext_resource type="AudioStream" uid="uid://y7fium8yj1tb" path="res://assets/sfx/writing.mp3" id="5_tursr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebsiy"]
+resource_name = "front"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_un84g")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_afplf"]
+_surfaces = [{
+"aabb": AABB(0.0625811, -0.0100618, -0.0101411, 0.0200166, 0.0200618, 0.000415104),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"name": "front",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("ASmpPQrXI7yvWR+8iiqAPRraJLzBJia8PzOAPQrXIzyvWR+8ASmpPQrXIzyvWR+8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cik24"]
+resource_name = "Cube_005"
+_surfaces = [{
+"aabb": AABB(0.0625811, -0.0100618, -0.0101411, 0.0200166, 0.0200618, 0.000415104),
+"attribute_data": PackedByteArray("ZREEPYpjDj9LHe0+imMOP0sd7T4YsXw/ZREEPRixfD8="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"material": SubResource("StandardMaterial3D_ebsiy"),
+"name": "front",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("ASmpPQrXI7yvWR+8iiqAPRraJLzBJia8PzOAPQrXIzyvWR+8ASmpPQrXIzyvWR+8s36zfjIAPr+zfrN+ZwAjv7N+s34xAD6/s36zfgMAqMA=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_afplf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7qyt"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_tursr"]
+material = SubResource("StandardMaterial3D_l7qyt")
+text = "  - cook and eat 
+bfast
+"
+font = ExtResource("3_cik24")
+font_size = 4
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cik24"]
+size = Vector3(21.4221, 20.631, 4.72168)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tursr"]
+size = Vector3(0.198242, 0.0332031, 0.180664)
+
+[node name="SingleStickyNote" type="RigidBody3D"]
+collision_layer = 4
+script = ExtResource("1_rpyl8")
+metadata/_custom_type_script = "uid://bs5crmi43kekt"
+
+[node name="Single Post it" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 2.851, 0, -10, -1.24621e-07, -0.720623, 0.0265264, 0.00425567)
+mesh = SubResource("ArrayMesh_cik24")
+skeleton = NodePath("")
+
+[node name="text" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.034603, 0.999401, 0, -0.999401, 0.034603, 0, -0.00699992, 0.00656979)
+mesh = SubResource("TextMesh_tursr")
+
+[node name="OISWipeReceiver" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("3_un84g")
+group = "marker"
+metadata/_custom_type_script = "uid://bgbpjxxlqrp4"
+
+[node name="Area3D" type="Area3D" parent="OISWipeReceiver"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISWipeReceiver/Area3D"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.00509351, 0.00675384, -0.00206477)
+shape = SubResource("BoxShape3D_cik24")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_tursr")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_tursr")
+
+[connection signal="action_completed" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_completed"]
+[connection signal="action_in_progress" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_in_progress"]
+[connection signal="action_started" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_started"]

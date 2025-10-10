@@ -9,11 +9,11 @@
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="5_3qft0"]
 [ext_resource type="AudioStream" uid="uid://y7fium8yj1tb" path="res://assets/sfx/writing.mp3" id="6_ddbq5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7qyt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qft0"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_l7qyt"]
-material = SubResource("StandardMaterial3D_l7qyt")
+material = SubResource("StandardMaterial3D_3qft0")
 text = "Task for today:
      - cook and eat bfast
      - unpack things
