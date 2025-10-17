@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=4 uid="uid://d1yuwmphic0ge"]
+[gd_scene load_steps=14 format=4 uid="uid://d1yuwmphic0ge"]
 
 [ext_resource type="Script" uid="uid://bj6mb2epyxjnw" path="res://scenes/tools/single_sticky_note.gd" id="1_rpyl8"]
 [ext_resource type="Texture2D" uid="uid://danync6eplgn7" path="res://assets/tools/sticky-notes/source/post_it/IMG_20221127_0001.png" id="2_un84g"]
-[ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="3_cik24"]
+[ext_resource type="FontFile" uid="uid://bbtad1njjnlfn" path="res://assets/others/fonts/ComingSoon-Regular.ttf" id="3_bvaxd"]
 [ext_resource type="Script" uid="uid://bgbpjxxlqrp4" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_wipe_receiver.gd" id="3_un84g"]
 [ext_resource type="AudioStream" uid="uid://y7fium8yj1tb" path="res://assets/sfx/writing.mp3" id="5_tursr"]
+[ext_resource type="AudioStream" uid="uid://cfwraxwmddsgn" path="res://assets/sfx/writing on paper.mp3" id="6_ujnwq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebsiy"]
 resource_name = "front"
@@ -49,11 +50,11 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TextMesh" id="TextMesh_tursr"]
 material = SubResource("StandardMaterial3D_l7qyt")
-text = "  - cook and eat 
-bfast
-"
-font = ExtResource("3_cik24")
-font_size = 4
+text = "cook and eat
+breakfast"
+font = ExtResource("3_bvaxd")
+font_size = 3
+depth = 0.001
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cik24"]
 size = Vector3(21.4221, 20.631, 4.72168)
@@ -72,7 +73,7 @@ mesh = SubResource("ArrayMesh_cik24")
 skeleton = NodePath("")
 
 [node name="text" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.034603, 0.999401, 0, -0.999401, 0.034603, 0, -0.00699992, 0.00656979)
+transform = Transform3D(0.999873, -2.36383e-05, 0.0159342, -0.0159342, -0.00148331, 0.999872, 0, -0.999999, -0.0014835, 0.00907965, 0.00702182, 0.00656979)
 mesh = SubResource("TextMesh_tursr")
 
 [node name="OISWipeReceiver" type="Node3D" parent="."]
@@ -94,6 +95,9 @@ shape = SubResource("BoxShape3D_tursr")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_tursr")
+
+[node name="writing" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_ujnwq")
 
 [connection signal="action_completed" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_completed"]
 [connection signal="action_in_progress" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_in_progress"]

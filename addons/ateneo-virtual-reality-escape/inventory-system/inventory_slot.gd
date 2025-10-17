@@ -175,6 +175,3 @@ func _get_configuration_warnings() -> PackedStringArray:
 	var warnings := PackedStringArray()
 	# Return warnings
 	return warnings
-	
-
-	

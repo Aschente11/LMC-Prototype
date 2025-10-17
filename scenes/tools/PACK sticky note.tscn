@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://dpq5hkh5vwht3"]
+[gd_scene load_steps=17 format=4 uid="uid://dpq5hkh5vwht3"]
 
 [ext_resource type="Script" uid="uid://bnmj4l0jcohe2" path="res://scenes/tools/pack_sticky_note.gd" id="1_u2o41"]
 [ext_resource type="Texture2D" uid="uid://danync6eplgn7" path="res://assets/tools/sticky-notes/source/post_it/IMG_20221127_0001.png" id="1_u8vgf"]
 [ext_resource type="PackedScene" uid="uid://d1yuwmphic0ge" path="res://scenes/tools/SINGLE sticky note.tscn" id="2_e4488"]
 [ext_resource type="Script" uid="uid://b33dhyve6tckg" path="res://addons/godot-xr-tools/objects/interactable_area.gd" id="3_isvo0"]
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="5_dvtxj"]
+[ext_resource type="AudioStream" uid="uid://dobkh4bklyulx" path="res://assets/sfx/remove note.mp3" id="5_viqrq"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="6_viqrq"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="7_7nsu2"]
 
@@ -134,6 +135,10 @@ metadata/_custom_type_script = "uid://b33dhyve6tckg"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XRToolsInteractableArea"]
 shape = SubResource("BoxShape3D_e4488")
 
+[node name="RemoveNoteAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_viqrq")
+volume_db = 50.0
+
 [node name="SingleStickyNote" parent="." instance=ExtResource("2_e4488")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421275, 0, 0)
 
@@ -177,8 +182,12 @@ metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot3" instance=ExtResource("6_viqrq")]
 grab_distance = 0.2
-initial_object = NodePath("../../SingleStickyNote")
+initial_object = NodePath("../../SingleStickyNote3")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot3"]
 mesh = SubResource("SphereMesh_bb8hj")
 surface_material_override/0 = ExtResource("7_7nsu2")
+
+[connection signal="has_picked_up" from="InventorySlot/SnapZone" to="." method="_on_snap_zone_has_picked_up"]
+[connection signal="has_picked_up" from="InventorySlot2/SnapZone" to="." method="_on_snap_zone_has_picked_up"]
+[connection signal="has_picked_up" from="InventorySlot3/SnapZone" to="." method="_on_snap_zone_has_picked_up"]

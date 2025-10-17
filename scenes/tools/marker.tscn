@@ -169,6 +169,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 6.45146, -1.19209e-07)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OISActorComponent/OISColliderArea3D/Area3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_q48w1"]
 resource_name = "cap_off"
@@ -196,6 +208,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 6.45146, -1.19209e-07), Vector3(0, 11.2186, 1.19209e-07), Vector3(0, 9.45119, 3.73558), Vector3(0, 6.9839, 5.00615), Vector3(0, 4.57529, 5.7378), Vector3(0, -6.20749, 0.0639098)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OISActorComponent/OISColliderArea3D/Area3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_bk77o"]
 resource_name = "cap_on"
@@ -222,6 +246,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(3.11964, 0, 0), Vector3(3.11964, 0, 0), Vector3(2.48039, 0, 0), Vector3(2.14377, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OISActorComponent/OISColliderArea3D/Area3D/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oc43t"]
@@ -271,6 +307,7 @@ collision_mask = 536870912
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OISActorComponent/OISColliderArea3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010243, -0.164603)
 shape = SubResource("SphereShape3D_ig4c5")
+disabled = true
 
 [node name="marker base2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.0090294, 0, 0, 0, -3.94687e-10, 0.0090294, 0, -0.0090294, -3.94687e-10, 0, 0.0103952, -0.0769393)

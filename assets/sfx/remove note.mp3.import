@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dobkh4bklyulx"
+path="res://.godot/imported/remove note.mp3-f81d294feecb06752a13f5baf4387339.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/remove note.mp3"
+dest_files=["res://.godot/imported/remove note.mp3-f81d294feecb06752a13f5baf4387339.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

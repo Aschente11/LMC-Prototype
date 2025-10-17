@@ -1,0 +1,185 @@
+[gd_scene load_steps=4 format=3 uid="uid://bskgu07l8xscv"]
+
+[sub_resource type="GDScript" id="GDScript_1"]
+script/source = "extends Node2D
+
+@onready var text_label = $Document/MarginContainer/VBoxContainer/TextLabel
+@onready var cursor = $Document/MarginContainer/VBoxContainer/Cursor
+
+var essay_text = \"The Impact of Technology on Modern Society
+
+Technology has fundamentally transformed the way we live, work, and communicate. In the 21st century, digital innovations have become an integral part of our daily lives, reshaping everything from education to entertainment.
+
+The rise of the internet has connected people across the globe, breaking down geographical barriers and creating new opportunities for collaboration. Social media platforms have revolutionized how we share information and maintain relationships, though they also present challenges regarding privacy and mental health.
+
+In the workplace, automation and artificial intelligence are changing the nature of employment. While these technologies increase efficiency and productivity, they also raise important questions about the future of work and the skills workers will need to thrive in an increasingly digital economy.
+
+Education has also been transformed by technology. Online learning platforms provide access to knowledge for people who might not have had educational opportunities otherwise. However, the digital divide remains a significant concern, as not everyone has equal access to these technological resources.
+
+As we continue to advance technologically, it is crucial that we consider both the benefits and the challenges these innovations bring to our society.\"
+
+var current_text = \"\"
+var char_index = 0
+var typing_speed = 0.05
+var typing_timer = 0.0
+var cursor_blink_timer = 0.0
+var cursor_visible = true
+
+func _ready():
+	set_process(true)
+
+func _process(delta):
+	# Typing animation
+	if char_index < essay_text.length():
+		typing_timer += delta
+		if typing_timer >= typing_speed:
+			typing_timer = 0.0
+			current_text += essay_text[char_index]
+			text_label.text = current_text
+			char_index += 1
+			# Vary typing speed slightly for realism
+			typing_speed = randf_range(0.03, 0.08)
+			# Longer pause after punctuation
+			if essay_text[char_index - 1] in ['.', '!', '?']:
+				typing_speed = 0.3
+			elif essay_text[char_index - 1] == ',':
+				typing_speed = 0.15
+	
+	# Cursor blinking
+	cursor_blink_timer += delta
+	if cursor_blink_timer >= 0.5:
+		cursor_blink_timer = 0.0
+		cursor_visible = !cursor_visible
+		cursor.visible = cursor_visible and char_index < essay_text.length()
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2"]
+bg_color = Color(0.95, 0.95, 0.95, 1)
+
+[node name="EssayWriting" type="Node2D"]
+script = SubResource("GDScript_1")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.95, 0.95, 0.95, 1)
+
+[node name="TopBar" type="Panel" parent="."]
+offset_right = 1920.0
+offset_bottom = 80.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="Title" type="Label" parent="TopBar"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 300.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Untitled document"
+vertical_alignment = 1
+
+[node name="MenuBar" type="HBoxContainer" parent="TopBar"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 50.0
+offset_right = 1900.0
+offset_bottom = 75.0
+theme_override_constants/separation = 20
+
+[node name="File" type="Label" parent="TopBar/MenuBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "File"
+
+[node name="Edit" type="Label" parent="TopBar/MenuBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Edit"
+
+[node name="View" type="Label" parent="TopBar/MenuBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "View"
+
+[node name="Insert" type="Label" parent="TopBar/MenuBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Insert"
+
+[node name="Format" type="Label" parent="TopBar/MenuBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Format"
+
+[node name="Tools" type="Label" parent="TopBar/MenuBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
+text = "Tools"
+
+[node name="Toolbar" type="Panel" parent="."]
+offset_top = 80.0
+offset_right = 1920.0
+offset_bottom = 140.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2")
+
+[node name="ToolbarIcons" type="Label" parent="Toolbar"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 15.0
+offset_right = 1900.0
+offset_bottom = 45.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "↶  ↷  🖨  ≣  B  I  U  🔗  💬"
+
+[node name="Document" type="Panel" parent="."]
+offset_left = 360.0
+offset_top = 200.0
+offset_right = 1560.0
+offset_bottom = 980.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1")
+
+[node name="MarginContainer" type="MarginContainer" parent="Document"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Document/MarginContainer"]
+layout_mode = 2
+
+[node name="TextLabel" type="RichTextLabel" parent="Document/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+fit_content = true
+
+[node name="Cursor" type="ColorRect" parent="Document/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(2, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0.26, 0.52, 0.96, 1)

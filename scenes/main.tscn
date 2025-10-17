@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=166 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://53x8obp0rqj7" path="res://scenes/Furniture/pan.tscn" id="61_y57op"]
 [ext_resource type="PackedScene" uid="uid://dbdoqijou25gg" path="res://scenes/Furniture/receiver_pan.tscn" id="62_mlv25"]
 [ext_resource type="PackedScene" uid="uid://duj5ayanfxmtw" path="res://assets/Furniture Shaders/kitchen_roll.tscn" id="65_j4bwh"]
+[ext_resource type="PackedScene" uid="uid://dcajgychncjmh" path="res://scenes/Furniture/washing_machine.tscn" id="66_b6ruc"]
 [ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="70_a82wo"]
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="70_mlv25"]
 [ext_resource type="Texture2D" uid="uid://bj08u75nm868b" path="res://assets/textures/new-york-city-manhattan.jpg" id="71_a82wo"]
@@ -83,6 +84,7 @@
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="80_ndrjj"]
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="81_ih3m7"]
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="83_11yus"]
+[ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="85_155or"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -837,7 +839,7 @@ transform = Transform3D(-0.337249, -0.884012, 0.323708, 0.0680324, 0.320067, 0.9
 picked_up_layer = 65542
 
 [node name="Pencil_Model" parent="Room/CardboardBox" instance=ExtResource("48_152kg")]
-transform = Transform3D(0.997345, 0.0528414, -0.0501214, -0.0527748, 0.998603, 0.00265221, 0.0501916, -3.72529e-09, 0.99874, 2.06943, 0.842599, 2.11913)
+transform = Transform3D(0.997345, 0.0528414, -0.0501214, -0.0527748, 0.998603, 0.00265221, 0.0501916, -3.72529e-09, 0.99874, 2.7583, 0.806147, 2.11913)
 picked_up_layer = 65542
 
 [node name="Meta" parent="Room/CardboardBox" instance=ExtResource("26_gdvew")]
@@ -908,7 +910,7 @@ transform = Transform3D(0.0368356, 0, 0.999321, 0, 1, 0, -0.999321, 0, 0.0368356
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1.34665, 2.18294, 9.95747)
 
 [node name="CR Door" parent="Furniture" instance=ExtResource("31_nvyfr")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8152, 1.66, -0.296329)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8152, 1.67106, -0.296329)
 
 [node name="Wall Light" parent="Furniture" instance=ExtResource("32_ty1g6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.12674, 2.65895, -2.33892)
@@ -932,7 +934,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0727, 0.943692, -2.05441)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.91518, 1.34701, 1.9159)
 
 [node name="Drawer A" parent="Furniture" instance=ExtResource("39_dnhof")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.14718, 0.64735, 1.30947)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.88526, 0.64735, 1.30947)
 
 [node name="Bin" parent="Furniture" instance=ExtResource("40_1v6qk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40828, 0.553715, -2.21125)
@@ -1012,6 +1014,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36625, 1.5554, 7.28742)
 
 [node name="Kitchen Roll2" parent="Furniture/Kitchen Roll" instance=ExtResource("65_j4bwh")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.240867, 0, 2.08217)
+
+[node name="WashingMachine" parent="Furniture" instance=ExtResource("66_b6ruc")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.9289, 1.15492, 0.798197)
 
 [node name="Teleport" type="Node3D" parent="."]
 visible = false
@@ -1120,7 +1125,7 @@ mesh = SubResource("CylinderMesh_ygd8o")
 skeleton = NodePath("../..")
 
 [node name="journal" parent="." instance=ExtResource("78_ygd8o")]
-transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -7.69795, 1.33657, -3.47809)
+transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -7.0212, 1.33657, -3.47809)
 
 [node name="sleep" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21711, 0, -13.9972)
@@ -1147,7 +1152,10 @@ unshaded = true
 scene_properties_keys = PackedStringArray("sleep.gd")
 
 [node name="post_it" parent="." instance=ExtResource("83_11yus")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.59495, 1.32804, -3.36166)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50684, 1.32804, -3.05976)
+
+[node name="PC" parent="." instance=ExtResource("85_155or")]
+transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.96628, 1.3151, -3.63468)
 
 [connection signal="body_entered" from="bfast" to="." method="_on_bfast_body_entered"]
 [connection signal="body_entered" from="unpacking" to="." method="_on_unpacking_body_entered"]

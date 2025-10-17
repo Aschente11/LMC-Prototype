@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dn6habe252c1b"
+path="res://.godot/imported/stick note.mp3-64ed8dca57d0f1260c41d228f8fe0304.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/stick note.mp3"
+dest_files=["res://.godot/imported/stick note.mp3-64ed8dca57d0f1260c41d228f8fe0304.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

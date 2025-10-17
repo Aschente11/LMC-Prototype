@@ -217,6 +217,9 @@ func create_text_instance(config: TextConfig) -> MeshInstance3D:
 	return new_instance
 
 func show_text_instance(text_instance: MeshInstance3D, config: TextConfig) -> void:
+	if not is_instance_valid(text_instance):
+		return
+		
 	# Position randomly
 	position_text_randomly(text_instance)
 	
@@ -228,13 +231,21 @@ func show_text_instance(text_instance: MeshInstance3D, config: TextConfig) -> vo
 	# Start typewriter animation
 	await animate_typewriter_text(text_instance, config.text)
 	
+	# Check if still valid after animation
+	if not is_instance_valid(text_instance):
+		return
+	
 	# Wait for display duration
 	await get_tree().create_timer(display_duration).timeout
 	
-	# Clean up
-	cleanup_text_instance(text_instance)
-
+	# Clean up (with safety check)
+	if is_instance_valid(text_instance):
+		cleanup_text_instance(text_instance)
+	
 func animate_typewriter_text(text_instance: MeshInstance3D, full_text: String) -> void:
+	if not is_instance_valid(text_instance):
+		return
+		
 	var text_mesh = text_instance.mesh as TextMesh
 	if not text_mesh:
 		return
@@ -244,14 +255,15 @@ func animate_typewriter_text(text_instance: MeshInstance3D, full_text: String) -
 	
 	# Animate each character
 	for i in range(full_text.length()):
-		if not is_spawning_texts or not is_instance_valid(text_instance):
+		# Check if instance is still valid before each update
+		if not is_spawning_texts or not text_instance or not is_instance_valid(text_instance):
 			break
 		
 		text_mesh.text = full_text.substr(0, i + 1)
 		await get_tree().create_timer(typewriter_speed).timeout
 	
-	# Ensure full text is shown
-	if is_spawning_texts and is_instance_valid(text_instance):
+	# Ensure full text is shown (with safety check)
+	if is_spawning_texts and text_instance and is_instance_valid(text_instance):
 		text_mesh.text = full_text
 
 func position_text_randomly(text_instance: MeshInstance3D) -> void:
@@ -269,16 +281,18 @@ func position_text_randomly(text_instance: MeshInstance3D) -> void:
 	)
 
 func cleanup_text_instance(text_instance: MeshInstance3D) -> void:
+	if not text_instance:
+		return
 	if is_instance_valid(text_instance):
 		active_text_instances.erase(text_instance)
 		text_instance.queue_free()
 
 func cleanup_all_text_instances() -> void:
-	for instance in active_text_instances:
-		if is_instance_valid(instance):
+	for instance in active_text_instances.duplicate():  # Use duplicate() to avoid modifying array while iterating
+		if instance and is_instance_valid(instance):
 			instance.queue_free()
 	active_text_instances.clear()
-
+	
 # Easy way to add new text configurations at runtime
 func add_text_config(text: String, audio: AudioStreamPlayer3D, mesh_template: MeshInstance3D, weight: float = 1.0) -> void:
 	var config = TextConfig.new(text, audio, mesh_template, weight)

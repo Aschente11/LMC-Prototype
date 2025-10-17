@@ -1,31 +1,33 @@
-[gd_scene load_steps=14 format=4 uid="uid://bb1oj52yyc6so"]
+[gd_scene load_steps=16 format=4 uid="uid://bb1oj52yyc6so"]
 
-[ext_resource type="Texture2D" uid="uid://b7xhf5fa0d82x" path="res://assets/tools/whiteboard_low-poly/textures/White_board_baseColor.png" id="1_ofyuy"]
-[ext_resource type="Texture2D" uid="uid://dydcqxfgf2dum" path="res://assets/tools/whiteboard_low-poly/textures/White_board_metallicRoughness.png" id="2_nmcum"]
-[ext_resource type="Texture2D" uid="uid://chfr6m7s1n1d1" path="res://assets/tools/whiteboard_low-poly/textures/White_board_normal.png" id="3_l7qyt"]
-[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="5_3qft0"]
-[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="5_n3gav"]
-[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="6_3qft0"]
-[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="7_44feu"]
+[ext_resource type="Script" uid="uid://c5x65c0tfoe5g" path="res://scenes/tools/board.gd" id="1_44feu"]
+[ext_resource type="Texture2D" uid="uid://b7xhf5fa0d82x" path="res://assets/tools/whiteboard_low-poly/textures/White_board_baseColor.png" id="1_xqslt"]
+[ext_resource type="Texture2D" uid="uid://dydcqxfgf2dum" path="res://assets/tools/whiteboard_low-poly/textures/White_board_metallicRoughness.png" id="2_0rm2j"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="3_sri53"]
+[ext_resource type="Texture2D" uid="uid://chfr6m7s1n1d1" path="res://assets/tools/whiteboard_low-poly/textures/White_board_normal.png" id="4_gjucn"]
+[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="5_o6ld7"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="6_7wjc8"]
+[ext_resource type="AudioStream" uid="uid://dn6habe252c1b" path="res://assets/sfx/stick note.mp3" id="7_bt73h"]
+[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="8_cdlrd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_44feu"]
 render_priority = 0
-shader = ExtResource("5_3qft0")
+shader = ExtResource("3_sri53")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6thp8"]
 resource_name = "White_board"
 next_pass = SubResource("ShaderMaterial_44feu")
 cull_mode = 2
-albedo_texture = ExtResource("1_ofyuy")
+albedo_texture = ExtResource("1_xqslt")
 metallic = 1.0
-metallic_texture = ExtResource("2_nmcum")
+metallic_texture = ExtResource("2_0rm2j")
 metallic_texture_channel = 2
-roughness_texture = ExtResource("2_nmcum")
+roughness_texture = ExtResource("2_0rm2j")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_texture = ExtResource("3_l7qyt")
+normal_texture = ExtResource("4_gjucn")
 ao_enabled = true
-ao_texture = ExtResource("2_nmcum")
+ao_texture = ExtResource("2_0rm2j")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_vfvmq"]
 _surfaces = [{
@@ -69,6 +71,7 @@ radius = 0.2
 height = 0.4
 
 [node name="board" type="Node3D"]
+script = ExtResource("1_44feu")
 
 [node name="board mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, -4.37114e-10, 0.01, 0, -0.01, -4.37114e-10, 0, 0, 0)
@@ -82,49 +85,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0579376, 1.28516, -1.9888)
 shape = SubResource("BoxShape3D_ofyuy")
 
 [node name="InventorySlot1" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.00200713, -0.999998, 0, 0.999998, 0.00200713, -0.412667, 0.0676656, 0.00341347)
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.412667, 0.0676656, 0.00341347)
 visible = false
-script = ExtResource("5_n3gav")
+script = ExtResource("5_o6ld7")
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
-[node name="SnapZone" parent="InventorySlot1" instance=ExtResource("6_3qft0")]
+[node name="SnapZone" parent="InventorySlot1" instance=ExtResource("6_7wjc8")]
+stash_sound = ExtResource("7_bt73h")
 grab_distance = 0.2
 snap_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
 mesh = SubResource("SphereMesh_vdtuq")
-surface_material_override/0 = ExtResource("7_44feu")
+surface_material_override/0 = ExtResource("8_cdlrd")
 
 [node name="InventorySlot2" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.00200713, -0.999998, 0, 0.999998, 0.00200713, -0.0162341, -0.141035, 0.00341347)
+transform = Transform3D(0.997963, 0.000128056, -0.0638007, -0.0638008, 0.00200304, -0.997961, 0, 0.999998, 0.00200713, -0.0162341, -0.141035, 0.00341347)
 visible = false
-script = ExtResource("5_n3gav")
+script = ExtResource("5_o6ld7")
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
-[node name="SnapZone" parent="InventorySlot2" instance=ExtResource("6_3qft0")]
+[node name="SnapZone" parent="InventorySlot2" instance=ExtResource("6_7wjc8")]
+stash_sound = ExtResource("7_bt73h")
 grab_distance = 0.2
 snap_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
 mesh = SubResource("SphereMesh_vdtuq")
-surface_material_override/0 = ExtResource("7_44feu")
+surface_material_override/0 = ExtResource("8_cdlrd")
 
 [node name="InventorySlot3" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.00200713, -0.999998, 0, 0.999998, 0.00200713, 0.402147, 0.00944095, 0.00341347)
+transform = Transform3D(0.999624, -5.50268e-05, 0.0274156, 0.0274157, 0.00200638, -0.999622, 0, 0.999998, 0.00200713, 0.402147, 0.00944095, 0.00341347)
 visible = false
-script = ExtResource("5_n3gav")
+script = ExtResource("5_o6ld7")
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
-[node name="SnapZone" parent="InventorySlot3" instance=ExtResource("6_3qft0")]
+[node name="SnapZone" parent="InventorySlot3" instance=ExtResource("6_7wjc8")]
+stash_sound = ExtResource("7_bt73h")
 grab_distance = 0.2
 snap_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
 mesh = SubResource("SphereMesh_vdtuq")
-surface_material_override/0 = ExtResource("7_44feu")
+surface_material_override/0 = ExtResource("8_cdlrd")
+
+[connection signal="current_object_in_slot" from="InventorySlot1" to="." method="_on_inventory_slot_1_current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot2" to="." method="_on_inventory_slot_2_current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot3" to="." method="_on_inventory_slot_3_current_object_in_slot"]

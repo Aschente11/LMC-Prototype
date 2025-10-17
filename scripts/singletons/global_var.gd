@@ -2,9 +2,9 @@ extends Node
 
 # Ordered tasks
 var tasks := [
-	"I need to make breakfast",
-	"I need to unpack my things",
-	"I need to sleep early"
+	"cook and eat \n breakfast",
+	"unpack my \n things",
+	"I need to \n sleep early"
 ]
 
 # Index of the task currently available to write
@@ -29,7 +29,17 @@ signal emotional_decrease(old_value, new_value)
 signal food_eaten(total_count: int)
 signal eating_milestone(milestone: int)
 
-	
+const NORMAL_STIMULATION = 3.0
+
+func regulate_stimulation():
+	var old_val = stimulation
+	stimulation = NORMAL_STIMULATION
+	# Emit appropriate signal based on whether it increased or decreased
+	if old_val > stimulation:
+		stimulation_decrease.emit(old_val, stimulation)
+	elif old_val < stimulation:
+		stimulation_increase.emit(old_val, stimulation)
+
 func increase_stimulation():
 	var old_val = stimulation
 	stimulation += 1

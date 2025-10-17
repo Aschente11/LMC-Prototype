@@ -1,4 +1,6 @@
 extends Area3D
+
+@onready var audio_player = $RemoveNoteAudio
 #
 #@export var post_it_scene: PackedScene
 #@export var max_stack_count: int = 50  # Maximum notes in the stack
@@ -82,3 +84,7 @@ func _ready():
 #
 #func get_remaining_count() -> int:
 	#return current_stack_count
+
+
+func _on_snap_zone_has_picked_up(what: Variant) -> void:
+	audio_player.play()
