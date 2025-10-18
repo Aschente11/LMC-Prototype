@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=167 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -85,6 +85,7 @@
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="81_ih3m7"]
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="83_11yus"]
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="85_155or"]
+[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/book.tscn" id="86_vtx2l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -839,7 +840,7 @@ transform = Transform3D(-0.337249, -0.884012, 0.323708, 0.0680324, 0.320067, 0.9
 picked_up_layer = 65542
 
 [node name="Pencil_Model" parent="Room/CardboardBox" instance=ExtResource("48_152kg")]
-transform = Transform3D(0.997345, 0.0528414, -0.0501214, -0.0527748, 0.998603, 0.00265221, 0.0501916, -3.72529e-09, 0.99874, 2.7583, 0.806147, 2.11913)
+transform = Transform3D(-0.00653537, 0.0528414, -0.998582, 0.000345855, 0.998603, 0.0528403, 0.999979, -3.88791e-09, -0.00654445, 2.28037, 0.831436, 2.25357)
 picked_up_layer = 65542
 
 [node name="Meta" parent="Room/CardboardBox" instance=ExtResource("26_gdvew")]
@@ -1125,7 +1126,7 @@ mesh = SubResource("CylinderMesh_ygd8o")
 skeleton = NodePath("../..")
 
 [node name="journal" parent="." instance=ExtResource("78_ygd8o")]
-transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -7.0212, 1.33657, -3.47809)
+transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -7.19637, 1.33657, -3.47809)
 
 [node name="sleep" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21711, 0, -13.9972)
@@ -1156,6 +1157,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50684, 1.32804, -3.05976)
 
 [node name="PC" parent="." instance=ExtResource("85_155or")]
 transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.96628, 1.3151, -3.63468)
+
+[node name="OISJournal" parent="." instance=ExtResource("86_vtx2l")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.64854, 1.33187, -3.56913)
 
 [connection signal="body_entered" from="bfast" to="." method="_on_bfast_body_entered"]
 [connection signal="body_entered" from="unpacking" to="." method="_on_unpacking_body_entered"]
