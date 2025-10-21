@@ -1,6 +1,6 @@
-[gd_scene load_steps=154 format=4 uid="uid://bdk4v65llfcq5"]
+[gd_scene load_steps=149 format=4 uid="uid://bdk4v65llfcq5"]
 
-[ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_ymwfo"]
+[ext_resource type="Script" uid="uid://catjpaekac6an" path="res://scripts/day_2_main.gd" id="1_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_kcbbm"]
 [ext_resource type="Texture2D" uid="uid://cch4178fvpwtc" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_baseColor.jpg" id="3_yniqi"]
 [ext_resource type="Texture2D" uid="uid://02w3eaoutnsd" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_specularLevel.jpg" id="4_yhcdh"]
@@ -61,13 +61,8 @@
 [ext_resource type="PackedScene" uid="uid://dbdoqijou25gg" path="res://scenes/Furniture/receiver_pan.tscn" id="59_yluk5"]
 [ext_resource type="PackedScene" uid="uid://duj5ayanfxmtw" path="res://assets/Furniture Shaders/kitchen_roll.tscn" id="60_exdyi"]
 [ext_resource type="PackedScene" uid="uid://dcajgychncjmh" path="res://scenes/Furniture/washing_machine.tscn" id="61_0xrc1"]
-[ext_resource type="AudioStream" uid="uid://dm6vjaowvorvl" path="res://assets/sfx/yippee-tbh.mp3" id="62_xk6ue"]
-[ext_resource type="Shader" uid="uid://dn36xw56c7i80" path="res://shaders/main.gdshader" id="63_ygwb1"]
-[ext_resource type="Script" uid="uid://cxy8oxoldmaoc" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter_manager.gd" id="64_0erov"]
-[ext_resource type="Script" uid="uid://ek4xpaefjlux" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter.gd" id="65_5rvff"]
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="66_h238m"]
 [ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="67_ohn16"]
-[ext_resource type="Texture2D" uid="uid://bj08u75nm868b" path="res://assets/textures/new-york-city-manhattan.jpg" id="68_ys8dd"]
 [ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="69_wjmbl"]
 [ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="70_dv85l"]
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="71_kaw5b"]
@@ -75,9 +70,27 @@
 [ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="73_r7pj4"]
 [ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="74_i677d"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="75_30bpg"]
+[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/book.tscn" id="75_mrobn"]
+[ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="76_671eh"]
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="76_effxd"]
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="77_o0t2x"]
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="78_yvr5c"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_leam6"]
+sky_top_color = Color(0.79852, 0.776141, 0.793283, 1)
+sky_horizon_color = Color(1.60762, 1.56673, 1.53278, 1)
+ground_bottom_color = Color(0.792157, 0.65098, 0.498039, 1)
+ground_horizon_color = Color(1.60762, 1.56673, 1.53278, 1)
+
+[sub_resource type="Sky" id="Sky_mrobn"]
+sky_material = SubResource("ProceduralSkyMaterial_leam6")
+
+[sub_resource type="Environment" id="Environment_671eh"]
+background_mode = 2
+sky = SubResource("Sky_mrobn")
+ambient_light_source = 3
+tonemap_mode = 3
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -564,28 +577,16 @@ metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 radius = 0.2
 height = 0.4
 
-[sub_resource type="QuadMesh" id="QuadMesh_tel4y"]
-custom_aabb = AABB(-5000, -5000, -5000, 10000, 10000, 10000)
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkpxi"]
-render_priority = 0
-shader = ExtResource("63_ygwb1")
-shader_parameter/albedo = Color(0, 0, 0, 1)
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gdvew"]
-panorama = ExtResource("68_ys8dd")
-
-[sub_resource type="Sky" id="Sky_mgpkq"]
-sky_material = SubResource("PanoramaSkyMaterial_gdvew")
-
-[sub_resource type="Environment" id="Environment_xrs0c"]
-background_mode = 2
-sky = SubResource("Sky_mgpkq")
-sky_rotation = Vector3(0.151844, -1.96873, 0.151844)
-
-[node name="Main" type="Node3D"]
+[node name="DAY2_main" type="Node3D"]
 script = ExtResource("1_ymwfo")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.946903, 0.278444, -0.160759, -1.49013e-08, 0.499998, 0.866027, 0.321519, 0.820044, -0.47345, -75.5491, 25.8503, -3.15322)
+shadow_enabled = true
+shadow_bias = 0.05
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_671eh")
 
 [node name="XRPlayer" parent="." instance=ExtResource("2_kcbbm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.04143, 1.09375, -5.2531)
@@ -637,6 +638,7 @@ skeleton = NodePath("../..")
 
 [node name="Front" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.455, 2.494, 10)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_tbgi4")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
@@ -648,6 +650,7 @@ shape = SubResource("ConcavePolygonShape3D_ya4ey")
 
 [node name="Back" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.08006, 2.494, -10)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_a8y0u")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
@@ -660,12 +663,14 @@ shape = SubResource("BoxShape3D_2f3dj")
 
 [node name="Back2" type="MeshInstance3D" parent="Room/Walls/Back"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72447, 0, 2.25997)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_mlv25")
 skeleton = NodePath("../../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_xaipn")
 
 [node name="Right" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, -3.679)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_trceg")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
@@ -678,18 +683,21 @@ shape = SubResource("BoxShape3D_yq6so")
 
 [node name="Right2" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, 8.83054)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_xrs0c")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_11yus")
 
 [node name="Right3" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, -8.74227e-08, -0.00139622, -0.999999, 1.22062e-10, -0.999999, 0.00139622, 4.013, -0.510135, 4.94733)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_ih3m7")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_155or")
 
 [node name="Left" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 2.494, 1.29432)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_dp3eg")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
@@ -703,11 +711,13 @@ shape = SubResource("BoxShape3D_yq6so")
 [node name="Left2" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 0.311011, -7.5639)
 visible = false
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_gdvew")
 skeleton = NodePath("../../..")
 
 [node name="Bath Front" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.898, 2.149, 2.046)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_od4ux")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
@@ -720,19 +730,23 @@ shape = SubResource("BoxShape3D_xhfw6")
 
 [node name="Inside Bath Front" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.898, 2.149, 2.01398)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_152kg")
 
 [node name="Inside Bath Left" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9397, 2.494, -0.248238)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_y57op")
 skeleton = NodePath("../../..")
 
 [node name="Inside Bath Back" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.898, 2.14911, -2.47817)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_a82wo")
 
 [node name="Bath Back" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.898, 2.14889, -2.5102)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_od4ux")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
@@ -745,6 +759,7 @@ shape = SubResource("BoxShape3D_xhfw6")
 
 [node name="Above Door" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.78871, 4.05571, -0.23165)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_kjtvk")
 surface_material_override/0 = SubResource("ShaderMaterial_vtx2l")
 
@@ -756,6 +771,7 @@ shape = SubResource("BoxShape3D_xrs0c")
 
 [node name="Door Left" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.789, 1.78702, 1.32196)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_j4bwh")
 surface_material_override/0 = SubResource("ShaderMaterial_63lxy")
 
@@ -767,6 +783,7 @@ shape = SubResource("BoxShape3D_ksmap")
 
 [node name="Door Right" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.789, 1.78702, -1.72171)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_ygd8o")
 surface_material_override/0 = SubResource("ShaderMaterial_fjhjs")
 
@@ -964,53 +981,11 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.240867, 0, 2.08217)
 [node name="WashingMachine" parent="Furniture" instance=ExtResource("61_0xrc1")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.9289, 1.15492, 0.798197)
 
-[node name="Teleport" type="Node3D" parent="."]
-visible = false
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Teleport"]
-stream = ExtResource("62_xk6ue")
-
-[node name="FadeMesh" type="MeshInstance3D" parent="Teleport"]
-visible = false
-mesh = SubResource("QuadMesh_tel4y")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_qkpxi")
-
-[node name="TeleporterManager" type="Node3D" parent="Teleport" node_paths=PackedStringArray("current_location", "xr_origin", "xr_camera", "xr_left_function_pointer", "xr_right_function_pointer", "audio_node", "fade_mesh")]
-script = ExtResource("64_0erov")
-current_location = NodePath("Front Door")
-xr_origin = NodePath("../../XRPlayer/XROrigin3D")
-xr_camera = NodePath("../../XRPlayer/XROrigin3D/XRCamera3D")
-xr_left_function_pointer = NodePath("../../XRPlayer/XROrigin3D/XRController3DLeft/FunctionPointer")
-xr_right_function_pointer = NodePath("../../XRPlayer/XROrigin3D/XRController3DRight/FunctionPointer")
-audio_node = NodePath("../AudioStreamPlayer3D")
-fade_mesh = NodePath("../FadeMesh")
-metadata/_custom_type_script = "uid://cxy8oxoldmaoc"
-
-[node name="Front Door" type="Node3D" parent="Teleport/TeleporterManager" node_paths=PackedStringArray("connected_teleporters")]
-script = ExtResource("65_5rvff")
-teleporter_name = "Front Door"
-teleporter_active = false
-connected_teleporters = [NodePath("../Window")]
-metadata/_custom_type_script = "uid://ek4xpaefjlux"
-
-[node name="Window" type="Node3D" parent="Teleport/TeleporterManager" node_paths=PackedStringArray("connected_teleporters")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.89612)
-script = ExtResource("65_5rvff")
-teleporter_name = "Window"
-teleporter_active = false
-teleporter_position = Vector3(0, 0, -6.89612)
-connected_teleporters = [NodePath("../Front Door")]
-metadata/_custom_type_script = "uid://ek4xpaefjlux"
-
 [node name="knife" parent="." instance=ExtResource("66_h238m")]
 transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.76397, 1.41585, 5.71333)
 
 [node name="clock" parent="." instance=ExtResource("67_ohn16")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.98311, 3.41081, -0.658281)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_xrs0c")
 
 [node name="toaster" parent="." instance=ExtResource("69_wjmbl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70481, 1.36149, 7.3661)
@@ -1046,3 +1021,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50684, 1.32804, -3.05976)
 
 [node name="PC" parent="." instance=ExtResource("78_yvr5c")]
 transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.96628, 1.3151, -3.63468)
+
+[node name="OISJournal" parent="." instance=ExtResource("75_mrobn")]
+transform = Transform3D(0.0117633, 0, 0.999931, 0.999913, -0.00596894, -0.011763, 0.00596852, 0.999982, -7.02141e-05, -10.3835, 1.37031, -5.46997)
+
+[node name="vacuum" parent="." instance=ExtResource("76_671eh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9.04763)
