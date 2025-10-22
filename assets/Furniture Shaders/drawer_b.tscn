@@ -4,13 +4,13 @@
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_2j3n8"]
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_otccf"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_umxex"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jha48"]
 render_priority = 0
 shader = ExtResource("2_2j3n8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6oi5n"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_umxex")
+next_pass = SubResource("ShaderMaterial_jha48")
 shader = ExtResource("3_otccf")
 shader_parameter/color = Color(0.62, 0.39, 0.24, 1)
 shader_parameter/specular = Color(0.459184, 0.226145, 0.11232, 0.5)
@@ -18,13 +18,13 @@ shader_parameter/fresnel = Color(0.339047, 0.126405, 2.40654e-08, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y51ow"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2j3n8"]
 render_priority = 0
 shader = ExtResource("2_2j3n8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sqca4"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_y51ow")
+next_pass = SubResource("ShaderMaterial_2j3n8")
 shader = ExtResource("3_otccf")
 shader_parameter/color = Color(0.62, 0.39, 0.24, 1)
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
@@ -32,13 +32,13 @@ shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mswla"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otccf"]
 render_priority = 0
 shader = ExtResource("2_2j3n8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avpdp"]
 render_priority = 0
-next_pass = SubResource("ShaderMaterial_mswla")
+next_pass = SubResource("ShaderMaterial_otccf")
 shader = ExtResource("3_otccf")
 shader_parameter/color = Color(0.76, 0.52, 0.35, 1)
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
