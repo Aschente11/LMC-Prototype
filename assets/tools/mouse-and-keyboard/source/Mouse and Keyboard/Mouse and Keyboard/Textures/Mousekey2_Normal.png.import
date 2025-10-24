@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dn8pcjy2nvi2l"
-path.s3tc="res://.godot/imported/Mousekey2_Normal.png-29a5a4fd8801830faee3120217a942d9.s3tc.ctex"
+path.s3tc="res://.godot/imported/Mousekey2_Normal.png-5a68b10740808a619e8bb6772f39ff31.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/tools/mouse-and-keyboard/source/Mouse and Keyboard/Mouse and Keyboard/textures/Mousekey2_Normal.png"
-dest_files=["res://.godot/imported/Mousekey2_Normal.png-29a5a4fd8801830faee3120217a942d9.s3tc.ctex"]
+source_file="res://assets/tools/mouse-and-keyboard/source/Mouse and Keyboard/Mouse and Keyboard/Textures/Mousekey2_Normal.png"
+dest_files=["res://.godot/imported/Mousekey2_Normal.png-5a68b10740808a619e8bb6772f39ff31.s3tc.ctex"]
 
 [params]
 
