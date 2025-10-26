@@ -279,7 +279,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 size = Vector3(0.0407715, 0.0268555, 0.0473251)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c4ehr"]
-radius = 0.0587819
+radius = 0.0802017
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c4ehr"]
 size = Vector3(4.80424, 1.34619, 0.871582)
@@ -326,20 +326,29 @@ surface_material_override/1 = SubResource("ShaderMaterial_xg5d6")
 transform = Transform3D(1, 0, 0, 0, 1, 4.05009e-13, 0, -4.05009e-13, 1, 0, 0.0157471, 0.0199394)
 shape = SubResource("BoxShape3D_o3g5h")
 
-[node name="Fire" parent="." instance=ExtResource("6_oaqh8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.974768, 0.3553, -0.097565)
-visible = false
+[node name="Fire1" parent="." instance=ExtResource("6_oaqh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.974768, 0.3553, -0.467374)
 
-[node name="OISStrikeReceiver" type="Node3D" parent="."]
+[node name="Fire2" parent="." instance=ExtResource("6_oaqh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5013, 0.3553, -0.112222)
+
+[node name="Fire3" parent="." instance=ExtResource("6_oaqh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.96004, 0.3553, -0.107175)
+
+[node name="Fire4" parent="." instance=ExtResource("6_oaqh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49483, 0.3553, -0.448049)
+
+[node name="OISStrikeReceiver1" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.143281, 0, 0)
 script = ExtResource("8_2io8r")
 group = "hand"
 metadata/_custom_type_script = "uid://cci3xkvnplit7"
 
-[node name="Area3D" type="Area3D" parent="OISStrikeReceiver"]
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver1"]
 collision_layer = 536870912
 collision_mask = 536870912
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver1/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
 shape = SubResource("SphereShape3D_c4ehr")
 
@@ -353,4 +362,48 @@ stream = ExtResource("10_xg5d6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.658394, -0.173096, -0.293701)
 shape = SubResource("BoxShape3D_c4ehr")
 
-[connection signal="action_started" from="OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_started"]
+[node name="OISStrikeReceiver2" type="Node3D" parent="."]
+script = ExtResource("8_2io8r")
+group = "hand"
+metadata/_custom_type_script = "uid://cci3xkvnplit7"
+
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver2"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
+shape = SubResource("SphereShape3D_c4ehr")
+
+[node name="OISStrikeReceiver3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489577, 0, 0)
+script = ExtResource("8_2io8r")
+group = "hand"
+metadata/_custom_type_script = "uid://cci3xkvnplit7"
+
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver3"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver3/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
+shape = SubResource("SphereShape3D_c4ehr")
+
+[node name="OISStrikeReceiver4" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634899, 0, 0)
+script = ExtResource("8_2io8r")
+group = "hand"
+metadata/_custom_type_script = "uid://cci3xkvnplit7"
+
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver4"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver4/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
+shape = SubResource("SphereShape3D_c4ehr")
+
+[connection signal="action_started" from="OISStrikeReceiver1" to="." method="_on_ois_strike_receiver_1_action_started"]
+[connection signal="action_started" from="OISStrikeReceiver2" to="." method="_on_ois_strike_receiver_2_action_started"]
+[connection signal="action_started" from="OISStrikeReceiver3" to="." method="_on_ois_strike_receiver_3_action_started"]
+[connection signal="action_started" from="OISStrikeReceiver4" to="." method="_on_ois_strike_receiver_action_started"]

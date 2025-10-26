@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://53x8obp0rqj7"]
+[gd_scene load_steps=23 format=4 uid="uid://53x8obp0rqj7"]
 
 [ext_resource type="Script" uid="uid://nw5bkalub6hq" path="res://scripts/pan.gd" id="1_a2oc4"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_8fo57"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="8_q3ogx"]
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="8_qeikm"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="9_l3kk0"]
+[ext_resource type="AudioStream" uid="uid://3eqb3v1masm3" path="res://assets/sfx/frying.mp3" id="11_l3kk0"]
 [ext_resource type="PackedScene" uid="uid://chwp0wbp3tp31" path="res://scenes/others/pancake/raw_pancake.tscn" id="13_a2oc4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pug7l"]
@@ -215,3 +216,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00426726, 0.000700109, -0.
 libraries = {
 &"": SubResource("AnimationLibrary_5jip1")
 }
+
+[node name="Frying" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_l3kk0")

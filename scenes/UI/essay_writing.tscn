@@ -5,53 +5,56 @@ script/source = "extends Node2D
 
 @onready var text_label = $Document/MarginContainer/VBoxContainer/TextLabel
 
-var essay_text = \"\"\"Let Me Cook!: A Virtual Reality Game Exploring ADHD Symptomatology Through Routine Activities
-Ann Colleen Garcia, Almira Princess Redoble, Gerick Jeremiah Niño N. Go, Eric Cesar E. Vidal, Jr.
+var essay_text = \"\"\" \"Let Me Cook!: A Virtual Reality Game Exploring 
+ADHD Symptomatology Through Routine Activities\"\\n
+We wanted people to feel empathy for those who experience ADHD, since it’s often misunderstood or dismissed as “not that serious.” Using VR felt like the right choice because it has the power to let players feel what it’s like from another perspective.
 
-Persons with Attention-Deficit/Hyperactivity Disorder (ADHD) are neglected in the Philippines. This is due to the lack of official statistical data on the number of people affected by ADHD, as well as the lack of awareness and prevalent misunderstanding of the disorder, according to the National Council on Disability Affairs [1]. This is exacerbated by the inadequate number of mental health professionals in the country [2].
-ADHD is one of the most common neurodevelopmental disorders diagnosed in children [3]. As a disorder, it is identified via the executive dysfunction it causes, such as issues with working memory and poor organizational skills, leading to difficulties in obtaining and maintaining jobs, increased vulnerability to anxiety, and impaired driving safety [4], [5].
-This paper addresses the lack of ADHD awareness by developing a virtual reality (VR) empathy game, entitled \"Let Me Cook!\". The game is designed to promote understanding of ADHD symptomatology through the simulation of everyday routines.
+Designing the game was definitely a challenge, especially since we had little experience creating simulator-style games, but it was also incredibly fun. We loved experimenting, brainstorming ideas, and seeing others get curious about what we were building. When our subject matter expert tried the game, she was amazed and genuinely had fun, which was one of our motivations to keep going (besides finishing as a requirement). :D
+
+In the end, we hope players not only gain empathy for people with ADHD, but also simply enjoy the experience. After all, we’re game developers at heart, and nothing makes us happier than seeing people smile because of the games we make. :))
 \"\"\"
 
 var current_text = \"\"
 var char_index = 0
-var typing_speed = 3
 var typing_timer = 0.0
-var is_typing_active = false  # Controlled by keyboard striking
+
+var base_typing_speed = 0.03  # lower = faster
+
+var is_typing_active = false
 
 func _ready():
-	# Connect to the global typing controller signals
 	TypingManager.typing_started.connect(_on_typing_started)
 	TypingManager.typing_stopped.connect(_on_typing_stopped)
 	set_process(true)
 
 func _on_typing_started():
 	is_typing_active = true
-	typing_timer = typing_speed 
+	typing_timer = 0.0
 	
 func _on_typing_stopped():
 	is_typing_active = false
 
 func _process(delta):
-	# Only type when player is striking the keyboard
 	if is_typing_active and char_index < essay_text.length():
 		typing_timer += delta
-		if typing_timer >= typing_speed:
+		var current_char_delay = base_typing_speed
+
+		# Slight random variation for realism
+		current_char_delay += randf_range(-0.01, 0.02)
+
+		# Extra pause for punctuation
+		if char_index > 0:
+			match essay_text[char_index - 1]:
+				'.', '!', '?':
+					current_char_delay += 0.2
+				',':
+					current_char_delay += 0.1
+
+		if typing_timer >= current_char_delay:
 			typing_timer = 0.0
 			current_text += essay_text[char_index]
 			text_label.text = current_text
 			char_index += 1
-			
-			# Vary typing speed slightly for realism
-			typing_speed = randf_range(0.03, 0.08)
-			
-			# Longer pause after punctuation (only if not at the end)
-			if char_index < essay_text.length():
-				if essay_text[char_index - 1] in ['.', '!', '?']:
-					typing_speed = 0.3
-				elif essay_text[char_index - 1] == ',':
-					typing_speed = 0.15
-	
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]
@@ -87,7 +90,7 @@ offset_right = 355.0
 offset_bottom = 45.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
-text = "Let Me Cook! Final Extended Abstract"
+text = "REFLECTION PAPER"
 vertical_alignment = 1
 
 [node name="MenuBar" type="HBoxContainer" parent="TopBar"]
