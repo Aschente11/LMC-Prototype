@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=4 uid="uid://bdk4v65llfcq5"]
+[gd_scene load_steps=157 format=4 uid="uid://bdk4v65llfcq5"]
 
 [ext_resource type="Script" uid="uid://catjpaekac6an" path="res://scripts/day_2_main.gd" id="1_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_kcbbm"]
@@ -57,8 +57,6 @@
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="55_1mayk"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="56_ox0tp"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="57_u6e87"]
-[ext_resource type="PackedScene" uid="uid://53x8obp0rqj7" path="res://scenes/Furniture/pan.tscn" id="58_x7cmw"]
-[ext_resource type="PackedScene" uid="uid://dbdoqijou25gg" path="res://scenes/Furniture/receiver_pan.tscn" id="59_yluk5"]
 [ext_resource type="PackedScene" uid="uid://duj5ayanfxmtw" path="res://assets/Furniture Shaders/kitchen_roll.tscn" id="60_exdyi"]
 [ext_resource type="PackedScene" uid="uid://dcajgychncjmh" path="res://scenes/Furniture/washing_machine.tscn" id="61_0xrc1"]
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="66_h238m"]
@@ -74,8 +72,10 @@
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="76_671eh"]
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="76_effxd"]
 [ext_resource type="PackedScene" uid="uid://ce150tqux2gyp" path="res://scenes/Furniture/tv_set.tscn" id="76_mrobn"]
+[ext_resource type="PackedScene" uid="uid://cswwe1w35p0d0" path="res://scenes/Furniture/Kitchen/carton.tscn" id="76_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://bw44mftmte1vr" path="res://scenes/tools/marker.tscn" id="77_671eh"]
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="77_o0t2x"]
+[ext_resource type="PackedScene" uid="uid://53x8obp0rqj7" path="res://scenes/Furniture/pan.tscn" id="77_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="78_yvr5c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
@@ -564,7 +564,7 @@ radius = 0.2
 height = 0.4
 
 [sub_resource type="Gradient" id="Gradient_671eh"]
-colors = PackedColorArray(0, 0.0372984, 0.328559, 1, 0.190762, 0.190762, 0.190762, 1)
+colors = PackedColorArray(0, 0.0372984, 0.328559, 1, 0.0807834, 0.0807833, 0.0807833, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ymwfo"]
 gradient = SubResource("Gradient_671eh")
@@ -578,7 +578,49 @@ sky_material = SubResource("PhysicalSkyMaterial_kcbbm")
 
 [sub_resource type="Environment" id="Environment_yhcdh"]
 background_mode = 2
+background_energy_multiplier = 2.0
 sky = SubResource("Sky_yniqi")
+
+[sub_resource type="Animation" id="Animation_ymwfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_671eh"]
+resource_name = "daynightcycle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcbbm"]
+_data = {
+&"RESET": SubResource("Animation_ymwfo"),
+&"daynightcycle": SubResource("Animation_671eh")
+}
+
+[sub_resource type="QuadMesh" id="QuadMesh_yniqi"]
+size = Vector2(18, 24)
 
 [node name="DAY2_main" type="Node3D"]
 script = ExtResource("1_ymwfo")
@@ -826,14 +868,37 @@ transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 
 [node name="Ceiling Light" parent="Furniture" instance=ExtResource("25_n73vi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0306931, 3.73148, 6.31422)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206494, -0.279773, 0.0111308)
+visible = false
+omni_range = 6.0
+omni_attenuation = -0.5
+
 [node name="Ceiling Light2" parent="Furniture" instance=ExtResource("25_n73vi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87649, 3.73148, 6.31422)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206494, -0.279773, 0.0111308)
+omni_range = 6.0
+omni_attenuation = -0.5
 
 [node name="Ceiling Light4" parent="Furniture" instance=ExtResource("25_n73vi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.876, 3.69889, -6.665)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206494, -0.279773, 0.0111308)
+visible = false
+omni_range = 6.0
+omni_attenuation = -0.5
+
 [node name="Ceiling Light3" parent="Furniture" instance=ExtResource("25_n73vi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494399, 3.70293, -6.66538)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206494, -0.279773, 0.0111308)
+visible = false
+omni_range = 6.0
+omni_attenuation = -0.5
 
 [node name="Front Door" parent="Furniture" instance=ExtResource("26_pgy5p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, -0.009, 10)
@@ -965,14 +1030,6 @@ grab_distance = 0.2
 mesh = SubResource("SphereMesh_1v6qk")
 surface_material_override/0 = ExtResource("57_u6e87")
 
-[node name="Pan" parent="Furniture" instance=ExtResource("58_x7cmw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10594, 0.221448, 9.39999)
-visible = false
-
-[node name="Pan2" parent="Furniture" instance=ExtResource("59_yluk5")]
-transform = Transform3D(-0.99863, 0, 0.0523361, 0, 1, 0, -0.0523361, 0, -0.99863, -9.60572, 0.221448, 9.39875)
-visible = false
-
 [node name="Kitchen Roll" type="Node3D" parent="Furniture"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36625, 1.5554, 7.28742)
 
@@ -1013,6 +1070,7 @@ stream = ExtResource("74_i677d")
 
 [node name="SleepViewport" parent="." instance=ExtResource("75_30bpg")]
 transform = Transform3D(0.0392773, 0, 0.999228, 0, 1, 0, -0.999228, 0, 0.0392773, -6.95032, 0.756904, -9.05644)
+visible = false
 scene = ExtResource("76_effxd")
 unshaded = true
 scene_properties_keys = PackedStringArray("sleep.gd")
@@ -1039,6 +1097,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.93457, 1.40103, -3.24872)
 environment = SubResource("Environment_yhcdh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.0267353, 0.999643, 0, -0.999643, 0.0267353, 0, 10.7213, -2.51379)
-light_energy = 5.258
-sky_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0373, 0)
+light_energy = 10.0
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kcbbm")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.48467, -0.773553, 0.424802)
+cast_shadow = 2
+mesh = SubResource("QuadMesh_yniqi")
+
+[node name="pancake_mix" parent="." instance=ExtResource("76_ymwfo")]
+transform = Transform3D(0.0997019, 0, -0.995017, 0, 1, 0, 0.995017, 0, 0.0997019, -10.1321, 1.31093, 5.96724)
+
+[node name="Pan" parent="." instance=ExtResource("77_ymwfo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2449, 1.4127, 5.58476)

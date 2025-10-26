@@ -1,11 +1,15 @@
-[gd_scene load_steps=12 format=4 uid="uid://53x8obp0rqj7"]
+[gd_scene load_steps=22 format=4 uid="uid://53x8obp0rqj7"]
 
-[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_pf7hh"]
+[ext_resource type="Script" uid="uid://nw5bkalub6hq" path="res://scripts/pan.gd" id="1_a2oc4"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_8fo57"]
-[ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="3_xhiph"]
-[ext_resource type="Script" uid="uid://cgettxdui2mmi" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_one_hand_tool_asm.gd" id="4_tped5"]
-[ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="5_q3ogx"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="6_l3kk0"]
+[ext_resource type="Animation" uid="uid://daqddcrbpam0c" path="res://addons/godot-xr-tools/hands/animations/right/Grip 1.res" id="7_l3kk0"]
+[ext_resource type="Animation" uid="uid://dqa0h82y3qn1t" path="res://addons/godot-xr-tools/hands/animations/left/Grip 1.res" id="7_qeikm"]
+[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="7_tped5"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="8_q3ogx"]
+[ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="8_qeikm"]
+[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="9_l3kk0"]
+[ext_resource type="PackedScene" uid="uid://chwp0wbp3tp31" path="res://scenes/others/pancake/raw_pancake.tscn" id="13_a2oc4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pug7l"]
 resource_name = "Grey 2"
@@ -78,13 +82,92 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xhfw6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y57op"]
-size = Vector3(0.694092, 0.377418, 0.321282)
+size = Vector3(0.502548, 0.306396, 0.0288687)
+
+[sub_resource type="Resource" id="Resource_a2oc4"]
+script = ExtResource("8_qeikm")
+closed_pose = ExtResource("7_qeikm")
+metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
+
+[sub_resource type="Resource" id="Resource_7rs2t"]
+script = ExtResource("8_qeikm")
+closed_pose = ExtResource("7_l3kk0")
+metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
+
+[sub_resource type="SphereMesh" id="SphereMesh_qeikm"]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="Animation" id="Animation_gtkug"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InventorySlot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0794512, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InventorySlot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a2oc4"]
+resource_name = "pancake_flip"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InventorySlot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0794512, 0), Vector3(0, 0.103444, 0), Vector3(0, 0.278068, 0), Vector3(0, 0.427787, 0), Vector3(0, 0.278126, 0), Vector3(0, 0.0967279, 0), Vector3(0, -0.0573411, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("InventorySlot:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.634061), Vector3(0, 0, -1.03655), Vector3(0, 0, -1.74095), Vector3(0, 0, -2.4022), Vector3(0, 0, -2.90079), Vector3(0, 0, -3.13243)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5jip1"]
+_data = {
+&"RESET": SubResource("Animation_gtkug"),
+&"pancake_flip": SubResource("Animation_a2oc4")
+}
 
 [node name="Pan" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 196615
-script = ExtResource("1_pf7hh")
+script = ExtResource("1_a2oc4")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1.2, 0)
+collide_with_areas = true
 
 [node name="Pan" type="MeshInstance3D" parent="."]
 transform = Transform3D(30, 0, 0, 0, -1.31134e-06, 30, 0, -30, -1.31134e-06, 0, -0.0837661, 0)
@@ -92,43 +175,43 @@ mesh = SubResource("ArrayMesh_ialph")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.167607, 0.0481849, -0.000699043)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.09602, -0.0701295, -0.00692514)
 shape = SubResource("BoxShape3D_y57op")
 debug_fill = false
 
 [node name="HighlightRing" parent="." instance=ExtResource("2_8fo57")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0158556, 0)
 
-[node name="OISActorComponent" type="Node3D" parent="."]
-script = ExtResource("3_xhiph")
-receiver_group = "cook"
-trigger_action = true
-metadata/_custom_type_script = "uid://cg1lorgur84yy"
-
-[node name="OISOneHandToolASM" type="Node3D" parent="OISActorComponent"]
-script = ExtResource("4_tped5")
-metadata/_custom_type_script = "uid://cgettxdui2mmi"
-
-[node name="OISColliderArea3D" type="Node3D" parent="OISActorComponent"]
-script = ExtResource("5_q3ogx")
-metadata/_custom_type_script = "uid://b4ao0gdf7khuq"
-
-[node name="Area3D" type="Area3D" parent="OISActorComponent/OISColliderArea3D"]
-collision_layer = 536870912
-collision_mask = 536870912
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OISActorComponent/OISColliderArea3D/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.152954, 0.0690726, -0.00444412)
-shape = SubResource("BoxShape3D_y57op")
-debug_fill = false
-
 [node name="XRToolsGrabPointHand" type="Marker3D" parent="."]
-transform = Transform3D(4.37114e-08, -1, 8.74228e-08, -1, -4.37114e-08, 0, 3.82137e-15, -8.74228e-08, -1, 0.287833, -0.0941828, 0.0971599)
+transform = Transform3D(0.0250386, -0.994157, 0.105003, 0.295723, 0.107701, 0.949183, -0.954946, 0.00728566, 0.296691, 0.318609, -0.151827, -0.0168715)
 script = ExtResource("6_l3kk0")
+hand_pose = SubResource("Resource_a2oc4")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
 [node name="XRToolsGrabPointHand2" type="Marker3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.28582, -0.0927913, -0.106527)
+transform = Transform3D(0.146178, -0.93469, 0.324015, -0.395959, 0.24487, 0.885017, -0.906559, -0.257667, -0.334304, 0.301965, -0.144912, 0.0202371)
 script = ExtResource("6_l3kk0")
 hand = 1
+hand_pose = SubResource("Resource_7rs2t")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
+[node name="InventorySlot" type="Node3D" parent="." node_paths=PackedStringArray("default_object")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0794512, 0)
+script = ExtResource("7_tped5")
+default_object = NodePath("PancakeRaw")
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot" instance=ExtResource("8_q3ogx")]
+grab_distance = 0.2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot"]
+mesh = SubResource("SphereMesh_qeikm")
+surface_material_override/0 = ExtResource("9_l3kk0")
+
+[node name="PancakeRaw" parent="InventorySlot" instance=ExtResource("13_a2oc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00426726, 0.000700109, -0.0029489)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5jip1")
+}

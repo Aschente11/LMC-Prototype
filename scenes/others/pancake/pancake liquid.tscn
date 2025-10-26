@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmlhhkxfimr6e"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pnloc"]
+emission_shape = 4
+emission_point_count = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kev1b"]
+albedo_color = Color(1, 0.933333, 0.788235, 1)
+billboard_mode = 1
+
+[sub_resource type="SphereMesh" id="SphereMesh_yqhni"]
+material = SubResource("StandardMaterial3D_kev1b")
+radius = 0.012
+height = 0.05
+
+[node name="PancakeLiquid" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 32
+lifetime = 0.26
+process_material = SubResource("ParticleProcessMaterial_pnloc")
+draw_pass_1 = SubResource("SphereMesh_yqhni")

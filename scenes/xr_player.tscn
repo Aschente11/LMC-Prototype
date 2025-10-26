@@ -273,6 +273,7 @@ visible = false
 mesh = SubResource("TextMesh_mc5w1")
 
 [node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
+visible = false
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("1_5petv")]

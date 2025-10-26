@@ -1,10 +1,14 @@
-[gd_scene load_steps=27 format=4 uid="uid://du2vn3nhn1mob"]
+[gd_scene load_steps=33 format=4 uid="uid://du2vn3nhn1mob"]
 
+[ext_resource type="Script" uid="uid://dxvofd15t145s" path="res://scripts/cooking_station.gd" id="1_c4ehr"]
 [ext_resource type="PackedScene" uid="uid://jvibwk5tiywe" path="res://assets/Furniture Shaders/cupboard_e.tscn" id="1_dd7b2"]
 [ext_resource type="PackedScene" uid="uid://cgvdj3uscrh3u" path="res://assets/Furniture Shaders/cupboard_sink.tscn" id="2_awwc5"]
 [ext_resource type="PackedScene" uid="uid://2fwaqae7mn1j" path="res://assets/Furniture Shaders/dishwasher.tscn" id="3_5fh7l"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="4_5fh7l"]
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="5_oaqh8"]
+[ext_resource type="PackedScene" uid="uid://ded52nhwa4dfj" path="res://scenes/others/fire.tscn" id="6_oaqh8"]
+[ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="8_2io8r"]
+[ext_resource type="AudioStream" uid="uid://cjeyyh1i3jh14" path="res://assets/sfx/stove-open.mp3" id="10_xg5d6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pva7w"]
 resource_name = "White"
@@ -271,10 +275,17 @@ shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_oaqh8"]
-points = PackedVector3Array(0.0163571, 0.00224286, 0.0320539, -0.0160416, -0.000328521, -0.00033848, -0.0165571, 0.00224286, 0.0320539, 0.0163571, -0.00135714, 0.0320539, 0.0163571, 0.00224286, -0.000857145, -0.0165571, -0.00135714, 0.0320539, 0.0158416, -0.000328521, -0.00033848, -0.0165571, 0.00224286, -0.000857145, -0.0165571, -0.00135714, 0.0289677, 0.0163571, -0.00135714, 0.0289677, 0.0163571, 0.000185966, -0.000857145)
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3g5h"]
+size = Vector3(0.0407715, 0.0268555, 0.0473251)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c4ehr"]
+radius = 0.0587819
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c4ehr"]
+size = Vector3(4.80424, 1.34619, 0.871582)
 
 [node name="CookingStation" type="Node3D"]
+script = ExtResource("1_c4ehr")
 
 [node name="Cupboard E3" parent="." instance=ExtResource("1_dd7b2")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.26721, 0, 0.0476081)
@@ -312,4 +323,34 @@ surface_material_override/1 = SubResource("ShaderMaterial_xg5d6")
 [node name="StaticBody3D" type="StaticBody3D" parent="Oven/Oven_001"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Oven/Oven_001/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_oaqh8")
+transform = Transform3D(1, 0, 0, 0, 1, 4.05009e-13, 0, -4.05009e-13, 1, 0, 0.0157471, 0.0199394)
+shape = SubResource("BoxShape3D_o3g5h")
+
+[node name="Fire" parent="." instance=ExtResource("6_oaqh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.974768, 0.3553, -0.097565)
+visible = false
+
+[node name="OISStrikeReceiver" type="Node3D" parent="."]
+script = ExtResource("8_2io8r")
+group = "hand"
+metadata/_custom_type_script = "uid://cci3xkvnplit7"
+
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
+shape = SubResource("SphereShape3D_c4ehr")
+
+[node name="stove" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.956165, 0, 0)
+stream = ExtResource("10_xg5d6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.658394, -0.173096, -0.293701)
+shape = SubResource("BoxShape3D_c4ehr")
+
+[connection signal="action_started" from="OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_started"]

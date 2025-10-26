@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://kh7sb5q48xi0"]
+[gd_scene load_steps=4 format=3 uid="uid://kh7sb5q48xi0"]
 
 [ext_resource type="PackedScene" uid="uid://c4fnreetp07n8" path="res://assets/Furniture Shaders/cupboard_b.tscn" id="1_y1vbd"]
 [ext_resource type="PackedScene" uid="uid://cevbpdmblg520" path="res://assets/Furniture Shaders/cupboard_a.tscn" id="2_4ilel"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y1vbd"]
+size = Vector3(3.87119, 1.54016, 1.01166)
 
 [node name="Cupboards" type="Node3D"]
 
@@ -13,3 +16,9 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.19108, 0.0560814, 0)
 
 [node name="Cupboard B4" parent="." instance=ExtResource("1_y1vbd")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 2.15484, 0, 0.063782)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.03514, 0.270081, -0.286224)
+shape = SubResource("BoxShape3D_y1vbd")

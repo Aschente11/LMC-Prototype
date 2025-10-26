@@ -28,10 +28,6 @@ EventManager="*res://addons/ateneo-virtual-reality-escape/event-management-syste
 
 enabled=PackedStringArray("res://addons/ateneo-virtual-reality-escape/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg")
 
-[global_group]
-
-bread=""
-
 [layer_names]
 
 3d_physics/layer_1="Static World"
