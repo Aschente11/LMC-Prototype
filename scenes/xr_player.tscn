@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=69 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
@@ -33,6 +33,7 @@
 [ext_resource type="AudioStream" uid="uid://dqyjjg0qmnyv8" path="res://assets/sfx/watch_notif.mp3" id="16_wk61l"]
 [ext_resource type="Script" uid="uid://bo4nexkdn6v0t" path="res://scripts/task_manager.gd" id="25_awktg"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="26_t6eq7"]
+[ext_resource type="AudioStream" uid="uid://b8u2iu5ewc3jv" path="res://assets/sfx/left_4_dead_witch.mp3" id="34_ltnfw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awktg"]
 render_priority = 0
@@ -121,6 +122,13 @@ text = "Finally… that took way more energy
 than I thought. I’m tired…. 
 maybe I should just call it a night."
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88mk6"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qvpqm"]
+material = SubResource("StandardMaterial3D_88mk6")
+size = Vector2(0.7, 0.225)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wrvet"]
 transparency = 1
 diffuse_mode = 3
@@ -155,10 +163,63 @@ height = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3s1yg"]
 
+[sub_resource type="Animation" id="Animation_ltnfw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4sr7x"]
+resource_name = "sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0), Vector3(0, -2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_88mk6"]
+resource_name = "stand"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.05, 0), Vector3(0, -0.07, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvpqm"]
+_data = {
+&"RESET": SubResource("Animation_ltnfw"),
+&"sit": SubResource("Animation_4sr7x"),
+&"stand": SubResource("Animation_88mk6")
+}
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_7p0fh")
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
+current = true
 
 [node name="XRToolsPlayerBody" type="CharacterBody3D" parent="XROrigin3D"]
 top_level = true
@@ -170,6 +231,7 @@ player_height_max = 2.25
 metadata/_custom_type_script = "uid://bqqdxydvmjgir"
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+current = true
 
 [node name="ChangeIndicator" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.833909)
@@ -257,7 +319,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -3.46676)
 visible = false
 mesh = SubResource("TextMesh_3s1yg")
 
-[node name="make bfast2" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/make bfast"]
+[node name="make bfast" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/make bfast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.294057, -0.112516, 0.00568652)
 mesh = SubResource("TextMesh_88mk6")
 skeleton = NodePath("../..")
@@ -272,8 +334,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0125859, -3.46676)
 visible = false
 mesh = SubResource("TextMesh_mc5w1")
 
-[node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
+[node name="eyelids" type="Node3D" parent="XROrigin3D/XRCamera3D"]
 visible = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/eyelids"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.328234, -0.239)
+mesh = SubResource("PlaneMesh_qvpqm")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/eyelids"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.29496, -0.238573)
+mesh = SubResource("PlaneMesh_qvpqm")
+skeleton = NodePath("../../root/@EditorNode@21298/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/Node3D/XROrigin3D/XRCamera3D")
+
+[node name="XRController3DLeft" type="XRController3D" parent="XROrigin3D"]
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("1_5petv")]
@@ -455,5 +529,13 @@ stream = ExtResource("16_wk61l")
 [node name="TaskManager" type="Node3D" parent="."]
 script = ExtResource("25_awktg")
 label_font = ExtResource("26_t6eq7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_qvpqm")
+}
+
+[node name="crying" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("34_ltnfw")
 
 [connection signal="button_pressed" from="XROrigin3D/XRController3DRight" to="." method="_on_button_pressed"]

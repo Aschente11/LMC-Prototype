@@ -51,11 +51,11 @@ func _on_time_update():
 	
 	# MOVE THIS OUTSIDE THE IF BLOCK - Decrease physical EVERY 10 minutes
 	print("Time update: ", get_formatted_time())
-	var old_physical = GlobalVar.physical
-	GlobalVar.physical -= 0.1
-	GlobalVar.physical = max(GlobalVar.physical, 0.0)  # Don't go below 0
-	print("Physical decreased to: ", GlobalVar.physical)
-	GlobalVar.physical_decrease.emit(old_physical, GlobalVar.physical)
+	#var old_physical = GlobalVar.physical
+	#GlobalVar.physical -= 0.1
+	#GlobalVar.physical = max(GlobalVar.physical, 0.0)  # Don't go below 0
+	#print("Physical decreased to: ", GlobalVar.physical)
+	#GlobalVar.physical_decrease.emit(old_physical, GlobalVar.physical)
 	
 	# Emit signals for other scripts to react to
 	var formatted_time = get_formatted_time()

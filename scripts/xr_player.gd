@@ -6,12 +6,15 @@ extends Node3D
 @onready var note_tutorial_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/note tutorial"
 @onready var need_unpack_text: MeshInstance3D = $"XROrigin3D/XRCamera3D/need to unpack"
 @onready var tired_text: MeshInstance3D = $XROrigin3D/XRCamera3D/tired
+@onready var origin = $XROrigin3D
 @onready var camera = $XROrigin3D/XRCamera3D
 @onready var change_indicator: Material = $XROrigin3D/XRCamera3D/ChangeIndicator.get_active_material(0)
 #@onready var indicators: PackedScene = $XROrigin3D/XRCamera3D/Indicators.scene
 @onready var task_manager := $TaskManager
 @onready var notebook: RigidBody3D = $XROrigin3D/XRCamera3D/Notebook
 @onready var indicator_manager := $XROrigin3D/XRCamera3D/FloatingIndicatorManager
+
+@onready var crying: AudioStreamPlayer3D = $crying
 
 var note_tutorial_dismissed: bool = false
 
@@ -320,6 +323,9 @@ func right_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5
 	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 	
 func _on_button_pressed(button_name: String):
+	if camera and right_hand and left_hand and !camera.current and button_name == "ax_button":
+		origin.current = true
+		camera.current = true
 	if task_manager and notebook:
 		match button_name:
 			#"trigger_click":
@@ -375,3 +381,12 @@ func _on_ois_collider_area_3d_body_entered(body: Variant) -> void:
 
 func right_on_ois_collider_area_3d_body_entered(body: Variant) -> void:
 	right_trigger_haptic_feedback()
+
+
+func _on_plushie_picked_up(pickable):
+	if not crying.playing:
+		crying.play()
+
+
+func _on_plushie_released(pickable, by):
+	crying.stop()

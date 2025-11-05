@@ -85,7 +85,7 @@
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="81_ih3m7"]
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="83_11yus"]
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="85_155or"]
-[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/book.tscn" id="86_vtx2l"]
+[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="86_vtx2l"]
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="87_63lxy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
@@ -597,7 +597,7 @@ sky_rotation = Vector3(0.151844, -1.96873, 0.151844)
 height = 0.0917969
 radius = 0.820801
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ygd8o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0wtd"]
 render_priority = 0
 shader = ExtResource("79_ih3m7")
 shader_parameter/ring_color = Color(0, 1, 0, 1)
@@ -607,9 +607,9 @@ shader_parameter/move_speed = 4.02
 shader_parameter/smooth_edge = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_2s0kr"]
-material = SubResource("ShaderMaterial_ygd8o")
+material = SubResource("ShaderMaterial_v0wtd")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ksmap"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73205"]
 transparency = 1
 albedo_color = Color(0.0500001, 1, 0, 0.0588235)
 emission_enabled = true
@@ -617,7 +617,7 @@ emission = Color(0.00999999, 1, 0.0594999, 1)
 emission_energy_multiplier = 2.34
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ygd8o"]
-material = SubResource("StandardMaterial3D_ksmap")
+material = SubResource("StandardMaterial3D_73205")
 top_radius = 0.8
 bottom_radius = 0.8
 height = 5.0

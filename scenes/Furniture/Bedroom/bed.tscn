@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://s5gjejv5fen7"]
+[gd_scene load_steps=4 format=3 uid="uid://s5gjejv5fen7"]
 
 [ext_resource type="PackedScene" uid="uid://50ptpuwywwfu" path="res://assets/Furniture Shaders/bed_single.tscn" id="1_ucvcf"]
 [ext_resource type="AudioStream" uid="uid://cfkfivvej6u7o" path="res://assets/sfx/tired.mp3" id="3_ucvcf"]
 
-[node name="Bed" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rls7p"]
+size = Vector3(3.74881, 0.736816, 4.46777)
+
+[node name="Bed" type="StaticBody3D"]
 
 [node name="Bed Single2" parent="." instance=ExtResource("1_ucvcf")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
@@ -13,3 +16,7 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 1.77345, 0, 0.000989676
 
 [node name="tired" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ucvcf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.880814, -0.131592, 0.367676)
+shape = SubResource("BoxShape3D_rls7p")
