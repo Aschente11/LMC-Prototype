@@ -1,19 +1,30 @@
-[gd_scene load_steps=4 format=3 uid="uid://shphle3i03h"]
+[gd_scene load_steps=6 format=3 uid="uid://shphle3i03h"]
 
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_hox4u"]
 [ext_resource type="PackedScene" uid="uid://cjj3d8ofye1u0" path="res://assets/tools/plushies/sheep.tscn" id="2_fffoi"]
+[ext_resource type="Script" uid="uid://2easronhm7a8" path="res://scripts/plushie.gd" id="3_kbgpj"]
+[ext_resource type="AudioStream" uid="uid://b8u2iu5ewc3jv" path="res://assets/sfx/left_4_dead_witch.mp3" id="4_rn27q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kbgpj"]
 radius = 0.40402
 height = 1.14269
 
 [node name="plushie" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 6
 script = ExtResource("1_hox4u")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_fffoi")]
 transform = Transform3D(0.675, 0, 0, 0, 0.675, 0, 0, 0, 0.675, 0, 0, 0)
+script = ExtResource("3_kbgpj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 1.01115, 0.3636, -0.115149)
 shape = SubResource("CapsuleShape3D_kbgpj")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_rn27q")
+
+[connection signal="picked_up" from="." to="Sketchfab_Scene" method="_on_plushie_picked_up"]
+[connection signal="released" from="." to="Sketchfab_Scene" method="_on_plushie_released"]

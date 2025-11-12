@@ -366,6 +366,7 @@ shape = SubResource("BoxShape3D_jk5aw")
 [node name="InventorySlot" type="Node3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.171713, -0.189124, -0.13197)
 script = ExtResource("2_jk5aw")
+group_required = "clothes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot" instance=ExtResource("3_7dbpm")]
@@ -378,6 +379,7 @@ surface_material_override/0 = ExtResource("4_ylt7h")
 [node name="InventorySlot2" type="Node3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.1761, -0.189124, -0.13197)
 script = ExtResource("2_jk5aw")
+group_required = "clothes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot2" instance=ExtResource("3_7dbpm")]
@@ -390,6 +392,7 @@ surface_material_override/0 = ExtResource("4_ylt7h")
 [node name="InventorySlot3" type="Node3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.171713, -0.533816, -0.13197)
 script = ExtResource("2_jk5aw")
+group_required = "clothes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot3" instance=ExtResource("3_7dbpm")]
@@ -402,6 +405,7 @@ surface_material_override/0 = ExtResource("4_ylt7h")
 [node name="InventorySlot4" type="Node3D" parent="."]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.183737, -0.524089, -0.13197)
 script = ExtResource("2_jk5aw")
+group_required = "clothes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot4" instance=ExtResource("3_7dbpm")]

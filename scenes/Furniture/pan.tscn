@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://53x8obp0rqj7"]
+[gd_scene load_steps=24 format=4 uid="uid://53x8obp0rqj7"]
 
 [ext_resource type="Script" uid="uid://nw5bkalub6hq" path="res://scripts/pan.gd" id="1_a2oc4"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_8fo57"]
@@ -125,6 +125,33 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("InventorySlot:default_object")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+
+[sub_resource type="Animation" id="Animation_5jip1"]
+resource_name = "cooking_pancake"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InventorySlot:default_object")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
 
 [sub_resource type="Animation" id="Animation_a2oc4"]
 resource_name = "pancake_flip"
@@ -157,6 +184,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5jip1"]
 _data = {
 &"RESET": SubResource("Animation_gtkug"),
+&"cooking_pancake": SubResource("Animation_5jip1"),
 &"pancake_flip": SubResource("Animation_a2oc4")
 }
 
@@ -167,7 +195,7 @@ script = ExtResource("1_a2oc4")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 1.2, 0)
+target_position = Vector3(0, 1, 0)
 collide_with_areas = true
 
 [node name="Pan" type="MeshInstance3D" parent="."]
@@ -196,21 +224,22 @@ hand = 1
 hand_pose = SubResource("Resource_7rs2t")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
-[node name="InventorySlot" type="Node3D" parent="." node_paths=PackedStringArray("default_object")]
+[node name="InventorySlot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0794512, 0)
 script = ExtResource("7_tped5")
-default_object = NodePath("PancakeRaw")
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot" instance=ExtResource("8_q3ogx")]
 grab_distance = 0.2
+snap_mode = 1
+initial_object = NodePath("../PancakeRaw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot"]
 mesh = SubResource("SphereMesh_qeikm")
 surface_material_override/0 = ExtResource("9_l3kk0")
 
 [node name="PancakeRaw" parent="InventorySlot" instance=ExtResource("13_a2oc4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00426726, 0.000700109, -0.0029489)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00426726, 0.000700101, -0.622091)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -6,5 +6,21 @@
 			"wake up_Done"
 		],
 		"Oneshot": true
+	},
+	"writing_essay": {
+		"EventCategory": "ACTION",
+		"EventPrerequisiteFlags": [],
+		"EventCompletionFlags": [
+			"writing_essay_Done"
+		],
+		"Oneshot": false
+	},
+	"reading_book": {
+		"EventCategory": "ACTION",
+		"EventPrerequisiteFlags": [],
+		"EventCompletionFlags": [
+			"reading_book_Done"
+		],
+		"Oneshot": false
 	}
 }

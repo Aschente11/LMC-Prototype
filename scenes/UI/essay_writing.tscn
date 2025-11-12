@@ -4,15 +4,21 @@
 script/source = "extends Node2D
 
 @onready var text_label = $Document/MarginContainer/VBoxContainer/TextLabel
+var essay_completed = false
 
 var essay_text = \"\"\" \"Let Me Cook!: A Virtual Reality Game Exploring 
-ADHD Symptomatology Through Routine Activities\"\\n
-We wanted people to feel empathy for those who experience ADHD, since it’s often misunderstood or dismissed as “not that serious.” Using VR felt like the right choice because it has the power to let players feel what it’s like from another perspective.
-
-Designing the game was definitely a challenge, especially since we had little experience creating simulator-style games, but it was also incredibly fun. We loved experimenting, brainstorming ideas, and seeing others get curious about what we were building. When our subject matter expert tried the game, she was amazed and genuinely had fun, which was one of our motivations to keep going (besides finishing as a requirement). :D
-
-In the end, we hope players not only gain empathy for people with ADHD, but also simply enjoy the experience. After all, we’re game developers at heart, and nothing makes us happier than seeing people smile because of the games we make. :))
+#ADHD Symptomatology Through Routine Activities\"\\n
+*INSERT REFLECTION HERE*
 \"\"\"
+
+#\"\"\" \"Let Me Cook!: A Virtual Reality Game Exploring 
+#ADHD Symptomatology Through Routine Activities\"\\n
+#We wanted people to feel empathy for those who experience ADHD, since it’s often misunderstood or dismissed as “not that serious.” Using VR felt like the right choice because it has the power to let players feel what it’s like from another perspective.
+#
+#Designing the game was definitely a challenge, especially since we had little experience creating simulator-style games, but it was also incredibly fun. We loved experimenting, brainstorming ideas, and seeing others get curious about what we were building. When our subject matter expert tried the game, she was amazed and genuinely had fun, which was one of our motivations to keep going (besides finishing as a requirement). :D
+#
+#In the end, we hope players not only gain empathy for people with ADHD, but also simply enjoy the experience. After all, we’re game developers at heart, and nothing makes us happier than seeing people smile because of the games we make. :))
+#\"\"\"
 
 var current_text = \"\"
 var char_index = 0
@@ -55,6 +61,11 @@ func _process(delta):
 			current_text += essay_text[char_index]
 			text_label.text = current_text
 			char_index += 1
+			
+		if char_index >= essay_text.length() and not essay_completed:
+			essay_completed = true
+			GlobalVar.decrease_physical()
+			GlobalVar.decrease_emotional()
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=164 format=4 uid="uid://bdk4v65llfcq5"]
+[gd_scene load_steps=166 format=4 uid="uid://bdk4v65llfcq5"]
 
 [ext_resource type="Script" uid="uid://catjpaekac6an" path="res://scripts/day_2_main.gd" id="1_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_kcbbm"]
@@ -68,7 +68,7 @@
 [ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="73_r7pj4"]
 [ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="74_i677d"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="75_30bpg"]
-[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="75_mrobn"]
+[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/book.tscn" id="75_mrobn"]
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="76_671eh"]
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="76_effxd"]
 [ext_resource type="PackedScene" uid="uid://ce150tqux2gyp" path="res://scenes/Furniture/tv_set.tscn" id="76_mrobn"]
@@ -78,6 +78,8 @@
 [ext_resource type="PackedScene" uid="uid://53x8obp0rqj7" path="res://scenes/Furniture/pan.tscn" id="77_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://c2qly3ba5v28l" path="res://assets/tools/fidget-spinner/spinner.tscn" id="78_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="78_yvr5c"]
+[ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="79_kcbbm"]
+[ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="80_yniqi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -1204,6 +1206,13 @@ transform = Transform3D(0.998501, 0, 0.0547411, 0, 1, 0, -0.0547411, 0, 0.998501
 
 [node name="fidget_spinner" parent="." instance=ExtResource("78_ymwfo")]
 transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -7.394, 1.42767, -3.71211)
+
+[node name="plushie" parent="." instance=ExtResource("79_kcbbm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63535, 0.722356, -6.35067)
+collision_mask = 196615
+
+[node name="plastic basket" parent="." instance=ExtResource("80_yniqi")]
+transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, -3.59181, 0.0123488, 1.27287)
 
 [connection signal="body_entered" from="sit" to="." method="_on_sit_body_entered"]
 [connection signal="body_exited" from="sit" to="." method="_on_sit_body_exited"]

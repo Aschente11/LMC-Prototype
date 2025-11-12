@@ -48,7 +48,6 @@ radius = 0.119141
 
 [node name="PancakeRaw" type="RigidBody3D"]
 collision_layer = 4
-collision_mask = 5
 script = ExtResource("1_segji")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
