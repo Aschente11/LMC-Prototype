@@ -85,7 +85,7 @@
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="81_ih3m7"]
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="83_11yus"]
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="85_155or"]
-[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/book.tscn" id="86_vtx2l"]
+[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="86_vtx2l"]
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="87_63lxy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]

@@ -39,10 +39,10 @@ func _ready():
 	
 	GlobalTime.start_time()
 	
-	anim_player.play("daynightcycle")
+	#anim_player.play("daynightcycle")
 	
 func sit_down():
-	GlobalVar.decrease_stimulation()
+	GlobalVar.decrease_physical()
 	
 func _on_sit_body_entered(body):
 	if body.is_in_group("player") or body.name == "XRToolsPlayerBody":

@@ -71,6 +71,11 @@ func _on_page_turn_left_action_completed(requirement: Variant, total_progress: V
 	animation_player.play("flip_page_left")
 	await animation_player.animation_finished
 	animation_player.play("RESET")
+	pages_read += 1
+	
+	if pages_read % 3 == 0:
+		GlobalVar.decrease_physical()
+		GlobalVar.decrease_emotional()
 	
 
 
@@ -80,7 +85,8 @@ func _on_page_turn_right_action_completed(requirement: Variant, total_progress: 
 	animation_player.play("flip_page_right")
 	await animation_player.animation_finished
 	animation_player.play("RESET")
+	pages_read += 1
 	
-	if pages_read % 5 == 0:
+	if pages_read % 3 == 0:
 		GlobalVar.decrease_physical()
 		GlobalVar.decrease_emotional()
