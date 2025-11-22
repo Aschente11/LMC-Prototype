@@ -44,7 +44,7 @@ func _initialize_text():
 		unique_text_mesh.text = ""
 	
 	# Ask TaskManager for text
-	full_text = GlobalVar.request_task()
+	full_text = TaskManager.request_task()
 	if full_text == "":
 		full_text = "(nothing to write yet)"
 
@@ -92,4 +92,4 @@ func _stop_sound():
 		writing_sfx.stop()
 
 func _notify_task_complete():
-	GlobalVar.mark_current_done()
+	TaskManager.mark_current_done()

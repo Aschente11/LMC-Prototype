@@ -326,21 +326,21 @@ func _on_button_pressed(button_name: String):
 	if camera and right_hand and left_hand and !camera.current and button_name == "ax_button":
 		origin.current = true
 		camera.current = true
-	if task_manager and notebook:
-		match button_name:
-			#"trigger_click":
-				#task_manager.refresh_all_tasks()
-			"ax_button": 
-				#task_manager.display_tasks()
-				#notebook.visible = !notebook.visible
-				#task_manager.complete_task(0)
-				# First check if note tutorial is visible and dismiss it
-				if note_tutorial_text.visible:
-					note_tutorial_text.visible = false
-					note_tutorial_dismissed = true
-				else:
-					# Only toggle notebook if tutorial was already dismissed or not visible
-					notebook.visible = !notebook.visible
+	#if task_manager and notebook:
+		#match button_name:
+			##"trigger_click":
+				##task_manager.refresh_all_tasks()
+			#"ax_button": 
+				##task_manager.display_tasks()
+				##notebook.visible = !notebook.visible
+				##task_manager.complete_task(0)
+				## First check if note tutorial is visible and dismiss it
+				#if note_tutorial_text.visible:
+					#note_tutorial_text.visible = false
+					#note_tutorial_dismissed = true
+				#else:
+					## Only toggle notebook if tutorial was already dismissed or not visible
+					#notebook.visible = !notebook.visible
 					
 func _on_physical_increase(old_value: int, new_value: int):
 	indicator_manager.show_typed_indicator(

@@ -68,7 +68,7 @@
 [ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="73_r7pj4"]
 [ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="74_i677d"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="75_30bpg"]
-[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/book.tscn" id="75_mrobn"]
+[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="75_mrobn"]
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="76_671eh"]
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="76_effxd"]
 [ext_resource type="PackedScene" uid="uid://ce150tqux2gyp" path="res://scenes/Furniture/tv_set.tscn" id="76_mrobn"]

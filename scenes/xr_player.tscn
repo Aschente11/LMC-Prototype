@@ -31,7 +31,7 @@
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="13_wk61l"]
 [ext_resource type="AudioStream" uid="uid://dobwewoc67mhd" path="res://assets/sfx/burp.mp3" id="16_bmmov"]
 [ext_resource type="AudioStream" uid="uid://dqyjjg0qmnyv8" path="res://assets/sfx/watch_notif.mp3" id="16_wk61l"]
-[ext_resource type="Script" uid="uid://bo4nexkdn6v0t" path="res://scripts/task_manager.gd" id="25_awktg"]
+[ext_resource type="Script" uid="uid://bo4nexkdn6v0t" path="res://scripts/singletons/task_manager.gd" id="25_awktg"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="26_t6eq7"]
 [ext_resource type="AudioStream" uid="uid://b8u2iu5ewc3jv" path="res://assets/sfx/left_4_dead_witch.mp3" id="34_ltnfw"]
 

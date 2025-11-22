@@ -23,6 +23,7 @@ GlobalVar="*res://scripts/singletons/global_var.gd"
 GlobalTime="*res://scripts/singletons/time.gd"
 TypingManager="*res://scripts/singletons/typingManager.gd"
 EventManager="*res://addons/ateneo-virtual-reality-escape/event-management-system/event_manager.gd"
+TaskManager="*res://scripts/singletons/task_manager.gd"
 
 [editor_plugins]
 

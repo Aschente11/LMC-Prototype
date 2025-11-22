@@ -37,6 +37,8 @@ func _ready():
 	sofa1_origin3d.current = false
 	sofa1_camera.current = false
 	
+	TaskManager.initialize(1)
+	
 	GlobalTime.start_time()
 	
 	anim_player.play("daynightcycle")

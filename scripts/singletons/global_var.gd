@@ -1,16 +1,5 @@
 extends Node
 
-# Ordered tasks
-var tasks := [
-	"cook and eat \n breakfast",
-	"unpack my \n things",
-	"I need to \n sleep early"
-]
-
-# Index of the task currently available to write
-var current_task_index := 0
-# Whether the current task is already being written on
-var current_task_assigned := false
 
 # Change these to float for decimal values
 var stimulation = 3.0 #[-2, 2]
@@ -107,19 +96,3 @@ func add_food_eaten():
 		increase_physical()
 		increase_emotional()
 		
-# Called by a Post-it when it wants to get something to write
-func request_task() -> String:
-	if current_task_index >= tasks.size():
-		return ""  # no more tasks
-	# Only give text if it's not already being written on
-	if not current_task_assigned:
-		current_task_assigned = true
-		return tasks[current_task_index]
-	else:
-		return ""  # someone is still writing this one
-		
-# Called when a Post-it is finished being written
-func mark_current_done():
-	if current_task_index < tasks.size():
-		current_task_index += 1
-	current_task_assigned = false

@@ -24,7 +24,7 @@ func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress
 		anim_player.play("quarter_apple_slice")
 		is_cut += 1
 		
-		GlobalVar.increase_stimulation()
+		#GlobalVar.increase_stimulation()
 		GlobalVar.increase_physical()
 		GlobalVar.increase_physical()
 		GlobalVar.increase_emotional()
