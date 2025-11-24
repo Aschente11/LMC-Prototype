@@ -12,6 +12,7 @@ var is_actively_wiping := false
 var is_initialized := false
 var wipe_timer: Timer
 var unique_text_mesh: TextMesh  # Each note gets its own mesh
+var task_index: int
 
 func _ready():
 	add_to_group("notes")
@@ -28,6 +29,11 @@ func _ready():
 	wipe_timer.one_shot = true
 	wipe_timer.timeout.connect(_on_wipe_timeout)
 	add_child(wipe_timer)
+	
+func _process(delta):
+	if TaskManager.active_tasks[task_index].done:
+		if unique_text_mesh:
+			unique_text_mesh.text = "Done"
 
 func _on_ois_wipe_receiver_action_started(requirement, total_progress):
 	if not is_initialized:
@@ -45,8 +51,9 @@ func _initialize_text():
 	
 	# Ask TaskManager for text
 	full_text = TaskManager.request_task()
+	task_index = TaskManager.current_task_index
 	if full_text == "":
-		full_text = "(nothing to write yet)"
+		full_text = "(nothing \n to write \n yet)"
 
 func _handle_wipe_input():
 	if letter_index < full_text.length():

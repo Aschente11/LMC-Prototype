@@ -1,6 +1,8 @@
 extends Area3D
 
 @onready var audio_player = $RemoveNoteAudio
+
+var sticky_note = preload("res://scenes/tools/SINGLE sticky note.tscn")
 #
 #@export var post_it_scene: PackedScene
 #@export var max_stack_count: int = 50  # Maximum notes in the stack
@@ -88,3 +90,11 @@ func _ready():
 
 func _on_snap_zone_has_picked_up(what: Variant) -> void:
 	audio_player.play()
+	#if TaskManager.current_task_index < TaskManager.active_tasks.size():
+		#audio_player.play()
+		#var instance = sticky_note.instantiate()
+		#add_child(instance)
+		#var new_inventory = inventory_slot.instantiate()
+		#add_child(new_inventory)
+		#new_inventory.default_object = instance
+		

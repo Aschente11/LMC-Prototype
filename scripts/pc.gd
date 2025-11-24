@@ -18,3 +18,4 @@ func _on_ois_strike_receiver_action_ended(requirement: Variant, total_progress: 
 	
 	# Tell the typing animation to stop
 	TypingManager.stop_typing()
+	TaskManager.active_tasks[0].done = true

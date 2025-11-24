@@ -20,22 +20,22 @@ func initialize(day: int):
 	generate_new_tasks()
 
 func initialize_task_pool():
-	all_tasks[0].append(Task.new("Unpack", Task.Priority.LOW, 1))
-	all_tasks[0].append(Task.new("Eat apple \n slices", Task.Priority.MEDIUM, 1))
+	all_tasks[0].append(Task.new("Unpack", Task.Priority.LOW))
+	all_tasks[0].append(Task.new("Eat apple \n slices", Task.Priority.MEDIUM))
 	
-	all_tasks[1].append(Task.new("Make and \n eat pancakes", Task.Priority.HIGH, 2))
-	all_tasks[1].append(Task.new("Make and \n eat a ham \n sandwich", Task.Priority.HIGH, 2))
-	all_tasks[1].append(Task.new("Make and \n eat a peanut \n butter sandwich", Task.Priority.HIGH, 2))
-	all_tasks[1].append(Task.new("Eat apple \n slices", Task.Priority.MEDIUM, 2))
-	all_tasks[1].append(Task.new("Continue \n writing \n essay", Task.Priority.MEDIUM, 2))
-	all_tasks[1].append(Task.new("Practice \n drawing \n fundamentals", Task.Priority.LOW, 2))
-	all_tasks[1].append(Task.new("Reread Art \n notes", Task.Priority.LOW, 2))
+	all_tasks[1].append(Task.new("Make and \n eat pancakes", Task.Priority.HIGH))
+	all_tasks[1].append(Task.new("Make and \n eat a ham \n sandwich", Task.Priority.HIGH))
+	all_tasks[1].append(Task.new("Make and \n eat a peanut \n butter sandwich", Task.Priority.HIGH))
+	all_tasks[1].append(Task.new("Eat apple \n slices", Task.Priority.MEDIUM))
+	all_tasks[1].append(Task.new("Continue \n writing \n essay", Task.Priority.MEDIUM))
+	all_tasks[1].append(Task.new("Practice \n drawing \n fundamentals", Task.Priority.LOW))
+	all_tasks[1].append(Task.new("Reread Art \n notes", Task.Priority.LOW))
 	
-	all_tasks[2].append(Task.new("Wash dishes", Task.Priority.MEDIUM, 3))
-	all_tasks[2].append(Task.new("Do laundry", Task.Priority.MEDIUM, 3))
-	all_tasks[2].append(Task.new("Organize \n clothes", Task.Priority.MEDIUM, 3))
-	all_tasks[2].append(Task.new("Vacuum \n the entire \n house", Task.Priority.LOW, 3))
-	all_tasks[2].append(Task.new("Clean the \n bathroom", Task.Priority.LOW, 3))
+	all_tasks[2].append(Task.new("Wash dishes", Task.Priority.MEDIUM))
+	all_tasks[2].append(Task.new("Do laundry", Task.Priority.MEDIUM))
+	all_tasks[2].append(Task.new("Organize \n clothes", Task.Priority.MEDIUM))
+	all_tasks[2].append(Task.new("Vacuum \n the entire \n house", Task.Priority.LOW))
+	all_tasks[2].append(Task.new("Clean the \n bathroom", Task.Priority.LOW))
 	
 	
 
