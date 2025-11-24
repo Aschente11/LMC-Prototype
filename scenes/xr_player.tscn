@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=72 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="1_5petv"]
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_7p0fh"]
@@ -32,7 +32,10 @@
 [ext_resource type="AudioStream" uid="uid://dobwewoc67mhd" path="res://assets/sfx/burp.mp3" id="16_bmmov"]
 [ext_resource type="AudioStream" uid="uid://dqyjjg0qmnyv8" path="res://assets/sfx/watch_notif.mp3" id="16_wk61l"]
 [ext_resource type="Script" uid="uid://bo4nexkdn6v0t" path="res://scripts/singletons/task_manager.gd" id="25_awktg"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="26_67lw6"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="26_t6eq7"]
+[ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="28_54pj2"]
+[ext_resource type="PackedScene" uid="uid://chcuj3jysipk8" path="res://addons/godot-xr-tools/functions/movement_jog.tscn" id="31_88mk6"]
 [ext_resource type="AudioStream" uid="uid://b8u2iu5ewc3jv" path="res://assets/sfx/left_4_dead_witch.mp3" id="34_ltnfw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awktg"]
@@ -384,6 +387,8 @@ shape = SubResource("SphereShape3D_323tq")
 [node name="smartwatch" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("11_1mew7")]
 transform = Transform3D(0.0017453, 0, -0.999999, -0.0926137, 0.995702, -0.000161639, 0.9957, 0.0926139, 0.0017378, -0.0578399, -0.0545687, 0.177899)
 
+[node name="MovementJump" parent="XROrigin3D/XRController3DLeft" instance=ExtResource("26_67lw6")]
+
 [node name="XRController3DRight" type="XRController3D" parent="XROrigin3D"]
 tracker = &"right_hand"
 
@@ -420,6 +425,9 @@ shape = SubResource("SphereShape3D_sxhyq")
 
 [node name="smartwatch" parent="XROrigin3D/XRController3DRight" instance=ExtResource("11_1mew7")]
 transform = Transform3D(-4.37114e-08, 3.60561e-16, 1, -0.00178025, 0.999998, -7.78149e-11, -0.999998, -0.00178025, -4.37113e-08, 0.0585523, -0.0535223, 0.177899)
+
+[node name="MovementCrouch" parent="XROrigin3D/XRController3DRight" instance=ExtResource("28_54pj2")]
+crouch_button_action = "trigger_click"
 
 [node name="InventorySystem" type="Node3D" parent="XROrigin3D" node_paths=PackedStringArray("xr_anchor_to_object", "xr_camera_anchor", "inventory_toggler_hand")]
 transform = Transform3D(-0.00406662, -0.999992, 0, 0.999992, -0.00406662, 0, 0, 0, 1, 0.38634, -0.0214, -1.13506)
@@ -522,6 +530,8 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/Area3D"]
 shape = SubResource("BoxShape3D_3s1yg")
+
+[node name="MovementJog" parent="XROrigin3D" instance=ExtResource("31_88mk6")]
 
 [node name="watchNotif" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("16_wk61l")

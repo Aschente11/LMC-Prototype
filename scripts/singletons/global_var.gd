@@ -18,20 +18,18 @@ signal eating_milestone(milestone: int)
 
 const NORMAL_STIMULATION = 3.0
 
-# Automatically updates stimulation based on physical and emotional needs
+# Automatically updates stimulation based on physical and emotional
 func update_stimulation():
 	var old_val = stimulation
 	var new_val = stimulation
 	
-	# Calculate average of physical and emotional
-	var average_needs = (physical + emotional) / 2.0
 	
 	# If average is below 3, decrease stimulation
-	if average_needs < 3.0:
+	if physical < 3.0:
 		new_val = stimulation - 1
 	# If average is 3 or above, regulate back to normal
-	elif average_needs >= 3.0:
-		new_val = NORMAL_STIMULATION
+	elif emotional < 3.0:
+		new_val = stimulation + 1
 	
 	# Clamp stimulation to valid range [-2, 2]
 	new_val = clamp(new_val, -2, 2)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=4 uid="uid://bdk4v65llfcq5"]
+[gd_scene load_steps=168 format=4 uid="uid://bdk4v65llfcq5"]
 
 [ext_resource type="Script" uid="uid://catjpaekac6an" path="res://scripts/day_2_main.gd" id="1_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_kcbbm"]
@@ -80,6 +80,8 @@
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="78_yvr5c"]
 [ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="79_kcbbm"]
 [ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="80_yniqi"]
+[ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scenes/day_night_cycle.gd" id="81_yhcdh"]
+[ext_resource type="PackedScene" uid="uid://bd1ns3arb2768" path="res://scenes/Furniture/Bedroom/canvas.tscn" id="82_jmq4f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -203,7 +205,7 @@ uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tbgi4"]
 material = SubResource("StandardMaterial3D_ndrjj")
-size = Vector2(15, 5)
+size = Vector2(15, 6)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bfu41"]
 render_priority = 0
@@ -584,44 +586,6 @@ background_mode = 2
 background_energy_multiplier = 2.0
 sky = SubResource("Sky_yniqi")
 
-[sub_resource type="Animation" id="Animation_ymwfo"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DirectionalLight3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_671eh"]
-resource_name = "daynightcycle"
-length = 10.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DirectionalLight3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcbbm"]
-_data = {
-&"RESET": SubResource("Animation_ymwfo"),
-&"daynightcycle": SubResource("Animation_671eh")
-}
-
 [sub_resource type="QuadMesh" id="QuadMesh_yniqi"]
 size = Vector2(18, 24)
 
@@ -681,6 +645,44 @@ material = SubResource("StandardMaterial3D_ksmap")
 top_radius = 0.8
 bottom_radius = 0.8
 height = 5.0
+
+[sub_resource type="Animation" id="Animation_ymwfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DayNightCycle/DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_671eh"]
+resource_name = "daynightcycle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DayNightCycle/DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcbbm"]
+_data = {
+&"RESET": SubResource("Animation_ymwfo"),
+&"daynightcycle": SubResource("Animation_671eh")
+}
 
 [node name="DAY2_main" type="Node3D"]
 script = ExtResource("1_ymwfo")
@@ -939,6 +941,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87649, 3.73148, 6.31422)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206494, -0.279773, 0.0111308)
+visible = false
 omni_range = 6.0
 omni_attenuation = -0.5
 
@@ -984,13 +987,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6538)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.15907)
 
 [node name="CookingStation" parent="Furniture" instance=ExtResource("30_rkvv5")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2031, 0.828159, 6.00707)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2031, 0.828159, 5.93267)
 
 [node name="KitchenCounter2" parent="Furniture" instance=ExtResource("31_54cd5")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.77778, 0.920756, 7.29212)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.77778, 0.920756, 7.21772)
 
 [node name="KitchenCounter" parent="Furniture" instance=ExtResource("31_54cd5")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.25476, 0.920756, 9.19054)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.25476, 0.920756, 9.11614)
 
 [node name="Fridge" parent="Furniture" instance=ExtResource("32_l2uxy")]
 transform = Transform3D(0.0368356, 0, 0.999321, 0, 1, 0, -0.999321, 0, 0.0368356, -10.1742, 1.14834, 3.25862)
@@ -1035,7 +1038,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35583, 2.29459, -2.22375)
 transform = Transform3D(-0.788011, 0, -0.615661, 0, 1, 0, 0.615661, 0, -0.788011, 2.33788, 0.513104, 8.21607)
 
 [node name="Sofa B2" parent="Furniture" instance=ExtResource("45_327qm")]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 2.15734, 0.513104, 1.64369)
+transform = Transform3D(0.866025, 8.72665e-05, -0.5, -7.55749e-05, 1, 4.36332e-05, 0.5, 0, 0.866025, 2.15734, 0.513104, 1.64369)
 
 [node name="Table D" parent="Furniture" instance=ExtResource("46_ebp13")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.32087, 0.414405, 4.98802)
@@ -1156,16 +1159,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.93457, 1.40103, -3.24872)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yhcdh")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0373, 0)
-light_energy = 10.0
-shadow_enabled = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_kcbbm")
-}
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -3.48467, -0.773553, 0.424802)
 cast_shadow = 2
@@ -1213,6 +1206,23 @@ collision_mask = 196615
 
 [node name="plastic basket" parent="." instance=ExtResource("80_yniqi")]
 transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, -3.59181, 0.0123488, 1.27287)
+
+[node name="DayNightCycle" type="Node3D" parent="."]
+script = ExtResource("81_yhcdh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DayNightCycle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0373, 0)
+light_energy = 10.0
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DayNightCycle"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_kcbbm")
+}
+
+[node name="ArtSupplyProps" parent="." instance=ExtResource("82_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53481, 0, -9.13332)
 
 [connection signal="body_entered" from="sit" to="." method="_on_sit_body_entered"]
 [connection signal="body_exited" from="sit" to="." method="_on_sit_body_exited"]

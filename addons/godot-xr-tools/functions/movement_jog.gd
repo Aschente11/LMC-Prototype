@@ -50,6 +50,11 @@ var _last_stroke := 0.0
 # Current jog-speed mode
 var _speed_mode := SpeedMode.STOPPED
 
+# Track jogging time for physical stat increase
+var _jog_time := 0.0
+var _jog_threshold := 2.0  # 3 seconds of jogging
+var _physical_increased := false
+
 
 # Left controller
 @onready var _left_controller := XRHelpers.get_left_controller(self)
@@ -68,6 +73,7 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, _disabled: b
 	# Skip if the either controller is inactive
 	if !_left_controller.get_is_active() or !_right_controller.get_is_active():
 		_speed_mode = SpeedMode.STOPPED
+		_reset_jog_timer()
 		return
 
 	# Get the arm-swing stroke frequency in Hz
@@ -77,12 +83,22 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, _disabled: b
 	# This thresholding has some hysteresis to make speed changes smoother.
 	if freq == 0:
 		_speed_mode = SpeedMode.STOPPED
+		_reset_jog_timer()
 	elif freq < JOG_SLOW_FREQ:
 		_speed_mode = min(_speed_mode, SpeedMode.SLOW)
 	elif freq < JOG_FAST_FREQ:
 		_speed_mode = max(_speed_mode, SpeedMode.SLOW)
 	else:
 		_speed_mode = SpeedMode.FAST
+
+	# Track jogging time and increase physical stat
+	if _speed_mode != SpeedMode.STOPPED:
+		_jog_time += delta
+		if _jog_time >= _jog_threshold and not _physical_increased:
+			_physical_increased = true
+			GlobalVar.increase_physical()
+	else:
+		_reset_jog_timer()
 
 	# Pick the speed in meters-per-second based on the current speed-mode.
 	var speed := 0.0
@@ -96,6 +112,12 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, _disabled: b
 	var length := player_body.ground_control_velocity.length()
 	if length > fast_speed:
 		player_body.ground_control_velocity *= fast_speed / length
+
+
+# Reset the jog timer
+func _reset_jog_timer():
+	_jog_time = 0.0
+	_physical_increased = false
 
 
 # Get the frequency of the last arm-swing "stroke" in Hz.

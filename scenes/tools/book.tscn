@@ -1,11 +1,14 @@
-[gd_scene load_steps=33 format=3 uid="uid://43js2irdvt88"]
+[gd_scene load_steps=42 format=3 uid="uid://43js2irdvt88"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_s61as"]
 [ext_resource type="Script" uid="uid://dq86gvhe6d20d" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_item.gd" id="2_jjnre"]
 [ext_resource type="Script" uid="uid://ccjf78f5tgcwv" path="res://scripts/book.gd" id="3_yumrb"]
 [ext_resource type="PackedScene" uid="uid://dwlqpk504kwnu" path="res://assets/textures/quest_log2 (added shapekeys).glb" id="4_bi3xt"]
+[ext_resource type="Texture2D" uid="uid://d4m8sl2rydmxk" path="res://assets/others/page 1.png" id="5_7ftrg"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="5_rqfmc"]
+[ext_resource type="Texture2D" uid="uid://4m0ox7syhjr3" path="res://assets/others/page 2.png" id="6_luplh"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="6_vprp5"]
+[ext_resource type="Texture2D" uid="uid://c8lhc27fo21yw" path="res://assets/others/page 3.png" id="7_jco6j"]
 [ext_resource type="Texture2D" uid="uid://ykqtpkmpb2gf" path="res://assets/textures/page albedo texture.png" id="8_7w77n"]
 [ext_resource type="Animation" uid="uid://m5x2m8x3tcel" path="res://addons/godot-xr-tools/hands/animations/left/Pinch Tight.res" id="10_q8wmv"]
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="11_7w77n"]
@@ -19,6 +22,27 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bq28y"]
 size = Vector3(0.05, 0.2, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0p4nn"]
+albedo_texture = ExtResource("5_7ftrg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qgmfe"]
+material = SubResource("StandardMaterial3D_0p4nn")
+size = Vector2(0.24, 0.39)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gubme"]
+albedo_texture = ExtResource("6_luplh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_584eq"]
+material = SubResource("StandardMaterial3D_gubme")
+size = Vector2(0.24, 0.39)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l622w"]
+albedo_texture = ExtResource("7_jco6j")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ns1d7"]
+material = SubResource("StandardMaterial3D_l622w")
+size = Vector2(0.24, 0.39)
 
 [sub_resource type="Animation" id="Animation_vmq4b"]
 length = 0.001
@@ -141,6 +165,30 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("quest_log2 (added shapekeys)/MeshInstance3D:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.13695, 0.0462808, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("quest_log2 (added shapekeys)/MeshInstance3D:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5341, 1.51071, -1.51001)]
 }
 
 [sub_resource type="Animation" id="Animation_habx3"]
@@ -378,6 +426,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("quest_log2 (added shapekeys)/MeshInstance3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0346945, 0.0360823, 0.0624501, 0.0915934, 0.094369, 0.190126, 0.303924, 0.431599, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.13695, 0.0462808, 0), Vector3(0.122167, 0.0687321, 0), Vector3(0.121575, 0.0692016, 0), Vector3(0.117089, 0.0920838, 0), Vector3(0.103793, 0.100911, 0), Vector3(0.103779, 0.113048, 0), Vector3(0.00693197, 0.118298, 0), Vector3(-0.0487999, 0.118298, 0), Vector3(-0.0948327, 0.0724705, 0), Vector3(-0.128338, 0.0248962, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("quest_log2 (added shapekeys)/MeshInstance3D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.0346945, 0.0360823, 0.0624501, 0.0915934, 0.094369, 0.190126, 0.303924, 0.431599, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5341, 1.51071, -1.51001), Vector3(-1.37641, -1.37646, 1.34086), Vector3(-1.36751, -1.58747, 1.558), Vector3(-1.12742, -1.56566, 1.56689), Vector3(-0.902571, -1.56724, 1.56874), Vector3(-0.881415, -1.56728, 1.56881), Vector3(-0.151541, -1.56857, 1.57119), Vector3(0.532138, -1.56824, 1.57283), Vector3(1.16112, -1.56527, 1.5766), Vector3(1.56057, 1.35372, -1.78713)]
+}
 
 [sub_resource type="Animation" id="Animation_wc5vl"]
 resource_name = "flip_page_right"
@@ -518,6 +590,26 @@ script = ExtResource("3_yumrb")
 
 [node name="quest_log2 (added shapekeys)" parent="." index="3" instance=ExtResource("4_bi3xt")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="quest_log2 (added shapekeys)" index="2"]
+transform = Transform3D(0.999326, -0.000659166, 0.0366217, -0.0366202, 0.00222875, 0.999323, -0.000740343, -0.999994, 0.00220311, 0.13695, 0.0462808, 0)
+
+[node name="page 1" type="MeshInstance3D" parent="quest_log2 (added shapekeys)/MeshInstance3D" index="0"]
+transform = Transform3D(1, 1.74623e-10, -1.23284e-08, 0, 1, 0, -8.60484e-09, 6.98492e-10, 1, 0, 0, 0)
+mesh = SubResource("QuadMesh_qgmfe")
+skeleton = NodePath("../..")
+
+[node name="page 2" type="MeshInstance3D" parent="quest_log2 (added shapekeys)/MeshInstance3D" index="1"]
+transform = Transform3D(1, 1.16415e-10, -4.87773e-09, 0, 1, 0, -4.87955e-09, 2.32831e-10, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_584eq")
+skeleton = NodePath("../..")
+
+[node name="page 3" type="MeshInstance3D" parent="quest_log2 (added shapekeys)/MeshInstance3D" index="2"]
+transform = Transform3D(1, 1.16415e-10, -4.87773e-09, 0, 1, 0, -4.87955e-09, 2.32831e-10, 1, 0, 0, 0)
+visible = false
+mesh = SubResource("QuadMesh_ns1d7")
+skeleton = NodePath("../..")
 
 [node name="GrabPointHandLeft" parent="." index="4" instance=ExtResource("5_rqfmc")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.05, -0.0152011, -0.076)
@@ -677,6 +769,8 @@ collision_mask = 536870912
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PageTurnerLeft/InteractableHandle/OISActorComponent/OISColliderArea3D/Area3D" index="0"]
 shape = SubResource("SphereShape3D_lkfbl")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." index="15"]
 
 [connection signal="grabbed" from="." to="JournalControl" method="_on_ois_journal_grabbed"]
 [connection signal="released" from="." to="JournalControl" method="_on_ois_journal_released"]

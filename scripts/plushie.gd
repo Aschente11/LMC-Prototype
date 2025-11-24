@@ -13,7 +13,10 @@ func _process(delta):
 func _on_plushie_picked_up(pickable: Variant) -> void:
 	if not audio.playing:
 		audio.play()
+	await get_tree().create_timer(5.0).timeout
+	GlobalVar.increase_emotional()
 
 
 func _on_plushie_released(pickable: Variant, by: Variant) -> void:
 	audio.stop()
+	
