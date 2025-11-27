@@ -34,8 +34,8 @@ func _ready() -> void:
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(stimulation.material, "shader_parameter/value", GlobalVar.stimulation/5.0, 1)
-	tween.tween_property(physical.material, "shader_parameter/value", GlobalVar.physical/4.0, 1)
-	tween.tween_property(emotional.material, "shader_parameter/value", GlobalVar.emotional/4.0, 1)
+	tween.tween_property(physical.material, "shader_parameter/value", GlobalVar.physical/5.0, 1)
+	tween.tween_property(emotional.material, "shader_parameter/value", GlobalVar.emotional/5.0, 1)
 
 func setup_center_pivots() -> void:
 	# For TextureRect (stimulation_bar)

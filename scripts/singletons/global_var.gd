@@ -24,22 +24,25 @@ signal eating_milestone(milestone: int)
 
 const NORMAL_STIMULATION = 3.0
 
+var _update_pending = false
+
 # Automatically updates stimulation based on physical and emotional
 func update_stimulation():
+	_update_pending = false
 	var old_val = stimulation
 	var new_val = stimulation
 	
 	# If both physical and emotional are below 3, stimulation minus 1
-	#if physical < 3.0 and emotional < 3.0:
-		#new_val = stimulation - 1
+	if physical < 3.0 and emotional < 3.0:
+		new_val = stimulation - 1
 	# If only emotional is below 3, stimulation plus 1
-	if emotional < 3.0:
+	elif emotional < 3.0:
 		new_val = stimulation + 1
 	# If only physical is below 3, stimulation minus 1
 	elif physical < 3.0:
 		new_val = stimulation - 1
 	
-	# Clamp stimulation to valid range [-2, 2]
+	# Clamp stimulation to valid range [1, 5]
 	new_val = clamp(new_val, 1, 5)
 	
 	# Only update and emit if value actually changed
@@ -49,6 +52,11 @@ func update_stimulation():
 			stimulation_decrease.emit(old_val, stimulation)
 		elif old_val < stimulation:
 			stimulation_increase.emit(old_val, stimulation)
+
+func _schedule_update():
+	if not _update_pending:
+		_update_pending = true
+		call_deferred("update_stimulation")
 
 func regulate_stimulation():
 	var old_val = stimulation
@@ -62,34 +70,34 @@ func regulate_stimulation():
 func increase_physical():
 	var old_val = physical
 	physical += 1
-	if physical == 5:
-		physical = 4
+	if physical == 6:
+		physical = 5
 	physical_increase.emit(old_val, physical)
-	update_stimulation()  # Check stimulation after physical changes
+	_schedule_update()
 	
 func decrease_physical():
 	var old_val = physical
 	physical -= 1
-	if physical == -1:
-		physical = 0
+	if physical == 0:
+		physical = 1
 	physical_decrease.emit(old_val, physical)
-	update_stimulation()  # Check stimulation after physical changes
+	_schedule_update()
 	
 func increase_emotional():
 	var old_val = emotional
 	emotional += 1
-	if emotional == 5:
-		emotional = 4
+	if emotional == 6:
+		emotional = 5
 	emotional_increase.emit(old_val, emotional)
-	update_stimulation()  # Check stimulation after emotional changes
+	_schedule_update()
 	
 func decrease_emotional():
 	var old_val = emotional
 	emotional -= 1
-	if emotional == -1:
-		emotional = 0
+	if emotional == 0:
+		emotional = 1
 	emotional_decrease.emit(old_val, emotional)
-	update_stimulation()  # Check stimulation after emotional changes
+	_schedule_update()
 	
 func add_food_eaten():
 	foods_eaten_count += 1
