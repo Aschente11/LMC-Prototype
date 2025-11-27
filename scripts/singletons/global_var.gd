@@ -1,10 +1,17 @@
 extends Node
 
 # Change these to float for decimal values
-var stimulation = 3.0 #[-2, 2]
-var physical = 2.0 #[0, 4]
-var emotional = 2.0 #[0, 4]
+var stimulation = 3.0 #[1, 5]
+var physical = 3.0 #[1, 5]
+var emotional = 3.0 #[1, 5]
 var foods_eaten_count: int = 0
+
+const MIN_STIMULATION = 1.0
+const MAX_STIMULATION = 5.0
+const MIN_PHYSICAL = 1.0
+const MAX_PHYSICAL = 5.0
+const MIN_EMOTIONAL = 1.0
+const MAX_EMOTIONAL = 5.0
 
 signal stimulation_increase(old_value, new_value)
 signal stimulation_decrease(old_value, new_value)
