@@ -107,6 +107,7 @@ func setup_text_spawn_timer() -> void:
 # Combine positive and negative indicators + call indicator spawner
 func trigger_indicator(old_value: int, new_value: int) -> void:
 	if new_value == 1 or new_value == 5:
+		print("in here")
 		change_indicator.set_shader_parameter("color", Color(0, 0, 0, 255))
 		change_indicator.set_shader_parameter("transparency_level", 12.06)
 		change_indicator.set_shader_parameter("speed", 2.01)
