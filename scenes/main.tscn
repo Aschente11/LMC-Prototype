@@ -84,7 +84,7 @@
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="80_ndrjj"]
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="81_ih3m7"]
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="83_11yus"]
-[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="86_vtx2l"]
+[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/book.tscn" id="86_vtx2l"]
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="87_63lxy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]

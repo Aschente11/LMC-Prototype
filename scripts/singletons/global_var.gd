@@ -1,7 +1,7 @@
 extends Node
 
 # Change these to float for decimal values
-var stimulation = 3.0 #[-2, 2]
+var stimulation = 4.0 #[-2, 2]
 var physical = 2.0 #[0, 4]
 var emotional = 2.0 #[0, 4]
 var foods_eaten_count: int = 0
@@ -33,7 +33,7 @@ func update_stimulation():
 		new_val = stimulation - 1
 	
 	# Clamp stimulation to valid range [-2, 2]
-	new_val = clamp(new_val, -2, 2)
+	new_val = clamp(new_val, 1, 5)
 	
 	# Only update and emit if value actually changed
 	if new_val != old_val:

@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://kh7sb5q48xi0"]
+[gd_scene load_steps=5 format=3 uid="uid://kh7sb5q48xi0"]
 
+[ext_resource type="Script" uid="uid://dif6hls738vup" path="res://scenes/Furniture/Kitchen/cupboards.gd" id="1_4ilel"]
 [ext_resource type="PackedScene" uid="uid://c4fnreetp07n8" path="res://assets/Furniture Shaders/cupboard_b.tscn" id="1_y1vbd"]
 [ext_resource type="PackedScene" uid="uid://cevbpdmblg520" path="res://assets/Furniture Shaders/cupboard_a.tscn" id="2_4ilel"]
 
@@ -7,6 +8,7 @@
 size = Vector3(3.87119, 1.54016, 1.01166)
 
 [node name="Cupboards" type="Node3D"]
+script = ExtResource("1_4ilel")
 
 [node name="Cupboard B3" parent="." instance=ExtResource("1_y1vbd")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0.0663335)

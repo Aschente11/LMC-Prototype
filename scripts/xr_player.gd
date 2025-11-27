@@ -15,6 +15,9 @@ extends Node3D
 @onready var indicator_manager := $XROrigin3D/XRCamera3D/FloatingIndicatorManager
 
 @onready var crying: AudioStreamPlayer3D = $crying
+@onready var left_teleport = $XROrigin3D/XRController3DLeft/FunctionTeleport
+@onready var right_teleport = $XROrigin3D/XRController3DRight/FunctionTeleport
+
 
 var note_tutorial_dismissed: bool = false
 
@@ -130,6 +133,9 @@ func _on_stimulation_changed(old_value: int, new_value: int) -> void:
 	elif new_value < 1 and is_spawning_texts:
 		print("Stopping text spawning cycle")
 		stop_text_spawning()
+	
+	if new_value == 5:
+		disable_teleport()
 	
 	# Your existing haptic feedback logic
 	var timer = Timer.new()
@@ -390,3 +396,7 @@ func _on_plushie_picked_up(pickable):
 
 func _on_plushie_released(pickable, by):
 	crying.stop()
+
+func disable_teleport():
+	left_teleport.enabled = false
+	right_teleport.enabled = false

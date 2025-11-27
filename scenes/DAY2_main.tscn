@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=4 uid="uid://bdk4v65llfcq5"]
+[gd_scene load_steps=166 format=4 uid="uid://bdk4v65llfcq5"]
 
 [ext_resource type="Script" uid="uid://catjpaekac6an" path="res://scripts/day_2_main.gd" id="1_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_kcbbm"]
@@ -59,16 +59,14 @@
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="57_u6e87"]
 [ext_resource type="PackedScene" uid="uid://duj5ayanfxmtw" path="res://assets/Furniture Shaders/kitchen_roll.tscn" id="60_exdyi"]
 [ext_resource type="PackedScene" uid="uid://dcajgychncjmh" path="res://scenes/Furniture/washing_machine.tscn" id="61_0xrc1"]
-[ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="66_h238m"]
 [ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="67_ohn16"]
 [ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="69_wjmbl"]
 [ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="70_dv85l"]
-[ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="71_kaw5b"]
 [ext_resource type="AudioStream" uid="uid://dtf726kp6odmr" path="res://assets/sfx/events/Waking up.mp3" id="72_8c5vm"]
 [ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="73_r7pj4"]
 [ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="74_i677d"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="75_30bpg"]
-[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="75_mrobn"]
+[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/book.tscn" id="75_mrobn"]
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="76_671eh"]
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="76_effxd"]
 [ext_resource type="PackedScene" uid="uid://ce150tqux2gyp" path="res://scenes/Furniture/tv_set.tscn" id="76_mrobn"]
@@ -1098,9 +1096,6 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.240867, 0, 2.08217)
 [node name="WashingMachine" parent="Furniture" instance=ExtResource("61_0xrc1")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.9289, 1.15492, 0.798197)
 
-[node name="knife" parent="." instance=ExtResource("66_h238m")]
-transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.76397, 1.41585, 5.71333)
-
 [node name="clock" parent="." instance=ExtResource("67_ohn16")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.98311, 3.41081, -0.658281)
 
@@ -1112,9 +1107,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65055, 1.36271, 6.80867)
 
 [node name="bread" parent="." instance=ExtResource("70_dv85l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54926, 1.3697, 6.74431)
-
-[node name="Apple" parent="." instance=ExtResource("71_kaw5b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52473, 1.50377, 5.98096)
 
 [node name="wake_up" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("72_8c5vm")

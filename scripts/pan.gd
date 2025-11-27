@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	if raycast.is_colliding():
 		var hit_object = raycast.get_collider()
 		
-		if hit_object and hit_object is StaticBody3D:
+		if hit_object and hit_object.is_in_group("cupboard"):
 			if not has_flipped:
 				anim_player.play("pancake_flip")
 				#ADD 0.6 SEC DELAY HERE TO MAKE IT REALISTIC
