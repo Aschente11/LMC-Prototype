@@ -108,11 +108,13 @@ func setup_text_spawn_timer() -> void:
 func trigger_indicator(old_value: int, new_value: int) -> void:
 	if new_value == 1 or new_value == 5:
 		change_indicator.set_shader_parameter("color", Color(0, 0, 0, 255))
-		change_indicator.set_shader_parameter("speed", 2.0)
+		change_indicator.set_shader_parameter("transparency_level", 12.06)
+		change_indicator.set_shader_parameter("speed", 2.01)
 		_on_stimulation_changed(old_value, new_value)
 		return
 	
 	# to stop the vignette
+	change_indicator.set_shader_parameter("transparency_level", 16.0)
 	change_indicator.set_shader_parameter("speed", 0.0)
 	await get_tree().create_timer(1.0).timeout
 	
