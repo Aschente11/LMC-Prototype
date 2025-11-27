@@ -111,8 +111,8 @@ func trigger_indicator(old_value: int, new_value: int) -> void:
 		change_indicator.set_shader_parameter("color", Color(0, 0, 255, 255))
 	elif old_value < new_value: # if increased, orange
 		change_indicator.set_shader_parameter("color", Color(255, 100, 0, 255))
-	elif old_value == new_value: # if at either extreme, red bc stop!!!
-		change_indicator.set_shader_parameter("color", Color(255, 0, 0, 255))
+	elif new_value == 0 or new_value == 5:
+		change_indicator.set_shader_parameter("color", Color(0, 0, 0, 255))
 		
 	#indicators.spawn_indicator("s", str(new_value))
 	
