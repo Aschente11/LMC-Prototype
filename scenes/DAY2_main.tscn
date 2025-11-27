@@ -932,7 +932,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0306931, 3.73148, 6.31422)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206494, -0.279773, 0.0111308)
-visible = false
 omni_range = 6.0
 omni_attenuation = -0.5
 
@@ -941,7 +940,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87649, 3.73148, 6.31422)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206494, -0.279773, 0.0111308)
-visible = false
 omni_range = 6.0
 omni_attenuation = -0.5
 
@@ -950,7 +948,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.876, 3.69889, -6.665)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206494, -0.279773, 0.0111308)
-visible = false
 omni_range = 6.0
 omni_attenuation = -0.5
 
@@ -959,7 +956,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494399, 3.70293, -6.66538)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0206494, -0.279773, 0.0111308)
-visible = false
 omni_range = 6.0
 omni_attenuation = -0.5
 
