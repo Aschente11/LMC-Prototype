@@ -1,6 +1,5 @@
 extends Node
 
-
 # Change these to float for decimal values
 var stimulation = 3.0 #[-2, 2]
 var physical = 2.0 #[0, 4]
@@ -23,13 +22,15 @@ func update_stimulation():
 	var old_val = stimulation
 	var new_val = stimulation
 	
-	
-	# If average is below 3, decrease stimulation
-	if physical < 3.0:
+	# If both physical and emotional are below 3, stimulation minus 1
+	if physical < 3.0 and emotional < 3.0:
 		new_val = stimulation - 1
-	# If average is 3 or above, regulate back to normal
+	# If only emotional is below 3, stimulation plus 1
 	elif emotional < 3.0:
 		new_val = stimulation + 1
+	# If only physical is below 3, stimulation minus 1
+	elif physical < 3.0:
+		new_val = stimulation - 1
 	
 	# Clamp stimulation to valid range [-2, 2]
 	new_val = clamp(new_val, -2, 2)
@@ -93,4 +94,3 @@ func add_food_eaten():
 		# Increase physical and emotional by 1 every 4 foods
 		increase_physical()
 		increase_emotional()
-		

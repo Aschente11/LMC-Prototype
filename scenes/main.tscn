@@ -1,4 +1,4 @@
-[gd_scene load_steps=168 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=167 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
@@ -84,7 +84,6 @@
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="80_ndrjj"]
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="81_ih3m7"]
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="83_11yus"]
-[ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="85_155or"]
 [ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="86_vtx2l"]
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="87_63lxy"]
 
@@ -1155,9 +1154,6 @@ scene_properties_keys = PackedStringArray("sleep.gd")
 
 [node name="post_it" parent="." instance=ExtResource("83_11yus")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50684, 1.32804, -3.05976)
-
-[node name="PC" parent="." instance=ExtResource("85_155or")]
-transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.96628, 1.3151, -3.63468)
 
 [node name="OISJournal" parent="." instance=ExtResource("86_vtx2l")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.9389, 1.33187, -2.96148)
