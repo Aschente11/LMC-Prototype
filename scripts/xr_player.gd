@@ -104,15 +104,22 @@ func setup_text_spawn_timer() -> void:
 	text_spawn_timer.wait_time = spawn_interval
 	text_spawn_timer.timeout.connect(_on_text_spawn_timer_timeout)
 
-
 # Combine positive and negative indicators + call indicator spawner
 func trigger_indicator(old_value: int, new_value: int) -> void:
+	if new_value == 1 or new_value == 5:
+		change_indicator.set_shader_parameter("color", Color(0, 0, 0, 255))
+		change_indicator.set_shader_parameter("speed", 2.0)
+		_on_stimulation_changed(old_value, new_value)
+		return
+	
+	# to stop the vignette
+	change_indicator.set_shader_parameter("speed", 0.0)
+	await get_tree().create_timer(1.0).timeout
+	
 	if old_value > new_value: # if decreased, blue
 		change_indicator.set_shader_parameter("color", Color(0, 0, 255, 255))
 	elif old_value < new_value: # if increased, orange
 		change_indicator.set_shader_parameter("color", Color(255, 100, 0, 255))
-	elif new_value == 0 or new_value == 5:
-		change_indicator.set_shader_parameter("color", Color(0, 0, 0, 255))
 		
 	#indicators.spawn_indicator("s", str(new_value))
 	
