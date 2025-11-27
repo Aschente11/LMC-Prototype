@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=4 uid="uid://bdk4v65llfcq5"]
+[gd_scene load_steps=169 format=4 uid="uid://bdk4v65llfcq5"]
 
 [ext_resource type="Script" uid="uid://catjpaekac6an" path="res://scripts/day_2_main.gd" id="1_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_kcbbm"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://ckp3opsts403i" path="res://scenes/Furniture/door.tscn" id="26_pgy5p"]
 [ext_resource type="PackedScene" uid="uid://kh7sb5q48xi0" path="res://scenes/Furniture/Kitchen/cupboards.tscn" id="27_f4gji"]
 [ext_resource type="PackedScene" uid="uid://s5gjejv5fen7" path="res://scenes/Furniture/Bedroom/bed.tscn" id="28_3yg60"]
+[ext_resource type="Script" path="res://scenes/Furniture/Kitchen/cupboards.gd" id="28_fmiir"]
 [ext_resource type="PackedScene" uid="uid://cji387p80amm8" path="res://scenes/Furniture/Kitchen/chair.tscn" id="29_nv1iu"]
 [ext_resource type="PackedScene" uid="uid://du2vn3nhn1mob" path="res://scenes/Furniture/Kitchen/cooking_station.tscn" id="30_rkvv5"]
 [ext_resource type="PackedScene" uid="uid://btf7o1yinqmpn" path="res://scenes/Furniture/Kitchen/kitchen_counter.tscn" id="31_54cd5"]
@@ -962,9 +963,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, -0.009, 10)
 
 [node name="Cupboards" parent="Furniture" instance=ExtResource("27_f4gji")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.71571, 3.30247, 9.23443)
+script = ExtResource("28_fmiir")
 
 [node name="Cupboards2" parent="Furniture" instance=ExtResource("27_f4gji")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1903, 3.30852, 7.43887)
+script = ExtResource("28_fmiir")
 
 [node name="Bed" parent="Furniture" instance=ExtResource("28_3yg60")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.96277, 0.427202, -7.17728)

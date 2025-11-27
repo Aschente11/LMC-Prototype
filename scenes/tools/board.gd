@@ -16,7 +16,7 @@ func _on_inventory_slot_3_current_object_in_slot(object: Variant, row: Variant, 
 
 func check_all_slots_filled() -> void:
 	if notes_complete == 3:
-		GlobalVar.regulate_stimulation()
+		#GlobalVar.regulate_stimulation()
 		GlobalVar.increase_physical()
 		GlobalVar.increase_physical()
 		GlobalVar.increase_emotional()
