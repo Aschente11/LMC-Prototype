@@ -1,6 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://41hkahd7ukbc"]
-
-[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_tbnwn"]
+[gd_scene load_steps=6 format=4 uid="uid://41hkahd7ukbc"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_el2r1"]
 height = 0.027832
@@ -76,17 +74,15 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ajmtb")
 
-[node name="PancakeRaw" type="RigidBody3D"]
+[node name="PancakeRaw" type="StaticBody3D"]
 collision_layer = 4
 collision_mask = 5
-script = ExtResource("1_tbnwn")
-metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0026677, 0)
 shape = SubResource("CylinderShape3D_el2r1")
 
 [node name="Sphere_001" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, 0, 0, 0)
+transform = Transform3D(-0.12, 1.04907e-08, 0, -1.04907e-08, -0.12, 0, 0, 0, 0.12, 0, 0, 0)
 mesh = SubResource("ArrayMesh_tbnwn")
 skeleton = NodePath("")

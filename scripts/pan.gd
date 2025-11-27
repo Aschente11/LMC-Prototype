@@ -1,9 +1,10 @@
 extends XRToolsPickable
 
 @onready var anim_player = $AnimationPlayer
-@onready var raycast = $RayCast3D
-@onready var inventory_slot = $InventorySlot
+#@onready var raycast = $RayCast3D
+@onready var inventory_slot = $PancakeRaw
 @onready var frying_sfx = $Frying
+@onready var collision = $CollisionShape3D
 
 var has_flipped = false
 var pour_time = 0.0
@@ -13,34 +14,34 @@ var slot_revealed = false
 
 func _ready():
 	super._ready() 
+	add_to_group("pan")
+	collision.add_to_group("pan")
 	
-	# Hide inventory slot at start
-	if inventory_slot:
-		inventory_slot.visible = false
-		inventory_slot.scale = Vector3.ZERO
 	
-	if raycast:
-		raycast.enabled = true
-		raycast.collide_with_areas = true
-		raycast.collide_with_bodies = true
+	inventory_slot.visible = false
+	
+	#if raycast:
+		#raycast.enabled = true
+		#raycast.collide_with_areas = true
+		#raycast.collide_with_bodies = true
 
-func _physics_process(delta: float) -> void:
-	if not raycast:
-		return
-	
-	# Check for cupboard collision (flip)
-	if raycast.is_colliding():
-		var hit_object = raycast.get_collider()
+#func _physics_process(delta: float) -> void:
+	#if not raycast:
+		#return
+	#
+	## Check for cupboard collision (flip)
+	#if raycast.is_colliding():
+		#var hit_object = raycast.get_collider()
 		
-		if hit_object and hit_object.is_in_group("cupboard"):
-			if not has_flipped:
-				anim_player.play("pancake_flip")
-				#ADD 0.6 SEC DELAY HERE TO MAKE IT REALISTIC
-				#frying_sfx.play()
-				has_flipped = true
-				
-				await get_tree().create_timer(2.0).timeout
-				has_flipped = false
+		#if hit_object and hit_object.is_in_group("cupboard"):
+			#if not has_flipped:
+				#anim_player.play("pancake_flip")
+				##ADD 0.6 SEC DELAY HERE TO MAKE IT REALISTIC
+				##frying_sfx.play()
+				#has_flipped = true
+				#
+				#await get_tree().create_timer(2.0).timeout
+				#has_flipped = false
 
 # Called by carton when it starts/stops pouring on this pan
 func _on_pouring_started():
@@ -66,6 +67,7 @@ func reveal_inventory_slot():
 	slot_revealed = true
 	inventory_slot.visible = true
 	frying_sfx.play()
+	anim_player.play("cooking_pancake")
 	
 	# Smooth scale animation
 	var tween = create_tween()

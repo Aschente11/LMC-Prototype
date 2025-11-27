@@ -1,14 +1,13 @@
-[gd_scene load_steps=24 format=4 uid="uid://53x8obp0rqj7"]
+[gd_scene load_steps=22 format=4 uid="uid://53x8obp0rqj7"]
 
 [ext_resource type="Script" uid="uid://nw5bkalub6hq" path="res://scripts/pan.gd" id="1_a2oc4"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_8fo57"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="6_l3kk0"]
 [ext_resource type="Animation" uid="uid://daqddcrbpam0c" path="res://addons/godot-xr-tools/hands/animations/right/Grip 1.res" id="7_l3kk0"]
 [ext_resource type="Animation" uid="uid://dqa0h82y3qn1t" path="res://addons/godot-xr-tools/hands/animations/left/Grip 1.res" id="7_qeikm"]
-[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="7_tped5"]
-[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="8_q3ogx"]
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="8_qeikm"]
-[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="9_l3kk0"]
+[ext_resource type="PackedScene" uid="uid://41hkahd7ukbc" path="res://scenes/others/pancake/half_pancake.tscn" id="9_tped5"]
+[ext_resource type="PackedScene" uid="uid://cxj7cnxc1iul0" path="res://scenes/others/pancake/cooked_pancake.tscn" id="10_q3ogx"]
 [ext_resource type="AudioStream" uid="uid://3eqb3v1masm3" path="res://assets/sfx/frying.mp3" id="11_l3kk0"]
 [ext_resource type="PackedScene" uid="uid://chwp0wbp3tp31" path="res://scenes/others/pancake/raw_pancake.tscn" id="13_a2oc4"]
 
@@ -83,7 +82,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_xhfw6")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y57op"]
-size = Vector3(0.502548, 0.306396, 0.0288687)
+size = Vector3(0.317959, 0.307068, 0.0288687)
 
 [sub_resource type="Resource" id="Resource_a2oc4"]
 script = ExtResource("8_qeikm")
@@ -95,91 +94,88 @@ script = ExtResource("8_qeikm")
 closed_pose = ExtResource("7_l3kk0")
 metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 
-[sub_resource type="SphereMesh" id="SphereMesh_qeikm"]
-radius = 0.2
-height = 0.4
-
 [sub_resource type="Animation" id="Animation_gtkug"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("InventorySlot:position")
+tracks/0/path = NodePath("PancakeRaw:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -0.0794512, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("InventorySlot:rotation")
+tracks/1/path = NodePath("PancakeRaw2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("InventorySlot:default_object")
+tracks/2/path = NodePath("PancakeRaw3:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [null]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_5jip1"]
 resource_name = "cooking_pancake"
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("InventorySlot:default_object")
+tracks/0/path = NodePath("PancakeRaw:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 2.36667, 4.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [null]
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PancakeRaw2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.36667, 4.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PancakeRaw3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.38667, 4.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_a2oc4"]
 resource_name = "pancake_flip"
 length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InventorySlot:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -0.0794512, 0), Vector3(0, 0.103444, 0), Vector3(0, 0.278068, 0), Vector3(0, 0.427787, 0), Vector3(0, 0.278126, 0), Vector3(0, 0.0967279, 0), Vector3(0, -0.0573411, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("InventorySlot:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, -0.634061), Vector3(0, 0, -1.03655), Vector3(0, 0, -1.74095), Vector3(0, 0, -2.4022), Vector3(0, 0, -2.90079), Vector3(0, 0, -3.13243)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5jip1"]
 _data = {
@@ -190,13 +186,9 @@ _data = {
 
 [node name="Pan" type="RigidBody3D"]
 collision_layer = 4
-collision_mask = 196615
+collision_mask = 196609
 script = ExtResource("1_a2oc4")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
-
-[node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 1, 0)
-collide_with_areas = true
 
 [node name="Pan" type="MeshInstance3D" parent="."]
 transform = Transform3D(30, 0, 0, 0, -1.31134e-06, 30, 0, -30, -1.31134e-06, 0, -0.0837661, 0)
@@ -204,7 +196,7 @@ mesh = SubResource("ArrayMesh_ialph")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.09602, -0.0701295, -0.00692514)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00372539, -0.0701295, 0.000124361)
 shape = SubResource("BoxShape3D_y57op")
 debug_fill = false
 
@@ -224,22 +216,9 @@ hand = 1
 hand_pose = SubResource("Resource_7rs2t")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
-[node name="InventorySlot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0794512, 0)
-script = ExtResource("7_tped5")
-metadata/_custom_type_script = "uid://d2j64x8gnsuue"
-
-[node name="SnapZone" parent="InventorySlot" instance=ExtResource("8_q3ogx")]
-grab_distance = 0.2
-snap_mode = 1
-initial_object = NodePath("../PancakeRaw")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot"]
-mesh = SubResource("SphereMesh_qeikm")
-surface_material_override/0 = ExtResource("9_l3kk0")
-
-[node name="PancakeRaw" parent="InventorySlot" instance=ExtResource("13_a2oc4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00426726, 0.000700101, -0.622091)
+[node name="PancakeRaw" parent="." instance=ExtResource("13_a2oc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00426726, -0.0631048, 0.00168525)
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -248,3 +227,11 @@ libraries = {
 
 [node name="Frying" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("11_l3kk0")
+
+[node name="PancakeRaw2" parent="." instance=ExtResource("9_tped5")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.00296204, -0.061657, 0)
+visible = false
+
+[node name="PancakeRaw3" parent="." instance=ExtResource("10_q3ogx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0699557, 0)
+visible = false

@@ -23,49 +23,49 @@ func _physics_process(delta: float) -> void:
 	if raycast.is_colliding():
 		var hit_object = raycast.get_collider()
 		
-		# Check if hitting SnapZone (pan area)
-		if hit_object and hit_object.name == "SnapZone":
+		# Find the actual pan node from whatever we hit
+		var pan = find_pan_from_node(hit_object)
+		
+		if pan:
+			# We're hitting a pan or its collision area
 			liquid_particles.visible = true
 			
-			# Find the pan (should be parent or nearby)
-			var pan = find_pan_from_snapzone(hit_object)
-			if pan and pan != current_pan:
-				# Started pouring on new pan
+			# Check if we switched pans or just started
+			if pan != current_pan:
+				# Stop pouring on old pan
 				if current_pan:
 					current_pan._on_pouring_stopped()
+				
+				# Start pouring on new pan
 				current_pan = pan
 				current_pan._on_pouring_started()
-			elif not pan and current_pan:
-				# Lost the pan reference
-				current_pan._on_pouring_stopped()
-				current_pan = null
 		else:
-			# Not hitting snap zone anymore
-			liquid_particles.visible = false
-			if current_pan:
-				current_pan._on_pouring_stopped()
-				current_pan = null
+			# Not hitting a pan anymore
+			_stop_pouring()
 	else:
 		# Not hitting anything
-		liquid_particles.visible = false
-		if current_pan:
-			current_pan._on_pouring_stopped()
-			current_pan = null
+		_stop_pouring()
 
-func find_pan_from_snapzone(snapzone: Node) -> Node:
-	# Try to find pan - could be parent, grandparent, or sibling
-	var parent = snapzone.get_parent()
+func _stop_pouring():
+	liquid_particles.visible = false
+	if current_pan:
+		current_pan._on_pouring_stopped()
+		current_pan = null
+
+func find_pan_from_node(node: Node) -> Node:
+	# Check if the node itself is in the "pan" group and has the method
+	if node.is_in_group("pan") and node.has_method("_on_pouring_started"):
+		return node
 	
-	# Check if parent is the pan
-	if parent and parent.has_method("_on_pouring_started"):
+	# Check parent
+	var parent = node.get_parent()
+	if parent and parent.is_in_group("pan") and parent.has_method("_on_pouring_started"):
 		return parent
 	
 	# Check grandparent
 	if parent:
 		var grandparent = parent.get_parent()
-		if grandparent and grandparent.has_method("_on_pouring_started"):
+		if grandparent and grandparent.is_in_group("pan") and grandparent.has_method("_on_pouring_started"):
 			return grandparent
 	
-	# Search in scene tree for pan node (make sure pan is in "pan" group)
-	var pan = get_tree().get_first_node_in_group("pan")
-	return pan
+	return null

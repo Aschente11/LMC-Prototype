@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://cxj7cnxc1iul0"]
 
-[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_ids7r"]
+[ext_resource type="Script" uid="uid://dkw01yv3mob0a" path="res://scenes/others/pancake/cooked_pancake.gd" id="1_ids7r"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_el2r1"]
 height = 0.027832
@@ -48,7 +48,6 @@ shadow_mesh = SubResource("ArrayMesh_ids7r")
 
 [node name="PancakeRaw" type="RigidBody3D"]
 collision_layer = 4
-collision_mask = 5
 script = ExtResource("1_ids7r")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 

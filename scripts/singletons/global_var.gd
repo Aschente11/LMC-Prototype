@@ -1,7 +1,7 @@
 extends Node
 
 # Change these to float for decimal values
-var stimulation = 3.0 #[1, 5]
+var stimulation = 2.0 #[1, 5]
 var physical = 3.0 #[1, 5]
 var emotional = 3.0 #[1, 5]
 var foods_eaten_count: int = 0
