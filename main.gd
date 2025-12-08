@@ -11,9 +11,13 @@ var xr_interface: XRInterface
 @onready var unpacking_area = $unpacking
 @onready var sleep_area = $sleep
 @onready var sleep_viewport = $SleepViewport
+@onready var bed_camera = $BedMarker
+@onready var init_camera = $InitialMarker
+@onready var plush = $plushie/Sketchfab_Scene
 
 @onready var init_player = $WakingUpPlayer
 var xr_player = preload("res://scenes/xr_player.tscn").instantiate()
+var anim_player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,13 +43,17 @@ func _ready():
 	
 	sleep_viewport.visible = false
 	
+	plush.is_crying.connect(teleport_player)
+	
+	call_deferred("check_initial_state")
+	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
+	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
+	GlobalTime.start_time(12, 30, true)
+	GlobalVar.eating_milestone.connect(_on_eating_milestone)
+	
 	# QTE/Waking up scene
 	handle_qte()
 	
-	
-	# Remove Waking Up XRPlayer, replace with actual XRPlayer
-
-
 func handle_qte():
 	$WakingUpPlayer/QTE.start_qte()
 	
@@ -59,18 +67,14 @@ func on_qte_fail():
 func on_qte_success():
 	$WakingUpPlayer/AnimationPlayer.play("Blinking")
 	
-	call_deferred("check_initial_state")
-	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
-	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
-	GlobalTime.start_time(12, 30, true)
-	GlobalVar.eating_milestone.connect(_on_eating_milestone)
-	
 	await get_tree().create_timer(5).timeout
 	print("Changed Scene")
 	
 	if xr_player and init_player:
 		add_child(xr_player)
-		xr_player.set_global_position(Vector3(-8.011, 0.00, -5.449))
+		xr_player.set_global_position(init_camera.global_position)
+		anim_player = xr_player.get_node("AnimationPlayer")
+		
 		remove_child(init_player)
 		init_player.queue_free()
 		
@@ -84,6 +88,20 @@ func on_qte_success():
 	# Connect to first audio finished to trigger second sequence
 	make_bfast_sfx.finished.connect(_on_first_audio_finished)
 	
+func teleport_player(marker):
+	var pos
+	
+	if marker == "bed":
+		pos = bed_camera.global_position
+		print("teleported to bed")
+		
+	xr_player.global_position = pos
+	
+	anim_player.play("blinking")
+	
+	await get_tree().create_timer(1).timeout
+	
+	anim_player.play("open_eyes")
 
 func _on_first_audio_finished():
 	# Hide breakfast text

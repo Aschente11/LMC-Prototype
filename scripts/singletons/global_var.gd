@@ -12,6 +12,7 @@ const MIN_PHYSICAL = 1.0
 const MAX_PHYSICAL = 5.0
 const MIN_EMOTIONAL = 1.0
 const MAX_EMOTIONAL = 5.0
+const NORMAL_STIMULATION = 3.0
 
 signal stimulation_increase(old_value, new_value)
 signal stimulation_decrease(old_value, new_value)
@@ -21,8 +22,6 @@ signal emotional_increase(old_value, new_value)
 signal emotional_decrease(old_value, new_value)
 signal food_eaten(total_count: int)
 signal eating_milestone(milestone: int)
-
-const NORMAL_STIMULATION = 3.0
 
 var _update_pending = false
 
@@ -70,7 +69,7 @@ func regulate_stimulation():
 func increase_physical():
 	var old_val = physical
 	physical += 1
-	if physical == 6:
+	if physical == MAX_PHYSICAL:
 		physical = 5
 	physical_increase.emit(old_val, physical)
 	_schedule_update()
@@ -78,7 +77,7 @@ func increase_physical():
 func decrease_physical():
 	var old_val = physical
 	physical -= 1
-	if physical == 0:
+	if physical == MIN_PHYSICAL:
 		physical = 1
 	physical_decrease.emit(old_val, physical)
 	_schedule_update()
@@ -86,7 +85,7 @@ func decrease_physical():
 func increase_emotional():
 	var old_val = emotional
 	emotional += 1
-	if emotional == 6:
+	if emotional == MAX_EMOTIONAL:
 		emotional = 5
 	emotional_increase.emit(old_val, emotional)
 	_schedule_update()
@@ -94,7 +93,7 @@ func increase_emotional():
 func decrease_emotional():
 	var old_val = emotional
 	emotional -= 1
-	if emotional == 0:
+	if emotional == MIN_EMOTIONAL:
 		emotional = 1
 	emotional_decrease.emit(old_val, emotional)
 	_schedule_update()

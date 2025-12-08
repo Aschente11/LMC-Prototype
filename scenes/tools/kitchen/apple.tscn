@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://dm1pp5ptm48op"]
+[gd_scene load_steps=51 format=4 uid="uid://dm1pp5ptm48op"]
 
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_13wu3"]
 [ext_resource type="Script" uid="uid://dk6w5e5iwrqdf" path="res://scripts/apple.gd" id="1_bnc1m"]
@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://8b3rtomuc1gj" path="res://assets/sfx/apple_cut.mp3" id="8_7emso"]
 [ext_resource type="Animation" uid="uid://d1xnpyc08njjx" path="res://addons/godot-xr-tools/hands/animations/right/Grip 4.res" id="8_pnyyg"]
 [ext_resource type="Script" uid="uid://bmph4dbmr65ya" path="res://scripts/wake_up.gd" id="9_pnyyg"]
+[ext_resource type="Resource" uid="uid://dertgu7k8alls" path="res://addons/godot-xr-tools/hands/poses/pose_default_left.tres" id="9_qrok7"]
+[ext_resource type="Animation" uid="uid://do01jton6rk42" path="res://addons/godot-xr-tools/hands/animations/right/Cup.res" id="10_7nubh"]
 [ext_resource type="AudioStream" uid="uid://cotvb3asvqqj8" path="res://assets/sfx/make_bfast.mp3" id="10_n5q3g"]
 
 [sub_resource type="Animation" id="Animation_pjxyt"]
@@ -202,6 +204,11 @@ shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
 shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="Resource" id="Resource_olnrk"]
+script = ExtResource("7_pnyyg")
+closed_pose = ExtResource("10_7nubh")
+metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks2vi"]
 resource_name = "Apple.Sliced"
@@ -521,6 +528,19 @@ collision_layer = 4
 script = ExtResource("1_13wu3")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
+[node name="XRToolsGrabPointHand" type="Marker3D" parent="RightQuarter_Apple"]
+transform = Transform3D(0.465206, -0.841518, -0.274651, 0.508575, 0.508034, -0.695166, 0.724525, 0.183715, 0.664315, -0.0238936, 0.0505078, -0.0789604)
+script = ExtResource("5_0pvfo")
+hand_pose = ExtResource("9_qrok7")
+metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
+[node name="XRToolsGrabPointHand2" type="Marker3D" parent="RightQuarter_Apple"]
+transform = Transform3D(0.837483, 0.500535, -0.21929, -0.53831, 0.686581, -0.488703, -0.0940525, 0.527326, 0.844442, 0.0627795, 0.0302926, -0.0527871)
+script = ExtResource("5_0pvfo")
+hand = 1
+hand_pose = SubResource("Resource_olnrk")
+metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
 [node name="Apple_Sliced_02" type="MeshInstance3D" parent="RightQuarter_Apple"]
 transform = Transform3D(0.244044, -0.188833, 0.689064, 0.0843223, 0.730676, 0.170373, -0.709477, 0.0218874, 0.257272, -0.00304557, -0.0706456, 0.00693295)
 mesh = SubResource("ArrayMesh_7nubh")
@@ -549,6 +569,19 @@ visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
+
+[node name="XRToolsGrabPointHand" type="Marker3D" parent="RightQuarter_Apple2"]
+transform = Transform3D(-0.865426, -0.324323, -0.38191, 0.154801, 0.551868, -0.819441, 0.476526, -0.768283, -0.427395, 0.0516451, 0.0651494, 0.0162571)
+script = ExtResource("5_0pvfo")
+hand_pose = ExtResource("9_qrok7")
+metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
+[node name="XRToolsGrabPointHand2" type="Marker3D" parent="RightQuarter_Apple2"]
+transform = Transform3D(0.345053, -0.861619, -0.372228, -0.340724, 0.254542, -0.905052, 0.874556, 0.439116, -0.205744, 0.00243582, 0.0511693, 0.0963451)
+script = ExtResource("5_0pvfo")
+hand = 1
+hand_pose = SubResource("Resource_olnrk")
+metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
 [node name="Apple_Top" type="MeshInstance3D" parent="RightQuarter_Apple2"]
 transform = Transform3D(0.244044, -0.188833, 0.689064, 0.0843223, 0.730676, 0.170373, -0.709477, 0.0218874, 0.257272, -0.000723384, -0.0700715, 0.00962474)
@@ -585,6 +618,19 @@ collision_layer = 4
 script = ExtResource("1_13wu3")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
+[node name="XRToolsGrabPointHand" type="Marker3D" parent="LeftQuarter_Apple"]
+transform = Transform3D(0.260222, -0.883149, -0.3903, 0.550366, 0.467798, -0.691568, 0.793337, -0.0348461, 0.607786, -0.0180457, 0.0524001, -0.0833603)
+script = ExtResource("5_0pvfo")
+hand_pose = ExtResource("9_qrok7")
+metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
+[node name="XRToolsGrabPointHand2" type="Marker3D" parent="LeftQuarter_Apple"]
+transform = Transform3D(0.963648, 0.212066, -0.162517, -0.262101, 0.632326, -0.729018, -0.0518378, 0.745112, 0.664922, 0.0510168, 0.0734771, -0.0215766)
+script = ExtResource("5_0pvfo")
+hand = 1
+hand_pose = SubResource("Resource_olnrk")
+metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
 [node name="Apple_Sliced_02" type="MeshInstance3D" parent="LeftQuarter_Apple"]
 transform = Transform3D(0.244044, -0.188833, 0.689064, 0.0843223, 0.730676, 0.170373, -0.709477, 0.0218874, 0.257272, -0.00304557, -0.0706456, 0.00693295)
 mesh = SubResource("ArrayMesh_7nubh")
@@ -607,6 +653,19 @@ visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
+
+[node name="XRToolsGrabPointHand" type="Marker3D" parent="LeftQuarter_Apple2"]
+transform = Transform3D(-0.933187, -0.183208, -0.309191, 0.15253, 0.577091, -0.802312, 0.32542, -0.795866, -0.510589, 0.0515431, 0.0747387, 0.0285849)
+script = ExtResource("5_0pvfo")
+hand_pose = ExtResource("9_qrok7")
+metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
+[node name="XRToolsGrabPointHand2" type="Marker3D" parent="LeftQuarter_Apple2"]
+transform = Transform3D(0.18702, -0.922233, -0.338397, -0.369263, 0.253215, -0.894165, 0.910314, 0.292182, -0.293191, -0.0108001, 0.059168, 0.0985989)
+script = ExtResource("5_0pvfo")
+hand = 1
+hand_pose = SubResource("Resource_olnrk")
+metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
 [node name="Apple_Sliced_04" type="MeshInstance3D" parent="LeftQuarter_Apple2"]
 transform = Transform3D(0.244044, -0.188833, 0.689064, 0.0843223, 0.730676, 0.170373, -0.709477, 0.0218874, 0.257272, -0.00304557, -0.0706456, 0.00693295)
