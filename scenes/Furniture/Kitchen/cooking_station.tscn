@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://du2vn3nhn1mob"]
+[gd_scene load_steps=39 format=4 uid="uid://du2vn3nhn1mob"]
 
 [ext_resource type="Script" uid="uid://dxvofd15t145s" path="res://scripts/cooking_station.gd" id="1_c4ehr"]
 [ext_resource type="PackedScene" uid="uid://jvibwk5tiywe" path="res://assets/Furniture Shaders/cupboard_e.tscn" id="1_dd7b2"]
@@ -8,7 +8,9 @@
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="5_oaqh8"]
 [ext_resource type="PackedScene" uid="uid://ded52nhwa4dfj" path="res://scenes/others/fire.tscn" id="6_oaqh8"]
 [ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="8_2io8r"]
+[ext_resource type="PackedScene" uid="uid://dgjekjktwn5k3" path="res://scenes/others/water.tscn" id="10_thf8c"]
 [ext_resource type="AudioStream" uid="uid://cjeyyh1i3jh14" path="res://assets/sfx/stove-open.mp3" id="10_xg5d6"]
+[ext_resource type="PackedScene" uid="uid://dcj3aeqvitt61" path="res://scenes/tools/kitchen/plate.tscn" id="11_thf8c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pva7w"]
 resource_name = "White"
@@ -282,7 +284,23 @@ size = Vector3(0.0407715, 0.0268555, 0.0473251)
 radius = 0.0802017
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c4ehr"]
-size = Vector3(4.80424, 1.34619, 0.871582)
+size = Vector3(1.40752, 1.17955, 0.649811)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xg5d6"]
+size = Vector3(1.80908, 1.27979, 0.859863)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_thf8c"]
+height = 0.417053
+radius = 0.0249023
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4jqf"]
+albedo_color = Color(0.611765, 0.392157, 0.156863, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nj2ia"]
+material = SubResource("StandardMaterial3D_c4jqf")
+top_radius = 0.03
+bottom_radius = 0.03
+height = 0.001
 
 [node name="CookingStation" type="Node3D"]
 script = ExtResource("1_c4ehr")
@@ -359,8 +377,16 @@ stream = ExtResource("10_xg5d6")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.658394, -0.173096, -0.293701)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956788, -0.256418, -0.404587)
 shape = SubResource("BoxShape3D_c4ehr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.664636, -0.139893, -0.262506)
+shape = SubResource("BoxShape3D_xg5d6")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.393, -0.148813, -0.295105)
+shape = SubResource("BoxShape3D_xg5d6")
 
 [node name="OISStrikeReceiver2" type="Node3D" parent="."]
 script = ExtResource("8_2io8r")
@@ -403,7 +429,105 @@ collision_mask = 536870912
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
 shape = SubResource("SphereShape3D_c4ehr")
 
+[node name="water" parent="." instance=ExtResource("10_thf8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.857097, 0.535268, -0.483649)
+
+[node name="Area3D" type="Area3D" parent="water"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="water/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.204806, 0)
+shape = SubResource("CylinderShape3D_thf8c")
+
+[node name="OISStrikeReceiver5" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82962, 0.333226, -0.814916)
+script = ExtResource("8_2io8r")
+group = "hand"
+metadata/_custom_type_script = "uid://cci3xkvnplit7"
+
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver5"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver5/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
+shape = SubResource("SphereShape3D_c4ehr")
+
+[node name="plate" parent="." instance=ExtResource("11_thf8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20797, 0.33905, -0.312311)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plate"]
+transform = Transform3D(0.695, 0, 0, 0, 0.695, 0, 0, 0, 0.695, -0.0350102, 0.00440797, -0.0255822)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="plate/MeshInstance3D"]
+transform = Transform3D(1.02398, 0, 0.441505, 0, 1.11511, 0, -0.441505, 0, 1.02398, 0.0749005, -9.26852e-06, 0.0712714)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="plate/MeshInstance3D"]
+transform = Transform3D(1.11511, 0, 0, 0, 1.11511, 0, 0, 0, 1.11511, 0.027229, 0, 0.0387763)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="plate/MeshInstance3D"]
+transform = Transform3D(1.02398, 0, 0.441505, 0, 1.11511, 0, -0.441505, 0, 1.02398, 0.0642895, 0, 0.0455252)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../../..")
+
+[node name="plate2" parent="." instance=ExtResource("11_thf8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16175, 0.391421, -0.355822)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plate2"]
+transform = Transform3D(0.5592, 0, -0.412699, 0, 0.695, 0, 0.412699, 0, 0.5592, 0.020788, 0.00440797, -0.0200052)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="plate2/MeshInstance3D"]
+transform = Transform3D(1.02398, 0, 0.441505, 0, 1.11511, 0, -0.441505, 0, 1.02398, -0.0096916, -9.23872e-06, 0.0786121)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../MeshInstance3D3")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="plate2/MeshInstance3D"]
+transform = Transform3D(1.11511, 0, 0, 0, 1.11377, 0.0546866, 0, -0.0546866, 1.11377, 0.0376363, 0.00141507, 0.078002)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="plate2/MeshInstance3D"]
+transform = Transform3D(1.11511, 0, 0, 0, 1.11511, 0, 0, 0, 1.11511, -0.0234939, 0, 0.0387764)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="plate2/MeshInstance3D"]
+transform = Transform3D(1.02398, 0, 0.441505, 0, 1.11511, 0, -0.441505, 0, 1.02398, 0.0135667, 0, 0.0455253)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../../..")
+
+[node name="plate3" parent="." instance=ExtResource("11_thf8c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26855, 0.391421, -0.164168)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="plate3"]
+transform = Transform3D(-0.0916056, 0, -0.688936, 0, 0.695, 0, 0.688936, 0, -0.0916056, 0.0268469, 0.00440797, -0.0126435)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="plate3/MeshInstance3D"]
+transform = Transform3D(1.11511, -4.65661e-10, 0, 2.47604e-16, 1.11377, 0.0546866, 0, -0.0546866, 1.11377, 0.0380364, 0.00676227, 0.0079596)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="plate3/MeshInstance3D"]
+transform = Transform3D(1.11511, 0, 0, 0, 1.11511, 0, 0, 0, 1.11511, 0.0272289, 0, 0.0387763)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="plate3/MeshInstance3D"]
+transform = Transform3D(1.02398, 0, 0.441505, 0, 1.11511, 0, -0.441505, 0, 1.02398, 0.0642895, 0, 0.0455252)
+mesh = SubResource("CylinderMesh_nj2ia")
+skeleton = NodePath("../../..")
+
 [connection signal="action_started" from="OISStrikeReceiver1" to="." method="_on_ois_strike_receiver_1_action_started"]
 [connection signal="action_started" from="OISStrikeReceiver2" to="." method="_on_ois_strike_receiver_2_action_started"]
 [connection signal="action_started" from="OISStrikeReceiver3" to="." method="_on_ois_strike_receiver_3_action_started"]
 [connection signal="action_started" from="OISStrikeReceiver4" to="." method="_on_ois_strike_receiver_action_started"]
+[connection signal="action_started" from="OISStrikeReceiver5" to="." method="_on_ois_strike_receiver_5_action_started"]

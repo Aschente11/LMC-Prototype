@@ -505,9 +505,10 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_hfvac")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wcons"]
-size = Vector3(0.4646, 0.951843, 0.23645)
+size = Vector3(0.385498, 0.672653, 0.23645)
 
 [node name="T_shirt_gltf_zip" type="RigidBody3D"]
+collision_layer = 4
 script = ExtResource("1_d7i0n")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
@@ -515,6 +516,7 @@ metadata/_custom_type_script = "uid://bs5crmi43kekt"
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -2.07117, 0)
 
 [node name="Cloth" type="MeshInstance3D" parent="T_shirt_gltf_zip_Scene_Node"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0210963, 0.496509, 0)
 
 [node name="Ribbing_Node" type="MeshInstance3D" parent="T_shirt_gltf_zip_Scene_Node/Cloth"]
 mesh = SubResource("ArrayMesh_uorcf")
@@ -552,7 +554,7 @@ hand = 1
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.116669, -0.0575561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0395509, -0.0147174, -0.0575561)
 shape = SubResource("BoxShape3D_wcons")
 
 [node name="InventoryItem" type="Node3D" parent="." node_paths=PackedStringArray("defined_mesh", "defined_collision_shape", "grab_point_right", "grab_point_left")]

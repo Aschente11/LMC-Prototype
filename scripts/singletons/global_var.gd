@@ -5,6 +5,7 @@ var stimulation = 2.0 #[1, 5]
 var physical = 3.0 #[1, 5]
 var emotional = 3.0 #[1, 5]
 var foods_eaten_count: int = 0
+var dust_cleaned_count: int = 0
 
 const MIN_STIMULATION = 1.0
 const MAX_STIMULATION = 5.0
@@ -21,6 +22,8 @@ signal emotional_increase(old_value, new_value)
 signal emotional_decrease(old_value, new_value)
 signal food_eaten(total_count: int)
 signal eating_milestone(milestone: int)
+signal cleaning_milestone(milestone: int)
+
 
 const NORMAL_STIMULATION = 3.0
 
@@ -109,3 +112,11 @@ func add_food_eaten():
 		# Increase physical and emotional by 1 every 4 foods
 		increase_physical()
 		increase_emotional()
+
+func add_dust_cleaned():
+	dust_cleaned_count += 1
+	
+	if dust_cleaned_count == 25:
+		cleaning_milestone.emit(dust_cleaned_count)
+		decrease_emotional()
+		decrease_physical()

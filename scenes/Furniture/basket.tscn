@@ -1,8 +1,5 @@
-[gd_scene load_steps=9 format=4 uid="uid://cj6iq8bwdpvf3"]
+[gd_scene load_steps=6 format=4 uid="uid://cj6iq8bwdpvf3"]
 
-[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="1_xhlag"]
-[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="2_xvv0i"]
-[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="3_sagpt"]
 [ext_resource type="PackedScene" uid="uid://bddu7yu220vbk" path="res://scenes/others/clothes.tscn" id="4_a737t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2thf"]
@@ -46,9 +43,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_beexp")
 
-[sub_resource type="SphereMesh" id="SphereMesh_ak04u"]
-radius = 0.2
-height = 0.4
+[sub_resource type="BoxShape3D" id="BoxShape3D_jjhap"]
+size = Vector3(1, 0.0842285, 0.819336)
 
 [node name="Node3D" type="Node3D"]
 
@@ -57,20 +53,18 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7rt2p")
 skeleton = NodePath("")
 
-[node name="InventorySlot" type="Node3D" parent="plastic basket" node_paths=PackedStringArray("default_object")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0992742, 0)
-script = ExtResource("1_xhlag")
-default_object = NodePath("../../T_shirt_gltf_zip")
-group_required = "clothes"
-metadata/_custom_type_script = "uid://d2j64x8gnsuue"
-
-[node name="SnapZone" parent="plastic basket/InventorySlot" instance=ExtResource("2_xvv0i")]
-grab_distance = 0.2
-initial_object = NodePath("../../../T_shirt_gltf_zip")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="plastic basket/InventorySlot"]
-mesh = SubResource("SphereMesh_ak04u")
-surface_material_override/0 = ExtResource("3_sagpt")
-
 [node name="T_shirt_gltf_zip" parent="." instance=ExtResource("4_a737t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.746354, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17064, 0)
+
+[node name="T_shirt_gltf_zip2" parent="." instance=ExtResource("4_a737t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17064, 0)
+
+[node name="T_shirt_gltf_zip3" parent="." instance=ExtResource("4_a737t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17064, 0)
+
+[node name="T_shirt_gltf_zip4" parent="." instance=ExtResource("4_a737t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17064, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0568343, 0)
+shape = SubResource("BoxShape3D_jjhap")

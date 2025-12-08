@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://bfiyhau5xxks3"]
+[gd_scene load_steps=21 format=4 uid="uid://bfiyhau5xxks3"]
 
 [ext_resource type="Script" uid="uid://bfmtkd0u6ncre" path="res://scripts/vacuum.gd" id="1_0rn0n"]
 [ext_resource type="Texture2D" uid="uid://dec8vfn0610jq" path="res://assets/tools/vacuumed-cleaner/textures/texture_diff.png" id="1_83dp8"]
@@ -9,6 +9,9 @@
 [ext_resource type="Animation" uid="uid://bi1l6lre2w2lp" path="res://addons/godot-xr-tools/hands/animations/left/Hold.res" id="7_0rn0n"]
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="8_cxujj"]
 [ext_resource type="Animation" uid="uid://bv5tuc1kjv0k5" path="res://addons/godot-xr-tools/hands/animations/right/Hold.res" id="9_kbj0t"]
+[ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="10_wde4x"]
+[ext_resource type="Script" uid="uid://cgettxdui2mmi" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_one_hand_tool_asm.gd" id="11_8ohhw"]
+[ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="12_8yiyp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rolgj"]
 resource_name = "lambert2"
@@ -71,6 +74,9 @@ script = ExtResource("8_cxujj")
 closed_pose = ExtResource("9_kbj0t")
 metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rqtvv"]
+size = Vector3(0.358398, 0.0854492, 0.181885)
+
 [node name="vacuum" type="RigidBody3D"]
 collision_layer = 4
 script = ExtResource("1_0rn0n")
@@ -101,3 +107,24 @@ script = ExtResource("6_0rn0n")
 hand = 1
 hand_pose = SubResource("Resource_kbj0t")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
+[node name="OISActorComponent" type="Node3D" parent="."]
+script = ExtResource("10_wde4x")
+receiver_group = "dust"
+metadata/_custom_type_script = "uid://cg1lorgur84yy"
+
+[node name="OISOneHandToolASM" type="Node3D" parent="OISActorComponent"]
+script = ExtResource("11_8ohhw")
+metadata/_custom_type_script = "uid://cgettxdui2mmi"
+
+[node name="OISColliderArea3D" type="Node3D" parent="OISActorComponent"]
+script = ExtResource("12_8yiyp")
+metadata/_custom_type_script = "uid://b4ao0gdf7khuq"
+
+[node name="Area3D" type="Area3D" parent="OISActorComponent/OISColliderArea3D"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISActorComponent/OISColliderArea3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000240326, 0.0368268, 0.0245398)
+shape = SubResource("BoxShape3D_rqtvv")
