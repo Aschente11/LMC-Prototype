@@ -1,7 +1,7 @@
-[gd_scene load_steps=167 format=4 uid="uid://bdk4v65llfcq5"]
+[gd_scene load_steps=169 format=4 uid="uid://bdk4v65llfcq5"]
 
 [ext_resource type="Script" uid="uid://catjpaekac6an" path="res://scripts/day_2_main.gd" id="1_ymwfo"]
-[ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_kcbbm"]
+[ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://xr_player.tscn" id="2_kcbbm"]
 [ext_resource type="Texture2D" uid="uid://cch4178fvpwtc" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_baseColor.jpg" id="3_yniqi"]
 [ext_resource type="Texture2D" uid="uid://02w3eaoutnsd" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_specularLevel.jpg" id="4_yhcdh"]
 [ext_resource type="Texture2D" uid="uid://44bxquvggmos" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_normal.jpg" id="5_jmq4f"]
@@ -80,7 +80,9 @@
 [ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="80_yniqi"]
 [ext_resource type="PackedScene" uid="uid://ctfj38t4j8qmq" path="res://scenes/distractions/dust.tscn" id="81_jmq4f"]
 [ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scenes/day_night_cycle.gd" id="81_yhcdh"]
+[ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="82_fmiir"]
 [ext_resource type="PackedScene" uid="uid://bd1ns3arb2768" path="res://scenes/Furniture/Bedroom/canvas.tscn" id="82_jmq4f"]
+[ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="83_cqug8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -1194,7 +1196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63535, 0.722356, -6.35067)
 collision_mask = 196615
 
 [node name="plastic basket" parent="." instance=ExtResource("80_yniqi")]
-transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, -3.59181, 0.0123488, 1.27287)
+transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, -6.39261, 0.0123488, 0.586211)
 
 [node name="DayNightCycle" type="Node3D" parent="."]
 script = ExtResource("81_yhcdh")
@@ -1308,6 +1310,12 @@ transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -3
 
 [node name="Dust" parent="Dust16" instance=ExtResource("81_jmq4f")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
+
+[node name="Apple" parent="." instance=ExtResource("82_fmiir")]
+transform = Transform3D(0.999505, -0.0314456, 0, 0.0314456, 0.999505, 0, 0, 0, 1, -5.56641, 1.40784, 5.53918)
+
+[node name="knife" parent="." instance=ExtResource("83_cqug8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45626, 1.43501, 5.84346)
 
 [connection signal="body_entered" from="sit" to="." method="_on_sit_body_entered"]
 [connection signal="body_exited" from="sit" to="." method="_on_sit_body_exited"]

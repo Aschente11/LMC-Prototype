@@ -54,16 +54,16 @@ mesh = SubResource("ArrayMesh_7rt2p")
 skeleton = NodePath("")
 
 [node name="T_shirt_gltf_zip" parent="." instance=ExtResource("4_a737t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17064, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0700841, 0.524242, 0.143567)
 
 [node name="T_shirt_gltf_zip2" parent="." instance=ExtResource("4_a737t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17064, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0700841, 0.524242, 0)
 
 [node name="T_shirt_gltf_zip3" parent="." instance=ExtResource("4_a737t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17064, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.162788, 0.524242, 0)
 
 [node name="T_shirt_gltf_zip4" parent="." instance=ExtResource("4_a737t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17064, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.188801, 0.524242, 0.154217)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0568343, 0)

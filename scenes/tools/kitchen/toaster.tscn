@@ -449,14 +449,14 @@ shadow_mesh = SubResource("ArrayMesh_4k22u")
 [sub_resource type="ViewportTexture" id="ViewportTexture_iubw7"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpmsq"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a7kvt"]
 resource_local_to_scene = true
 transparency = 1
 albedo_texture = SubResource("ViewportTexture_iubw7")
 
 [sub_resource type="QuadMesh" id="QuadMesh_jpmsq"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_jpmsq")
+material = SubResource("StandardMaterial3D_a7kvt")
 
 [sub_resource type="Animation" id="Animation_a7kvt"]
 resource_name = "DONE"

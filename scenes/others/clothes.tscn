@@ -6,6 +6,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajjir"]
 resource_name = "Body_FRONT_2664"
+albedo_color = Color(1, 0.772549, 0.682353, 0.760784)
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_riiru"]
@@ -338,6 +339,7 @@ shadow_mesh = SubResource("ArrayMesh_0qoiu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsvvq"]
 resource_name = "Sleeves_FRONT_2669"
+albedo_color = Color(1, 0.772549, 0.682353, 0.760784)
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_t04th"]
@@ -561,6 +563,7 @@ shape = SubResource("BoxShape3D_wcons")
 script = ExtResource("3_wcons")
 defined_mesh = NodePath("../T_shirt_gltf_zip_Scene_Node/Cloth")
 defined_collision_shape = NodePath("../CollisionShape3D")
+preferred_scale = 0.1
 grab_point_right = NodePath("../XRToolsGrabPointHand2")
 grab_point_left = NodePath("../XRToolsGrabPointHand")
 metadata/_custom_type_script = "uid://dq86gvhe6d20d"
