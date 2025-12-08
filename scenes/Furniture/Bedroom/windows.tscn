@@ -169,6 +169,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 [node name="window" type="Node3D"]
 
 [node name="frame" type="MeshInstance3D" parent="."]
+cast_shadow = 2
 mesh = SubResource("ArrayMesh_dyqoc")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_xh3c8")
@@ -186,6 +187,7 @@ metadata/extras = {
 
 [node name="handle" type="MeshInstance3D" parent="frame/glass"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.839518, 0.550126, 0.0181614)
+cast_shadow = 2
 mesh = SubResource("ArrayMesh_4ihyk")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_mdfsv")

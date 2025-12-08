@@ -1,5 +1,8 @@
 extends Node
 
+signal success_qte
+signal failed_qte
+
 @onready var left_controller : XRController3D = $"../XROrigin3D/XRController3DLeft"
 @onready var right_controller : XRController3D = $"../XROrigin3D/XRController3DRight"
 
@@ -37,15 +40,13 @@ var QTE_TIME_LIMIT : float = 8 #seconds to finish the qte
 var QTE_ACTION_TIME_LIMIT : float = 2 #seconds between the actions
 var QTE_TIMER : float = 8
 var QTE_ACTION_TIMER : float = 2
-signal success_qte
-signal failed_qte
 
 func _ready() -> void:
 	QTE_LAYER = %QTE_LAYER
 	QTE_BUTTON_FILL = %QTE_BUTTON/CenterContainer/VBoxContainer/TextureRect/FILL
 	QTE_BUTTON_TEXT = %QTE_BUTTON/CenterContainer/VBoxContainer/Label2
 	
-	FOR_DEBUGGING = $"../XROrigin3D/XRCamera3D/QTE/MeshInstance3D"
+	#FOR_DEBUGGING = $"../XROrigin3D/XRCamera3D/QTE/MeshInstance3D"
 	
 	# Initialize VR interface
 	xr_interface = XRServer.find_interface("OpenXR")
@@ -70,7 +71,7 @@ func _ready() -> void:
 	if debug_enabled:
 		create_debug_label()
 		
-	FOR_DEBUGGING.visible = false
+	#FOR_DEBUGGING.visible = false
 
 # Fixed VR button checking - ONLY for debug display, no input handling
 func check_vr_button_pressed(button_name: String) -> bool:
@@ -249,10 +250,13 @@ func start_qte() -> void:
 		
 	if QTE_FEEDBACK:
 		QTE_FEEDBACK.text = "WAKE ME UP:(("
-		
-	await get_tree().create_timer(1).timeout
 	
 	if QTE_FEEDBACK:
 		QTE_FEEDBACK.text = "'B'"
+		
+	await get_tree().create_timer(3).timeout
+	
+	if QTE_BUTTON_TEXT:
+				QTE_BUTTON_TEXT.text = "now!"
 		
 	QTE_STATUS = QTE_STATES.RUNNING

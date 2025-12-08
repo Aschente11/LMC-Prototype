@@ -1,22 +1,27 @@
-[gd_scene load_steps=167 format=4 uid="uid://cd7xdpifxc61b"]
+[gd_scene load_steps=191 format=4 uid="uid://cd7xdpifxc61b"]
 
 [ext_resource type="Script" uid="uid://cl5wd71jmc66d" path="res://main.gd" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_sugp2"]
+[ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="3_6nfnn"]
 [ext_resource type="Texture2D" uid="uid://cch4178fvpwtc" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_baseColor.jpg" id="3_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://dyoxl56y3edl" path="res://scenes/UI/wake_up.tscn" id="4_4ue30"]
 [ext_resource type="Texture2D" uid="uid://02w3eaoutnsd" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_specularLevel.jpg" id="4_pm3ni"]
 [ext_resource type="Texture2D" uid="uid://44bxquvggmos" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_normal.jpg" id="4_tefeu"]
 [ext_resource type="Texture2D" uid="uid://bykexfm5nad2i" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_roughness.jpg" id="5_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="6_k42av"]
 [ext_resource type="Texture2D" uid="uid://hm07br2u6yis" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-diffuse.jpg" id="6_trceg"]
 [ext_resource type="Texture2D" uid="uid://ikro6b4d54j5" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-ao.jpg" id="7_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="7_gr8w0"]
 [ext_resource type="Texture2D" uid="uid://7bljh8e18a2x" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Color.jpg" id="7_qkpxi"]
 [ext_resource type="Texture2D" uid="uid://p6vxlfnbn3w3" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Color.jpg" id="7_y6deb"]
 [ext_resource type="Texture2D" uid="uid://c3e3ci04ak5yh" path="res://assets/textures/Tiles009-4K/Tiles009_4K_AmbientOcclusion.jpg" id="8_5q0nq"]
+[ext_resource type="Script" uid="uid://dcpfx4msftq33" path="res://scripts/qte_manager.gd" id="8_673bd"]
 [ext_resource type="Texture2D" uid="uid://dlohbfrsc2qks" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-specular.jpg" id="8_jkv2x"]
 [ext_resource type="Texture2D" uid="uid://dn1p63kntkvho" path="res://assets/textures/Plaster001-4K/Plaster001_4K_NormalGL.jpg" id="8_og1vs"]
 [ext_resource type="Texture2D" uid="uid://37j83cwlfteh" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Roughness.jpg" id="9_2wyq8"]
 [ext_resource type="Texture2D" uid="uid://chibr5vli2kq8" path="res://assets/textures/Tiles009-4K/Tiles009_4K_NormalGL.jpg" id="9_dgi5k"]
 [ext_resource type="Texture2D" uid="uid://b8q2irnnfslf2" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-normal.jpg" id="9_jbj1t"]
 [ext_resource type="Texture2D" uid="uid://ixiikv87pfp2" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Roughness.jpg" id="10_j8jky"]
+[ext_resource type="AudioStream" uid="uid://wodio3h1pjpf" path="res://assets/sfx/iphone_alarm.mp3" id="10_vrx01"]
 [ext_resource type="PackedScene" uid="uid://dlac4kfroxrdv" path="res://scenes/Furniture/ceiling_light.tscn" id="14_vxglm"]
 [ext_resource type="PackedScene" uid="uid://ckp3opsts403i" path="res://scenes/Furniture/door.tscn" id="15_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://kh7sb5q48xi0" path="res://scenes/Furniture/Kitchen/cupboards.tscn" id="16_yq6so"]
@@ -33,11 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://bb1oj52yyc6so" path="res://scenes/tools/board.tscn" id="21_r4e17"]
 [ext_resource type="PackedScene" uid="uid://o1nfmqbymovr" path="res://scenes/others/cardboardBox.tscn" id="22_a82wo"]
 [ext_resource type="PackedScene" uid="uid://b63336v121wu1" path="res://scenes/Furniture/Kitchen/light_switch.tscn" id="22_dgi5k"]
-[ext_resource type="AudioStream" uid="uid://dm6vjaowvorvl" path="res://assets/sfx/yippee-tbh.mp3" id="24_vxglm"]
-[ext_resource type="Script" uid="uid://cxy8oxoldmaoc" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter_manager.gd" id="25_2f3dj"]
 [ext_resource type="PackedScene" uid="uid://dsupuweunu8ri" path="res://scenes/tools/meta.tscn" id="26_gdvew"]
-[ext_resource type="Script" uid="uid://ek4xpaefjlux" path="res://addons/ateneo-virtual-reality-escape/teleportation-system/teleporter.gd" id="26_yq6so"]
-[ext_resource type="Shader" uid="uid://dn36xw56c7i80" path="res://shaders/main.gdshader" id="27_fv21b"]
 [ext_resource type="PackedScene" uid="uid://lbdlwao4nkbv" path="res://scenes/Furniture/Bedroom/windows.tscn" id="27_mlv25"]
 [ext_resource type="PackedScene" uid="uid://cyj20vbwq2jgh" path="res://scenes/Furniture/cr_door.tscn" id="31_nvyfr"]
 [ext_resource type="PackedScene" uid="uid://fvr0v4d8fhpa" path="res://scenes/Furniture/wall_light.tscn" id="32_ty1g6"]
@@ -86,6 +87,247 @@
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="83_11yus"]
 [ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="86_vtx2l"]
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="87_63lxy"]
+[ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scenes/day_night_cycle.gd" id="88_fjhjs"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gfqyt"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+dof_blur_amount = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm03u"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_v0wtd"]
+material = SubResource("StandardMaterial3D_qm03u")
+size = Vector2(2.59, 1.065)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iv873"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sgvw8"]
+material = SubResource("StandardMaterial3D_iv873")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6pwki"]
+blend_mode = 3
+
+[sub_resource type="LabelSettings" id="LabelSettings_lfu3l"]
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwxhj"]
+font_size = 80
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_63lxy"]
+viewport_path = NodePath("WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tljd"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_63lxy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hml3"]
+render_priority = 0
+shader = ExtResource("79_ih3m7")
+shader_parameter/ring_color = Color(1, 1, 1, 1)
+shader_parameter/ring_frequency = 10.0
+shader_parameter/ring_portion = 0.0
+shader_parameter/move_speed = 15.0
+shader_parameter/smooth_edge = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mgpkq"]
+material = SubResource("ShaderMaterial_6hml3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xmrkg"]
+transparency = 1
+albedo_color = Color(0.313726, 1, 1, 0.52549)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wvlrk"]
+transparency = 1
+albedo_color = Color(0.313726, 1, 1, 0.52549)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ln8bc"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+dof_blur_amount = 1.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ncvxg"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+dof_blur_amount = 0.5
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_t2662"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+dof_blur_amount = 0.2
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_oofti"]
+exposure_multiplier = 2.0
+dof_blur_far_enabled = true
+dof_blur_far_distance = 0.01
+
+[sub_resource type="Animation" id="Animation_oofti"]
+resource_name = "Blinking"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:attributes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.1, 2.5, 2.76667, 3),
+"transitions": PackedFloat32Array(2.82843, 1, 1, 1, 2.92817),
+"update": 0,
+"values": [SubResource("CameraAttributesPractical_ln8bc"), SubResource("CameraAttributesPractical_ncvxg"), SubResource("CameraAttributesPractical_t2662"), SubResource("CameraAttributesPractical_oofti"), SubResource("CameraAttributesPractical_gfqyt")]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -0.566205, -0.805268, 1, 1, 0, -0.771, -0.805, 2.1, 1, 0, -0.566, -0.805, 3, 1, 0, -1.336, -0.805, 3.5, 1, 0, -0.566, -0.805)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.448876, -0.796395, 1, 1, 0, 0.669, -0.796, 2.1, 1, 0, 0.449, -0.796, 3, 1, 0, 1.24, -0.796, 3.5, 1, 0, 0.449, -0.796)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 3.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("XROrigin3D/XRCamera3D/QTEv2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rkkpu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:attributes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CameraAttributesPractical_gfqyt")]
+}
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, -0.566205, -0.805268)
+tracks/2/type = "position_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.448876, -0.796395)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("XROrigin3D/XRCamera3D/QTEv2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qm03u"]
+_data = {
+&"Blinking": SubResource("Animation_oofti"),
+&"RESET": SubResource("Animation_rkkpu")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -572,15 +814,6 @@ metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 radius = 0.2
 height = 0.4
 
-[sub_resource type="QuadMesh" id="QuadMesh_tel4y"]
-custom_aabb = AABB(-5000, -5000, -5000, 10000, 10000, 10000)
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkpxi"]
-render_priority = 0
-shader = ExtResource("27_fv21b")
-shader_parameter/albedo = Color(0, 0, 0, 1)
-
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gdvew"]
 panorama = ExtResource("71_a82wo")
 
@@ -621,11 +854,175 @@ top_radius = 0.8
 bottom_radius = 0.8
 height = 5.0
 
+[sub_resource type="Animation" id="Animation_ymwfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DayNightCycle/DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_671eh"]
+resource_name = "daynightcycle"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DayNightCycle/DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kcbbm"]
+_data = {
+&"RESET": SubResource("Animation_ymwfo"),
+&"daynightcycle": SubResource("Animation_671eh")
+}
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_0wfyh")
 
-[node name="XRPlayer" parent="." instance=ExtResource("2_sugp2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.04143, 1.09375, -5.2531)
+[node name="WakingUpPlayer" type="Node3D" parent="."]
+transform = Transform3D(-3.53704e-09, -0.767546, -0.640994, -3.35505e-08, 0.640994, -0.767546, 1, 1.87908e-08, -2.80188e-08, -10.184, 0.983079, -8.05212)
+
+[node name="XROrigin3D" type="XROrigin3D" parent="WakingUpPlayer"]
+current = true
+
+[node name="XRToolsPlayerBody" type="CharacterBody3D" parent="WakingUpPlayer/XROrigin3D"]
+top_level = true
+script = ExtResource("3_6nfnn")
+metadata/_custom_type_script = "uid://bqqdxydvmjgir"
+
+[node name="XRCamera3D" type="XRCamera3D" parent="WakingUpPlayer/XROrigin3D"]
+transform = Transform3D(1, 3.01981e-14, 2.30926e-14, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0.105043, 0, 0)
+attributes = SubResource("CameraAttributesPractical_gfqyt")
+fov = 51.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, -1.92966e-11, -2.4139e-09, -2.4139e-09, -0.0159865, -0.999872, -1.92966e-11, 0.999872, -0.0159865, 0, -0.566205, -0.805268)
+mesh = SubResource("PlaneMesh_v0wtd")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, -1.92983e-11, -2.4139e-09, -2.4139e-09, -0.0159866, -0.999872, -1.92983e-11, 0.999872, -0.0159866, 0, 0.448876, -0.796395)
+mesh = SubResource("PlaneMesh_v0wtd")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D"]
+transform = Transform3D(1.42, -5.32907e-15, 3.55271e-15, 0, 1.42, -7.47624e-16, 3.55271e-15, -7.47624e-16, 1.42, 0.0732703, 0.231474, -0.397363)
+mesh = SubResource("SphereMesh_sgvw8")
+
+[node name="QTE_Debugging" type="Node3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 1.77636e-15, 0, 1, -2.98023e-08, -1.77636e-15, 2.98023e-08, 1, 0, 0, 0)
+visible = false
+
+[node name="QTE_LAYER" type="Node" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging"]
+unique_name_in_owner = true
+process_mode = 3
+
+[node name="CanvasLayer" type="CanvasLayer" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER"]
+
+[node name="Panel" type="Panel" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer"]
+material = SubResource("CanvasItemMaterial_6pwki")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="QTE_TIMER" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel"]
+layout_mode = 0
+offset_right = 325.0
+offset_bottom = 55.0
+text = "TIMER: 0"
+label_settings = SubResource("LabelSettings_lfu3l")
+
+[node name="QTE_ACTION_TIMER" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel"]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 325.0
+offset_bottom = 110.0
+text = "NEXT ACTION TIMER: 0"
+label_settings = SubResource("LabelSettings_lfu3l")
+
+[node name="QTE" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel"]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 435.0
+offset_bottom = 165.0
+text = "QTE: "
+label_settings = SubResource("LabelSettings_lfu3l")
+
+[node name="QTE_PLAYER" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel"]
+layout_mode = 0
+offset_top = 165.0
+offset_right = 435.0
+offset_bottom = 220.0
+text = "PLAYER QTE: "
+label_settings = SubResource("LabelSettings_lfu3l")
+
+[node name="QTE_FEEDBACK" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel"]
+layout_mode = 0
+offset_top = 220.0
+offset_right = 1152.0
+offset_bottom = 330.0
+text = "GET READY"
+label_settings = SubResource("LabelSettings_bwxhj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QTEv2" type="Node3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D"]
+
+[node name="Screen" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2"]
+transform = Transform3D(0.375, -6.21725e-15, 2.22045e-15, -2.66454e-15, 0.00589201, -0.374954, 8.88178e-15, 0.374954, 0.00589201, 0, -0.087656, -0.793574)
+material_override = SubResource("StandardMaterial3D_0tljd")
+mesh = SubResource("PlaneMesh_mgpkq")
+skeleton = NodePath("")
+
+[node name="FlashingRing" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2"]
+transform = Transform3D(0.09, -1.9984e-15, 1.11022e-16, 0, 0.00141408, -0.0899889, 1.55431e-15, 0.0899889, 0.00141408, 0, -0.087656, -0.793574)
+mesh = SubResource("PlaneMesh_mgpkq")
+skeleton = NodePath("")
+
+[node name="SubViewport" type="SubViewport" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2"]
+transparent_bg = true
+
+[node name="QTE_BUTTON" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2/SubViewport" instance=ExtResource("4_4ue30")]
+unique_name_in_owner = true
+
+[node name="XRController3DLeft" type="XRController3D" parent="WakingUpPlayer/XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="WakingUpPlayer/XROrigin3D/XRController3DLeft" instance=ExtResource("6_k42av")]
+hand_material_override = SubResource("StandardMaterial3D_xmrkg")
+
+[node name="XRController3DRight" type="XRController3D" parent="WakingUpPlayer/XROrigin3D"]
+tracker = &"right_hand"
+
+[node name="RightHand" parent="WakingUpPlayer/XROrigin3D/XRController3DRight" instance=ExtResource("7_gr8w0")]
+hand_material_override = SubResource("StandardMaterial3D_wvlrk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WakingUpPlayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_qm03u")
+}
+
+[node name="QTE" type="Node" parent="WakingUpPlayer"]
+script = ExtResource("8_673bd")
+
+[node name="Alarm" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_vrx01")
 
 [node name="Room" type="Node3D" parent="."]
 
@@ -637,18 +1034,21 @@ shape = SubResource("BoxShape3D_1epgm")
 
 [node name="Floor" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, 6.04379)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_kmb1v")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_ndrjj")
 
 [node name="Floor2" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.455, 0, -6.26832)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_fuf3a")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_ih3m7")
 
 [node name="Floor3" type="MeshInstance3D" parent="Room/Floor4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603302, 0, -0.238458)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_c6pm6")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_b6ruc")
@@ -667,6 +1067,7 @@ shape = SubResource("BoxShape3D_2cjbq")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Room"]
 transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -3.455, 4.255, 0.002)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_pibwh")
 skeleton = NodePath("../..")
 
@@ -674,6 +1075,7 @@ skeleton = NodePath("../..")
 
 [node name="Front" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.455, 2.494, 10)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_tbgi4")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
@@ -685,6 +1087,7 @@ shape = SubResource("ConcavePolygonShape3D_ya4ey")
 
 [node name="Back" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.08006, 2.494, -10)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_a8y0u")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
@@ -703,6 +1106,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_xaipn")
 
 [node name="Right" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, -3.679)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_trceg")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
@@ -715,18 +1119,21 @@ shape = SubResource("BoxShape3D_yq6so")
 
 [node name="Right2" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 4.013, 2.494, 8.83054)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_xrs0c")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_11yus")
 
 [node name="Right3" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, -8.74227e-08, -0.00139622, -0.999999, 1.22062e-10, -0.999999, 0.00139622, 4.013, -0.510135, 4.94733)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_ih3m7")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_155or")
 
 [node name="Left" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.949, 2.494, 1.29432)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_dp3eg")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
@@ -745,6 +1152,7 @@ skeleton = NodePath("../../..")
 
 [node name="Bath Front" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -6.898, 2.149, 2.046)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_od4ux")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
@@ -770,6 +1178,7 @@ mesh = SubResource("PlaneMesh_a82wo")
 
 [node name="Bath Back" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -6.898, 2.14889, -2.5102)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_od4ux")
 surface_material_override/0 = SubResource("ShaderMaterial_2s0kr")
 
@@ -782,6 +1191,7 @@ shape = SubResource("BoxShape3D_xhfw6")
 
 [node name="Above Door" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -2.78871, 4.05571, -0.23165)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_kjtvk")
 surface_material_override/0 = SubResource("ShaderMaterial_vtx2l")
 
@@ -819,10 +1229,12 @@ mesh = SubResource("PlaneMesh_ndrjj")
 
 [node name="Inside Door Left" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-4.37114e-08, -1, -3.82137e-15, 4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, 4.37114e-08, -2.789, 1.78702, -1.70511)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_11yus")
 
 [node name="Inside Door Right" type="MeshInstance3D" parent="Room/Walls"]
 transform = Transform3D(-4.37114e-08, -1, 3.82137e-15, 4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, 4.37114e-08, -2.789, 1.78702, 1.27952)
+cast_shadow = 2
 mesh = SubResource("PlaneMesh_155or")
 
 [node name="Sketchfab_Scene" parent="Room" instance=ExtResource("21_r4e17")]
@@ -1019,45 +1431,6 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.240867, 0, 2.08217)
 [node name="WashingMachine" parent="Furniture" instance=ExtResource("66_b6ruc")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.9289, 1.15492, 0.798197)
 
-[node name="Teleport" type="Node3D" parent="."]
-visible = false
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Teleport"]
-stream = ExtResource("24_vxglm")
-
-[node name="FadeMesh" type="MeshInstance3D" parent="Teleport"]
-visible = false
-mesh = SubResource("QuadMesh_tel4y")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("ShaderMaterial_qkpxi")
-
-[node name="TeleporterManager" type="Node3D" parent="Teleport" node_paths=PackedStringArray("current_location", "xr_origin", "xr_camera", "xr_left_function_pointer", "xr_right_function_pointer", "audio_node", "fade_mesh")]
-script = ExtResource("25_2f3dj")
-current_location = NodePath("Front Door")
-xr_origin = NodePath("../../XRPlayer/XROrigin3D")
-xr_camera = NodePath("../../XRPlayer/XROrigin3D/XRCamera3D")
-xr_left_function_pointer = NodePath("../../XRPlayer/XROrigin3D/XRController3DLeft/FunctionPointer")
-xr_right_function_pointer = NodePath("../../XRPlayer/XROrigin3D/XRController3DRight/FunctionPointer")
-audio_node = NodePath("../AudioStreamPlayer3D")
-fade_mesh = NodePath("../FadeMesh")
-metadata/_custom_type_script = "uid://cxy8oxoldmaoc"
-
-[node name="Front Door" type="Node3D" parent="Teleport/TeleporterManager" node_paths=PackedStringArray("connected_teleporters")]
-script = ExtResource("26_yq6so")
-teleporter_name = "Front Door"
-teleporter_active = false
-connected_teleporters = [NodePath("../Window")]
-metadata/_custom_type_script = "uid://ek4xpaefjlux"
-
-[node name="Window" type="Node3D" parent="Teleport/TeleporterManager" node_paths=PackedStringArray("connected_teleporters")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.89612)
-script = ExtResource("26_yq6so")
-teleporter_name = "Window"
-teleporter_active = false
-teleporter_position = Vector3(0, 0, -6.89612)
-connected_teleporters = [NodePath("../Front Door")]
-metadata/_custom_type_script = "uid://ek4xpaefjlux"
-
 [node name="knife" parent="." instance=ExtResource("70_mlv25")]
 transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.76397, 1.41585, 5.71333)
 
@@ -1161,6 +1534,22 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.938
 [node name="vacuum" parent="." instance=ExtResource("87_63lxy")]
 transform = Transform3D(0.0243799, 0, 0.999703, 0, 1, 0, -0.999703, 0, 0.0243799, -4.46172, 0.313666, -3.27967)
 
+[node name="DayNightCycle" type="Node3D" parent="."]
+script = ExtResource("88_fjhjs")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="DayNightCycle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0373, 0)
+light_energy = 1.168
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DayNightCycle"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_kcbbm")
+}
+
+[connection signal="failed_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_fail"]
+[connection signal="success_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_success"]
 [connection signal="body_entered" from="bfast" to="." method="_on_bfast_body_entered"]
 [connection signal="body_entered" from="unpacking" to="." method="_on_unpacking_body_entered"]
 [connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]

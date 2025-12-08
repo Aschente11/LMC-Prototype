@@ -24,10 +24,12 @@ GlobalTime="*res://scripts/singletons/time.gd"
 TypingManager="*res://scripts/singletons/typingManager.gd"
 EventManager="*res://addons/ateneo-virtual-reality-escape/event-management-system/event_manager.gd"
 TaskManager="*res://scripts/singletons/task_manager.gd"
+SceneManager="*res://addons/scene_manager/scene_manager.tscn"
+Scenes="*res://addons/scene_manager/scenes.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ateneo-virtual-reality-escape/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/ateneo-virtual-reality-escape/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
 
 [layer_names]
 

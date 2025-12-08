@@ -1,4 +1,4 @@
-[gd_scene load_steps=131 format=3 uid="uid://bmntx5vgfext1"]
+[gd_scene load_steps=127 format=3 uid="uid://bmntx5vgfext1"]
 
 [ext_resource type="Script" uid="uid://dk63rhrf1fcgj" path="res://scripts/waking_up.gd" id="1_gfqyt"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_gfqyt"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://dcpfx4msftq33" path="res://scripts/qte_manager.gd" id="6_07lh0"]
 [ext_resource type="Texture2D" uid="uid://bykexfm5nad2i" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_roughness.jpg" id="6_dpeja"]
 [ext_resource type="Texture2D" uid="uid://7bljh8e18a2x" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Color.jpg" id="7_a740g"]
-[ext_resource type="PackedScene" uid="uid://dfkuuokensmj1" path="res://scenes/UI/qte_layer.tscn" id="7_ln8bc"]
 [ext_resource type="Script" uid="uid://cljyjsip713od" path="res://scripts/wake_up_event.gd" id="7_ncvxg"]
 [ext_resource type="Texture2D" uid="uid://c3e3ci04ak5yh" path="res://assets/textures/Tiles009-4K/Tiles009_4K_AmbientOcclusion.jpg" id="8_imbos"]
 [ext_resource type="Texture2D" uid="uid://chibr5vli2kq8" path="res://assets/textures/Tiles009-4K/Tiles009_4K_NormalGL.jpg" id="9_2y35h"]
@@ -51,37 +50,28 @@ dof_blur_far_enabled = true
 dof_blur_far_distance = 0.01
 dof_blur_amount = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xr8u2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm03u"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_07lh0"]
-material = SubResource("StandardMaterial3D_xr8u2")
+material = SubResource("StandardMaterial3D_qm03u")
 size = Vector2(2.59, 1.065)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_07lh0"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iv873"]
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ln8bc"]
-material = SubResource("StandardMaterial3D_07lh0")
+material = SubResource("StandardMaterial3D_iv873")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_x0gt7"]
-viewport_path = NodePath("XRPlayer/XROrigin3D/XRCamera3D/QTE/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2662"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_x0gt7")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_oofti"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_6hml3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_o8ilo"]
 viewport_path = NodePath("XRPlayer/XROrigin3D/XRCamera3D/QTEv2/SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v8k2d"]
 resource_local_to_scene = true
 transparency = 1
-albedo_texture = SubResource("ViewportTexture_6hml3")
+albedo_texture = SubResource("ViewportTexture_o8ilo")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cxmxx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hml3"]
 render_priority = 0
 shader = ExtResource("5_o8ilo")
 shader_parameter/ring_color = Color(1, 1, 1, 1)
@@ -91,7 +81,7 @@ shader_parameter/move_speed = 15.0
 shader_parameter/smooth_edge = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a0hy1"]
-material = SubResource("ShaderMaterial_cxmxx")
+material = SubResource("ShaderMaterial_6hml3")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ln8bc"]
 transparency = 1
@@ -192,22 +182,10 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("XROrigin3D/XRCamera3D/QTE:visible")
+tracks/6/path = NodePath("XROrigin3D/XRCamera3D/QTEv2:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("XROrigin3D/XRCamera3D/QTEv2:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -281,22 +259,10 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("XROrigin3D/XRCamera3D/QTE:visible")
+tracks/6/path = NodePath("XROrigin3D/XRCamera3D/QTEv2:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("XROrigin3D/XRCamera3D/QTEv2:visible")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -768,20 +734,6 @@ mesh = SubResource("PlaneMesh_07lh0")
 transform = Transform3D(1.42, -5.32907e-15, 3.55271e-15, 0, 1.42, -7.47624e-16, 3.55271e-15, -7.47624e-16, 1.42, 0.0732703, 0.231474, -0.397363)
 mesh = SubResource("SphereMesh_ln8bc")
 
-[node name="QTE" type="Node3D" parent="XRPlayer/XROrigin3D/XRCamera3D"]
-transform = Transform3D(0.375, -4.44089e-15, 1.77636e-15, 0, 0.00589059, -0.374954, 7.99361e-15, 0.374954, 0.00589059, 0, -0.087656, -0.793575)
-
-[node name="SubViewport" type="SubViewport" parent="XRPlayer/XROrigin3D/XRCamera3D/QTE"]
-size = Vector2i(1152, 648)
-
-[node name="QTE_LAYER" parent="XRPlayer/XROrigin3D/XRCamera3D/QTE/SubViewport" instance=ExtResource("7_ln8bc")]
-unique_name_in_owner = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XRPlayer/XROrigin3D/XRCamera3D/QTE"]
-visible = false
-material_override = SubResource("StandardMaterial3D_t2662")
-mesh = SubResource("PlaneMesh_oofti")
-
 [node name="QTEv2" type="Node3D" parent="XRPlayer/XROrigin3D/XRCamera3D"]
 
 [node name="SubViewport" type="SubViewport" parent="XRPlayer/XROrigin3D/XRCamera3D/QTEv2"]
@@ -794,12 +746,12 @@ unique_name_in_owner = true
 transform = Transform3D(0.375, -8.88069e-15, -1.39551e-16, 0, 0.00589202, -0.374954, 8.88178e-15, 0.374954, 0.00589202, 0, -0.087656, -0.793574)
 material_override = SubResource("StandardMaterial3D_v8k2d")
 mesh = SubResource("PlaneMesh_a0hy1")
-skeleton = NodePath("../../QTE/MeshInstance3D")
+skeleton = NodePath("")
 
 [node name="FlashingRing" type="MeshInstance3D" parent="XRPlayer/XROrigin3D/XRCamera3D/QTEv2"]
 transform = Transform3D(0.09, -2.13136e-15, -3.34922e-17, 0, 0.00141408, -0.0899889, 2.13163e-15, 0.0899889, 0.00141408, 0, -0.087656, -0.793574)
 mesh = SubResource("PlaneMesh_a0hy1")
-skeleton = NodePath("../../QTE/MeshInstance3D")
+skeleton = NodePath("")
 
 [node name="XRController3DLeft" type="XRController3D" parent="XRPlayer/XROrigin3D"]
 tracker = &"left_hand"

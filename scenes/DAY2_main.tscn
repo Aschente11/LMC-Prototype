@@ -569,20 +569,20 @@ height = 0.4
 [sub_resource type="Gradient" id="Gradient_671eh"]
 colors = PackedColorArray(0, 0.0372984, 0.328559, 1, 0.0807834, 0.0807833, 0.0807833, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ymwfo"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yniqi"]
 gradient = SubResource("Gradient_671eh")
 fill_from = Vector2(1, 0.532189)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_kcbbm"]
-night_sky = SubResource("GradientTexture2D_ymwfo")
+night_sky = SubResource("GradientTexture2D_yniqi")
 
-[sub_resource type="Sky" id="Sky_yniqi"]
+[sub_resource type="Sky" id="Sky_yhcdh"]
 sky_material = SubResource("PhysicalSkyMaterial_kcbbm")
 
 [sub_resource type="Environment" id="Environment_yhcdh"]
 background_mode = 2
 background_energy_multiplier = 2.0
-sky = SubResource("Sky_yniqi")
+sky = SubResource("Sky_yhcdh")
 
 [sub_resource type="QuadMesh" id="QuadMesh_yniqi"]
 size = Vector2(18, 24)

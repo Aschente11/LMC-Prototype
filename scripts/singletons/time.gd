@@ -16,12 +16,16 @@ var time_timer: Timer
 # Game day
 var current_day: int = 1
 
-func start_time():
+func start_time(hour = 7, minute = 0, pm = false):
 	time_timer = Timer.new()
 	time_timer.wait_time = 7.0  # 7 seconds irl = 10 minutes game time
 	time_timer.autostart = true
 	time_timer.timeout.connect(_on_time_update)
 	add_child(time_timer)
+	
+	current_hour = hour
+	current_minute = minute
+	is_pm = pm
 	
 	print("TimeManager initialized - Starting time: ", get_formatted_time())
 

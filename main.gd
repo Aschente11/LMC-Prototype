@@ -1,14 +1,19 @@
 extends Node3D
 var xr_interface: XRInterface
-@onready var environment_node = $WorldEnvironment
+
+@onready var alarm: AudioStreamPlayer3D = $Alarm
+
 @onready var make_bfast_sfx = $wake_up
 @onready var note_tutorial_sfx = $note_tutorial
 @onready var need_unpack_sfx = $need_unpack
+
 @onready var kitchen_area = $bfast
 @onready var unpacking_area = $unpacking
 @onready var sleep_area = $sleep
 @onready var sleep_viewport = $SleepViewport
-var current_stimulation = 0
+
+@onready var init_player = $WakingUpPlayer
+var xr_player = preload("res://scenes/xr_player.tscn").instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,22 +28,7 @@ func _ready():
 		get_viewport().use_xr = true
 	else:
 		print("OpenXR not initialized, please check if your headset is connected.")
-	
-	call_deferred("check_initial_state")
-	
-	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
-	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
-	GlobalTime.start_time()
-	GlobalVar.eating_milestone.connect(_on_eating_milestone)
-
-	# First sequence - breakfast
-	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
-	make_bfast_text.visible = true
-	make_bfast_sfx.play()
-	
-	# Connect to first audio finished to trigger second sequence
-	make_bfast_sfx.finished.connect(_on_first_audio_finished)
-	
+		
 	unpacking_area.visible = false
 	unpacking_area.monitoring = false
 	unpacking_area.monitorable = false
@@ -47,9 +37,54 @@ func _ready():
 	sleep_area.monitoring = false
 	sleep_area.monitorable = false
 	
-	#sleep_viewport.visible = false
+	sleep_viewport.visible = false
+	
+	# QTE/Waking up scene
+	handle_qte()
+	
+	
+	# Remove Waking Up XRPlayer, replace with actual XRPlayer
 
-# Add this new function:
+
+func handle_qte():
+	$WakingUpPlayer/QTE.start_qte()
+	
+	if alarm.is_playing():
+		alarm.stop()
+	alarm.play()
+
+func on_qte_fail():
+	handle_qte()
+
+func on_qte_success():
+	$WakingUpPlayer/AnimationPlayer.play("Blinking")
+	
+	call_deferred("check_initial_state")
+	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
+	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
+	GlobalTime.start_time(12, 30, true)
+	GlobalVar.eating_milestone.connect(_on_eating_milestone)
+	
+	await get_tree().create_timer(5).timeout
+	print("Changed Scene")
+	
+	if xr_player and init_player:
+		add_child(xr_player)
+		xr_player.set_global_position(Vector3(-8.011, 0.00, -5.449))
+		remove_child(init_player)
+		init_player.queue_free()
+		
+	alarm.stop()
+	
+	# First sequence - breakfast
+	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")
+	make_bfast_text.visible = true
+	make_bfast_sfx.play()
+	
+	# Connect to first audio finished to trigger second sequence
+	make_bfast_sfx.finished.connect(_on_first_audio_finished)
+	
+
 func _on_first_audio_finished():
 	# Hide breakfast text
 	var make_bfast_text = get_tree().get_first_node_in_group("make_bfast_text")

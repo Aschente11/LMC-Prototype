@@ -49,10 +49,12 @@ shader_parameter/uv_offset = Vector2(0, 0)
 [node name="Door A" instance=ExtResource("1_guthu")]
 
 [node name="Door A" parent="." index="0"]
+layers = 524288
 cast_shadow = 2
 surface_material_override/0 = SubResource("ShaderMaterial_xuptd")
 surface_material_override/1 = SubResource("ShaderMaterial_pulbt")
 
 [node name="Door A_001" parent="." index="1"]
+layers = 524288
 cast_shadow = 2
 surface_material_override/0 = SubResource("ShaderMaterial_t45re")

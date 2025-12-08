@@ -98,60 +98,6 @@ func simple_bounce():
 	var bounce_offset = sin(time_passed * bounce_speed) * bounce_height
 	title_text.position = original_position + Vector3(0, bounce_offset, 0)
 
-# More complex bouncing with scaling effect
-func complex_bounce():
-	var bounce_height = 1.5
-	var bounce_speed = 2.5
-	var scale_amount = 0.1  # How much to scale
-	
-	# Vertical bounce
-	var bounce_offset = sin(time_passed * bounce_speed) * bounce_height
-	title_text.position = original_position + Vector3(0, bounce_offset, 0)
-	
-	# Scale effect (slightly larger when at the top of bounce)
-	var scale_factor = 1.0 + (sin(time_passed * bounce_speed) * scale_amount)
-	title_text.scale = Vector3(scale_factor, scale_factor, scale_factor)
-
-# Bouncing with gentle rotation
-func bounce_with_rotation():
-	var bounce_height = 1.8
-	var bounce_speed = 2.2
-	var rotation_amount = 5.0  # Degrees
-	
-	# Vertical bounce
-	var bounce_offset = sin(time_passed * bounce_speed) * bounce_height
-	title_text.position = original_position + Vector3(0, bounce_offset, 0)
-	
-	# Gentle rotation on Z-axis
-	var rotation_offset = sin(time_passed * bounce_speed * 0.7) * rotation_amount
-	title_text.rotation_degrees = original_rotation + Vector3(0, 0, rotation_offset)
-
-# Alternative: Elastic bounce effect (call this instead of simple_bounce)
-func elastic_bounce():
-	var bounce_height = 2.5
-	var bounce_speed = 1.8
-	
-	# Create an elastic effect using multiple sine waves
-	var primary_bounce = sin(time_passed * bounce_speed) * bounce_height
-	var secondary_bounce = sin(time_passed * bounce_speed * 3.0) * (bounce_height * 0.2)
-	
-	var total_bounce = primary_bounce + secondary_bounce
-	title_text.position = original_position + Vector3(0, total_bounce, 0)
-
-# Alternative: Pulsing glow effect (if you want to animate the material)
-func pulsing_glow():
-	var pulse_speed = 3.0
-	var min_energy = 0.3
-	var max_energy = 0.8
-	
-	var pulse_factor = (sin(time_passed * pulse_speed) + 1.0) * 0.5  # 0 to 1
-	var current_energy = min_energy + (pulse_factor * (max_energy - min_energy))
-	
-	# Assuming your text material has emission
-	var material = title_text.get_surface_override_material(0)
-	if material:
-		material.emission_energy_multiplier = current_energy
-
 # Method for smooth bouncing using Tween (more performance friendly)
 func start_tween_bounce():
 	var tween = create_tween()
@@ -172,7 +118,7 @@ func _on_button_pressed(button: String) -> void:
 		_fade_out()
 		print("Changed Scene")
 		await get_tree().create_timer(1).timeout
-		get_tree().change_scene_to_file("res://scenes/waking_up.tscn")
+		get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
 func _fade_out():
