@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=74 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_2jaaq"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_0xwb0"]
@@ -12,11 +12,11 @@
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="10_frr3b"]
 [ext_resource type="FontFile" uid="uid://n5cd37mmqxvl" path="res://assets/others/fonts/LuckiestGuy-Regular.ttf" id="11_s4ae5"]
 [ext_resource type="Material" uid="uid://b2jaelatdoq7w" path="res://assets/textures/overthinkings.tres" id="12_2kefe"]
-[ext_resource type="AudioStream" uid="uid://crwfbgsjpf4a1" path="res://assets/sfx/did i forget smthn.mp3" id="13_pfdr3"]
-[ext_resource type="AudioStream" uid="uid://c3atcbgwujcaq" path="res://assets/sfx/what is life even abt.mp3" id="14_jrucc"]
+[ext_resource type="AudioStream" uid="uid://dcacaf4vltxwp" path="res://assets/sfx/distraction did i forget something.mp3" id="13_bl7yt"]
+[ext_resource type="AudioStream" uid="uid://befbljtbmjwc2" path="res://assets/sfx/distraction what is life even about.mp3" id="14_bl7yt"]
 [ext_resource type="Script" uid="uid://iql24ddnlvra" path="res://scripts/mouth.gd" id="15_wdaou"]
 [ext_resource type="AudioStream" uid="uid://qmevnuxpi71q" path="res://assets/sfx/eating.mp3" id="16_jdatr"]
-[ext_resource type="AudioStream" uid="uid://dobwewoc67mhd" path="res://assets/sfx/burp.mp3" id="17_d7atr"]
+[ext_resource type="AudioStream" uid="uid://cbkn23sovh5ev" path="res://assets/sfx/4 burp.mp3" id="17_bl7yt"]
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="18_wmsp4"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="19_2tnx7"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="20_vr3k1"]
@@ -37,6 +37,8 @@
 [ext_resource type="Script" uid="uid://bo4nexkdn6v0t" path="res://scripts/singletons/task_manager.gd" id="35_owugq"]
 [ext_resource type="AudioStream" uid="uid://b8u2iu5ewc3jv" path="res://assets/sfx/left_4_dead_witch.mp3" id="36_t5tom"]
 [ext_resource type="AudioStream" uid="uid://dm6vjaowvorvl" path="res://assets/sfx/yippee-tbh.mp3" id="37_co8gm"]
+[ext_resource type="AudioStream" uid="uid://cas3raxviihy3" path="res://assets/sfx/distraction banana.mp3" id="38_bl7yt"]
+[ext_resource type="AudioStream" uid="uid://wm6qeldlbso" path="res://assets/sfx/distraction bow chicka bow wow.mp3" id="39_ddtur"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awktg"]
 render_priority = 0
@@ -282,14 +284,14 @@ skeleton = NodePath("../..")
 
 [node name="forget audio" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn"]
 visible = false
-stream = ExtResource("13_pfdr3")
+stream = ExtResource("13_bl7yt")
 volume_db = 80.0
 
 [node name="What is life" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings"]
 mesh = SubResource("TextMesh_t6eq7")
 
 [node name="What is life" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/What is life"]
-stream = ExtResource("14_jrucc")
+stream = ExtResource("14_bl7yt")
 
 [node name="Mouth" type="Area3D" parent="XROrigin3D/XRCamera3D"]
 collision_layer = 3
@@ -304,7 +306,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.252712, -0.0638555)
 shape = SubResource("BoxShape3D_ujsbv")
 
 [node name="burp" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/Mouth"]
-stream = ExtResource("17_d7atr")
+stream = ExtResource("17_bl7yt")
 
 [node name="note tutorial" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0836127, -0.0533591, -3.87888)
@@ -549,5 +551,11 @@ stream = ExtResource("36_t5tom")
 
 [node name="SoundDistraction" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("37_co8gm")
+
+[node name="SoundDistraction2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("38_bl7yt")
+
+[node name="SoundDistraction3" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("39_ddtur")
 
 [connection signal="button_pressed" from="XROrigin3D/XRController3DRight" to="." method="_on_button_pressed"]

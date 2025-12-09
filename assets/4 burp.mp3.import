@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://xjchujp2ogrr"
+path="res://.godot/imported/4 burp.mp3-a043ed2c5c3fa9dad56ce9bafef0f640.mp3str"
+
+[deps]
+
+source_file="res://assets/4 burp.mp3"
+dest_files=["res://.godot/imported/4 burp.mp3-a043ed2c5c3fa9dad56ce9bafef0f640.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

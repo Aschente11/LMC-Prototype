@@ -95,7 +95,7 @@ func update_eating_foods(delta):
 		var progress = eating_foods[food] / eating_duration
 		
 		# Scale down food
-		food.scale = Vector3.ONE * (1.0 - progress)
+		#food.scale = Vector3.ONE * (1.0 - progress)
 		
 		# Update particle position
 		particles.global_position = food.global_position

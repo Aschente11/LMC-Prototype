@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cas3raxviihy3"
+path="res://.godot/imported/distraction banana.mp3-826ba86ea836724b3858acec00aa0f61.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/distraction banana.mp3"
+dest_files=["res://.godot/imported/distraction banana.mp3-826ba86ea836724b3858acec00aa0f61.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
