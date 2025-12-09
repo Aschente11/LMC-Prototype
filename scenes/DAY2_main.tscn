@@ -1,4 +1,4 @@
-[gd_scene load_steps=166 format=4 uid="uid://bdk4v65llfcq5"]
+[gd_scene load_steps=169 format=4 uid="uid://bdk4v65llfcq5"]
 
 [ext_resource type="Script" uid="uid://catjpaekac6an" path="res://scripts/day_2_main.gd" id="1_ymwfo"]
 [ext_resource type="PackedScene" uid="uid://bu5evmx32ljgk" path="res://scenes/xr_player.tscn" id="2_kcbbm"]
@@ -78,8 +78,11 @@
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="78_yvr5c"]
 [ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="79_kcbbm"]
 [ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="80_yniqi"]
+[ext_resource type="PackedScene" uid="uid://ctfj38t4j8qmq" path="res://scenes/distractions/dust.tscn" id="81_jmq4f"]
 [ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scenes/day_night_cycle.gd" id="81_yhcdh"]
+[ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="82_fmiir"]
 [ext_resource type="PackedScene" uid="uid://bd1ns3arb2768" path="res://scenes/Furniture/Bedroom/canvas.tscn" id="82_jmq4f"]
+[ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="83_cqug8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1epgm"]
 size = Vector3(15.7303, 0.130249, 20.6996)
@@ -1193,7 +1196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63535, 0.722356, -6.35067)
 collision_mask = 196615
 
 [node name="plastic basket" parent="." instance=ExtResource("80_yniqi")]
-transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, -3.59181, 0.0123488, 1.27287)
+transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, -6.39261, 0.0123488, 0.586211)
 
 [node name="DayNightCycle" type="Node3D" parent="."]
 script = ExtResource("81_yhcdh")
@@ -1211,6 +1214,108 @@ libraries = {
 
 [node name="ArtSupplyProps" parent="." instance=ExtResource("82_jmq4f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53481, 0, -9.13332)
+
+[node name="Dust" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11508, -0.0147408, -4.82051)
+
+[node name="Dust" parent="Dust" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.112433)
+
+[node name="Dust2" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(-0.232529, 0.972589, 0, -0.972589, -0.232529, 0, 0, 0, 1, -3.82078, 0.0539775, -5.78297)
+
+[node name="Dust" parent="Dust2" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312018, -0.0421495)
+
+[node name="Dust3" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(0.199317, 0, 0.979935, 0, 1, 0, -0.979935, 0, 0.199317, -3.5169, -0.0147408, -7.30552)
+
+[node name="Dust" parent="Dust3" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 1.49012e-08, 0, 0, 0.675359, -0.73749, -1.49012e-08, 0.73749, 0.675359, 0.00717831, 0.0312019, -0.0658069)
+
+[node name="Dust4" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34938, -0.0147408, -6.10603)
+
+[node name="Dust" parent="Dust4" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
+
+[node name="Dust5" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39097, -0.0147408, -2.83691)
+
+[node name="Dust" parent="Dust5" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.112433)
+
+[node name="Dust6" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(-0.232529, 0.972589, 0, -0.972589, -0.232529, 0, 0, 0, 1, -5.00953, 0.0539775, -3.44148)
+
+[node name="Dust" parent="Dust6" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312018, -0.0421495)
+
+[node name="Dust7" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(0.199317, 0, 0.979935, 0, 1, 0, -0.979935, 0, 0.199317, -1.77776, -0.0147408, -4.23842)
+
+[node name="Dust" parent="Dust7" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 1.49012e-08, 0, 0, 0.675359, -0.73749, -1.49012e-08, 0.73749, 0.675359, 0.00717831, 0.0312019, -0.0658069)
+
+[node name="Dust8" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.610234, -0.0147408, -3.03894)
+
+[node name="Dust" parent="Dust8" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
+
+[node name="Dust9" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -4.79726, -0.0147408, -6.17656)
+
+[node name="Dust" parent="Dust9" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.112433)
+
+[node name="Dust10" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(-0.212602, 0.889242, -0.40503, -0.972589, -0.232529, -6.24907e-09, -0.0941811, 0.393928, 0.914304, -5.05267, 0.0539775, -7.34237)
+
+[node name="Dust" parent="Dust10" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312018, -0.0421495)
+
+[node name="Dust11" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(0.579139, 0, 0.815229, 0, 1, 0, -0.815229, 0, 0.579139, -4.15815, -0.0147408, -8.61136)
+
+[node name="Dust" parent="Dust11" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 1.49012e-08, 0, 0, 0.675359, -0.73749, -1.49012e-08, 0.73749, 0.675359, 0.00717831, 0.0312019, -0.0658069)
+
+[node name="Dust12" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -3.5765, -0.0147408, -7.04179)
+
+[node name="Dust" parent="Dust12" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
+
+[node name="Dust13" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -5.85292, -0.0147408, -4.4747)
+
+[node name="Dust" parent="Dust13" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.112433)
+
+[node name="Dust14" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(-0.212602, 0.889242, -0.40503, -0.972589, -0.232529, -6.24907e-09, -0.0941811, 0.393928, 0.914304, -7.08791, 0.0539775, -5.68302)
+
+[node name="Dust" parent="Dust14" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312018, -0.0421495)
+
+[node name="Dust15" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(0.579139, 0, 0.815229, 0, 1, 0, -0.815229, 0, 0.579139, -3.81031, -0.0147408, -5.10271)
+
+[node name="Dust" parent="Dust15" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 1.49012e-08, 0, 0, 0.675359, -0.73749, -1.49012e-08, 0.73749, 0.675359, 0.00717831, 0.0312019, -0.0658069)
+
+[node name="Dust16" parent="." instance=ExtResource("81_jmq4f")]
+transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -3.22866, -0.0147408, -3.53313)
+
+[node name="Dust" parent="Dust16" instance=ExtResource("81_jmq4f")]
+transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
+
+[node name="Apple" parent="." instance=ExtResource("82_fmiir")]
+transform = Transform3D(0.999505, -0.0314456, 0, 0.0314456, 0.999505, 0, 0, 0, 1, -5.56641, 1.40784, 5.53918)
+
+[node name="knife" parent="." instance=ExtResource("83_cqug8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45626, 1.43501, 5.84346)
 
 [connection signal="body_entered" from="sit" to="." method="_on_sit_body_entered"]
 [connection signal="body_exited" from="sit" to="." method="_on_sit_body_exited"]

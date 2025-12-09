@@ -17,9 +17,13 @@ extends Node3D
 @onready var crying: AudioStreamPlayer3D = $crying
 @onready var left_teleport = $XROrigin3D/XRController3DLeft/FunctionTeleport
 @onready var right_teleport = $XROrigin3D/XRController3DRight/FunctionTeleport
-
+@onready var sound_distraction1 = $SoundDistraction
+@onready var sound_distraction2 = $SoundDistraction2
+@onready var sound_distraction3 = $SoundDistraction3
 
 var note_tutorial_dismissed: bool = false
+var distraction_running = false
+
 
 # Text configuration class
 class TextConfig:
@@ -135,25 +139,32 @@ func trigger_indicator(old_value: int, new_value: int) -> void:
 	change_indicator.set_shader_parameter("speed", 0.0)
 	
 func _on_stimulation_changed(old_value: int, new_value: int) -> void:
-	print("Stimulation changed to: ", new_value)  # Debug print
-	
+	print("Stimulation changed to: ", new_value)
+
 	if new_value >= 1 and not is_spawning_texts:
-		print("Starting text spawning cycle")
 		start_text_spawning()
 	elif new_value < 1 and is_spawning_texts:
-		print("Stopping text spawning cycle")
 		stop_text_spawning()
-	
+		
+	if new_value >= 4:
+		if not distraction_running:
+			distraction_running = true
+			play_distraction_loop()  # async loop
+	else:
+		if distraction_running:
+			distraction_running = false
+			sound_distraction1.stop()
+
 	if new_value == 5:
 		disable_teleport()
-	
-	# Your existing haptic feedback logic
+
 	var timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = 2.0
 	timer.one_shot = true
 	timer.timeout.connect(_on_delay_timeout)
 	timer.start()
+
 	
 func _process(delta: float) -> void:
 	if left_hand and left_hand.get_is_active() and left_hand.is_button_pressed("ax_button"):
@@ -385,8 +396,6 @@ func _on_emotional_decrease(old_value: int, new_value: int):
 		FloatingIndicatorManager.IndicatorType.EMOTIONAL_LOSS
 	)
 
-
-
 func left_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
 	left_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 
@@ -410,3 +419,11 @@ func _on_plushie_released(pickable, by):
 func disable_teleport():
 	left_teleport.enabled = false
 	right_teleport.enabled = false
+
+func play_distraction_loop() -> void:
+	var distraction_sounds = [sound_distraction1, sound_distraction2, sound_distraction3]
+	
+	while distraction_running:
+		var random_sound = distraction_sounds[randi() % 3]
+		random_sound.play()
+		await get_tree().create_timer(5.0).timeout

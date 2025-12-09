@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctfj38t4j8qmq"]
+
+[ext_resource type="Script" uid="uid://bgbpjxxlqrp4" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_wipe_receiver.gd" id="1_vefvr"]
+[ext_resource type="Script" uid="uid://dqum3c22oorf0" path="res://scripts/dust.gd" id="1_yjhem"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jwax"]
+transparency = 1
+albedo_color = Color(0.466667, 0.466667, 0.466667, 0.866667)
+
+[sub_resource type="SphereMesh" id="SphereMesh_7jwax"]
+material = SubResource("StandardMaterial3D_7jwax")
+radius = 0.03
+height = 0.06
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yjhem"]
+radius = 0.0482734
+
+[node name="Dust" type="Node3D"]
+script = ExtResource("1_yjhem")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_7jwax")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010092, 0.0176177, 0)
+mesh = SubResource("SphereMesh_7jwax")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00758938, 0, 0.0115523)
+mesh = SubResource("SphereMesh_7jwax")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0278956, 0.00534619, 0.0138316)
+mesh = SubResource("SphereMesh_7jwax")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0358674, 0, -0.0204604)
+mesh = SubResource("SphereMesh_7jwax")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0214636)
+mesh = SubResource("SphereMesh_7jwax")
+
+[node name="OISWipeReceiver" type="Node3D" parent="."]
+script = ExtResource("1_vefvr")
+group = "dust"
+metadata/_custom_type_script = "uid://bgbpjxxlqrp4"
+
+[node name="Area3D" type="Area3D" parent="OISWipeReceiver"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISWipeReceiver/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0168701, 0.00282957, 0)
+shape = SubResource("SphereShape3D_yjhem")
+
+[connection signal="action_in_progress" from="OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_in_progress"]

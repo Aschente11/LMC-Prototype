@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dcajgychncjmh"]
+[gd_scene load_steps=28 format=4 uid="uid://dcajgychncjmh"]
 
 [ext_resource type="Script" uid="uid://cpodae16v7785" path="res://scripts/washing_machine.gd" id="1_7dbpm"]
 [ext_resource type="Script" uid="uid://bb8kuvwsdnh4c" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_directional_swipe_receiver.gd" id="1_vyivf"]
@@ -7,6 +7,8 @@
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="4_ylt7h"]
 [ext_resource type="AudioStream" uid="uid://cqeatv7g23313" path="res://assets/sfx/laundry_opening.mp3" id="6_uhyqr"]
 [ext_resource type="AudioStream" uid="uid://mkkbbue3vi68" path="res://assets/sfx/laundry_closing.mp3" id="7_7c36k"]
+[ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="8_7c36k"]
+[ext_resource type="PackedScene" uid="uid://l6oclp7kyb6q" path="res://scenes/others/timerRing.tscn" id="9_lt433"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jn30"]
 resource_name = "White"
@@ -325,6 +327,22 @@ size = Vector3(0.242188, 0.300781, 0.179688)
 radius = 0.2
 height = 0.4
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_lt433"]
+radius = 0.121384
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6ogrk"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpmsq"]
+resource_local_to_scene = true
+transparency = 1
+albedo_texture = SubResource("ViewportTexture_6ogrk")
+
+[sub_resource type="QuadMesh" id="QuadMesh_n06g6"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_jpmsq")
+size = Vector2(5, 5)
+
 [node name="Washing Machine" type="Node3D"]
 script = ExtResource("1_7dbpm")
 
@@ -364,52 +382,56 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.472087, -0.249136, 0.275075
 shape = SubResource("BoxShape3D_jk5aw")
 
 [node name="InventorySlot" type="Node3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.171713, -0.189124, -0.13197)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.171713, 0.294518, -0.13197)
 script = ExtResource("2_jk5aw")
 group_required = "clothes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot" instance=ExtResource("3_7dbpm")]
 grab_distance = 0.2
+snap_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot"]
 mesh = SubResource("SphereMesh_uhyqr")
 surface_material_override/0 = ExtResource("4_ylt7h")
 
 [node name="InventorySlot2" type="Node3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.1761, -0.189124, -0.13197)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.1761, 0.294518, -0.13197)
 script = ExtResource("2_jk5aw")
 group_required = "clothes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot2" instance=ExtResource("3_7dbpm")]
 grab_distance = 0.2
+snap_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot2"]
 mesh = SubResource("SphereMesh_uhyqr")
 surface_material_override/0 = ExtResource("4_ylt7h")
 
 [node name="InventorySlot3" type="Node3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.171713, -0.533816, -0.13197)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -0.171713, -0.0501737, -0.13197)
 script = ExtResource("2_jk5aw")
 group_required = "clothes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot3" instance=ExtResource("3_7dbpm")]
 grab_distance = 0.2
+snap_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot3"]
 mesh = SubResource("SphereMesh_uhyqr")
 surface_material_override/0 = ExtResource("4_ylt7h")
 
 [node name="InventorySlot4" type="Node3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.183737, -0.524089, -0.13197)
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.183737, -0.0404467, -0.13197)
 script = ExtResource("2_jk5aw")
 group_required = "clothes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot4" instance=ExtResource("3_7dbpm")]
 grab_distance = 0.2
+snap_mode = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot4"]
 mesh = SubResource("SphereMesh_uhyqr")
@@ -421,4 +443,28 @@ stream = ExtResource("6_uhyqr")
 [node name="closing_sfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("7_7c36k")
 
+[node name="OISStrikeReceiver" type="Node3D" parent="."]
+script = ExtResource("8_7c36k")
+group = "hand"
+metadata/_custom_type_script = "uid://cci3xkvnplit7"
+
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0169287, 0.48884, 0.0397595)
+shape = SubResource("SphereShape3D_lt433")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1080, 1080)
+
+[node name="TimerRing" parent="SubViewport" instance=ExtResource("9_lt433")]
+
+[node name="timer" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.224949, 0, -0.0048102, 0, 0.225, 0, 0.0048102, 0, 0.224949, 0.336905, -0.554548, 0.288367)
+mesh = SubResource("QuadMesh_n06g6")
+
 [connection signal="action_started" from="OISDirectionalSwipeReceiver" to="." method="_on_ois_directional_swipe_receiver_action_started"]
+[connection signal="action_started" from="OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_started"]
