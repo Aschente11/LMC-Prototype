@@ -18,4 +18,7 @@ func _on_ois_strike_receiver_action_ended(requirement: Variant, total_progress: 
 	
 	# Tell the typing animation to stop
 	TypingManager.stop_typing()
-	TaskManager.active_tasks[0].done = true
+	
+	for i in range(TaskManager.active_tasks.size()):
+		if TaskManager.active_tasks[i].text == "Continue \n writing \n essay.":
+			TaskManager.active_tasks[i].done = true

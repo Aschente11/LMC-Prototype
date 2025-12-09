@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bnny6bqcs5dd8" path="res://assets/Furniture Shaders/desk.tscn" id="1_e8bct"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e8bct"]
-size = Vector3(2.46527, 1, 1.07288)
+size = Vector3(2.75133, 1, 1.18564)
 
 [node name="Desk" type="StaticBody3D"]
 
@@ -11,5 +11,5 @@ size = Vector3(2.46527, 1, 1.07288)
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.471039, 0, -0.251038)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.520668, 0, -0.245347)
 shape = SubResource("BoxShape3D_e8bct")

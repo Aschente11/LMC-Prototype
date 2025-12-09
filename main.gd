@@ -45,6 +45,8 @@ func _ready():
 	
 	plush.is_crying.connect(teleport_player)
 	
+	TaskManager.initialize(0)
+	
 	call_deferred("check_initial_state")
 	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
 	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
@@ -160,3 +162,8 @@ func _on_unpacking_body_entered(body: Node3D) -> void:
 
 func _on_sleep_body_entered(body: Node3D) -> void:
 	sleep_viewport.visible = true
+	
+func _on_journal_picked_up():
+	for i in range(TaskManager.active_tasks.size()):
+			if TaskManager.active_tasks[i].text == "Read journal.":
+				TaskManager.active_tasks[i].done = true
