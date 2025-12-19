@@ -1,0 +1,613 @@
+[gd_scene load_steps=50 format=3 uid="uid://bpd48mqxcdr1c"]
+
+[ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_t4slh"]
+[ext_resource type="Script" uid="uid://dj021fnfgawlr" path="res://scripts/xr_origin_3d.gd" id="2_yedcs"]
+[ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_yf60g"]
+[ext_resource type="Shader" uid="uid://lvicd8a68csa" path="res://shaders/indicator.gdshader" id="3_yedcs"]
+[ext_resource type="Script" uid="uid://dpc4eg48y7yei" path="res://scripts/floating_indicator_manager.gd" id="4_8p3xe"]
+[ext_resource type="FontFile" uid="uid://n5cd37mmqxvl" path="res://assets/others/fonts/LuckiestGuy-Regular.ttf" id="5_8680a"]
+[ext_resource type="Material" uid="uid://b2jaelatdoq7w" path="res://assets/textures/overthinkings.tres" id="6_0bbue"]
+[ext_resource type="AudioStream" uid="uid://dcacaf4vltxwp" path="res://assets/sfx/distraction did i forget something.mp3" id="7_ymyt3"]
+[ext_resource type="AudioStream" uid="uid://befbljtbmjwc2" path="res://assets/sfx/distraction what is life even about.mp3" id="8_vfmt8"]
+[ext_resource type="Script" uid="uid://iql24ddnlvra" path="res://scripts/mouth.gd" id="9_bs088"]
+[ext_resource type="AudioStream" uid="uid://qmevnuxpi71q" path="res://assets/sfx/eating.mp3" id="10_bvgkw"]
+[ext_resource type="AudioStream" uid="uid://cbkn23sovh5ev" path="res://assets/sfx/4 burp.mp3" id="11_jadp3"]
+[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="12_5xqo3"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="13_bp6ra"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="14_1ihsk"]
+[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="15_n2ysp"]
+[ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="16_e5fh6"]
+[ext_resource type="Script" uid="uid://cji1tdhhvihrj" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_single_controller_asm.gd" id="17_lxest"]
+[ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="18_yxqvn"]
+[ext_resource type="PackedScene" uid="uid://cyu5exn7vgfy8" path="res://scenes/tools/smartwatch.tscn" id="19_g7dor"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="20_lgle8"]
+[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="21_5ba1f"]
+[ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="22_gswto"]
+[ext_resource type="PackedScene" uid="uid://chcuj3jysipk8" path="res://addons/godot-xr-tools/functions/movement_jog.tscn" id="23_i2ckw"]
+[ext_resource type="AudioStream" uid="uid://dqyjjg0qmnyv8" path="res://assets/sfx/watch_notif.mp3" id="24_l2y0c"]
+[ext_resource type="Script" uid="uid://bo4nexkdn6v0t" path="res://scripts/singletons/task_manager.gd" id="25_lkhl0"]
+[ext_resource type="AudioStream" uid="uid://b8u2iu5ewc3jv" path="res://assets/sfx/left_4_dead_witch.mp3" id="26_cec4d"]
+[ext_resource type="AudioStream" uid="uid://dm6vjaowvorvl" path="res://assets/sfx/yippee-tbh.mp3" id="27_dshk7"]
+[ext_resource type="AudioStream" uid="uid://cas3raxviihy3" path="res://assets/sfx/distraction banana.mp3" id="28_5g40b"]
+[ext_resource type="AudioStream" uid="uid://wm6qeldlbso" path="res://assets/sfx/distraction bow chicka bow wow.mp3" id="29_lnrh6"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qvpqm"]
+dof_blur_far_enabled = true
+dof_blur_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awktg"]
+render_priority = 0
+shader = ExtResource("3_yedcs")
+shader_parameter/color = Color(0, 1, 0, 1)
+shader_parameter/color_intensity = 10.0
+shader_parameter/transparency_level = 16.0
+shader_parameter/speed = 0.0
+shader_parameter/zoom_amplitude = 12.555
+
+[sub_resource type="QuadMesh" id="QuadMesh_a0fa2"]
+material = SubResource("ShaderMaterial_awktg")
+size = Vector2(2.295, 2)
+orientation = 1
+
+[sub_resource type="TextMesh" id="TextMesh_p43kj"]
+material = ExtResource("6_0bbue")
+text = "Did I forget something"
+font = ExtResource("5_8680a")
+
+[sub_resource type="TextMesh" id="TextMesh_5j0ac"]
+material = ExtResource("6_0bbue")
+font = ExtResource("5_8680a")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gxi4e"]
+size = Vector3(0.453125, 0.486328, 0.535156)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qm03u"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8tqhu"]
+material = SubResource("StandardMaterial3D_qm03u")
+size = Vector2(2.59, 1.065)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iv873"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_oligm"]
+material = SubResource("StandardMaterial3D_iv873")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv6ie"]
+transparency = 1
+diffuse_mode = 3
+specular_mode = 1
+albedo_color = Color(0.313726, 1, 1, 0.52549)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_jqbre"]
+radius = 0.107317
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w0uuf"]
+radius = 0.139617
+
+[sub_resource type="Animation" id="Animation_ltnfw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.354, -0.796)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.291, -0.805)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("XROrigin3D/XRCamera3D:attributes")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CameraAttributesPractical_qvpqm")]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("XROrigin3D/XRCamera3D:attributes:dof_blur_far_enabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("XROrigin3D/XRCamera3D:attributes:dof_blur_amount")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_67lw6"]
+resource_name = "blinking"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.291, -0.805), Vector3(0, -0.511, -0.805), Vector3(0, -1.556, -0.805), Vector3(0, -0.556, -0.805)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1.354, -0.796), Vector3(0, 0.554, -0.796), Vector3(0, 1.254, -0.796), Vector3(0, 0.494, -0.796)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("XROrigin3D/XRCamera3D:attributes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CameraAttributesPractical_qvpqm")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("XROrigin3D/XRCamera3D:attributes:dof_blur_far_enabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("XROrigin3D/XRCamera3D:attributes:dof_blur_amount")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.12]
+}
+
+[sub_resource type="Animation" id="Animation_qvpqm"]
+resource_name = "open_eyes"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.511, -0.805), Vector3(0, -1.556, -0.805), Vector3(0, -0.556, -0.805), Vector3(0, -1.321, -0.805)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.554, -0.796), Vector3(0, 1.254, -0.796), Vector3(0, 0.494, -0.796), Vector3(0, 1.249, -0.796)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("XROrigin3D/XRCamera3D:attributes:dof_blur_amount")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.13, 0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("XROrigin3D/XRCamera3D:attributes:dof_blur_far_enabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_4sr7x"]
+resource_name = "sit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -2, 0), Vector3(0, -2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_88mk6"]
+resource_name = "stand"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("XROrigin3D/XRCamera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.466667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.05, 0), Vector3(0, -0.07, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qvpqm"]
+_data = {
+&"RESET": SubResource("Animation_ltnfw"),
+&"blinking": SubResource("Animation_67lw6"),
+&"open_eyes": SubResource("Animation_qvpqm"),
+&"sit": SubResource("Animation_4sr7x"),
+&"stand": SubResource("Animation_88mk6")
+}
+
+[node name="SceneBase" instance=ExtResource("1_t4slh")]
+
+[node name="XROrigin3D" parent="." index="0"]
+script = ExtResource("2_yedcs")
+
+[node name="XRToolsPlayerBody" type="CharacterBody3D" parent="XROrigin3D" index="0"]
+top_level = true
+collision_layer = 524288
+collision_mask = 1019
+script = ExtResource("2_yf60g")
+player_height_min = 0.5
+player_height_max = 2.25
+metadata/_custom_type_script = "uid://bqqdxydvmjgir"
+
+[node name="XRCamera3D" parent="XROrigin3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+attributes = SubResource("CameraAttributesPractical_qvpqm")
+
+[node name="ChangeIndicator" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.19209e-07, -0.833909)
+mesh = SubResource("QuadMesh_a0fa2")
+skeleton = NodePath("")
+
+[node name="FloatingIndicatorManager" type="Node3D" parent="XROrigin3D/XRCamera3D" index="1" node_paths=PackedStringArray("target_parent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
+script = ExtResource("4_8p3xe")
+target_parent = NodePath("")
+
+[node name="overthinkings" type="Node3D" parent="XROrigin3D/XRCamera3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
+
+[node name="Did I forget smthn" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258535, -1.73671)
+mesh = SubResource("TextMesh_p43kj")
+skeleton = NodePath("")
+
+[node name="forget audio" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn" index="0"]
+visible = false
+stream = ExtResource("7_ymyt3")
+volume_db = 80.0
+
+[node name="What is life" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings" index="1"]
+mesh = SubResource("TextMesh_5j0ac")
+
+[node name="What is life" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/What is life" index="0"]
+stream = ExtResource("8_vfmt8")
+
+[node name="Mouth" type="Area3D" parent="XROrigin3D/XRCamera3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("9_bs088")
+
+[node name="Eating sfx" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/Mouth" index="0"]
+stream = ExtResource("10_bvgkw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Mouth" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.252712, -0.0638555)
+shape = SubResource("BoxShape3D_gxi4e")
+
+[node name="burp" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/Mouth" index="2"]
+stream = ExtResource("11_jadp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="4"]
+transform = Transform3D(1, 0, -3.82137e-15, -3.82137e-15, 4.37114e-08, -1, 0, 1, 4.37114e-08, 0, -1.291, -0.805)
+visible = false
+mesh = SubResource("PlaneMesh_8tqhu")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="5"]
+transform = Transform3D(1, 0, -3.82137e-15, -3.82137e-15, 4.37114e-08, -1, 0, 1, 4.37114e-08, 0, 1.354, -0.796)
+visible = false
+mesh = SubResource("PlaneMesh_8tqhu")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="6"]
+transform = Transform3D(1.42, -5.32907e-15, 3.55271e-15, 0, 1.42, -7.47624e-16, 3.55271e-15, -7.47624e-16, 1.42, 0.0732703, 0.231474, -0.397363)
+visible = false
+mesh = SubResource("SphereMesh_oligm")
+skeleton = NodePath("")
+
+[node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("12_5xqo3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
+hand_material_override = SubResource("StandardMaterial3D_gv6ie")
+
+[node name="FunctionPickup" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("13_bp6ra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
+
+[node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="2" instance=ExtResource("14_1ihsk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
+
+[node name="FunctionTeleport" parent="XROrigin3D/LeftHand" index="3" instance=ExtResource("15_n2ysp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
+teleport_button_action = "primary"
+
+[node name="OISActorComponent" type="Node3D" parent="XROrigin3D/LeftHand" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
+script = ExtResource("16_e5fh6")
+receiver_group = "hand"
+metadata/_custom_type_script = "uid://cg1lorgur84yy"
+
+[node name="OISSingleControllerASM" type="Node3D" parent="XROrigin3D/LeftHand/OISActorComponent" index="0"]
+script = ExtResource("17_lxest")
+metadata/_custom_type_script = "uid://cji1tdhhvihrj"
+
+[node name="OISColliderArea3D" type="Node3D" parent="XROrigin3D/LeftHand/OISActorComponent" index="1"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -0.005, 0, 0)
+script = ExtResource("18_yxqvn")
+metadata/_custom_type_script = "uid://b4ao0gdf7khuq"
+
+[node name="Area3D" type="Area3D" parent="XROrigin3D/LeftHand/OISActorComponent/OISColliderArea3D" index="0"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/LeftHand/OISActorComponent/OISColliderArea3D/Area3D" index="0"]
+shape = SubResource("SphereShape3D_jqbre")
+
+[node name="smartwatch" parent="XROrigin3D/LeftHand" index="5" instance=ExtResource("19_g7dor")]
+transform = Transform3D(0.0017453, 0, -0.999999, -0.0926137, 0.995702, -0.000161639, 0.9957, 0.0926139, 0.0017378, 0.44216, -1.05457, 0.677899)
+
+[node name="MovementJump" parent="XROrigin3D/LeftHand" index="6" instance=ExtResource("20_lgle8")]
+
+[node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("21_5ba1f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
+hand_material_override = SubResource("StandardMaterial3D_gv6ie")
+
+[node name="FunctionPickup" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("13_bp6ra")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
+
+[node name="FunctionPointer" parent="XROrigin3D/RightHand" index="2" instance=ExtResource("14_1ihsk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
+
+[node name="FunctionTeleport" parent="XROrigin3D/RightHand" index="3" instance=ExtResource("15_n2ysp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
+teleport_button_action = "primary"
+
+[node name="OISActorComponent" type="Node3D" parent="XROrigin3D/RightHand" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
+script = ExtResource("16_e5fh6")
+receiver_group = "hand"
+metadata/_custom_type_script = "uid://cg1lorgur84yy"
+
+[node name="OISSingleControllerASM" type="Node3D" parent="XROrigin3D/RightHand/OISActorComponent" index="0"]
+script = ExtResource("17_lxest")
+metadata/_custom_type_script = "uid://cji1tdhhvihrj"
+
+[node name="OISColliderArea3D" type="Node3D" parent="XROrigin3D/RightHand/OISActorComponent" index="1"]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.005, 0, 0)
+script = ExtResource("18_yxqvn")
+metadata/_custom_type_script = "uid://b4ao0gdf7khuq"
+
+[node name="Area3D" type="Area3D" parent="XROrigin3D/RightHand/OISActorComponent/OISColliderArea3D" index="0"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightHand/OISActorComponent/OISColliderArea3D/Area3D" index="0"]
+shape = SubResource("SphereShape3D_w0uuf")
+
+[node name="smartwatch" parent="XROrigin3D/RightHand" index="5" instance=ExtResource("19_g7dor")]
+transform = Transform3D(-4.37114e-08, 3.60561e-16, 1, -0.00178025, 0.999998, -7.78149e-11, -0.999998, -0.00178025, -4.37113e-08, -0.441448, -1.05352, 0.677899)
+
+[node name="MovementCrouch" parent="XROrigin3D/RightHand" index="6" instance=ExtResource("22_gswto")]
+crouch_button_action = "trigger_click"
+
+[node name="MovementJog" parent="XROrigin3D" index="4" instance=ExtResource("23_i2ckw")]
+
+[node name="watchNotif" type="AudioStreamPlayer3D" parent="XROrigin3D" index="5"]
+stream = ExtResource("24_l2y0c")
+
+[node name="TaskManager" type="Node3D" parent="XROrigin3D" index="6"]
+script = ExtResource("25_lkhl0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="XROrigin3D" index="7"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_qvpqm")
+}
+
+[node name="crying" type="AudioStreamPlayer3D" parent="XROrigin3D" index="8"]
+stream = ExtResource("26_cec4d")
+
+[node name="SoundDistraction" type="AudioStreamPlayer3D" parent="XROrigin3D" index="9"]
+stream = ExtResource("27_dshk7")
+
+[node name="SoundDistraction2" type="AudioStreamPlayer3D" parent="XROrigin3D" index="10"]
+stream = ExtResource("28_5g40b")
+
+[node name="SoundDistraction3" type="AudioStreamPlayer3D" parent="XROrigin3D" index="11"]
+stream = ExtResource("29_lnrh6")

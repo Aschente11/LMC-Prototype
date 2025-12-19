@@ -4,8 +4,6 @@ extends Area3D
 @onready var check_timer: Timer = Timer.new()
 @onready var haptic_timer: Timer = Timer.new()  # New timer for haptic feedback
 @onready var particles: GPUParticles3D = GPUParticles3D.new()
-@onready var right_hand = $"../../XRController3DRight"
-@onready var left_hand = $"../../XRController3DLeft"
 @onready var burp_sfx = $burp
 
 
@@ -121,8 +119,8 @@ func _trigger_continuous_haptics():
 		trigger_haptic_feedback()
 
 func trigger_haptic_feedback(duration: float = 0.1, frequency: float = 0.3, amplitude: float = 0.4) -> void:
-	right_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
-	left_hand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
+	$"../../RightHand".trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
+	$"../../LeftHand".trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 
 func _on_eating_milestone(milestone: int):
 	burp_sfx.play()

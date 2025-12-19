@@ -242,7 +242,7 @@ func load_scene(p_scene_path : String, user_data = null) -> void:
 	current_scene = new_scene.instantiate()
 	current_scene_path = p_scene_path
 	$Scene.add_child(current_scene)
-	#_add_signals(current_scene)
+	_add_signals(current_scene)
 
 	# We create a small delay here to give tracking some time to update our nodes...
 	await get_tree().create_timer(0.1).timeout

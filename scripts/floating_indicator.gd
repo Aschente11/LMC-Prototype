@@ -20,7 +20,7 @@ func setup(text: String, color: Color = Color.SEA_GREEN):
 	scale = Vector3(0.3, 0.3, 0.3)
 	
 	label_3d.pixel_size = 0.002
-	label_3d.font_size = 48
+	label_3d.font_size = 96
 
 
 # Called when the node enters the scene tree for the first time.

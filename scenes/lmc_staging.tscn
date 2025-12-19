@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv0s1pwt0escb"]
+
+[ext_resource type="PackedScene" uid="uid://bnqnnnet4dw12" path="res://addons/godot-xr-tools/staging/staging.tscn" id="1_fpymv"]
+[ext_resource type="Texture2D" uid="uid://beiicpjten7q3" path="res://assets/textures/lmc_splash.png" id="2_f702p"]
+
+[node name="LMC_Staging" instance=ExtResource("1_fpymv")]
+
+[node name="LoadingScreen" parent="." index="2"]
+splash_screen = ExtResource("2_f702p")
