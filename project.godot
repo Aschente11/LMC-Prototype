@@ -29,7 +29,7 @@ Scenes="*res://addons/scene_manager/scenes.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ateneo-virtual-reality-escape/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg", "res://addons/scene_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/ateneo-virtual-reality-escape/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg")
 
 [layer_names]
 

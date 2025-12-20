@@ -23,11 +23,6 @@ func setup(text: String, color: Color = Color.SEA_GREEN):
 	label_3d.font_size = 96
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var xr_camera = get_viewport().get_camera_3d()

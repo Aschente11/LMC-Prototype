@@ -445,10 +445,9 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.1
 mesh = SubResource("QuadMesh_a0fa2")
 skeleton = NodePath("")
 
-[node name="FloatingIndicatorManager" type="Node3D" parent="XROrigin3D/XRCamera3D" index="1" node_paths=PackedStringArray("target_parent")]
+[node name="FloatingIndicatorManager" type="Node3D" parent="XROrigin3D/XRCamera3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
 script = ExtResource("4_8p3xe")
-target_parent = NodePath("")
 
 [node name="overthinkings" type="Node3D" parent="XROrigin3D/XRCamera3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
@@ -588,26 +587,33 @@ crouch_button_action = "trigger_click"
 
 [node name="MovementJog" parent="XROrigin3D" index="4" instance=ExtResource("23_i2ckw")]
 
-[node name="watchNotif" type="AudioStreamPlayer3D" parent="XROrigin3D" index="5"]
-stream = ExtResource("24_l2y0c")
-
-[node name="TaskManager" type="Node3D" parent="XROrigin3D" index="6"]
+[node name="TaskManager" type="Node3D" parent="XROrigin3D" index="5"]
 script = ExtResource("25_lkhl0")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="XROrigin3D" index="7"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="XROrigin3D" index="6"]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_qvpqm")
 }
 
-[node name="crying" type="AudioStreamPlayer3D" parent="XROrigin3D" index="8"]
+[node name="Audio" type="Node" parent="XROrigin3D" index="7"]
+
+[node name="crying" type="AudioStreamPlayer3D" parent="XROrigin3D/Audio" index="0"]
 stream = ExtResource("26_cec4d")
 
-[node name="SoundDistraction" type="AudioStreamPlayer3D" parent="XROrigin3D" index="9"]
+[node name="watchNotif" type="AudioStreamPlayer3D" parent="XROrigin3D/Audio" index="1"]
+stream = ExtResource("24_l2y0c")
+
+[node name="Distractions" type="Node" parent="XROrigin3D/Audio" index="2"]
+
+[node name="SoundDistraction" type="AudioStreamPlayer3D" parent="XROrigin3D/Audio/Distractions" index="0"]
 stream = ExtResource("27_dshk7")
 
-[node name="SoundDistraction2" type="AudioStreamPlayer3D" parent="XROrigin3D" index="10"]
+[node name="SoundDistraction2" type="AudioStreamPlayer3D" parent="XROrigin3D/Audio/Distractions" index="1"]
 stream = ExtResource("28_5g40b")
 
-[node name="SoundDistraction3" type="AudioStreamPlayer3D" parent="XROrigin3D" index="11"]
+[node name="SoundDistraction3" type="AudioStreamPlayer3D" parent="XROrigin3D/Audio/Distractions" index="2"]
 stream = ExtResource("29_lnrh6")
+
+[connection signal="button_pressed" from="XROrigin3D/LeftHand" to="XROrigin3D" method="_left_on_button_pressed"]
+[connection signal="button_pressed" from="XROrigin3D/RightHand" to="XROrigin3D" method="_right_on_button_pressed"]

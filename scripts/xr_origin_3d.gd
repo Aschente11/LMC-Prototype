@@ -1,12 +1,12 @@
 extends XROrigin3D
 
 @onready var change_indicator: Material = $XRCamera3D/ChangeIndicator.get_active_material(0)
-@onready var sound_distraction1 = $SoundDistraction
-@onready var sound_distraction2 = $SoundDistraction2
-@onready var sound_distraction3 = $SoundDistraction3
+@onready var left_watch: Node3D = $LeftHand/smartwatch
+@onready var right_watch: Node3D = $RightHand/smartwatch
 
-var distraction_running = false
-
+var watch_is_left: bool = true
+var distraction_running: bool = false
+var distraction_sounds = []
 
 # Text configuration class
 class TextConfig:
@@ -32,10 +32,6 @@ var spawn_interval: float = 3  # How often new texts appear
 var display_duration: float = 2.0  # How long texts stay visible after fully typed
 var typewriter_speed: float = 0.04  # Time between each letter
 var spawn_range: Vector3 = Vector3(2.0, 1.5, 3.0)  # x_range, y_range, z_distance
-@onready var left_watch: Node3D = $XROrigin3D/XRController3DLeft/smartwatch
-@onready var right_watch: Node3D = $XROrigin3D/XRController3DRight/smartwatch
-
-var watch_is_left: bool = true
 
 func _ready() -> void:
 	add_to_group("player")
@@ -46,6 +42,8 @@ func _ready() -> void:
 	
 	# Setup timer
 	setup_text_spawn_timer()
+	
+	setup_distraction_sounds()
 	
 	# Debug: Print current stimulation level
 	print("Current stimulation level: ", GlobalVar.stimulation)
@@ -62,21 +60,22 @@ func _ready() -> void:
 	call_deferred("check_initial_state")
 	# Check initial stimulation level and start spawning if needed
 	
+func setup_distraction_sounds() -> void:
+	for sound in $Audio/Distractions.get_children():
+		distraction_sounds.add(sound)
 
 func setup_text_configs() -> void:
-	# Add your text configurations here - easy to add new ones!
 	text_configs.append(TextConfig.new(
 		"Did I forget something?", 
-		$"XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn/forget audio",
-		$"XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn",
+		$"XRCamera3D/overthinkings/Did I forget smthn/forget audio",
+		$"XRCamera3D/overthinkings/Did I forget smthn",
 		1.0  # Normal spawn weight
 	))
 	
-	# Add your new text - just add the audio node to your scene first
 	text_configs.append(TextConfig.new(
 		"What is life even about?",
-		$"XROrigin3D/XRCamera3D/overthinkings/What is life/What is life",  # You'll need to add this audio node
-		$"XROrigin3D/XRCamera3D/overthinkings/What is life",  # You'll need to add this mesh node
+		$"XRCamera3D/overthinkings/What is life/What is life",  # You'll need to add this audio node
+		$"XRCamera3D/overthinkings/What is life",  # You'll need to add this mesh node
 		0.8  # Slightly less common than the first text
 	))
 	
@@ -91,7 +90,7 @@ func setup_text_spawn_timer() -> void:
 	text_spawn_timer.wait_time = spawn_interval
 	text_spawn_timer.timeout.connect(_on_text_spawn_timer_timeout)
 
-# Combine positive and negative indicators + call indicator spawner
+# Trigger indicator for changes in stimulation
 func trigger_indicator(old_value: int, new_value: int) -> void:
 	$XRCamera3D/ChangeIndicator.visible = true
 	
@@ -126,7 +125,7 @@ func trigger_indicator(old_value: int, new_value: int) -> void:
 	$XRCamera3D/ChangeIndicator.visible = false
 	
 func _on_stimulation_changed(old_value: int, new_value: int) -> void:
-	print("Stimulation changed to: ", new_value)
+	print("Stimulation changed to ", new_value, " from ", old_value)
 
 	if new_value != 3 and not is_spawning_texts:
 		start_text_spawning()
@@ -140,7 +139,9 @@ func _on_stimulation_changed(old_value: int, new_value: int) -> void:
 	else:
 		if distraction_running:
 			distraction_running = false
-			sound_distraction1.stop()
+			for sound in distraction_sounds:
+				if sound.playing:
+					sound.stop()
 
 	if new_value == 5:
 		disable_teleport()
@@ -151,7 +152,6 @@ func _on_stimulation_changed(old_value: int, new_value: int) -> void:
 	timer.one_shot = true
 	timer.timeout.connect(_on_delay_timeout)
 	timer.start()
-
 
 func start_text_spawning() -> void:
 	is_spawning_texts = true
@@ -302,20 +302,25 @@ func add_text_config(text: String, audio: AudioStreamPlayer3D, mesh_template: Me
 	text_configs.append(config)
 	if mesh_template:
 		mesh_template.visible = false
+		
+func play_distraction_loop() -> void:
+	while distraction_running:
+		var random_sound = distraction_sounds[randi() % 3]
+		random_sound.play()
+		await get_tree().create_timer(5.0).timeout
 
-# Your existing functions
 func _on_delay_timeout() -> void:
 	trigger_double_haptic_feedback()
 
 func trigger_double_haptic_feedback() -> void:
 	if watch_is_left:
 		left_trigger_haptic_feedback()
-		$watchNotif.play()
+		$Audio/watchNotif.play()
 		await get_tree().create_timer(0.3).timeout
 		left_trigger_haptic_feedback()
 	else:
 		right_trigger_haptic_feedback()
-		$watchNotif.play()
+		$Audio/watchNotif.play()
 		await get_tree().create_timer(0.3).timeout
 		right_trigger_haptic_feedback()
 
@@ -325,7 +330,7 @@ func left_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5,
 func right_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5, amplitude: float = 0.8) -> void:
 	$RightHand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 	
-func _on_button_pressed(button_name: String):
+func _left_on_button_pressed(button_name: String):
 	if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
 		self.current = true
 		$XRCamera3D.current = true
@@ -345,12 +350,31 @@ func _on_button_pressed(button_name: String):
 					## Only toggle notebook if tutorial was already dismissed or not visible
 					#notebook.visible = !notebook.visible
 					
+func _right_on_button_pressed(button_name: String):
+	if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
+		self.current = true
+		$XRCamera3D.current = true
+	#if task_manager and notebook:
+		#match button_name:
+			##"trigger_click":
+				##task_manager.refresh_all_tasks()
+			#"ax_button": 
+				##task_manager.display_tasks()
+				##notebook.visible = !notebook.visible
+				##task_manager.complete_task(0)
+				## First check if note tutorial is visible and dismiss it
+				#if note_tutorial_text.visible:
+					#note_tutorial_text.visible = false
+					#note_tutorial_dismissed = true
+				#else:
+					## Only toggle notebook if tutorial was already dismissed or not visible
+					#notebook.visible = !notebook.visible
+
 func _on_physical_increase(old_value: int, new_value: int):
 	$XRCamera3D/FloatingIndicatorManager.show_typed_indicator(
 		Vector3(-0.3, -0.5, -1.0),
 		FloatingIndicatorManager.IndicatorType.PHYSICAL_GAIN
 	)
-
 
 func _on_physical_decrease(old_value: int, new_value: int):
 	$XRCamera3D/FloatingIndicatorManager.show_typed_indicator(
@@ -358,13 +382,11 @@ func _on_physical_decrease(old_value: int, new_value: int):
 		FloatingIndicatorManager.IndicatorType.PHYSICAL_LOSS
 	)
 	
-
 func _on_emotional_increase(old_value: int, new_value: int):
 	$XRCamera3D/FloatingIndicatorManager.show_typed_indicator(
 		Vector3(0.3, -0.5, -1.0),
 		FloatingIndicatorManager.IndicatorType.EMOTIONAL_GAIN
 	)
-
 
 func _on_emotional_decrease(old_value: int, new_value: int):
 	$XRCamera3D/FloatingIndicatorManager.show_typed_indicator(
@@ -373,21 +395,12 @@ func _on_emotional_decrease(old_value: int, new_value: int):
 	)
 
 func _on_plushie_picked_up(pickable):
-	if not $crying.playing:
-		$crying.play()
-
+	if not $Audio/crying.playing:
+		$Audio/crying.play()
 
 func _on_plushie_released(pickable, by):
-	$crying.stop()
+	$Audio/crying.stop()
 
 func disable_teleport():
 	$LeftHand/FunctionTeleport.enabled = false
 	$RightHand/FunctionTeleport.enabled = false
-
-func play_distraction_loop() -> void:
-	var distraction_sounds = [sound_distraction1, sound_distraction2, sound_distraction3]
-	
-	while distraction_running:
-		var random_sound = distraction_sounds[randi() % 3]
-		random_sound.play()
-		await get_tree().create_timer(5.0).timeout
