@@ -12,10 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://02w3eaoutnsd" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_specularLevel.jpg" id="10_n7ona"]
 [ext_resource type="Texture2D" uid="uid://44bxquvggmos" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_normal.jpg" id="11_orb8n"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="13_22glw"]
+[ext_resource type="Texture2D" uid="uid://cd38u654adob1" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Displacement.jpg" id="14_frrq1"]
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="14_kxjr6"]
+[ext_resource type="Texture2D" uid="uid://dmh1hr43lbfqf" path="res://assets/textures/Tiles009-4K/Tiles009_4K_NormalDX.jpg" id="15_jrb4w"]
 [ext_resource type="Texture2D" uid="uid://7bljh8e18a2x" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Color.jpg" id="15_qvqbi"]
-[ext_resource type="Texture2D" uid="uid://c3e3ci04ak5yh" path="res://assets/textures/Tiles009-4K/Tiles009_4K_AmbientOcclusion.jpg" id="16_2jjrt"]
-[ext_resource type="Texture2D" uid="uid://chibr5vli2kq8" path="res://assets/textures/Tiles009-4K/Tiles009_4K_NormalGL.jpg" id="17_m1x7a"]
 [ext_resource type="Texture2D" uid="uid://ixiikv87pfp2" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Roughness.jpg" id="18_3v0nt"]
 [ext_resource type="Texture2D" uid="uid://p6vxlfnbn3w3" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Color.jpg" id="19_1xocd"]
 [ext_resource type="Texture2D" uid="uid://ikro6b4d54j5" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-ao.jpg" id="20_udt5n"]
@@ -385,21 +385,23 @@ shader_parameter/fresnel_texture = ExtResource("11_orb8n")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2s0kr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwn8a"]
 albedo_texture = ExtResource("15_qvqbi")
 roughness_texture = ExtResource("18_3v0nt")
 normal_enabled = true
-normal_texture = ExtResource("17_m1x7a")
-ao_enabled = true
-ao_texture = ExtResource("16_2jjrt")
-uv1_scale = Vector3(6.205, 3.755, 1)
+normal_texture = ExtResource("15_jrb4w")
+heightmap_texture = ExtResource("14_frrq1")
+uv1_scale = Vector3(-15.08, -6.405, 0.185)
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_22r5b"]
-material = SubResource("StandardMaterial3D_2s0kr")
-size = Vector2(8.15, 4.53)
+[sub_resource type="BoxMesh" id="BoxMesh_6j5d8"]
+material = SubResource("StandardMaterial3D_dwn8a")
+size = Vector3(8.5, 0.13, 4.51)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jicrx"]
 size = Vector3(15, 0.07, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e4wgk"]
+size = Vector3(15, 0.115, 20)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hrbsu"]
 render_priority = 0
@@ -414,10 +416,6 @@ normal_texture = ExtResource("21_thwr3")
 ao_texture = ExtResource("20_udt5n")
 uv1_scale = Vector3(2, 3.55, 1)
 uv1_offset = Vector3(0, -0.275, 0)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_15lk8"]
-material = SubResource("StandardMaterial3D_xaipn")
-size = Vector2(15, 20)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dwn8a"]
 data = PackedVector3Array(7.5, 0, 10, -7.5, 0, 10, 7.5, 0, -10, -7.5, 0, 10, -7.5, 0, -10, 7.5, 0, -10)
@@ -890,7 +888,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 10),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+"values": [Vector3(3.44877, 0, 0), Vector3(6.28319, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kcbbm"]
@@ -927,6 +925,7 @@ mesh = SubResource("PlaneMesh_6d5by")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D" index="2"]
 transform = Transform3D(1.42, -5.32907e-15, 3.55271e-15, 0, 1.42, -7.47624e-16, 3.55271e-15, -7.47624e-16, 1.42, 0.0732703, 0.231474, -0.397363)
+cast_shadow = 0
 mesh = SubResource("SphereMesh_q14o7")
 
 [node name="QTE_Debugging" type="Node3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D" index="3"]
@@ -1060,8 +1059,8 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_4ir3v")
 
 [node name="CR Floor" type="MeshInstance3D" parent="Room/Floor4" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87657, 0, -0.254821)
-mesh = SubResource("PlaneMesh_22r5b")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05619, 0.0893998, -0.254821)
+mesh = SubResource("BoxMesh_6j5d8")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room" index="1"]
@@ -1072,10 +1071,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0292759, -6.05233)
 shape = SubResource("BoxShape3D_jicrx")
 
 [node name="Ceiling" type="MeshInstance3D" parent="Room" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -3.455, 4.255, 0.002)
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, -3.455, 4.4, 0.002)
 cast_shadow = 2
-mesh = SubResource("PlaneMesh_15lk8")
+mesh = SubResource("BoxMesh_e4wgk")
 skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_xaipn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Room/Ceiling" index="0"]
 
@@ -1331,14 +1331,30 @@ transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 
 [node name="Ceiling Light" parent="Furniture" index="0" instance=ExtResource("36_i35ra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0306931, 3.73148, 6.31422)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Ceiling Light" index="1"]
+light_color = Color(1, 0.687411, 0.43849, 1)
+light_energy = 5.392
+
 [node name="Ceiling Light2" parent="Furniture" index="1" instance=ExtResource("36_i35ra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87649, 3.73148, 6.31422)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Furniture/Ceiling Light2" index="1"]
+light_color = Color(1, 0.687411, 0.43849, 1)
+light_energy = 5.392
 
 [node name="Ceiling Light4" parent="Furniture" index="2" instance=ExtResource("36_i35ra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.876, 3.69889, -6.665)
 
+[node name="OmniLight3D4" type="OmniLight3D" parent="Furniture/Ceiling Light4" index="1"]
+light_color = Color(1, 0.687411, 0.43849, 1)
+light_energy = 5.392
+
 [node name="Ceiling Light3" parent="Furniture" index="3" instance=ExtResource("36_i35ra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494399, 3.70293, -6.66538)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Furniture/Ceiling Light3" index="1"]
+light_color = Color(1, 0.687411, 0.43849, 1)
+light_energy = 5.392
 
 [node name="Front Door" parent="Furniture" index="4" instance=ExtResource("37_wn7fv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, -0.009, 9.949)
@@ -1627,7 +1643,7 @@ transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70426, 1.40103, -3.4944)
 
 [node name="TvSet" parent="." index="30" instance=ExtResource("92_3ueut")]
-transform = Transform3D(0.00287981, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00287981, -0.81102, 0.509183, -7.74874)
+transform = Transform3D(0.00287981, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00287981, -0.81102, 0.573663, -7.74874)
 
 [node name="ArtSupplyProps" parent="." index="31" instance=ExtResource("93_byaei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53481, 0, -9.13332)

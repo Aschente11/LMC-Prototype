@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=4 uid="uid://dcajgychncjmh"]
+[gd_scene load_steps=31 format=4 uid="uid://dcajgychncjmh"]
 
 [ext_resource type="Script" uid="uid://cpodae16v7785" path="res://scripts/washing_machine.gd" id="1_7dbpm"]
 [ext_resource type="Script" uid="uid://bb8kuvwsdnh4c" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_directional_swipe_receiver.gd" id="1_vyivf"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_6ogrk"]
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="2_jk5aw"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="3_7dbpm"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="4_ylt7h"]
@@ -10,14 +11,24 @@
 [ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="8_7c36k"]
 [ext_resource type="PackedScene" uid="uid://l6oclp7kyb6q" path="res://scenes/others/timerRing.tscn" id="9_lt433"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n06g6"]
+render_priority = 0
+shader = ExtResource("2_6ogrk")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jn30"]
 resource_name = "White"
+next_pass = SubResource("ShaderMaterial_n06g6")
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.818315, 0.818315, 0.818315, 1)
 emission_enabled = true
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbwch"]
+render_priority = 0
+shader = ExtResource("2_6ogrk")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48yiw"]
 resource_name = "Grey"
+next_pass = SubResource("ShaderMaterial_dbwch")
 vertex_color_use_as_albedo = true
 albedo_color = Color(0.546881, 0.546881, 0.546881, 1)
 emission_enabled = true

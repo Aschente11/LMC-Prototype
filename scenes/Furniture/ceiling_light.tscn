@@ -6,7 +6,3 @@
 
 [node name="Ceiling Light" parent="." instance=ExtResource("1_ic041")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(1, 0.687411, 0.43849, 1)
-light_energy = 5.392
