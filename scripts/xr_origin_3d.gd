@@ -62,7 +62,7 @@ func _ready() -> void:
 	
 func setup_distraction_sounds() -> void:
 	for sound in $Audio/Distractions.get_children():
-		distraction_sounds.add(sound)
+		distraction_sounds.append(sound)
 
 func setup_text_configs() -> void:
 	text_configs.append(TextConfig.new(

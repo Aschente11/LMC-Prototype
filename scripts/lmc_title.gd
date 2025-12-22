@@ -2,6 +2,8 @@ extends XRToolsSceneBase
 
 var xr_interface: XRInterface
 
+@export_file("*.tscn") var target_scene: String
+
 @onready var title_text: MeshInstance3D = $TitleText
 
 # Store original position and rotation
@@ -107,19 +109,26 @@ func start_tween_bounce():
 	tween.parallel().tween_property(title_text, "scale", Vector3(1.0, 1.0, 1.0), 0.8)
 	
 func _left_on_button_pressed(button: String) -> void:
-	if has_initialized and not was_pressed:
+	if has_initialized and not was_pressed and (button == "ax_button" or button == "by_button"):
 		print(button, " has been pressed!")
-		pass
-		#was_pressed = true
+		was_pressed = true
+		_change_scene()
 		#print("Changed Scene")
 		#await get_tree().create_timer(1).timeout
 		#get_tree().change_scene_to_file("res://scenes/main.tscn")
 		
 func _right_on_button_pressed(button: String) -> void:
-	if has_initialized and not was_pressed:
+	if has_initialized and not was_pressed and (button == "ax_button" or button == "by_button"):
 		print(button, " has been pressed!")
-		pass
+		was_pressed = true
+		_change_scene()
 		#was_pressed = true
 		#print("Changed Scene")
 		#await get_tree().create_timer(1).timeout
 		#get_tree().change_scene_to_file("res://scenes/main.tscn")
+		
+func _change_scene() -> void:
+	if not target_scene or target_scene == "":
+		return
+		
+	self.load_scene(target_scene)

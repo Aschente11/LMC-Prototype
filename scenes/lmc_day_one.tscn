@@ -1,7 +1,8 @@
-[gd_scene load_steps=205 format=4 uid="uid://b5xwmkuww84xc"]
+[gd_scene load_steps=206 format=4 uid="uid://b5xwmkuww84xc"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_jrb4w"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_dwn8a"]
+[ext_resource type="Script" uid="uid://7qr8si53pkex" path="res://scripts/lmc_day_one.gd" id="2_jrb4w"]
 [ext_resource type="Shader" uid="uid://dvgadwfd5py8" path="res://shaders/aoe.gdshader" id="3_4h68j"]
 [ext_resource type="PackedScene" uid="uid://dyoxl56y3edl" path="res://scenes/UI/wake_up.tscn" id="4_6j5d8"]
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="5_3necn"]
@@ -86,7 +87,7 @@
 [ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="85_wlg75"]
 [ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="86_u0o4q"]
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="87_cqydd"]
-[ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scenes/day_night_cycle.gd" id="88_mq0kn"]
+[ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scripts/day_night_cycle.gd" id="88_mq0kn"]
 [ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="89_5mhvd"]
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="90_i56lk"]
 [ext_resource type="PackedScene" uid="uid://c2qly3ba5v28l" path="res://assets/tools/fidget-spinner/spinner.tscn" id="91_c8dny"]
@@ -898,6 +899,16 @@ _data = {
 }
 
 [node name="day_one" instance=ExtResource("1_jrb4w")]
+script = ExtResource("2_jrb4w")
+
+[node name="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="4"]
+visible = true
+
+[node name="MeshInstance3D2" parent="XROrigin3D/XRCamera3D" index="5"]
+visible = true
+
+[node name="MeshInstance3D3" parent="XROrigin3D/XRCamera3D" index="6"]
+visible = true
 
 [node name="WakingUpPlayer" type="Node3D" parent="." index="1"]
 transform = Transform3D(-3.53704e-09, -0.767546, -0.640994, -3.35505e-08, 0.640994, -0.767546, 1, 1.87908e-08, -2.80188e-08, -10.184, 0.983079, -8.05212)
@@ -913,6 +924,7 @@ metadata/_custom_type_script = "uid://bqqdxydvmjgir"
 [node name="XRCamera3D" type="XRCamera3D" parent="WakingUpPlayer/XROrigin3D" index="1"]
 transform = Transform3D(1, 3.01981e-14, 2.30926e-14, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0.105043, 0, 0)
 attributes = SubResource("CameraAttributesPractical_gfqyt")
+current = true
 fov = 51.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D" index="0"]
@@ -1026,10 +1038,7 @@ libraries = {
 [node name="QTE" type="Node" parent="WakingUpPlayer" index="2"]
 script = ExtResource("7_wap5h")
 
-[node name="Alarm" type="AudioStreamPlayer3D" parent="." index="2"]
-stream = ExtResource("8_nectv")
-
-[node name="Room" type="Node3D" parent="." index="3"]
+[node name="Room" type="Node3D" parent="." index="2"]
 
 [node name="Floor4" type="StaticBody3D" parent="Room" index="0"]
 
@@ -1326,7 +1335,7 @@ transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 
 [node name="window4" parent="Room" index="9" instance=ExtResource("35_7cqwr")]
 transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 4.06718, 1.13639, 3.847)
 
-[node name="Furniture" type="Node3D" parent="." index="4"]
+[node name="Furniture" type="Node3D" parent="." index="3"]
 
 [node name="Ceiling Light" parent="Furniture" index="0" instance=ExtResource("36_i35ra")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0306931, 3.73148, 6.31422)
@@ -1398,7 +1407,7 @@ transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1.3466
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8152, 1.67106, -0.296329)
 
 [node name="Wall Light" parent="Furniture" index="15" instance=ExtResource("46_2w25l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.12674, 2.65895, -2.33892)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.12674, 2.65895, -2.3512)
 
 [node name="Bathtub" parent="Furniture" index="16" instance=ExtResource("47_4nw8f")]
 transform = Transform3D(-6.86269e-08, 0, 1, 0, 1, 0, -1.57, 0, -4.37114e-08, -10.255, 1.14102, 1.24977)
@@ -1505,39 +1514,31 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.240867, 0, 2.08217)
 [node name="WashingMachine" parent="Furniture" index="36" instance=ExtResource("72_v0u7p")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.9289, 1.15492, 0.798197)
 
-[node name="knife" parent="." index="5" instance=ExtResource("73_5kylr")]
-transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.76397, 1.41585, 5.71333)
-
-[node name="clock" parent="." index="6" instance=ExtResource("74_kefp3")]
+[node name="clock" parent="Furniture" index="37" instance=ExtResource("74_kefp3")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.98311, 3.41081, -0.658281)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="7"]
+[node name="TvSet" parent="Furniture" index="38" instance=ExtResource("92_3ueut")]
+transform = Transform3D(0.00287981, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00287981, -0.81102, 0.573663, -7.74874)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
 environment = SubResource("Environment_bk161")
 
-[node name="toaster" parent="." index="8" instance=ExtResource("76_og087")]
+[node name="knife" parent="." index="5" instance=ExtResource("73_5kylr")]
+transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.83114, 1.37749, 5.74378)
+
+[node name="toaster" parent="." index="6" instance=ExtResource("76_og087")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70481, 1.36149, 7.3661)
 
-[node name="bread2" parent="." index="9" instance=ExtResource("77_ap31v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65055, 1.36271, 6.80867)
+[node name="bread2" parent="." index="7" instance=ExtResource("77_ap31v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75705, 1.36271, 6.80867)
 
-[node name="bread" parent="." index="10" instance=ExtResource("77_ap31v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.54926, 1.3697, 6.74431)
+[node name="bread" parent="." index="8" instance=ExtResource("77_ap31v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65576, 1.3697, 6.74431)
 
-[node name="Apple" parent="." index="11" instance=ExtResource("78_s6j4k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.52473, 1.50377, 5.98096)
+[node name="Apple" parent="." index="9" instance=ExtResource("78_s6j4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7751, 1.50377, 6.16335)
 
-[node name="wake_up" type="AudioStreamPlayer" parent="." index="12"]
-stream = ExtResource("79_s6bjl")
-volume_db = 20.0
-
-[node name="note_tutorial" type="AudioStreamPlayer" parent="." index="13"]
-stream = ExtResource("80_iqg00")
-volume_db = 20.0
-
-[node name="need_unpack" type="AudioStreamPlayer" parent="." index="14"]
-stream = ExtResource("81_nq5ah")
-
-[node name="bfast" type="Area3D" parent="." index="15"]
+[node name="bfast" type="Area3D" parent="." index="10"]
 collision_mask = 524289
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bfast" index="0"]
@@ -1554,7 +1555,7 @@ transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.708
 mesh = SubResource("CylinderMesh_ygqp6")
 skeleton = NodePath("../..")
 
-[node name="unpacking" type="Area3D" parent="." index="16"]
+[node name="unpacking" type="Area3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.302, 0, -10.827)
 collision_mask = 524289
 
@@ -1572,10 +1573,7 @@ transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.708
 mesh = SubResource("CylinderMesh_ygqp6")
 skeleton = NodePath("../..")
 
-[node name="journal" parent="." index="17" instance=ExtResource("82_6kue4")]
-transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -7.01153, 1.33657, -3.59407)
-
-[node name="sleep" type="Area3D" parent="." index="18"]
+[node name="sleep" type="Area3D" parent="." index="12"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21711, 0, -13.9972)
 collision_mask = 524289
 
@@ -1593,23 +1591,26 @@ transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.708
 mesh = SubResource("CylinderMesh_ygqp6")
 skeleton = NodePath("../..")
 
-[node name="SleepViewport" parent="." index="19" instance=ExtResource("83_t8ie3")]
+[node name="journal" parent="." index="13" instance=ExtResource("82_6kue4")]
+transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -7.01153, 1.33657, -3.59407)
+
+[node name="SleepViewport" parent="." index="14" instance=ExtResource("83_t8ie3")]
 transform = Transform3D(0.0392773, 0, 0.999228, 0, 1, 0, -0.999228, 0, 0.0392773, -6.95032, 0.756904, -9.05644)
 scene = ExtResource("84_p20jj")
 unshaded = true
 scene_properties_keys = PackedStringArray("sleep.gd")
 
-[node name="post_it" parent="." index="20" instance=ExtResource("85_wlg75")]
+[node name="post_it" parent="." index="15" instance=ExtResource("85_wlg75")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50684, 1.32804, -3.40846)
 
-[node name="OISJournal" parent="." index="21" instance=ExtResource("86_u0o4q")]
+[node name="OISJournal" parent="." index="16" instance=ExtResource("86_u0o4q")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.9389, 1.33187, -2.96148)
 visible = false
 
-[node name="vacuum" parent="." index="22" instance=ExtResource("87_cqydd")]
+[node name="vacuum" parent="." index="17" instance=ExtResource("87_cqydd")]
 transform = Transform3D(0.0243799, 0, 0.999703, 0, 1, 0, -0.999703, 0, 0.0243799, -5.60894, 0.313666, -2.98139)
 
-[node name="DayNightCycle" type="Node3D" parent="." index="23"]
+[node name="DayNightCycle" type="Node3D" parent="." index="18"]
 script = ExtResource("88_mq0kn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="DayNightCycle" index="0"]
@@ -1623,29 +1624,47 @@ libraries = {
 &"": SubResource("AnimationLibrary_kcbbm")
 }
 
-[node name="InitialMarker" type="Marker3D" parent="." index="24"]
+[node name="InitialMarker" type="Marker3D" parent="." index="19"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.985, 1.79825, -5.49412)
 
-[node name="BedMarker" type="Marker3D" parent="." index="25"]
+[node name="BedMarker" type="Marker3D" parent="." index="20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73031, 1.35363, -7.08733)
 
-[node name="plushie" parent="." index="26" instance=ExtResource("89_5mhvd")]
+[node name="plushie" parent="." index="21" instance=ExtResource("89_5mhvd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63535, 0.722356, -6.35067)
 collision_mask = 196615
 
-[node name="PC" parent="." index="27" instance=ExtResource("90_i56lk")]
+[node name="PC" parent="." index="22" instance=ExtResource("90_i56lk")]
 transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.96628, 1.3151, -3.63468)
 
-[node name="fidget_spinner" parent="." index="28" instance=ExtResource("91_c8dny")]
+[node name="fidget_spinner" parent="." index="23" instance=ExtResource("91_c8dny")]
 transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -7.394, 1.42767, -3.71211)
 
-[node name="Pencil_Model" parent="." index="29" instance=ExtResource("33_ithw4")]
+[node name="Pencil_Model" parent="." index="24" instance=ExtResource("33_ithw4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70426, 1.40103, -3.4944)
 
-[node name="TvSet" parent="." index="30" instance=ExtResource("92_3ueut")]
-transform = Transform3D(0.00287981, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00287981, -0.81102, 0.573663, -7.74874)
-
-[node name="ArtSupplyProps" parent="." index="31" instance=ExtResource("93_byaei")]
+[node name="ArtSupplyProps" parent="." index="25" instance=ExtResource("93_byaei")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53481, 0, -9.13332)
 
-[node name="Lights" type="Node" parent="." index="32"]
+[node name="Audio" type="Node" parent="." index="26"]
+
+[node name="wake_up" type="AudioStreamPlayer" parent="Audio" index="0"]
+stream = ExtResource("79_s6bjl")
+volume_db = 20.0
+
+[node name="note_tutorial" type="AudioStreamPlayer" parent="Audio" index="1"]
+stream = ExtResource("80_iqg00")
+volume_db = 20.0
+
+[node name="need_unpack" type="AudioStreamPlayer" parent="Audio" index="2"]
+stream = ExtResource("81_nq5ah")
+
+[node name="Alarm" type="AudioStreamPlayer3D" parent="Audio" index="3"]
+stream = ExtResource("8_nectv")
+
+[connection signal="failed_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_fail"]
+[connection signal="success_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_success"]
+[connection signal="body_entered" from="bfast" to="." method="_on_bfast_body_entered"]
+[connection signal="body_entered" from="unpacking" to="." method="_on_unpacking_body_entered"]
+[connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]
+[connection signal="picked_up" from="journal" to="." method="_on_journal_picked_up"]

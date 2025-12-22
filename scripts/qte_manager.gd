@@ -181,7 +181,7 @@ func handle_qte_input() -> void:
 			QTE_INCREMENTER += 1
 			if QTE_INCREMENTER > QTE_MAX_SIZE:
 				QTE_INCREMENTER = QTE_MAX_SIZE
-			QTE_SIZE = QTE_SIZE + floor(QTE_INCREMENTER / 2)
+			QTE_SIZE = QTE_SIZE + floor(QTE_INCREMENTER / 2.0)
 			success_qte.emit()
 			if QTE_LAYER:
 				if QTE_FEEDBACK:

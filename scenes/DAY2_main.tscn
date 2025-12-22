@@ -79,7 +79,7 @@
 [ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="79_kcbbm"]
 [ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="80_yniqi"]
 [ext_resource type="PackedScene" uid="uid://ctfj38t4j8qmq" path="res://scenes/distractions/dust.tscn" id="81_jmq4f"]
-[ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scenes/day_night_cycle.gd" id="81_yhcdh"]
+[ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scripts/day_night_cycle.gd" id="81_yhcdh"]
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="82_fmiir"]
 [ext_resource type="PackedScene" uid="uid://bd1ns3arb2768" path="res://scenes/Furniture/Bedroom/canvas.tscn" id="82_jmq4f"]
 [ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="83_cqug8"]
