@@ -331,9 +331,10 @@ func right_trigger_haptic_feedback(duration: float = 0.2, frequency: float = 0.5
 	$RightHand.trigger_haptic_pulse("haptic", frequency, amplitude, duration, 0.0)
 	
 func _left_on_button_pressed(button_name: String):
-	if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
-		self.current = true
-		$XRCamera3D.current = true
+	pass
+	#if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
+		#self.current = true
+		#$XRCamera3D.current = true
 	#if task_manager and notebook:
 		#match button_name:
 			##"trigger_click":
@@ -351,9 +352,10 @@ func _left_on_button_pressed(button_name: String):
 					#notebook.visible = !notebook.visible
 					
 func _right_on_button_pressed(button_name: String):
-	if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
-		self.current = true
-		$XRCamera3D.current = true
+	pass
+	#if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
+		#self.current = true
+		#$XRCamera3D.current = true
 	#if task_manager and notebook:
 		#match button_name:
 			##"trigger_click":

@@ -3,6 +3,7 @@ extends XRToolsSceneBase
 var xr_interface: XRInterface
 
 var anim_player
+@onready var xr_player = $XROrigin3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,11 +19,10 @@ func _ready():
 	else:
 		print("OpenXR not initialized, please check if your headset is connected.")
 		
+	remove_child(xr_player)
+	
 	$WakingUpPlayer/XROrigin3D.current = true
 	$WakingUpPlayer/XROrigin3D/XRCamera3D.current = true
-	
-	$XROrigin3D.current = false
-	$XROrigin3D/XRCamera3D.current = false
 	
 	$unpacking.visible = false
 	$unpacking.monitoring = false
@@ -57,22 +57,25 @@ func on_qte_fail():
 func on_qte_success():
 	$WakingUpPlayer/AnimationPlayer.play("Blinking")
 	
+	add_child(xr_player)
+	
 	await get_tree().create_timer(5).timeout
 	print("Changed Scene")
 	
 	# Change from QTE to actual player XROrigin and Camera
-	if $XROrigin3D and $WakingUpPlayer:
-		$XROrigin3D.set_global_position($InitialMarker.global_position)
-		anim_player = $XROrigin3D.get_node("AnimationPlayer")
+	if $WakingUpPlayer:
+		xr_player.set_global_position($InitialMarker.global_position)
+		anim_player = xr_player.get_node("AnimationPlayer")
 		
 		$WakingUpPlayer/XROrigin3D.current = false
 		$WakingUpPlayer/XROrigin3D/XRCamera3D.current = false
 		
-		$XROrigin3D.current = true
+		xr_player.current = true
 		$XROrigin3D/XRCamera3D.current = true
+		xr_player.visible = true
 		
-		remove_child($WakingUpPlayer)
 		$WakingUpPlayer.queue_free()
+		print("Changed player")
 		
 	$Audio/Alarm.stop()
 	
@@ -89,7 +92,7 @@ func teleport_player(marker):
 		pos = $BedMarker.global_position
 		print("teleported to bed")
 		
-	$XROrigin3D.global_position = pos
+	xr_player.global_position = pos
 	
 	anim_player.play("blinking")
 	
@@ -128,4 +131,4 @@ func _on_journal_picked_up():
 				TaskManager.active_tasks[i].done = true
 				
 func is_xr_class(name : String) -> bool:
-	return name == "XRToolsSceneBase"
+	return name == "XRToolsSceneBase" or super(name)

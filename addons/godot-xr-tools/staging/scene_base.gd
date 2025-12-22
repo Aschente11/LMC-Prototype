@@ -90,6 +90,8 @@ func center_player_on(p_transform : Transform3D):
 ## come from a field of an advanced user_data class-object, or from a game-state
 ## singleton.
 func scene_loaded(user_data = null):
+	if user_data == "day_one":
+		return
 	# Called after scene is loaded
 
 	# Make sure our camera becomes the current camera
@@ -135,6 +137,7 @@ func scene_loaded(user_data = null):
 func scene_visible(user_data = null):
 	# Called after the scene becomes fully visible
 	pass
+	# setup?
 
 
 ## This method is called before the start of transition from this scene to a

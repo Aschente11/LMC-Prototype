@@ -131,4 +131,4 @@ func _change_scene() -> void:
 	if not target_scene or target_scene == "":
 		return
 		
-	self.load_scene(target_scene)
+	self.load_scene(target_scene, "day_one")

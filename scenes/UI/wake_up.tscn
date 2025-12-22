@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyoxl56y3edl"]
+[gd_scene load_steps=7 format=3 uid="uid://dyoxl56y3edl"]
 
 [ext_resource type="Texture2D" uid="uid://754q5jwk4ls1" path="res://assets/others/b-filled.png" id="1_fjuxx"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="1_tje5h"]
 [ext_resource type="Shader" uid="uid://cn131gjfveqib" path="res://shaders/fill.gdshader" id="2_nhymk"]
+[ext_resource type="Texture2D" uid="uid://dqvsueqdi08xl" path="res://assets/textures/letter-a.png" id="4_vjc5r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nhymk"]
 font = ExtResource("1_tje5h")
@@ -63,7 +64,7 @@ offset_right = 64.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_fjuxx")
+texture = ExtResource("4_vjc5r")
 stretch_mode = 5
 
 [node name="Label2" type="Label" parent="CenterContainer/VBoxContainer"]

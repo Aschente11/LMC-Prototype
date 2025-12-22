@@ -22,14 +22,14 @@ var FOR_DEBUGGING : MeshInstance3D
 
 # VR Input tracking
 var xr_interface: XRInterface
-var by_button_pressed_last_frame: bool = false
+var ax_button_pressed_last_frame: bool = false
 
 # Debug variables
 var debug_enabled: bool = true
 var debug_label: Label
 
 var POSSIBLE_ACTIONS : Array = [
-	"by_button"
+	"ax_button"
 ]
 var CURRENT_QTE : Array = []
 var PLAYER_QTE : Array = []
@@ -85,8 +85,8 @@ func check_vr_button_pressed(button_name: String) -> bool:
 	# Map the action name to actual OpenXR button names
 	var actual_button_name = ""
 	match button_name:
-		"by_button":
-			actual_button_name = "by_button"  # This should match your OpenXR action map
+		"ax_button":
+			actual_button_name = "ax_button"  # This should match your OpenXR action map
 		_:
 			actual_button_name = button_name
 	
@@ -118,8 +118,8 @@ func check_vr_button_pressed(button_name: String) -> bool:
 
 func is_vr_button_just_pressed(button_name: String) -> bool:
 	var current_pressed = check_vr_button_pressed(button_name)
-	var just_pressed = current_pressed and not by_button_pressed_last_frame
-	by_button_pressed_last_frame = current_pressed
+	var just_pressed = current_pressed and not ax_button_pressed_last_frame
+	ax_button_pressed_last_frame = current_pressed
 	
 	# Debug output for just pressed events
 	if debug_enabled and just_pressed:
@@ -195,12 +195,12 @@ func handle_qte_input() -> void:
 func _process(delta:float) -> void:
 	# Update debug info continuously (but don't handle input here)
 	if debug_enabled:
-		check_vr_button_pressed("by_button")  # Only for debug display now
+		check_vr_button_pressed("ax_button")  # Only for debug display now
 	
 	# Handle VR input ONLY during QTE
 	if QTE_STATUS == QTE_STATES.RUNNING:
 		# Use the "just pressed" logic to prevent multiple inputs
-		if is_vr_button_just_pressed("by_button"):
+		if is_vr_button_just_pressed("ax_button"):
 			handle_qte_input()
 	
 	if QTE_STATUS == QTE_STATES.RUNNING:
@@ -240,7 +240,7 @@ func start_qte() -> void:
 	QTE_ACTION_TIMER = QTE_ACTION_TIME_LIMIT
 	CURRENT_QTE = []
 	PLAYER_QTE = []
-	by_button_pressed_last_frame = false  # Reset button state
+	ax_button_pressed_last_frame = false  # Reset button state
 	
 	for length in QTE_SIZE:
 		CURRENT_QTE.push_back(POSSIBLE_ACTIONS.pick_random())

@@ -901,17 +901,8 @@ _data = {
 [node name="day_one" instance=ExtResource("1_jrb4w")]
 script = ExtResource("2_jrb4w")
 
-[node name="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="4"]
-visible = true
-
-[node name="MeshInstance3D2" parent="XROrigin3D/XRCamera3D" index="5"]
-visible = true
-
-[node name="MeshInstance3D3" parent="XROrigin3D/XRCamera3D" index="6"]
-visible = true
-
-[node name="WakingUpPlayer" type="Node3D" parent="." index="1"]
-transform = Transform3D(-3.53704e-09, -0.767546, -0.640994, -3.35505e-08, 0.640994, -0.767546, 1, 1.87908e-08, -2.80188e-08, -10.184, 0.983079, -8.05212)
+[node name="WakingUpPlayer" type="Node3D" parent="." index="0"]
+transform = Transform3D(-3.53704e-09, -0.767546, -0.640994, -3.35505e-08, 0.640994, -0.767546, 1, 1.87908e-08, -2.80188e-08, -9.41243, 0.983079, -8.05212)
 
 [node name="XROrigin3D" type="XROrigin3D" parent="WakingUpPlayer" index="0"]
 current = true
@@ -1022,12 +1013,14 @@ unique_name_in_owner = true
 tracker = &"left_hand"
 
 [node name="LeftHand" parent="WakingUpPlayer/XROrigin3D/XRController3DLeft" index="0" instance=ExtResource("5_3necn")]
+visible = false
 hand_material_override = SubResource("StandardMaterial3D_v1b3s")
 
 [node name="XRController3DRight" type="XRController3D" parent="WakingUpPlayer/XROrigin3D" index="3"]
 tracker = &"right_hand"
 
 [node name="RightHand" parent="WakingUpPlayer/XROrigin3D/XRController3DRight" index="0" instance=ExtResource("6_e4wgk")]
+visible = false
 hand_material_override = SubResource("StandardMaterial3D_posyc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WakingUpPlayer" index="1"]
@@ -1037,6 +1030,12 @@ libraries = {
 
 [node name="QTE" type="Node" parent="WakingUpPlayer" index="2"]
 script = ExtResource("7_wap5h")
+
+[node name="XROrigin3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.24575, 0)
+
+[node name="XRToolsPlayerBody" parent="XROrigin3D" index="0"]
+enabled = false
 
 [node name="Room" type="Node3D" parent="." index="2"]
 
@@ -1625,7 +1624,7 @@ libraries = {
 }
 
 [node name="InitialMarker" type="Marker3D" parent="." index="19"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.985, 1.79825, -5.49412)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46087, 1.79825, -5.2846)
 
 [node name="BedMarker" type="Marker3D" parent="." index="20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73031, 1.35363, -7.08733)

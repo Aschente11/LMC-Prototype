@@ -502,18 +502,17 @@ visible = false
 mesh = SubResource("SphereMesh_oligm")
 skeleton = NodePath("")
 
+[node name="LeftHand" parent="XROrigin3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
 [node name="LeftHand" parent="XROrigin3D/LeftHand" index="0" instance=ExtResource("12_5xqo3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
 hand_material_override = SubResource("StandardMaterial3D_gv6ie")
 
 [node name="FunctionPickup" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("13_bp6ra")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
 
 [node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="2" instance=ExtResource("14_1ihsk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
 
 [node name="FunctionTeleport" parent="XROrigin3D/LeftHand" index="3" instance=ExtResource("15_n2ysp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
 teleport_button_action = "primary"
 
 [node name="OISActorComponent" type="Node3D" parent="XROrigin3D/LeftHand" index="4"]
@@ -539,26 +538,24 @@ collision_mask = 536870912
 shape = SubResource("SphereShape3D_jqbre")
 
 [node name="smartwatch" parent="XROrigin3D/LeftHand" index="5" instance=ExtResource("19_g7dor")]
-transform = Transform3D(0.0017453, 0, -0.999999, -0.0926137, 0.995702, -0.000161639, 0.9957, 0.0926139, 0.0017378, 0.44216, -1.05457, 0.677899)
+transform = Transform3D(0.0017453, 0, -0.999999, -0.0926137, 0.995702, -0.000161639, 0.9957, 0.0926139, 0.0017378, 0, 0, 0)
 
 [node name="MovementJump" parent="XROrigin3D/LeftHand" index="6" instance=ExtResource("20_lgle8")]
 
+[node name="RightHand" parent="XROrigin3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
 [node name="RightHand" parent="XROrigin3D/RightHand" index="0" instance=ExtResource("21_5ba1f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
 hand_material_override = SubResource("StandardMaterial3D_gv6ie")
 
 [node name="FunctionPickup" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("13_bp6ra")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
 
 [node name="FunctionPointer" parent="XROrigin3D/RightHand" index="2" instance=ExtResource("14_1ihsk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
 
 [node name="FunctionTeleport" parent="XROrigin3D/RightHand" index="3" instance=ExtResource("15_n2ysp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
 teleport_button_action = "primary"
 
 [node name="OISActorComponent" type="Node3D" parent="XROrigin3D/RightHand" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -1, 0.5)
 script = ExtResource("16_e5fh6")
 receiver_group = "hand"
 metadata/_custom_type_script = "uid://cg1lorgur84yy"
@@ -580,7 +577,7 @@ collision_mask = 536870912
 shape = SubResource("SphereShape3D_w0uuf")
 
 [node name="smartwatch" parent="XROrigin3D/RightHand" index="5" instance=ExtResource("19_g7dor")]
-transform = Transform3D(-4.37114e-08, 3.60561e-16, 1, -0.00178025, 0.999998, -7.78149e-11, -0.999998, -0.00178025, -4.37113e-08, -0.441448, -1.05352, 0.677899)
+transform = Transform3D(-4.37114e-08, 3.60561e-16, 1, -0.00178025, 0.999998, -7.78149e-11, -0.999998, -0.00178025, -4.37113e-08, 0, 0, 0)
 
 [node name="MovementCrouch" parent="XROrigin3D/RightHand" index="6" instance=ExtResource("22_gswto")]
 crouch_button_action = "trigger_click"
