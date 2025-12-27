@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=79 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_2jaaq"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_0xwb0"]
@@ -548,7 +548,6 @@ visible = false
 screen_size = Vector2(1280, 768)
 scene = ExtResource("6_v16v1")
 viewport_size = Vector2(640, 360)
-scene_properties_keys = PackedStringArray()
 
 [node name="Notebook" type="RigidBody3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00692913, 0.161713, -0.514805)

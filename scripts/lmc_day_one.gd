@@ -58,13 +58,18 @@ func on_qte_success():
 	$WakingUpPlayer/AnimationPlayer.play("Blinking")
 	
 	add_child(xr_player)
+	xr_player.visible = false
 	
 	await get_tree().create_timer(5).timeout
 	print("Changed Scene")
 	
 	# Change from QTE to actual player XROrigin and Camera
 	if $WakingUpPlayer:
+		xr_player.visible = true
 		xr_player.set_global_position($InitialMarker.global_position)
+		$XROrigin3D/XRToolsPlayerBody.set_global_position($InitialMarker.global_position)
+		$XROrigin3D/XRToolsPlayerBody.enabled = true
+		
 		anim_player = xr_player.get_node("AnimationPlayer")
 		
 		$WakingUpPlayer/XROrigin3D.current = false
@@ -72,7 +77,6 @@ func on_qte_success():
 		
 		xr_player.current = true
 		$XROrigin3D/XRCamera3D.current = true
-		xr_player.visible = true
 		
 		$WakingUpPlayer.queue_free()
 		print("Changed player")
@@ -107,20 +111,20 @@ func _on_eating_milestone(milestone: int):
 	$Audio/need_unpack.play()
 
 func _on_bfast_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") or body.name == "XRToolsPlayerBody":
-		$bfast.queue_free()
+	#if body.is_in_group("player") or body.name == "XROrigin3D":
+	$bfast.queue_free()
 
-		$unpacking.visible = true
-		$unpacking.monitoring = true
-		$unpacking.monitorable = true
+	$unpacking.visible = true
+	$unpacking.monitoring = true
+	$unpacking.monitorable = true
 
 func _on_unpacking_body_entered(body: Node3D) -> void:
-	if body.is_in_group("player") or body.name == "XRToolsPlayerBody":
-		$unpacking.queue_free()
-		
-		$sleep.visible = true
-		$sleep.monitoring = true
-		$sleep.monitorable = true
+	#if body.is_in_group("player") or body.name == "XROrigin3D":
+	$unpacking.queue_free()
+	
+	$sleep.visible = true
+	$sleep.monitoring = true
+	$sleep.monitorable = true
 
 func _on_sleep_body_entered(body: Node3D) -> void:
 	$SleepViewport.visible = true

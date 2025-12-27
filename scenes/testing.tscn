@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://cffhy82285is7"]
+
+[ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_ryjsw"]
+[ext_resource type="Texture2D" uid="uid://b7tsl6y1t315d" path="res://icon.svg" id="2_pcu7d"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pcu7d"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_l6grw"]
+sky_material = SubResource("ProceduralSkyMaterial_pcu7d")
+
+[sub_resource type="Environment" id="Environment_3dx25"]
+background_mode = 2
+sky = SubResource("Sky_l6grw")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nuoa6"]
+size = Vector2(20, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kri1i"]
+size = Vector3(20, 0.496094, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l6grw"]
+albedo_texture = ExtResource("2_pcu7d")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3dx25"]
+material = SubResource("StandardMaterial3D_l6grw")
+orientation = 2
+
+[node name="testing" instance=ExtResource("1_ryjsw")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="0"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
+environment = SubResource("Environment_3dx25")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="3"]
+mesh = SubResource("PlaneMesh_nuoa6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.251953, 0)
+shape = SubResource("BoxShape3D_kri1i")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.17485, 0)
+mesh = SubResource("PlaneMesh_3dx25")
+
+[node name="Label3D" type="Label3D" parent="MeshInstance3D2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000179738, 0, 0.00115222)
+billboard = 1
+shaded = true
+text = "Ugh… first day in my new dorm and the first
+thing I do is oversleep. Oh well… "

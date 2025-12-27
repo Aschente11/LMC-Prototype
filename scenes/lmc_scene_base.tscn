@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bpd48mqxcdr1c"]
+[gd_scene load_steps=51 format=3 uid="uid://bpd48mqxcdr1c"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_t4slh"]
 [ext_resource type="Script" uid="uid://dj021fnfgawlr" path="res://scripts/xr_origin_3d.gd" id="2_yedcs"]
@@ -79,6 +79,10 @@ transparency = 1
 diffuse_mode = 3
 specular_mode = 1
 albedo_color = Color(0.313726, 1, 1, 0.52549)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yedcs"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.215686)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jqbre"]
 radius = 0.107317
@@ -511,11 +515,11 @@ hand_material_override = SubResource("StandardMaterial3D_gv6ie")
 [node name="FunctionPickup" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("13_bp6ra")]
 
 [node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="2" instance=ExtResource("14_1ihsk")]
+show_laser = 0
+laser_length = 1
+laser_material = SubResource("StandardMaterial3D_yedcs")
 
-[node name="FunctionTeleport" parent="XROrigin3D/LeftHand" index="3" instance=ExtResource("15_n2ysp")]
-teleport_button_action = "primary"
-
-[node name="OISActorComponent" type="Node3D" parent="XROrigin3D/LeftHand" index="4"]
+[node name="OISActorComponent" type="Node3D" parent="XROrigin3D/LeftHand" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -1, 0.5)
 script = ExtResource("16_e5fh6")
 receiver_group = "hand"
@@ -537,10 +541,14 @@ collision_mask = 536870912
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/LeftHand/OISActorComponent/OISColliderArea3D/Area3D" index="0"]
 shape = SubResource("SphereShape3D_jqbre")
 
-[node name="smartwatch" parent="XROrigin3D/LeftHand" index="5" instance=ExtResource("19_g7dor")]
-transform = Transform3D(0.0017453, 0, -0.999999, -0.0926137, 0.995702, -0.000161639, 0.9957, 0.0926139, 0.0017378, 0, 0, 0)
+[node name="smartwatch" parent="XROrigin3D/LeftHand" index="4" instance=ExtResource("19_g7dor")]
+transform = Transform3D(-0.0126333, 0.181091, -1.16089, -0.0266354, 1.16062, 0.181338, 1.17463, 0.0282653, -0.00837358, -0.0587625, -0.0529802, 0.184159)
 
-[node name="MovementJump" parent="XROrigin3D/LeftHand" index="6" instance=ExtResource("20_lgle8")]
+[node name="MovementJump" parent="XROrigin3D/LeftHand" index="5" instance=ExtResource("20_lgle8")]
+
+[node name="FunctionTeleport" parent="XROrigin3D/LeftHand" index="6" instance=ExtResource("15_n2ysp")]
+teleport_button_action = "primary"
+arc_texture = null
 
 [node name="RightHand" parent="XROrigin3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
@@ -551,11 +559,11 @@ hand_material_override = SubResource("StandardMaterial3D_gv6ie")
 [node name="FunctionPickup" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("13_bp6ra")]
 
 [node name="FunctionPointer" parent="XROrigin3D/RightHand" index="2" instance=ExtResource("14_1ihsk")]
+show_laser = 0
+laser_length = 1
+laser_material = SubResource("StandardMaterial3D_yedcs")
 
-[node name="FunctionTeleport" parent="XROrigin3D/RightHand" index="3" instance=ExtResource("15_n2ysp")]
-teleport_button_action = "primary"
-
-[node name="OISActorComponent" type="Node3D" parent="XROrigin3D/RightHand" index="4"]
+[node name="OISActorComponent" type="Node3D" parent="XROrigin3D/RightHand" index="3"]
 script = ExtResource("16_e5fh6")
 receiver_group = "hand"
 metadata/_custom_type_script = "uid://cg1lorgur84yy"
@@ -576,11 +584,15 @@ collision_mask = 536870912
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightHand/OISActorComponent/OISColliderArea3D/Area3D" index="0"]
 shape = SubResource("SphereShape3D_w0uuf")
 
-[node name="smartwatch" parent="XROrigin3D/RightHand" index="5" instance=ExtResource("19_g7dor")]
-transform = Transform3D(-4.37114e-08, 3.60561e-16, 1, -0.00178025, 0.999998, -7.78149e-11, -0.999998, -0.00178025, -4.37113e-08, 0, 0, 0)
+[node name="smartwatch" parent="XROrigin3D/RightHand" index="4" instance=ExtResource("19_g7dor")]
+transform = Transform3D(0.0820455, 0.000146062, 1.17213, 0.159234, 1.16411, -0.0112909, -1.16127, 0.159633, 0.081265, 0.0596858, -0.0569203, 0.184043)
 
-[node name="MovementCrouch" parent="XROrigin3D/RightHand" index="6" instance=ExtResource("22_gswto")]
+[node name="MovementCrouch" parent="XROrigin3D/RightHand" index="5" instance=ExtResource("22_gswto")]
 crouch_button_action = "trigger_click"
+
+[node name="FunctionTeleport" parent="XROrigin3D/RightHand" index="6" instance=ExtResource("15_n2ysp")]
+teleport_button_action = "primary"
+arc_texture = null
 
 [node name="MovementJog" parent="XROrigin3D" index="4" instance=ExtResource("23_i2ckw")]
 

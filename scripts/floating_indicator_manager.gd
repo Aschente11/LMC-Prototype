@@ -3,7 +3,6 @@ class_name FloatingIndicatorManager
 extends Node3D
 
 @export var indicator_scene := preload("res://scenes/UI/floating_indicator.tscn")
-@export var target_parent: Node3D
 
 enum IndicatorType {
 	PHYSICAL_GAIN,
@@ -14,7 +13,7 @@ enum IndicatorType {
 
 func show_indicator(position: Vector3, text: String, color: Color = Color.SEA_GREEN):
 	var indicator = indicator_scene.instantiate()
-	target_parent.add_child(indicator)
+	add_child(indicator)
 	
 	indicator.position = position
 	indicator.setup(text, color)
