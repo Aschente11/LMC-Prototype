@@ -1,31 +1,31 @@
-[gd_scene load_steps=9 format=3 uid="uid://clxj7xfktkue2"]
+[gd_scene load_steps=9 format=3 uid="uid://k8h8pmle33tn"]
 
-[ext_resource type="PackedScene" uid="uid://bmomiusgjnx1x" path="res://scenes/scene_base.tscn" id="1_35rvb"]
+[ext_resource type="PackedScene" uid="uid://b8iga7kwgdux4" path="res://scenes/lmc_scene_base_staging.tscn" id="1_2wump"]
 [ext_resource type="Script" uid="uid://4q3v8etwj477" path="res://scripts/lmc_day_end.gd" id="2_mak8r"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_d40rn"]
 [ext_resource type="PackedScene" uid="uid://yvs2e1tqcw2d" path="res://scenes/UI/results.tscn" id="4_8wjsg"]
 [ext_resource type="AudioStream" uid="uid://ndhdsnnumimx" path="res://assets/sfx/game_finished.mp3" id="5_yjr5q"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_byu7f"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mak8r"]
 sky_top_color = Color(0, 0, 0, 1)
 sky_horizon_color = Color(0, 0, 0, 1)
 ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Sky" id="Sky_xbhvy"]
-sky_material = SubResource("ProceduralSkyMaterial_byu7f")
+sky_material = SubResource("ProceduralSkyMaterial_mak8r")
 
-[sub_resource type="Environment" id="Environment_mmxds"]
+[sub_resource type="Environment" id="Environment_d40rn"]
 background_mode = 2
 sky = SubResource("Sky_xbhvy")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="SceneBase" instance=ExtResource("1_35rvb")]
+[node name="SceneBaseStaging" instance=ExtResource("1_2wump")]
 script = ExtResource("2_mak8r")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="1"]
-environment = SubResource("Environment_mmxds")
+environment = SubResource("Environment_d40rn")
 
 [node name="Viewport2Din3D" parent="." index="2" instance=ExtResource("3_d40rn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22001, -3.53176)
