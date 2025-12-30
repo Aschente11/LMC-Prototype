@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://dc21oxrm84neg"]
+
+[ext_resource type="PackedScene" uid="uid://dseiplx7bluom" path="res://assets/Low Poly Furniture/Carpets/Carpet B.fbx" id="1_0e5wn"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_5g87s"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_5y58q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omj8d"]
+render_priority = 0
+shader = ExtResource("2_5g87s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2jlw6"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_omj8d")
+shader = ExtResource("3_5y58q")
+shader_parameter/color = Color(0.29, 0.36, 0.55, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxjip"]
+render_priority = 0
+shader = ExtResource("2_5g87s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uaq1o"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_lxjip")
+shader = ExtResource("3_5y58q")
+shader_parameter/color = Color(0.81, 0.81, 0.81, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Carpet B" instance=ExtResource("1_0e5wn")]
+
+[node name="Carpet B " parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_2jlw6")
+surface_material_override/1 = SubResource("ShaderMaterial_uaq1o")

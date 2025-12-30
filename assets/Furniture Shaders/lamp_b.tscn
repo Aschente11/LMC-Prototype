@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://cjui6gb3fygxb"]
+
+[ext_resource type="PackedScene" uid="uid://bdm6v565wh605" path="res://assets/Low Poly Furniture/Lights/Lamp B.fbx" id="1_61mj3"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_ok0f1"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_3u1df"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tac7g"]
+render_priority = 0
+shader = ExtResource("2_ok0f1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cd7r7"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_tac7g")
+shader = ExtResource("3_3u1df")
+shader_parameter/color = Color(0.54, 0.54, 0.54, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1133o"]
+render_priority = 0
+shader = ExtResource("2_ok0f1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rlmjv"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_1133o")
+shader = ExtResource("3_3u1df")
+shader_parameter/color = Color(0.81, 0.81, 0.81, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p1uac"]
+render_priority = 0
+shader = ExtResource("2_ok0f1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0hqsu"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_p1uac")
+shader = ExtResource("3_3u1df")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Lamp B" instance=ExtResource("1_61mj3")]
+
+[node name="Lamp B" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_cd7r7")
+surface_material_override/1 = SubResource("ShaderMaterial_rlmjv")
+surface_material_override/2 = SubResource("ShaderMaterial_0hqsu")

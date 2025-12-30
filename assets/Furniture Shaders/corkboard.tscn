@@ -1,0 +1,319 @@
+[gd_scene load_steps=15 format=3 uid="uid://bgdk8jsd1evee"]
+
+[ext_resource type="Script" uid="uid://dtolk25s2mjms" path="res://scripts/corkboard.gd" id="1_3q5b1"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="1_8otwy"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="2_s07l7"]
+[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="3_5lc8t"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="4_3q5b1"]
+[ext_resource type="AudioStream" uid="uid://dn6habe252c1b" path="res://assets/sfx/stick note.mp3" id="5_q1cdx"]
+[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="6_efrh4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ulbdf"]
+render_priority = 0
+shader = ExtResource("1_8otwy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhvg3"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ulbdf")
+shader = ExtResource("2_s07l7")
+shader_parameter/color = Color(0.297255, 0.114844, 0.00807733, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5lc8t"]
+material = SubResource("ShaderMaterial_bhvg3")
+size = Vector3(2.715, 1.775, 0.065)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3q5b1"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_ulbdf")
+shader = ExtResource("2_s07l7")
+shader_parameter/color = Color(0.408082, 0.274017, 0.149854, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_q1cdx"]
+material = SubResource("ShaderMaterial_3q5b1")
+size = Vector3(2.715, 1.7, 0.065)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gf74p"]
+points = PackedVector3Array(-1.37905, -0.871548, -0.0540476, 1.37905, 0.852262, 0.0752381, 1.37905, 0.852262, -0.0540476, -1.37905, 0.852262, 0.0752381, 1.37905, -0.871548, 0.0752381, 1.37905, -0.871548, -0.0540476, -1.37905, 0.852262, -0.0540476, -1.37905, -0.871548, 0.0752381)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8q031"]
+radius = 0.2
+height = 0.4
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_3q5b1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_5lc8t")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.92, 0, 0, 0, 0.92, 0, 0, 0, 0.92, 0, 0, 0.0164174)
+mesh = SubResource("BoxMesh_q1cdx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_gf74p")
+
+[node name="InventorySlot1" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.895562, 0.0676656, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot1" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot2" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.400104, 0.0676656, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot2" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot3" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.104886, 0.0726474, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot3" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot4" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.895562, -0.43838, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot4" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot5" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.400104, -0.43838, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot5" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot6" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.104886, -0.433398, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot6" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot7" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.895562, 0.544431, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot7" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot8" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.400104, 0.544431, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot8" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot9" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.104886, 0.549413, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot9" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot10" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.577017, 0.0726474, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot10" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot11" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.577017, -0.433398, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot11" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot12" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.577017, 0.549413, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot12" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot13" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 1.03947, 0.0726474, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot13" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot14" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 1.03947, -0.433398, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot14" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[node name="InventorySlot15" type="Node3D" parent="."]
+transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 1.03947, 0.549413, 0.00341347)
+script = ExtResource("3_5lc8t")
+group_required = "notes"
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot15" instance=ExtResource("4_3q5b1")]
+stash_sound = ExtResource("5_q1cdx")
+grab_distance = 0.2
+snap_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
+mesh = SubResource("SphereMesh_8q031")
+surface_material_override/0 = ExtResource("6_efrh4")
+
+[connection signal="current_object_in_slot" from="InventorySlot1" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot2" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot3" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot4" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot5" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot6" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot7" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot8" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot9" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot10" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot11" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot12" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot13" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot14" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot15" to="." method="current_object_in_slot"]

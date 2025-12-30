@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://ce3qfpprxpxtt"]
+
+[ext_resource type="PackedScene" uid="uid://bnrcka7j7qy6x" path="res://assets/Low Poly Furniture/Miscellaneous/Plant A.fbx" id="1_rqea1"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_jfpmt"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_f1j3k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8c5c"]
+render_priority = 0
+shader = ExtResource("2_jfpmt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_21oux"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_f8c5c")
+shader = ExtResource("3_f1j3k")
+shader_parameter/color = Color(0.29, 0.36, 0.55, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_egnpb"]
+render_priority = 0
+shader = ExtResource("2_jfpmt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmj43"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_egnpb")
+shader = ExtResource("3_f1j3k")
+shader_parameter/color = Color(0.55, 0.33, 0.19, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dok2m"]
+render_priority = 0
+shader = ExtResource("2_jfpmt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umdqf"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_dok2m")
+shader = ExtResource("3_f1j3k")
+shader_parameter/color = Color(0.76, 0.52, 0.35, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l44fs"]
+render_priority = 0
+shader = ExtResource("2_jfpmt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kha1p"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_l44fs")
+shader = ExtResource("3_f1j3k")
+shader_parameter/color = Color(0.3, 0.56, 0.29, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Plant A" instance=ExtResource("1_rqea1")]
+
+[node name="Plant A" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_21oux")
+surface_material_override/1 = SubResource("ShaderMaterial_tmj43")
+surface_material_override/2 = SubResource("ShaderMaterial_umdqf")
+surface_material_override/3 = SubResource("ShaderMaterial_kha1p")

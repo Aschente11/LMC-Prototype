@@ -1,13 +1,6 @@
-[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b2jaelatdoq7w"]
-
-[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="1_rdcsi"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sxdxt"]
-render_priority = 0
-shader = ExtResource("1_rdcsi")
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b2jaelatdoq7w"]
 
 [resource]
-next_pass = SubResource("ShaderMaterial_sxdxt")
 transparency = 1
 no_depth_test = true
 albedo_color = Color(0, 0.833333, 1, 0.596078)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=4 uid="uid://bfiyhau5xxks3"]
+[gd_scene load_steps=23 format=4 uid="uid://bfiyhau5xxks3"]
 
 [ext_resource type="Script" uid="uid://bfmtkd0u6ncre" path="res://scripts/vacuum.gd" id="1_0rn0n"]
 [ext_resource type="Texture2D" uid="uid://dec8vfn0610jq" path="res://assets/tools/vacuumed-cleaner/textures/texture_diff.png" id="1_83dp8"]
 [ext_resource type="Texture2D" uid="uid://gn6ut76e681l" path="res://assets/tools/vacuumed-cleaner/textures/texture_metal.png" id="2_ixdbn"]
 [ext_resource type="Texture2D" uid="uid://ch4kn5yvovto8" path="res://assets/tools/vacuumed-cleaner/textures/texture_rough.png" id="3_t675p"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="4_8ohhw"]
 [ext_resource type="Texture2D" uid="uid://bnsn4icy5xnrc" path="res://assets/tools/vacuumed-cleaner/textures/texture_normal.png" id="4_lwcyb"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="6_0rn0n"]
 [ext_resource type="Animation" uid="uid://bi1l6lre2w2lp" path="res://addons/godot-xr-tools/hands/animations/left/Hold.res" id="7_0rn0n"]
@@ -13,8 +14,13 @@
 [ext_resource type="Script" uid="uid://cgettxdui2mmi" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_one_hand_tool_asm.gd" id="11_8ohhw"]
 [ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="12_8yiyp"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8yiyp"]
+render_priority = 0
+shader = ExtResource("4_8ohhw")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rolgj"]
 resource_name = "lambert2"
+next_pass = SubResource("ShaderMaterial_8yiyp")
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_83dp8")
 metallic = 1.0

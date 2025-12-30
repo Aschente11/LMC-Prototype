@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_yf60g"]
 [ext_resource type="Shader" uid="uid://lvicd8a68csa" path="res://shaders/indicator.gdshader" id="3_yedcs"]
 [ext_resource type="Script" uid="uid://dpc4eg48y7yei" path="res://scripts/floating_indicator_manager.gd" id="4_8p3xe"]
-[ext_resource type="FontFile" uid="uid://n5cd37mmqxvl" path="res://assets/others/fonts/LuckiestGuy-Regular.ttf" id="5_8680a"]
 [ext_resource type="Material" uid="uid://b2jaelatdoq7w" path="res://assets/textures/overthinkings.tres" id="6_0bbue"]
+[ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="6_yedcs"]
 [ext_resource type="AudioStream" uid="uid://dcacaf4vltxwp" path="res://assets/sfx/distraction did i forget something.mp3" id="7_ymyt3"]
 [ext_resource type="AudioStream" uid="uid://befbljtbmjwc2" path="res://assets/sfx/distraction what is life even about.mp3" id="8_vfmt8"]
 [ext_resource type="Script" uid="uid://iql24ddnlvra" path="res://scripts/mouth.gd" id="9_bs088"]
@@ -52,11 +52,11 @@ orientation = 1
 [sub_resource type="TextMesh" id="TextMesh_p43kj"]
 material = ExtResource("6_0bbue")
 text = "Did I forget something"
-font = ExtResource("5_8680a")
+font = ExtResource("6_yedcs")
 
 [sub_resource type="TextMesh" id="TextMesh_5j0ac"]
 material = ExtResource("6_0bbue")
-font = ExtResource("5_8680a")
+font = ExtResource("6_yedcs")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gxi4e"]
 size = Vector3(0.453125, 0.486328, 0.535156)

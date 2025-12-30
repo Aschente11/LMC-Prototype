@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0hjje6evoiib"]
+
+[ext_resource type="PackedScene" uid="uid://bdswaavb8lj0i" path="res://assets/Low Poly Furniture/Carpets/Carpet C.fbx" id="1_yem6o"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_7nheu"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_4hvog"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omj8d"]
+render_priority = 0
+shader = ExtResource("2_7nheu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l5hyc"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_omj8d")
+shader = ExtResource("3_4hvog")
+shader_parameter/color = Color(0.29, 0.36, 0.55, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Carpet C" instance=ExtResource("1_yem6o")]
+
+[node name="Carpet C" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_l5hyc")

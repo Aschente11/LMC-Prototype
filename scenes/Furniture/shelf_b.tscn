@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=3 uid="uid://brrix7sw0piyx"]
+
+[ext_resource type="PackedScene" uid="uid://dkt78l7c3mylw" path="res://assets/Low Poly Furniture/Shelves/Shelf B.fbx" id="1_jacrj"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_x43jf"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_bclff"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tnvgu"]
+render_priority = 0
+shader = ExtResource("2_x43jf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4l8v"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_tnvgu")
+shader = ExtResource("3_bclff")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mn38l"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_tnvgu")
+shader = ExtResource("3_bclff")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnfe2"]
+render_priority = 0
+shader = ExtResource("2_x43jf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frecg"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vnfe2")
+shader = ExtResource("3_bclff")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_elisn"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_tnvgu")
+shader = ExtResource("3_bclff")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c02js"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_vnfe2")
+shader = ExtResource("3_bclff")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
+shader_parameter/fresnel = Color(0.2, 0.2, 0.2, 0.3)
+shader_parameter/uv_scale = Vector2(1, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[node name="Shelf B" instance=ExtResource("1_jacrj")]
+
+[node name="Shelf B" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_i4l8v")
+
+[node name="Shelf B_001" parent="." index="1"]
+surface_material_override/0 = SubResource("ShaderMaterial_mn38l")
+surface_material_override/1 = SubResource("ShaderMaterial_frecg")
+
+[node name="Shelf B_002" parent="." index="2"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0)
+surface_material_override/0 = SubResource("ShaderMaterial_elisn")
+surface_material_override/1 = SubResource("ShaderMaterial_c02js")
