@@ -10,10 +10,10 @@ extends Node
 @onready var handle_left := $"../PageTurnerLeft/InteractableHandle"
 @onready var handle_right := $"../PageTurnerRight/InteractableHandle"
 
-#@onready var journal_slot := get_tree().get_root().get_node("Main/InventorySystem/Slot_1_0")
 @onready var inventory_item := $"../InventoryItem"
 
 var pages_read = 0
+var already_read = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,6 +33,7 @@ func _process(delta: float) -> void:
 func open_journal() -> void:
 	animation_player.play("book_opening")
 	await animation_player.animation_finished
+	animation_player.play("RESET")
 	
 	light.light_energy = 0.1
 
@@ -59,34 +60,29 @@ func _on_ois_journal_released(pickable: Variant, by: Variant) -> void:
 		close_journal()
 
 	inventory_item.is_grabbed = false
-	inventory_item.call_deferred("_force_shrink_item")
+	#inventory_item.call_deferred("_force_shrink_item")
 	
 	handle_left.enabled = false
 	handle_right.enabled = false
 
 
 func _on_page_turn_left_action_completed(requirement: Variant, total_progress: Variant) -> void:
-	if animation_player.is_playing():
+	if pages_read == 1 or animation_player.is_playing():
 		return
 	animation_player.play("flip_page_left")
 	await animation_player.animation_finished
-	animation_player.play("RESET")
+	animation_player.play("page_1")
 	pages_read += 1
 	
-	if pages_read % 3 == 0:
-		GlobalVar.decrease_physical()
-		GlobalVar.decrease_emotional()
-	
-
+	if not already_read:
+		GlobalVar.increase_emotional()
+		already_read = true
 
 func _on_page_turn_right_action_completed(requirement: Variant, total_progress: Variant) -> void:
-	if animation_player.is_playing():
+	if pages_read == 0 or animation_player.is_playing():
 		return
+	
 	animation_player.play("flip_page_right")
 	await animation_player.animation_finished
 	animation_player.play("RESET")
-	pages_read += 1
-	
-	if pages_read % 3 == 0:
-		GlobalVar.decrease_physical()
-		GlobalVar.decrease_emotional()
+	pages_read -= 1

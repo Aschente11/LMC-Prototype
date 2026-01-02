@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_t4slh"]
 [ext_resource type="Script" uid="uid://dj021fnfgawlr" path="res://scripts/xr_origin_3d.gd" id="2_yedcs"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_yf60g"]
-[ext_resource type="Shader" uid="uid://lvicd8a68csa" path="res://shaders/indicator.gdshader" id="3_yedcs"]
 [ext_resource type="Script" uid="uid://dpc4eg48y7yei" path="res://scripts/floating_indicator_manager.gd" id="4_8p3xe"]
 [ext_resource type="Material" uid="uid://b2jaelatdoq7w" path="res://assets/textures/overthinkings.tres" id="6_0bbue"]
 [ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="6_yedcs"]
@@ -35,12 +34,27 @@
 dof_blur_far_enabled = true
 dof_blur_amount = 0.0
 
+[sub_resource type="Shader" id="Shader_yf60g"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded, depth_test_disabled;
+
+uniform vec4 color : source_color;
+uniform float color_intensity = 10.0;
+uniform float transparency_level = 16.0;
+uniform float speed = 0.0;
+uniform float zoom_amplitude = 12.555;
+
+void fragment() {
+	ALPHA = pow(length(UV - vec2(0.5)),transparency_level + zoom_amplitude * sin(TIME * speed));
+	ALBEDO.rgb = color.rgb * color_intensity;
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awktg"]
 render_priority = 0
-shader = ExtResource("3_yedcs")
-shader_parameter/color = Color(0, 1, 0, 1)
+shader = SubResource("Shader_yf60g")
+shader_parameter/color = Color(0, 0, 0, 1)
 shader_parameter/color_intensity = 10.0
-shader_parameter/transparency_level = 16.0
+shader_parameter/transparency_level = 13.0
 shader_parameter/speed = 0.0
 shader_parameter/zoom_amplitude = 12.555
 
@@ -515,7 +529,6 @@ hand_material_override = SubResource("StandardMaterial3D_gv6ie")
 [node name="FunctionPickup" parent="XROrigin3D/LeftHand" index="1" instance=ExtResource("13_bp6ra")]
 
 [node name="FunctionPointer" parent="XROrigin3D/LeftHand" index="2" instance=ExtResource("14_1ihsk")]
-show_laser = 0
 laser_length = 1
 laser_material = SubResource("StandardMaterial3D_yedcs")
 
@@ -559,7 +572,6 @@ hand_material_override = SubResource("StandardMaterial3D_gv6ie")
 [node name="FunctionPickup" parent="XROrigin3D/RightHand" index="1" instance=ExtResource("13_bp6ra")]
 
 [node name="FunctionPointer" parent="XROrigin3D/RightHand" index="2" instance=ExtResource("14_1ihsk")]
-show_laser = 0
 laser_length = 1
 laser_material = SubResource("StandardMaterial3D_yedcs")
 

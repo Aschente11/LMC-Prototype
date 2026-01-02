@@ -522,7 +522,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_qrok7")
 
 [node name="RightQuarter_Apple" type="RigidBody3D" parent="."]
-transform = Transform3D(0.765402, 0.189248, 0.615097, -0.605514, -0.111952, 0.787921, 0.217974, -0.975525, 0.028904, 0.0113712, 0.0139298, -0.24182)
+transform = Transform3D(0.765402, 0.189248, 0.615097, -0.605514, -0.111952, 0.787921, 0.217974, -0.975525, 0.028904, 0.0113712, 0.0139298, -0.15188)
 visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")
@@ -564,7 +564,7 @@ transform = Transform3D(0.765403, -0.605514, 0.217974, 0.189249, -0.111952, -0.9
 shape = SubResource("BoxShape3D_50kwp")
 
 [node name="RightQuarter_Apple2" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.225996, 0.974063, 0.0112394, -0.769661, -0.171476, -0.614995, -0.597116, -0.147637, 0.788451, 0.270963, 0.0139298, -0.0119649)
+transform = Transform3D(-0.225996, 0.974063, 0.0112394, -0.769661, -0.171476, -0.614995, -0.597116, -0.147637, 0.788451, 0.148278, 0.0139298, -0.0119649)
 visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")
@@ -612,7 +612,7 @@ transform = Transform3D(0.765402, -0.605513, 0.217974, 0.189249, -0.111952, -0.9
 shape = SubResource("BoxShape3D_50kwp")
 
 [node name="LeftQuarter_Apple" type="RigidBody3D" parent="."]
-transform = Transform3D(-0.769573, -0.190278, -0.60955, -0.578882, -0.195049, 0.79174, -0.269542, 0.962159, 0.0399561, -0.0120415, 0.0134542, 0.261827)
+transform = Transform3D(-0.769573, -0.190278, -0.60955, -0.578882, -0.195049, 0.79174, -0.269542, 0.962159, 0.0399561, -0.0120415, 0.0134542, 0.185622)
 visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")
@@ -648,7 +648,7 @@ transform = Transform3D(0.76552, -0.590162, 0.256298, 0.188811, -0.174754, -0.96
 shape = SubResource("BoxShape3D_50kwp")
 
 [node name="LeftQuarter_Apple2" type="RigidBody3D" parent="."]
-transform = Transform3D(0.164471, -0.984619, -0.0589563, -0.78918, -0.0954981, -0.606692, 0.59173, 0.146311, -0.792747, -0.270017, 0.0134542, 0.0310402)
+transform = Transform3D(0.164471, -0.984619, -0.0589563, -0.78918, -0.0954981, -0.606692, 0.59173, 0.146311, -0.792747, -0.137426, 0.0134542, 0.0310402)
 visible = false
 collision_layer = 4
 script = ExtResource("1_13wu3")

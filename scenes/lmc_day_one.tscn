@@ -1,4 +1,4 @@
-[gd_scene load_steps=218 format=4 uid="uid://b5xwmkuww84xc"]
+[gd_scene load_steps=219 format=4 uid="uid://b5xwmkuww84xc"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_jrb4w"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_dwn8a"]
@@ -101,6 +101,7 @@
 [ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="98_nectv"]
 [ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="99_vqks3"]
 [ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard.tscn" id="100_vqks3"]
+[ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="102_n7ona"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gfqyt"]
 exposure_multiplier = 2.0
@@ -886,7 +887,7 @@ glow_intensity = 0.09
 glow_blend_mode = 0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ymc5x"]
-height = 0.0917969
+height = 4.294
 radius = 0.820801
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v0wtd"]
@@ -1121,7 +1122,7 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("ShaderMaterial_4ir3v")
 
 [node name="CR Floor" type="MeshInstance3D" parent="Room/Floor4" index="4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05619, 0.0893998, -0.254821)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05619, 0.00119032, -0.254821)
 mesh = SubResource("BoxMesh_6j5d8")
 skeleton = NodePath("../..")
 
@@ -1539,7 +1540,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.815
 transform = Transform3D(-6.86269e-08, 0, 1, 0, 1, 0, -1.57, 0, -4.37114e-08, -10.255, 1.14102, 1.24977)
 
 [node name="Sink" parent="Furniture" index="13" instance=ExtResource("48_wlcxh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32646, 1.35184, -2.28007)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32646, 1.43891, -2.28007)
 
 [node name="TP Holder" parent="Furniture" index="14" instance=ExtResource("49_qkeor")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.16676, 1.57246, -2.14547)
@@ -1554,10 +1555,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0727, 0.943692, -2.05441)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.91518, 1.34701, 1.9159)
 
 [node name="Drawer A" parent="Furniture" index="18" instance=ExtResource("53_cm3gp")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.88526, 0.64735, 1.30947)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.88526, 0.74609, 1.30947)
 
 [node name="Bin" parent="Furniture" index="19" instance=ExtResource("54_we74s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40828, 0.553715, -2.21125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40828, 0.640788, -2.21125)
 
 [node name="Mirror" parent="Furniture" index="20" instance=ExtResource("55_xavpf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35583, 2.29459, -2.22375)
@@ -1638,7 +1639,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36625, 1.5554, 7.28742)
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.240867, 0, 2.08217)
 
 [node name="WashingMachine" parent="Furniture" index="32" instance=ExtResource("72_v0u7p")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.9289, 1.15492, 0.798197)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.9289, 1.25366, 0.798197)
 
 [node name="clock" parent="Furniture" index="33" instance=ExtResource("74_kefp3")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.98311, 3.41081, -4.2574)
@@ -1662,22 +1663,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75705, 1.36271, 6.80867)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65576, 1.3697, 6.74431)
 
 [node name="Apple" parent="." index="9" instance=ExtResource("78_s6j4k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70659, 1.50377, 6.16335)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.67122, 1.50377, 6.16335)
 
 [node name="bfast" type="Area3D" parent="." index="10"]
-collision_mask = 524289
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.83, 2.59, 5.94)
+collision_mask = 524288
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bfast" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6944, 0.0365312, 6.17327)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.546805, 0)
 shape = SubResource("CylinderShape3D_ymc5x")
 
 [node name="AOE" type="MeshInstance3D" parent="bfast" index="1"]
-transform = Transform3D(0.885, 0, 0, 0, 0.885, 0, 0, 0, 0.885, -6.72512, 0.0682292, 6.21459)
+transform = Transform3D(0.885, 0, 0, 0, 0.885, 0, 0, 0, 0.885, 0, -2.51869, 0)
 mesh = SubResource("PlaneMesh_s6vqe")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="bfast" index="2"]
-transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.70848, 2.48459, 6.22796)
+transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_ygqp6")
 skeleton = NodePath("../..")
 
@@ -1700,7 +1702,7 @@ mesh = SubResource("CylinderMesh_ygqp6")
 skeleton = NodePath("../..")
 
 [node name="sleep" type="Area3D" parent="." index="12"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21711, 0, -13.9972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21614, 0.00801456, -13.9992)
 collision_mask = 524289
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sleep" index="0"]
@@ -1718,7 +1720,7 @@ mesh = SubResource("CylinderMesh_ygqp6")
 skeleton = NodePath("../..")
 
 [node name="journal" parent="." index="13" instance=ExtResource("82_6kue4")]
-transform = Transform3D(-0.978509, 0, 0.206204, 0, 1, 0, -0.206204, 0, -0.978509, -8.70781, 1.33657, -3.65601)
+transform = Transform3D(-0.978509, 0, 0.206204, 0, 1, 0, -0.206204, 0, -0.978509, -8.70781, 1.33657, -3.14817)
 
 [node name="SleepViewport" parent="." index="14" instance=ExtResource("83_t8ie3")]
 transform = Transform3D(0.0392773, 0, 0.999228, 0, 1, 0, -0.999228, 0, 0.0392773, -6.95032, 0.756904, -9.05644)
@@ -1727,7 +1729,7 @@ unshaded = true
 scene_properties_keys = PackedStringArray("sleep.gd")
 
 [node name="post_it" parent="." index="15" instance=ExtResource("85_wlg75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.471, 1.32804, -3.40846)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.471, 1.32804, -3.51688)
 
 [node name="OISJournal" parent="." index="16" instance=ExtResource("86_u0o4q")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.9389, 1.33187, -2.96148)
@@ -1813,9 +1815,13 @@ transform = Transform3D(-5.11423e-08, 0, 1.15, 0, 0.15, 0, -1.17, 0, -5.02681e-0
 [node name="Corkboard" parent="." index="32" instance=ExtResource("100_vqks3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.51801, 2.19148, -2.5477)
 
+[node name="OISJournal3" parent="." index="33" instance=ExtResource("102_n7ona")]
+transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -8.76515, 1.33882, -3.66679)
+
 [connection signal="failed_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_fail"]
 [connection signal="success_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_success"]
 [connection signal="body_entered" from="bfast" to="." method="_on_bfast_body_entered"]
 [connection signal="body_entered" from="unpacking" to="." method="_on_unpacking_body_entered"]
 [connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]
 [connection signal="picked_up" from="journal" to="." method="_on_journal_picked_up"]
+[connection signal="pointer_event" from="SleepViewport" to="." method="_on_sleep_viewport_pointer_event"]

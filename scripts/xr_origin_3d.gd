@@ -96,14 +96,13 @@ func trigger_indicator(old_value: int, new_value: int) -> void:
 	
 	if new_value == 1 or new_value == 5:
 		change_indicator.set_shader_parameter("color", Color(0, 0, 0, 255))
-		change_indicator.set_shader_parameter("transparency_level", 12.06)
-		change_indicator.set_shader_parameter("speed", 2.01)
-		change_indicator.set_shader_parameter("zoom_amplitude", 11.5)
+		change_indicator.set_shader_parameter("transparency_level", 13.0)
+		change_indicator.set_shader_parameter("speed", 3.0)
+		change_indicator.set_shader_parameter("zoom_amplitude", 12.9)
 		_on_stimulation_changed(old_value, new_value)
 		return
 	
 	# Stimulation must change before vignette goes away
-	change_indicator.set_shader_parameter("transparency_level", 13.0)
 	change_indicator.set_shader_parameter("speed", 0.0)
 	change_indicator.set_shader_parameter("zoom_amplitude", 12.555)
 	change_indicator.set_shader_parameter("color", Color(0, 0, 0, 0))

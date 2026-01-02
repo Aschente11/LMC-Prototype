@@ -76,7 +76,7 @@ func physics_movement(_delta: float, player_body: XRToolsPlayerBody, _disabled: 
 			
 			# Check if crouch count reached 5
 			if crouch_count >= 5:
-				GlobalVar.increase_physical()
+				GlobalVar.decrease_physical()
 				crouch_count = 0  # Reset count after increasing physical
 		else:
 			player_body.override_player_height(self)
