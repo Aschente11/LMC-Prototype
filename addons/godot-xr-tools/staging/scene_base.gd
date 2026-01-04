@@ -93,7 +93,13 @@ func scene_loaded(user_data = null):
 	if user_data == "day_one":
 		return
 	# Called after scene is loaded
-
+	
+	if user_data == "day_end":
+		print("in here")
+		var current_day = TaskManager.current_day
+		var stats = $SubViewport/ResultsUI
+		stats.update(current_day, TaskManager.completed_tasks, TaskManager.max_active_tasks[current_day])
+		
 	# Make sure our camera becomes the current camera
 	$XROrigin3D/XRCamera3D.current = true
 	$XROrigin3D.current = true

@@ -64,6 +64,10 @@ func _on_ois_journal_released(pickable: Variant, by: Variant) -> void:
 	
 	handle_left.enabled = false
 	handle_right.enabled = false
+	
+	for i in range(TaskManager.active_tasks.size()):
+		if TaskManager.active_tasks[i].text == "Read journal.":
+			TaskManager.complete_task(i)
 
 
 func _on_page_turn_left_action_completed(requirement: Variant, total_progress: Variant) -> void:

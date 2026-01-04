@@ -6,6 +6,7 @@ extends Node3D
 var all_tasks: Array[Array] = [[], [], []]
 @export var max_active_tasks: Array[int] = [2, 3, 3]
 var current_day: int = 0
+var completed_tasks: int = 0
 
 var active_tasks: Array[Task] = []
 
@@ -15,6 +16,7 @@ var current_task_assigned: bool = false
 # Called when the node enters the scene tree for the first time.
 func initialize(day: int):
 	current_day = day
+	completed_tasks = 0
 	active_tasks.clear()
 	initialize_task_pool()
 	generate_new_tasks()
@@ -36,8 +38,6 @@ func initialize_task_pool():
 	all_tasks[2].append(Task.new("Organize \n clothes.", Task.Priority.MEDIUM))
 	all_tasks[2].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.LOW))
 	all_tasks[2].append(Task.new("Clean the \n bathroom.", Task.Priority.LOW))
-	
-	
 
 func generate_new_tasks():
 	var available_tasks = all_tasks[current_day].duplicate()
@@ -81,11 +81,10 @@ func complete_task(task_index: int):
 		completed_task.priority = Task.Priority.DONE
 		print("Task completed: ", completed_task.text, " [", completed_task.get_priority_text(completed_task.priority), "]")
 		
+		completed_tasks += 1
 		#active_tasks.remove_at(task_index)
 		
 		#add_random_task()
-		
-
 
 func add_random_task():
 	if active_tasks.size() >= max_active_tasks[current_day]:

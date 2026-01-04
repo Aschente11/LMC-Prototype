@@ -1,10 +1,8 @@
 extends Node3D
-@onready var marker: Sprite2D = $GalaxyWatch/screen/SubViewport/Control/MarginContainer/Marker
-@onready var stimulation_bar: TextureRect = $GalaxyWatch/screen/SubViewport/Control/MarginContainer/StimulatioinBar
-@onready var physical_bar: ProgressBar = $"GalaxyWatch/screen/SubViewport/Control/Physical progress"
-@onready var emotional_bar: ProgressBar = $"GalaxyWatch/screen/SubViewport/Control/Emotional progress"
+
 @onready var time_screen = $"GalaxyWatch/time screen"
-@onready var bar_screen = $GalaxyWatch/screen
+@onready var bar_screen = $GalaxyWatch/MeshInstance3D
+
 @onready var stimulation: CanvasItem = $GalaxyWatch/SubViewport/Control/Stimulation
 @onready var physical: CanvasItem = $GalaxyWatch/SubViewport/Control/Physical
 @onready var emotional: CanvasItem = $GalaxyWatch/SubViewport/Control/Emotional
@@ -22,135 +20,41 @@ func _ready() -> void:
 	GlobalVar.physical_decrease.connect(_on_physical_decrease)
 	GlobalVar.emotional_increase.connect(_on_emotional_increase)
 	GlobalVar.emotional_decrease.connect(_on_emotional_decrease)
-	
-	# Store original values at startup
-	original_bar_scale = stimulation_bar.scale
-	original_marker_scale = marker.scale
-	original_marker_position = marker.position
-	original_marker_rotation = marker.rotation
-	
-	# Set pivot points to center for proper scaling
-	setup_center_pivots()
+
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(stimulation.material, "shader_parameter/value", GlobalVar.stimulation/5.0, 1)
 	tween.tween_property(physical.material, "shader_parameter/value", GlobalVar.physical/5.0, 1)
 	tween.tween_property(emotional.material, "shader_parameter/value", GlobalVar.emotional/5.0, 1)
 
-func setup_center_pivots() -> void:
-	# For TextureRect (stimulation_bar)
-	stimulation_bar.pivot_offset = stimulation_bar.size / 2
-	
-	# For Sprite2D (marker), we need to handle it differently
-	# Sprite2D uses centered property or we can adjust the position
-	if marker.centered == false:
-		marker.centered = true
-
-
-	
 # Screen switching logic
 func toggle_screen() -> void:
-	if bar_screen.visible:
-		time_screen.visible = true
-		bar_screen.visible = false
-	elif time_screen.visible:
-		bar_screen.visible = true
-		time_screen.visible = false
+	time_screen.visible = !time_screen.visible
+	bar_screen.visible = !bar_screen.visible
 
 func _on_stimulation_increase(old_value: int, new_value: int) -> void:
-	#await get_tree().create_timer(4.0).timeout
-	#
-	# Check if stimulation count is 0, return to original form
-	#if new_value == 0:
-	#	animate_sequence(original_marker_position, original_marker_rotation, Tween.TRANS_SINE)
-	#	return
-	
-	# Set direct transform values
-	#var target_position = Vector2(400, 323)  # Set exact coordinates
-	#var target_rotation = deg_to_rad(-50)     # Set exact rotation angle
-	
-	#animate_sequence(target_position, target_rotation, Tween.TRANS_ELASTIC)
 	var tween = get_tree().create_tween()
 	tween.tween_property(stimulation.material, "shader_parameter/value", new_value/5.0, 1)
-	#tween.tween_callback(stimulation.material.queue_free)
-	#stimulation.set_shader_parameter("value", new_value/5.0)
 
 func _on_stimulation_decrease(old_value: int, new_value: int) -> void:
-	#await get_tree().create_timer(4.0).timeout
-	#
-	# Check if stimulation count is 0, return to original form
-	#if new_value == 0:
-	#	animate_sequence(original_marker_position, original_marker_rotation, Tween.TRANS_SINE)
-	#	return
-	
-	# Set direct transform values
-	#var target_position = Vector2(107, 168)  # Set exact coordinates
-	#var target_rotation = deg_to_rad(-237)    # Set exact rotation angle
-	
-	#animate_sequence(target_position, target_rotation, Tween.TRANS_SINE)
 	var tween = get_tree().create_tween()
 	tween.tween_property(stimulation.material, "shader_parameter/value", new_value/5.0, 1)
-	#tween.tween_callback(stimulation.material.queue_free)
-	#stimulation.set_shader_parameter("value", new_value/5.0)
-
-func animate_sequence(target_position: Vector2, target_rotation: float, move_transition: Tween.TransitionType) -> void:
-	var tween = create_tween()
-	
-	# Step 1: Enlarge both marker and bar simultaneously
-	var enlarged_bar_scale = original_bar_scale * 1.2
-	var enlarged_marker_scale = original_marker_scale * 1.7
-	
-	tween.set_parallel(true)
-	tween.tween_property(stimulation_bar, "scale", enlarged_bar_scale, 0.3).set_trans(Tween.TRANS_BACK)
-	tween.tween_property(marker, "scale", enlarged_marker_scale, 0.3).set_trans(Tween.TRANS_BACK)
-	tween.set_parallel(false)
-	
-	# Add a small delay to ensure enlargement completes
-	tween.tween_callback(func(): pass).set_delay(0.05)
-	
-	# Step 2: Move marker while both are enlarged
-	tween.set_parallel(true)
-	tween.tween_property(marker, "position", target_position, 0.5).set_trans(move_transition)
-	tween.tween_property(marker, "rotation", target_rotation, 0.5).set_trans(move_transition)
-	tween.set_parallel(false)
-	
-	# Add a small delay to ensure movement completes
-	tween.tween_callback(func(): pass).set_delay(0.05)
-	
-	# Step 3: Return both to original size
-	tween.set_parallel(true)
-	tween.tween_property(stimulation_bar, "scale", original_bar_scale, 0.3).set_trans(Tween.TRANS_BACK)
-	tween.tween_property(marker, "scale", original_marker_scale, 0.3).set_trans(Tween.TRANS_BACK)
-	tween.set_parallel(false)
 
 func _on_physical_increase(old_value: int, new_value: int) -> void:
-	#await get_tree().create_timer(4.0).timeout
-	#physical_bar.value += 1
 	var tween = get_tree().create_tween()
 	tween.tween_property(physical.material, "shader_parameter/value", new_value/5.0, 1)
-	#tween.tween_callback(physical.material.queue_free)
 
 func _on_physical_decrease(old_value: int, new_value: int) -> void:
-	#await get_tree().create_timer(4.0).timeout
-	#physical_bar.value -= 1
 	var tween = get_tree().create_tween()
 	tween.tween_property(physical.material, "shader_parameter/value", new_value/5.0, 1)
-	#tween.tween_callback(physical.material.queue_free)
 
 func _on_emotional_increase(old_value: int, new_value: int) -> void:
-	#await get_tree().create_timer(4.0).timeout
-	#emotional_bar.value += 1
 	var tween = get_tree().create_tween()
 	tween.tween_property(emotional.material, "shader_parameter/value", new_value/5.0, 1)
-	#tween.tween_callback(emotional.material.queue_free)
 
 func _on_emotional_decrease(old_value: int, new_value: int) -> void:
-	#await get_tree().create_timer(4.0).timeout
-	#emotional_bar.value -= 1
 	var tween = get_tree().create_tween()
 	tween.tween_property(emotional.material, "shader_parameter/value", new_value/5.0, 1)
-	#tween.tween_callback(emotional.material.queue_free)
-
 
 func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress: Variant) -> void:
 	toggle_screen()

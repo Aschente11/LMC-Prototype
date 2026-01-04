@@ -1,9 +1,7 @@
-[gd_scene load_steps=56 format=4 uid="uid://cyu5exn7vgfy8"]
+[gd_scene load_steps=47 format=4 uid="uid://cyu5exn7vgfy8"]
 
 [ext_resource type="Script" uid="uid://be0om5l06qdr4" path="res://scripts/smartwatch.gd" id="1_jvnqj"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="2_lhfxo"]
-[ext_resource type="Texture2D" uid="uid://cqkmsmuyaq4s" path="res://assets/others/stimulationBar.png" id="3_m4yh8"]
-[ext_resource type="Texture2D" uid="uid://b8cphc31o7ti7" path="res://assets/others/marker.jpg" id="4_q2hhy"]
 [ext_resource type="Script" uid="uid://buw5o0awarb0n" path="res://scripts/clock.gd" id="5_mw1v2"]
 [ext_resource type="FontFile" uid="uid://8fjjt0xbh4w0" path="res://assets/others/fonts/Seven Segment.ttf" id="6_m4yh8"]
 [ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="7_m4yh8"]
@@ -406,31 +404,6 @@ top_radius = 0.007
 bottom_radius = 0.007
 height = 0.001
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_btis5"]
-viewport_path = NodePath("GalaxyWatch/screen/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jvnqj"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = SubResource("ViewportTexture_btis5")
-
-[sub_resource type="QuadMesh" id="QuadMesh_lhfxo"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_jvnqj")
-size = Vector2(0.019, 0.019)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpnv7"]
-bg_color = Color(0.301961, 0.301961, 0.301961, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rxla"]
-bg_color = Color(0, 0, 1, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psqn6"]
-bg_color = Color(0.303233, 0.303233, 0.303233, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yg7k"]
-bg_color = Color(1, 1, 0, 1)
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_q2hhy"]
 viewport_path = NodePath("GalaxyWatch/time screen/SubViewport")
 
@@ -456,7 +429,7 @@ transparency = 1
 albedo_texture = SubResource("ViewportTexture_0rxla")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q2hhy"]
-size = Vector3(0.0341339, 0.0312653, 0.0118408)
+size = Vector3(0.0506535, 0.0483103, 0.0244446)
 
 [node name="Smartwatch" type="Node3D"]
 script = ExtResource("1_jvnqj")
@@ -513,88 +486,6 @@ mesh = SubResource("CylinderMesh_vntjt")
 transform = Transform3D(1.2, -3.72529e-09, 2.22045e-16, 3.72529e-09, 1.2, 1.06581e-14, -4.44089e-16, -1.06581e-14, 1.2, -0.000161396, -0.00128598, 0.000435609)
 mesh = SubResource("CylinderMesh_mw1v2")
 
-[node name="screen" type="MeshInstance3D" parent="GalaxyWatch"]
-transform = Transform3D(-0.897256, 0.441505, 0.00185001, -0.00165998, 0.000816837, -0.999998, -0.441506, -0.897258, -2.64176e-10, -0.000370045, -0.00198467, 0.000634898)
-visible = false
-mesh = SubResource("QuadMesh_lhfxo")
-
-[node name="SubViewport" type="SubViewport" parent="GalaxyWatch/screen"]
-transparent_bg = true
-render_target_update_mode = 4
-
-[node name="Control" type="Control" parent="GalaxyWatch/screen/SubViewport"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MarginContainer" type="MarginContainer" parent="GalaxyWatch/screen/SubViewport/Control"]
-layout_mode = 0
-offset_left = -2.0
-offset_right = 574.0
-offset_bottom = 509.0
-scale = Vector2(1.46016, 1.46016)
-
-[node name="StimulatioinBar" type="TextureRect" parent="GalaxyWatch/screen/SubViewport/Control/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("3_m4yh8")
-expand_mode = 1
-stretch_mode = 2
-
-[node name="Marker" type="Sprite2D" parent="GalaxyWatch/screen/SubViewport/Control/MarginContainer"]
-z_index = 2
-position = Vector2(152.723, 16.4366)
-scale = Vector2(0.88, 0.88)
-texture = ExtResource("4_q2hhy")
-
-[node name="Physical progress" type="ProgressBar" parent="GalaxyWatch/screen/SubViewport/Control"]
-layout_mode = 0
-offset_left = 97.0
-offset_top = 134.0
-offset_right = 334.0
-offset_bottom = 184.0
-rotation = 0.000255048
-theme_override_styles/background = SubResource("StyleBoxFlat_bpnv7")
-theme_override_styles/fill = SubResource("StyleBoxFlat_0rxla")
-max_value = 4.0
-step = 1.0
-value = 2.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="GalaxyWatch/screen/SubViewport/Control/Physical progress"]
-layout_mode = 0
-offset_left = 50.8852
-offset_top = 3.96208
-offset_right = 190.885
-offset_bottom = 45.9621
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "PHYSICAL"
-
-[node name="Emotional progress" type="ProgressBar" parent="GalaxyWatch/screen/SubViewport/Control"]
-layout_mode = 0
-offset_left = 98.0
-offset_top = 201.0
-offset_right = 335.0
-offset_bottom = 251.0
-rotation = 0.000255048
-theme_override_styles/background = SubResource("StyleBoxFlat_psqn6")
-theme_override_styles/fill = SubResource("StyleBoxFlat_3yg7k")
-max_value = 4.0
-step = 1.0
-value = 2.0
-show_percentage = false
-
-[node name="Label" type="Label" parent="GalaxyWatch/screen/SubViewport/Control/Emotional progress"]
-layout_mode = 0
-offset_left = 31.5243
-offset_top = 2.4939
-offset_right = 208.524
-offset_bottom = 44.4939
-theme_override_colors/font_color = Color(0, 0, 1, 1)
-theme_override_font_sizes/font_size = 30
-text = "EMOTIONAL"
-
 [node name="time screen" type="MeshInstance3D" parent="GalaxyWatch"]
 transform = Transform3D(-0.99683, -0.0096439, -0.0789594, 0.0788573, 0.0105375, -0.996829, 0.0104454, -0.999898, -0.00974365, 0.000278355, -0.0027382, 0.00369494)
 visible = false
@@ -642,7 +533,7 @@ collision_layer = 536870912
 collision_mask = 536870912
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000541687, 0.00180817, -0.00262451)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000349997, 0.00026942, 0.00367738)
 shape = SubResource("BoxShape3D_q2hhy")
 
 [connection signal="action_started" from="OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_started"]

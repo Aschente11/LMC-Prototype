@@ -32,7 +32,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22001, -3.53176)
 scene = ExtResource("3_sgrbj")
 viewport_size = Vector2(1080, 800)
 unshaded = true
-scene_properties_keys = PackedStringArray()
+scene_properties_keys = PackedStringArray("results.gd")
 
 [node name="finished_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_2tpxi")

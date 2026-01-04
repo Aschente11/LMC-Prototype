@@ -29,10 +29,10 @@ func _ready():
 	wipe_timer.one_shot = true
 	wipe_timer.timeout.connect(_on_wipe_timeout)
 	add_child(wipe_timer)
-	
+
 func _process(delta):
 	if task_index < TaskManager.active_tasks.size():
-		if TaskManager.active_tasks[task_index].done:
+		if TaskManager.active_tasks[task_index].priority == Task.Priority.DONE:
 			if unique_text_mesh:
 				unique_text_mesh.text = "Done"
 

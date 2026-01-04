@@ -127,20 +127,16 @@ func _on_unpacking_body_entered(body: Node3D) -> void:
 	$sleep.monitorable = true
 
 func _on_sleep_body_entered(body: Node3D) -> void:
-	$SleepViewport.visible = true
+	self.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
 	
-	$sleep.visible = true
-	$sleep.monitoring = true
-	$sleep.monitorable = true
+	$sleep.visible = false
+	$sleep.monitoring = false
+	$sleep.monitorable = false
 	
 func _on_journal_picked_up():
 	for i in range(TaskManager.active_tasks.size()):
 			if TaskManager.active_tasks[i].text == "Read journal.":
-				TaskManager.active_tasks[i].done = true
+				TaskManager.complete_task(i)
 				
 func is_xr_class(name : String) -> bool:
 	return name == "XRToolsSceneBase" or super(name)
-
-
-func _on_sleep_viewport_pointer_event(_event):
-	self.load_scene("res://scenes/lmc_day_end.tscn", "day_one")

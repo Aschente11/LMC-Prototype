@@ -1,13 +1,7 @@
-[gd_scene load_steps=215 format=4 uid="uid://d2cws8wqloxvv"]
+[gd_scene load_steps=184 format=4 uid="uid://d2cws8wqloxvv"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_ytp03"]
-[ext_resource type="Script" uid="uid://7qr8si53pkex" path="res://scripts/lmc_day_one.gd" id="2_812wm"]
-[ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="3_fthp8"]
-[ext_resource type="Shader" uid="uid://dvgadwfd5py8" path="res://shaders/aoe.gdshader" id="4_f4gto"]
-[ext_resource type="PackedScene" uid="uid://dyoxl56y3edl" path="res://scenes/UI/wake_up.tscn" id="5_7ehl3"]
-[ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="6_8e2vh"]
-[ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="7_lt8kf"]
-[ext_resource type="Script" uid="uid://dcpfx4msftq33" path="res://scripts/qte_manager.gd" id="8_sv5xx"]
+[ext_resource type="Script" uid="uid://bxovi75ncq4m0" path="res://scripts/lmc_day_two.gd" id="2_7ehl3"]
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="9_2lccd"]
 [ext_resource type="Shader" uid="uid://c1ik510fqf5sw" path="res://shaders/sky.gdshader" id="9_fthp8"]
 [ext_resource type="Texture2D" uid="uid://cch4178fvpwtc" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_baseColor.jpg" id="10_fl1yh"]
@@ -28,11 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://cb6ktadnm3ti2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_Color.jpg" id="25_laws8"]
 [ext_resource type="Texture2D" uid="uid://dorwhoxqeak2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_NormalGL.jpg" id="26_ky4l2"]
 [ext_resource type="Texture2D" uid="uid://bq74u34pmsq54" path="res://assets/textures/Tiles003-4K/Tiles003_4K_Roughness.jpg" id="27_dnobo"]
-[ext_resource type="PackedScene" uid="uid://o1nfmqbymovr" path="res://scenes/others/cardboardBox.tscn" id="29_6424c"]
-[ext_resource type="PackedScene" uid="uid://5fir7lge76ll" path="res://scenes/tools/speakers.tscn" id="30_t14rg"]
-[ext_resource type="PackedScene" uid="uid://ckfitvtsa3jl0" path="res://scenes/tools/phone.tscn" id="31_k231v"]
 [ext_resource type="PackedScene" uid="uid://bw44mftmte1vr" path="res://scenes/tools/marker.tscn" id="32_773cq"]
-[ext_resource type="PackedScene" uid="uid://dsupuweunu8ri" path="res://scenes/tools/meta.tscn" id="33_xkfea"]
 [ext_resource type="PackedScene" uid="uid://2g6uh8ams2y8" path="res://assets/Furniture Shaders/plant_b.tscn" id="34_tmcio"]
 [ext_resource type="PackedScene" uid="uid://lbdlwao4nkbv" path="res://scenes/Furniture/Bedroom/windows.tscn" id="34_w4kd7"]
 [ext_resource type="PackedScene" uid="uid://dlac4kfroxrdv" path="res://scenes/Furniture/ceiling_light.tscn" id="35_6ig4h"]
@@ -103,246 +93,6 @@
 [ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="101_b21yl"]
 [ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="102_ts0vi"]
 [ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard.tscn" id="103_uj65o"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gfqyt"]
-exposure_multiplier = 2.0
-dof_blur_far_enabled = true
-dof_blur_far_distance = 0.01
-dof_blur_amount = 0.0
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bfu41"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_6d5by"]
-material = SubResource("StandardMaterial3D_bfu41")
-size = Vector2(2.59, 1.065)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgpkq"]
-albedo_color = Color(0, 0, 0, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_q14o7"]
-material = SubResource("StandardMaterial3D_mgpkq")
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_wcxgp"]
-blend_mode = 3
-
-[sub_resource type="LabelSettings" id="LabelSettings_ddpcs"]
-font_size = 40
-
-[sub_resource type="LabelSettings" id="LabelSettings_bnar5"]
-font_size = 80
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_63lxy"]
-viewport_path = NodePath("WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e6oo"]
-resource_local_to_scene = true
-transparency = 1
-albedo_texture = SubResource("ViewportTexture_63lxy")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6hml3"]
-render_priority = 0
-shader = ExtResource("4_f4gto")
-shader_parameter/ring_color = Color(1, 1, 1, 1)
-shader_parameter/ring_frequency = 10.0
-shader_parameter/ring_portion = 0.0
-shader_parameter/move_speed = 15.0
-shader_parameter/smooth_edge = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_011vd"]
-material = SubResource("ShaderMaterial_6hml3")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v1b3s"]
-transparency = 1
-albedo_color = Color(0.313726, 1, 1, 0.52549)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_posyc"]
-transparency = 1
-albedo_color = Color(0.313726, 1, 1, 0.52549)
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ln8bc"]
-exposure_multiplier = 2.0
-dof_blur_far_enabled = true
-dof_blur_far_distance = 0.01
-dof_blur_amount = 1.0
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ncvxg"]
-exposure_multiplier = 2.0
-dof_blur_far_enabled = true
-dof_blur_far_distance = 0.01
-dof_blur_amount = 0.5
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_t2662"]
-exposure_multiplier = 2.0
-dof_blur_far_enabled = true
-dof_blur_far_distance = 0.01
-dof_blur_amount = 0.2
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_oofti"]
-exposure_multiplier = 2.0
-dof_blur_far_enabled = true
-dof_blur_far_distance = 0.01
-
-[sub_resource type="Animation" id="Animation_oofti"]
-resource_name = "Blinking"
-length = 3.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("XROrigin3D/XRCamera3D:attributes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.1, 2.5, 2.76667, 3),
-"transitions": PackedFloat32Array(2.82843, 1, 1, 1, 2.92817),
-"update": 0,
-"values": [SubResource("CameraAttributesPractical_ln8bc"), SubResource("CameraAttributesPractical_ncvxg"), SubResource("CameraAttributesPractical_t2662"), SubResource("CameraAttributesPractical_oofti"), SubResource("CameraAttributesPractical_gfqyt")]
-}
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, -0.566205, -0.805268, 1, 1, 0, -0.771, -0.805, 2.1, 1, 0, -0.566, -0.805, 3, 1, 0, -1.336, -0.805, 3.5, 1, 0, -0.566, -0.805)
-tracks/2/type = "position_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.448876, -0.796395, 1, 1, 0, 0.669, -0.796, 2.1, 1, 0, 0.449, -0.796, 3, 1, 0, 1.24, -0.796, 3.5, 1, 0, 0.449, -0.796)
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 3.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("XROrigin3D/XRCamera3D/QTEv2:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_rkkpu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("XROrigin3D/XRCamera3D:attributes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [SubResource("CameraAttributesPractical_gfqyt")]
-}
-tracks/1/type = "position_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 0, -0.566205, -0.805268)
-tracks/2/type = "position_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.448876, -0.796395)
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D2:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("XROrigin3D/XRCamera3D/MeshInstance3D3:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("XROrigin3D/XRCamera3D/QTEv2:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qm03u"]
-_data = {
-&"Blinking": SubResource("Animation_oofti"),
-&"RESET": SubResource("Animation_rkkpu")
-}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bim0"]
 size = Vector3(15.7303, 0.316757, 20.6996)
@@ -926,145 +676,16 @@ _data = {
 }
 
 [node name="day_two" instance=ExtResource("1_ytp03")]
-script = ExtResource("2_812wm")
+script = ExtResource("2_7ehl3")
 
-[node name="WakingUpPlayer" type="Node3D" parent="." index="0"]
-transform = Transform3D(-3.53704e-09, -0.767546, -0.640994, -3.35505e-08, 0.640994, -0.767546, 1, 1.87908e-08, -2.80188e-08, -9.41243, 0.983079, -8.05212)
-
-[node name="XROrigin3D" type="XROrigin3D" parent="WakingUpPlayer" index="0"]
-current = true
-
-[node name="XRToolsPlayerBody" type="CharacterBody3D" parent="WakingUpPlayer/XROrigin3D" index="0"]
-top_level = true
-script = ExtResource("3_fthp8")
-metadata/_custom_type_script = "uid://bqqdxydvmjgir"
-
-[node name="XRCamera3D" type="XRCamera3D" parent="WakingUpPlayer/XROrigin3D" index="1"]
-transform = Transform3D(1, 3.01981e-14, 2.30926e-14, 0, 1, 5.96046e-08, 0, -5.96046e-08, 1, 0.105043, 0, 0)
-attributes = SubResource("CameraAttributesPractical_gfqyt")
-current = true
-fov = 51.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D" index="0"]
-transform = Transform3D(1, -1.92966e-11, -2.4139e-09, -2.4139e-09, -0.0159865, -0.999872, -1.92966e-11, 0.999872, -0.0159865, 0, -0.566205, -0.805268)
-mesh = SubResource("PlaneMesh_6d5by")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D" index="1"]
-transform = Transform3D(1, -1.92983e-11, -2.4139e-09, -2.4139e-09, -0.0159866, -0.999872, -1.92983e-11, 0.999872, -0.0159866, 0, 0.448876, -0.796395)
-mesh = SubResource("PlaneMesh_6d5by")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D" index="2"]
-transform = Transform3D(1.42, -5.32907e-15, 3.55271e-15, 0, 1.42, -7.47624e-16, 3.55271e-15, -7.47624e-16, 1.42, 0.0732703, 0.231474, -0.397363)
-cast_shadow = 0
-mesh = SubResource("SphereMesh_q14o7")
-
-[node name="QTE_Debugging" type="Node3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D" index="3"]
-transform = Transform3D(1, 0, 1.77636e-15, 0, 1, -2.98023e-08, -1.77636e-15, 2.98023e-08, 1, 0, 0, 0)
-visible = false
-
-[node name="QTE_LAYER" type="Node" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging" index="0"]
-unique_name_in_owner = true
-process_mode = 3
-
-[node name="CanvasLayer" type="CanvasLayer" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER" index="0"]
-
-[node name="Panel" type="Panel" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer" index="0"]
-material = SubResource("CanvasItemMaterial_wcxgp")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="QTE_TIMER" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel" index="0"]
-layout_mode = 0
-offset_right = 325.0
-offset_bottom = 55.0
-text = "TIMER: 0"
-label_settings = SubResource("LabelSettings_ddpcs")
-
-[node name="QTE_ACTION_TIMER" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel" index="1"]
-layout_mode = 0
-offset_top = 55.0
-offset_right = 325.0
-offset_bottom = 110.0
-text = "NEXT ACTION TIMER: 0"
-label_settings = SubResource("LabelSettings_ddpcs")
-
-[node name="QTE" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel" index="2"]
-layout_mode = 0
-offset_top = 110.0
-offset_right = 435.0
-offset_bottom = 165.0
-text = "QTE: "
-label_settings = SubResource("LabelSettings_ddpcs")
-
-[node name="QTE_PLAYER" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel" index="3"]
-layout_mode = 0
-offset_top = 165.0
-offset_right = 435.0
-offset_bottom = 220.0
-text = "PLAYER QTE: "
-label_settings = SubResource("LabelSettings_ddpcs")
-
-[node name="QTE_FEEDBACK" type="Label" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTE_Debugging/QTE_LAYER/CanvasLayer/Panel" index="4"]
-layout_mode = 0
-offset_top = 220.0
-offset_right = 1152.0
-offset_bottom = 330.0
-text = "GET READY"
-label_settings = SubResource("LabelSettings_bnar5")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="QTEv2" type="Node3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D" index="4"]
-
-[node name="Screen" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2" index="0"]
-transform = Transform3D(0.375, -6.21725e-15, 2.22045e-15, -2.66454e-15, 0.00589201, -0.374954, 8.88178e-15, 0.374954, 0.00589201, 0, -0.087656, -0.793574)
-material_override = SubResource("StandardMaterial3D_6e6oo")
-mesh = SubResource("PlaneMesh_011vd")
-skeleton = NodePath("")
-
-[node name="FlashingRing" type="MeshInstance3D" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2" index="1"]
-transform = Transform3D(0.09, -1.9984e-15, 1.11022e-16, 0, 0.00141408, -0.0899889, 1.55431e-15, 0.0899889, 0.00141408, 0, -0.087656, -0.793574)
-mesh = SubResource("PlaneMesh_011vd")
-skeleton = NodePath("")
-
-[node name="SubViewport" type="SubViewport" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2" index="2"]
-transparent_bg = true
-
-[node name="QTE_BUTTON" parent="WakingUpPlayer/XROrigin3D/XRCamera3D/QTEv2/SubViewport" index="0" instance=ExtResource("5_7ehl3")]
-unique_name_in_owner = true
-
-[node name="XRController3DLeft" type="XRController3D" parent="WakingUpPlayer/XROrigin3D" index="2"]
-tracker = &"left_hand"
-
-[node name="LeftHand" parent="WakingUpPlayer/XROrigin3D/XRController3DLeft" index="0" instance=ExtResource("6_8e2vh")]
-visible = false
-hand_material_override = SubResource("StandardMaterial3D_v1b3s")
-
-[node name="XRController3DRight" type="XRController3D" parent="WakingUpPlayer/XROrigin3D" index="3"]
-tracker = &"right_hand"
-
-[node name="RightHand" parent="WakingUpPlayer/XROrigin3D/XRController3DRight" index="0" instance=ExtResource("7_lt8kf")]
-visible = false
-hand_material_override = SubResource("StandardMaterial3D_posyc")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="WakingUpPlayer" index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_qm03u")
-}
-
-[node name="QTE" type="Node" parent="WakingUpPlayer" index="2"]
-script = ExtResource("8_sv5xx")
-
-[node name="XROrigin3D" parent="." index="1"]
+[node name="XROrigin3D" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.93806, 0.867579, -5.10916)
 
 [node name="XRToolsPlayerBody" parent="XROrigin3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.938, 1.798, -5.109)
 enabled = false
 
-[node name="Room" type="Node3D" parent="." index="2"]
+[node name="Room" type="Node3D" parent="." index="1"]
 
 [node name="Floor4" type="StaticBody3D" parent="Room" index="0"]
 
@@ -1315,50 +936,31 @@ mesh = SubResource("PlaneMesh_bv3bx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Inside Door Right/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_wq33g")
 
-[node name="CardboardBox" parent="Room" index="3" instance=ExtResource("29_6424c")]
-transform = Transform3D(0.998603, -0.0528414, 0, 0.0528414, 0.998603, 0, 0, 0, 1, -9.41352, 0.387674, -5.44379)
-visible = false
-collision_mask = 65542
-
-[node name="Speakers" parent="Room/CardboardBox" index="9" instance=ExtResource("30_t14rg")]
-transform = Transform3D(0.0688335, 0.95741, 0.280408, 0.997232, -0.0581096, -0.0463906, -0.0281204, 0.282825, -0.958759, -0.0807428, -0.11497, 0.103086)
-
-[node name="Phone" parent="Room/CardboardBox" index="10" instance=ExtResource("31_k231v")]
-transform = Transform3D(-0.337249, -0.884012, 0.323708, 0.0680324, 0.320067, 0.944949, -0.938954, 0.340706, -0.047801, -0.0511522, -0.0601424, 0.308663)
-picked_up_layer = 65542
-
-[node name="Pencil_Model" parent="Room/CardboardBox" index="11" instance=ExtResource("32_773cq")]
-transform = Transform3D(-0.00653537, 0.0528414, -0.998582, 0.000345855, 0.998603, 0.0528403, 0.999979, -3.88791e-09, -0.00654445, 2.28037, 0.831436, 2.25357)
-picked_up_layer = 65542
-
-[node name="Meta" parent="Room/CardboardBox" index="12" instance=ExtResource("33_xkfea")]
-picked_up_layer = 65542
-
-[node name="window" parent="Room" index="4" instance=ExtResource("34_w4kd7")]
+[node name="window" parent="Room" index="3" instance=ExtResource("34_w4kd7")]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -9.75761, 1.13639, -10.0743)
 
-[node name="window2" parent="Room" index="5" instance=ExtResource("34_w4kd7")]
+[node name="window2" parent="Room" index="4" instance=ExtResource("34_w4kd7")]
 transform = Transform3D(-1.00536e-07, 0, 2.3, 0, 2.3, 0, -2.3, 0, -1.00536e-07, -11.0015, 1.13639, -8.81036)
 
-[node name="window3" parent="Room" index="6" instance=ExtResource("34_w4kd7")]
+[node name="window3" parent="Room" index="5" instance=ExtResource("34_w4kd7")]
 transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 4.06718, 1.13639, 6.01836)
 
-[node name="window4" parent="Room" index="7" instance=ExtResource("34_w4kd7")]
+[node name="window4" parent="Room" index="6" instance=ExtResource("34_w4kd7")]
 transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 4.06718, 1.13639, 3.847)
 
-[node name="window5" parent="Room" index="8" instance=ExtResource("34_w4kd7")]
+[node name="window5" parent="Room" index="7" instance=ExtResource("34_w4kd7")]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -2.7141, 1.13639, -10.0743)
 
-[node name="window6" parent="Room" index="9" instance=ExtResource("34_w4kd7")]
+[node name="window6" parent="Room" index="8" instance=ExtResource("34_w4kd7")]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -5.09703, 1.13639, -10.0743)
 
-[node name="window7" parent="Room" index="10" instance=ExtResource("34_w4kd7")]
+[node name="window7" parent="Room" index="9" instance=ExtResource("34_w4kd7")]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -7.365, 1.13639, -10.0743)
 
-[node name="Plant B" parent="Room" index="11" instance=ExtResource("34_tmcio")]
+[node name="Plant B" parent="Room" index="10" instance=ExtResource("34_tmcio")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 3.14579, 1.3079, 5.95427)
 
-[node name="Furniture" type="Node3D" parent="." index="3"]
+[node name="Furniture" type="Node3D" parent="." index="2"]
 
 [node name="Light Sources" type="Node" parent="Furniture" index="0"]
 
@@ -1619,10 +1221,10 @@ transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.9831
 [node name="TvSet" parent="Furniture" index="34" instance=ExtResource("73_wq33g")]
 transform = Transform3D(0.00287981, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00287981, -0.81102, 0.573663, -7.64914)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="4"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 environment = SubResource("Environment_fl1yh")
 
-[node name="DayNightCycle" type="Node3D" parent="." index="5"]
+[node name="DayNightCycle" type="Node3D" parent="." index="4"]
 script = ExtResource("85_5tqs6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="DayNightCycle" index="0"]
@@ -1636,60 +1238,60 @@ libraries = {
 &"": SubResource("AnimationLibrary_kcbbm")
 }
 
-[node name="knife" parent="." index="6" instance=ExtResource("75_0u2or")]
+[node name="knife" parent="." index="5" instance=ExtResource("75_0u2or")]
 transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.83114, 1.37749, 5.74378)
 
-[node name="toaster" parent="." index="7" instance=ExtResource("76_fb8fj")]
+[node name="toaster" parent="." index="6" instance=ExtResource("76_fb8fj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70481, 1.36149, 7.3661)
 
-[node name="bread2" parent="." index="8" instance=ExtResource("77_4i3ye")]
+[node name="bread2" parent="." index="7" instance=ExtResource("77_4i3ye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75705, 1.36271, 6.80867)
 
-[node name="bread" parent="." index="9" instance=ExtResource("77_4i3ye")]
+[node name="bread" parent="." index="8" instance=ExtResource("77_4i3ye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65576, 1.3697, 6.74431)
 
-[node name="Apple" parent="." index="10" instance=ExtResource("78_j2smf")]
+[node name="Apple" parent="." index="9" instance=ExtResource("78_j2smf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70659, 1.50377, 6.16335)
 
-[node name="journal" parent="." index="11" instance=ExtResource("79_db6ur")]
+[node name="journal" parent="." index="10" instance=ExtResource("79_db6ur")]
 transform = Transform3D(-0.999941, 0, -0.0108733, 0, 1, 0, 0.0108733, 0, -0.999941, -8.61583, 1.33657, -3.59407)
 
-[node name="SleepViewport" parent="." index="12" instance=ExtResource("80_y5awe")]
+[node name="SleepViewport" parent="." index="11" instance=ExtResource("80_y5awe")]
 transform = Transform3D(0.0392773, 0, 0.999228, 0, 1, 0, -0.999228, 0, 0.0392773, -6.95032, 0.756904, -9.05644)
 scene = ExtResource("81_873oh")
 unshaded = true
 scene_properties_keys = PackedStringArray("sleep.gd")
 
-[node name="post_it" parent="." index="13" instance=ExtResource("82_nnvhg")]
+[node name="post_it" parent="." index="12" instance=ExtResource("82_nnvhg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50684, 1.32804, -3.40846)
 
-[node name="OISJournal" parent="." index="14" instance=ExtResource("83_sh2k6")]
+[node name="OISJournal" parent="." index="13" instance=ExtResource("83_sh2k6")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.9389, 1.33187, -2.96148)
 visible = false
 
-[node name="vacuum" parent="." index="15" instance=ExtResource("84_ohw8y")]
+[node name="vacuum" parent="." index="14" instance=ExtResource("84_ohw8y")]
 transform = Transform3D(0.0243799, 0, 0.999703, 0, 1, 0, -0.999703, 0, 0.0243799, -5.60894, 0.313666, -2.98139)
 
-[node name="InitialMarker" type="Marker3D" parent="." index="16"]
+[node name="InitialMarker" type="Marker3D" parent="." index="15"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46087, 1.79825, -5.2846)
 
-[node name="BedMarker" type="Marker3D" parent="." index="17"]
+[node name="BedMarker" type="Marker3D" parent="." index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73031, 1.35363, -7.08733)
 
-[node name="plushie" parent="." index="18" instance=ExtResource("86_42xgu")]
+[node name="plushie" parent="." index="17" instance=ExtResource("86_42xgu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63535, 0.722356, -6.35067)
 collision_mask = 196615
 
-[node name="fidget_spinner" parent="." index="19" instance=ExtResource("88_ff2kj")]
+[node name="fidget_spinner" parent="." index="18" instance=ExtResource("88_ff2kj")]
 transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -8.28083, 1.42767, -3.71211)
 
-[node name="Pencil_Model" parent="." index="20" instance=ExtResource("32_773cq")]
+[node name="Pencil_Model" parent="." index="19" instance=ExtResource("32_773cq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70426, 1.40103, -3.4944)
 
-[node name="ArtSupplyProps" parent="." index="21" instance=ExtResource("89_fl3bw")]
+[node name="ArtSupplyProps" parent="." index="20" instance=ExtResource("89_fl3bw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53481, 0, -9.13332)
 
-[node name="Audio" type="Node" parent="." index="22"]
+[node name="Audio" type="Node" parent="." index="21"]
 
 [node name="wake_up" type="AudioStreamPlayer" parent="Audio" index="0"]
 stream = ExtResource("90_bfqpp")
@@ -1705,7 +1307,7 @@ stream = ExtResource("92_7dg85")
 [node name="Alarm" type="AudioStreamPlayer3D" parent="Audio" index="3"]
 stream = ExtResource("93_f8nmv")
 
-[node name="Label3D" type="Label3D" parent="." index="23"]
+[node name="Label3D" type="Label3D" parent="." index="22"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55061, 1.24483, -5.48843)
 billboard = 2
 shaded = true
@@ -1713,10 +1315,10 @@ outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "Ugh… first day in my new dorm and the first
 thing I do is oversleep. Oh well… "
 
-[node name="OISJournal2" parent="." index="24" instance=ExtResource("83_sh2k6")]
+[node name="OISJournal2" parent="." index="23" instance=ExtResource("83_sh2k6")]
 transform = Transform3D(0.0117633, 0, 0.999931, 0.00753915, 0.999971, -8.8691e-05, -0.999902, 0.00753968, 0.0117629, -10.3835, 1.37031, -5.46997)
 
-[node name="Dust" type="Node" parent="." index="25"]
+[node name="Dust" type="Node" parent="." index="24"]
 
 [node name="Dust" parent="Dust" index="0" instance=ExtResource("94_f4gto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11508, 0.124921, -4.82051)
@@ -1814,27 +1416,25 @@ transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -3
 [node name="Dust" parent="Dust/Dust16" index="7" instance=ExtResource("94_f4gto")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
 
-[node name="plastic basket" parent="." index="26" instance=ExtResource("95_7ehl3")]
+[node name="plastic basket" parent="." index="25" instance=ExtResource("95_7ehl3")]
 transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, -6.39261, 0.0123488, 0.586211)
 
-[node name="PC" parent="." index="27" instance=ExtResource("87_7rwpr")]
+[node name="PC" parent="." index="26" instance=ExtResource("87_7rwpr")]
 transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.28117, 1.3151, -3.67478)
 
-[node name="Plant A3" parent="." index="28" instance=ExtResource("99_akddc")]
+[node name="Plant A3" parent="." index="27" instance=ExtResource("99_akddc")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 3.086, 1.425, 1.89507)
 
-[node name="Shelf B" parent="." index="29" instance=ExtResource("100_ggafq")]
+[node name="Shelf B" parent="." index="28" instance=ExtResource("100_ggafq")]
 transform = Transform3D(-1.70474e-08, 0, -0.39, 0, 0.39, 0, 0.39, 0, -1.70474e-08, 3.498, 2.111, -0.640289)
 
-[node name="Bin" parent="." index="30" instance=ExtResource("101_b21yl")]
+[node name="Bin" parent="." index="29" instance=ExtResource("101_b21yl")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -7.26449, 0.630345, -3.43902)
 
-[node name="Carpet C" parent="." index="31" instance=ExtResource("102_ts0vi")]
+[node name="Carpet C" parent="." index="30" instance=ExtResource("102_ts0vi")]
 transform = Transform3D(-5.11423e-08, 0, 1.15, 0, 0.15, 0, -1.17, 0, -5.02681e-08, 0.416502, 0.1013, 4.85191)
 
-[node name="Corkboard" parent="." index="32" instance=ExtResource("103_uj65o")]
+[node name="Corkboard" parent="." index="31" instance=ExtResource("103_uj65o")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.51801, 2.19148, -2.5477)
 
-[connection signal="failed_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_fail"]
-[connection signal="success_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_success"]
 [connection signal="picked_up" from="journal" to="." method="_on_journal_picked_up"]

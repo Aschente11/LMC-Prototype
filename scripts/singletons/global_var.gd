@@ -114,7 +114,7 @@ func add_food_eaten():
 		
 		for i in range(TaskManager.active_tasks.size()):
 			if TaskManager.active_tasks[i].text == "Eat apple \n slices.":
-				TaskManager.active_tasks[i].done = true
+				TaskManager.complete_task(i)
 
 func add_dust_cleaned():
 	dust_cleaned_count += 1

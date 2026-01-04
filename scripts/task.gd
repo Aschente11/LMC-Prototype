@@ -12,13 +12,11 @@ enum Priority {
 var text: String
 var priority: Priority
 var priority_color: Color
-var done: bool
 
 func _init(task_text: String, task_priority: Priority):
 	text = task_text
 	priority = task_priority
 	priority_color = get_priority_color(priority)
-	done = false
 
 func get_priority_color(p: Priority) -> Color:
 	match p:

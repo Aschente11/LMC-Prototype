@@ -1,4 +1,15 @@
-[gd_scene format=3 uid="uid://yvs2e1tqcw2d"]
+[gd_scene load_steps=5 format=3 uid="uid://yvs2e1tqcw2d"]
+
+[ext_resource type="Script" uid="uid://h3dwep7le2xv" path="res://scripts/results.gd" id="1_nqhjv"]
+[ext_resource type="FontFile" uid="uid://dkqperh1oysyk" path="res://assets/others/fonts/AlteHaasGroteskBold.ttf" id="2_0wffi"]
+[ext_resource type="FontFile" uid="uid://ch5x8sts8pla4" path="res://assets/others/fonts/AlteHaasGroteskRegular.ttf" id="3_xabl0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nqhjv"]
+font = ExtResource("2_0wffi")
+font_size = 200
+font_color = Color(0.2, 1, 0.301961, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 
 [node name="ResultsUI" type="Control"]
 layout_mode = 3
@@ -7,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nqhjv")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -20,28 +32,66 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_0wffi")
 theme_override_font_sizes/font_size = 56
-text = "Day 1 Complete!"
+text = "Day 1"
+horizontal_alignment = 1
+
+[node name="TitleLabel2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("2_0wffi")
+theme_override_font_sizes/font_size = 56
+text = " Complete!"
 horizontal_alignment = 1
 
 [node name="RankLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 1, 0.3, 1)
-theme_override_colors/font_shadow_color = Color(0, 0.4, 0, 0.6)
-theme_override_constants/shadow_offset_x = 4
-theme_override_constants/shadow_offset_y = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 7
+theme_override_constants/shadow_offset_y = 6
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_0wffi")
 theme_override_font_sizes/font_size = 200
 text = "S+"
+label_settings = SubResource("LabelSettings_nqhjv")
 horizontal_alignment = 1
 
-[node name="TasksLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TasksLabel" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_xabl0")
 theme_override_font_sizes/font_size = 48
-text = "2/2 Tasks"
+text = "2/2"
+horizontal_alignment = 1
+
+[node name="TasksLabel2" type="Label" parent="CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.8, 0.9, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_xabl0")
+theme_override_font_sizes/font_size = 48
+text = " Tasks"
 horizontal_alignment = 1
 
 [node name="Spacer2" type="Control" parent="CenterContainer/VBoxContainer"]
@@ -51,12 +101,23 @@ layout_mode = 2
 [node name="MessageLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("3_xabl0")
 theme_override_font_sizes/font_size = 28
-text = "wow nice"
+text = "Do androids dream of electric sheep?"
 horizontal_alignment = 1
+
+[node name="Spacer3" type="Control" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
 
 [node name="ContinueButton" type="Button" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_0wffi")
 theme_override_font_sizes/font_size = 24
-text = "Continue"
+text = "Press A to Continue"
