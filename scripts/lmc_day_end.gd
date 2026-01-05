@@ -1,7 +1,7 @@
 extends XRToolsSceneBase
 
 var has_initialized = false
-var target_scene = "res://scenes/lmc_day_two.tscn"
+var target_scene = ["res://scenes/lmc_day_two.tscn", "res://scenes/lmc_day_three.tscn", "res://scenes/lmc_game_end.tscn"]
 var was_pressed = false
 
 func _ready() -> void:
@@ -16,7 +16,7 @@ func _on_right_hand_button_pressed(button):
 		_change_scene()
 
 func _change_scene() -> void:
-	if not target_scene or target_scene == "":
+	if not target_scene[TaskManager.current_day] or target_scene[TaskManager.current_day] == "":
 		return
 		
-	self.load_scene(target_scene, "day_two")
+	self.load_scene(target_scene[TaskManager.current_day])

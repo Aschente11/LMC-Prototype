@@ -17,7 +17,7 @@ func _ready():
 		print("OpenXR not initialized, please check if your headset is connected.")
 		
 	
-	TaskManager.initialize(1)
+	TaskManager.initialize(2)
 	
 	GlobalTime.start_time()
 
@@ -27,8 +27,3 @@ func _on_sleep_body_entered(body: Node3D) -> void:
 	$sleep.visible = false
 	$sleep.monitoring = false
 	$sleep.monitorable = false
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

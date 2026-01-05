@@ -7,6 +7,7 @@ var all_tasks: Array[Array] = [[], [], []]
 @export var max_active_tasks: Array[int] = [2, 3, 3]
 var current_day: int = 0
 var completed_tasks: int = 0
+var total_completed_tasks: int = 0
 
 var active_tasks: Array[Task] = []
 
@@ -82,6 +83,7 @@ func complete_task(task_index: int):
 		print("Task completed: ", completed_task.text, " [", completed_task.get_priority_text(completed_task.priority), "]")
 		
 		completed_tasks += 1
+		total_completed_tasks += 1
 		#active_tasks.remove_at(task_index)
 		
 		#add_random_task()

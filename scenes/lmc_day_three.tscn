@@ -1,97 +1,97 @@
-[gd_scene load_steps=188 format=4 uid="uid://d2cws8wqloxvv"]
+[gd_scene load_steps=188 format=4 uid="uid://ceb5d1u06f62h"]
 
-[ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_ytp03"]
-[ext_resource type="Script" uid="uid://bxovi75ncq4m0" path="res://scripts/lmc_day_two.gd" id="2_7ehl3"]
-[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="9_2lccd"]
-[ext_resource type="Shader" uid="uid://c1ik510fqf5sw" path="res://shaders/sky.gdshader" id="9_fthp8"]
-[ext_resource type="Texture2D" uid="uid://cch4178fvpwtc" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_baseColor.jpg" id="10_fl1yh"]
-[ext_resource type="Texture2D" uid="uid://44bxquvggmos" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_normal.jpg" id="11_tmcio"]
-[ext_resource type="Texture2D" uid="uid://02w3eaoutnsd" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_specularLevel.jpg" id="12_hoojf"]
-[ext_resource type="Texture2D" uid="uid://7bljh8e18a2x" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Color.jpg" id="13_sgkui"]
-[ext_resource type="Texture2D" uid="uid://cd38u654adob1" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Displacement.jpg" id="14_iyu4n"]
-[ext_resource type="Texture2D" uid="uid://dmh1hr43lbfqf" path="res://assets/textures/Tiles009-4K/Tiles009_4K_NormalDX.jpg" id="15_akddc"]
-[ext_resource type="Texture2D" uid="uid://ixiikv87pfp2" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Roughness.jpg" id="16_ggafq"]
-[ext_resource type="Texture2D" uid="uid://p6vxlfnbn3w3" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Color.jpg" id="17_b21yl"]
-[ext_resource type="Texture2D" uid="uid://ikro6b4d54j5" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-ao.jpg" id="18_ts0vi"]
-[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="19_uj65o"]
-[ext_resource type="Texture2D" uid="uid://dn1p63kntkvho" path="res://assets/textures/Plaster001-4K/Plaster001_4K_NormalGL.jpg" id="20_4bim0"]
-[ext_resource type="Texture2D" uid="uid://37j83cwlfteh" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Roughness.jpg" id="21_l5faa"]
-[ext_resource type="Texture2D" uid="uid://hm07br2u6yis" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-diffuse.jpg" id="22_uu2rs"]
-[ext_resource type="Texture2D" uid="uid://b8q2irnnfslf2" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-normal.jpg" id="23_kkrd7"]
-[ext_resource type="Texture2D" uid="uid://dlohbfrsc2qks" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-specular.jpg" id="24_287jc"]
-[ext_resource type="Texture2D" uid="uid://cb6ktadnm3ti2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_Color.jpg" id="25_laws8"]
-[ext_resource type="Texture2D" uid="uid://dorwhoxqeak2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_NormalGL.jpg" id="26_ky4l2"]
-[ext_resource type="Texture2D" uid="uid://bq74u34pmsq54" path="res://assets/textures/Tiles003-4K/Tiles003_4K_Roughness.jpg" id="27_dnobo"]
-[ext_resource type="PackedScene" uid="uid://bw44mftmte1vr" path="res://scenes/tools/marker.tscn" id="32_773cq"]
-[ext_resource type="PackedScene" uid="uid://2g6uh8ams2y8" path="res://assets/Furniture Shaders/plant_b.tscn" id="34_tmcio"]
-[ext_resource type="PackedScene" uid="uid://lbdlwao4nkbv" path="res://scenes/Furniture/Bedroom/windows.tscn" id="34_w4kd7"]
-[ext_resource type="PackedScene" uid="uid://dlac4kfroxrdv" path="res://scenes/Furniture/ceiling_light.tscn" id="35_6ig4h"]
-[ext_resource type="PackedScene" uid="uid://ckp3opsts403i" path="res://scenes/Furniture/door.tscn" id="36_imymx"]
-[ext_resource type="PackedScene" uid="uid://cjui6gb3fygxb" path="res://assets/Furniture Shaders/lamp_b.tscn" id="37_hoojf"]
-[ext_resource type="PackedScene" uid="uid://kh7sb5q48xi0" path="res://scenes/Furniture/Kitchen/cupboards.tscn" id="37_w46si"]
-[ext_resource type="PackedScene" uid="uid://s5gjejv5fen7" path="res://scenes/Furniture/Bedroom/bed.tscn" id="38_gkyo4"]
-[ext_resource type="PackedScene" uid="uid://dc21oxrm84neg" path="res://assets/Furniture Shaders/carpet_b.tscn" id="38_sgkui"]
-[ext_resource type="PackedScene" uid="uid://u277aw1jceay" path="res://assets/Furniture Shaders/lamp_c.tscn" id="39_iyu4n"]
-[ext_resource type="PackedScene" uid="uid://cji387p80amm8" path="res://scenes/Furniture/Kitchen/chair.tscn" id="39_vhyiw"]
-[ext_resource type="PackedScene" uid="uid://du2vn3nhn1mob" path="res://scenes/Furniture/Kitchen/cooking_station.tscn" id="40_gdgfw"]
-[ext_resource type="PackedScene" uid="uid://btf7o1yinqmpn" path="res://scenes/Furniture/Kitchen/kitchen_counter.tscn" id="41_ovksn"]
-[ext_resource type="PackedScene" uid="uid://d1ws3pw8g3w1v" path="res://scenes/Furniture/Kitchen/fridge.tscn" id="42_vxs53"]
-[ext_resource type="PackedScene" uid="uid://b63336v121wu1" path="res://scenes/Furniture/Kitchen/light_switch.tscn" id="43_6vpnh"]
-[ext_resource type="PackedScene" uid="uid://cyj20vbwq2jgh" path="res://scenes/Furniture/cr_door.tscn" id="44_ghra8"]
-[ext_resource type="PackedScene" uid="uid://fvr0v4d8fhpa" path="res://scenes/Furniture/wall_light.tscn" id="45_bsgxj"]
-[ext_resource type="PackedScene" uid="uid://csecy3vkqhh4m" path="res://scenes/Furniture/bathtub.tscn" id="46_mq08c"]
-[ext_resource type="PackedScene" uid="uid://lqx8txlbq7em" path="res://scenes/Furniture/sink.tscn" id="47_x3l86"]
-[ext_resource type="PackedScene" uid="uid://b6u4sqoe3ywev" path="res://scenes/Furniture/tp_holder.tscn" id="48_3hgj5"]
-[ext_resource type="PackedScene" uid="uid://b021xt3o6pe7d" path="res://scenes/Furniture/toilet_paper.tscn" id="49_rvd80"]
-[ext_resource type="PackedScene" uid="uid://dao8npl2kvkvt" path="res://scenes/Furniture/toilet.tscn" id="50_nxkqc"]
-[ext_resource type="PackedScene" uid="uid://cn0r03b8jh8r6" path="res://scenes/Furniture/towel_holder.tscn" id="51_ctqyl"]
-[ext_resource type="PackedScene" uid="uid://cn5yhjlvnee" path="res://scenes/Furniture/drawer_a.tscn" id="52_ndas2"]
-[ext_resource type="PackedScene" uid="uid://ci5t6ina3gv5a" path="res://scenes/Furniture/bin.tscn" id="53_goinj"]
-[ext_resource type="PackedScene" uid="uid://cmor22wqca33f" path="res://scenes/Furniture/mirror.tscn" id="54_kekx5"]
-[ext_resource type="PackedScene" uid="uid://b7f6r4xgugck2" path="res://scenes/Furniture/sofa_b.tscn" id="55_r1ejn"]
-[ext_resource type="PackedScene" uid="uid://7gggc2q1txg1" path="res://scenes/Furniture/table_d.tscn" id="56_q0s7t"]
-[ext_resource type="PackedScene" uid="uid://u7dt2n2oudx4" path="res://scenes/Furniture/shelf_a.tscn" id="57_o6b0y"]
-[ext_resource type="PackedScene" uid="uid://dgntcenmdo8mk" path="res://scenes/Furniture/desk.tscn" id="58_gah4b"]
-[ext_resource type="PackedScene" uid="uid://efhycwudhik2" path="res://scenes/Furniture/Bedroom/drawer.tscn" id="59_1mqqc"]
-[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="60_4t8md"]
-[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="61_3jmdp"]
-[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="62_721px"]
-[ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="63_nxmcq"]
-[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="64_6txqk"]
-[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="65_awcsq"]
-[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="66_bdrdu"]
-[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="67_4ulln"]
-[ext_resource type="PackedScene" uid="uid://53x8obp0rqj7" path="res://scenes/Furniture/pan.tscn" id="68_hgyv4"]
-[ext_resource type="PackedScene" uid="uid://dbdoqijou25gg" path="res://scenes/Furniture/receiver_pan.tscn" id="69_pkm0k"]
-[ext_resource type="PackedScene" uid="uid://duj5ayanfxmtw" path="res://assets/Furniture Shaders/kitchen_roll.tscn" id="70_xkxlb"]
-[ext_resource type="PackedScene" uid="uid://dcajgychncjmh" path="res://scenes/Furniture/washing_machine.tscn" id="71_5poap"]
-[ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="72_bv3bx"]
-[ext_resource type="PackedScene" uid="uid://ce150tqux2gyp" path="res://scenes/Furniture/tv_set.tscn" id="73_wq33g"]
-[ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="75_0u2or"]
-[ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="76_fb8fj"]
-[ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="77_4i3ye"]
-[ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="78_j2smf"]
-[ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="82_nnvhg"]
-[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="83_sh2k6"]
-[ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="84_ohw8y"]
-[ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scripts/day_night_cycle.gd" id="85_5tqs6"]
-[ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="86_42xgu"]
-[ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="87_7rwpr"]
-[ext_resource type="PackedScene" uid="uid://c2qly3ba5v28l" path="res://assets/tools/fidget-spinner/spinner.tscn" id="88_ff2kj"]
-[ext_resource type="PackedScene" uid="uid://bd1ns3arb2768" path="res://scenes/Furniture/Bedroom/canvas.tscn" id="89_fl3bw"]
-[ext_resource type="AudioStream" uid="uid://dtf726kp6odmr" path="res://assets/sfx/events/Waking up.mp3" id="90_bfqpp"]
-[ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="91_fmtsg"]
-[ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="92_7dg85"]
-[ext_resource type="Shader" uid="uid://dvgadwfd5py8" path="res://shaders/aoe.gdshader" id="92_psgl8"]
-[ext_resource type="AudioStream" uid="uid://wodio3h1pjpf" path="res://assets/sfx/iphone_alarm.mp3" id="93_f8nmv"]
-[ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="93_ytp03"]
-[ext_resource type="PackedScene" uid="uid://ctfj38t4j8qmq" path="res://scenes/distractions/dust.tscn" id="94_f4gto"]
-[ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="95_7ehl3"]
-[ext_resource type="PackedScene" uid="uid://ce3qfpprxpxtt" path="res://scenes/Furniture/plant_a.tscn" id="99_akddc"]
-[ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="100_ggafq"]
-[ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="101_b21yl"]
-[ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="102_ts0vi"]
-[ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard.tscn" id="103_uj65o"]
+[ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_qq1xt"]
+[ext_resource type="Script" uid="uid://vayvtkrjc5q6" path="res://scripts/lmc_day_three.gd" id="2_qq1xt"]
+[ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="3_hrqfp"]
+[ext_resource type="Texture2D" uid="uid://cch4178fvpwtc" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_baseColor.jpg" id="4_ood03"]
+[ext_resource type="Texture2D" uid="uid://44bxquvggmos" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_normal.jpg" id="5_2mlge"]
+[ext_resource type="Texture2D" uid="uid://02w3eaoutnsd" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_specularLevel.jpg" id="6_reukj"]
+[ext_resource type="Texture2D" uid="uid://7bljh8e18a2x" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Color.jpg" id="7_5bdga"]
+[ext_resource type="Texture2D" uid="uid://cd38u654adob1" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Displacement.jpg" id="8_goa84"]
+[ext_resource type="Texture2D" uid="uid://dmh1hr43lbfqf" path="res://assets/textures/Tiles009-4K/Tiles009_4K_NormalDX.jpg" id="9_ycg5v"]
+[ext_resource type="Texture2D" uid="uid://ixiikv87pfp2" path="res://assets/textures/Tiles009-4K/Tiles009_4K_Roughness.jpg" id="10_8kf2a"]
+[ext_resource type="Texture2D" uid="uid://p6vxlfnbn3w3" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Color.jpg" id="11_e6nhp"]
+[ext_resource type="Texture2D" uid="uid://ikro6b4d54j5" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-ao.jpg" id="12_5jc51"]
+[ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="13_jcdgp"]
+[ext_resource type="Texture2D" uid="uid://dn1p63kntkvho" path="res://assets/textures/Plaster001-4K/Plaster001_4K_NormalGL.jpg" id="14_4gw4r"]
+[ext_resource type="Texture2D" uid="uid://37j83cwlfteh" path="res://assets/textures/Plaster001-4K/Plaster001_4K_Roughness.jpg" id="15_o7dxi"]
+[ext_resource type="Texture2D" uid="uid://hm07br2u6yis" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-diffuse.jpg" id="16_x7lcf"]
+[ext_resource type="Texture2D" uid="uid://b8q2irnnfslf2" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-normal.jpg" id="17_7aswh"]
+[ext_resource type="Texture2D" uid="uid://dlohbfrsc2qks" path="res://assets/textures/plaster_texture_09-4K/4K-plaster_9-specular.jpg" id="18_oig3u"]
+[ext_resource type="Texture2D" uid="uid://cb6ktadnm3ti2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_Color.jpg" id="19_eerlr"]
+[ext_resource type="Texture2D" uid="uid://dorwhoxqeak2" path="res://assets/textures/Tiles003-4K/Tiles003_4K_NormalGL.jpg" id="20_otch6"]
+[ext_resource type="Texture2D" uid="uid://bq74u34pmsq54" path="res://assets/textures/Tiles003-4K/Tiles003_4K_Roughness.jpg" id="21_rdham"]
+[ext_resource type="PackedScene" uid="uid://lbdlwao4nkbv" path="res://scenes/Furniture/Bedroom/windows.tscn" id="22_1ty6d"]
+[ext_resource type="PackedScene" uid="uid://2g6uh8ams2y8" path="res://assets/Furniture Shaders/plant_b.tscn" id="23_p3k2n"]
+[ext_resource type="PackedScene" uid="uid://dlac4kfroxrdv" path="res://scenes/Furniture/ceiling_light.tscn" id="24_ca8ip"]
+[ext_resource type="PackedScene" uid="uid://fvr0v4d8fhpa" path="res://scenes/Furniture/wall_light.tscn" id="25_o70mc"]
+[ext_resource type="PackedScene" uid="uid://cjui6gb3fygxb" path="res://assets/Furniture Shaders/lamp_b.tscn" id="26_smyhh"]
+[ext_resource type="PackedScene" uid="uid://dc21oxrm84neg" path="res://assets/Furniture Shaders/carpet_b.tscn" id="27_wvwt3"]
+[ext_resource type="PackedScene" uid="uid://u277aw1jceay" path="res://assets/Furniture Shaders/lamp_c.tscn" id="28_q70xo"]
+[ext_resource type="PackedScene" uid="uid://ckp3opsts403i" path="res://scenes/Furniture/door.tscn" id="29_8iu2i"]
+[ext_resource type="PackedScene" uid="uid://kh7sb5q48xi0" path="res://scenes/Furniture/Kitchen/cupboards.tscn" id="30_ompbl"]
+[ext_resource type="PackedScene" uid="uid://s5gjejv5fen7" path="res://scenes/Furniture/Bedroom/bed.tscn" id="31_sqrbf"]
+[ext_resource type="PackedScene" uid="uid://cji387p80amm8" path="res://scenes/Furniture/Kitchen/chair.tscn" id="32_mc0wd"]
+[ext_resource type="PackedScene" uid="uid://du2vn3nhn1mob" path="res://scenes/Furniture/Kitchen/cooking_station.tscn" id="33_66yte"]
+[ext_resource type="PackedScene" uid="uid://btf7o1yinqmpn" path="res://scenes/Furniture/Kitchen/kitchen_counter.tscn" id="34_xy4bq"]
+[ext_resource type="PackedScene" uid="uid://d1ws3pw8g3w1v" path="res://scenes/Furniture/Kitchen/fridge.tscn" id="35_6adt6"]
+[ext_resource type="PackedScene" uid="uid://b63336v121wu1" path="res://scenes/Furniture/Kitchen/light_switch.tscn" id="36_1yq5y"]
+[ext_resource type="PackedScene" uid="uid://cyj20vbwq2jgh" path="res://scenes/Furniture/cr_door.tscn" id="37_evtvh"]
+[ext_resource type="PackedScene" uid="uid://csecy3vkqhh4m" path="res://scenes/Furniture/bathtub.tscn" id="38_xx504"]
+[ext_resource type="PackedScene" uid="uid://lqx8txlbq7em" path="res://scenes/Furniture/sink.tscn" id="39_466cf"]
+[ext_resource type="PackedScene" uid="uid://b6u4sqoe3ywev" path="res://scenes/Furniture/tp_holder.tscn" id="40_fkhm0"]
+[ext_resource type="PackedScene" uid="uid://b021xt3o6pe7d" path="res://scenes/Furniture/toilet_paper.tscn" id="41_osk5u"]
+[ext_resource type="PackedScene" uid="uid://dao8npl2kvkvt" path="res://scenes/Furniture/toilet.tscn" id="42_ryl1n"]
+[ext_resource type="PackedScene" uid="uid://cn0r03b8jh8r6" path="res://scenes/Furniture/towel_holder.tscn" id="43_5eibj"]
+[ext_resource type="PackedScene" uid="uid://cn5yhjlvnee" path="res://scenes/Furniture/drawer_a.tscn" id="44_fayvu"]
+[ext_resource type="PackedScene" uid="uid://ci5t6ina3gv5a" path="res://scenes/Furniture/bin.tscn" id="45_28rv6"]
+[ext_resource type="PackedScene" uid="uid://cmor22wqca33f" path="res://scenes/Furniture/mirror.tscn" id="46_ywpa1"]
+[ext_resource type="PackedScene" uid="uid://b7f6r4xgugck2" path="res://scenes/Furniture/sofa_b.tscn" id="47_pqwa5"]
+[ext_resource type="PackedScene" uid="uid://7gggc2q1txg1" path="res://scenes/Furniture/table_d.tscn" id="48_ldpnr"]
+[ext_resource type="PackedScene" uid="uid://u7dt2n2oudx4" path="res://scenes/Furniture/shelf_a.tscn" id="49_84h07"]
+[ext_resource type="PackedScene" uid="uid://dgntcenmdo8mk" path="res://scenes/Furniture/desk.tscn" id="50_au868"]
+[ext_resource type="PackedScene" uid="uid://efhycwudhik2" path="res://scenes/Furniture/Bedroom/drawer.tscn" id="51_7upu0"]
+[ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="52_mxlom"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="53_msxes"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="54_x0fql"]
+[ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="55_y1l6i"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="56_di8y1"]
+[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="57_btngm"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="58_ft5uu"]
+[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="59_ilhbj"]
+[ext_resource type="PackedScene" uid="uid://53x8obp0rqj7" path="res://scenes/Furniture/pan.tscn" id="60_ajgoy"]
+[ext_resource type="PackedScene" uid="uid://dbdoqijou25gg" path="res://scenes/Furniture/receiver_pan.tscn" id="61_nq28e"]
+[ext_resource type="PackedScene" uid="uid://duj5ayanfxmtw" path="res://assets/Furniture Shaders/kitchen_roll.tscn" id="62_xdam2"]
+[ext_resource type="PackedScene" uid="uid://dcajgychncjmh" path="res://scenes/Furniture/washing_machine.tscn" id="63_k865p"]
+[ext_resource type="PackedScene" uid="uid://cwx7pt4f3hqqv" path="res://scenes/others/clock.tscn" id="64_hgr7t"]
+[ext_resource type="PackedScene" uid="uid://ce150tqux2gyp" path="res://scenes/Furniture/tv_set.tscn" id="65_fq2md"]
+[ext_resource type="Shader" uid="uid://c1ik510fqf5sw" path="res://shaders/sky.gdshader" id="66_gt4wd"]
+[ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scripts/day_night_cycle.gd" id="67_84myu"]
+[ext_resource type="PackedScene" uid="uid://cdrmm7xmotkk8" path="res://scenes/tools/kitchen/knife.tscn" id="68_06oos"]
+[ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="69_urykk"]
+[ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="70_2aqvo"]
+[ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="71_jb5jr"]
+[ext_resource type="PackedScene" uid="uid://dpq5hkh5vwht3" path="res://scenes/tools/PACK sticky note.tscn" id="72_3y88y"]
+[ext_resource type="PackedScene" uid="uid://43js2irdvt88" path="res://scenes/tools/ois_journal_new.tscn" id="73_jrkva"]
+[ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="74_ak17f"]
+[ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="75_0rcex"]
+[ext_resource type="PackedScene" uid="uid://c2qly3ba5v28l" path="res://assets/tools/fidget-spinner/spinner.tscn" id="76_d7bdb"]
+[ext_resource type="PackedScene" uid="uid://bw44mftmte1vr" path="res://scenes/tools/marker.tscn" id="77_wg0jn"]
+[ext_resource type="PackedScene" uid="uid://bd1ns3arb2768" path="res://scenes/Furniture/Bedroom/canvas.tscn" id="78_oorph"]
+[ext_resource type="AudioStream" uid="uid://dtf726kp6odmr" path="res://assets/sfx/events/Waking up.mp3" id="79_ckk3f"]
+[ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="80_1c6gy"]
+[ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="81_y5bbr"]
+[ext_resource type="AudioStream" uid="uid://wodio3h1pjpf" path="res://assets/sfx/iphone_alarm.mp3" id="82_ii477"]
+[ext_resource type="PackedScene" uid="uid://ctfj38t4j8qmq" path="res://scenes/distractions/dust.tscn" id="83_5rjf5"]
+[ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="84_a68nb"]
+[ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="85_4q0f2"]
+[ext_resource type="PackedScene" uid="uid://ce3qfpprxpxtt" path="res://scenes/Furniture/plant_a.tscn" id="86_jrc4y"]
+[ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="87_0vuua"]
+[ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="88_6w4v0"]
+[ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="89_4mlto"]
+[ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard.tscn" id="90_eghph"]
+[ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="91_n7do0"]
+[ext_resource type="Shader" uid="uid://dvgadwfd5py8" path="res://shaders/aoe.gdshader" id="92_igqgg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bim0"]
 size = Vector3(15.7303, 0.316757, 20.6996)
@@ -101,13 +101,13 @@ size = Vector3(15.06, 0.13, 8.255)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uu2rs"]
 render_priority = 0
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.506, 0.473, 0.351, 0)
-shader_parameter/base_texture = ExtResource("10_fl1yh")
+shader_parameter/base_texture = ExtResource("4_ood03")
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/specular_texture = ExtResource("12_hoojf")
+shader_parameter/specular_texture = ExtResource("6_reukj")
 shader_parameter/fresnel = Color(0.292, 0.164, 0.079, 0.21)
-shader_parameter/fresnel_texture = ExtResource("11_tmcio")
+shader_parameter/fresnel_texture = ExtResource("5_2mlge")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -119,13 +119,13 @@ size = Vector3(15.575, 0.13, 7.63)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_287jc"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_ksmap")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.506, 0.473, 0.351, 0)
-shader_parameter/base_texture = ExtResource("10_fl1yh")
+shader_parameter/base_texture = ExtResource("4_ood03")
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/specular_texture = ExtResource("12_hoojf")
+shader_parameter/specular_texture = ExtResource("6_reukj")
 shader_parameter/fresnel = Color(0.292, 0.164, 0.079, 0.21)
-shader_parameter/fresnel_texture = ExtResource("11_tmcio")
+shader_parameter/fresnel_texture = ExtResource("5_2mlge")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -135,22 +135,22 @@ size = Vector3(7.845, 0.13, 4.375)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ky4l2"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_ksmap")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.506, 0.473, 0.351, 0)
-shader_parameter/base_texture = ExtResource("10_fl1yh")
+shader_parameter/base_texture = ExtResource("4_ood03")
 shader_parameter/specular = Color(0.3, 0.3, 0.3, 0.5)
-shader_parameter/specular_texture = ExtResource("12_hoojf")
+shader_parameter/specular_texture = ExtResource("6_reukj")
 shader_parameter/fresnel = Color(0.292, 0.164, 0.079, 0.21)
-shader_parameter/fresnel_texture = ExtResource("11_tmcio")
+shader_parameter/fresnel_texture = ExtResource("5_2mlge")
 shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwn8a"]
-albedo_texture = ExtResource("13_sgkui")
-roughness_texture = ExtResource("16_ggafq")
+albedo_texture = ExtResource("7_5bdga")
+roughness_texture = ExtResource("10_8kf2a")
 normal_enabled = true
-normal_texture = ExtResource("15_akddc")
-heightmap_texture = ExtResource("14_iyu4n")
+normal_texture = ExtResource("9_ycg5v")
+heightmap_texture = ExtResource("8_goa84")
 uv1_scale = Vector3(-15.08, -6.405, 0.185)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dnobo"]
@@ -162,15 +162,15 @@ size = Vector3(15, 0.115, 20)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hrbsu"]
 render_priority = 0
-shader = ExtResource("19_uj65o")
+shader = ExtResource("13_jcdgp")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6424c"]
 next_pass = SubResource("ShaderMaterial_hrbsu")
-albedo_texture = ExtResource("17_b21yl")
-roughness_texture = ExtResource("21_l5faa")
+albedo_texture = ExtResource("11_e6nhp")
+roughness_texture = ExtResource("15_o7dxi")
 normal_enabled = true
-normal_texture = ExtResource("20_4bim0")
-ao_texture = ExtResource("18_ts0vi")
+normal_texture = ExtResource("14_4gw4r")
+ao_texture = ExtResource("12_5jc51")
 uv1_scale = Vector3(2, 3.55, 1)
 uv1_offset = Vector3(0, -0.275, 0)
 
@@ -182,18 +182,18 @@ size = Vector3(15.01, 0.125, 5.55)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bfu41"]
 render_priority = 0
-shader = ExtResource("19_uj65o")
+shader = ExtResource("13_jcdgp")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_773cq"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_bfu41")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
-shader_parameter/base_texture = ExtResource("22_uu2rs")
+shader_parameter/base_texture = ExtResource("16_x7lcf")
 shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
-shader_parameter/specular_texture = ExtResource("24_287jc")
+shader_parameter/specular_texture = ExtResource("18_oig3u")
 shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
-shader_parameter/fresnel_texture = ExtResource("23_kkrd7")
+shader_parameter/fresnel_texture = ExtResource("17_7aswh")
 shader_parameter/uv_scale = Vector2(17, 3.74)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -212,24 +212,24 @@ size = Vector3(9.475, 0.08, 1.1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w46si"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_bfu41")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
-shader_parameter/base_texture = ExtResource("22_uu2rs")
+shader_parameter/base_texture = ExtResource("16_x7lcf")
 shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
-shader_parameter/specular_texture = ExtResource("24_287jc")
+shader_parameter/specular_texture = ExtResource("18_oig3u")
 shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
-shader_parameter/fresnel_texture = ExtResource("23_kkrd7")
+shader_parameter/fresnel_texture = ExtResource("17_7aswh")
 shader_parameter/uv_scale = Vector2(12.32, 2.475)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v0wtd"]
-albedo_texture = ExtResource("22_uu2rs")
+albedo_texture = ExtResource("16_x7lcf")
 metallic = 1.0
-metallic_texture = ExtResource("24_287jc")
+metallic_texture = ExtResource("18_oig3u")
 normal_enabled = true
-normal_texture = ExtResource("23_kkrd7")
+normal_texture = ExtResource("17_7aswh")
 ao_enabled = true
-ao_texture = ExtResource("18_ts0vi")
+ao_texture = ExtResource("12_5jc51")
 uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gkyo4"]
@@ -248,13 +248,13 @@ orientation = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovksn"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_bfu41")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
-shader_parameter/base_texture = ExtResource("22_uu2rs")
+shader_parameter/base_texture = ExtResource("16_x7lcf")
 shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
-shader_parameter/specular_texture = ExtResource("24_287jc")
+shader_parameter/specular_texture = ExtResource("18_oig3u")
 shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
-shader_parameter/fresnel_texture = ExtResource("23_kkrd7")
+shader_parameter/fresnel_texture = ExtResource("17_7aswh")
 shader_parameter/uv_scale = Vector2(3.43, 4.11)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -269,13 +269,13 @@ orientation = 0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ghra8"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_bfu41")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
-shader_parameter/base_texture = ExtResource("22_uu2rs")
+shader_parameter/base_texture = ExtResource("16_x7lcf")
 shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
-shader_parameter/specular_texture = ExtResource("24_287jc")
+shader_parameter/specular_texture = ExtResource("18_oig3u")
 shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
-shader_parameter/fresnel_texture = ExtResource("23_kkrd7")
+shader_parameter/fresnel_texture = ExtResource("17_7aswh")
 shader_parameter/uv_scale = Vector2(3.035, 4.86)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -283,13 +283,13 @@ shader_parameter/uv_offset = Vector2(0, 0)
 data = PackedVector3Array(0, -2.1425, -1.75, 0, -2.1425, 1.75, 0, 2.1425, -1.75, 0, -2.1425, 1.75, 0, 2.1425, 1.75, 0, 2.1425, -1.75)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4ag1"]
-albedo_texture = ExtResource("22_uu2rs")
+albedo_texture = ExtResource("16_x7lcf")
 metallic = 1.0
-metallic_texture = ExtResource("24_287jc")
+metallic_texture = ExtResource("18_oig3u")
 normal_enabled = true
-normal_texture = ExtResource("23_kkrd7")
+normal_texture = ExtResource("17_7aswh")
 ao_enabled = true
-ao_texture = ExtResource("18_ts0vi")
+ao_texture = ExtResource("12_5jc51")
 uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mq08c"]
@@ -301,13 +301,13 @@ orientation = 0
 data = PackedVector3Array(0, -2.5, -9, 0, -2.5, 9, 0, 2.5, -9, 0, -2.5, 9, 0, 2.5, 9, 0, 2.5, -9)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sgvw8"]
-albedo_texture = ExtResource("22_uu2rs")
+albedo_texture = ExtResource("16_x7lcf")
 metallic = 1.0
-metallic_texture = ExtResource("24_287jc")
+metallic_texture = ExtResource("18_oig3u")
 normal_enabled = true
-normal_texture = ExtResource("23_kkrd7")
+normal_texture = ExtResource("17_7aswh")
 ao_enabled = true
-ao_texture = ExtResource("18_ts0vi")
+ao_texture = ExtResource("12_5jc51")
 uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3hgj5"]
@@ -319,13 +319,13 @@ orientation = 0
 data = PackedVector3Array(0, -0.77, -1.3275, 0, -0.77, 1.3275, 0, 0.77, -1.3275, 0, -0.77, 1.3275, 0, 0.77, 1.3275, 0, 0.77, -1.3275)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6nfnn"]
-albedo_texture = ExtResource("22_uu2rs")
+albedo_texture = ExtResource("16_x7lcf")
 metallic = 1.0
-metallic_texture = ExtResource("24_287jc")
+metallic_texture = ExtResource("18_oig3u")
 normal_enabled = true
-normal_texture = ExtResource("23_kkrd7")
+normal_texture = ExtResource("17_7aswh")
 ao_enabled = true
-ao_texture = ExtResource("18_ts0vi")
+ao_texture = ExtResource("12_5jc51")
 uv1_scale = Vector3(17.033, 3.671, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_nxkqc"]
@@ -336,10 +336,10 @@ size = Vector2(8.215, 4.35)
 data = PackedVector3Array(4.1075, 0, 2.175, -4.1075, 0, 2.175, 4.1075, 0, -2.175, -4.1075, 0, 2.175, -4.1075, 0, -2.175, 4.1075, 0, -2.175)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ue30"]
-albedo_texture = ExtResource("25_laws8")
-roughness_texture = ExtResource("27_dnobo")
+albedo_texture = ExtResource("19_eerlr")
+roughness_texture = ExtResource("21_rdham")
 normal_enabled = true
-normal_texture = ExtResource("26_ky4l2")
+normal_texture = ExtResource("20_otch6")
 uv1_scale = Vector3(5.63, 2.795, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ndas2"]
@@ -350,10 +350,10 @@ size = Vector2(8.215, 4.35)
 data = PackedVector3Array(4.1075, 0, 2.175, -4.1075, 0, 2.175, 4.1075, 0, -2.175, -4.1075, 0, 2.175, -4.1075, 0, -2.175, 4.1075, 0, -2.175)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k42av"]
-albedo_texture = ExtResource("25_laws8")
-roughness_texture = ExtResource("27_dnobo")
+albedo_texture = ExtResource("19_eerlr")
+roughness_texture = ExtResource("21_rdham")
 normal_enabled = true
-normal_texture = ExtResource("26_ky4l2")
+normal_texture = ExtResource("20_otch6")
 uv1_scale = Vector3(2.965, 3.055, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kekx5"]
@@ -365,10 +365,10 @@ orientation = 0
 data = PackedVector3Array(0, -2.5, -2.26, 0, -2.5, 2.26, 0, 2.5, -2.26, 0, -2.5, 2.26, 0, 2.5, 2.26, 0, 2.5, -2.26)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gr8w0"]
-albedo_texture = ExtResource("25_laws8")
-roughness_texture = ExtResource("27_dnobo")
+albedo_texture = ExtResource("19_eerlr")
+roughness_texture = ExtResource("21_rdham")
 normal_enabled = true
-normal_texture = ExtResource("26_ky4l2")
+normal_texture = ExtResource("20_otch6")
 uv1_scale = Vector3(5.63, 2.69, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_q0s7t"]
@@ -382,13 +382,13 @@ data = PackedVector3Array(4.1075, 0, 2.175, -4.1075, 0, 2.175, 4.1075, 0, -2.175
 data = PackedVector3Array(4.1075, 0, 2.175, -4.1075, 0, 2.175, 4.1075, 0, -2.175, -4.1075, 0, 2.175, -4.1075, 0, -2.175, 4.1075, 0, -2.175)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_673bd"]
-albedo_texture = ExtResource("22_uu2rs")
+albedo_texture = ExtResource("16_x7lcf")
 metallic = 1.0
-metallic_texture = ExtResource("24_287jc")
+metallic_texture = ExtResource("18_oig3u")
 normal_enabled = true
-normal_texture = ExtResource("23_kkrd7")
+normal_texture = ExtResource("17_7aswh")
 ao_enabled = true
-ao_texture = ExtResource("18_ts0vi")
+ao_texture = ExtResource("12_5jc51")
 uv1_scale = Vector3(1.155, 2.965, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_1mqqc"]
@@ -398,13 +398,13 @@ size = Vector2(0.96, 4.58)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4t8md"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_bfu41")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
-shader_parameter/base_texture = ExtResource("22_uu2rs")
+shader_parameter/base_texture = ExtResource("16_x7lcf")
 shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
-shader_parameter/specular_texture = ExtResource("24_287jc")
+shader_parameter/specular_texture = ExtResource("18_oig3u")
 shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
-shader_parameter/fresnel_texture = ExtResource("23_kkrd7")
+shader_parameter/fresnel_texture = ExtResource("17_7aswh")
 shader_parameter/uv_scale = Vector2(3.035, 4.86)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -412,13 +412,13 @@ shader_parameter/uv_offset = Vector2(0, 0)
 size = Vector3(1, 0.0231934, 4.56912)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_akjxb"]
-albedo_texture = ExtResource("22_uu2rs")
+albedo_texture = ExtResource("16_x7lcf")
 metallic = 1.0
-metallic_texture = ExtResource("24_287jc")
+metallic_texture = ExtResource("18_oig3u")
 normal_enabled = true
-normal_texture = ExtResource("23_kkrd7")
+normal_texture = ExtResource("17_7aswh")
 ao_enabled = true
-ao_texture = ExtResource("18_ts0vi")
+ao_texture = ExtResource("12_5jc51")
 uv1_scale = Vector3(3.915, 0.885, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_721px"]
@@ -428,13 +428,13 @@ size = Vector2(3.58, 1.46)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nxmcq"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_bfu41")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
-shader_parameter/base_texture = ExtResource("22_uu2rs")
+shader_parameter/base_texture = ExtResource("16_x7lcf")
 shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
-shader_parameter/specular_texture = ExtResource("24_287jc")
+shader_parameter/specular_texture = ExtResource("18_oig3u")
 shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
-shader_parameter/fresnel_texture = ExtResource("23_kkrd7")
+shader_parameter/fresnel_texture = ExtResource("17_7aswh")
 shader_parameter/uv_scale = Vector2(7.49, 2.395)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -448,13 +448,13 @@ size = Vector2(3.58, 1.595)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bdrdu"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_bfu41")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.291141, 0.494107, 0.651962, 1)
-shader_parameter/base_texture = ExtResource("22_uu2rs")
+shader_parameter/base_texture = ExtResource("16_x7lcf")
 shader_parameter/specular = Color(0.149, 0.318, 0.433, 0.917)
-shader_parameter/specular_texture = ExtResource("24_287jc")
+shader_parameter/specular_texture = ExtResource("18_oig3u")
 shader_parameter/fresnel = Color(0.215845, 0.107128, 0.450017, 0.243)
-shader_parameter/fresnel_texture = ExtResource("23_kkrd7")
+shader_parameter/fresnel_texture = ExtResource("17_7aswh")
 shader_parameter/uv_scale = Vector2(7.49, 2.395)
 shader_parameter/uv_offset = Vector2(0, 0)
 
@@ -462,11 +462,11 @@ shader_parameter/uv_offset = Vector2(0, 0)
 data = PackedVector3Array(1.79, 0, 0.7975, -1.79, 0, 0.7975, 1.79, 0, -0.7975, -1.79, 0, 0.7975, -1.79, 0, -0.7975, 1.79, 0, -0.7975)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrx01"]
-albedo_texture = ExtResource("25_laws8")
-roughness_texture = ExtResource("27_dnobo")
+albedo_texture = ExtResource("19_eerlr")
+roughness_texture = ExtResource("21_rdham")
 normal_enabled = true
-normal_texture = ExtResource("26_ky4l2")
-ao_texture = ExtResource("18_ts0vi")
+normal_texture = ExtResource("20_otch6")
+ao_texture = ExtResource("12_5jc51")
 uv1_scale = Vector3(1.675, -0.64, 0)
 uv1_offset = Vector3(0, -0.275, 0)
 
@@ -478,10 +478,10 @@ size = Vector2(4.555, 0.96)
 data = PackedVector3Array(2.2775, 0, 0.48, -2.2775, 0, 0.48, 2.2775, 0, -0.48, -2.2775, 0, 0.48, -2.2775, 0, -0.48, 2.2775, 0, -0.48)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uevf"]
-albedo_texture = ExtResource("25_laws8")
-roughness_texture = ExtResource("27_dnobo")
+albedo_texture = ExtResource("19_eerlr")
+roughness_texture = ExtResource("21_rdham")
 normal_enabled = true
-normal_texture = ExtResource("26_ky4l2")
+normal_texture = ExtResource("20_otch6")
 uv1_scale = Vector3(0.585, -2.265, 1)
 uv1_offset = Vector3(0, 0.105, 0)
 
@@ -493,10 +493,10 @@ size = Vector2(1.595, 3.58)
 data = PackedVector3Array(0.7975, 0, 1.79, -0.7975, 0, 1.79, 0.7975, 0, -1.79, -0.7975, 0, 1.79, -0.7975, 0, -1.79, 0.7975, 0, -1.79)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tc087"]
-albedo_texture = ExtResource("25_laws8")
-roughness_texture = ExtResource("27_dnobo")
+albedo_texture = ExtResource("19_eerlr")
+roughness_texture = ExtResource("21_rdham")
 normal_enabled = true
-normal_texture = ExtResource("26_ky4l2")
+normal_texture = ExtResource("20_otch6")
 uv1_scale = Vector3(0.585, -2.265, 1)
 uv1_offset = Vector3(-1.612, 2.71, 0)
 
@@ -549,12 +549,12 @@ shadow_mesh = SubResource("ArrayMesh_73205")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0tljd"]
 render_priority = 0
-shader = ExtResource("19_uj65o")
+shader = ExtResource("13_jcdgp")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0u2or"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_0tljd")
-shader = ExtResource("9_2lccd")
+shader = ExtResource("3_hrqfp")
 shader_parameter/color = Color(0.601686, 0.442794, 0.156603, 1)
 shader_parameter/specular = Color(0.381231, 0.281308, 0.0929288, 0.5)
 shader_parameter/fresnel = Color(0.351139, 0.102987, 0.102364, 0.3)
@@ -565,7 +565,7 @@ shader_parameter/uv_offset = Vector2(0, 0)
 size = Vector3(0.412537, 0.411804, 0.437553)
 
 [sub_resource type="Resource" id="Resource_4i3ye"]
-script = ExtResource("63_nxmcq")
+script = ExtResource("55_y1l6i")
 metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 
 [sub_resource type="SphereMesh" id="SphereMesh_j2smf"]
@@ -596,7 +596,7 @@ fractal_type = 0
 noise = SubResource("FastNoiseLite_sv5xx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2lccd"]
-shader = ExtResource("9_fthp8")
+shader = ExtResource("66_gt4wd")
 shader_parameter/day_bottom_color = Color(0.282353, 0.705882, 0.972549, 1)
 shader_parameter/day_top_color = Color(0.262745, 0.623529, 0.878431, 1)
 shader_parameter/sunset_bottom_color = Color(0.564706, 0.305882, 0.207843, 1)
@@ -680,7 +680,7 @@ radius = 0.820801
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v0wtd"]
 render_priority = 0
-shader = ExtResource("92_psgl8")
+shader = ExtResource("92_igqgg")
 shader_parameter/ring_color = Color(0, 1, 0, 1)
 shader_parameter/ring_frequency = 25.0
 shader_parameter/ring_portion = -0.9
@@ -703,8 +703,8 @@ top_radius = 0.8
 bottom_radius = 0.8
 height = 5.0
 
-[node name="day_two" instance=ExtResource("1_ytp03")]
-script = ExtResource("2_7ehl3")
+[node name="day_three" instance=ExtResource("1_qq1xt")]
+script = ExtResource("2_qq1xt")
 
 [node name="XROrigin3D" parent="." index="0"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.93806, 0.867579, -5.10916)
@@ -964,28 +964,28 @@ mesh = SubResource("PlaneMesh_bv3bx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls/Inside Door Right/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_wq33g")
 
-[node name="window" parent="Room" index="3" instance=ExtResource("34_w4kd7")]
+[node name="window" parent="Room" index="3" instance=ExtResource("22_1ty6d")]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -9.75761, 1.13639, -10.0743)
 
-[node name="window2" parent="Room" index="4" instance=ExtResource("34_w4kd7")]
+[node name="window2" parent="Room" index="4" instance=ExtResource("22_1ty6d")]
 transform = Transform3D(-1.00536e-07, 0, 2.3, 0, 2.3, 0, -2.3, 0, -1.00536e-07, -11.0015, 1.13639, -8.81036)
 
-[node name="window3" parent="Room" index="5" instance=ExtResource("34_w4kd7")]
+[node name="window3" parent="Room" index="5" instance=ExtResource("22_1ty6d")]
 transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 4.06718, 1.13639, 6.01836)
 
-[node name="window4" parent="Room" index="6" instance=ExtResource("34_w4kd7")]
+[node name="window4" parent="Room" index="6" instance=ExtResource("22_1ty6d")]
 transform = Transform3D(-1.00536e-07, 0, -2.3, 0, 2.3, 0, 2.3, 0, -1.00536e-07, 4.06718, 1.13639, 3.847)
 
-[node name="window5" parent="Room" index="7" instance=ExtResource("34_w4kd7")]
+[node name="window5" parent="Room" index="7" instance=ExtResource("22_1ty6d")]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -2.7141, 1.13639, -10.0743)
 
-[node name="window6" parent="Room" index="8" instance=ExtResource("34_w4kd7")]
+[node name="window6" parent="Room" index="8" instance=ExtResource("22_1ty6d")]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -5.09703, 1.13639, -10.0743)
 
-[node name="window7" parent="Room" index="9" instance=ExtResource("34_w4kd7")]
+[node name="window7" parent="Room" index="9" instance=ExtResource("22_1ty6d")]
 transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, -7.365, 1.13639, -10.0743)
 
-[node name="Plant B" parent="Room" index="10" instance=ExtResource("34_tmcio")]
+[node name="Plant B" parent="Room" index="10" instance=ExtResource("23_p3k2n")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 3.14579, 1.3079, 5.95427)
 
 [node name="Furniture" type="Node3D" parent="." index="2"]
@@ -998,48 +998,48 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87891, 3.06492, 0)
 [node name="OmniLight3D2" type="OmniLight3D" parent="Furniture/Light Sources" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58809, 3.06492, 0)
 
-[node name="Ceiling Light5" parent="Furniture/Light Sources" index="2" instance=ExtResource("35_6ig4h")]
+[node name="Ceiling Light5" parent="Furniture/Light Sources" index="2" instance=ExtResource("24_ca8ip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0306931, 3.73148, -0.208201)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Light Sources/Ceiling Light5" index="1"]
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 1.356
 
-[node name="Wall Light2" parent="Furniture/Light Sources" index="3" instance=ExtResource("45_bsgxj")]
+[node name="Wall Light2" parent="Furniture/Light Sources" index="3" instance=ExtResource("25_o70mc")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -8.127, 2.659, 1.89564)
 
-[node name="Wall Light" parent="Furniture/Light Sources" index="4" instance=ExtResource("45_bsgxj")]
+[node name="Wall Light" parent="Furniture/Light Sources" index="4" instance=ExtResource("25_o70mc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.12674, 2.65895, -2.3512)
 
-[node name="Ceiling Light2" parent="Furniture/Light Sources" index="5" instance=ExtResource("35_6ig4h")]
+[node name="Ceiling Light2" parent="Furniture/Light Sources" index="5" instance=ExtResource("24_ca8ip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.87649, 3.73148, 6.31422)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Furniture/Light Sources/Ceiling Light2" index="1"]
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 2.942
 
-[node name="Ceiling Light4" parent="Furniture/Light Sources" index="6" instance=ExtResource("35_6ig4h")]
+[node name="Ceiling Light4" parent="Furniture/Light Sources" index="6" instance=ExtResource("24_ca8ip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.876, 3.69889, -6.665)
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="Furniture/Light Sources/Ceiling Light4" index="1"]
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 2.509
 
-[node name="Ceiling Light3" parent="Furniture/Light Sources" index="7" instance=ExtResource("35_6ig4h")]
+[node name="Ceiling Light3" parent="Furniture/Light Sources" index="7" instance=ExtResource("24_ca8ip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0494399, 3.70293, -6.66538)
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Furniture/Light Sources/Ceiling Light3" index="1"]
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 2.077
 
-[node name="Ceiling Light" parent="Furniture/Light Sources" index="8" instance=ExtResource("35_6ig4h")]
+[node name="Ceiling Light" parent="Furniture/Light Sources" index="8" instance=ExtResource("24_ca8ip")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0306931, 3.73148, 6.31422)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Light Sources/Ceiling Light" index="1"]
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 1.644
 
-[node name="Lamp B" parent="Furniture/Light Sources" index="9" instance=ExtResource("37_hoojf")]
+[node name="Lamp B" parent="Furniture/Light Sources" index="9" instance=ExtResource("26_smyhh")]
 transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, -0.869054, 1.78676, -4.91059)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Light Sources/Lamp B" index="1"]
@@ -1047,7 +1047,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15524, 0)
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 5.392
 
-[node name="Lamp B2" parent="Furniture/Light Sources" index="10" instance=ExtResource("37_hoojf")]
+[node name="Lamp B2" parent="Furniture/Light Sources" index="10" instance=ExtResource("26_smyhh")]
 transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, -9.91987, 1.78676, -3.27174)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Light Sources/Lamp B2" index="1"]
@@ -1055,7 +1055,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.55898, 0)
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 5.392
 
-[node name="Lamp B3" parent="Furniture/Light Sources" index="11" instance=ExtResource("37_hoojf")]
+[node name="Lamp B3" parent="Furniture/Light Sources" index="11" instance=ExtResource("26_smyhh")]
 transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, 2.72399, 1.79585, 8.91564)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Light Sources/Lamp B3" index="1"]
@@ -1063,10 +1063,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39292, 0)
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 5.392
 
-[node name="Carpet B" parent="Furniture/Light Sources" index="12" instance=ExtResource("38_sgkui")]
+[node name="Carpet B" parent="Furniture/Light Sources" index="12" instance=ExtResource("27_wvwt3")]
 transform = Transform3D(-6.99382e-09, 0, 0.265, 0, 0.45, 0, -0.16, 0, -1.15835e-08, -2.02548, 0.0324336, -0.155266)
 
-[node name="Lamp B4" parent="Furniture/Light Sources" index="13" instance=ExtResource("37_hoojf")]
+[node name="Lamp B4" parent="Furniture/Light Sources" index="13" instance=ExtResource("26_smyhh")]
 transform = Transform3D(0.34, 0, 0, 0, 0.34, 0, 0, 0, 0.34, -4.16391, 1.79585, 9.26621)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Light Sources/Lamp B4" index="1"]
@@ -1074,7 +1074,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39292, 0)
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 5.392
 
-[node name="Lamp C2" parent="Furniture/Light Sources" index="14" instance=ExtResource("39_iyu4n")]
+[node name="Lamp C2" parent="Furniture/Light Sources" index="14" instance=ExtResource("28_q70xo")]
 transform = Transform3D(0.255, 0, 0, 0, 0.255, 0, 0, 0, 0.255, 3.11439, 1.1626, 3.48835)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Furniture/Light Sources/Lamp C2" index="1"]
@@ -1097,90 +1097,90 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.64268, 2.92376, -7.66903)
 light_color = Color(1, 0.687411, 0.43849, 1)
 light_energy = 2.077
 
-[node name="Front Door" parent="Furniture" index="1" instance=ExtResource("36_imymx")]
+[node name="Front Door" parent="Furniture" index="1" instance=ExtResource("29_8iu2i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017, -0.009, 9.949)
 
-[node name="Cupboards" parent="Furniture" index="2" instance=ExtResource("37_w46si")]
+[node name="Cupboards" parent="Furniture" index="2" instance=ExtResource("30_ompbl")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.71571, 3.30247, 9.23443)
 
-[node name="Cupboards2" parent="Furniture" index="3" instance=ExtResource("37_w46si")]
+[node name="Cupboards2" parent="Furniture" index="3" instance=ExtResource("30_ompbl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.1903, 3.30852, 7.43887)
 
-[node name="Bed" parent="Furniture" index="4" instance=ExtResource("38_gkyo4")]
+[node name="Bed" parent="Furniture" index="4" instance=ExtResource("31_sqrbf")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.96277, 0.427202, -7.17728)
 
 [node name="Barstools" type="Node3D" parent="Furniture" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.06202, 0.412218, 8.37873)
 
-[node name="Chair" parent="Furniture/Barstools" index="0" instance=ExtResource("39_vhyiw")]
+[node name="Chair" parent="Furniture/Barstools" index="0" instance=ExtResource("32_mc0wd")]
 
-[node name="Chair1" parent="Furniture/Barstools" index="1" instance=ExtResource("39_vhyiw")]
+[node name="Chair1" parent="Furniture/Barstools" index="1" instance=ExtResource("32_mc0wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6538)
 
-[node name="Chair2" parent="Furniture/Barstools" index="2" instance=ExtResource("39_vhyiw")]
+[node name="Chair2" parent="Furniture/Barstools" index="2" instance=ExtResource("32_mc0wd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.15907)
 
-[node name="CookingStation" parent="Furniture" index="6" instance=ExtResource("40_gdgfw")]
+[node name="CookingStation" parent="Furniture" index="6" instance=ExtResource("33_66yte")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2031, 0.828159, 6.00707)
 
-[node name="KitchenCounter2" parent="Furniture" index="7" instance=ExtResource("41_ovksn")]
+[node name="KitchenCounter2" parent="Furniture" index="7" instance=ExtResource("34_xy4bq")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.77778, 0.920756, 7.29212)
 
-[node name="KitchenCounter" parent="Furniture" index="8" instance=ExtResource("41_ovksn")]
+[node name="KitchenCounter" parent="Furniture" index="8" instance=ExtResource("34_xy4bq")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.25476, 0.920756, 9.19054)
 
-[node name="Fridge" parent="Furniture" index="9" instance=ExtResource("42_vxs53")]
+[node name="Fridge" parent="Furniture" index="9" instance=ExtResource("35_6adt6")]
 transform = Transform3D(0.0368356, 0, 0.999321, 0, 1, 0, -0.999321, 0, 0.0368356, -10.1742, 1.14834, 3.25862)
 
-[node name="Light Switch" parent="Furniture" index="10" instance=ExtResource("43_6vpnh")]
+[node name="Light Switch" parent="Furniture" index="10" instance=ExtResource("36_1yq5y")]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 1.34665, 2.18294, 9.95747)
 
-[node name="CR Door" parent="Furniture" index="11" instance=ExtResource("44_ghra8")]
+[node name="CR Door" parent="Furniture" index="11" instance=ExtResource("37_evtvh")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.8152, 1.67106, -0.296329)
 
-[node name="Bathtub" parent="Furniture" index="12" instance=ExtResource("46_mq08c")]
+[node name="Bathtub" parent="Furniture" index="12" instance=ExtResource("38_xx504")]
 transform = Transform3D(-6.86269e-08, 0, 1, 0, 1, 0, -1.57, 0, -4.37114e-08, -10.255, 1.14102, 1.24977)
 
-[node name="Sink" parent="Furniture" index="13" instance=ExtResource("47_x3l86")]
+[node name="Sink" parent="Furniture" index="13" instance=ExtResource("39_466cf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32646, 1.35184, -2.28007)
 
-[node name="TP Holder" parent="Furniture" index="14" instance=ExtResource("48_3hgj5")]
+[node name="TP Holder" parent="Furniture" index="14" instance=ExtResource("40_fkhm0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.16676, 1.57246, -2.14547)
 
-[node name="Toilet Paper" parent="Furniture" index="15" instance=ExtResource("49_rvd80")]
+[node name="Toilet Paper" parent="Furniture" index="15" instance=ExtResource("41_osk5u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.91118, 0.123625, -2.39425)
 
-[node name="Toilet" parent="Furniture" index="16" instance=ExtResource("50_nxkqc")]
+[node name="Toilet" parent="Furniture" index="16" instance=ExtResource("42_ryl1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0727, 0.943692, -2.05441)
 
-[node name="Towel Holder" parent="Furniture" index="17" instance=ExtResource("51_ctqyl")]
+[node name="Towel Holder" parent="Furniture" index="17" instance=ExtResource("43_5eibj")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.91518, 1.34701, 1.9159)
 
-[node name="Drawer A" parent="Furniture" index="18" instance=ExtResource("52_ndas2")]
+[node name="Drawer A" parent="Furniture" index="18" instance=ExtResource("44_fayvu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6.88526, 0.64735, 1.30947)
 
-[node name="Bin" parent="Furniture" index="19" instance=ExtResource("53_goinj")]
+[node name="Bin" parent="Furniture" index="19" instance=ExtResource("45_28rv6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.40828, 0.553715, -2.21125)
 
-[node name="Mirror" parent="Furniture" index="20" instance=ExtResource("54_kekx5")]
+[node name="Mirror" parent="Furniture" index="20" instance=ExtResource("46_ywpa1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35583, 2.29459, -2.22375)
 
-[node name="Sofa B" parent="Furniture" index="21" instance=ExtResource("55_r1ejn")]
+[node name="Sofa B" parent="Furniture" index="21" instance=ExtResource("47_pqwa5")]
 transform = Transform3D(-0.788011, 0, -0.615661, 0, 1, 0, 0.615661, 0, -0.788011, 1.64518, 0.513104, 7.7)
 
-[node name="Sofa B2" parent="Furniture" index="22" instance=ExtResource("55_r1ejn")]
+[node name="Sofa B2" parent="Furniture" index="22" instance=ExtResource("47_pqwa5")]
 transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.6381, 0.513104, 2.04512)
 
-[node name="Table D" parent="Furniture" index="23" instance=ExtResource("56_q0s7t")]
+[node name="Table D" parent="Furniture" index="23" instance=ExtResource("48_ldpnr")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.32087, 0.414405, 4.98802)
 
-[node name="Shelf A" parent="Furniture" index="24" instance=ExtResource("57_o6b0y")]
+[node name="Shelf A" parent="Furniture" index="24" instance=ExtResource("49_84h07")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.63536, 1.58958, 9.54904)
 
-[node name="Desk" parent="Furniture" index="25" instance=ExtResource("58_gah4b")]
+[node name="Desk" parent="Furniture" index="25" instance=ExtResource("50_au868")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.818642, -3.43434)
 
-[node name="Bedside" parent="Furniture" index="26" instance=ExtResource("59_1mqqc")]
+[node name="Bedside" parent="Furniture" index="26" instance=ExtResource("51_7upu0")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2078, 0.558045, -5.39464)
 
 [node name="Mug" type="RigidBody3D" parent="Furniture" index="27"]
@@ -1188,7 +1188,7 @@ transform = Transform3D(-0.333807, 0, -0.942641, 0, 1, 0, 0.942641, 0, -0.333807
 collision_layer = 4
 collision_mask = 196615
 freeze_mode = 1
-script = ExtResource("60_4t8md")
+script = ExtResource("52_mxlom")
 second_hand_grab = 1
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
@@ -1202,58 +1202,58 @@ surface_material_override/0 = SubResource("ShaderMaterial_0u2or")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.071691, 0.0361633, -0.023129)
 shape = SubResource("BoxShape3D_fb8fj")
 
-[node name="GrabPointHandLeft" parent="Furniture/Mug" index="2" instance=ExtResource("61_3jmdp")]
+[node name="GrabPointHandLeft" parent="Furniture/Mug" index="2" instance=ExtResource("53_msxes")]
 transform = Transform3D(0.0436195, 0, 0.999048, 0, 1, 0, -0.999048, 0, 0.0436195, -0.00875401, 0.0368807, -0.0142522)
 visible = true
 
-[node name="GrabPointHandRight" parent="Furniture/Mug" index="3" instance=ExtResource("62_721px")]
+[node name="GrabPointHandRight" parent="Furniture/Mug" index="3" instance=ExtResource("54_x0fql")]
 transform = Transform3D(0.121869, 0, 0.992546, 0, 1, 0, -0.992546, 0, 0.121869, -0.0116653, 0.048777, -0.00106239)
 visible = true
 hand_pose = SubResource("Resource_4i3ye")
 
-[node name="HighlightRing" parent="Furniture/Mug" index="4" instance=ExtResource("64_6txqk")]
+[node name="HighlightRing" parent="Furniture/Mug" index="4" instance=ExtResource("56_di8y1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10346, 0, 0.0366368)
 
 [node name="InventorySlot" type="Node3D" parent="Furniture" index="28"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01726, 0.9622, 5.05066)
-script = ExtResource("65_awcsq")
+script = ExtResource("57_btngm")
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
-[node name="SnapZone" parent="Furniture/InventorySlot" index="0" instance=ExtResource("66_bdrdu")]
+[node name="SnapZone" parent="Furniture/InventorySlot" index="0" instance=ExtResource("58_ft5uu")]
 grab_distance = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Furniture/InventorySlot" index="1"]
 mesh = SubResource("SphereMesh_j2smf")
-surface_material_override/0 = ExtResource("67_4ulln")
+surface_material_override/0 = ExtResource("59_ilhbj")
 
-[node name="Pan" parent="Furniture" index="29" instance=ExtResource("68_hgyv4")]
+[node name="Pan" parent="Furniture" index="29" instance=ExtResource("60_ajgoy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10594, 0.221448, 9.39999)
 visible = false
 
-[node name="Pan2" parent="Furniture" index="30" instance=ExtResource("69_pkm0k")]
+[node name="Pan2" parent="Furniture" index="30" instance=ExtResource("61_nq28e")]
 transform = Transform3D(-0.99863, 0, 0.0523361, 0, 1, 0, -0.0523361, 0, -0.99863, -9.60572, 0.221448, 9.39875)
 visible = false
 
 [node name="Kitchen Roll" type="Node3D" parent="Furniture" index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36625, 1.5554, 7.28742)
 
-[node name="Kitchen Roll2" parent="Furniture/Kitchen Roll" index="0" instance=ExtResource("70_xkxlb")]
+[node name="Kitchen Roll2" parent="Furniture/Kitchen Roll" index="0" instance=ExtResource("62_xdam2")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.240867, 0, 2.08217)
 
-[node name="WashingMachine" parent="Furniture" index="32" instance=ExtResource("71_5poap")]
+[node name="WashingMachine" parent="Furniture" index="32" instance=ExtResource("63_k865p")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.9289, 1.15492, 0.798197)
 
-[node name="clock" parent="Furniture" index="33" instance=ExtResource("72_bv3bx")]
+[node name="clock" parent="Furniture" index="33" instance=ExtResource("64_hgr7t")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.98311, 3.41081, -4.2574)
 
-[node name="TvSet" parent="Furniture" index="34" instance=ExtResource("73_wq33g")]
+[node name="TvSet" parent="Furniture" index="34" instance=ExtResource("65_fq2md")]
 transform = Transform3D(0.00287981, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00287981, -0.81102, 0.573663, -7.64914)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
 environment = SubResource("Environment_fl1yh")
 
 [node name="DayNightCycle" type="Node3D" parent="." index="4"]
-script = ExtResource("85_5tqs6")
+script = ExtResource("67_84myu")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="DayNightCycle" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0373, 0)
@@ -1266,29 +1266,29 @@ libraries = {
 &"": SubResource("AnimationLibrary_kcbbm")
 }
 
-[node name="knife" parent="." index="5" instance=ExtResource("75_0u2or")]
+[node name="knife" parent="." index="5" instance=ExtResource("68_06oos")]
 transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.83114, 1.37749, 5.74378)
 
-[node name="toaster" parent="." index="6" instance=ExtResource("76_fb8fj")]
+[node name="toaster" parent="." index="6" instance=ExtResource("69_urykk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70481, 1.36149, 7.3661)
 
-[node name="bread2" parent="." index="7" instance=ExtResource("77_4i3ye")]
+[node name="bread2" parent="." index="7" instance=ExtResource("70_2aqvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75705, 1.36271, 6.80867)
 
-[node name="bread" parent="." index="8" instance=ExtResource("77_4i3ye")]
+[node name="bread" parent="." index="8" instance=ExtResource("70_2aqvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65576, 1.3697, 6.74431)
 
-[node name="Apple" parent="." index="9" instance=ExtResource("78_j2smf")]
+[node name="Apple" parent="." index="9" instance=ExtResource("71_jb5jr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70659, 1.50377, 6.16335)
 
-[node name="post_it" parent="." index="10" instance=ExtResource("82_nnvhg")]
+[node name="post_it" parent="." index="10" instance=ExtResource("72_3y88y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50684, 1.32804, -3.40846)
 
-[node name="OISJournal" parent="." index="11" instance=ExtResource("83_sh2k6")]
+[node name="OISJournal" parent="." index="11" instance=ExtResource("73_jrkva")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.9389, 1.33187, -2.96148)
 visible = false
 
-[node name="vacuum" parent="." index="12" instance=ExtResource("84_ohw8y")]
+[node name="vacuum" parent="." index="12" instance=ExtResource("74_ak17f")]
 transform = Transform3D(0.0243799, 0, 0.999703, 0, 1, 0, -0.999703, 0, 0.0243799, -5.60894, 0.313666, -2.98139)
 
 [node name="InitialMarker" type="Marker3D" parent="." index="13"]
@@ -1297,34 +1297,34 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46087, 1.79825, -5.2846)
 [node name="BedMarker" type="Marker3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73031, 1.35363, -7.08733)
 
-[node name="plushie" parent="." index="15" instance=ExtResource("86_42xgu")]
+[node name="plushie" parent="." index="15" instance=ExtResource("75_0rcex")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63535, 0.722356, -6.35067)
 collision_mask = 196615
 
-[node name="fidget_spinner" parent="." index="16" instance=ExtResource("88_ff2kj")]
+[node name="fidget_spinner" parent="." index="16" instance=ExtResource("76_d7bdb")]
 transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -8.28083, 1.42767, -3.71211)
 
-[node name="Pencil_Model" parent="." index="17" instance=ExtResource("32_773cq")]
+[node name="Pencil_Model" parent="." index="17" instance=ExtResource("77_wg0jn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.70426, 1.40103, -3.4944)
 
-[node name="ArtSupplyProps" parent="." index="18" instance=ExtResource("89_fl3bw")]
+[node name="ArtSupplyProps" parent="." index="18" instance=ExtResource("78_oorph")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53481, 0, -9.13332)
 
 [node name="Audio" type="Node" parent="." index="19"]
 
 [node name="wake_up" type="AudioStreamPlayer" parent="Audio" index="0"]
-stream = ExtResource("90_bfqpp")
+stream = ExtResource("79_ckk3f")
 volume_db = 20.0
 
 [node name="note_tutorial" type="AudioStreamPlayer" parent="Audio" index="1"]
-stream = ExtResource("91_fmtsg")
+stream = ExtResource("80_1c6gy")
 volume_db = 20.0
 
 [node name="need_unpack" type="AudioStreamPlayer" parent="Audio" index="2"]
-stream = ExtResource("92_7dg85")
+stream = ExtResource("81_y5bbr")
 
 [node name="Alarm" type="AudioStreamPlayer3D" parent="Audio" index="3"]
-stream = ExtResource("93_f8nmv")
+stream = ExtResource("82_ii477")
 
 [node name="Label3D" type="Label3D" parent="." index="20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55061, 1.24483, -5.48843)
@@ -1334,129 +1334,129 @@ outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "Ugh… first day in my new dorm and the first
 thing I do is oversleep. Oh well… "
 
-[node name="OISJournal2" parent="." index="21" instance=ExtResource("83_sh2k6")]
+[node name="OISJournal2" parent="." index="21" instance=ExtResource("73_jrkva")]
 transform = Transform3D(0.0117633, 0, 0.999931, 0.00753915, 0.999971, -8.8691e-05, -0.999902, 0.00753968, 0.0117629, -10.3835, 1.37031, -5.46997)
 
 [node name="Dust" type="Node" parent="." index="22"]
 
-[node name="Dust" parent="Dust" index="0" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust" index="0" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11508, 0.124921, -4.82051)
 
-[node name="Dust" parent="Dust/Dust" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.112433)
 
-[node name="Dust2" parent="Dust" index="1" instance=ExtResource("94_f4gto")]
+[node name="Dust2" parent="Dust" index="1" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(-0.232529, 0.972589, 0, -0.972589, -0.232529, 0, 0, 0, 1, -3.82078, 0.19364, -5.78297)
 
-[node name="Dust" parent="Dust/Dust2" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust2" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312018, -0.0421495)
 
-[node name="Dust3" parent="Dust" index="2" instance=ExtResource("94_f4gto")]
+[node name="Dust3" parent="Dust" index="2" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(0.199317, 0, 0.979935, 0, 1, 0, -0.979935, 0, 0.199317, -3.5169, 0.124921, -7.30552)
 
-[node name="Dust" parent="Dust/Dust3" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust3" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 1.49012e-08, 0, 0, 0.675359, -0.73749, -1.49012e-08, 0.73749, 0.675359, 0.00717831, 0.0312019, -0.0658069)
 
-[node name="Dust4" parent="Dust" index="3" instance=ExtResource("94_f4gto")]
+[node name="Dust4" parent="Dust" index="3" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34938, 0.124921, -6.10603)
 
-[node name="Dust" parent="Dust/Dust4" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust4" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
 
-[node name="Dust5" parent="Dust" index="4" instance=ExtResource("94_f4gto")]
+[node name="Dust5" parent="Dust" index="4" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39097, 0.124921, -2.83691)
 
-[node name="Dust" parent="Dust/Dust5" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust5" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.112433)
 
-[node name="Dust6" parent="Dust" index="5" instance=ExtResource("94_f4gto")]
+[node name="Dust6" parent="Dust" index="5" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(-0.232529, 0.972589, 0, -0.972589, -0.232529, 0, 0, 0, 1, -5.00953, 0.19364, -3.44148)
 
-[node name="Dust" parent="Dust/Dust6" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust6" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312018, -0.0421495)
 
-[node name="Dust7" parent="Dust" index="6" instance=ExtResource("94_f4gto")]
+[node name="Dust7" parent="Dust" index="6" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(0.199317, 0, 0.979935, 0, 1, 0, -0.979935, 0, 0.199317, -1.77776, 0.124921, -4.23842)
 
-[node name="Dust" parent="Dust/Dust7" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust7" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 1.49012e-08, 0, 0, 0.675359, -0.73749, -1.49012e-08, 0.73749, 0.675359, 0.00717831, 0.0312019, -0.0658069)
 
-[node name="Dust8" parent="Dust" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust8" parent="Dust" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.610234, 0.124921, -3.03894)
 
-[node name="Dust" parent="Dust/Dust8" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust8" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
 
-[node name="Dust9" parent="Dust" index="8" instance=ExtResource("94_f4gto")]
+[node name="Dust9" parent="Dust" index="8" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -4.79726, 0.124921, -6.17656)
 
-[node name="Dust" parent="Dust/Dust9" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust9" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.112433)
 
-[node name="Dust10" parent="Dust" index="9" instance=ExtResource("94_f4gto")]
+[node name="Dust10" parent="Dust" index="9" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(-0.212602, 0.889242, -0.40503, -0.972589, -0.232529, -6.24907e-09, -0.0941811, 0.393928, 0.914304, -5.05267, 0.19364, -7.34237)
 
-[node name="Dust" parent="Dust/Dust10" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust10" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312018, -0.0421495)
 
-[node name="Dust11" parent="Dust" index="10" instance=ExtResource("94_f4gto")]
+[node name="Dust11" parent="Dust" index="10" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(0.579139, 0, 0.815229, 0, 1, 0, -0.815229, 0, 0.579139, -4.15815, 0.124921, -8.61136)
 
-[node name="Dust" parent="Dust/Dust11" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust11" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 1.49012e-08, 0, 0, 0.675359, -0.73749, -1.49012e-08, 0.73749, 0.675359, 0.00717831, 0.0312019, -0.0658069)
 
-[node name="Dust12" parent="Dust" index="11" instance=ExtResource("94_f4gto")]
+[node name="Dust12" parent="Dust" index="11" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -3.5765, 0.124921, -7.04179)
 
-[node name="Dust" parent="Dust/Dust12" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust12" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
 
-[node name="Dust13" parent="Dust" index="12" instance=ExtResource("94_f4gto")]
+[node name="Dust13" parent="Dust" index="12" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -5.85292, 0.124921, -4.4747)
 
-[node name="Dust" parent="Dust/Dust13" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust13" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.112433)
 
-[node name="Dust14" parent="Dust" index="13" instance=ExtResource("94_f4gto")]
+[node name="Dust14" parent="Dust" index="13" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(-0.212602, 0.889242, -0.40503, -0.972589, -0.232529, -6.24907e-09, -0.0941811, 0.393928, 0.914304, -7.08791, 0.19364, -5.68302)
 
-[node name="Dust" parent="Dust/Dust14" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust14" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312018, -0.0421495)
 
-[node name="Dust15" parent="Dust" index="14" instance=ExtResource("94_f4gto")]
+[node name="Dust15" parent="Dust" index="14" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(0.579139, 0, 0.815229, 0, 1, 0, -0.815229, 0, 0.579139, -3.81031, 0.124921, -5.10271)
 
-[node name="Dust" parent="Dust/Dust15" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust15" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 1.49012e-08, 0, 0, 0.675359, -0.73749, -1.49012e-08, 0.73749, 0.675359, 0.00717831, 0.0312019, -0.0658069)
 
-[node name="Dust16" parent="Dust" index="15" instance=ExtResource("94_f4gto")]
+[node name="Dust16" parent="Dust" index="15" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -3.22866, 0.124921, -3.53313)
 
-[node name="Dust" parent="Dust/Dust16" index="7" instance=ExtResource("94_f4gto")]
+[node name="Dust" parent="Dust/Dust16" index="7" instance=ExtResource("83_5rjf5")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
 
-[node name="plastic basket" parent="." index="23" instance=ExtResource("95_7ehl3")]
+[node name="plastic basket" parent="." index="23" instance=ExtResource("84_a68nb")]
 transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, -6.39261, 0.0123488, 0.586211)
 
-[node name="PC" parent="." index="24" instance=ExtResource("87_7rwpr")]
+[node name="PC" parent="." index="24" instance=ExtResource("85_4q0f2")]
 transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.28117, 1.3151, -3.67478)
 
-[node name="Plant A3" parent="." index="25" instance=ExtResource("99_akddc")]
+[node name="Plant A3" parent="." index="25" instance=ExtResource("86_jrc4y")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 3.086, 1.425, 1.89507)
 
-[node name="Shelf B" parent="." index="26" instance=ExtResource("100_ggafq")]
+[node name="Shelf B" parent="." index="26" instance=ExtResource("87_0vuua")]
 transform = Transform3D(-1.70474e-08, 0, -0.39, 0, 0.39, 0, 0.39, 0, -1.70474e-08, 3.498, 2.111, -0.640289)
 
-[node name="Bin" parent="." index="27" instance=ExtResource("101_b21yl")]
+[node name="Bin" parent="." index="27" instance=ExtResource("88_6w4v0")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -7.26449, 0.630345, -3.43902)
 
-[node name="Carpet C" parent="." index="28" instance=ExtResource("102_ts0vi")]
+[node name="Carpet C" parent="." index="28" instance=ExtResource("89_4mlto")]
 transform = Transform3D(-5.11423e-08, 0, 1.15, 0, 0.15, 0, -1.17, 0, -5.02681e-08, 0.416502, 0.1013, 4.85191)
 
-[node name="Corkboard" parent="." index="29" instance=ExtResource("103_uj65o")]
+[node name="Corkboard" parent="." index="29" instance=ExtResource("90_eghph")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.51801, 2.19148, -2.5477)
 
-[node name="OISJournal3" parent="." index="30" instance=ExtResource("93_ytp03")]
+[node name="OISJournal3" parent="." index="30" instance=ExtResource("91_n7do0")]
 transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -8.76515, 1.33882, -3.66679)
 
 [node name="sleep" type="Area3D" parent="." index="31"]
