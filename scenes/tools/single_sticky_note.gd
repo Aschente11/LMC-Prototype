@@ -35,6 +35,8 @@ func _process(delta):
 		if TaskManager.active_tasks[task_index].priority == Task.Priority.DONE:
 			if unique_text_mesh:
 				unique_text_mesh.text = "Done"
+				$"../notes_done".play()
+	
 
 func _on_ois_wipe_receiver_action_started(requirement, total_progress):
 	if not is_initialized:

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://pq3kxp4q32ka"
+path="res://.godot/imported/dia_ugh.wav-930cca8032df915b53012a122b55c686.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voice lines/dia_ugh.wav"
+dest_files=["res://.godot/imported/dia_ugh.wav-930cca8032df915b53012a122b55c686.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

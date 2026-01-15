@@ -12,6 +12,8 @@ func _ready():
 
 func _on_action_pressed(pickable_object):
 	if cap_is_on == 1:
+		if $"marker base2".get_active_material(0).next_pass:
+			$"marker base2".get_active_material(0).next_pass = null
 		anim_player.play("cap_off")
 		cap_open.play()
 		cap_is_on -= 1

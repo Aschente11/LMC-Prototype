@@ -1,4 +1,4 @@
-[gd_scene load_steps=214 format=4 uid="uid://b5xwmkuww84xc"]
+[gd_scene load_steps=215 format=4 uid="uid://b5xwmkuww84xc"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_jrb4w"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_dwn8a"]
@@ -76,8 +76,6 @@
 [ext_resource type="PackedScene" uid="uid://behhwuvqmx4wt" path="res://scenes/tools/kitchen/toaster.tscn" id="76_og087"]
 [ext_resource type="PackedScene" uid="uid://cch11f1ho00a4" path="res://scenes/tools/kitchen/bread.tscn" id="77_ap31v"]
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="78_s6j4k"]
-[ext_resource type="AudioStream" uid="uid://dtf726kp6odmr" path="res://assets/sfx/events/Waking up.mp3" id="79_s6bjl"]
-[ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="80_iqg00"]
 [ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="81_nq5ah"]
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="83_t8ie3"]
 [ext_resource type="PackedScene" uid="uid://0gk1k2el1m3y" path="res://scenes/UI/sleep.tscn" id="84_p20jj"]
@@ -86,11 +84,14 @@
 [ext_resource type="PackedScene" uid="uid://bfiyhau5xxks3" path="res://scenes/tools/vacuum.tscn" id="87_cqydd"]
 [ext_resource type="Script" uid="uid://cqqt7prf6snkc" path="res://scripts/day_night_cycle.gd" id="88_mq0kn"]
 [ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="89_5mhvd"]
+[ext_resource type="AudioStream" uid="uid://pq3kxp4q32ka" path="res://assets/sfx/voice lines/dia_ugh.wav" id="89_e4wgk"]
 [ext_resource type="PackedScene" uid="uid://ce3qfpprxpxtt" path="res://scenes/Furniture/plant_a.tscn" id="90_dwn8a"]
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="90_i56lk"]
+[ext_resource type="AudioStream" uid="uid://bp2hs8h13s3we" path="res://assets/sfx/voice lines/dia_habit.wav" id="90_wap5h"]
 [ext_resource type="PackedScene" uid="uid://c2qly3ba5v28l" path="res://assets/tools/fidget-spinner/spinner.tscn" id="91_c8dny"]
 [ext_resource type="PackedScene" uid="uid://ce150tqux2gyp" path="res://scenes/Furniture/tv_set.tscn" id="92_3ueut"]
 [ext_resource type="PackedScene" uid="uid://bd1ns3arb2768" path="res://scenes/Furniture/Bedroom/canvas.tscn" id="93_byaei"]
+[ext_resource type="AudioStream" uid="uid://b7ymkysq02j0h" path="res://assets/sfx/voice lines/dia_brb.wav" id="93_nectv"]
 [ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="95_wap5h"]
 [ext_resource type="PackedScene" uid="uid://cjui6gb3fygxb" path="res://assets/Furniture Shaders/lamp_b.tscn" id="97_3necn"]
 [ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="98_nectv"]
@@ -1754,11 +1755,11 @@ transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 3.086, 1.425, 1.8950
 [node name="Audio" type="Node" parent="." index="26"]
 
 [node name="wake_up" type="AudioStreamPlayer" parent="Audio" index="0"]
-stream = ExtResource("79_s6bjl")
+stream = ExtResource("89_e4wgk")
 volume_db = 20.0
 
 [node name="note_tutorial" type="AudioStreamPlayer" parent="Audio" index="1"]
-stream = ExtResource("80_iqg00")
+stream = ExtResource("90_wap5h")
 volume_db = 20.0
 
 [node name="need_unpack" type="AudioStreamPlayer" parent="Audio" index="2"]
@@ -1767,10 +1768,14 @@ stream = ExtResource("81_nq5ah")
 [node name="Alarm" type="AudioStreamPlayer3D" parent="Audio" index="3"]
 stream = ExtResource("8_nectv")
 
+[node name="sleep" type="AudioStreamPlayer" parent="Audio" index="4"]
+stream = ExtResource("93_nectv")
+
 [node name="Subtirtles" type="Node" parent="." index="27"]
 
 [node name="Label3D" type="Label3D" parent="Subtirtles" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55061, 1.24483, -5.48843)
+visible = false
 billboard = 2
 shaded = true
 outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)

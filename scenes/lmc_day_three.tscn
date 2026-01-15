@@ -1328,6 +1328,7 @@ stream = ExtResource("82_ii477")
 
 [node name="Label3D" type="Label3D" parent="." index="20"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55061, 1.24483, -5.48843)
+visible = false
 billboard = 2
 shaded = true
 outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7ymkysq02j0h"
+path="res://.godot/imported/dia_brb.wav-50a980664b644897c2f238c92e1e83c2.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voice lines/dia_brb.wav"
+dest_files=["res://.godot/imported/dia_brb.wav-50a980664b644897c2f238c92e1e83c2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

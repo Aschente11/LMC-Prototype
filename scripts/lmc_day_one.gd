@@ -127,6 +127,7 @@ func _on_unpacking_body_entered(body: Node3D) -> void:
 	$sleep.monitorable = true
 
 func _on_sleep_body_entered(body: Node3D) -> void:
+	$Audio/sleep.play()
 	self.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
 	
 	$sleep.visible = false

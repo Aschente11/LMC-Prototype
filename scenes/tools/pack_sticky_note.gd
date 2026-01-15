@@ -90,6 +90,10 @@ func _ready():
 
 func _on_snap_zone_has_picked_up(what: Variant) -> void:
 	audio_player.play()
+	
+	if $"Stack mesh".get_active_material(0).next_pass:
+		$"Stack mesh".get_active_material(0).next_pass = null
+		
 	#if TaskManager.current_task_index < TaskManager.active_tasks.size():
 		#audio_player.play()
 		#var instance = sticky_note.instantiate()

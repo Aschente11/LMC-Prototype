@@ -1,16 +1,31 @@
-[gd_scene load_steps=19 format=4 uid="uid://dpq5hkh5vwht3"]
+[gd_scene load_steps=22 format=4 uid="uid://dpq5hkh5vwht3"]
 
 [ext_resource type="Script" uid="uid://bnmj4l0jcohe2" path="res://scenes/tools/pack_sticky_note.gd" id="1_u2o41"]
 [ext_resource type="Texture2D" uid="uid://danync6eplgn7" path="res://assets/tools/sticky-notes/source/post_it/IMG_20221127_0001.png" id="1_u8vgf"]
 [ext_resource type="PackedScene" uid="uid://d1yuwmphic0ge" path="res://scenes/tools/SINGLE sticky note.tscn" id="2_e4488"]
+[ext_resource type="Shader" uid="uid://di7mar5ot6v0a" path="res://shaders/highlighter.gdshader" id="3_7nsu2"]
 [ext_resource type="Script" uid="uid://b33dhyve6tckg" path="res://addons/godot-xr-tools/objects/interactable_area.gd" id="3_isvo0"]
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="5_dvtxj"]
 [ext_resource type="AudioStream" uid="uid://dobkh4bklyulx" path="res://assets/sfx/remove note.mp3" id="5_viqrq"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="6_viqrq"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="7_7nsu2"]
+[ext_resource type="AudioStream" uid="uid://sqlruqh48rjo" path="res://assets/sfx/voice lines/dia_thank you.wav" id="10_bb8hj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bb8hj"]
+render_priority = 0
+shader = ExtResource("3_7nsu2")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_width = 0.075
+shader_parameter/cycle_interval = 1.0
+shader_parameter/angle_fade = 1.0
+shader_parameter/x_direction = -0.753
+shader_parameter/y_direction = 0.0
+shader_parameter/z_direction = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebsiy"]
 resource_name = "front"
+next_pass = SubResource("ShaderMaterial_bb8hj")
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_u8vgf")
 emission_enabled = true
@@ -230,5 +245,8 @@ initial_object = NodePath("../../SingleStickyNote6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot6"]
 mesh = SubResource("SphereMesh_7nsu2")
 surface_material_override/0 = ExtResource("7_7nsu2")
+
+[node name="notes_done" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_bb8hj")
 
 [connection signal="has_picked_up" from="InventorySlot/SnapZone" to="." method="_on_snap_zone_has_picked_up"]
