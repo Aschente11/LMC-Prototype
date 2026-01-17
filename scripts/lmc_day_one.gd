@@ -57,6 +57,7 @@ func on_qte_fail():
 func on_qte_success():
 	$WakingUpPlayer/AnimationPlayer.play("Blinking")
 	
+	$Events/wake_up._on_qte_success()
 	add_child(xr_player)
 	xr_player.visible = false
 	
@@ -108,7 +109,7 @@ func _on_first_audio_finished():
 	$Audio/note_tutorial.play()
 
 func _on_eating_milestone(milestone: int):
-	$Audio/need_unpack.play()
+	$Audio/burp.play()
 
 func _on_bfast_body_entered(body: Node3D) -> void:
 	#if body.is_in_group("player") or body.name == "XROrigin3D":
