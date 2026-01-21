@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://d1ws3pw8g3w1v"]
+[gd_scene load_steps=38 format=4 uid="uid://d1ws3pw8g3w1v"]
 
 [ext_resource type="Script" uid="uid://bolnrvlsf08tl" path="res://scripts/fridge.gd" id="1_amwlr"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="2_rbiym"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="9_uxfnv"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="10_35ron"]
 [ext_resource type="PackedScene" uid="uid://dm1pp5ptm48op" path="res://scenes/tools/kitchen/apple.tscn" id="12_35ron"]
+[ext_resource type="PackedScene" uid="uid://cswwe1w35p0d0" path="res://scenes/Furniture/Kitchen/carton.tscn" id="13_4j2h7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpjh0"]
 resource_name = "White"
@@ -440,7 +441,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.931134, -0.00218771, -0.445
 shape = SubResource("BoxShape3D_amwlr")
 
 [node name="InventorySlot" type="Node3D" parent="." node_paths=PackedStringArray("default_object")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141744, 0.367792, -0.110584)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.23783252, 0.367792, -0.2921371)
 script = ExtResource("8_k31p6")
 default_object = NodePath("Apple")
 group_required = "food"
@@ -457,5 +458,24 @@ surface_material_override/0 = ExtResource("10_35ron")
 
 [node name="Apple" parent="InventorySlot" instance=ExtResource("12_35ron")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00289571, 0.00632951, -0.0229484)
+
+[node name="InventorySlot2" type="Node3D" parent="." node_paths=PackedStringArray("default_object")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08598757, 0.37578088, -0.2921371)
+script = ExtResource("8_k31p6")
+default_object = NodePath("pancake_mix")
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot2" instance=ExtResource("9_uxfnv")]
+grab_distance = 0.2
+snap_mode = 1
+initial_object = NodePath("../pancake_mix")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot2"]
+visible = false
+mesh = SubResource("SphereMesh_uxfnv")
+surface_material_override/0 = ExtResource("10_35ron")
+
+[node name="pancake_mix" parent="InventorySlot2" instance=ExtResource("13_4j2h7")]
+transform = Transform3D(-0.99935246, 0, -0.03598095, 0, 1, 0, 0.03598095, 0, -0.99935246, 0, -0.08355972, 0)
 
 [connection signal="action_started" from="Fridge/OISDirectionalSwipeReceiver" to="." method="_on_ois_directional_swipe_receiver_action_started"]

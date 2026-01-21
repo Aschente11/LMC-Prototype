@@ -1,4 +1,5 @@
-extends Node3D
+@warning_ignore("missing_tool")
+extends Event
 
 var notes_complete = 0
 
@@ -13,3 +14,4 @@ func check_all_slots_filled() -> void:
 		GlobalVar.increase_physical()
 		GlobalVar.increase_emotional()
 		GlobalVar.increase_emotional()
+		close_event()

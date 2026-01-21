@@ -56,7 +56,7 @@ func _initialize_text():
 	full_text = TaskManager.request_task()
 	task_index = TaskManager.current_task_index
 	if full_text == "":
-		full_text = "(nothing \n to write \n yet)"
+		full_text = "(Can't think \n of anything \n else)"
 
 func _handle_wipe_input():
 	if letter_index < full_text.length():

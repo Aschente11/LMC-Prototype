@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=78 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_2jaaq"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_0xwb0"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://cyu5exn7vgfy8" path="res://scenes/tools/smartwatch.tscn" id="25_k831n"]
 [ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="26_ohysd"]
 [ext_resource type="PackedScene" uid="uid://raeeicvvindd" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_hand.tscn" id="27_o00u5"]
-[ext_resource type="PackedScene" uid="uid://clt88d5d1dje4" path="res://addons/godot-xr-tools/functions/movement_crouch.tscn" id="28_hsq5n"]
 [ext_resource type="Script" uid="uid://du4lpoac66rw" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_system.gd" id="29_51pk8"]
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="30_8vbly"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="31_gcd2b"]
@@ -151,7 +150,7 @@ specular_mode = 1
 albedo_color = Color(0.313726, 1, 1, 0.52549)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_323tq"]
-radius = 0.107317
+radius = 0.14119343
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_sxhyq"]
 radius = 0.139617
@@ -538,9 +537,8 @@ fov = 37.8493
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.833909)
 mesh = SubResource("QuadMesh_ujsbv")
 
-[node name="FloatingIndicatorManager" type="Node3D" parent="XROrigin3D/XRCamera3D" node_paths=PackedStringArray("target_parent")]
+[node name="FloatingIndicatorManager" type="Node3D" parent="XROrigin3D/XRCamera3D"]
 script = ExtResource("4_ddtur")
-target_parent = NodePath("..")
 
 [node name="Settings" parent="XROrigin3D/XRCamera3D" instance=ExtResource("5_e0cqp")]
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, -0.1, -1)
@@ -722,9 +720,6 @@ shape = SubResource("SphereShape3D_sxhyq")
 
 [node name="smartwatch" parent="XROrigin3D/XRController3DRight" instance=ExtResource("25_k831n")]
 transform = Transform3D(-4.37114e-08, 3.60561e-16, 1, -0.00178025, 0.999998, -7.78149e-11, -0.999998, -0.00178025, -4.37113e-08, 0.0585523, -0.0535223, 0.177899)
-
-[node name="MovementCrouch" parent="XROrigin3D/XRController3DRight" instance=ExtResource("28_hsq5n")]
-crouch_button_action = "trigger_click"
 
 [node name="InventorySystem" type="Node3D" parent="XROrigin3D" node_paths=PackedStringArray("xr_anchor_to_object", "xr_camera_anchor", "inventory_toggler_hand")]
 transform = Transform3D(-0.00406662, -0.999992, 0, 0.999992, -0.00406662, 0, 0, 0, 1, 0.38634, -0.0214, -1.13506)

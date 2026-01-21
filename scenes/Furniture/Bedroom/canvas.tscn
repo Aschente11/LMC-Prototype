@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bd1ns3arb2768"]
+[gd_scene load_steps=29 format=4 uid="uid://bd1ns3arb2768"]
 
 [ext_resource type="Texture2D" uid="uid://cf5l46xft517u" path="res://assets/others/dog sunset.jpg" id="1_bpf8k"]
 [ext_resource type="Texture2D" uid="uid://dukrbci7nhmj0" path="res://assets/Low Poly Furniture/painting-prop-set/textures/Wood_BaseColor.png" id="1_kaf2f"]
@@ -11,6 +11,7 @@
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="6_axrki"]
 [ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="6_x5tgf"]
 [ext_resource type="PackedScene" uid="uid://dx0uk2vxgj7fv" path="res://scenes/Furniture/Bedroom/paintBrush.tscn" id="9_tpxk6"]
+[ext_resource type="AudioStream" uid="uid://p0enjegpcrfv" path="res://assets/sfx/painting_sfx.mp3" id="12_axrki"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e7snx"]
 resource_name = "Wood"
@@ -229,6 +230,10 @@ surface_material_override/0 = ExtResource("6_x5tgf")
 
 [node name="PaintBrush" parent="." instance=ExtResource("9_tpxk6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15075, 0)
+
+[node name="painting_sfx" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06796405, 1.4379598, 0.07027277)
+stream = ExtResource("12_axrki")
 
 [connection signal="action_completed" from="ArtSupplyPropSet/Canvas/OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_completed"]
 [connection signal="action_ended" from="ArtSupplyPropSet/Canvas/OISWipeReceiver" to="." method="_on_ois_wipe_receiver_action_ended"]

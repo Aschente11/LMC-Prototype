@@ -1,4 +1,4 @@
-[gd_scene load_steps=215 format=4 uid="uid://b5xwmkuww84xc"]
+[gd_scene load_steps=214 format=4 uid="uid://b5xwmkuww84xc"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_jrb4w"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_dwn8a"]
@@ -90,7 +90,6 @@
 [ext_resource type="AudioStream" uid="uid://bp2hs8h13s3we" path="res://assets/sfx/voice lines/dia_habit.wav" id="90_wap5h"]
 [ext_resource type="PackedScene" uid="uid://c2qly3ba5v28l" path="res://assets/tools/fidget-spinner/spinner.tscn" id="91_c8dny"]
 [ext_resource type="PackedScene" uid="uid://ce150tqux2gyp" path="res://scenes/Furniture/tv_set.tscn" id="92_3ueut"]
-[ext_resource type="PackedScene" uid="uid://bd1ns3arb2768" path="res://scenes/Furniture/Bedroom/canvas.tscn" id="93_byaei"]
 [ext_resource type="AudioStream" uid="uid://b7ymkysq02j0h" path="res://assets/sfx/voice lines/dia_brb.wav" id="93_nectv"]
 [ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="95_wap5h"]
 [ext_resource type="PackedScene" uid="uid://cjui6gb3fygxb" path="res://assets/Furniture Shaders/lamp_b.tscn" id="97_3necn"]
@@ -1488,12 +1487,13 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.962
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.06202, 0.412218, 8.37873)
 
 [node name="Chair" parent="Furniture/Barstools" index="0" instance=ExtResource("40_fsqwi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3281083, 0.0833559, 0)
 
 [node name="Chair1" parent="Furniture/Barstools" index="1" instance=ExtResource("40_fsqwi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6538)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3281083, 0.0833559, -1.6538)
 
 [node name="Chair2" parent="Furniture/Barstools" index="2" instance=ExtResource("40_fsqwi")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.15907)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3281083, 0.0833559, -3.15907)
 
 [node name="CookingStation" parent="Furniture" index="6" instance=ExtResource("41_4i6go")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2031, 0.828159, 6.00707)
@@ -1704,14 +1704,14 @@ unshaded = true
 scene_properties_keys = PackedStringArray("sleep.gd")
 
 [node name="post_it" parent="." index="14" instance=ExtResource("85_wlg75")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.471, 1.32804, -3.51688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.471, 1.32804, -2.952772)
 
 [node name="OISJournal" parent="." index="15" instance=ExtResource("86_u0o4q")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.9389, 1.33187, -2.96148)
 visible = false
 
 [node name="vacuum" parent="." index="16" instance=ExtResource("87_cqydd")]
-transform = Transform3D(0.0243799, 0, 0.999703, 0, 1, 0, -0.999703, 0, 0.0243799, -5.60894, 0.313666, -2.98139)
+transform = Transform3D(-0.0742304, 0, -0.99724126, 0, 1, 0, 0.99724126, 0, -0.0742304, -2.1595874, 0.313666, -9.273769)
 
 [node name="DayNightCycle" type="Node3D" parent="." index="17"]
 script = ExtResource("88_mq0kn")
@@ -1738,21 +1738,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63535, 0.722356, -6.35067)
 collision_mask = 196615
 
 [node name="PC" parent="." index="21" instance=ExtResource("90_i56lk")]
-transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.28117, 1.3151, -3.67478)
+transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.9638343, 1.3151, -3.5907366)
 
 [node name="fidget_spinner" parent="." index="22" instance=ExtResource("91_c8dny")]
-transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -8.08946, 1.42767, -3.71211)
+transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -8.89412, 1.42767, -3.642805)
 
 [node name="Pencil_Model" parent="." index="23" instance=ExtResource("33_ithw4")]
-transform = Transform3D(0.944863, 0, -0.327465, 0, 1, 0, 0.327465, 0, 0.944863, -6.70426, 1.40103, -3.61034)
+transform = Transform3D(0.944863, 0, -0.327465, 0, 1, 0, 0.327465, 0, 0.944863, -6.4864573, 1.3147756, -3.3841238)
 
-[node name="ArtSupplyProps" parent="." index="24" instance=ExtResource("93_byaei")]
-transform = Transform3D(0.990268, 0, 0.139173, 0, 1, 0, -0.139173, 0, 0.990268, -3.81684, 0, -8.93164)
-
-[node name="Plant A3" parent="." index="25" instance=ExtResource("90_dwn8a")]
+[node name="Plant A3" parent="." index="24" instance=ExtResource("90_dwn8a")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 3.086, 1.425, 1.89507)
 
-[node name="Audio" type="Node" parent="." index="26"]
+[node name="Audio" type="Node" parent="." index="25"]
 
 [node name="wake_up" type="AudioStreamPlayer" parent="Audio" index="0"]
 stream = ExtResource("89_e4wgk")
@@ -1771,7 +1768,7 @@ stream = ExtResource("8_nectv")
 [node name="sleep" type="AudioStreamPlayer" parent="Audio" index="4"]
 stream = ExtResource("93_nectv")
 
-[node name="Subtirtles" type="Node" parent="." index="27"]
+[node name="Subtirtles" type="Node" parent="." index="26"]
 
 [node name="Label3D" type="Label3D" parent="Subtirtles" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55061, 1.24483, -5.48843)
@@ -1782,20 +1779,20 @@ outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "Ugh… first day in my new dorm and the first
 thing I do is oversleep. Oh well… "
 
-[node name="Shelf B" parent="." index="28" instance=ExtResource("95_wap5h")]
+[node name="Shelf B" parent="." index="27" instance=ExtResource("95_wap5h")]
 transform = Transform3D(-1.70474e-08, 0, -0.39, 0, 0.39, 0, 0.39, 0, -1.70474e-08, 3.498, 2.111, -0.640289)
 
-[node name="Bin" parent="." index="29" instance=ExtResource("98_nectv")]
+[node name="Bin" parent="." index="28" instance=ExtResource("98_nectv")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -7.26449, 0.630345, -3.43902)
 
-[node name="Carpet C" parent="." index="30" instance=ExtResource("99_vqks3")]
+[node name="Carpet C" parent="." index="29" instance=ExtResource("99_vqks3")]
 transform = Transform3D(-5.11423e-08, 0, 1.15, 0, 0.15, 0, -1.17, 0, -5.02681e-08, 0.416502, 0.1013, 4.85191)
 
-[node name="Corkboard" parent="." index="31" instance=ExtResource("100_vqks3")]
+[node name="Corkboard" parent="." index="30" instance=ExtResource("100_vqks3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.51801, 2.19148, -2.5477)
 
-[node name="OISJournal3" parent="." index="32" instance=ExtResource("102_n7ona")]
-transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -8.76515, 1.33882, -3.66679)
+[node name="OISJournal3" parent="." index="31" instance=ExtResource("102_n7ona")]
+transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -7.1720247, 1.33882, -3.6147075)
 
 [connection signal="failed_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_fail"]
 [connection signal="success_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_success"]

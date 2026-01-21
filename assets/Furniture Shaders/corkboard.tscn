@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bgdk8jsd1evee"]
 
-[ext_resource type="Script" uid="uid://dtolk25s2mjms" path="res://scripts/corkboard.gd" id="1_3q5b1"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="1_8otwy"]
+[ext_resource type="Script" uid="uid://b3s0jx85xdj4j" path="res://scripts/writing_event.gd" id="2_q1cdx"]
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="2_s07l7"]
 [ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="3_5lc8t"]
 [ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="4_3q5b1"]
@@ -12,7 +12,7 @@
 render_priority = 0
 shader = ExtResource("1_8otwy")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhvg3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1cdx"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_ulbdf")
 shader = ExtResource("2_s07l7")
@@ -23,10 +23,10 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5lc8t"]
-material = SubResource("ShaderMaterial_bhvg3")
+material = SubResource("ShaderMaterial_q1cdx")
 size = Vector3(2.715, 1.775, 0.065)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3q5b1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_efrh4"]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_ulbdf")
 shader = ExtResource("2_s07l7")
@@ -37,7 +37,7 @@ shader_parameter/uv_scale = Vector2(1, 1)
 shader_parameter/uv_offset = Vector2(0, 0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_q1cdx"]
-material = SubResource("ShaderMaterial_3q5b1")
+material = SubResource("ShaderMaterial_efrh4")
 size = Vector3(2.715, 1.7, 0.065)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gf74p"]
@@ -48,7 +48,11 @@ radius = 0.2
 height = 0.4
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_3q5b1")
+
+[node name="write to do list" type="Node" parent="."]
+script = ExtResource("2_q1cdx")
+event_name = "write to do list"
+metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_5lc8t")
@@ -302,18 +306,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
 mesh = SubResource("SphereMesh_8q031")
 surface_material_override/0 = ExtResource("6_efrh4")
 
-[connection signal="current_object_in_slot" from="InventorySlot1" to="." method="current_object_in_slot"]
+[connection signal="event_ended" from="write to do list" to="." method="_on_event_event_ended"]
+[connection signal="current_object_in_slot" from="InventorySlot1" to="write to do list" method="current_object_in_slot"]
 [connection signal="current_object_in_slot" from="InventorySlot2" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot3" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot4" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot5" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot6" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot7" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot8" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot9" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot10" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot11" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot12" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot13" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot14" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot15" to="." method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot2" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot3" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot4" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot5" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot6" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot7" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot8" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot9" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot10" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot11" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot12" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot13" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot14" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot15" to="write to do list" method="current_object_in_slot"]

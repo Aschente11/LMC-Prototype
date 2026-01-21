@@ -49,37 +49,37 @@ func physics_movement(_delta: float, player_body: XRToolsPlayerBody, _disabled: 
 	if !_controller.get_is_active():
 		return
 	
-	# Detect crouch button down and pressed states
-	var crouch_button_down := _controller.is_button_pressed(crouch_button_action)
-	var crouch_button_pressed := crouch_button_down and !_crouch_button_down
-	_crouch_button_down = crouch_button_down
+	## Detect crouch button down and pressed states
+	#var crouch_button_down := _controller.is_button_pressed(crouch_button_action)
+	#var crouch_button_pressed := crouch_button_down and !_crouch_button_down
+	#_crouch_button_down = crouch_button_down
 	
-	# Calculate new crouching state
-	var crouching := _crouching
-	match crouch_type:
-		CrouchType.HOLD_TO_CROUCH:
-			# Crouch when button down
-			crouching = crouch_button_down
-		
-		CrouchType.TOGGLE_CROUCH:
-			# Toggle when button pressed
-			if crouch_button_pressed:
-				crouching = !crouching
-	
-	# Update crouching state
-	if crouching != _crouching:
-		_crouching = crouching
-		if crouching:
-			player_body.override_player_height(self, crouch_height)
-			# Increment crouch count when player crouches
-			crouch_count += 1
-			
-			# Check if crouch count reached 5
-			if crouch_count >= 5:
-				GlobalVar.decrease_physical()
-				crouch_count = 0  # Reset count after increasing physical
-		else:
-			player_body.override_player_height(self)
+	## Calculate new crouching state
+	#var crouching := _crouching
+	#match crouch_type:
+		#CrouchType.HOLD_TO_CROUCH:
+			## Crouch when button down
+			#crouching = crouch_button_down
+		#
+		#CrouchType.TOGGLE_CROUCH:
+			## Toggle when button pressed
+			#if crouch_button_pressed:
+				#crouching = !crouching
+	#
+	## Update crouching state
+	#if crouching != _crouching:
+		#_crouching = crouching
+		#if crouching:
+			#player_body.override_player_height(self, crouch_height)
+			## Increment crouch count when player crouches
+			#crouch_count += 1
+			#
+			## Check if crouch count reached 5
+			#if crouch_count >= 5:
+				#GlobalVar.decrease_physical()
+				#crouch_count = 0  # Reset count after increasing physical
+		#else:
+			#player_body.override_player_height(self)
 
 # This method verifies the movement provider has a valid configuration.
 func _get_configuration_warnings() -> PackedStringArray:

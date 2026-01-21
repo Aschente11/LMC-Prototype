@@ -1,3 +1,21 @@
 {
-
+	"write to do list": {
+		"EventCategory": "ACTION",
+		"EventPrerequisiteFlags": [],
+		"EventCompletionFlags": [
+			"write to do list_Done",
+			""
+		],
+		"Oneshot": true
+	},
+	"day start": {
+		"EventCategory": "ACTION",
+		"EventPrerequisiteFlags": [
+			"write to do list_Done"
+		],
+		"EventCompletionFlags": [
+			"day start_Done"
+		],
+		"Oneshot": true
+	}
 }

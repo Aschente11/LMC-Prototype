@@ -60,7 +60,7 @@ depth = 0.001
 size = Vector3(21.4221, 20.631, 4.72168)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tursr"]
-size = Vector3(0.198242, 0.0332031, 0.180664)
+size = Vector3(0.198242, 0.0068359375, 0.180664)
 
 [node name="SingleStickyNote" type="RigidBody3D"]
 collision_layer = 4
@@ -91,6 +91,7 @@ transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.00509351, 0.006753
 shape = SubResource("BoxShape3D_cik24")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0020937212, 0)
 shape = SubResource("BoxShape3D_tursr")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

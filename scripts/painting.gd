@@ -1,6 +1,7 @@
 extends Node3D
 
 @onready var painting = $ArtSupplyPropSet/Canvas/painting
+@onready var painting_sfx = $painting_sfx
 @export var opacity_per_wipe: float = 0.05 
 var painting_material: StandardMaterial3D
 var is_initialized := false
@@ -33,6 +34,7 @@ func _initialize_painting():
 func _handle_wipe_input():
 	if current_opacity < 1.0:
 		_increase_opacity()
+	painting_sfx.play()
 
 func _increase_opacity():
 	current_opacity += opacity_per_wipe

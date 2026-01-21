@@ -7,4 +7,5 @@
 main_scene = "uid://dnpcnlm8ry8mk"
 
 [node name="LoadingScreen" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6272163, -7.1575317, -31.711884)
 splash_screen = ExtResource("2_f702p")

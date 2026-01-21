@@ -12,7 +12,7 @@ config_version=5
 
 config/name="LMC Prototype"
 run/main_scene="uid://cv0s1pwt0escb"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -28,6 +28,10 @@ TaskManager="*res://scripts/singletons/task_manager.gd"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ateneo-virtual-reality-escape/plugin.cfg", "res://addons/godot-xr-tools/plugin.cfg")
+
+[filesystem]
+
+import/blender/enabled=false
 
 [layer_names]
 

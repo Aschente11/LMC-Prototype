@@ -20,6 +20,7 @@ func _ready():
 	TaskManager.initialize(1)
 	
 	GlobalTime.start_time()
+	$"Event1 text2".visible = false
 
 func _on_sleep_body_entered(body: Node3D) -> void:
 	self.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
@@ -32,3 +33,9 @@ func _on_sleep_body_entered(body: Node3D) -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+
+func _on_day_start_event_started() -> void:
+	$"Event1 text".visible = false
+	$"Event1 text2".visible = true
+	print("WRITING ON BOARD EVENT ENDED")
