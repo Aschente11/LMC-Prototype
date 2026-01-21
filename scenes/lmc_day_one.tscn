@@ -1,4 +1,4 @@
-[gd_scene load_steps=214 format=4 uid="uid://b5xwmkuww84xc"]
+[gd_scene load_steps=219 format=4 uid="uid://b5xwmkuww84xc"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_jrb4w"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_dwn8a"]
@@ -89,14 +89,18 @@
 [ext_resource type="PackedScene" uid="uid://f4usid4dfvsb" path="res://scenes/tools/PC.tscn" id="90_i56lk"]
 [ext_resource type="AudioStream" uid="uid://bp2hs8h13s3we" path="res://assets/sfx/voice lines/dia_habit.wav" id="90_wap5h"]
 [ext_resource type="PackedScene" uid="uid://c2qly3ba5v28l" path="res://assets/tools/fidget-spinner/spinner.tscn" id="91_c8dny"]
+[ext_resource type="AudioStream" uid="uid://sqlruqh48rjo" path="res://assets/sfx/voice lines/dia_thank you.wav" id="91_nectv"]
 [ext_resource type="PackedScene" uid="uid://ce150tqux2gyp" path="res://scenes/Furniture/tv_set.tscn" id="92_3ueut"]
 [ext_resource type="AudioStream" uid="uid://b7ymkysq02j0h" path="res://assets/sfx/voice lines/dia_brb.wav" id="93_nectv"]
+[ext_resource type="AudioStream" uid="uid://ffyg0he6befs" path="res://assets/sfx/voice lines/dia_burp.wav" id="95_vqks3"]
 [ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="95_wap5h"]
 [ext_resource type="PackedScene" uid="uid://cjui6gb3fygxb" path="res://assets/Furniture Shaders/lamp_b.tscn" id="97_3necn"]
 [ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="98_nectv"]
 [ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="99_vqks3"]
 [ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard.tscn" id="100_vqks3"]
+[ext_resource type="Script" uid="uid://cbhk8p6rd5x2p" path="res://scripts/events/wake_up.gd" id="101_vqks3"]
 [ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="102_n7ona"]
+[ext_resource type="Script" uid="uid://bupf8gjyp8n74" path="res://scripts/events/write_tasks.gd" id="102_orb8n"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gfqyt"]
 exposure_multiplier = 2.0
@@ -1759,25 +1763,40 @@ volume_db = 20.0
 stream = ExtResource("90_wap5h")
 volume_db = 20.0
 
-[node name="need_unpack" type="AudioStreamPlayer" parent="Audio" index="2"]
+[node name="notes_done" type="AudioStreamPlayer" parent="Audio" index="2"]
+stream = ExtResource("91_nectv")
+
+[node name="need_unpack" type="AudioStreamPlayer" parent="Audio" index="3"]
 stream = ExtResource("81_nq5ah")
 
-[node name="Alarm" type="AudioStreamPlayer3D" parent="Audio" index="3"]
+[node name="Alarm" type="AudioStreamPlayer3D" parent="Audio" index="4"]
 stream = ExtResource("8_nectv")
 
-[node name="sleep" type="AudioStreamPlayer" parent="Audio" index="4"]
+[node name="sleep" type="AudioStreamPlayer" parent="Audio" index="5"]
 stream = ExtResource("93_nectv")
 
-[node name="Subtirtles" type="Node" parent="." index="26"]
+[node name="burp" type="AudioStreamPlayer" parent="Audio" index="6"]
+stream = ExtResource("95_vqks3")
 
-[node name="Label3D" type="Label3D" parent="Subtirtles" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.55061, 1.24483, -5.48843)
+[node name="Subtirtles" type="Node" parent="." index="27"]
+
+[node name="Journal Instruction 1" type="Label3D" parent="Subtirtles" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.89504, 1.85465, -2.90012)
 visible = false
 billboard = 2
 shaded = true
 outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
-text = "Ugh… first day in my new dorm and the first
-thing I do is oversleep. Oh well… "
+text = "Time has been paused. Try out
+Alex' Regulation Techniques
+to see their effects."
+
+[node name="Journal Instruction 2" type="Label3D" parent="Subtirtles" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.91839, 1.90154, -3.03112)
+visible = false
+billboard = 2
+shaded = true
+outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
+text = "When done, go to bed to progress."
 
 [node name="Shelf B" parent="." index="27" instance=ExtResource("95_wap5h")]
 transform = Transform3D(-1.70474e-08, 0, -0.39, 0, 0.39, 0, 0.39, 0, -1.70474e-08, 3.498, 2.111, -0.640289)
@@ -1793,6 +1812,17 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.518
 
 [node name="OISJournal3" parent="." index="31" instance=ExtResource("102_n7ona")]
 transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -7.1720247, 1.33882, -3.6147075)
+
+[node name="Events" type="Node" parent="." index="33"]
+
+[node name="wake_up" type="Node" parent="Events" index="0"]
+script = ExtResource("101_vqks3")
+event_name = "wake_up"
+metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
+
+[node name="write_tasks" type="Node" parent="Events" index="1"]
+script = ExtResource("102_orb8n")
+metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
 [connection signal="failed_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_fail"]
 [connection signal="success_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_success"]

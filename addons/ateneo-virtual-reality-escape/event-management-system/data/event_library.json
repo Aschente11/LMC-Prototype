@@ -1,20 +1,49 @@
 {
-	"write to do list": {
-		"EventCategory": "ACTION",
+	"wake_up": {
+		"EventCategory": "DIALOGUE",
 		"EventPrerequisiteFlags": [],
 		"EventCompletionFlags": [
-			"write to do list_Done",
-			""
+			"wake_up_Done"
 		],
 		"Oneshot": true
 	},
-	"day start": {
-		"EventCategory": "ACTION",
+	"write_tasks": {
+		"EventCategory": "DIALOGUE",
 		"EventPrerequisiteFlags": [
-			"write to do list_Done"
+			"wake_up_Done"
 		],
 		"EventCompletionFlags": [
-			"day start_Done"
+			"write_tasks_Done"
+		],
+		"Oneshot": true
+	},
+	"make_bfast": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [
+			"write_tasks_Done"
+		],
+		"EventCompletionFlags": [
+			"make_bfast_Done"
+		],
+		"Oneshot": true
+	},
+	"read_journal": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [
+			"make_bfast_Done"
+		],
+		"EventCompletionFlags": [
+			"read_journal_Done"
+		],
+		"Oneshot": true
+	},
+	"tutorial": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [
+			"read_journal_Done"
+		],
+		"EventCompletionFlags": [
+			"tutorial_Done"
 		],
 		"Oneshot": true
 	}
