@@ -23,6 +23,8 @@ func _ready():
 	GlobalTime.reset_time(7, 0, false)
 	GlobalTime.connect("midnight_reached", _on_midnight_reached)
 	$"Event1 text2".visible = false
+	await get_tree().create_timer(2.0).timeout
+	$"Event 1".play()
 
 func _on_sleep_body_entered(body: Node3D) -> void:
 	self.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
@@ -36,6 +38,7 @@ func _on_sleep_body_entered(body: Node3D) -> void:
 func _on_day_start_event_started() -> void:
 	$"Event1 text".visible = false
 	$"Event1 text2".visible = true
+	$"Event 2".play()
 	print("WRITING ON BOARD EVENT ENDED")
 
 func _on_midnight_reached():

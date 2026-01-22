@@ -1,4 +1,4 @@
-[gd_scene load_steps=195 format=4 uid="uid://d2cws8wqloxvv"]
+[gd_scene load_steps=197 format=4 uid="uid://d2cws8wqloxvv"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_ytp03"]
 [ext_resource type="Script" uid="uid://bxovi75ncq4m0" path="res://scripts/lmc_day_two.gd" id="2_7ehl3"]
@@ -92,7 +92,9 @@
 [ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="93_ytp03"]
 [ext_resource type="PackedScene" uid="uid://ctfj38t4j8qmq" path="res://scenes/distractions/dust.tscn" id="94_f4gto"]
 [ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="95_7ehl3"]
+[ext_resource type="AudioStream" uid="uid://c0iiqckjmpc2m" path="res://assets/sfx/events/dia_what am i supposed to do know (mp3cut.net).wav" id="98_lt8kf"]
 [ext_resource type="PackedScene" uid="uid://ce3qfpprxpxtt" path="res://scenes/Furniture/plant_a.tscn" id="99_akddc"]
+[ext_resource type="AudioStream" uid="uid://c03fii0dtgt61" path="res://assets/sfx/events/dia_finish these (mp3cut.net).wav" id="99_sv5xx"]
 [ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="100_ggafq"]
 [ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="101_b21yl"]
 [ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="102_ts0vi"]
@@ -1524,6 +1526,12 @@ shaded = true
 outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "Alrighty! Lets finish these before the day ends."
 font_size = 22
+
+[node name="Event 1" type="AudioStreamPlayer" parent="." index="35"]
+stream = ExtResource("98_lt8kf")
+
+[node name="Event 2" type="AudioStreamPlayer" parent="." index="36"]
+stream = ExtResource("99_sv5xx")
 
 [connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]
 [connection signal="event_started" from="day start (day 2)" to="." method="_on_day_start_event_started"]
