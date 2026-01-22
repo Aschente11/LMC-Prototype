@@ -111,6 +111,9 @@ func add_food_eaten():
 		# Increase physical and emotional by 1 every 4 foods
 		increase_physical()
 		increase_emotional()
+
+		var make_bfast = get_tree().current_scene.find_child("make_bfast", true, false)
+		make_bfast.close_event()
 		
 		for i in range(TaskManager.active_tasks.size()):
 			if TaskManager.active_tasks[i].text == "Eat apple \n slices.":

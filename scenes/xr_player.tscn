@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://bu5evmx32ljgk"]
+[gd_scene load_steps=77 format=3 uid="uid://bu5evmx32ljgk"]
 
 [ext_resource type="Script" uid="uid://cbhe02tuuur4h" path="res://scripts/xr_player.gd" id="1_2jaaq"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_0xwb0"]
@@ -16,7 +16,6 @@
 [ext_resource type="AudioStream" uid="uid://befbljtbmjwc2" path="res://assets/sfx/distraction what is life even about.mp3" id="14_bl7yt"]
 [ext_resource type="Script" uid="uid://iql24ddnlvra" path="res://scripts/mouth.gd" id="15_wdaou"]
 [ext_resource type="AudioStream" uid="uid://qmevnuxpi71q" path="res://assets/sfx/eating.mp3" id="16_jdatr"]
-[ext_resource type="AudioStream" uid="uid://cbkn23sovh5ev" path="res://assets/sfx/4 burp.mp3" id="17_bl7yt"]
 [ext_resource type="PackedScene" uid="uid://njx823gyk04n" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_hand.tscn" id="18_wmsp4"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="19_2tnx7"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="20_vr3k1"]
@@ -68,10 +67,12 @@ metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 material = ExtResource("12_2kefe")
 text = "Did I forget something"
 font = ExtResource("11_s4ae5")
+font_size = 26
 
 [sub_resource type="TextMesh" id="TextMesh_t6eq7"]
 material = ExtResource("12_2kefe")
 font = ExtResource("11_s4ae5")
+font_size = 26
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ujsbv"]
 size = Vector3(0.453125, 0.486328, 0.535156)
@@ -597,9 +598,6 @@ stream = ExtResource("16_jdatr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/XRCamera3D/Mouth"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.252712, -0.0638555)
 shape = SubResource("BoxShape3D_ujsbv")
-
-[node name="burp" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/Mouth"]
-stream = ExtResource("17_bl7yt")
 
 [node name="note tutorial" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0836127, -0.0533591, -3.87888)

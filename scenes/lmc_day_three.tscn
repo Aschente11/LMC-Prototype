@@ -89,7 +89,7 @@
 [ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="87_0vuua"]
 [ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="88_6w4v0"]
 [ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="89_4mlto"]
-[ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard.tscn" id="90_eghph"]
+[ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard_day2.tscn" id="90_eghph"]
 [ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="91_n7do0"]
 [ext_resource type="Shader" uid="uid://dvgadwfd5py8" path="res://shaders/aoe.gdshader" id="92_igqgg"]
 

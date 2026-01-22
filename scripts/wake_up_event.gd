@@ -3,7 +3,6 @@ extends Event
 signal qte_success
 
 
-
 func _on_qte_success() -> void:
 	pass
 

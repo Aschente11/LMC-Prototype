@@ -14,12 +14,14 @@ class TextConfig:
 	var audio: AudioStreamPlayer3D
 	var mesh_template: MeshInstance3D
 	var spawn_weight: float  # Probability weight for random selection
+	var font_size: int
 	
-	func _init(p_text: String, p_audio: AudioStreamPlayer3D, p_mesh: MeshInstance3D, p_weight: float = 1.0):
+	func _init(p_text: String, p_audio: AudioStreamPlayer3D, p_mesh: MeshInstance3D, p_weight: float = 1.0, p_font_size: int = 16):
 		text = p_text
 		audio = p_audio
 		mesh_template = p_mesh
 		spawn_weight = p_weight
+		font_size = p_font_size
 
 # Text system variables
 var text_configs: Array[TextConfig] = []
@@ -69,14 +71,32 @@ func setup_text_configs() -> void:
 		"Did I forget something?", 
 		$"XRCamera3D/overthinkings/Did I forget smthn/forget audio",
 		$"XRCamera3D/overthinkings/Did I forget smthn",
-		1.0  # Normal spawn weight
+		1.0,  # Normal spawn weight
+		32
 	))
 	
 	text_configs.append(TextConfig.new(
 		"What is life even about?",
 		$"XRCamera3D/overthinkings/What is life/What is life",  # You'll need to add this audio node
 		$"XRCamera3D/overthinkings/What is life",  # You'll need to add this mesh node
-		0.8  # Slightly less common than the first text
+		0.9,  # Slightly less common than the first text
+		32
+	))
+	
+	text_configs.append(TextConfig.new(
+		"bow chika wow wow~",
+		$XRCamera3D/overthinkings/bowchika/bowchika_audio,  # You'll need to add this audio node
+		$XRCamera3D/overthinkings/bowchika,  # You'll need to add this mesh node
+		0.6,  # Slightly less common than the first text
+		32
+	))
+	
+	text_configs.append(TextConfig.new(
+		"can I do something else:((",
+		$"XRCamera3D/overthinkings/can i do smthn/can i do smthn_audio",  # You'll need to add this audio node
+		$"XRCamera3D/overthinkings/can i do smthn",  # You'll need to add this mesh node
+		0.9,  # Slightly less common than the first text
+		32
 	))
 	
 	# Hide all template texts initially
@@ -207,6 +227,9 @@ func create_text_instance(config: TextConfig) -> MeshInstance3D:
 	# Copy mesh and material from template
 	if config.mesh_template and config.mesh_template.mesh:
 		new_instance.mesh = config.mesh_template.mesh.duplicate()
+		var text_mesh = new_instance.mesh as TextMesh
+		if text_mesh:
+			text_mesh.font_size = config.font_size
 	if config.mesh_template and config.mesh_template.material_override:
 		new_instance.material_override = config.mesh_template.material_override
 	

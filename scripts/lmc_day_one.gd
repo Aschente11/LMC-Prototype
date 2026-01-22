@@ -24,10 +24,7 @@ func _ready():
 	$WakingUpPlayer/XROrigin3D.current = true
 	$WakingUpPlayer/XROrigin3D/XRCamera3D.current = true
 	
-	$unpacking.visible = false
-	$unpacking.monitoring = false
-	$unpacking.monitorable = false
-	
+
 	$sleep.visible = false
 	$sleep.monitoring = false
 	$sleep.monitorable = false
@@ -39,10 +36,12 @@ func _ready():
 	TaskManager.initialize(0)
 	
 	GlobalTime.start_time(12, 30, true)
-	GlobalVar.eating_milestone.connect(_on_eating_milestone)
 	
 	# QTE/Waking up scene
 	handle_qte()
+	$"Event2 text".visible = false
+	$"Event3 text".visible = false
+	
 	
 func handle_qte():
 	$WakingUpPlayer/QTE.start_qte()
@@ -57,7 +56,6 @@ func on_qte_fail():
 func on_qte_success():
 	$WakingUpPlayer/AnimationPlayer.play("Blinking")
 	
-	$Events/wake_up._on_qte_success()
 	add_child(xr_player)
 	xr_player.visible = false
 	
@@ -85,9 +83,9 @@ func on_qte_success():
 	$Audio/Alarm.stop()
 	
 	$Audio/wake_up.play()
+	await get_tree().create_timer(9.0).timeout
+	$Audio/note_tutorial.play()
 	
-	# Connect to first audio finished to trigger second sequence
-	$Audio/wake_up.finished.connect(_on_first_audio_finished)
 	
 # Only works the first time fsr :'[
 func teleport_player(marker):
@@ -105,36 +103,6 @@ func teleport_player(marker):
 	
 	anim_player.play("open_eyes")
 
-func _on_first_audio_finished():
-	$Audio/note_tutorial.play()
-
-func _on_eating_milestone(milestone: int):
-	$Audio/burp.play()
-
-func _on_bfast_body_entered(body: Node3D) -> void:
-	#if body.is_in_group("player") or body.name == "XROrigin3D":
-	$bfast.queue_free()
-
-	$unpacking.visible = true
-	$unpacking.monitoring = true
-	$unpacking.monitorable = true
-
-func _on_unpacking_body_entered(body: Node3D) -> void:
-	#if body.is_in_group("player") or body.name == "XROrigin3D":
-	$unpacking.queue_free()
-	
-	$sleep.visible = true
-	$sleep.monitoring = true
-	$sleep.monitorable = true
-
-func _on_sleep_body_entered(body: Node3D) -> void:
-	$Audio/sleep.play()
-	self.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
-	
-	$sleep.visible = false
-	$sleep.monitoring = false
-	$sleep.monitorable = false
-	
 func _on_journal_picked_up():
 	for i in range(TaskManager.active_tasks.size()):
 			if TaskManager.active_tasks[i].text == "Read journal.":
@@ -142,3 +110,31 @@ func _on_journal_picked_up():
 				
 func is_xr_class(name : String) -> bool:
 	return name == "XRToolsSceneBase" or super(name)
+
+
+func _on_bfast_body_entered(body: Node3D) -> void:
+	
+	$bfast.visible = false
+	$bfast.monitoring = false
+	$bfast.monitorable = false
+
+
+func _on_sleep_body_entered(body: Node3D) -> void:
+	$Audio/sleep.play()
+	#$sleep.visible = false
+	#$sleep.monitoring = false
+	#$sleep.monitorable = false
+	$"Event3 text".visible = true
+	self.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
+
+func _on_make_bfast_event_started() -> void:
+	$"Event1 text".visible = false
+	$Audio/notes_done.play()
+
+func _on_goodnight_event_started() -> void:
+	$"Event2 text".visible =true
+	$Audio/burp.play()
+	$sleep.visible = true
+	await get_tree().create_timer(3.5).timeout
+	$sleep.monitoring = true
+	$sleep.monitorable = true

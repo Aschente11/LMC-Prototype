@@ -49,9 +49,9 @@ height = 0.4
 
 [node name="Node3D" type="Node3D"]
 
-[node name="write to do list" type="Node" parent="."]
+[node name="write to do list (day 2)" type="Node" parent="."]
 script = ExtResource("2_q1cdx")
-event_name = "write to do list"
+event_name = "write to do list (day 2)"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -306,20 +306,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141513, 0)
 mesh = SubResource("SphereMesh_8q031")
 surface_material_override/0 = ExtResource("6_efrh4")
 
-[connection signal="event_ended" from="write to do list" to="." method="_on_event_event_ended"]
-[connection signal="current_object_in_slot" from="InventorySlot1" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot1" to="write to do list (day 2)" method="current_object_in_slot"]
 [connection signal="current_object_in_slot" from="InventorySlot2" to="." method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot2" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot3" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot4" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot5" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot6" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot7" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot8" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot9" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot10" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot11" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot12" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot13" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot14" to="write to do list" method="current_object_in_slot"]
-[connection signal="current_object_in_slot" from="InventorySlot15" to="write to do list" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot2" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot3" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot4" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot5" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot6" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot7" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot8" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot9" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot10" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot11" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot12" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot13" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot14" to="write to do list (day 2)" method="current_object_in_slot"]
+[connection signal="current_object_in_slot" from="InventorySlot15" to="write to do list (day 2)" method="current_object_in_slot"]

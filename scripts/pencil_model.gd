@@ -3,6 +3,7 @@ extends XRToolsPickable
 @onready var anim_player = $AnimationPlayer
 @onready var cap_open = $cap_open
 @onready var cap_close = $cap_close
+@onready var marker_mesh = $"marker base2"
 
 var cap_is_on = 1
 
@@ -12,8 +13,6 @@ func _ready():
 
 func _on_action_pressed(pickable_object):
 	if cap_is_on == 1:
-		if $"marker base2".get_active_material(0).next_pass:
-			$"marker base2".get_active_material(0).next_pass = null
 		anim_player.play("cap_off")
 		cap_open.play()
 		cap_is_on -= 1
@@ -22,3 +21,8 @@ func _on_action_pressed(pickable_object):
 		anim_player.play("cap_on")
 		cap_close.play()
 		cap_is_on += 1
+
+func _on_write_tasks_event_ended() -> void:
+	marker_mesh.get_active_material(0)
+	marker_mesh.set_surface_override_material(0, marker_mesh)
+	marker_mesh.next_pass = null

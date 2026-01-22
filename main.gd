@@ -51,7 +51,6 @@ func _ready():
 	GlobalVar.stimulation_increase.connect(_on_stimulation_increase)
 	GlobalVar.stimulation_decrease.connect(_on_stimulation_decrease)
 	GlobalTime.start_time(12, 30, true)
-	GlobalVar.eating_milestone.connect(_on_eating_milestone)
 	
 	# QTE/Waking up scene
 	handle_qte()
@@ -128,17 +127,6 @@ func _on_stimulation_decrease(new_value: int) -> void:
 func _on_stimulation_changed(new_stimulation_value: int) -> void:
 	pass
 	
-func _on_eating_milestone(milestone: int):
-	var need_unpack_text = get_tree().get_first_node_in_group("need_unpack_text")
-	need_unpack_text.visible = true
-	need_unpack_sfx.play()
-		
-	# Create a one-shot timer right here
-	var timer := get_tree().create_timer(13.0) 
-	timer.timeout.connect(func():
-		if need_unpack_text: 
-			need_unpack_text.visible = false
-		)
 
 func _on_bfast_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") or body.name == "XRToolsPlayerBody":

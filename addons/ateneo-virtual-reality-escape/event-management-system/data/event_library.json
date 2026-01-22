@@ -1,17 +1,7 @@
 {
-	"wake_up": {
-		"EventCategory": "DIALOGUE",
-		"EventPrerequisiteFlags": [],
-		"EventCompletionFlags": [
-			"wake_up_Done"
-		],
-		"Oneshot": true
-	},
 	"write_tasks": {
 		"EventCategory": "DIALOGUE",
-		"EventPrerequisiteFlags": [
-			"wake_up_Done"
-		],
+		"EventPrerequisiteFlags": [],
 		"EventCompletionFlags": [
 			"write_tasks_Done"
 		],
@@ -44,6 +34,35 @@
 		],
 		"EventCompletionFlags": [
 			"tutorial_Done"
+		],
+		"Oneshot": true
+	},
+	"goodnight": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [
+			"write_tasks_Done",
+			"make_bfast_Done"
+		],
+		"EventCompletionFlags": [
+			"goodnight_Done"
+		],
+		"Oneshot": true
+	},
+	"write to do list (day 2)": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [],
+		"EventCompletionFlags": [
+			"write to do list (day 2)_Done"
+		],
+		"Oneshot": true
+	},
+	"day start (day 2)": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [
+			"write to do list (day 2)_Done"
+		],
+		"EventCompletionFlags": [
+			"day start (day 2)_Done"
 		],
 		"Oneshot": true
 	}

@@ -4,6 +4,7 @@ extends Node
 signal time_updated(hour: int, minute: int, is_pm: bool, formatted_time: String)
 signal hour_changed(new_hour: int, is_pm: bool)
 signal day_changed(is_pm: bool)
+signal midnight_reached()
 
 # Time variables
 var current_hour: int = 7
@@ -15,6 +16,7 @@ var time_timer: Timer
 
 # Game day
 var current_day: int = 1
+
 
 func start_time(hour = 7, minute = 0, pm = false):
 	time_timer = Timer.new()
@@ -28,7 +30,6 @@ func start_time(hour = 7, minute = 0, pm = false):
 	is_pm = pm
 	
 	print("TimeManager initialized - Starting time: ", get_formatted_time())
-
 
 func _on_time_update():
 	var old_hour = current_hour
@@ -46,20 +47,23 @@ func _on_time_update():
 		if current_hour > 12:
 			current_hour = 1
 		elif current_hour == 12:
+			# Check BEFORE toggling if we're about to hit midnight
+			var hitting_midnight = is_pm
+			
 			is_pm = !is_pm
+			
+			# If we just switched to 12 AM, emit signal
+			if hitting_midnight:
+				pause_time()
+				midnight_reached.emit()
+				return  # Exit early
 			
 			# If we just switched to 12 PM, it's a new day
 			if is_pm:
 				current_day += 1
 				day_changed.emit(is_pm)
 	
-	# MOVE THIS OUTSIDE THE IF BLOCK - Decrease physical EVERY 10 minutes
 	print("Time update: ", get_formatted_time())
-	#var old_physical = GlobalVar.physical
-	#GlobalVar.physical -= 0.1
-	#GlobalVar.physical = max(GlobalVar.physical, 0.0)  # Don't go below 0
-	#print("Physical decreased to: ", GlobalVar.physical)
-	#GlobalVar.physical_decrease.emit(old_physical, GlobalVar.physical)
 	
 	# Emit signals for other scripts to react to
 	var formatted_time = get_formatted_time()
@@ -68,7 +72,6 @@ func _on_time_update():
 	# Emit hour change signal if hour changed
 	if old_hour != current_hour or old_is_pm != is_pm:
 		hour_changed.emit(current_hour, is_pm)
-
 # Get formatted time string
 func get_formatted_time() -> String:
 	var hour_display = current_hour
@@ -144,3 +147,20 @@ func resume_time():
 # Speed up or slow down time
 func set_time_speed(multiplier: float):
 	time_timer.wait_time = 7.0 / multiplier
+	
+# Reset time per scene
+func reset_time(hour: int = 7, minute: int = 0, pm: bool = false):
+	current_hour = hour
+	current_minute = minute
+	is_pm = pm
+	
+	# Reset and restart the timer
+	if time_timer:
+		time_timer.stop()
+		time_timer.start()
+	
+	print("Time reset to: ", get_formatted_time())
+	
+	# Emit update signal
+	var formatted_time = get_formatted_time()
+	time_updated.emit(current_hour, current_minute, is_pm, formatted_time)

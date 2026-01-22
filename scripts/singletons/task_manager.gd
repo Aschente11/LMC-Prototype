@@ -179,8 +179,8 @@ func mark_current_done():
 	if current_task_index < active_tasks.size():
 		current_task_index += 1
 		
-		if current_task_index == 2:
-			$"../../Events/write_tasks"._on_writing_done()
+		#if current_task_index == 2:
+			#$"../../Events/write_tasks"._on_writing_done()
 	current_task_assigned = false
 
 

@@ -19,7 +19,9 @@ func _ready():
 	
 	TaskManager.initialize(1)
 	
-	GlobalTime.start_time()
+	#GlobalTime.start_time()
+	GlobalTime.reset_time(7, 0, false)
+	GlobalTime.connect("midnight_reached", _on_midnight_reached)
 	$"Event1 text2".visible = false
 
 func _on_sleep_body_entered(body: Node3D) -> void:
@@ -30,12 +32,13 @@ func _on_sleep_body_entered(body: Node3D) -> void:
 	$sleep.monitorable = false
 	
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 
 func _on_day_start_event_started() -> void:
 	$"Event1 text".visible = false
 	$"Event1 text2".visible = true
 	print("WRITING ON BOARD EVENT ENDED")
+
+func _on_midnight_reached():
+	print("Midnight! Loading day end scene from main scene...")
+	var root_scene = get_tree().current_scene
+	root_scene.load_scene("res://scenes/lmc_day_end.tscn", "day_end")

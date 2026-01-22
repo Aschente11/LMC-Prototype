@@ -1,7 +1,11 @@
-[gd_scene load_steps=189 format=4 uid="uid://d2cws8wqloxvv"]
+[gd_scene load_steps=195 format=4 uid="uid://d2cws8wqloxvv"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_ytp03"]
 [ext_resource type="Script" uid="uid://bxovi75ncq4m0" path="res://scripts/lmc_day_two.gd" id="2_7ehl3"]
+[ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="3_7ehl3"]
+[ext_resource type="Material" uid="uid://b2jaelatdoq7w" path="res://assets/textures/overthinkings.tres" id="4_8e2vh"]
+[ext_resource type="AudioStream" uid="uid://wm6qeldlbso" path="res://assets/sfx/distraction bow chicka bow wow.mp3" id="5_lt8kf"]
+[ext_resource type="AudioStream" uid="uid://dncngkqt203p4" path="res://assets/sfx/distraction can i do something else.mp3" id="6_sv5xx"]
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="9_2lccd"]
 [ext_resource type="Shader" uid="uid://c1ik510fqf5sw" path="res://shaders/sky.gdshader" id="9_fthp8"]
 [ext_resource type="Texture2D" uid="uid://cch4178fvpwtc" path="res://assets/textures/classic_parquet_10-4K/4K-Classic Parquet_10_baseColor.jpg" id="10_fl1yh"]
@@ -92,7 +96,16 @@
 [ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="100_ggafq"]
 [ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="101_b21yl"]
 [ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="102_ts0vi"]
-[ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard.tscn" id="103_uj65o"]
+[ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard_day2.tscn" id="103_uj65o"]
+
+[sub_resource type="TextMesh" id="TextMesh_p43kj"]
+material = ExtResource("4_8e2vh")
+text = "Did I forget something"
+font = ExtResource("3_7ehl3")
+
+[sub_resource type="TextMesh" id="TextMesh_5j0ac"]
+material = ExtResource("4_8e2vh")
+font = ExtResource("3_7ehl3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bim0"]
 size = Vector3(15.7303, 0.316757, 20.6996)
@@ -713,6 +726,22 @@ current = true
 
 [node name="XRToolsPlayerBody" parent="XROrigin3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.938, 1.798, -5.109)
+
+[node name="bowchika" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258535, -1.73671)
+mesh = SubResource("TextMesh_p43kj")
+skeleton = NodePath("")
+
+[node name="bowchika_audio" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/bowchika" index="0"]
+visible = false
+stream = ExtResource("5_lt8kf")
+volume_db = 80.0
+
+[node name="can i do smthn" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings" index="3"]
+mesh = SubResource("TextMesh_5j0ac")
+
+[node name="can i do smthn_audio" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/can i do smthn" index="0"]
+stream = ExtResource("6_sv5xx")
 
 [node name="Room" type="Node3D" parent="." index="1"]
 
@@ -1446,13 +1475,10 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -7.26449, 0.630345, -3.
 [node name="Carpet C" parent="." index="27" instance=ExtResource("102_ts0vi")]
 transform = Transform3D(-5.11423e-08, 0, 1.15, 0, 0.15, 0, -1.17, 0, -5.02681e-08, 0.416502, 0.1013, 4.85191)
 
-[node name="Corkboard" parent="." index="28" instance=ExtResource("103_uj65o")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -4.51801, 2.19148, -2.5477)
-
-[node name="OISJournal3" parent="." index="29" instance=ExtResource("93_ytp03")]
+[node name="OISJournal3" parent="." index="28" instance=ExtResource("93_ytp03")]
 transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -7.1450353, 1.33882, -3.66679)
 
-[node name="sleep" type="Area3D" parent="." index="30"]
+[node name="sleep" type="Area3D" parent="." index="29"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21614, 0.00801456, -13.9992)
 collision_mask = 524289
 
@@ -1470,14 +1496,17 @@ transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.708
 mesh = SubResource("CylinderMesh_fthp8")
 skeleton = NodePath("../..")
 
-[node name="write to do list" type="Node" parent="." index="31"]
+[node name="Corkboard" parent="." index="30" instance=ExtResource("103_uj65o")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.481385, 2.2068126, -2.5396686)
+
+[node name="write to do list (day 2)" type="Node" parent="." index="31"]
 script = ExtResource("93_812wm")
-event_name = "write to do list"
+event_name = "write to do list (day 2)"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
-[node name="day start" type="Node" parent="." index="32"]
+[node name="day start (day 2)" type="Node" parent="." index="32"]
 script = ExtResource("93_812wm")
-event_name = "day start"
+event_name = "day start (day 2)"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
 [node name="Event1 text" type="Label3D" parent="." index="33"]
@@ -1486,15 +1515,15 @@ billboard = 2
 shaded = true
 outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "What am I supposed to do again today??"
+font_size = 27
 
 [node name="Event1 text2" type="Label3D" parent="." index="34"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.674759, 1.7109246, -4.2467375)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.428865, 1.3053468, -3.478978)
 billboard = 2
 shaded = true
 outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "Alrighty! Lets finish these before the day ends."
+font_size = 22
 
 [connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]
-[connection signal="event_ended" from="write to do list" to="." method="_on_write_to_do_list_event_ended"]
-[connection signal="event_started" from="day start" to="." method="_on_day_start_event_started"]
+[connection signal="event_started" from="day start (day 2)" to="." method="_on_day_start_event_started"]
