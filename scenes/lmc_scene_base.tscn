@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bpd48mqxcdr1c"]
+[gd_scene load_steps=66 format=3 uid="uid://bpd48mqxcdr1c"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_t4slh"]
 [ext_resource type="Script" uid="uid://dj021fnfgawlr" path="res://scripts/xr_origin_3d.gd" id="2_yedcs"]
@@ -65,26 +65,35 @@ material = SubResource("ShaderMaterial_awktg")
 size = Vector2(2.295, 2)
 orientation = 1
 
-[sub_resource type="TextMesh" id="TextMesh_p43kj"]
-material = ExtResource("6_0bbue")
-text = "Did I forget 
-something"
-font = ExtResource("6_yedcs")
-font_size = 35
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8680a"]
+render_priority = 1
+no_depth_test = true
+albedo_color = Color(0, 0.833333, 1, 0.596078)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p3xe"]
+[sub_resource type="TextMesh" id="TextMesh_0bbue"]
+material = SubResource("StandardMaterial3D_8680a")
+text = "Did I forget 
+something?"
+font = ExtResource("6_yedcs")
+font_size = 24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ymyt3"]
 no_depth_test = true
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_yedcs"]
-material = SubResource("StandardMaterial3D_8p3xe")
-height = 2.3
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vfmt8"]
+material = SubResource("StandardMaterial3D_ymyt3")
+radius = 0.4
+height = 1.7
 
-[sub_resource type="TextMesh" id="TextMesh_5j0ac"]
+[sub_resource type="TextMesh" id="TextMesh_vfmt8"]
 material = ExtResource("6_0bbue")
 text = "What is life 
 even about"
 font = ExtResource("6_yedcs")
-font_size = 32
+font_size = 24
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8p3xe"]
+no_depth_test = true
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8p3xe"]
 material = SubResource("StandardMaterial3D_8p3xe")
@@ -95,24 +104,31 @@ material = ExtResource("6_0bbue")
 text = "bow chika 
 wow wow~"
 font = ExtResource("6_yedcs")
-font_size = 32
+font_size = 24
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8680a"]
 material = SubResource("StandardMaterial3D_8p3xe")
 radius = 0.4
 height = 1.5
 
-[sub_resource type="TextMesh" id="TextMesh_8680a"]
-material = ExtResource("6_0bbue")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bs088"]
+render_priority = 1
+no_depth_test = true
+albedo_color = Color(0, 0.833333, 1, 0.596078)
+
+[sub_resource type="TextMesh" id="TextMesh_bvgkw"]
+material = SubResource("StandardMaterial3D_bs088")
 text = "can I do 
 something else?:(("
 font = ExtResource("6_yedcs")
-font_size = 32
+font_size = 24
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_0bbue"]
-material = SubResource("StandardMaterial3D_8p3xe")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jadp3"]
+no_depth_test = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5xqo3"]
+material = SubResource("StandardMaterial3D_jadp3")
 radius = 0.4
-height = 2.5
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gxi4e"]
 size = Vector3(0.453125, 0.486328, 0.535156)
@@ -129,6 +145,19 @@ albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_oligm"]
 material = SubResource("StandardMaterial3D_iv873")
+
+[sub_resource type="TextMesh" id="TextMesh_ymyt3"]
+material = ExtResource("6_0bbue")
+text = "....now lost in your 
+thoughts....
+"
+font = ExtResource("6_yedcs")
+font_size = 42
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yedcs"]
+material = SubResource("StandardMaterial3D_ymyt3")
+radius = 0.6
+height = 3.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv6ie"]
 transparency = 1
@@ -514,7 +543,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
 
 [node name="Did I forget smthn" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.258535, -1.73671)
-mesh = SubResource("TextMesh_p43kj")
+visible = false
+mesh = SubResource("TextMesh_0bbue")
 skeleton = NodePath("")
 
 [node name="forget audio" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn" index="0"]
@@ -523,11 +553,11 @@ volume_db = 80.0
 
 [node name="capsule" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings/Did I forget smthn" index="1"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_yedcs")
+mesh = SubResource("CapsuleMesh_vfmt8")
 
 [node name="What is life" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings" index="1"]
 visible = false
-mesh = SubResource("TextMesh_5j0ac")
+mesh = SubResource("TextMesh_vfmt8")
 
 [node name="What is life" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/What is life" index="0"]
 stream = ExtResource("8_vfmt8")
@@ -552,14 +582,14 @@ mesh = SubResource("CapsuleMesh_8680a")
 
 [node name="can i do smthn" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings" index="3"]
 visible = false
-mesh = SubResource("TextMesh_8680a")
+mesh = SubResource("TextMesh_bvgkw")
 
 [node name="can i do smthn_audio" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/overthinkings/can i do smthn" index="0"]
 stream = ExtResource("10_yedcs")
 
 [node name="capsule" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings/can i do smthn" index="1"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_0bbue")
+mesh = SubResource("CapsuleMesh_5xqo3")
 
 [node name="Mouth" type="Area3D" parent="XROrigin3D/XRCamera3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
@@ -595,19 +625,22 @@ visible = false
 mesh = SubResource("SphereMesh_oligm")
 skeleton = NodePath("")
 
-[node name="GameOver Effects" type="Node" parent="XROrigin3D/XRCamera3D" index="7"]
-
-[node name="LostInThoughts3" parent="XROrigin3D/XRCamera3D/GameOver Effects" index="0" instance=ExtResource("4_8680a")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 3.3853674, 0, -0.5086913)
+[node name="Cloudy" parent="XROrigin3D/XRCamera3D" index="7" instance=ExtResource("4_8680a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29938456, -2.79437)
 visible = false
 
-[node name="LostInThoughts2" parent="XROrigin3D/XRCamera3D/GameOver Effects" index="1" instance=ExtResource("4_8680a")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.840907, 0, -0.5086913)
-visible = false
+[node name="LOST IN THOUGHTS" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.117504805, -3.0543554)
+mesh = SubResource("TextMesh_ymyt3")
+skeleton = NodePath("")
 
-[node name="LostInThoughts" parent="XROrigin3D/XRCamera3D/GameOver Effects" index="2" instance=ExtResource("4_8680a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.2658918)
-visible = false
+[node name="forget audio" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/LOST IN THOUGHTS" index="0"]
+stream = ExtResource("7_ymyt3")
+volume_db = 80.0
+
+[node name="capsule" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/LOST IN THOUGHTS" index="1"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_yedcs")
 
 [node name="LeftHand" parent="XROrigin3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)

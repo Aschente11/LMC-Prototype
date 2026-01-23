@@ -39,7 +39,7 @@ var available_positions: Array = []
 var spawn_interval: float = 3  # How often new texts appear
 var display_duration: float = 2.0  # How long texts stay visible after fully typed
 var typewriter_speed: float = 0.04  # Time between each letter
-var spawn_range: Vector3 = Vector3(4.0, 3.0, 1.8) # Range of the spawning text
+var spawn_range: Vector3 = Vector3(4.0, 3.0, 1.6) # Range of the spawning text
 
 func _ready() -> void:
 	add_to_group("player")
@@ -296,9 +296,8 @@ func position_text_randomly(text_instance: MeshInstance3D) -> void:
 	# If spawned 8 texts, the 9th one goes in the center, then GAME OVER
 	if overthinking_text_count > max_texts_before_center:
 		# CENTER SPAWN
-		text_instance.position = Vector3(0, 0, -spawn_range.z)
-		text_instance.rotation_degrees = Vector3(0, 0, 0)
-		print("Center text spawned!")
+		stop_text_spawning()
+		game_over()
 		return
 	
 	var position_index = (overthinking_text_count - 1) % spawn_positions.size()
@@ -395,7 +394,13 @@ func clear_all_overthinking_texts() -> void:
 	overthinking_text_count = 0
 	available_positions = spawn_positions.duplicate()
 	available_positions.shuffle()
-		
+
+func game_over() -> void:
+	$LeftHand/FunctionTeleport.enabled = false
+	$RightHand/FunctionTeleport.enabled = false
+	$XRCamera3D/Cloudy.visible = true
+	$"XRCamera3D/LOST IN THOUGHTS".visible = true
+	
 func play_distraction_loop() -> void:
 	while distraction_running:
 		var random_sound = distraction_sounds[randi() % 3]

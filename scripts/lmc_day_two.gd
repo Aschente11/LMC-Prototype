@@ -26,10 +26,12 @@ func _ready():
 	$"Event1 text2".visible = false
 	await get_tree().create_timer(2.0).timeout
 	$"Event 1".play()
-	#
+	
 	#$sleep.visible = false
 	#$sleep.monitoring = false
 	#$sleep.monitorable = false
+	
+	$"XROrigin3D/XRCamera3D/LOST IN THOUGHTS".visible = false
 	
 func _on_sleep_body_entered(body: Node3D) -> void:
 	var root_scene = get_tree().current_scene
