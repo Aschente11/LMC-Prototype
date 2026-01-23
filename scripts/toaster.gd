@@ -25,6 +25,13 @@ func _ready():
 
 func _on_countdown_finished():
 	turn_off_device()
+	GlobalVar.decrease_physical()
+	GlobalVar.decrease_emotional()
+	
+	for i in range(TaskManager.active_tasks.size()):
+		if TaskManager.active_tasks[i].text == "Eat bread \n slices.":
+			TaskManager.complete_task(i)
+			break  # Exit after finding and completing the task
 
 func turn_off_device():
 	anim_player.play("DONE")
@@ -64,7 +71,7 @@ func get_remaining_time() -> float:
 		return timer_ring.get_remaining_time()
 	return 0.0
 
-# Bread detection functions (uncomment if needed)
+# Bread detection functions
 #func _on_bread_entered(body: Node3D):
 	#if body.has_method("is_bread") or body.is_in_group("bread") or body.name.contains("bread"):
 		#has_bread = true

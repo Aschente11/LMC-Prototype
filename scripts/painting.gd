@@ -53,7 +53,16 @@ func set_painting_opacity(opacity: float) -> void:
 func _on_painting_fully_revealed():
 	has_completed = true
 	GlobalVar.decrease_physical()
-	GlobalVar.increase_emotional()
+	GlobalVar.decrease_physical()
+	GlobalVar.decrease_physical()
+	GlobalVar.decrease_emotional()
+	GlobalVar.decrease_emotional()
+	GlobalVar.decrease_emotional()
+	
+	for i in range(TaskManager.active_tasks.size()):
+		if TaskManager.active_tasks[i].text == "Practice \n painting":
+			TaskManager.complete_task(i)
+			break  # Exit after finding and completing the task
 
 func _on_ois_wipe_receiver_action_in_progress(requirement: Variant, total_progress: Variant) -> void:
 	_handle_wipe_input()
@@ -66,3 +75,5 @@ func _on_ois_wipe_receiver_action_completed(requirement: Variant, total_progress
 	# Trigger completion if not already done
 	if not has_completed:
 		_on_painting_fully_revealed()
+	
+	

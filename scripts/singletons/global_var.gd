@@ -113,16 +113,29 @@ func add_food_eaten():
 		increase_emotional()
 
 		var make_bfast = get_tree().current_scene.find_child("make_bfast", true, false)
-		make_bfast.close_event()
+		if make_bfast and make_bfast.has_method("close_event"):
+			make_bfast.close_event()
+			print("make_bfast event closed")
 		
+		# Complete the eating task
 		for i in range(TaskManager.active_tasks.size()):
 			if TaskManager.active_tasks[i].text == "Eat apple \n slices.":
 				TaskManager.complete_task(i)
+				break  # Exit after finding and completing the task
 
 func add_dust_cleaned():
 	dust_cleaned_count += 1
 	
-	if dust_cleaned_count == 25:
+	if dust_cleaned_count == 20:
 		cleaning_milestone.emit(dust_cleaned_count)
 		decrease_emotional()
+		decrease_emotional()
+		decrease_emotional()
 		decrease_physical()
+		decrease_physical()
+		
+		for i in range(TaskManager.active_tasks.size()):
+			if TaskManager.active_tasks[i].text == "Vacuum \n the entire \n house.":
+				TaskManager.complete_task(i)
+				break  # Exit after finding and completing the task
+		

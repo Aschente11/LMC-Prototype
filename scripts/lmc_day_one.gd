@@ -31,7 +31,7 @@ func _ready():
 	
 	$SleepViewport.visible = false
 	
-	$plushie/Sketchfab_Scene.is_crying.connect(teleport_player)
+	#$plushie/Sketchfab_Scene.is_crying.connect(teleport_player)
 	
 	TaskManager.initialize(0)
 	

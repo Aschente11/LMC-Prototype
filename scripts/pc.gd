@@ -15,11 +15,7 @@ func _on_ois_strike_receiver_action_ended(requirement: Variant, total_progress: 
 	saved_position = keyboard_sfx.get_playback_position()
 	keyboard_sfx.stop()
 	
+	
 	# Tell the typing animation to stop
 	TypingManager.stop_typing()
 	
-	# Use the complete_task method instead
-	for i in range(TaskManager.active_tasks.size()):
-		if TaskManager.active_tasks[i].text == "Continue \n writing \n essay.":
-			TaskManager.complete_task(i)
-			break  # Exit after finding and completing the task

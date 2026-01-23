@@ -18,6 +18,7 @@ func _ready():
 		
 	
 	TaskManager.initialize(1)
+	TaskManager.tasks_completed.connect(_on_tasks_completed)
 	
 	#GlobalTime.start_time()
 	GlobalTime.reset_time(7, 0, false)
@@ -25,16 +26,19 @@ func _ready():
 	$"Event1 text2".visible = false
 	await get_tree().create_timer(2.0).timeout
 	$"Event 1".play()
-
+	#
+	#$sleep.visible = false
+	#$sleep.monitoring = false
+	#$sleep.monitorable = false
+	
 func _on_sleep_body_entered(body: Node3D) -> void:
-	self.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
+	var root_scene = get_tree().current_scene
+	root_scene.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
 	
 	$sleep.visible = false
 	$sleep.monitoring = false
 	$sleep.monitorable = false
 	
-
-
 func _on_day_start_event_started() -> void:
 	$"Event1 text".visible = false
 	$"Event1 text2".visible = true
@@ -45,3 +49,10 @@ func _on_midnight_reached():
 	print("Midnight! Loading day end scene from main scene...")
 	var root_scene = get_tree().current_scene
 	root_scene.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
+
+func _on_tasks_completed(total_completed: int):
+	print("Tasks completed: ", total_completed)
+	if total_completed >= 3:
+		$sleep.visible = true
+		$sleep.monitoring = true
+		$sleep.monitorable = true

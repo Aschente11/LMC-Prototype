@@ -14,14 +14,12 @@ class TextConfig:
 	var audio: AudioStreamPlayer3D
 	var mesh_template: MeshInstance3D
 	var spawn_weight: float  # Probability weight for random selection
-	var font_size: int
 	
-	func _init(p_text: String, p_audio: AudioStreamPlayer3D, p_mesh: MeshInstance3D, p_weight: float = 1.0, p_font_size: int = 16):
+	func _init(p_text: String, p_audio: AudioStreamPlayer3D, p_mesh: MeshInstance3D, p_weight: float = 1.0):
 		text = p_text
 		audio = p_audio
 		mesh_template = p_mesh
 		spawn_weight = p_weight
-		font_size = p_font_size
 
 # Text system variables
 var text_configs: Array[TextConfig] = []
@@ -29,11 +27,19 @@ var text_spawn_timer: Timer
 var active_text_instances: Array[Node] = []
 var is_spawning_texts: bool = false
 
+var overthinking_text_count: int = 0
+var max_texts_before_center: int = 8
+var spawn_positions: Array = [
+	"upper_left", "upper_right", "lower_left", "lower_right",
+	"up", "down", "left", "right"
+]
+var available_positions: Array = []
+
 # Customizable settings
 var spawn_interval: float = 3  # How often new texts appear
 var display_duration: float = 2.0  # How long texts stay visible after fully typed
 var typewriter_speed: float = 0.04  # Time between each letter
-var spawn_range: Vector3 = Vector3(2.0, 1.5, 3.0)  # x_range, y_range, z_distance
+var spawn_range: Vector3 = Vector3(4.0, 3.0, 1.8) # Range of the spawning text
 
 func _ready() -> void:
 	add_to_group("player")
@@ -68,35 +74,31 @@ func setup_distraction_sounds() -> void:
 
 func setup_text_configs() -> void:
 	text_configs.append(TextConfig.new(
-		"Did I forget something?", 
+		"Did I forget \n something?", 
 		$"XRCamera3D/overthinkings/Did I forget smthn/forget audio",
 		$"XRCamera3D/overthinkings/Did I forget smthn",
 		1.0,  # Normal spawn weight
-		32
 	))
 	
 	text_configs.append(TextConfig.new(
-		"What is life even about?",
-		$"XRCamera3D/overthinkings/What is life/What is life",  # You'll need to add this audio node
-		$"XRCamera3D/overthinkings/What is life",  # You'll need to add this mesh node
-		0.9,  # Slightly less common than the first text
-		32
+		"What is life \n even about?",
+		$"XRCamera3D/overthinkings/What is life/What is life", 
+		$"XRCamera3D/overthinkings/What is life", 
+		0.9, 
 	))
 	
 	text_configs.append(TextConfig.new(
-		"bow chika wow wow~",
+		"bow chika \n wow wow~",
 		$XRCamera3D/overthinkings/bowchika/bowchika_audio,  # You'll need to add this audio node
 		$XRCamera3D/overthinkings/bowchika,  # You'll need to add this mesh node
 		0.6,  # Slightly less common than the first text
-		32
 	))
 	
 	text_configs.append(TextConfig.new(
-		"can I do something else:((",
+		"can I do \n something else:((",
 		$"XRCamera3D/overthinkings/can i do smthn/can i do smthn_audio",  # You'll need to add this audio node
 		$"XRCamera3D/overthinkings/can i do smthn",  # You'll need to add this mesh node
 		0.9,  # Slightly less common than the first text
-		32
 	))
 	
 	# Hide all template texts initially
@@ -175,6 +177,10 @@ func _on_stimulation_changed(old_value: int, new_value: int) -> void:
 
 func start_text_spawning() -> void:
 	is_spawning_texts = true
+	available_positions = spawn_positions.duplicate()
+	available_positions.shuffle()
+	overthinking_text_count = 0
+	
 	text_spawn_timer.start()
 	# Spawn the first text immediately
 	spawn_random_text()
@@ -182,7 +188,8 @@ func start_text_spawning() -> void:
 func stop_text_spawning() -> void:
 	is_spawning_texts = false
 	text_spawn_timer.stop()
-	cleanup_all_text_instances()
+	overthinking_text_count = 0
+	available_positions.clear()
 
 func _on_text_spawn_timer_timeout() -> void:
 	if is_spawning_texts:
@@ -202,6 +209,7 @@ func spawn_random_text() -> void:
 	var text_instance = create_text_instance(selected_config)
 	if text_instance:
 		show_text_instance(text_instance, selected_config)
+		overthinking_text_count += 1
 
 func select_weighted_random_text() -> TextConfig:
 	# Calculate total weight
@@ -228,10 +236,12 @@ func create_text_instance(config: TextConfig) -> MeshInstance3D:
 	if config.mesh_template and config.mesh_template.mesh:
 		new_instance.mesh = config.mesh_template.mesh.duplicate()
 		var text_mesh = new_instance.mesh as TextMesh
-		if text_mesh:
-			text_mesh.font_size = config.font_size
 	if config.mesh_template and config.mesh_template.material_override:
 		new_instance.material_override = config.mesh_template.material_override
+	
+	for child in config.mesh_template.get_children():
+		var child_copy = child.duplicate()
+		new_instance.add_child(child_copy)
 	
 	# Add to scene
 	$XRCamera3D.add_child(new_instance)
@@ -256,17 +266,7 @@ func show_text_instance(text_instance: MeshInstance3D, config: TextConfig) -> vo
 	
 	# Start typewriter animation
 	await animate_typewriter_text(text_instance, config.text)
-	
-	# Check if still valid after animation
-	if not is_instance_valid(text_instance):
-		return
-	
-	# Wait for display duration
-	await get_tree().create_timer(display_duration).timeout
-	
-	# Clean up (with safety check)
-	if is_instance_valid(text_instance):
-		cleanup_text_instance(text_instance)
+
 	
 func animate_typewriter_text(text_instance: MeshInstance3D, full_text: String) -> void:
 	if not is_instance_valid(text_instance):
@@ -293,25 +293,88 @@ func animate_typewriter_text(text_instance: MeshInstance3D, full_text: String) -
 		text_mesh.text = full_text
 
 func position_text_randomly(text_instance: MeshInstance3D) -> void:
-	# Generate random position
-	var random_x = randf_range(-spawn_range.x/2, spawn_range.x/2)
-	var random_y = randf_range(-spawn_range.y/2, spawn_range.y/2)
-	
-	text_instance.position = Vector3(random_x, random_y, -spawn_range.z)
-	
-	# Random rotation for variety
-	text_instance.rotation_degrees = Vector3(
-		randf_range(-10, 10),
-		randf_range(-10, 10),
-		randf_range(-10, 10)
-	)
-
-func cleanup_text_instance(text_instance: MeshInstance3D) -> void:
-	if not text_instance:
+	# If spawned 8 texts, the 9th one goes in the center, then GAME OVER
+	if overthinking_text_count > max_texts_before_center:
+		# CENTER SPAWN
+		text_instance.position = Vector3(0, 0, -spawn_range.z)
+		text_instance.rotation_degrees = Vector3(0, 0, 0)
+		print("Center text spawned!")
 		return
-	if is_instance_valid(text_instance):
-		active_text_instances.erase(text_instance)
-		text_instance.queue_free()
+	
+	var position_index = (overthinking_text_count - 1) % spawn_positions.size()
+	var spawn_position = available_positions[position_index]
+	
+	var pos_x: float = 0.0
+	var pos_y: float = 0.0
+	var rot_x: float = 0.0
+	var rot_y: float = 0.0
+	var rot_z: float = 0.0
+
+	var edge_distance_x = spawn_range.x / 2 * 0.6
+	var edge_distance_y = spawn_range.y / 2 * 0.6
+	
+	match spawn_position:
+		"upper_left":
+			pos_x = -edge_distance_x
+			pos_y = edge_distance_y
+			rot_x = 30
+			rot_y = 30   
+			rot_z = 45  
+			
+		"upper_right":
+			pos_x = edge_distance_x
+			pos_y = edge_distance_y
+			rot_x = 30 
+			rot_y = -30  
+			rot_z = -45  
+			
+		"lower_left":
+			pos_x = -edge_distance_x
+			pos_y = -edge_distance_y
+			rot_x = -30   
+			rot_y = 30 
+			rot_z = -45 
+			
+		"lower_right":
+			pos_x = edge_distance_x
+			pos_y = -edge_distance_y
+			rot_x = -30   
+			rot_y = -30 
+			rot_z = 45  
+			
+		"up":
+			pos_x = 0
+			pos_y = edge_distance_y
+			rot_x = 30
+			rot_y = 0
+			rot_z = 0
+			
+		"down":
+			pos_x = 0
+			pos_y = -edge_distance_y
+			rot_x = -30 
+			rot_y = 0
+			rot_z = 0
+			
+		"left":
+			pos_x = -edge_distance_x
+			pos_y = 0
+			rot_x = 0
+			rot_y = 40
+			rot_z = 0
+			
+		"right":
+			pos_x = edge_distance_x
+			pos_y = 0
+			rot_x = 0
+			rot_y = -40 
+			rot_z = 0
+	
+	text_instance.position = Vector3(pos_x, pos_y, -spawn_range.z)
+	text_instance.rotation_degrees = Vector3(rot_x, rot_y, rot_z)
+	
+	print("Spawned at position: ", spawn_position)
+
 
 func cleanup_all_text_instances() -> void:
 	for instance in active_text_instances.duplicate():  # Use duplicate() to avoid modifying array while iterating
@@ -325,6 +388,13 @@ func add_text_config(text: String, audio: AudioStreamPlayer3D, mesh_template: Me
 	text_configs.append(config)
 	if mesh_template:
 		mesh_template.visible = false
+
+# USE THIS TO REMOVE ALL OVERTHINKING TEXT
+func clear_all_overthinking_texts() -> void:
+	cleanup_all_text_instances()
+	overthinking_text_count = 0
+	available_positions = spawn_positions.duplicate()
+	available_positions.shuffle()
 		
 func play_distraction_loop() -> void:
 	while distraction_running:

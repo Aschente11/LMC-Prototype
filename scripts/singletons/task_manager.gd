@@ -14,11 +14,15 @@ var active_tasks: Array[Task] = []
 var current_task_index: int = 0
 var current_task_assigned: bool = false
 
+signal tasks_completed(total_completed: int)
+
 # Called when the node enters the scene tree for the first time.
 func initialize(day: int):
 	current_day = day
 	completed_tasks = 0
 	active_tasks.clear()
+	current_task_index = 0
+	current_task_assigned = false 
 	initialize_task_pool()
 	generate_new_tasks()
 
@@ -26,19 +30,21 @@ func initialize_task_pool():
 	all_tasks[0].append(Task.new("Read journal.", Task.Priority.LOW))
 	all_tasks[0].append(Task.new("Eat apple \n slices.", Task.Priority.MEDIUM))
 	
-	all_tasks[1].append(Task.new("Make and \n eat pancakes.", Task.Priority.HIGH))
+	#all_tasks[1].append(Task.new("Make and \n eat pancakes.", Task.Priority.HIGH))
 	#all_tasks[1].append(Task.new("Make and \n eat a ham \n sandwich.", Task.Priority.MEDIUM))
 	#all_tasks[1].append(Task.new("Make and \n eat a peanut \n butter sandwich.", Task.Priority.MEDIUM))
 	all_tasks[1].append(Task.new("Eat apple \n slices.", Task.Priority.MEDIUM))
+	all_tasks[1].append(Task.new("Eat bread \n slices.", Task.Priority.LOW))
 	all_tasks[1].append(Task.new("Continue \n writing \n essay.", Task.Priority.HIGH))
 	all_tasks[1].append(Task.new("Practice \n painting", Task.Priority.HIGH))
-	all_tasks[1].append(Task.new("Reread Art \n notes.", Task.Priority.LOW))
+	#all_tasks[1].append(Task.new("Reread Art \n notes.", Task.Priority.LOW))
+	all_tasks[1].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.MEDIUM))
 	
 	all_tasks[2].append(Task.new("Wash dishes.", Task.Priority.MEDIUM))
-	all_tasks[2].append(Task.new("Do laundry.", Task.Priority.MEDIUM))
-	all_tasks[2].append(Task.new("Organize \n clothes.", Task.Priority.MEDIUM))
+	#all_tasks[2].append(Task.new("Do laundry.", Task.Priority.MEDIUM))
+	#all_tasks[2].append(Task.new("Organize \n clothes.", Task.Priority.MEDIUM))
 	all_tasks[2].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.MEDIUM))
-	all_tasks[2].append(Task.new("Clean the \n bathroom.", Task.Priority.LOW))
+	#all_tasks[2].append(Task.new("Clean the \n bathroom.", Task.Priority.LOW))
 
 func generate_new_tasks():
 	var available_tasks = all_tasks[current_day].duplicate()
@@ -51,11 +57,13 @@ func generate_new_tasks():
 		else:
 			var random_index = randi() % available_tasks.size()
 			selected_task = available_tasks[random_index]
-			
-		active_tasks.append(selected_task)
-		available_tasks.erase(selected_task)
 		
-	active_tasks.sort_custom(compare_task_priority)
+
+		active_tasks.append(selected_task)
+		
+		available_tasks.erase(selected_task)
+		active_tasks.sort_custom(compare_task_priority)
+		
 
 
 func select_weighted_random_task(available_tasks: Array) -> Task:
@@ -87,6 +95,8 @@ func complete_task(task_index: int):
 		#active_tasks.remove_at(task_index)
 		
 		#add_random_task()
+		
+		tasks_completed.emit(completed_tasks)
 
 func add_random_task():
 	if active_tasks.size() >= max_active_tasks[current_day]:

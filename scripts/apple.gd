@@ -25,3 +25,4 @@ func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress
 		is_cut += 1
 		
 		GlobalVar.decrease_physical()
+		

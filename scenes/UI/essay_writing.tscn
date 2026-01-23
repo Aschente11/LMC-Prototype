@@ -6,9 +6,15 @@ script/source = "extends Node2D
 @onready var text_label = $Document/MarginContainer/VBoxContainer/TextLabel
 var essay_completed = false
 
-var essay_text = \"\"\" \"Let Me Cook!: A Virtual Reality Game Exploring 
-#ADHD Symptomatology Through Routine Activities\"\\n
-*INSERT REFLECTION HERE*
+var essay_text = \"\"\" \"Let Me Cook!: A Virtual Reality Game Exploring ADHD Symptomatology Through Routine Activities\"\\n
+
+LMC is about a game simulating the experiences of people with ADHD to evoke empathy and help others realize that ADHD is a serious illness.
+Rather than explaining ADHD through definitions and statistics, the game allows players to experience the frustration, confusion, and overwhelm that can come from trying to complete simple everyday tasks.\\n
+
+Did you know that there are only a few studies about ADHD in the Philippines? Because of this lack of local research and awareness, ADHD is often misunderstood, ignored, or dismissed as simply being lazy, careless, or undisciplined. LMC aims to challenge these misconceptions by showing that ADHD affects daily life in ways that are not always visible from the outside.\\n
+
+By placing players in a familiar setting like a kitchen, the game makes the experience relatable and accessible. \\n
+Overall this game dabest. pls play it.
 \"\"\"
 
 #\"\"\" \"Let Me Cook!: A Virtual Reality Game Exploring 
@@ -66,6 +72,16 @@ func _process(delta):
 			essay_completed = true
 			GlobalVar.decrease_physical()
 			GlobalVar.decrease_emotional()
+			GlobalVar.decrease_physical()
+			GlobalVar.decrease_emotional()
+			GlobalVar.decrease_physical()
+			GlobalVar.decrease_emotional()
+
+			
+			for i in range(TaskManager.active_tasks.size()):
+				if TaskManager.active_tasks[i].text == \"Continue \\n writing \\n essay.\":
+					TaskManager.complete_task(i)
+					break  # Exit after finding and completing the task
 "
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1"]

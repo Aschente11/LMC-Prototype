@@ -66,7 +66,7 @@ func _on_ois_journal_released(pickable: Variant, by: Variant) -> void:
 	handle_right.enabled = false
 	
 	for i in range(TaskManager.active_tasks.size()):
-		if TaskManager.active_tasks[i].text == "Read journal.":
+		if TaskManager.active_tasks[i].text == "Read art notes.":
 			TaskManager.complete_task(i)
 
 

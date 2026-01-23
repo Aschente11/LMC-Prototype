@@ -836,7 +836,7 @@ mesh = SubResource("ArrayMesh_4vmot")
 skeleton = NodePath("")
 
 [node name="SWITCH ON_OFF" type="MeshInstance3D" parent="."]
-transform = Transform3D(10.5, 0, 0, 0, -3.80099e-05, 10.5, 0, -10.5, -3.80099e-05, 0, 0, 0)
+transform = Transform3D(10.5, 0, 0, 0, -3.8009897e-05, 10.5, 0, -10.5, -3.8009897e-05, 0, 0, 0)
 mesh = SubResource("ArrayMesh_8qsp6")
 skeleton = NodePath("")
 
