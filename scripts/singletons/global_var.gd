@@ -28,14 +28,46 @@ signal cleaning_milestone(milestone: int)
 
 var _update_pending = false
 
-# Automatically updates stimulation based on physical and emotional
+func default_state():
+	var old_stim = stimulation
+	var old_phys = physical
+	var old_emo = emotional
+	
+	stimulation = 3.0
+	physical = 3.0
+	emotional = 3.0
+	foods_eaten_count = 0  
+	dust_cleaned_count = 0
+	
+	if old_stim != stimulation:
+		if old_stim > stimulation:
+			stimulation_decrease.emit(old_stim, stimulation)
+		else:
+			stimulation_increase.emit(old_stim, stimulation)
+	
+	if old_phys != physical:
+		if old_phys > physical:
+			physical_decrease.emit(old_phys, physical)
+		else:
+			physical_increase.emit(old_phys, physical)
+	
+	if old_emo != emotional:
+		if old_emo > emotional:
+			emotional_decrease.emit(old_emo, emotional)
+		else:
+			emotional_increase.emit(old_emo, emotional)
+
+	
 func update_stimulation():
 	_update_pending = false
 	var old_val = stimulation
 	var new_val = stimulation
 	
+	# If both are at 3, regulate stimulation back to normal
+	if physical == 3.0 and emotional == 3.0:
+		new_val = NORMAL_STIMULATION
 	# If both physical and emotional are below 3, stimulation minus 1
-	if physical < 3.0 and emotional < 3.0:
+	elif physical < 3.0 and emotional < 3.0:
 		new_val = stimulation - 1
 	# If only emotional is below 3, stimulation plus 1
 	elif emotional < 3.0:
@@ -54,7 +86,7 @@ func update_stimulation():
 			stimulation_decrease.emit(old_val, stimulation)
 		elif old_val < stimulation:
 			stimulation_increase.emit(old_val, stimulation)
-
+		
 func _schedule_update():
 	if not _update_pending:
 		_update_pending = true

@@ -1,22 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://dgjekjktwn5k3"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pnloc"]
-emission_shape_scale = Vector3(5, 1, 5)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-gravity = Vector3(0, 9.8, 0)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a6ptm"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kev1b"]
-billboard_mode = 1
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf7n2"]
+albedo_color = Color(0.1882353, 0.23137255, 0.5921569, 1)
 
-[sub_resource type="SphereMesh" id="SphereMesh_yqhni"]
-material = SubResource("StandardMaterial3D_kev1b")
-radius = 1.0
-height = 1.5
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4xh2b"]
+material = SubResource("StandardMaterial3D_tf7n2")
+radius = 0.02
+height = 0.3
 
 [node name="water" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 50
-process_material = SubResource("ParticleProcessMaterial_pnloc")
-draw_pass_1 = SubResource("SphereMesh_yqhni")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.04555297, 0, 0)
+amount = 25
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_a6ptm")
+draw_pass_1 = SubResource("CapsuleMesh_4xh2b")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dwftb5axagw0n"
+path="res://.godot/imported/task complete.mp3-21f3b315034382d0c1f0deafecc579ab.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/task complete.mp3"
+dest_files=["res://.godot/imported/task complete.mp3-21f3b315034382d0c1f0deafecc579ab.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

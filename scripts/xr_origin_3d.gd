@@ -41,6 +41,8 @@ var display_duration: float = 2.0  # How long texts stay visible after fully typ
 var typewriter_speed: float = 0.04  # Time between each letter
 var spawn_range: Vector3 = Vector3(4.0, 3.0, 1.6) # Range of the spawning text
 
+var is_game_over: bool = false
+
 func _ready() -> void:
 	add_to_group("player")
 	
@@ -350,20 +352,20 @@ func position_text_randomly(text_instance: MeshInstance3D) -> void:
 			
 		"down":
 			pos_x = 0
-			pos_y = -edge_distance_y
+			pos_y = -edge_distance_y - 0.5
 			rot_x = -30 
 			rot_y = 0
 			rot_z = 0
 			
 		"left":
-			pos_x = -edge_distance_x
+			pos_x = -edge_distance_x - 0.5
 			pos_y = 0
 			rot_x = 0
 			rot_y = 40
 			rot_z = 0
 			
 		"right":
-			pos_x = edge_distance_x
+			pos_x = edge_distance_x + 0.5
 			pos_y = 0
 			rot_x = 0
 			rot_y = -40 
@@ -396,10 +398,18 @@ func clear_all_overthinking_texts() -> void:
 	available_positions.shuffle()
 
 func game_over() -> void:
+	is_game_over = true
 	$LeftHand/FunctionTeleport.enabled = false
 	$RightHand/FunctionTeleport.enabled = false
 	$XRCamera3D/Cloudy.visible = true
 	$"XRCamera3D/LOST IN THOUGHTS".visible = true
+
+func new_day() -> void:
+	is_game_over = false
+	$LeftHand/FunctionTeleport.enabled = true
+	$RightHand/FunctionTeleport.enabled = true
+	$XRCamera3D/Cloudy.visible = false
+	$"XRCamera3D/LOST IN THOUGHTS".visible = false
 	
 func play_distraction_loop() -> void:
 	while distraction_running:
@@ -450,7 +460,11 @@ func _left_on_button_pressed(button_name: String):
 					#notebook.visible = !notebook.visible
 					
 func _right_on_button_pressed(button_name: String):
-	pass
+	if is_game_over and button_name == "ax_button":
+		new_day()
+		var root_scene = get_tree().current_scene
+		root_scene.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
+		
 	#if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
 		#self.current = true
 		#$XRCamera3D.current = true

@@ -14,7 +14,6 @@ func _on_right_hand_button_pressed(button):
 		print(button, " has been pressed!")
 		was_pressed = true
 		_change_scene()
-		#get_tree().change_scene_to_file("res://scenes/lmc_day_two.tscn")
 
 func _change_scene() -> void:
 	if not target_scene[TaskManager.current_day] or target_scene[TaskManager.current_day] == "":

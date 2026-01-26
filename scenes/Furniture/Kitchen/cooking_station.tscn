@@ -430,12 +430,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
 shape = SubResource("SphereShape3D_c4ehr")
 
 [node name="water" parent="." instance=ExtResource("10_thf8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.857097, 0.535268, -0.483649)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8073929, 0.39045924, -0.48962623)
 
 [node name="Area3D" type="Area3D" parent="water"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="water/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.204806, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.047977448, -0.07893285, 0)
 shape = SubResource("CylinderShape3D_thf8c")
 
 [node name="OISStrikeReceiver5" type="Node3D" parent="."]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=66 format=3 uid="uid://bpd48mqxcdr1c"]
+[gd_scene load_steps=70 format=3 uid="uid://bpd48mqxcdr1c"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_t4slh"]
 [ext_resource type="Script" uid="uid://dj021fnfgawlr" path="res://scripts/xr_origin_3d.gd" id="2_yedcs"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_yf60g"]
+[ext_resource type="PackedScene" uid="uid://csqb8hwytdnrb" path="res://scenes/others/confetti.tscn" id="4_0bbue"]
 [ext_resource type="Script" uid="uid://dpc4eg48y7yei" path="res://scripts/floating_indicator_manager.gd" id="4_8p3xe"]
 [ext_resource type="PackedScene" uid="uid://b12ooexq2d4rx" path="res://scenes/others/lost_in_thoughts.tscn" id="4_8680a"]
 [ext_resource type="Material" uid="uid://b2jaelatdoq7w" path="res://assets/textures/overthinkings.tres" id="6_0bbue"]
@@ -31,6 +32,7 @@
 [ext_resource type="AudioStream" uid="uid://dm6vjaowvorvl" path="res://assets/sfx/yippee-tbh.mp3" id="27_dshk7"]
 [ext_resource type="AudioStream" uid="uid://cas3raxviihy3" path="res://assets/sfx/distraction banana.mp3" id="28_5g40b"]
 [ext_resource type="AudioStream" uid="uid://wm6qeldlbso" path="res://assets/sfx/distraction bow chicka bow wow.mp3" id="29_lnrh6"]
+[ext_resource type="AudioStream" uid="uid://dwftb5axagw0n" path="res://assets/sfx/task complete.mp3" id="31_0bbue"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qvpqm"]
 dof_blur_far_enabled = true
@@ -156,8 +158,18 @@ font_size = 42
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yedcs"]
 material = SubResource("StandardMaterial3D_ymyt3")
-radius = 0.6
-height = 3.0
+radius = 1.0
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0bbue"]
+render_priority = 1
+no_depth_test = true
+albedo_color = Color(0.8, 0.13333334, 0.05882353, 0.59607846)
+
+[sub_resource type="TextMesh" id="TextMesh_bs088"]
+material = SubResource("StandardMaterial3D_0bbue")
+text = "press \"A\" to continue"
+font_size = 21
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv6ie"]
 transparency = 1
@@ -529,16 +541,20 @@ metadata/_custom_type_script = "uid://bqqdxydvmjgir"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 attributes = SubResource("CameraAttributesPractical_qvpqm")
 
-[node name="ChangeIndicator" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="0"]
+[node name="Confetti" parent="XROrigin3D/XRCamera3D" index="0" instance=ExtResource("4_0bbue")]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0.05059731, -1.7839196, -1.9248035)
+visible = false
+
+[node name="ChangeIndicator" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.19209e-07, -0.833909)
 mesh = SubResource("QuadMesh_a0fa2")
 skeleton = NodePath("")
 
-[node name="FloatingIndicatorManager" type="Node3D" parent="XROrigin3D/XRCamera3D" index="1"]
+[node name="FloatingIndicatorManager" type="Node3D" parent="XROrigin3D/XRCamera3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
 script = ExtResource("4_8p3xe")
 
-[node name="overthinkings" type="Node3D" parent="XROrigin3D/XRCamera3D" index="2"]
+[node name="overthinkings" type="Node3D" parent="XROrigin3D/XRCamera3D" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
 
 [node name="Did I forget smthn" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/overthinkings" index="0"]
@@ -591,7 +607,7 @@ stream = ExtResource("10_yedcs")
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_5xqo3")
 
-[node name="Mouth" type="Area3D" parent="XROrigin3D/XRCamera3D" index="3"]
+[node name="Mouth" type="Area3D" parent="XROrigin3D/XRCamera3D" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19209e-07, 0)
 collision_layer = 3
 collision_mask = 5
@@ -607,30 +623,31 @@ shape = SubResource("BoxShape3D_gxi4e")
 [node name="burp" type="AudioStreamPlayer3D" parent="XROrigin3D/XRCamera3D/Mouth" index="2"]
 stream = ExtResource("11_jadp3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="5"]
 transform = Transform3D(1, 0, -3.82137e-15, -3.82137e-15, 4.37114e-08, -1, 0, 1, 4.37114e-08, 0, -1.291, -0.805)
 visible = false
 mesh = SubResource("PlaneMesh_8tqhu")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="5"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="6"]
 transform = Transform3D(1, 0, -3.82137e-15, -3.82137e-15, 4.37114e-08, -1, 0, 1, 4.37114e-08, 0, 1.354, -0.796)
 visible = false
 mesh = SubResource("PlaneMesh_8tqhu")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="6"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="7"]
 transform = Transform3D(1.42, -5.32907e-15, 3.55271e-15, 0, 1.42, -7.47624e-16, 3.55271e-15, -7.47624e-16, 1.42, 0.0732703, 0.231474, -0.397363)
 visible = false
 mesh = SubResource("SphereMesh_oligm")
 skeleton = NodePath("")
 
-[node name="Cloudy" parent="XROrigin3D/XRCamera3D" index="7" instance=ExtResource("4_8680a")]
+[node name="Cloudy" parent="XROrigin3D/XRCamera3D" index="8" instance=ExtResource("4_8680a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.29938456, -2.79437)
 visible = false
 
-[node name="LOST IN THOUGHTS" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="8"]
+[node name="LOST IN THOUGHTS" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.117504805, -3.0543554)
+visible = false
 mesh = SubResource("TextMesh_ymyt3")
 skeleton = NodePath("")
 
@@ -639,8 +656,12 @@ stream = ExtResource("7_ymyt3")
 volume_db = 80.0
 
 [node name="capsule" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/LOST IN THOUGHTS" index="1"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, -0.19106925, 0)
 mesh = SubResource("CapsuleMesh_yedcs")
+
+[node name="press a" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D/LOST IN THOUGHTS" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7354834, 0)
+mesh = SubResource("TextMesh_bs088")
 
 [node name="LeftHand" parent="XROrigin3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
@@ -747,7 +768,10 @@ stream = ExtResource("26_cec4d")
 [node name="watchNotif" type="AudioStreamPlayer3D" parent="XROrigin3D/Audio" index="1"]
 stream = ExtResource("24_l2y0c")
 
-[node name="Distractions" type="Node" parent="XROrigin3D/Audio" index="2"]
+[node name="TaskComplete_sfx" type="AudioStreamPlayer3D" parent="XROrigin3D/Audio" index="2"]
+stream = ExtResource("31_0bbue")
+
+[node name="Distractions" type="Node" parent="XROrigin3D/Audio" index="3"]
 
 [node name="SoundDistraction" type="AudioStreamPlayer3D" parent="XROrigin3D/Audio/Distractions" index="0"]
 stream = ExtResource("27_dshk7")

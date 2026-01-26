@@ -23,6 +23,9 @@ func _ready():
 	#GlobalTime.start_time()
 	GlobalTime.reset_time(7, 0, false)
 	GlobalTime.connect("midnight_reached", _on_midnight_reached)
+
+	GlobalVar.default_state()
+	
 	$"Event1 text2".visible = false
 	await get_tree().create_timer(2.0).timeout
 	$"Event 1".play()
@@ -32,6 +35,7 @@ func _ready():
 	#$sleep.monitorable = false
 	
 	$"XROrigin3D/XRCamera3D/LOST IN THOUGHTS".visible = false
+
 	
 func _on_sleep_body_entered(body: Node3D) -> void:
 	var root_scene = get_tree().current_scene

@@ -73,6 +73,10 @@ func _on_dirt_touched_water(area: Area3D, dirt_mesh: MeshInstance3D) -> void:
 			print("All plates cleaned!")
 			GlobalVar.decrease_emotional()
 			GlobalVar.decrease_physical()
+			GlobalVar.decrease_emotional()
+			GlobalVar.decrease_physical()
+			GlobalVar.decrease_emotional()
+			GlobalVar.decrease_physical()
 
 func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress: Variant) -> void:
 	if stove2_is_open:

@@ -39,8 +39,8 @@ func initialize_task_pool():
 	all_tasks[1].append(Task.new("Practice \n painting", Task.Priority.HIGH))
 	#all_tasks[1].append(Task.new("Reread Art \n notes.", Task.Priority.LOW))
 	all_tasks[1].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.MEDIUM))
+	all_tasks[1].append(Task.new("Wash dishes.", Task.Priority.MEDIUM))
 	
-	all_tasks[2].append(Task.new("Wash dishes.", Task.Priority.MEDIUM))
 	#all_tasks[2].append(Task.new("Do laundry.", Task.Priority.MEDIUM))
 	#all_tasks[2].append(Task.new("Organize \n clothes.", Task.Priority.MEDIUM))
 	all_tasks[2].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.MEDIUM))

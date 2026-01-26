@@ -42,6 +42,7 @@ func _ready():
 	$"Event2 text".visible = false
 	$"Event3 text".visible = false
 	
+	GlobalVar.default_state()
 	
 func handle_qte():
 	$WakingUpPlayer/QTE.start_qte()

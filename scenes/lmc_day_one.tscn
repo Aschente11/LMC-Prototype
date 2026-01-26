@@ -1,4 +1,4 @@
-[gd_scene load_steps=214 format=4 uid="uid://b5xwmkuww84xc"]
+[gd_scene load_steps=216 format=4 uid="uid://b5xwmkuww84xc"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_jrb4w"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_dwn8a"]
@@ -92,9 +92,11 @@
 [ext_resource type="AudioStream" uid="uid://tht8u1kqs6u1" path="res://assets/sfx/voice lines/dia_burp.wav" id="95_vqks3"]
 [ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="95_wap5h"]
 [ext_resource type="PackedScene" uid="uid://cjui6gb3fygxb" path="res://assets/Furniture Shaders/lamp_b.tscn" id="97_3necn"]
+[ext_resource type="PackedScene" uid="uid://c7wh71cg020ti" path="res://scenes/tools/journal.tscn" id="98_e4wgk"]
 [ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="98_nectv"]
 [ext_resource type="PackedScene" uid="uid://c04jmhf166a41" path="res://assets/Furniture Shaders/corkboard_day1.tscn" id="99_n7ona"]
 [ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="99_vqks3"]
+[ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="99_wap5h"]
 [ext_resource type="Script" uid="uid://bg8ikbbyucdg6" path="res://addons/ateneo-virtual-reality-escape/event-management-system/event.gd" id="102_5ub02"]
 [ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="102_n7ona"]
 
@@ -1707,10 +1709,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46087, 1.79825, -5.2846)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73031, 1.35363, -7.08733)
 
 [node name="PC" parent="." index="16" instance=ExtResource("90_i56lk")]
-transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.9638343, 1.3151, -3.5907366)
+transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -8.349247, 1.3151, -3.5907366)
 
 [node name="fidget_spinner" parent="." index="17" instance=ExtResource("91_c8dny")]
-transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -8.89412, 1.42767, -3.642805)
+transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -7.7922153, 1.3290607, -3.3600485)
 
 [node name="Pencil_Model" parent="." index="18" instance=ExtResource("33_ithw4")]
 transform = Transform3D(0.944863, 0, -0.327465, 0, 1, 0, 0.327465, 0, 0.944863, -6.4864573, 1.3147756, -3.3841238)
@@ -1773,7 +1775,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -7.26449, 0.630345, -3.
 transform = Transform3D(-5.11423e-08, 0, 1.15, 0, 0.15, 0, -1.17, 0, -5.02681e-08, 0.416502, 0.1013, 4.85191)
 
 [node name="OISJournal3" parent="." index="25" instance=ExtResource("102_n7ona")]
-transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -7.1720247, 1.33882, -3.6147075)
+transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -7.481956, 1.33882, -3.6147075)
 
 [node name="corkboard" parent="." index="26" instance=ExtResource("99_n7ona")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4.6083713, 2.013426, -2.5217566)
@@ -1817,6 +1819,12 @@ shaded = true
 outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "Goodnight world"
 font_size = 26
+
+[node name="journal" parent="." index="33" instance=ExtResource("98_e4wgk")]
+transform = Transform3D(-0.6652302, 0, 0.74663824, 0, 1, 0, -0.74663824, 0, -0.6652302, -6.9004498, 1.3845215, -3.4589)
+
+[node name="plushie" parent="." index="34" instance=ExtResource("99_wap5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.466319, 0.9290179, -6.7911777)
 
 [connection signal="failed_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_fail"]
 [connection signal="success_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_success"]
