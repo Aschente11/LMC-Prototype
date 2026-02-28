@@ -1168,6 +1168,7 @@ visible = false
 [node name="Room" type="Node3D" parent="." index="2"]
 
 [node name="Floor4" type="StaticBody3D" parent="Room" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04, 0)
 
 [node name="FloorCollision" type="CollisionShape3D" parent="Room/Floor4" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55865, -0.0745926, 0.0826721)
@@ -1854,7 +1855,7 @@ transform = Transform3D(-5.11423e-08, 0, 1.15, 0, 0.15, 0, -1.17, 0, -5.02681e-0
 transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -7.481956, 1.33882, -3.6147075)
 
 [node name="corkboard" parent="." index="26" instance=ExtResource("99_n7ona")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4.6083713, 2.013426, -2.5217566)
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -4.6083713, 1.5365164, -2.5217566)
 
 [node name="write_tasks" type="Node" parent="." index="27"]
 script = ExtResource("102_5ub02")
@@ -1899,10 +1900,7 @@ font_size = 26
 [node name="journal" parent="." index="33" instance=ExtResource("98_e4wgk")]
 transform = Transform3D(-0.6652302, 0, 0.74663824, 0, 1, 0, -0.74663824, 0, -0.6652302, -6.9004498, 1.3845215, -3.4589)
 
-[node name="plushie" parent="." index="34" instance=ExtResource("99_wap5h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.466319, 0.9290179, -6.7911777)
-
-[node name="WatchCharger" parent="." index="36" instance=ExtResource("100_vqks3")]
+[node name="WatchCharger" parent="." index="35" instance=ExtResource("100_vqks3")]
 transform = Transform3D(0.99997455, 0, -0.007138336, 0, 1, 0, 0.007138336, 0, 0.99997455, -10.317232, 1.0816197, -5.40543)
 
 [node name="single" type="MeshInstance3D" parent="WatchCharger" index="2"]
@@ -1918,14 +1916,18 @@ mesh = SubResource("TextMesh_m1x7a")
 transform = Transform3D(0.058940515, 0, 0.9982627, 0, 1, 0, -0.9982627, 0, 0.058940515, -0.60873127, 0.9133091, -0.02902031)
 mesh = SubResource("BoxMesh_1xocd")
 
-[node name="smartwatch" parent="." index="37" instance=ExtResource("101_n7ona")]
+[node name="smartwatch" parent="." index="36" instance=ExtResource("101_n7ona")]
 transform = Transform3D(-0.016039804, -0.00027962742, 0.09363572, 0.09361882, 0.0017787013, 0.016042218, -0.0018003767, 0.094982944, -2.4753905e-05, -10.257919, 1.1537584, -5.3973603)
 
-[node name="WearWatchButton" parent="." index="38" instance=ExtResource("102_orb8n")]
+[node name="WearWatchButton" parent="." index="37" instance=ExtResource("102_orb8n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.122431, 1.0891525, -5.196181)
 
-[node name="WearWatchButton2" parent="." index="39" instance=ExtResource("103_orb8n")]
+[node name="WearWatchButton2" parent="." index="38" instance=ExtResource("103_orb8n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.122282, 1.0927228, -5.6167946)
+
+[node name="plushie" parent="." index="39" instance=ExtResource("99_wap5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63535, 0.722356, -6.35067)
+collision_mask = 196615
 
 [connection signal="failed_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_fail"]
 [connection signal="success_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_success"]

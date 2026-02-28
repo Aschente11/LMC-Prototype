@@ -1488,7 +1488,7 @@ mesh = SubResource("CylinderMesh_fthp8")
 skeleton = NodePath("../..")
 
 [node name="Corkboard" parent="." index="30" instance=ExtResource("103_uj65o")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.481385, 2.2068126, -2.5396686)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.481, 1.537, -2.54)
 
 [node name="write to do list (day 2)" type="Node" parent="." index="31"]
 script = ExtResource("93_812wm")

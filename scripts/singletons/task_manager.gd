@@ -4,7 +4,7 @@ extends Node3D
 @export var show_priority_indicators: bool = true
 
 var all_tasks: Array[Array] = [[], [], []]
-@export var max_active_tasks: Array[int] = [2, 7, 3]
+@export var max_active_tasks: Array[int] = [2, 5, 3]
 var current_day: int = 0
 var completed_tasks: int = 0
 var total_completed_tasks: int = 0
