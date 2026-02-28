@@ -5,10 +5,11 @@ extends XRToolsPickable
 @onready var inventory_slot = $PancakeRaw
 @onready var frying_sfx = $Frying
 @onready var collision = $CollisionShape3D
+@onready var cooked_pancake = $PancakeRaw3
 
 var has_flipped = false
 var pour_time = 0.0
-var pour_threshold = 3.0  # 3 seconds of pouring
+var pour_threshold = 2.0  # 3 seconds of pouring
 var is_being_poured_on = false
 var slot_revealed = false
 
@@ -68,6 +69,7 @@ func reveal_inventory_slot():
 	inventory_slot.visible = true
 	frying_sfx.play()
 	anim_player.play("cooking_pancake")
+	cooked_pancake.add_to_group("cooked_pancake")
 	
 	# Smooth scale animation
 	var tween = create_tween()

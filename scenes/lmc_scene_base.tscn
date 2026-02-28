@@ -1,9 +1,8 @@
-[gd_scene load_steps=70 format=3 uid="uid://bpd48mqxcdr1c"]
+[gd_scene load_steps=76 format=3 uid="uid://bpd48mqxcdr1c"]
 
 [ext_resource type="PackedScene" uid="uid://qbmx03iibuuu" path="res://addons/godot-xr-tools/staging/scene_base.tscn" id="1_t4slh"]
 [ext_resource type="Script" uid="uid://dj021fnfgawlr" path="res://scripts/xr_origin_3d.gd" id="2_yedcs"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_yf60g"]
-[ext_resource type="PackedScene" uid="uid://csqb8hwytdnrb" path="res://scenes/others/confetti.tscn" id="4_0bbue"]
 [ext_resource type="Script" uid="uid://dpc4eg48y7yei" path="res://scripts/floating_indicator_manager.gd" id="4_8p3xe"]
 [ext_resource type="PackedScene" uid="uid://b12ooexq2d4rx" path="res://scenes/others/lost_in_thoughts.tscn" id="4_8680a"]
 [ext_resource type="Material" uid="uid://b2jaelatdoq7w" path="res://assets/textures/overthinkings.tres" id="6_0bbue"]
@@ -37,6 +36,48 @@
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qvpqm"]
 dof_blur_far_enabled = true
 dof_blur_amount = 0.0
+
+[sub_resource type="Gradient" id="Gradient_8680a"]
+offsets = PackedFloat32Array(0, 0.51428574, 0.75510204, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.54285717, 0.54285717, 0.54285717, 1, 0.7572693, 0.7572693, 0.7572693, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qkeme"]
+gradient = SubResource("Gradient_8680a")
+
+[sub_resource type="Curve" id="Curve_0bbue"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6pguf"]
+curve = SubResource("Curve_0bbue")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ymyt3"]
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 5.0
+gravity = Vector3(0, 5, 0)
+radial_accel_min = -2.2351742e-06
+radial_accel_max = 4.9999976
+tangential_accel_min = -2.2351742e-06
+tangential_accel_max = 4.9999976
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_qkeme")
+hue_variation_min = -1.0
+hue_variation_max = 0.99999994
+hue_variation_curve = SubResource("CurveTexture_6pguf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x47qq"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_vfmt8"]
+material = SubResource("StandardMaterial3D_x47qq")
+shape = 0
+size = 0.1
+section_length = 0.05
 
 [sub_resource type="Shader" id="Shader_yf60g"]
 code = "shader_type spatial;
@@ -168,7 +209,7 @@ albedo_color = Color(0.8, 0.13333334, 0.05882353, 0.59607846)
 
 [sub_resource type="TextMesh" id="TextMesh_bs088"]
 material = SubResource("StandardMaterial3D_0bbue")
-text = "press \"A\" to continue"
+text = "press \"A\" to return to title screen"
 font_size = 21
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv6ie"]
@@ -541,9 +582,18 @@ metadata/_custom_type_script = "uid://bqqdxydvmjgir"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 attributes = SubResource("CameraAttributesPractical_qvpqm")
 
-[node name="Confetti" parent="XROrigin3D/XRCamera3D" index="0" instance=ExtResource("4_0bbue")]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 1, 0.05059731, -1.7839196, -1.9248035)
-visible = false
+[node name="Confetti" type="GPUParticles3D" parent="XROrigin3D/XRCamera3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.6453722, -3.024528)
+emitting = false
+amount = 100
+lifetime = 10.0
+one_shot = true
+speed_scale = 1.5
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_ymyt3")
+draw_pass_1 = SubResource("RibbonTrailMesh_vfmt8")
 
 [node name="ChangeIndicator" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.19209e-07, -0.833909)
@@ -781,6 +831,11 @@ stream = ExtResource("28_5g40b")
 
 [node name="SoundDistraction3" type="AudioStreamPlayer3D" parent="XROrigin3D/Audio/Distractions" index="2"]
 stream = ExtResource("29_lnrh6")
+
+[node name="taskCompleteLabel" type="Label3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44260335, -1.4715691)
+visible = false
+text = "TASK COMPLETE!"
 
 [connection signal="button_pressed" from="XROrigin3D/LeftHand" to="XROrigin3D" method="_left_on_button_pressed"]
 [connection signal="button_pressed" from="XROrigin3D/RightHand" to="XROrigin3D" method="_right_on_button_pressed"]

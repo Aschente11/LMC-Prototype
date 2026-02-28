@@ -1,4 +1,4 @@
-[gd_scene load_steps=216 format=4 uid="uid://b5xwmkuww84xc"]
+[gd_scene load_steps=230 format=4 uid="uid://b5xwmkuww84xc"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_jrb4w"]
 [ext_resource type="Script" uid="uid://bqqdxydvmjgir" path="res://addons/godot-xr-tools/player/player_body.gd" id="2_dwn8a"]
@@ -97,8 +97,14 @@
 [ext_resource type="PackedScene" uid="uid://c04jmhf166a41" path="res://assets/Furniture Shaders/corkboard_day1.tscn" id="99_n7ona"]
 [ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="99_vqks3"]
 [ext_resource type="PackedScene" uid="uid://shphle3i03h" path="res://assets/tools/plushies/plushie.tscn" id="99_wap5h"]
+[ext_resource type="PackedScene" uid="uid://dagn7o5s22twf" path="res://scenes/others/watch_charger.tscn" id="100_vqks3"]
+[ext_resource type="Texture2D" uid="uid://danync6eplgn7" path="res://assets/tools/sticky-notes/source/post_it/IMG_20221127_0001.png" id="101_22glw"]
+[ext_resource type="PackedScene" uid="uid://nq52jpvlfsbs" path="res://assets/tools/smartwatch.fbx" id="101_n7ona"]
 [ext_resource type="Script" uid="uid://bg8ikbbyucdg6" path="res://addons/ateneo-virtual-reality-escape/event-management-system/event.gd" id="102_5ub02"]
+[ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="102_kxjr6"]
 [ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="102_n7ona"]
+[ext_resource type="PackedScene" uid="uid://dxc4momvyj18r" path="res://scenes/UI/wear_watch_button.tscn" id="102_orb8n"]
+[ext_resource type="PackedScene" uid="uid://b4jvtawq6mux5" path="res://scenes/UI/wear_watch_button_right.tscn" id="103_orb8n"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_gfqyt"]
 exposure_multiplier = 2.0
@@ -339,6 +345,9 @@ _data = {
 &"Blinking": SubResource("Animation_oofti"),
 &"RESET": SubResource("Animation_rkkpu")
 }
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_22glw"]
+radius = 0.120886415
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5woma"]
 size = Vector3(15.7303, 0.316757, 20.6996)
@@ -950,6 +959,63 @@ _data = {
 &"daynightcycle": SubResource("Animation_671eh")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebsiy"]
+resource_name = "front"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("101_22glw")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_afplf"]
+_surfaces = [{
+"aabb": AABB(0.06258114, -0.010061765, -0.010141076, 0.020016603, 0.020061765, 0.0004151035),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"name": "front",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("ASmpPQrXI7yvWR+8iiqAPRraJLzBJia8PzOAPQrXIzyvWR+8ASmpPQrXIzyvWR+8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qvqbi"]
+resource_name = "Cube_005"
+_surfaces = [{
+"aabb": AABB(0.06258114, -0.010061765, -0.010141076, 0.020016603, 0.020061765, 0.0004151035),
+"attribute_data": PackedByteArray("ZREEPYpjDj9LHe0+imMOP0sd7T4YsXw/ZREEPRixfD8="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"material": SubResource("StandardMaterial3D_ebsiy"),
+"name": "front",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("ASmpPQrXI7yvWR+8iiqAPRraJLzBJia8PzOAPQrXIzyvWR+8ASmpPQrXIzyvWR+8s36zfjIAPr+zfrN+ZwAjv7N+s34xAD6/s36zfgMAqMA=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_afplf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jjrt"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_m1x7a"]
+material = SubResource("StandardMaterial3D_2jjrt")
+text = "ALWAYS 
+wear watch. 
+Need to regulate 
+my stimulations"
+font = ExtResource("102_kxjr6")
+font_size = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v0nt"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1xocd"]
+material = SubResource("StandardMaterial3D_3v0nt")
+size = Vector3(0.195, 0.003, 0.01)
+
 [node name="day_one" instance=ExtResource("1_jrb4w")]
 script = ExtResource("2_jrb4w")
 
@@ -1088,6 +1154,16 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.938
 
 [node name="XRToolsPlayerBody" parent="XROrigin3D" index="0"]
 enabled = false
+
+[node name="CollisionShape3D" parent="XROrigin3D/LeftHand/OISActorComponent/OISColliderArea3D/Area3D" index="0"]
+transform = Transform3D(1, 0, -2.842171e-14, 0, 1, 0, 2.842171e-14, 0, 1, -1.2624521, 2.4403446, -1.2152996)
+shape = SubResource("SphereShape3D_22glw")
+
+[node name="smartwatch" parent="XROrigin3D/LeftHand" index="4"]
+visible = false
+
+[node name="smartwatch" parent="XROrigin3D/RightHand" index="4"]
+visible = false
 
 [node name="Room" type="Node3D" parent="." index="2"]
 
@@ -1558,7 +1634,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.635
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.818642, -3.43434)
 
 [node name="Bedside" parent="Furniture" index="26" instance=ExtResource("60_x3n76")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2078, 0.558045, -5.39464)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.207894, 0.558045, -5.3934402)
 
 [node name="Mug" type="RigidBody3D" parent="Furniture" index="27"]
 transform = Transform3D(-0.333807, 0, -0.942641, 0, 1, 0, 0.942641, 0, -0.333807, 2.98016, 0.954473, 4.25309)
@@ -1826,6 +1902,31 @@ transform = Transform3D(-0.6652302, 0, 0.74663824, 0, 1, 0, -0.74663824, 0, -0.6
 [node name="plushie" parent="." index="34" instance=ExtResource("99_wap5h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.466319, 0.9290179, -6.7911777)
 
+[node name="WatchCharger" parent="." index="36" instance=ExtResource("100_vqks3")]
+transform = Transform3D(0.99997455, 0, -0.007138336, 0, 1, 0, 0.007138336, 0, 0.99997455, -10.317232, 1.0816197, -5.40543)
+
+[node name="single" type="MeshInstance3D" parent="WatchCharger" index="2"]
+transform = Transform3D(-0.41731563, -0.15270996, 5.978663, -20.970293, -0.1496972, -0.11928795, 0.15270983, -20.97393, -0.042678878, -0.53433037, 2.3416502, -0.050169468)
+mesh = SubResource("ArrayMesh_qvqbi")
+skeleton = NodePath("")
+
+[node name="text" type="MeshInstance3D" parent="WatchCharger" index="3"]
+transform = Transform3D(0.05894052, 0, 0.9982621, 0, 1, 0, -0.9982621, 0, 0.05894052, -0.6351385, 0.82584786, -0.043531895)
+mesh = SubResource("TextMesh_m1x7a")
+
+[node name="text2" type="MeshInstance3D" parent="WatchCharger" index="4"]
+transform = Transform3D(0.058940515, 0, 0.9982627, 0, 1, 0, -0.9982627, 0, 0.058940515, -0.60873127, 0.9133091, -0.02902031)
+mesh = SubResource("BoxMesh_1xocd")
+
+[node name="smartwatch" parent="." index="37" instance=ExtResource("101_n7ona")]
+transform = Transform3D(-0.016039804, -0.00027962742, 0.09363572, 0.09361882, 0.0017787013, 0.016042218, -0.0018003767, 0.094982944, -2.4753905e-05, -10.257919, 1.1537584, -5.3973603)
+
+[node name="WearWatchButton" parent="." index="38" instance=ExtResource("102_orb8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.122431, 1.0891525, -5.196181)
+
+[node name="WearWatchButton2" parent="." index="39" instance=ExtResource("103_orb8n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.122282, 1.0927228, -5.6167946)
+
 [connection signal="failed_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_fail"]
 [connection signal="success_qte" from="WakingUpPlayer/QTE" to="." method="on_qte_success"]
 [connection signal="body_entered" from="bfast" to="." method="_on_bfast_body_entered"]
@@ -1835,3 +1936,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.466319, 0.9290179, -6.7911
 [connection signal="event_ended" from="make_bfast" to="." method="_on_make_bfast_event_ended"]
 [connection signal="event_started" from="make_bfast" to="." method="_on_make_bfast_event_started"]
 [connection signal="event_started" from="goodnight" to="." method="_on_goodnight_event_started"]
+[connection signal="left_button_pressed" from="WearWatchButton" to="." method="_on_wear_watch_button_left_button_pressed"]
+[connection signal="right_button_pressed" from="WearWatchButton2" to="." method="_on_wear_watch_button_2_right_button_pressed"]

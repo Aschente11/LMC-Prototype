@@ -77,6 +77,11 @@ func _on_dirt_touched_water(area: Area3D, dirt_mesh: MeshInstance3D) -> void:
 			GlobalVar.decrease_physical()
 			GlobalVar.decrease_emotional()
 			GlobalVar.decrease_physical()
+			
+			for i in range(TaskManager.active_tasks.size()):
+				if TaskManager.active_tasks[i].text == "Wash dishes.":
+					TaskManager.complete_task(i)
+					break  # Exit after finding and completing the task
 
 func _on_ois_strike_receiver_action_started(requirement: Variant, total_progress: Variant) -> void:
 	if stove2_is_open:

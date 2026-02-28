@@ -1,4 +1,4 @@
-[gd_scene load_steps=191 format=4 uid="uid://d2cws8wqloxvv"]
+[gd_scene load_steps=198 format=4 uid="uid://d2cws8wqloxvv"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_ytp03"]
 [ext_resource type="Script" uid="uid://bxovi75ncq4m0" path="res://scripts/lmc_day_two.gd" id="2_7ehl3"]
@@ -50,7 +50,6 @@
 [ext_resource type="PackedScene" uid="uid://cmor22wqca33f" path="res://scenes/Furniture/mirror.tscn" id="54_kekx5"]
 [ext_resource type="PackedScene" uid="uid://b7f6r4xgugck2" path="res://scenes/Furniture/sofa_b.tscn" id="55_r1ejn"]
 [ext_resource type="PackedScene" uid="uid://7gggc2q1txg1" path="res://scenes/Furniture/table_d.tscn" id="56_q0s7t"]
-[ext_resource type="PackedScene" uid="uid://u7dt2n2oudx4" path="res://scenes/Furniture/shelf_a.tscn" id="57_o6b0y"]
 [ext_resource type="PackedScene" uid="uid://dgntcenmdo8mk" path="res://scenes/Furniture/desk.tscn" id="58_gah4b"]
 [ext_resource type="PackedScene" uid="uid://efhycwudhik2" path="res://scenes/Furniture/Bedroom/drawer.tscn" id="59_1mqqc"]
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="60_4t8md"]
@@ -88,6 +87,8 @@
 [ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="93_ytp03"]
 [ext_resource type="PackedScene" uid="uid://ctfj38t4j8qmq" path="res://scenes/distractions/dust.tscn" id="94_f4gto"]
 [ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="95_7ehl3"]
+[ext_resource type="PackedScene" uid="uid://df3jsoduesb2s" path="res://scenes/tools/dartsBoard.tscn" id="95_fthp8"]
+[ext_resource type="PackedScene" uid="uid://dwppmd2yow0xp" path="res://scenes/tools/bacon.tscn" id="96_f4gto"]
 [ext_resource type="AudioStream" uid="uid://c0iiqckjmpc2m" path="res://assets/sfx/events/dia_what am i supposed to do know (mp3cut.net).wav" id="98_lt8kf"]
 [ext_resource type="PackedScene" uid="uid://ce3qfpprxpxtt" path="res://scenes/Furniture/plant_a.tscn" id="99_akddc"]
 [ext_resource type="AudioStream" uid="uid://c03fii0dtgt61" path="res://assets/sfx/events/dia_finish these (mp3cut.net).wav" id="99_sv5xx"]
@@ -706,6 +707,26 @@ top_radius = 0.8
 bottom_radius = 0.8
 height = 5.0
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4gto"]
+albedo_color = Color(0.33411407, 0.064544134, 9.62615e-08, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ehl3"]
+material = SubResource("StandardMaterial3D_f4gto")
+size = Vector3(2.45, 1, 7.61)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8e2vh"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lt8kf"]
+material = SubResource("StandardMaterial3D_8e2vh")
+size = Vector3(2.45, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv5xx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2lccd"]
+material = SubResource("StandardMaterial3D_sv5xx")
+size = Vector3(2.45, 1, 0.05)
+
 [node name="day_two" instance=ExtResource("1_ytp03")]
 script = ExtResource("2_7ehl3")
 
@@ -1178,16 +1199,13 @@ transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.6381, 0.
 [node name="Table D" parent="Furniture" index="23" instance=ExtResource("56_q0s7t")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.32087, 0.414405, 4.98802)
 
-[node name="Shelf A" parent="Furniture" index="24" instance=ExtResource("57_o6b0y")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.63536, 1.58958, 9.54904)
-
-[node name="Desk" parent="Furniture" index="25" instance=ExtResource("58_gah4b")]
+[node name="Desk" parent="Furniture" index="24" instance=ExtResource("58_gah4b")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.23265, 0.818642, -3.43434)
 
-[node name="Bedside" parent="Furniture" index="26" instance=ExtResource("59_1mqqc")]
+[node name="Bedside" parent="Furniture" index="25" instance=ExtResource("59_1mqqc")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -10.2078, 0.558045, -5.39464)
 
-[node name="Mug" type="RigidBody3D" parent="Furniture" index="27"]
+[node name="Mug" type="RigidBody3D" parent="Furniture" index="26"]
 transform = Transform3D(-0.333807, 0, -0.942641, 0, 1, 0, 0.942641, 0, -0.333807, 2.98016, 0.954473, 4.25309)
 collision_layer = 4
 collision_mask = 196615
@@ -1218,7 +1236,7 @@ hand_pose = SubResource("Resource_4i3ye")
 [node name="HighlightRing" parent="Furniture/Mug" index="4" instance=ExtResource("64_6txqk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10346, 0, 0.0366368)
 
-[node name="InventorySlot" type="Node3D" parent="Furniture" index="28"]
+[node name="InventorySlot" type="Node3D" parent="Furniture" index="27"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.01726, 0.9622, 5.05066)
 script = ExtResource("65_awcsq")
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
@@ -1230,26 +1248,26 @@ grab_distance = 0.2
 mesh = SubResource("SphereMesh_j2smf")
 surface_material_override/0 = ExtResource("67_4ulln")
 
-[node name="Pan" parent="Furniture" index="29" instance=ExtResource("68_hgyv4")]
+[node name="Pan" parent="Furniture" index="28" instance=ExtResource("68_hgyv4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.344565, 1.4185477, 5.6780496)
 
-[node name="Pan2" parent="Furniture" index="30" instance=ExtResource("69_pkm0k")]
+[node name="Pan2" parent="Furniture" index="29" instance=ExtResource("69_pkm0k")]
 transform = Transform3D(-0.99863, 0, 0.0523361, 0, 1, 0, -0.0523361, 0, -0.99863, -9.60572, 0.221448, 9.39875)
 visible = false
 
-[node name="Kitchen Roll" type="Node3D" parent="Furniture" index="31"]
+[node name="Kitchen Roll" type="Node3D" parent="Furniture" index="30"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.36625, 1.5554, 7.28742)
 
 [node name="Kitchen Roll2" parent="Furniture/Kitchen Roll" index="0" instance=ExtResource("70_xkxlb")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.240867, 0, 2.08217)
 
-[node name="WashingMachine" parent="Furniture" index="32" instance=ExtResource("71_5poap")]
+[node name="WashingMachine" parent="Furniture" index="31" instance=ExtResource("71_5poap")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -4.9289, 1.15492, 0.798197)
 
-[node name="clock" parent="Furniture" index="33" instance=ExtResource("72_bv3bx")]
+[node name="clock" parent="Furniture" index="32" instance=ExtResource("72_bv3bx")]
 transform = Transform3D(-1.31134e-07, 0, -3, 0, 3, 0, 3, 0, -1.31134e-07, 3.98311, 3.41081, -4.2574)
 
-[node name="TvSet" parent="Furniture" index="34" instance=ExtResource("73_wq33g")]
+[node name="TvSet" parent="Furniture" index="33" instance=ExtResource("73_wq33g")]
 transform = Transform3D(0.00287981, 0, 0.999996, 0, 1, 0, -0.999996, 0, 0.00287981, -0.81102, 0.573663, -7.64914)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
@@ -1503,6 +1521,24 @@ stream = ExtResource("98_lt8kf")
 
 [node name="Event 2" type="AudioStreamPlayer" parent="." index="36"]
 stream = ExtResource("99_sv5xx")
+
+[node name="Darts" parent="." index="38" instance=ExtResource("95_fthp8")]
+transform = Transform3D(-0.99965185, 0, -0.02638621, 0, 1, 0, 0.02638621, 0, -0.99965185, -2.5660746, 2.374887, 10.069397)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Darts" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08039069, -2.7954416, 3.0456176)
+mesh = SubResource("BoxMesh_7ehl3")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Darts" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07694006, -2.7902946, 6.3645806)
+mesh = SubResource("BoxMesh_lt8kf")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Darts" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.076028585, -2.7902946, 5.8550253)
+mesh = SubResource("BoxMesh_2lccd")
+
+[node name="Bacon" parent="." index="39" instance=ExtResource("96_f4gto")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.022994, 1.3222951, 9.486444)
 
 [connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]
 [connection signal="event_started" from="day start (day 2)" to="." method="_on_day_start_event_started"]

@@ -103,6 +103,14 @@ func finish_eating(food: Node):
 	eating_foods.erase(food)
 	eaten_foods.append(food)
 	
+	var is_pancake = food.is_in_group("cooked_pancake")
+	
+	if is_pancake:
+		for i in range(TaskManager.active_tasks.size()):
+			if TaskManager.active_tasks[i].text == "Make and \n eat pancakes.":
+				TaskManager.complete_task(i)
+				break
+	
 	GlobalVar.add_food_eaten()
 	
 	particles.emitting = false

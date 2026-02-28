@@ -70,6 +70,8 @@ func _ready() -> void:
 	call_deferred("check_initial_state")
 	# Check initial stimulation level and start spawning if needed
 	
+	TaskManager.tasks_completed.connect(_on_task_completed)
+	
 func setup_distraction_sounds() -> void:
 	for sound in $Audio/Distractions.get_children():
 		distraction_sounds.append(sound)
@@ -167,8 +169,8 @@ func _on_stimulation_changed(old_value: int, new_value: int) -> void:
 				if sound.playing:
 					sound.stop()
 
-	if new_value == 5:
-		disable_teleport()
+	#if new_value == 5:
+		#disable_teleport()
 
 	var timer = Timer.new()
 	add_child(timer)
@@ -192,6 +194,7 @@ func stop_text_spawning() -> void:
 	text_spawn_timer.stop()
 	overthinking_text_count = 0
 	available_positions.clear()
+	cleanup_all_text_instances()
 
 func _on_text_spawn_timer_timeout() -> void:
 	if is_spawning_texts:
@@ -399,8 +402,7 @@ func clear_all_overthinking_texts() -> void:
 
 func game_over() -> void:
 	is_game_over = true
-	$LeftHand/FunctionTeleport.enabled = false
-	$RightHand/FunctionTeleport.enabled = false
+	disable_teleport()
 	$XRCamera3D/Cloudy.visible = true
 	$"XRCamera3D/LOST IN THOUGHTS".visible = true
 
@@ -461,9 +463,12 @@ func _left_on_button_pressed(button_name: String):
 					
 func _right_on_button_pressed(button_name: String):
 	if is_game_over and button_name == "ax_button":
-		new_day()
 		var root_scene = get_tree().current_scene
-		root_scene.load_scene("res://scenes/lmc_day_end.tscn", "day_end")
+		if root_scene.has_method("load_scene"):
+			root_scene.load_scene("res://scenes/lmc_title.tscn", "title")
+		else:
+			# Fallback to standard scene change
+			get_tree().change_scene_to_file("res://scenes/lmc_title.tscn")
 		
 	#if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
 		#self.current = true
@@ -518,3 +523,10 @@ func _on_plushie_released(pickable, by):
 func disable_teleport():
 	$LeftHand/FunctionTeleport.enabled = false
 	$RightHand/FunctionTeleport.enabled = false
+
+func _on_task_completed(_total_completed: int):
+	$XRCamera3D/Confetti.emitting = true
+	$Audio/TaskComplete_sfx.play()
+	$"../taskCompleteLabel".visible = true
+	await get_tree().create_timer(2.0).timeout
+	$"../taskCompleteLabel".visible = false

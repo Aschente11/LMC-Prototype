@@ -1,0 +1,113 @@
+[gd_scene load_steps=15 format=3 uid="uid://b4jvtawq6mux5"]
+
+[ext_resource type="Script" uid="uid://b4to7j0qjm3y6" path="res://scenes/UI/wear_watch_button_right.gd" id="1_k1djl"]
+[ext_resource type="FontFile" uid="uid://n5cd37mmqxvl" path="res://assets/others/fonts/LuckiestGuy-Regular.ttf" id="2_b0vxv"]
+[ext_resource type="AudioStream" uid="uid://ocy5fs2ccx15" path="res://assets/sfx/button.mp3" id="3_5km5e"]
+[ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="4_r2kqe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j3abc"]
+size = Vector3(0.2472229, 0.044311523, 0.50097656)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qw2m"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_j3abc"]
+material = SubResource("StandardMaterial3D_3qw2m")
+left_to_right = 0.0
+size = Vector3(0.25, 0.1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3abc"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3qw2m"]
+material = SubResource("StandardMaterial3D_j3abc")
+size = Vector3(0.03, 0.15, 0.36)
+
+[sub_resource type="TextMesh" id="TextMesh_ua2xu"]
+text = "EQUIP RIGHT"
+font = ExtResource("2_b0vxv")
+
+[sub_resource type="Animation" id="Animation_3qw2m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0039354786, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j3abc"]
+resource_name = "press"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0039354786, 0), Vector3(0, -0.01420816, 0), Vector3(0, 0.0039354786, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ua2xu"]
+_data = {
+&"RESET": SubResource("Animation_3qw2m"),
+&"press": SubResource("Animation_j3abc")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vghaf"]
+size = Vector3(0.08569336, 0.021484375, 0.19921875)
+
+[node name="WearWatchButton" type="StaticBody3D"]
+script = ExtResource("1_k1djl")
+
+[node name="buttonCol" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.445, 5.9604645e-08, 0, -5.9604645e-08, 0.445, 0, 0, 0, 0.44499996, -0.0020790969, -0.011827027, 0)
+shape = SubResource("BoxShape3D_j3abc")
+
+[node name="base" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.445, 0, 0, 0, 0.445, 0, 0, 0, 0.445, 0, 0, 0)
+mesh = SubResource("PrismMesh_j3abc")
+
+[node name="button" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.16866393, -0.41179785, 0, 0.41179785, 0.16866393, 0, 0, 0, 0.445, 0, 0.0039354786, 0)
+mesh = SubResource("BoxMesh_3qw2m")
+
+[node name="text" type="MeshInstance3D" parent="button"]
+transform = Transform3D(0.0032542027, 0.010564633, 0.35983026, 0.002600423, 0.3598349, -0.010588273, -0.3599758, 0.0026949095, 0.0031763967, 0.013353039, -0.0044590533, 0)
+mesh = SubResource("TextMesh_ua2xu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ua2xu")
+}
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_5km5e")
+
+[node name="OISStrikeReceiver" type="Node3D" parent="."]
+script = ExtResource("4_r2kqe")
+group = "hand"
+metadata/_custom_type_script = "uid://cci3xkvnplit7"
+
+[node name="Area3D" type="Area3D" parent="OISStrikeReceiver"]
+collision_layer = 536870912
+collision_mask = 536870912
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver/Area3D"]
+transform = Transform3D(0.92696136, 0.37515673, 0, -0.37515673, 0.92696136, 0, 0, 0, 1, -0.002100153, 0.009943046, 0.0014560819)
+shape = SubResource("BoxShape3D_vghaf")
+
+[connection signal="action_completed" from="OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_completed"]
+[connection signal="action_ended" from="OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_ended"]
+[connection signal="action_in_progress" from="OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_in_progress"]
+[connection signal="action_started" from="OISStrikeReceiver" to="." method="_on_ois_strike_receiver_action_started"]

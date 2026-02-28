@@ -4,7 +4,7 @@ extends Node3D
 @export var show_priority_indicators: bool = true
 
 var all_tasks: Array[Array] = [[], [], []]
-@export var max_active_tasks: Array[int] = [2, 3, 3]
+@export var max_active_tasks: Array[int] = [2, 7, 3]
 var current_day: int = 0
 var completed_tasks: int = 0
 var total_completed_tasks: int = 0
@@ -30,40 +30,53 @@ func initialize_task_pool():
 	all_tasks[0].append(Task.new("Read journal.", Task.Priority.LOW))
 	all_tasks[0].append(Task.new("Eat apple \n slices.", Task.Priority.MEDIUM))
 	
-	#all_tasks[1].append(Task.new("Make and \n eat pancakes.", Task.Priority.HIGH))
+	all_tasks[1].append(Task.new("Make and \n eat pancakes.", Task.Priority.HIGH))
 	#all_tasks[1].append(Task.new("Make and \n eat a ham \n sandwich.", Task.Priority.MEDIUM))
 	#all_tasks[1].append(Task.new("Make and \n eat a peanut \n butter sandwich.", Task.Priority.MEDIUM))
 	all_tasks[1].append(Task.new("Eat apple \n slices.", Task.Priority.MEDIUM))
 	all_tasks[1].append(Task.new("Eat bread \n slices.", Task.Priority.LOW))
 	all_tasks[1].append(Task.new("Continue \n writing \n essay.", Task.Priority.HIGH))
-	all_tasks[1].append(Task.new("Practice \n painting", Task.Priority.HIGH))
+	all_tasks[1].append(Task.new("Practice \n painting.", Task.Priority.HIGH))
 	#all_tasks[1].append(Task.new("Reread Art \n notes.", Task.Priority.LOW))
 	all_tasks[1].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.MEDIUM))
 	all_tasks[1].append(Task.new("Wash dishes.", Task.Priority.MEDIUM))
 	
 	#all_tasks[2].append(Task.new("Do laundry.", Task.Priority.MEDIUM))
 	#all_tasks[2].append(Task.new("Organize \n clothes.", Task.Priority.MEDIUM))
-	all_tasks[2].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.MEDIUM))
+	#all_tasks[2].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.MEDIUM))
 	#all_tasks[2].append(Task.new("Clean the \n bathroom.", Task.Priority.LOW))
 
 func generate_new_tasks():
 	var available_tasks = all_tasks[current_day].duplicate()
 	
 	for i in range(min(max_active_tasks[current_day], available_tasks.size())):
+		if available_tasks.is_empty():
+			break
+			
 		var selected_task: Task
 		
 		if prioritize_high_priority:
-			selected_task =  select_weighted_random_task(available_tasks)
+			selected_task = select_weighted_random_task(available_tasks)
 		else:
 			var random_index = randi() % available_tasks.size()
 			selected_task = available_tasks[random_index]
-		
+			
+		var is_duplicate = false
+		for active_task in active_tasks:
+			if active_task.text == selected_task.text:
+				is_duplicate = true
+				break
 
-		active_tasks.append(selected_task)
-		
+		if not is_duplicate:
+			active_tasks.append(selected_task)
+
 		available_tasks.erase(selected_task)
-		active_tasks.sort_custom(compare_task_priority)
-		
+	
+	active_tasks.sort_custom(compare_task_priority)
+
+	print("Generated tasks for day ", current_day, ":")
+	for task in active_tasks:
+		print("  - ", task.text)
 
 
 func select_weighted_random_task(available_tasks: Array) -> Task:
@@ -175,14 +188,20 @@ func toggle_priority_weighting():
 
 # Called by a Post-it when it wants to get something to write
 func request_task() -> String:
-	if current_task_index >= active_tasks.size():
-		return ""  # no more tasks
-	# Only give text if it's not already being written on
-	if not current_task_assigned:
-		current_task_assigned = true
-		return active_tasks[current_task_index].text
-	else:
-		return ""  # someone is still writing this one
+
+	while current_task_index < active_tasks.size():
+		# If current task is already done, move to next
+		if active_tasks[current_task_index].priority == Task.Priority.DONE:
+			current_task_index += 1
+			continue
+		# Found an incomplete task
+		if not current_task_assigned:
+			current_task_assigned = true
+			return active_tasks[current_task_index].text
+		else:
+			return ""  # someone is still writing this one
+	
+	return ""  # no more tasks
 		
 # Called when a Post-it is finished being written
 func mark_current_done():

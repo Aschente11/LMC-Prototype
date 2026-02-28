@@ -25,7 +25,6 @@ signal food_eaten(total_count: int)
 signal eating_milestone(milestone: int)
 signal cleaning_milestone(milestone: int)
 
-
 var _update_pending = false
 
 func default_state():
@@ -57,14 +56,13 @@ func default_state():
 		else:
 			emotional_increase.emit(old_emo, emotional)
 
-	
 func update_stimulation():
 	_update_pending = false
 	var old_val = stimulation
 	var new_val = stimulation
 	
 	# If both are at 3, regulate stimulation back to normal
-	if physical == 3.0 and emotional == 3.0:
+	if physical >= 3.0 and emotional >= 3.0:
 		new_val = NORMAL_STIMULATION
 	# If both physical and emotional are below 3, stimulation minus 1
 	elif physical < 3.0 and emotional < 3.0:
@@ -77,7 +75,7 @@ func update_stimulation():
 		new_val = stimulation - 1
 	
 	# Clamp stimulation to valid range [1, 5]
-	new_val = clamp(new_val, 1, 5)
+	new_val = clamp(new_val, MIN_STIMULATION, MAX_STIMULATION)
 	
 	# Only update and emit if value actually changed
 	if new_val != old_val:
@@ -95,7 +93,6 @@ func _schedule_update():
 func regulate_stimulation():
 	var old_val = stimulation
 	stimulation = NORMAL_STIMULATION
-	# Emit appropriate signal based on whether it increased or decreased
 	if old_val > stimulation:
 		stimulation_decrease.emit(old_val, stimulation)
 	elif old_val < stimulation:
@@ -104,43 +101,53 @@ func regulate_stimulation():
 func increase_physical():
 	var old_val = physical
 	physical += 1
-	if physical == MAX_PHYSICAL:
-		physical = 5
-	physical_increase.emit(old_val, physical)
-	_schedule_update()
+	# FIXED: Properly clamp instead of just setting to MAX
+	physical = clamp(physical, MIN_PHYSICAL, MAX_PHYSICAL)
+	
+	# Only emit if actually changed
+	if old_val != physical:
+		physical_increase.emit(old_val, physical)
+		_schedule_update()
 	
 func decrease_physical():
 	var old_val = physical
 	physical -= 1
-	if physical == MIN_PHYSICAL:
-		physical = 1
-	physical_decrease.emit(old_val, physical)
-	_schedule_update()
+	# FIXED: Properly clamp instead of just setting to MIN
+	physical = clamp(physical, MIN_PHYSICAL, MAX_PHYSICAL)
+	
+	# Only emit if actually changed
+	if old_val != physical:
+		physical_decrease.emit(old_val, physical)
+		_schedule_update()
 	
 func increase_emotional():
 	var old_val = emotional
 	emotional += 1
-	if emotional == MAX_EMOTIONAL:
-		emotional = 5
-	emotional_increase.emit(old_val, emotional)
-	_schedule_update()
+	# FIXED: Properly clamp instead of just setting to MAX
+	emotional = clamp(emotional, MIN_EMOTIONAL, MAX_EMOTIONAL)
+	
+	# Only emit if actually changed
+	if old_val != emotional:
+		emotional_increase.emit(old_val, emotional)
+		_schedule_update()
 	
 func decrease_emotional():
 	var old_val = emotional
 	emotional -= 1
-	if emotional == MIN_EMOTIONAL:
-		emotional = 1
-	emotional_decrease.emit(old_val, emotional)
-	_schedule_update()
+	# FIXED: Properly clamp instead of just setting to MIN
+	emotional = clamp(emotional, MIN_EMOTIONAL, MAX_EMOTIONAL)
+	
+	# Only emit if actually changed
+	if old_val != emotional:
+		emotional_decrease.emit(old_val, emotional)
+		_schedule_update()
 	
 func add_food_eaten():
 	foods_eaten_count += 1
 	food_eaten.emit(foods_eaten_count)
 	
-	# Check for milestones
-	if foods_eaten_count % 4 == 0:
+	if foods_eaten_count % 3 == 0:
 		eating_milestone.emit(foods_eaten_count)
-		# Increase physical and emotional by 1 every 4 foods
 		increase_physical()
 		increase_emotional()
 
@@ -149,25 +156,23 @@ func add_food_eaten():
 			make_bfast.close_event()
 			print("make_bfast event closed")
 		
-		# Complete the eating task
 		for i in range(TaskManager.active_tasks.size()):
 			if TaskManager.active_tasks[i].text == "Eat apple \n slices.":
 				TaskManager.complete_task(i)
-				break  # Exit after finding and completing the task
+				break
 
 func add_dust_cleaned():
 	dust_cleaned_count += 1
 	
 	if dust_cleaned_count == 20:
 		cleaning_milestone.emit(dust_cleaned_count)
-		decrease_emotional()
-		decrease_emotional()
-		decrease_emotional()
-		decrease_physical()
-		decrease_physical()
+		# Call decrease multiple times
+		for i in range(3):
+			decrease_emotional()
+		for i in range(2):
+			decrease_physical()
 		
 		for i in range(TaskManager.active_tasks.size()):
 			if TaskManager.active_tasks[i].text == "Vacuum \n the entire \n house.":
 				TaskManager.complete_task(i)
-				break  # Exit after finding and completing the task
-		
+				break

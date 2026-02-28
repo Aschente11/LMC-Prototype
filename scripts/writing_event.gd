@@ -8,7 +8,7 @@ func current_object_in_slot(_object: Variant, _row: Variant, _col: Variant) -> v
 	check_all_slots_filled()
 
 func check_all_slots_filled() -> void:
-	if notes_complete == 3:
+	if notes_complete == 5:
 		#GlobalVar.regulate_stimulation()
 		GlobalVar.increase_physical()
 		GlobalVar.increase_physical()

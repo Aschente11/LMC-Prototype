@@ -419,7 +419,7 @@ transform = Transform3D(1, 0, 0, 0, 0.935197, -0.354128, 0, 0.354128, 0.935197, 
 mesh = SubResource("TextMesh_2yome")
 
 [node name="Pan" type="MeshInstance3D" parent="." index="11"]
-transform = Transform3D(1000, 0, 0, 0, 547.534, 836.784, 0, -836.784, 547.534, 0, 50.607, -15.9382)
+transform = Transform3D(1000, 0, 0, 0, 547.5342, 836.7838, 0, -836.7838, 547.5342, 0, 50.607, -15.9382)
 mesh = SubResource("ArrayMesh_vjw6q")
 skeleton = NodePath("")
 

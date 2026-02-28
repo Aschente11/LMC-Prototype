@@ -60,7 +60,7 @@ func _on_painting_fully_revealed():
 	GlobalVar.decrease_emotional()
 	
 	for i in range(TaskManager.active_tasks.size()):
-		if TaskManager.active_tasks[i].text == "Practice \n painting":
+		if TaskManager.active_tasks[i].text == "Practice \n painting.":
 			TaskManager.complete_task(i)
 			break  # Exit after finding and completing the task
 

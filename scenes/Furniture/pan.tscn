@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://53x8obp0rqj7"]
+[gd_scene load_steps=26 format=4 uid="uid://53x8obp0rqj7"]
 
 [ext_resource type="Script" uid="uid://nw5bkalub6hq" path="res://scripts/pan.gd" id="1_a2oc4"]
 [ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="2_8fo57"]
@@ -8,8 +8,11 @@
 [ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="8_qeikm"]
 [ext_resource type="PackedScene" uid="uid://41hkahd7ukbc" path="res://scenes/others/pancake/half_pancake.tscn" id="9_tped5"]
 [ext_resource type="PackedScene" uid="uid://cxj7cnxc1iul0" path="res://scenes/others/pancake/cooked_pancake.tscn" id="10_q3ogx"]
+[ext_resource type="Script" uid="uid://d2j64x8gnsuue" path="res://addons/ateneo-virtual-reality-escape/inventory-system/inventory_slot.gd" id="11_7rs2t"]
 [ext_resource type="AudioStream" uid="uid://3eqb3v1masm3" path="res://assets/sfx/frying.mp3" id="11_l3kk0"]
+[ext_resource type="PackedScene" uid="uid://ce7vysyvondf8" path="res://addons/godot-xr-tools/objects/snap_zone.tscn" id="12_a2oc4"]
 [ext_resource type="PackedScene" uid="uid://chwp0wbp3tp31" path="res://scenes/others/pancake/raw_pancake.tscn" id="13_a2oc4"]
+[ext_resource type="Material" uid="uid://dy43ogh4jhnpk" path="res://addons/ateneo-virtual-reality-escape/inventory-system/misc-resources/inventory_slot_shader_a.tres" id="13_gtkug"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pug7l"]
 resource_name = "Grey 2"
@@ -135,7 +138,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_5jip1"]
 resource_name = "cooking_pancake"
-length = 5.0
+length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -143,7 +146,7 @@ tracks/0/path = NodePath("PancakeRaw:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.36667, 4.93333),
+"times": PackedFloat32Array(0, 5.233333, 9.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, false]
@@ -155,7 +158,7 @@ tracks/1/path = NodePath("PancakeRaw2:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.36667, 4.93333),
+"times": PackedFloat32Array(0, 5.233333, 9.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -167,7 +170,7 @@ tracks/2/path = NodePath("PancakeRaw3:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.38667, 4.93333),
+"times": PackedFloat32Array(0, 5.253333, 9.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, false, true]
@@ -183,6 +186,10 @@ _data = {
 &"cooking_pancake": SubResource("Animation_5jip1"),
 &"pancake_flip": SubResource("Animation_a2oc4")
 }
+
+[sub_resource type="SphereMesh" id="SphereMesh_5jip1"]
+radius = 0.2
+height = 0.4
 
 [node name="Pan" type="RigidBody3D"]
 collision_layer = 4
@@ -216,10 +223,6 @@ hand = 1
 hand_pose = SubResource("Resource_7rs2t")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
-[node name="PancakeRaw" parent="." instance=ExtResource("13_a2oc4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00426726, -0.0631048, 0.00168525)
-visible = false
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_5jip1")
@@ -228,10 +231,28 @@ libraries = {
 [node name="Frying" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("11_l3kk0")
 
+[node name="PancakeRaw" parent="." instance=ExtResource("13_a2oc4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00426726, -0.0631048, 0.00168525)
+visible = false
+
 [node name="PancakeRaw2" parent="." instance=ExtResource("9_tped5")]
-transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, -0.00296204, -0.061657, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 1.509958e-07, 0, -1.509958e-07, -1, -0.00296204, -0.061657, 0)
 visible = false
 
 [node name="PancakeRaw3" parent="." instance=ExtResource("10_q3ogx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0699557, 0)
 visible = false
+
+[node name="InventorySlot" type="Node3D" parent="." node_paths=PackedStringArray("default_object")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.044028327, 0)
+script = ExtResource("11_7rs2t")
+default_object = NodePath("../PancakeRaw3")
+metadata/_custom_type_script = "uid://d2j64x8gnsuue"
+
+[node name="SnapZone" parent="InventorySlot" instance=ExtResource("12_a2oc4")]
+grab_distance = 0.2
+initial_object = NodePath("../../PancakeRaw3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="InventorySlot"]
+mesh = SubResource("SphereMesh_5jip1")
+surface_material_override/0 = ExtResource("13_gtkug")

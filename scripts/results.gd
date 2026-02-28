@@ -1,7 +1,7 @@
 extends Control
 
 var random_text: Array[String] = ["Do androids dream of electric sheep?", "Lorem ipsum dolor sit...",
-	"I have no mouth and I must scream", "What is life even about", "Jinkies!", "6 7 to jog"]
+	"I have no mouth and I must scream", "WhAt is liFe even aBOut", "Jinkies!", "6 7 to jog"]
 
 func update(day: int, tasksCompleted: int, tasksNumber: int):
 	$CenterContainer/VBoxContainer/HBoxContainer2/TitleLabel.text = "Day " + str(day)

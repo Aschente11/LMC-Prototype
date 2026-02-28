@@ -1449,7 +1449,7 @@ visible = true
 hand_pose = SubResource("Resource_hfx27")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="9"]
-transform = Transform3D(-1, 2.53518e-06, 0, -2.53518e-06, -1, 0, 0, 0, 1, 0.075, 0.029, 0)
+transform = Transform3D(-1, 2.5351817e-06, 0, -2.5351817e-06, -1, 0, 0, 0, 1, 0.075, 0.029, 0)
 transparency = 1.0
 mesh = SubResource("PlaneMesh_lkfbl")
 skeleton = NodePath("../MeshInstance3D")

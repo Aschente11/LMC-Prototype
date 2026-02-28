@@ -1,4 +1,4 @@
-[gd_scene load_steps=188 format=4 uid="uid://ceb5d1u06f62h"]
+[gd_scene load_steps=189 format=4 uid="uid://ceb5d1u06f62h"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_qq1xt"]
 [ext_resource type="Script" uid="uid://vayvtkrjc5q6" path="res://scripts/lmc_day_three.gd" id="2_qq1xt"]
@@ -92,6 +92,7 @@
 [ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard_day2.tscn" id="90_eghph"]
 [ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="91_n7do0"]
 [ext_resource type="Shader" uid="uid://dvgadwfd5py8" path="res://shaders/aoe.gdshader" id="92_igqgg"]
+[ext_resource type="PackedScene" uid="uid://dwppmd2yow0xp" path="res://scenes/tools/bacon.tscn" id="93_2mdrx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bim0"]
 size = Vector3(15.7303, 0.316757, 20.6996)
@@ -1270,7 +1271,7 @@ libraries = {
 transform = Transform3D(-0.0175222, 0.999846, 0, -0.999846, -0.0175222, 0, 0, 0, 1, -5.83114, 1.37749, 5.74378)
 
 [node name="toaster" parent="." index="6" instance=ExtResource("69_urykk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70481, 1.36149, 7.3661)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70481, 1.3427618, 7.3661)
 
 [node name="bread2" parent="." index="7" instance=ExtResource("70_2aqvo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.75705, 1.36271, 6.80867)
@@ -1477,5 +1478,8 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.70848, 2.48459, 6.22796)
 mesh = SubResource("CylinderMesh_fthp8")
 skeleton = NodePath("../..")
+
+[node name="Bacon" parent="." index="33" instance=ExtResource("93_2mdrx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.749953, 1.3312281, 7.7910705)
 
 [connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]

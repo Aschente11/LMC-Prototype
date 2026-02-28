@@ -5,6 +5,11 @@ var xr_interface: XRInterface
 var anim_player
 @onready var xr_player = $XROrigin3D
 
+enum Hand { LEFT, RIGHT }
+@onready var left_watch = $XROrigin3D/LeftHand/smartwatch
+@onready var right_watch = $XROrigin3D/RightHand/smartwatch
+@onready var watch_display = $smartwatch
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	xr_interface = XRServer.find_interface("OpenXR")
@@ -139,3 +144,17 @@ func _on_goodnight_event_started() -> void:
 	await get_tree().create_timer(3.5).timeout
 	$sleep.monitoring = true
 	$sleep.monitorable = true
+
+
+func equip_watch(hand: Hand) -> void:
+	watch_display.visible = false
+	left_watch.visible = hand == Hand.LEFT
+	right_watch.visible = hand == Hand.RIGHT
+
+
+func _on_wear_watch_button_left_button_pressed() -> void:
+	equip_watch(Hand.LEFT)
+
+
+func _on_wear_watch_button_2_right_button_pressed() -> void:
+	equip_watch(Hand.RIGHT)

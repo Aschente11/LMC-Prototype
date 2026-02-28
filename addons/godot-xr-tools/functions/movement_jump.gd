@@ -45,6 +45,7 @@ func physics_movement(_delta: float, player_body: XRToolsPlayerBody, _disabled: 
 		
 		if jump_count >= 5:
 			GlobalVar.increase_physical()
+			GlobalVar.increase_emotional()
 			jump_count = 0  # Reset count after increasing physical
 
 # This method verifies the movement provider has a valid configuration.

@@ -453,7 +453,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
 shape = SubResource("SphereShape3D_c4ehr")
 
 [node name="plate" parent="." instance=ExtResource("11_thf8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20797, 0.33905, -0.312311)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3292716, 0.33905, -0.40568024)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="plate"]
 transform = Transform3D(0.695, 0, 0, 0, 0.695, 0, 0, 0, 0.695, -0.0350102, 0.00440797, -0.0255822)
@@ -504,7 +504,7 @@ mesh = SubResource("CylinderMesh_nj2ia")
 skeleton = NodePath("../../..")
 
 [node name="plate3" parent="." instance=ExtResource("11_thf8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26855, 0.391421, -0.164168)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.091002, 0.391421, -0.38944194)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="plate3"]
 transform = Transform3D(-0.0916056, 0, -0.688936, 0, 0.695, 0, 0.688936, 0, -0.0916056, 0.0268469, 0.00440797, -0.0126435)

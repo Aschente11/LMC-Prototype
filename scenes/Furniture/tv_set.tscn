@@ -1,7 +1,9 @@
-[gd_scene load_steps=43 format=4 uid="uid://ce150tqux2gyp"]
+[gd_scene load_steps=45 format=4 uid="uid://ce150tqux2gyp"]
 
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="1_nvy8w"]
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="2_lmwi7"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="3_g1r7x"]
+[ext_resource type="PackedScene" uid="uid://cfbn2uc3kg1ed" path="res://scenes/others/tv_show.tscn" id="4_sg4up"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p0w4d"]
 resource_name = "Blue"
@@ -478,6 +480,12 @@ surface_material_override/1 = SubResource("ShaderMaterial_y2jh1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Television B/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qy606")
+
+[node name="Viewport2Din3D" parent="Television B" instance=ExtResource("3_g1r7x")]
+transform = Transform3D(-0.028571429, 2.4977935e-09, 0, 0, -1.2488949e-09, 0.028571429, 2.4977935e-09, 0.028571429, 1.2488968e-09, 0.00011714641, -0.0012799129, 0.014515791)
+screen_size = Vector2(3, 1.75)
+scene = ExtResource("4_sg4up")
+viewport_size = Vector2(304, 200)
 
 [node name="Carpet B " type="MeshInstance3D" parent="."]
 transform = Transform3D(35, 0, 0, 0, -1.5299e-06, 35, 0, -35, -1.5299e-06, 0, -0.492497, 2.02204)
