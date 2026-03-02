@@ -4,7 +4,7 @@ extends Node3D
 @export var show_priority_indicators: bool = true
 
 var all_tasks: Array[Array] = [[], [], []]
-@export var max_active_tasks: Array[int] = [2, 7, 3]
+@export var max_active_tasks: Array[int] = [2, 7, 5]
 var current_day: int = 0
 var completed_tasks: int = 0
 var total_completed_tasks: int = 0
@@ -42,9 +42,12 @@ func initialize_task_pool():
 	all_tasks[1].append(Task.new("Wash dishes.", Task.Priority.MEDIUM))
 	
 	#all_tasks[2].append(Task.new("Do laundry.", Task.Priority.MEDIUM))
-	#all_tasks[2].append(Task.new("Organize \n clothes.", Task.Priority.MEDIUM))
-	#all_tasks[2].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.MEDIUM))
-	#all_tasks[2].append(Task.new("Clean the \n bathroom.", Task.Priority.LOW))
+	all_tasks[2].append(Task.new("Continue \n writing \n essay.", Task.Priority.HIGH))
+	all_tasks[2].append(Task.new("Vacuum \n the entire \n house.", Task.Priority.MEDIUM))
+	all_tasks[2].append(Task.new("Wash dishes.", Task.Priority.MEDIUM))
+	all_tasks[2].append(Task.new("Eat bread \n slices.", Task.Priority.LOW))
+	all_tasks[2].append(Task.new("Practice \n painting.", Task.Priority.HIGH))
+	all_tasks[2].append(Task.new("Make and \n eat pancakes.", Task.Priority.HIGH))
 
 func generate_new_tasks():
 	var available_tasks = all_tasks[current_day].duplicate()

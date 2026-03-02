@@ -71,6 +71,7 @@ func _ready() -> void:
 	# Check initial stimulation level and start spawning if needed
 	
 	TaskManager.tasks_completed.connect(_on_task_completed)
+	GlobalVar.permanently_overstimulated.connect(_on_permanently_overstimulated)
 	
 func setup_distraction_sounds() -> void:
 	for sound in $Audio/Distractions.get_children():
@@ -120,7 +121,7 @@ func setup_text_spawn_timer() -> void:
 func trigger_indicator(old_value: int, new_value: int) -> void:
 	$XRCamera3D/ChangeIndicator.visible = true
 	
-	if new_value == 1 or new_value == 5:
+	if new_value == 1 or new_value == 5 or GlobalVar.is_permanently_overstimulated:
 		change_indicator.set_shader_parameter("color", Color(0, 0, 0, 255))
 		change_indicator.set_shader_parameter("transparency_level", 12.5)
 		change_indicator.set_shader_parameter("speed", 1.0)
@@ -530,3 +531,8 @@ func _on_task_completed(_total_completed: int):
 	$"../taskCompleteLabel".visible = true
 	await get_tree().create_timer(2.0).timeout
 	$"../taskCompleteLabel".visible = false
+
+func _on_permanently_overstimulated():
+	print("Permanent overstimulation activated!")
+	# Trigger the indicator with permanent settings
+	trigger_indicator(GlobalVar.stimulation, GlobalVar.stimulation)

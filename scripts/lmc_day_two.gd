@@ -20,8 +20,11 @@ func _ready():
 	TaskManager.initialize(1)
 	TaskManager.tasks_completed.connect(_on_tasks_completed)
 	
-	#GlobalTime.start_time()
 	GlobalTime.reset_time(7, 0, false)
+	
+	if GlobalTime.time_timer:
+		GlobalTime.time_timer.paused = false
+		GlobalTime.resume_time() 
 	GlobalTime.connect("midnight_reached", _on_midnight_reached)
 
 	GlobalVar.default_state()
@@ -30,9 +33,9 @@ func _ready():
 	await get_tree().create_timer(2.0).timeout
 	$"Event 1".play()
 	
-	$sleep.visible = false
-	$sleep.monitoring = false
-	$sleep.monitorable = false
+	#$sleep.visible = false
+	#$sleep.monitoring = false
+	#$sleep.monitorable = false
 	
 	$"XROrigin3D/XRCamera3D/LOST IN THOUGHTS".visible = false
 

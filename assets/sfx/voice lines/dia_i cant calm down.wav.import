@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://k100lf42hw1p"
+path="res://.godot/imported/dia_i cant calm down.wav-844281f3a6486fd7f99aed9f6dfc3351.sample"
+
+[deps]
+
+source_file="res://assets/sfx/voice lines/dia_i cant calm down.wav"
+dest_files=["res://.godot/imported/dia_i cant calm down.wav-844281f3a6486fd7f99aed9f6dfc3351.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -157,6 +157,7 @@ func reset_time(hour: int = 7, minute: int = 0, pm: bool = false):
 	# Reset and restart the timer
 	if time_timer:
 		time_timer.stop()
+		time_timer.paused = false
 		time_timer.start()
 	
 	print("Time reset to: ", get_formatted_time())

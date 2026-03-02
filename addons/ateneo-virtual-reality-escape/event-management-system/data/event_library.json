@@ -65,5 +65,23 @@
 			"day start (day 2)_Done"
 		],
 		"Oneshot": true
+	},
+	"write to do list (day 3)": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [],
+		"EventCompletionFlags": [
+			"write to do list (day 3)_Done"
+		],
+		"Oneshot": false
+	},
+	"day start (day 3)": {
+		"EventCategory": "DIALOGUE",
+		"EventPrerequisiteFlags": [
+			"write to do list (day 3)_Done"
+		],
+		"EventCompletionFlags": [
+			"day start (day 3)_Done"
+		],
+		"Oneshot": false
 	}
 }

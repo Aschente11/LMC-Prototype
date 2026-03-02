@@ -24,7 +24,9 @@ signal emotional_decrease(old_value, new_value)
 signal food_eaten(total_count: int)
 signal eating_milestone(milestone: int)
 signal cleaning_milestone(milestone: int)
+signal permanently_overstimulated()
 
+var is_permanently_overstimulated: bool = false
 var _update_pending = false
 
 func default_state():
@@ -176,3 +178,11 @@ func add_dust_cleaned():
 			if TaskManager.active_tasks[i].text == "Vacuum \n the entire \n house.":
 				TaskManager.complete_task(i)
 				break
+func set_permanently_overstimulated():
+	if is_permanently_overstimulated:
+		return
+	
+	is_permanently_overstimulated = true
+	stimulation = MAX_STIMULATION
+	
+	permanently_overstimulated.emit()
