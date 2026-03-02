@@ -20,7 +20,7 @@ func _on_ois_strike_receiver_action_started(requirement, total_progress):
 		if not audio.playing:
 			animation_player.play("spinny")
 		audio.play()
-		GlobalVar.increase_emotional()
+		#GlobalVar.increase_emotional()
 
 
 func _on_ois_strike_receiver_action_ended(requirement, total_progress):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=198 format=4 uid="uid://d2cws8wqloxvv"]
+[gd_scene load_steps=219 format=4 uid="uid://d2cws8wqloxvv"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_ytp03"]
 [ext_resource type="Script" uid="uid://bxovi75ncq4m0" path="res://scripts/lmc_day_two.gd" id="2_7ehl3"]
@@ -81,7 +81,6 @@
 [ext_resource type="AudioStream" uid="uid://dtf726kp6odmr" path="res://assets/sfx/events/Waking up.mp3" id="90_bfqpp"]
 [ext_resource type="AudioStream" uid="uid://chsvywb4rhtvq" path="res://assets/sfx/events/note_tutorial.mp3" id="91_fmtsg"]
 [ext_resource type="AudioStream" uid="uid://b0qdnj6m7olbw" path="res://assets/sfx/events/Bfast done.mp3" id="92_7dg85"]
-[ext_resource type="Shader" uid="uid://dvgadwfd5py8" path="res://shaders/aoe.gdshader" id="92_psgl8"]
 [ext_resource type="Script" uid="uid://bg8ikbbyucdg6" path="res://addons/ateneo-virtual-reality-escape/event-management-system/event.gd" id="93_812wm"]
 [ext_resource type="AudioStream" uid="uid://wodio3h1pjpf" path="res://assets/sfx/iphone_alarm.mp3" id="93_f8nmv"]
 [ext_resource type="PackedScene" uid="uid://tkfkmxso37sb" path="res://scenes/tools/tutorial_journal.tscn" id="93_ytp03"]
@@ -89,12 +88,20 @@
 [ext_resource type="PackedScene" uid="uid://cj6iq8bwdpvf3" path="res://scenes/Furniture/basket.tscn" id="95_7ehl3"]
 [ext_resource type="PackedScene" uid="uid://df3jsoduesb2s" path="res://scenes/tools/dartsBoard.tscn" id="95_fthp8"]
 [ext_resource type="PackedScene" uid="uid://dwppmd2yow0xp" path="res://scenes/tools/bacon.tscn" id="96_f4gto"]
+[ext_resource type="PackedScene" uid="uid://dagn7o5s22twf" path="res://scenes/others/watch_charger.tscn" id="97_fl1yh"]
 [ext_resource type="AudioStream" uid="uid://c0iiqckjmpc2m" path="res://assets/sfx/events/dia_what am i supposed to do know (mp3cut.net).wav" id="98_lt8kf"]
+[ext_resource type="Texture2D" uid="uid://danync6eplgn7" path="res://assets/tools/sticky-notes/source/post_it/IMG_20221127_0001.png" id="98_tmcio"]
 [ext_resource type="PackedScene" uid="uid://ce3qfpprxpxtt" path="res://scenes/Furniture/plant_a.tscn" id="99_akddc"]
+[ext_resource type="FontFile" uid="uid://b616q38y7nydj" path="res://assets/others/fonts/CaveatBrush-Regular.ttf" id="99_hoojf"]
 [ext_resource type="AudioStream" uid="uid://c03fii0dtgt61" path="res://assets/sfx/events/dia_finish these (mp3cut.net).wav" id="99_sv5xx"]
 [ext_resource type="PackedScene" uid="uid://brrix7sw0piyx" path="res://scenes/Furniture/shelf_b.tscn" id="100_ggafq"]
+[ext_resource type="PackedScene" uid="uid://nq52jpvlfsbs" path="res://assets/tools/smartwatch.fbx" id="100_sgkui"]
 [ext_resource type="PackedScene" uid="uid://d05f2uj86rov1" path="res://assets/Furniture Shaders/bin.tscn" id="101_b21yl"]
+[ext_resource type="PackedScene" uid="uid://dxc4momvyj18r" path="res://scenes/UI/wear_watch_button.tscn" id="101_iyu4n"]
+[ext_resource type="PackedScene" uid="uid://b4jvtawq6mux5" path="res://scenes/UI/wear_watch_button_right.tscn" id="102_akddc"]
+[ext_resource type="Script" uid="uid://dn3jom6t51602" path="res://scripts/tv_set_1.gd" id="102_fl1yh"]
 [ext_resource type="PackedScene" uid="uid://b0hjje6evoiib" path="res://assets/Furniture Shaders/carpet_c.tscn" id="102_ts0vi"]
+[ext_resource type="Script" uid="uid://cfdqnwfx3o2cw" path="res://scripts/seated.gd" id="103_tmcio"]
 [ext_resource type="PackedScene" uid="uid://bgdk8jsd1evee" path="res://assets/Furniture Shaders/corkboard_day2.tscn" id="103_uj65o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4bim0"]
@@ -682,9 +689,37 @@ _data = {
 height = 1.8138702
 radius = 0.6801758
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0wtd"]
+[sub_resource type="Shader" id="Shader_2lccd"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+/*
+RING SHADER
+*/
+
+
+uniform vec3 ring_color: source_color = vec3(1.0);
+uniform float ring_frequency = 50.0;
+/** Portion of the visible rings. Negative values give wider rings, positive values give narrower rings*/
+uniform float ring_portion: hint_range(-0.9, 0.9, 0.1) = 0.0;
+/** Negative values move the rings outwards, positive value move the rings inwards */
+uniform float move_speed = -10.0;
+uniform bool smooth_edge = false;
+
+void fragment() {
+	float dist = distance(UV, vec2(0.5,0.5));
+	float rings = sin(dist * ring_frequency + (TIME * move_speed));
+	rings = step(ring_portion, rings);
+	float blend_alpha = smoothstep(0.5, 0.4, dist);
+	 bool is_rings = (rings > 0.0) && bool(1 - int(dist > 0.5 || rings < 1.0));
+
+    ALPHA = float(is_rings) * mix(1.0, blend_alpha, float(smooth_edge));
+    ALBEDO = float(is_rings) * ring_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fl1yh"]
 render_priority = 0
-shader = ExtResource("92_psgl8")
+shader = SubResource("Shader_2lccd")
 shader_parameter/ring_color = Color(0, 1, 0, 1)
 shader_parameter/ring_frequency = 25.0
 shader_parameter/ring_portion = -0.9
@@ -692,7 +727,7 @@ shader_parameter/move_speed = 4.02
 shader_parameter/smooth_edge = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_812wm"]
-material = SubResource("ShaderMaterial_v0wtd")
+material = SubResource("ShaderMaterial_fl1yh")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_73205"]
 transparency = 1
@@ -706,6 +741,25 @@ material = SubResource("StandardMaterial3D_73205")
 top_radius = 0.8
 bottom_radius = 0.8
 height = 5.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tmcio"]
+height = 1.8513184
+radius = 0.5083008
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hoojf"]
+render_priority = 0
+shader = SubResource("Shader_2lccd")
+shader_parameter/ring_color = Color(0.71004766, 0.8531783, 0.9231269, 1)
+shader_parameter/ring_frequency = 25.0
+shader_parameter/ring_portion = -0.9
+shader_parameter/move_speed = 4.02
+shader_parameter/smooth_edge = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sgkui"]
+material = SubResource("ShaderMaterial_hoojf")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hoojf"]
+size = Vector3(1.4453735, 1.8233032, 0.8796997)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f4gto"]
 albedo_color = Color(0.33411407, 0.064544134, 9.62615e-08, 1)
@@ -727,6 +781,75 @@ size = Vector3(2.45, 1, 1)
 material = SubResource("StandardMaterial3D_sv5xx")
 size = Vector3(2.45, 1, 0.05)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ebsiy"]
+resource_name = "front"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("98_tmcio")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_afplf"]
+_surfaces = [{
+"aabb": AABB(0.06258114, -0.010061765, -0.010141076, 0.020016603, 0.020061765, 0.0004151035),
+"format": 34359742465,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"name": "front",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("ASmpPQrXI7yvWR+8iiqAPRraJLzBJia8PzOAPQrXIzyvWR+8ASmpPQrXIzyvWR+8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ggafq"]
+resource_name = "Cube_005"
+_surfaces = [{
+"aabb": AABB(0.06258114, -0.010061765, -0.010141076, 0.020016603, 0.020061765, 0.0004151035),
+"attribute_data": PackedByteArray("ZREEPYpjDj9LHe0+imMOP0sd7T4YsXw/ZREEPRixfD8="),
+"format": 34359742487,
+"index_count": 6,
+"index_data": PackedByteArray("AAABAAIAAgADAAAA"),
+"material": SubResource("StandardMaterial3D_ebsiy"),
+"name": "front",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("ASmpPQrXI7yvWR+8iiqAPRraJLzBJia8PzOAPQrXIzyvWR+8ASmpPQrXIzyvWR+8s36zfjIAPr+zfrN+ZwAjv7N+s34xAD6/s36zfgMAqMA=")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_afplf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jjrt"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_b21yl"]
+material = SubResource("StandardMaterial3D_2jjrt")
+text = "ALWAYS 
+wear watch. 
+Need to regulate 
+my stimulations"
+font = ExtResource("99_hoojf")
+font_size = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v0nt"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ts0vi"]
+material = SubResource("StandardMaterial3D_3v0nt")
+size = Vector3(0.195, 0.003, 0.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmcio"]
+render_priority = 0
+shader = SubResource("Shader_2lccd")
+shader_parameter/ring_color = Color(0.9105946, 0.79661274, 0.81390756, 1)
+shader_parameter/ring_frequency = 25.0
+shader_parameter/ring_portion = -0.9
+shader_parameter/move_speed = 4.02
+shader_parameter/smooth_edge = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hoojf"]
+material = SubResource("ShaderMaterial_tmcio")
+
 [node name="day_two" instance=ExtResource("1_ytp03")]
 script = ExtResource("2_7ehl3")
 
@@ -737,9 +860,16 @@ current = true
 [node name="XRToolsPlayerBody" parent="XROrigin3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.938, 1.798, -5.109)
 
+[node name="smartwatch" parent="XROrigin3D/LeftHand" index="4"]
+visible = false
+
+[node name="smartwatch" parent="XROrigin3D/RightHand" index="4"]
+visible = false
+
 [node name="Room" type="Node3D" parent="." index="1"]
 
 [node name="Floor4" type="StaticBody3D" parent="Room" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04, 0)
 
 [node name="FloorCollision" type="CollisionShape3D" parent="Room/Floor4" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.55865, -0.0745926, 0.0826721)
@@ -1277,7 +1407,7 @@ environment = SubResource("Environment_fl1yh")
 script = ExtResource("85_5tqs6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="DayNightCycle" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0373, 0)
+transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 11.0373, 0)
 light_energy = 1.168
 shadow_enabled = true
 
@@ -1303,7 +1433,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.65576, 1.3697, 6.74431)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.70659, 1.50377, 6.16335)
 
 [node name="post_it" parent="." index="10" instance=ExtResource("82_nnvhg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.50684, 1.32804, -2.9765534)
+transform = Transform3D(-0.14090121, 0, 0.9900237, 0, 1, 0, -0.9900237, 0, -0.14090121, -6.50684, 1.32804, -2.9765534)
 
 [node name="OISJournal" parent="." index="11" instance=ExtResource("83_sh2k6")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -6.9389, 1.33187, -2.96148)
@@ -1318,20 +1448,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.46087, 1.79825, -5.2846)
 [node name="BedMarker" type="Marker3D" parent="." index="14"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.73031, 1.35363, -7.08733)
 
-[node name="plushie" parent="." index="15" instance=ExtResource("86_42xgu")]
+[node name="TVSetMarker1" type="Marker3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46360528, 1.1358856, -6.4394503)
+
+[node name="TVSetMarker2" type="Marker3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46360528, 1.1358856, -7.66242)
+
+[node name="TVSetMarker3" type="Marker3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46360528, 1.1358856, -8.885415)
+
+[node name="plushie" parent="." index="18" instance=ExtResource("86_42xgu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63535, 0.722356, -6.35067)
 collision_mask = 196615
 
-[node name="fidget_spinner" parent="." index="16" instance=ExtResource("88_ff2kj")]
+[node name="fidget_spinner" parent="." index="19" instance=ExtResource("88_ff2kj")]
 transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -8.801906, 1.3814745, -3.6797464)
 
-[node name="Pencil_Model" parent="." index="17" instance=ExtResource("32_773cq")]
+[node name="Pencil_Model" parent="." index="20" instance=ExtResource("32_773cq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.551199, 1.3197347, -3.347871)
 
-[node name="ArtSupplyProps" parent="." index="18" instance=ExtResource("89_fl3bw")]
+[node name="ArtSupplyProps" parent="." index="21" instance=ExtResource("89_fl3bw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53481, 0, -9.13332)
 
-[node name="Audio" type="Node" parent="." index="19"]
+[node name="Audio" type="Node" parent="." index="22"]
 
 [node name="wake_up" type="AudioStreamPlayer" parent="Audio" index="0"]
 stream = ExtResource("90_bfqpp")
@@ -1347,10 +1486,7 @@ stream = ExtResource("92_7dg85")
 [node name="Alarm" type="AudioStreamPlayer3D" parent="Audio" index="3"]
 stream = ExtResource("93_f8nmv")
 
-[node name="OISJournal2" parent="." index="20" instance=ExtResource("83_sh2k6")]
-transform = Transform3D(0.0117633, 0, 0.999931, 0.00753915, 0.999971, -8.8691e-05, -0.999902, 0.00753968, 0.0117629, -10.3835, 1.37031, -5.46997)
-
-[node name="Dust" type="Node" parent="." index="21"]
+[node name="Dust" type="Node" parent="." index="23"]
 
 [node name="Dust" parent="Dust" index="0" instance=ExtResource("94_f4gto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.11508, 0.124921, -4.82051)
@@ -1448,28 +1584,28 @@ transform = Transform3D(0.914303, 0, -0.40503, 0, 1, 0, 0.40503, 0, 0.914303, -3
 [node name="Dust" parent="Dust/Dust16" index="7" instance=ExtResource("94_f4gto")]
 transform = Transform3D(1, 0, 0, 0, 0.675359, -0.73749, 0, 0.73749, 0.675359, -0.00230527, 0.0312019, -0.0704045)
 
-[node name="plastic basket" parent="." index="22" instance=ExtResource("95_7ehl3")]
+[node name="plastic basket" parent="." index="24" instance=ExtResource("95_7ehl3")]
 transform = Transform3D(-0.998499, 0, -0.054776, 0, 1, 0, 0.054776, 0, -0.998499, -6.39261, 0.0123488, 0.586211)
 
-[node name="PC" parent="." index="23" instance=ExtResource("87_7rwpr")]
+[node name="PC" parent="." index="25" instance=ExtResource("87_7rwpr")]
 transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.999956, -7.9720836, 1.3151, -3.67478)
 
-[node name="Plant A3" parent="." index="24" instance=ExtResource("99_akddc")]
+[node name="Plant A3" parent="." index="26" instance=ExtResource("99_akddc")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 3.086, 1.425, 1.89507)
 
-[node name="Shelf B" parent="." index="25" instance=ExtResource("100_ggafq")]
+[node name="Shelf B" parent="." index="27" instance=ExtResource("100_ggafq")]
 transform = Transform3D(-1.70474e-08, 0, -0.39, 0, 0.39, 0, 0.39, 0, -1.70474e-08, 3.498, 2.111, -0.640289)
 
-[node name="Bin" parent="." index="26" instance=ExtResource("101_b21yl")]
+[node name="Bin" parent="." index="28" instance=ExtResource("101_b21yl")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -7.26449, 0.630345, -3.43902)
 
-[node name="Carpet C" parent="." index="27" instance=ExtResource("102_ts0vi")]
+[node name="Carpet C" parent="." index="29" instance=ExtResource("102_ts0vi")]
 transform = Transform3D(-5.11423e-08, 0, 1.15, 0, 0.15, 0, -1.17, 0, -5.02681e-08, 0.416502, 0.1013, 4.85191)
 
-[node name="OISJournal3" parent="." index="28" instance=ExtResource("93_ytp03")]
+[node name="OISJournal3" parent="." index="30" instance=ExtResource("93_ytp03")]
 transform = Transform3D(-0.99863, 0, 0.052336, 0, 1, 0, -0.052336, 0, -0.99863, -7.1450353, 1.33882, -3.66679)
 
-[node name="sleep" type="Area3D" parent="." index="29"]
+[node name="sleep" type="Area3D" parent="." index="31"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21614, 0.00801456, -13.9992)
 collision_mask = 524289
 
@@ -1487,20 +1623,73 @@ transform = Transform3D(1, 0, 0, 0, -1, 1.50996e-07, 0, -1.50996e-07, -1, -6.708
 mesh = SubResource("CylinderMesh_fthp8")
 skeleton = NodePath("../..")
 
-[node name="Corkboard" parent="." index="30" instance=ExtResource("103_uj65o")]
+[node name="TVSet1" type="Area3D" parent="." index="32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61789244, 0.5657841, -6.3257403)
+collision_mask = 524289
+script = ExtResource("102_fl1yh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TVSet1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09477353, 0.5503843, 0.08065939)
+shape = SubResource("CylinderShape3D_tmcio")
+
+[node name="AOE" type="MeshInstance3D" parent="TVSet1" index="1"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+mesh = SubResource("PlaneMesh_sgkui")
+skeleton = NodePath("../..")
+
+[node name="TVSet2" type="Area3D" parent="." index="33"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61789244, 0.5657841, -7.746067)
+collision_mask = 524289
+script = ExtResource("102_fl1yh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TVSet2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09477353, 0.5503843, 0.08065939)
+shape = SubResource("CylinderShape3D_tmcio")
+
+[node name="AOE" type="MeshInstance3D" parent="TVSet2" index="1"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+visible = false
+mesh = SubResource("PlaneMesh_sgkui")
+skeleton = NodePath("../..")
+
+[node name="TVSet3" type="Area3D" parent="." index="34"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61789244, 0.5657841, -9.056751)
+collision_mask = 524289
+script = ExtResource("102_fl1yh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TVSet3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09477353, 0.5503843, 0.08065939)
+shape = SubResource("CylinderShape3D_tmcio")
+
+[node name="AOE" type="MeshInstance3D" parent="TVSet3" index="1"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+visible = false
+mesh = SubResource("PlaneMesh_sgkui")
+skeleton = NodePath("../..")
+
+[node name="Seated" type="Area3D" parent="." index="35"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9157979, 0.21328753, -5.980527)
+collision_mask = 524288
+script = ExtResource("103_tmcio")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Seated" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17828369, 0.36724854, -1.5494385)
+shape = SubResource("BoxShape3D_hoojf")
+
+[node name="Corkboard" parent="." index="36" instance=ExtResource("103_uj65o")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.481, 1.537, -2.54)
 
-[node name="write to do list (day 2)" type="Node" parent="." index="31"]
+[node name="write to do list (day 2)" type="Node" parent="." index="37"]
 script = ExtResource("93_812wm")
 event_name = "write to do list (day 2)"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
-[node name="day start (day 2)" type="Node" parent="." index="32"]
+[node name="day start (day 2)" type="Node" parent="." index="38"]
 script = ExtResource("93_812wm")
 event_name = "day start (day 2)"
 metadata/_custom_type_script = "uid://bg8ikbbyucdg6"
 
-[node name="Event1 text" type="Label3D" parent="." index="33"]
+[node name="Event1 text" type="Label3D" parent="." index="39"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.932783, 1.2495143, -5.554842)
 billboard = 2
 shaded = true
@@ -1508,7 +1697,7 @@ outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "What am I supposed to do now??"
 font_size = 27
 
-[node name="Event1 text2" type="Label3D" parent="." index="34"]
+[node name="Event1 text2" type="Label3D" parent="." index="40"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.428865, 1.3053468, -3.478978)
 billboard = 2
 shaded = true
@@ -1516,13 +1705,13 @@ outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "Alrighty! Lets finish these before the day ends."
 font_size = 22
 
-[node name="Event 1" type="AudioStreamPlayer" parent="." index="35"]
+[node name="Event 1" type="AudioStreamPlayer" parent="." index="41"]
 stream = ExtResource("98_lt8kf")
 
-[node name="Event 2" type="AudioStreamPlayer" parent="." index="36"]
+[node name="Event 2" type="AudioStreamPlayer" parent="." index="42"]
 stream = ExtResource("99_sv5xx")
 
-[node name="Darts" parent="." index="38" instance=ExtResource("95_fthp8")]
+[node name="Darts" parent="." index="44" instance=ExtResource("95_fthp8")]
 transform = Transform3D(-0.99965185, 0, -0.02638621, 0, 1, 0, 0.02638621, 0, -0.99965185, -2.5660746, 2.374887, 10.069397)
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Darts" index="1"]
@@ -1537,8 +1726,103 @@ mesh = SubResource("BoxMesh_lt8kf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.076028585, -2.7902946, 5.8550253)
 mesh = SubResource("BoxMesh_2lccd")
 
-[node name="Bacon" parent="." index="39" instance=ExtResource("96_f4gto")]
+[node name="Bacon" parent="." index="45" instance=ExtResource("96_f4gto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.022994, 1.3222951, 9.486444)
 
+[node name="WatchCharger" parent="." index="46" instance=ExtResource("97_fl1yh")]
+transform = Transform3D(0.99997455, 0, -0.007138336, 0, 1, 0, 0.007138336, 0, 0.99997455, -10.317232, 1.0816197, -5.40543)
+
+[node name="single" type="MeshInstance3D" parent="WatchCharger" index="2"]
+transform = Transform3D(-0.41731563, -0.15270996, 5.978663, -20.970293, -0.1496972, -0.11928795, 0.15270983, -20.97393, -0.042678878, -0.53433037, 2.3416502, -0.050169468)
+mesh = SubResource("ArrayMesh_ggafq")
+skeleton = NodePath("")
+
+[node name="text" type="MeshInstance3D" parent="WatchCharger" index="3"]
+transform = Transform3D(0.05894052, 0, 0.9982621, 0, 1, 0, -0.9982621, 0, 0.05894052, -0.6351385, 0.82584786, -0.043531895)
+mesh = SubResource("TextMesh_b21yl")
+
+[node name="text2" type="MeshInstance3D" parent="WatchCharger" index="4"]
+transform = Transform3D(0.058940515, 0, 0.9982627, 0, 1, 0, -0.9982627, 0, 0.058940515, -0.60873127, 0.9133091, -0.02902031)
+mesh = SubResource("BoxMesh_ts0vi")
+
+[node name="smartwatch" parent="." index="47" instance=ExtResource("100_sgkui")]
+transform = Transform3D(-0.016039804, -0.00027962742, 0.09363572, 0.09361882, 0.0017787013, 0.016042218, -0.0018003767, 0.094982944, -2.4753905e-05, -10.257919, 1.1537584, -5.3973603)
+
+[node name="WearWatchButton" parent="." index="48" instance=ExtResource("101_iyu4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.122431, 1.0891525, -5.196181)
+
+[node name="WearWatchButton2" parent="." index="49" instance=ExtResource("102_akddc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.122282, 1.0927228, -5.6167946)
+
+[node name="Chair1" type="Area3D" parent="." index="50"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99644524, 0.5657841, 3.1430013)
+collision_mask = 524289
+script = ExtResource("102_fl1yh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069452345, 0.5503843, -0.0064389706)
+shape = SubResource("CylinderShape3D_tmcio")
+
+[node name="AOE" type="MeshInstance3D" parent="Chair1" index="1"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+mesh = SubResource("PlaneMesh_hoojf")
+skeleton = NodePath("../..")
+
+[node name="ChairMarker1" type="Marker3D" parent="." index="51"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6946986, 1.1358856, 2.0475137)
+
+[node name="Chair2" type="Area3D" parent="." index="52"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99644524, 0.5657841, 6.6062174)
+collision_mask = 524289
+script = ExtResource("102_fl1yh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069452345, 0.5503843, -0.0064389706)
+shape = SubResource("CylinderShape3D_tmcio")
+
+[node name="AOE" type="MeshInstance3D" parent="Chair2" index="1"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+mesh = SubResource("PlaneMesh_hoojf")
+skeleton = NodePath("../..")
+
+[node name="ChairMarker2" type="Marker3D" parent="." index="53"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5431423, 1.1358856, 7.6077857)
+
+[node name="Seated2" type="Area3D" parent="." index="54"]
+transform = Transform3D(0.87035567, 0, -0.49242356, 0, 1, 0, 0.49242356, 0, 0.87035567, 1.3110583, 0.21328753, 2.1532629)
+collision_mask = 524288
+script = ExtResource("103_tmcio")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Seated2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22268486, 0.4116516, -0.0011899471)
+shape = SubResource("BoxShape3D_hoojf")
+
+[node name="Seated3" type="Area3D" parent="." index="55"]
+transform = Transform3D(-0.7986355, 0, -0.6018151, 0, 1, 0, 0.6018151, 0, -0.7986355, 1.5111444, 0.21328753, 7.4338737)
+collision_mask = 524288
+script = ExtResource("103_tmcio")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Seated3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22268486, 0.4116516, -0.0011899471)
+shape = SubResource("BoxShape3D_hoojf")
+
 [connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]
+[connection signal="body_entered" from="TVSet1" to="TVSet1" method="_on_body_entered"]
+[connection signal="is_sitting" from="TVSet1" to="." method="teleport_player"]
+[connection signal="body_entered" from="TVSet2" to="TVSet2" method="_on_body_entered"]
+[connection signal="is_sitting" from="TVSet2" to="." method="teleport_player"]
+[connection signal="body_entered" from="TVSet3" to="TVSet3" method="_on_body_entered"]
+[connection signal="is_sitting" from="TVSet3" to="." method="teleport_player"]
+[connection signal="body_entered" from="Seated" to="Seated" method="_on_body_entered"]
+[connection signal="body_exited" from="Seated" to="Seated" method="_on_body_exited"]
 [connection signal="event_started" from="day start (day 2)" to="." method="_on_day_start_event_started"]
+[connection signal="left_button_pressed" from="WearWatchButton" to="." method="_on_wear_watch_button_left_button_pressed"]
+[connection signal="right_button_pressed" from="WearWatchButton2" to="." method="_on_wear_watch_button_2_right_button_pressed"]
+[connection signal="body_entered" from="Chair1" to="Chair1" method="_on_body_entered"]
+[connection signal="is_sitting" from="Chair1" to="." method="teleport_player"]
+[connection signal="body_entered" from="Chair2" to="Chair2" method="_on_body_entered"]
+[connection signal="is_sitting" from="Chair2" to="." method="teleport_player"]
+[connection signal="body_entered" from="Seated2" to="Seated2" method="_on_body_entered"]
+[connection signal="body_exited" from="Seated2" to="Seated2" method="_on_body_exited"]
+[connection signal="body_entered" from="Seated3" to="Seated3" method="_on_body_entered"]
+[connection signal="body_exited" from="Seated3" to="Seated3" method="_on_body_exited"]

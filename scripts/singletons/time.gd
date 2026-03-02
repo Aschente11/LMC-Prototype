@@ -20,7 +20,7 @@ var current_day: int = 1
 
 func start_time(hour = 7, minute = 0, pm = false):
 	time_timer = Timer.new()
-	time_timer.wait_time = 7.0  # 7 seconds irl = 10 minutes game time
+	time_timer.wait_time = 5.0  # 7 seconds irl = 10 minutes game time
 	time_timer.autostart = true
 	time_timer.timeout.connect(_on_time_update)
 	add_child(time_timer)
@@ -146,7 +146,7 @@ func resume_time():
 
 # Speed up or slow down time
 func set_time_speed(multiplier: float):
-	time_timer.wait_time = 7.0 / multiplier
+	time_timer.wait_time = 5.0 / multiplier
 	
 # Reset time per scene
 func reset_time(hour: int = 7, minute: int = 0, pm: bool = false):

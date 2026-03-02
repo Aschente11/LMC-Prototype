@@ -210,6 +210,7 @@ shape = SubResource("ConcavePolygonShape3D_bpf8k")
 
 [node name="Tube1" type="MeshInstance3D" parent="ArtSupplyPropSet/Supplies"]
 transform = Transform3D(-0.994819, 1.74645e-09, -0.101664, 0.0542719, 0.845588, -0.53107, 0.0859659, -0.533836, -0.841207, -0.119055, 0.165773, 0.022386)
+visible = false
 mesh = SubResource("ArrayMesh_k2c1b")
 skeleton = NodePath("")
 

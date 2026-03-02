@@ -1,13 +1,16 @@
-[gd_scene load_steps=26 format=4 uid="uid://bw44mftmte1vr"]
+[gd_scene load_steps=31 format=4 uid="uid://bw44mftmte1vr"]
 
 [ext_resource type="Script" uid="uid://bm4d5gx7q5nrg" path="res://scripts/pencil_model.gd" id="1_bk77o"]
 [ext_resource type="Shader" uid="uid://di7mar5ot6v0a" path="res://shaders/highlighter.gdshader" id="5_cf5gw"]
 [ext_resource type="Script" uid="uid://bl1qusmx6pj43" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand.gd" id="5_ew4il"]
+[ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="9_bk77o"]
 [ext_resource type="AudioStream" uid="uid://22bnxm5jk8sr" path="res://assets/sfx/marker_cap_close.mp3" id="9_d1c3l"]
 [ext_resource type="Script" uid="uid://cg1lorgur84yy" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-actor/ois_actor_component.gd" id="9_wo67v"]
 [ext_resource type="Script" uid="uid://bg8ikbbyucdg6" path="res://addons/ateneo-virtual-reality-escape/event-management-system/event.gd" id="9_x1qop"]
+[ext_resource type="Script" uid="uid://c8kebjuxx7jkh" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="10_2ue5u"]
 [ext_resource type="Script" uid="uid://cgettxdui2mmi" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_one_hand_tool_asm.gd" id="10_5tgum"]
 [ext_resource type="AudioStream" uid="uid://ppoahhgnkviy" path="res://assets/sfx/marker_cap_open.mp3" id="10_cf5gw"]
+[ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="11_q48w1"]
 [ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="11_ui2pr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d1c3l"]
@@ -279,6 +282,16 @@ _data = {
 &"cap_on": SubResource("Animation_bk77o")
 }
 
+[sub_resource type="Resource" id="Resource_oc43t"]
+script = ExtResource("10_2ue5u")
+closed_pose = ExtResource("9_bk77o")
+metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
+
+[sub_resource type="Resource" id="Resource_ew4il"]
+script = ExtResource("10_2ue5u")
+closed_pose = ExtResource("11_q48w1")
+metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
+
 [node name="Pencil_Model" type="RigidBody3D"]
 collision_layer = 4
 collision_mask = 5
@@ -338,10 +351,17 @@ stream = ExtResource("9_d1c3l")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0119976, -0.149878)
 stream = ExtResource("10_cf5gw")
 
+[node name="XRToolsGrabPointHand" type="Marker3D" parent="."]
+transform = Transform3D(0.90258527, 0.19544797, 0.38358822, 0, 0.8910065, -0.45399052, -0.43051112, 0.40976515, 0.80420935, -0.01, 0.05, -0.117)
+script = ExtResource("5_ew4il")
+hand_pose = SubResource("Resource_oc43t")
+metadata/_custom_type_script = "uid://bl1qusmx6pj43"
+
 [node name="XRToolsGrabPointRight" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012447774, 0.021656245, -0.17889568)
+transform = Transform3D(0.6946584, -0.23419411, -0.68014914, 0, 0.94551855, -0.32556814, 0.7193398, 0.22615865, 0.6568124, 0.042, 0.044, -0.111)
 script = ExtResource("5_ew4il")
 hand = 1
+hand_pose = SubResource("Resource_ew4il")
 metadata/_custom_type_script = "uid://bl1qusmx6pj43"
 
 [node name="write_tasks" type="Node" parent="."]

@@ -2,6 +2,14 @@ extends XRToolsSceneBase
 
 var xr_interface: XRInterface
 
+var anim_player
+@onready var xr_player = $XROrigin3D
+
+enum Hand { LEFT, RIGHT }
+@onready var left_watch = $XROrigin3D/LeftHand/smartwatch
+@onready var right_watch = $XROrigin3D/RightHand/smartwatch
+@onready var watch_display = $smartwatch
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	xr_interface = XRServer.find_interface("OpenXR")
@@ -16,6 +24,7 @@ func _ready():
 	else:
 		print("OpenXR not initialized, please check if your headset is connected.")
 		
+	anim_player = xr_player.get_node("AnimationPlayer")
 	
 	TaskManager.initialize(1)
 	TaskManager.tasks_completed.connect(_on_tasks_completed)
@@ -26,6 +35,8 @@ func _ready():
 
 	GlobalVar.default_state()
 	
+	$plushie/Sketchfab_Scene.is_crying.connect(teleport_player)
+	
 	$"Event1 text2".visible = false
 	await get_tree().create_timer(2.0).timeout
 	$"Event 1".play()
@@ -35,7 +46,6 @@ func _ready():
 	$sleep.monitorable = false
 	
 	$"XROrigin3D/XRCamera3D/LOST IN THOUGHTS".visible = false
-
 	
 func _on_sleep_body_entered(body: Node3D) -> void:
 	var root_scene = get_tree().current_scene
@@ -49,6 +59,7 @@ func _on_day_start_event_started() -> void:
 	$"Event1 text".visible = false
 	$"Event1 text2".visible = true
 	$"Event 2".play()
+
 	print("WRITING ON BOARD EVENT ENDED")
 
 func _on_midnight_reached():
@@ -62,3 +73,51 @@ func _on_tasks_completed(total_completed: int):
 		$sleep.visible = true
 		$sleep.monitoring = true
 		$sleep.monitorable = true
+		
+func teleport_player(marker):
+	var pos
+	
+	if marker == "bed":
+		pos = $BedMarker.global_position
+		print("teleported to bed")
+		
+	elif marker == "TVSet1":
+		pos = $TVSetMarker1.global_position
+		print("teleported to TVSet1")
+		
+	elif marker == "TVSet2":
+		pos = $TVSetMarker2.global_position
+		print("teleported to TVSet2")
+	
+	elif marker == "TVSet3":
+		pos = $TVSetMarker3.global_position
+		print("teleported to TVSet3")
+	
+	elif marker == "Chair1":
+		pos = $ChairMarker1.global_position
+		print("teleported to Chair1")
+	
+	elif marker == "Chair2":
+		pos = $ChairMarker2.global_position
+		print("teleported to Chair2")
+		
+	xr_player.global_position = pos
+	
+	anim_player.play("blinking")
+	
+	await get_tree().create_timer(1).timeout
+	
+	anim_player.play("open_eyes")
+
+func equip_watch(hand: Hand) -> void:
+	watch_display.visible = false
+	left_watch.visible = hand == Hand.LEFT
+	right_watch.visible = hand == Hand.RIGHT
+
+
+func _on_wear_watch_button_left_button_pressed() -> void:
+	equip_watch(Hand.LEFT)
+
+
+func _on_wear_watch_button_2_right_button_pressed() -> void:
+	equip_watch(Hand.RIGHT)
