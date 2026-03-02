@@ -52,9 +52,6 @@ func set_painting_opacity(opacity: float) -> void:
 
 func _on_painting_fully_revealed():
 	has_completed = true
-	GlobalVar.decrease_physical()
-	GlobalVar.decrease_physical()
-	GlobalVar.decrease_physical()
 	GlobalVar.decrease_emotional()
 	GlobalVar.decrease_emotional()
 	GlobalVar.decrease_emotional()

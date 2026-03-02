@@ -281,10 +281,10 @@ shader_parameter/uv_offset = Vector2(0, 0)
 size = Vector3(0.0407715, 0.0268555, 0.0473251)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c4ehr"]
-radius = 0.0802017
+radius = 0.17276181
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c4ehr"]
-size = Vector3(1.40752, 1.17955, 0.40901196)
+size = Vector3(1.40752, 1.17955, 0.73270607)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xg5d6"]
 size = Vector3(1.80908, 1.27979, 0.859863)
@@ -377,7 +377,7 @@ stream = ExtResource("10_xg5d6")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956788, -0.256418, -0.5249865)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956788, -0.256418, -0.36313945)
 shape = SubResource("BoxShape3D_c4ehr")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
@@ -449,7 +449,7 @@ collision_layer = 536870912
 collision_mask = 536870912
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OISStrikeReceiver5/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.285487, 0.213908)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.32539585, 0.3387081)
 shape = SubResource("SphereShape3D_c4ehr")
 
 [node name="plate" parent="." instance=ExtResource("11_thf8c")]

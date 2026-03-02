@@ -2,6 +2,8 @@ extends Node3D
 
 signal is_crying(marker)
 
+
+
 @onready var audio = $"../AudioStreamPlayer3D"
 
 func _on_plushie_picked_up(pickable: Variant) -> void:
@@ -9,6 +11,7 @@ func _on_plushie_picked_up(pickable: Variant) -> void:
 		audio.play()
 	
 	await get_tree().create_timer(3).timeout
+	GlobalVar.increase_emotional()
 	GlobalVar.increase_emotional()
 	is_crying.emit("bed")
 

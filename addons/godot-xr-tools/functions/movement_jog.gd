@@ -97,7 +97,6 @@ func physics_movement(delta: float, player_body: XRToolsPlayerBody, _disabled: b
 		if _jog_time >= _jog_threshold and not _physical_increased:
 			_physical_increased = true
 			GlobalVar.increase_physical()
-			GlobalVar.increase_emotional()
 	else:
 		_reset_jog_timer()
 

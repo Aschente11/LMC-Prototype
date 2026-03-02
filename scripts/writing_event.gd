@@ -10,8 +10,5 @@ func current_object_in_slot(_object: Variant, _row: Variant, _col: Variant) -> v
 func check_all_slots_filled() -> void:
 	if notes_complete == 5:
 		#GlobalVar.regulate_stimulation()
-		GlobalVar.increase_physical()
-		GlobalVar.increase_physical()
-		GlobalVar.increase_emotional()
-		GlobalVar.increase_emotional()
+		GlobalVar.decrease_emotional()
 		close_event()

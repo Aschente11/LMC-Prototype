@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=4 uid="uid://d2cws8wqloxvv"]
+[gd_scene load_steps=221 format=4 uid="uid://d2cws8wqloxvv"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_ytp03"]
 [ext_resource type="Script" uid="uid://bxovi75ncq4m0" path="res://scripts/lmc_day_two.gd" id="2_7ehl3"]
@@ -849,6 +849,18 @@ shader_parameter/smooth_edge = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hoojf"]
 material = SubResource("ShaderMaterial_tmcio")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgkui"]
+render_priority = 0
+shader = SubResource("Shader_2lccd")
+shader_parameter/ring_color = Color(0.902017, 0.8037368, 0.7777183, 1)
+shader_parameter/ring_frequency = 25.0
+shader_parameter/ring_portion = -0.9
+shader_parameter/move_speed = 4.02
+shader_parameter/smooth_edge = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_iyu4n"]
+material = SubResource("ShaderMaterial_sgkui")
 
 [node name="day_two" instance=ExtResource("1_ytp03")]
 script = ExtResource("2_7ehl3")
@@ -1782,6 +1794,7 @@ shape = SubResource("CylinderShape3D_tmcio")
 
 [node name="AOE" type="MeshInstance3D" parent="Chair2" index="1"]
 transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+visible = false
 mesh = SubResource("PlaneMesh_hoojf")
 skeleton = NodePath("../..")
 
@@ -1806,6 +1819,20 @@ script = ExtResource("103_tmcio")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22268486, 0.4116516, -0.0011899471)
 shape = SubResource("BoxShape3D_hoojf")
 
+[node name="Nap" type="Area3D" parent="." index="56"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.058192, 0.5657841, -5.5226827)
+collision_mask = 524289
+script = ExtResource("102_fl1yh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nap" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09477353, 0.5503843, 0.08065939)
+shape = SubResource("CylinderShape3D_tmcio")
+
+[node name="AOE" type="MeshInstance3D" parent="Nap" index="1"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+mesh = SubResource("PlaneMesh_iyu4n")
+skeleton = NodePath("../..")
+
 [connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]
 [connection signal="body_entered" from="TVSet1" to="TVSet1" method="_on_body_entered"]
 [connection signal="is_sitting" from="TVSet1" to="." method="teleport_player"]
@@ -1826,3 +1853,5 @@ shape = SubResource("BoxShape3D_hoojf")
 [connection signal="body_exited" from="Seated2" to="Seated2" method="_on_body_exited"]
 [connection signal="body_entered" from="Seated3" to="Seated3" method="_on_body_entered"]
 [connection signal="body_exited" from="Seated3" to="Seated3" method="_on_body_exited"]
+[connection signal="body_entered" from="Nap" to="Nap" method="_on_body_entered"]
+[connection signal="is_sitting" from="Nap" to="." method="teleport_player"]

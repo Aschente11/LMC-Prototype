@@ -73,9 +73,17 @@ func _on_tasks_completed(total_completed: int):
 		$sleep.visible = true
 		$sleep.monitoring = true
 		$sleep.monitorable = true
-		
+
+func _randomize_effect(rand: int):
+	if rand == -1:
+		GlobalVar.decrease_emotional()
+	elif rand == 1:
+		GlobalVar.increase_emotional()
+
 func teleport_player(marker):
 	var pos
+	
+	var rng = RandomNumberGenerator.new()
 	
 	if marker == "bed":
 		pos = $BedMarker.global_position
@@ -83,23 +91,36 @@ func teleport_player(marker):
 		
 	elif marker == "TVSet1":
 		pos = $TVSetMarker1.global_position
+		_randomize_effect(rng.randi_range(-1,1))
 		print("teleported to TVSet1")
 		
 	elif marker == "TVSet2":
 		pos = $TVSetMarker2.global_position
+		_randomize_effect(rng.randi_range(-1,1))
 		print("teleported to TVSet2")
 	
 	elif marker == "TVSet3":
 		pos = $TVSetMarker3.global_position
+		_randomize_effect(rng.randi_range(-1,1))
 		print("teleported to TVSet3")
 	
 	elif marker == "Chair1":
 		pos = $ChairMarker1.global_position
+		GlobalVar.increase_emotional()
 		print("teleported to Chair1")
 	
 	elif marker == "Chair2":
 		pos = $ChairMarker2.global_position
+		GlobalVar.increase_emotional()
 		print("teleported to Chair2")
+		
+	elif marker == "Nap":
+		pos = $BedMarker.global_position
+		GlobalVar.increase_emotional()
+		GlobalVar.increase_emotional()
+		GlobalVar.increase_physical()
+		GlobalVar.increase_physical()
+		print("teleported to bed")
 		
 	xr_player.global_position = pos
 	
