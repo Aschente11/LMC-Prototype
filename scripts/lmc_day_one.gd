@@ -36,7 +36,7 @@ func _ready():
 	
 	$SleepViewport.visible = false
 	
-	#$plushie/Sketchfab_Scene.is_crying.connect(teleport_player)
+	$plushie/Sketchfab_Scene.is_crying.connect(teleport_player)
 	
 	TaskManager.initialize(0)
 	
@@ -109,14 +109,8 @@ func teleport_player(marker):
 	
 	anim_player.play("open_eyes")
 
-func _on_journal_picked_up():
-	for i in range(TaskManager.active_tasks.size()):
-			if TaskManager.active_tasks[i].text == "Read journal.":
-				TaskManager.complete_task(i)
-				
 func is_xr_class(name : String) -> bool:
 	return name == "XRToolsSceneBase" or super(name)
-
 
 func _on_bfast_body_entered(body: Node3D) -> void:
 	

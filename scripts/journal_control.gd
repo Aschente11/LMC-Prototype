@@ -79,7 +79,7 @@ func _on_page_turn_left_action_completed(requirement: Variant, total_progress: V
 	pages_read += 1
 	
 	if not already_read:
-		GlobalVar.increase_emotional()
+		GlobalVar.decrease_emotional()
 		already_read = true
 
 func _on_page_turn_right_action_completed(requirement: Variant, total_progress: Variant) -> void:

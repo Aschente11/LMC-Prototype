@@ -71,11 +71,8 @@ func _on_dirt_touched_water(area: Area3D, dirt_mesh: MeshInstance3D) -> void:
 		# Check if all dirt is cleaned
 		if cleaned_dirt_count >= total_dirt_count:
 			print("All plates cleaned!")
-			GlobalVar.decrease_emotional()
 			GlobalVar.decrease_physical()
-			GlobalVar.decrease_emotional()
 			GlobalVar.decrease_physical()
-			GlobalVar.decrease_emotional()
 			GlobalVar.decrease_physical()
 			
 			for i in range(TaskManager.active_tasks.size()):
