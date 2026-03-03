@@ -1787,7 +1787,7 @@ transform = Transform3D(-0.999956, 0, 0.00933731, 0, 1, 0, -0.00933731, 0, -0.99
 transform = Transform3D(-0.0325446, 0, 0.99947, 0, 1, 0, -0.99947, 0, -0.0325446, -7.7922153, 1.3290607, -3.3600485)
 
 [node name="Pencil_Model" parent="." index="17" instance=ExtResource("33_ithw4")]
-transform = Transform3D(0.944863, 0, -0.327465, 0, 1, 0, 0.327465, 0, 0.944863, -6.4864573, 1.3147756, -3.3841238)
+transform = Transform3D(0.11379257, 0, 0.9935043, 0, 1, 0, -0.9935043, 0, 0.11379257, -6.3332095, 1.3147756, -3.2985914)
 
 [node name="Plant A3" parent="." index="18" instance=ExtResource("90_dwn8a")]
 transform = Transform3D(0.55, 0, 0, 0, 0.55, 0, 0, 0, 0.55, 3.086, 1.425, 1.89507)

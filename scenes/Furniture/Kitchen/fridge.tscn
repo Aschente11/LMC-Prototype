@@ -372,7 +372,7 @@ metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 size = Vector3(0.830078, 2.09808, 0.619202)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_amwlr"]
-size = Vector3(0.070076, 0.0895996, 0.0693359)
+size = Vector3(0.19790697, 0.26263428, 0.18469238)
 
 [sub_resource type="SphereMesh" id="SphereMesh_uxfnv"]
 radius = 0.2
