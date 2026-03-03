@@ -2,6 +2,9 @@ extends XRToolsSceneBase
 
 var xr_interface: XRInterface
 
+var anim_player
+@onready var xr_player = $XROrigin3D
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	xr_interface = XRServer.find_interface("OpenXR")
@@ -39,6 +42,62 @@ func _on_sleep_body_entered(body: Node3D) -> void:
 	$sleep.visible = false
 	$sleep.monitoring = false
 	$sleep.monitorable = false
+
+func _randomize_effect(rand: int):
+	if rand == -1:
+		GlobalVar.decrease_emotional()
+	elif rand == 1:
+		GlobalVar.increase_emotional()
+
+func teleport_player(marker):
+	var pos
+	
+	var rng = RandomNumberGenerator.new()
+	
+	if marker == "bed":
+		pos = $BedMarker.global_position
+		print("teleported to bed")
+		
+	elif marker == "TVSet1":
+		pos = $TVSetMarker1.global_position
+		_randomize_effect(rng.randi_range(-1,1))
+		print("teleported to TVSet1")
+		
+	elif marker == "TVSet2":
+		pos = $TVSetMarker2.global_position
+		_randomize_effect(rng.randi_range(-1,1))
+		print("teleported to TVSet2")
+	
+	elif marker == "TVSet3":
+		pos = $TVSetMarker3.global_position
+		_randomize_effect(rng.randi_range(-1,1))
+		print("teleported to TVSet3")
+	
+	elif marker == "Chair1":
+		pos = $ChairMarker1.global_position
+		GlobalVar.increase_emotional()
+		print("teleported to Chair1")
+	
+	elif marker == "Chair2":
+		pos = $ChairMarker2.global_position
+		GlobalVar.increase_emotional()
+		print("teleported to Chair2")
+		
+	elif marker == "Nap":
+		pos = $BedMarker.global_position
+		GlobalVar.increase_emotional()
+		GlobalVar.increase_emotional()
+		GlobalVar.increase_physical()
+		GlobalVar.increase_physical()
+		print("teleported to bed")
+		
+	xr_player.global_position = pos
+	
+	anim_player.play("blinking")
+	
+	await get_tree().create_timer(1).timeout
+	
+	anim_player.play("open_eyes")
 
 func _on_midnight_reached():
 	print("Midnight! Loading day end scene from main scene...")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=200 format=4 uid="uid://ceb5d1u06f62h"]
+[gd_scene load_steps=209 format=4 uid="uid://ceb5d1u06f62h"]
 
 [ext_resource type="PackedScene" uid="uid://bpd48mqxcdr1c" path="res://scenes/lmc_scene_base.tscn" id="1_qq1xt"]
 [ext_resource type="Script" uid="uid://vayvtkrjc5q6" path="res://scripts/lmc_day_three.gd" id="2_qq1xt"]
@@ -98,6 +98,8 @@
 [ext_resource type="PackedScene" uid="uid://df3jsoduesb2s" path="res://scenes/tools/dartsBoard.tscn" id="95_goa84"]
 [ext_resource type="AudioStream" uid="uid://b6axnhgxo4c2e" path="res://assets/sfx/voice lines/huffing sound.mp3" id="97_reukj"]
 [ext_resource type="AudioStream" uid="uid://k100lf42hw1p" path="res://assets/sfx/voice lines/dia_i cant calm down.wav" id="98_5bdga"]
+[ext_resource type="Script" uid="uid://dn3jom6t51602" path="res://scripts/tv_set_1.gd" id="99_ycg5v"]
+[ext_resource type="Script" uid="uid://cfdqnwfx3o2cw" path="res://scripts/seated.gd" id="100_8kf2a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ycg5v"]
 size = Vector3(15.7303, 0.316757, 20.6996)
@@ -728,6 +730,65 @@ size = Vector3(2.45, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_oorph"]
 material = SubResource("StandardMaterial3D_sv5xx")
 size = Vector3(2.45, 1, 0.05)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e6nhp"]
+height = 1.8513184
+radius = 0.5083008
+
+[sub_resource type="Shader" id="Shader_5jc51"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+/*
+RING SHADER
+*/
+
+
+uniform vec3 ring_color: source_color = vec3(1.0);
+uniform float ring_frequency = 50.0;
+/** Portion of the visible rings. Negative values give wider rings, positive values give narrower rings*/
+uniform float ring_portion: hint_range(-0.9, 0.9, 0.1) = 0.0;
+/** Negative values move the rings outwards, positive value move the rings inwards */
+uniform float move_speed = -10.0;
+uniform bool smooth_edge = false;
+
+void fragment() {
+	float dist = distance(UV, vec2(0.5,0.5));
+	float rings = sin(dist * ring_frequency + (TIME * move_speed));
+	rings = step(ring_portion, rings);
+	float blend_alpha = smoothstep(0.5, 0.4, dist);
+	 bool is_rings = (rings > 0.0) && bool(1 - int(dist > 0.5 || rings < 1.0));
+
+    ALPHA = float(is_rings) * mix(1.0, blend_alpha, float(smooth_edge));
+    ALBEDO = float(is_rings) * ring_color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tmcio"]
+render_priority = 0
+shader = SubResource("Shader_5jc51")
+shader_parameter/ring_color = Color(0.9105946, 0.79661274, 0.81390756, 1)
+shader_parameter/ring_frequency = 25.0
+shader_parameter/ring_portion = -0.9
+shader_parameter/move_speed = 4.02
+shader_parameter/smooth_edge = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jcdgp"]
+material = SubResource("ShaderMaterial_tmcio")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4gw4r"]
+size = Vector3(1.4453735, 1.8233032, 0.8796997)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgkui"]
+render_priority = 0
+shader = SubResource("Shader_5jc51")
+shader_parameter/ring_color = Color(0.902017, 0.8037368, 0.7777183, 1)
+shader_parameter/ring_frequency = 25.0
+shader_parameter/ring_portion = -0.9
+shader_parameter/move_speed = 4.02
+shader_parameter/smooth_edge = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o7dxi"]
+material = SubResource("ShaderMaterial_sgkui")
 
 [node name="day_three" instance=ExtResource("1_qq1xt")]
 script = ExtResource("2_qq1xt")
@@ -1542,3 +1603,81 @@ modulate = Color(1, 0, 0, 1)
 outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
 text = "I CAN'T CALM DOWN..."
 font_size = 27
+
+[node name="Chair1" type="Area3D" parent="." index="41"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99644524, 0.5657841, 3.1430013)
+collision_mask = 524289
+script = ExtResource("99_ycg5v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069452345, 0.5503843, -0.0064389706)
+shape = SubResource("CylinderShape3D_e6nhp")
+
+[node name="AOE" type="MeshInstance3D" parent="Chair1" index="1"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+mesh = SubResource("PlaneMesh_jcdgp")
+skeleton = NodePath("../..")
+
+[node name="ChairMarker1" type="Marker3D" parent="." index="42"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6946986, 1.1358856, 2.0475137)
+
+[node name="Chair2" type="Area3D" parent="." index="43"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.99644524, 0.5657841, 6.6062174)
+collision_mask = 524289
+script = ExtResource("99_ycg5v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chair2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.069452345, 0.5503843, -0.0064389706)
+shape = SubResource("CylinderShape3D_e6nhp")
+
+[node name="AOE" type="MeshInstance3D" parent="Chair2" index="1"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+visible = false
+mesh = SubResource("PlaneMesh_jcdgp")
+skeleton = NodePath("../..")
+
+[node name="ChairMarker2" type="Marker3D" parent="." index="44"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5431423, 1.1358856, 7.6077857)
+
+[node name="Seated2" type="Area3D" parent="." index="45"]
+transform = Transform3D(0.87035567, 0, -0.49242356, 0, 1, 0, 0.49242356, 0, 0.87035567, 1.3110583, 0.21328753, 2.1532629)
+collision_mask = 524288
+script = ExtResource("100_8kf2a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Seated2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22268486, 0.4116516, -0.0011899471)
+shape = SubResource("BoxShape3D_4gw4r")
+
+[node name="Seated3" type="Area3D" parent="." index="46"]
+transform = Transform3D(-0.7986355, 0, -0.6018151, 0, 1, 0, 0.6018151, 0, -0.7986355, 1.5111444, 0.21328753, 7.4338737)
+collision_mask = 524288
+script = ExtResource("100_8kf2a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Seated3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22268486, 0.4116516, -0.0011899471)
+shape = SubResource("BoxShape3D_4gw4r")
+
+[node name="Nap" type="Area3D" parent="." index="47"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.515476, 0.5657841, -5.55998)
+collision_mask = 524289
+script = ExtResource("99_ycg5v")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nap" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045619965, 0.5503843, -0.013068676)
+shape = SubResource("CylinderShape3D_e6nhp")
+
+[node name="AOE" type="MeshInstance3D" parent="Nap" index="1"]
+transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
+mesh = SubResource("PlaneMesh_o7dxi")
+skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="Chair1" to="Chair1" method="_on_body_entered"]
+[connection signal="is_sitting" from="Chair1" to="." method="teleport_player"]
+[connection signal="body_entered" from="Chair2" to="Chair2" method="_on_body_entered"]
+[connection signal="is_sitting" from="Chair2" to="." method="teleport_player"]
+[connection signal="body_entered" from="Seated2" to="Seated2" method="_on_body_entered"]
+[connection signal="body_exited" from="Seated2" to="Seated2" method="_on_body_exited"]
+[connection signal="body_entered" from="Seated3" to="Seated3" method="_on_body_entered"]
+[connection signal="body_exited" from="Seated3" to="Seated3" method="_on_body_exited"]
+[connection signal="body_entered" from="Nap" to="Nap" method="_on_body_entered"]
+[connection signal="is_sitting" from="Nap" to="." method="teleport_player"]

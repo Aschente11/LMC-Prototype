@@ -1820,12 +1820,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22268486, 0.4116516, -0.001
 shape = SubResource("BoxShape3D_hoojf")
 
 [node name="Nap" type="Area3D" parent="." index="56"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.058192, 0.5657841, -5.5226827)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.515476, 0.5657841, -5.55998)
 collision_mask = 524289
 script = ExtResource("102_fl1yh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Nap" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09477353, 0.5503843, 0.08065939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.045619965, 0.5503843, -0.013068676)
 shape = SubResource("CylinderShape3D_tmcio")
 
 [node name="AOE" type="MeshInstance3D" parent="Nap" index="1"]

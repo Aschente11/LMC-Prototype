@@ -28,8 +28,8 @@ func _ready():
 	
 	$WakingUpPlayer/XROrigin3D.current = true
 	$WakingUpPlayer/XROrigin3D/XRCamera3D.current = true
-	
-
+	#
+#
 	#$sleep.visible = false
 	#$sleep.monitoring = false
 	#$sleep.monitorable = false
