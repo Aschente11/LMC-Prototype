@@ -1820,7 +1820,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22268486, 0.4116516, -0.001
 shape = SubResource("BoxShape3D_hoojf")
 
 [node name="Nap" type="Area3D" parent="." index="56"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.058192, 0.5657841, -5.5226827)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.664602, 0.5657841, -5.982764)
 collision_mask = 524289
 script = ExtResource("102_fl1yh")
 
