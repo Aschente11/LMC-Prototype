@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://du2vn3nhn1mob"]
+[gd_scene load_steps=40 format=4 uid="uid://du2vn3nhn1mob"]
 
 [ext_resource type="Script" uid="uid://dxvofd15t145s" path="res://scripts/cooking_station.gd" id="1_c4ehr"]
 [ext_resource type="PackedScene" uid="uid://jvibwk5tiywe" path="res://assets/Furniture Shaders/cupboard_e.tscn" id="1_dd7b2"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dgjekjktwn5k3" path="res://scenes/others/water.tscn" id="10_thf8c"]
 [ext_resource type="AudioStream" uid="uid://cjeyyh1i3jh14" path="res://assets/sfx/stove-open.mp3" id="10_xg5d6"]
 [ext_resource type="PackedScene" uid="uid://dcj3aeqvitt61" path="res://scenes/tools/kitchen/plate.tscn" id="11_thf8c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thf8c"]
+size = Vector3(3.052246, 4.4201813, 3.2528076)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pva7w"]
 resource_name = "White"
@@ -281,13 +284,13 @@ shader_parameter/uv_offset = Vector2(0, 0)
 size = Vector3(0.0407715, 0.0268555, 0.0473251)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c4ehr"]
-radius = 0.17276181
+radius = 0.1818601
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c4ehr"]
-size = Vector3(1.40752, 1.17955, 0.73270607)
+size = Vector3(1.40752, 1.17955, 0.9065119)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xg5d6"]
-size = Vector3(1.80908, 1.27979, 0.859863)
+size = Vector3(1.3843989, 1.2755151, 0.91763306)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_thf8c"]
 height = 0.417053
@@ -313,6 +316,12 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.950343, 0.388623, -0
 
 [node name="Dishwasher2" parent="." instance=ExtResource("3_5fh7l")]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.135537, -0.26973, -0.0988706)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Dishwasher2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dishwasher2/StaticBody3D"]
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0.25607726, 0.20310122, -0.55676615)
+shape = SubResource("BoxShape3D_thf8c")
 
 [node name="Oven" type="Node3D" parent="."]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.22623, 0.26, -0.121984)
@@ -377,7 +386,7 @@ stream = ExtResource("10_xg5d6")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956788, -0.256418, -0.36313945)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956788, -0.256418, -0.32187307)
 shape = SubResource("BoxShape3D_c4ehr")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
@@ -385,7 +394,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.664636, -0.139893, -0.26250
 shape = SubResource("BoxShape3D_xg5d6")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.393, -0.148813, -0.295105)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3576603, -0.15095048, -0.29823315)
 shape = SubResource("BoxShape3D_xg5d6")
 
 [node name="OISStrikeReceiver2" type="Node3D" parent="."]

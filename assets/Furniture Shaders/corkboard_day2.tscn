@@ -69,6 +69,7 @@ shape = SubResource("ConvexPolygonShape3D_gf74p")
 [node name="InventorySlot1" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.895562, 0.0676656, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -85,6 +86,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot2" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.400104, 0.0676656, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -101,6 +103,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot3" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.104886, 0.0726474, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -117,6 +120,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot4" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.895562, -0.43838, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -133,6 +137,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot5" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.400104, -0.43838, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -149,6 +154,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot6" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.104886, -0.433398, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -165,6 +171,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot7" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.895562, 0.544431, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -181,6 +188,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot8" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, -0.400104, 0.544431, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -197,6 +205,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot9" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.104886, 0.549413, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -213,6 +222,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot10" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.577017, 0.0726474, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -229,6 +239,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot11" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.577017, -0.433398, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -245,6 +256,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot12" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 0.577017, 0.549413, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -261,6 +273,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot13" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 1.03947, 0.0726474, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -277,6 +290,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot14" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 1.03947, -0.433398, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
@@ -293,6 +307,7 @@ surface_material_override/0 = ExtResource("6_efrh4")
 [node name="InventorySlot15" type="Node3D" parent="."]
 transform = Transform3D(0.997603, -0.000138892, 0.0691992, 0.0691993, 0.00200232, -0.997601, 0, 0.999998, 0.00200713, 1.03947, 0.549413, 0.0685206)
 script = ExtResource("3_5lc8t")
+snap_zone_radius = 0.4
 group_required = "notes"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
