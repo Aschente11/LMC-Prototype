@@ -386,7 +386,7 @@ stream = ExtResource("10_xg5d6")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956788, -0.256418, -0.49521735)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956788, -0.256418, -0.38340428)
 shape = SubResource("BoxShape3D_c4ehr")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
