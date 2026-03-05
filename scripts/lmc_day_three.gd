@@ -19,7 +19,8 @@ func _ready():
 	else:
 		print("OpenXR not initialized, please check if your headset is connected.")
 		
-	
+	anim_player = xr_player.get_node("AnimationPlayer")
+
 	TaskManager.initialize(2)
 	TaskManager.tasks_completed.connect(_on_tasks_completed)
 	
