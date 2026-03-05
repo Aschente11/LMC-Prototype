@@ -39,6 +39,7 @@ func default_state():
 	emotional = 3.0
 	foods_eaten_count = 0  
 	dust_cleaned_count = 0
+	is_permanently_overstimulated = false
 	
 	if old_stim != stimulation:
 		if old_stim > stimulation:

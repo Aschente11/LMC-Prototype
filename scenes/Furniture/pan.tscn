@@ -247,6 +247,7 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.044028327, 0)
 script = ExtResource("11_7rs2t")
 default_object = NodePath("../PancakeRaw3")
+group_required = "pancake"
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot" instance=ExtResource("12_a2oc4")]
