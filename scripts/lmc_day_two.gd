@@ -44,9 +44,9 @@ func _ready():
 	await get_tree().create_timer(2.0).timeout
 	$"Event 1".play()
 	
-	#$sleep.visible = false
-	#$sleep.monitoring = false
-	#$sleep.monitorable = false
+	$sleep.visible = false
+	$sleep.monitoring = false
+	$sleep.monitorable = false
 	
 	$"XROrigin3D/XRCamera3D/LOST IN THOUGHTS".visible = false
 	
