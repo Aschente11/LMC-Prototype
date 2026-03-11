@@ -466,10 +466,13 @@ func _right_on_button_pressed(button_name: String):
 	if is_game_over and button_name == "ax_button":
 		var root_scene = get_tree().current_scene
 		if root_scene.has_method("load_scene"):
-			root_scene.load_scene("res://scenes/lmc_title.tscn", "title")
+			if root_scene.name == "day_one":
+				root_scene.reset_scene("day_one")
+			else:
+				root_scene.reset_scene()
 		else:
 			# Fallback to standard scene change
-			get_tree().change_scene_to_file("res://scenes/lmc_title.tscn")
+			root_scene.exit_to_main_menu()
 		
 	#if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
 		#self.current = true

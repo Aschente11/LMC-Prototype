@@ -29,10 +29,19 @@ func _ready():
 	$WakingUpPlayer/XROrigin3D.current = true
 	$WakingUpPlayer/XROrigin3D/XRCamera3D.current = true
 	
+<<<<<<< Updated upstream
 
 	#$sleep.visible = false
 	#$sleep.monitoring = false
 	#$sleep.monitorable = false
+=======
+	$"Event0 text".visible = true
+	$"Event1 text".visible = false
+	
+	$sleep.visible = false
+	$sleep.monitoring = false
+	$sleep.monitorable = false
+>>>>>>> Stashed changes
 	
 	$SleepViewport.visible = false
 	
@@ -144,6 +153,8 @@ func equip_watch(hand: Hand) -> void:
 	watch_display.visible = false
 	left_watch.visible = hand == Hand.LEFT
 	right_watch.visible = hand == Hand.RIGHT
+	$"Event0 text".visible = false
+	$"Event1 text".visible = true
 
 
 func _on_wear_watch_button_left_button_pressed() -> void:

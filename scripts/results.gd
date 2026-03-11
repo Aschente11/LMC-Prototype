@@ -1,7 +1,8 @@
 extends Control
 
 var random_text: Array[String] = ["Do androids dream of electric sheep?", "Lorem ipsum dolor sit...",
-	"I have no mouth and I must scream", "WhAt is liFe even aBOut", "Jinkies!", "6 7 to jog"]
+	"I have no mouth and I must scream", "WhAt is liFe even aBOut", "Jinkies!", "6 7 to jog", "i eepy",
+	"I'm just ken...", "Never gonna give you up"]
 
 func update(day: int, tasksCompleted: int, tasksNumber: int):
 	$CenterContainer/VBoxContainer/HBoxContainer2/TitleLabel.text = "Day " + str(day)
@@ -19,7 +20,7 @@ func update(day: int, tasksCompleted: int, tasksNumber: int):
 	$CenterContainer/VBoxContainer/RankLabel.text = rank
 	$CenterContainer/VBoxContainer/RankLabel.label_settings.font_color = color
 	
-	$CenterContainer/VBoxContainer/HBoxContainer/TasksLabel.text = "{}/{}".format([tasksCompleted, tasksNumber], "{}")
+	$CenterContainer/VBoxContainer/HBoxContainer/TasksLabel.text = "{}/{}".format([clampi(tasksCompleted, 0, tasksNumber), tasksNumber], "{}")
 	
 	$CenterContainer/VBoxContainer/MessageLabel.text = random_text.pick_random()
 
