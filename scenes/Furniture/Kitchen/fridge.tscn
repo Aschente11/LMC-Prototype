@@ -372,7 +372,7 @@ metadata/_custom_type_script = "uid://c8kebjuxx7jkh"
 size = Vector3(0.830078, 2.09808, 0.619202)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_amwlr"]
-size = Vector3(0.19790697, 0.26263428, 0.18469238)
+size = Vector3(0.25862145, 0.3290863, 0.3055725)
 
 [sub_resource type="SphereMesh" id="SphereMesh_uxfnv"]
 radius = 0.2
@@ -457,16 +457,16 @@ mesh = SubResource("SphereMesh_uxfnv")
 surface_material_override/0 = ExtResource("10_35ron")
 
 [node name="Apple" parent="InventorySlot" instance=ExtResource("12_35ron")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00289571, 0.00632951, -0.0229484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0028957129, 0.0063295066, 0.21767953)
 
 [node name="InventorySlot2" type="Node3D" parent="." node_paths=PackedStringArray("default_object")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08598757, 0.38310158, -0.2921371)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08598757, 0.27557355, -0.062205046)
 script = ExtResource("8_k31p6")
 default_object = NodePath("pancake_mix")
 metadata/_custom_type_script = "uid://d2j64x8gnsuue"
 
 [node name="SnapZone" parent="InventorySlot2" instance=ExtResource("9_uxfnv")]
-grab_distance = 0.2
+grab_distance = 0.1
 snap_mode = 1
 initial_object = NodePath("../pancake_mix")
 
