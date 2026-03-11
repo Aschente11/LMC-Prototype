@@ -1,4 +1,3 @@
-[gd_scene load_steps=40 format=4 uid="uid://du2vn3nhn1mob"]
 [gd_scene load_steps=41 format=4 uid="uid://du2vn3nhn1mob"]
 
 [ext_resource type="Script" uid="uid://dxvofd15t145s" path="res://scripts/cooking_station.gd" id="1_c4ehr"]
@@ -285,7 +284,6 @@ shader_parameter/uv_offset = Vector2(0, 0)
 size = Vector3(0.0407715, 0.0268555, 0.0473251)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_c4ehr"]
-radius = 0.1818601
 radius = 0.29515272
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c4ehr"]
@@ -296,7 +294,6 @@ size = Vector3(1.40752, 1.17955, 0.60913527)
 >>>>>>> Stashed changes
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xg5d6"]
-size = Vector3(1.3843989, 1.2755151, 0.91763306)
 size = Vector3(1.6973419, 1.2827771, 0.91763306)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c4jqf"]
@@ -396,16 +393,10 @@ stream = ExtResource("10_xg5d6")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956788, -0.256418, -0.38340428)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.956788, -0.256418, -0.35874832)
 shape = SubResource("BoxShape3D_c4ehr")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.664636, -0.139893, -0.262506)
-shape = SubResource("BoxShape3D_xg5d6")
-
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3576603, -0.15095048, -0.29823315)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.311678, -0.14731948, -0.29823315)
 shape = SubResource("BoxShape3D_xg5d6")
 
@@ -478,7 +469,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.979504, 0.32539585, 0.33870
 shape = SubResource("SphereShape3D_c4ehr")
 
 [node name="plate" parent="." instance=ExtResource("11_thf8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3292716, 0.33905, -0.40568024)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3292716, 0.33905, -0.2254729)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="plate"]
@@ -502,7 +492,6 @@ mesh = SubResource("CylinderMesh_nj2ia")
 skeleton = NodePath("../../..")
 
 [node name="plate2" parent="." instance=ExtResource("11_thf8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16175, 0.391421, -0.355822)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.16175, 0.391421, -0.17561466)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="plate2"]
@@ -531,7 +520,6 @@ mesh = SubResource("CylinderMesh_nj2ia")
 skeleton = NodePath("../../..")
 
 [node name="plate3" parent="." instance=ExtResource("11_thf8c")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.091002, 0.391421, -0.38944194)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.091002, 0.391421, -0.2092346)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="plate3"]

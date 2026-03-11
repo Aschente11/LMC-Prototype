@@ -153,6 +153,7 @@ func equip_watch(hand: Hand) -> void:
 	watch_display.visible = false
 	left_watch.visible = hand == Hand.LEFT
 	right_watch.visible = hand == Hand.RIGHT
+	
 	$"Event0 text".visible = false
 	$"Event1 text".visible = true
 
