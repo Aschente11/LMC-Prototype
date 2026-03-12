@@ -29,9 +29,9 @@ func _ready():
 	$WakingUpPlayer/XROrigin3D.current = true
 	$WakingUpPlayer/XROrigin3D/XRCamera3D.current = true
 	
-	$sleep.visible = false
-	$sleep.monitoring = false
-	$sleep.monitorable = false
+	#$sleep.visible = false
+	#$sleep.monitoring = false
+	#$sleep.monitorable = false
 	
 	$SleepViewport.visible = false
 	
@@ -162,7 +162,7 @@ func teleport_player(marker):
 	
 	anim_player.play("blinking")
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(5.0/time_mult).timeout
 	
 	anim_player.play("open_eyes")
 	

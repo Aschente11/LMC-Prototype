@@ -1833,6 +1833,14 @@ transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
 mesh = SubResource("PlaneMesh_iyu4n")
 skeleton = NodePath("../..")
 
+[node name="Go to nap" type="Label3D" parent="." index="57"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6730766, 0.37755758, -6.092531)
+billboard = 2
+shaded = true
+outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
+text = "Take a nap"
+font_size = 26
+
 [connection signal="body_entered" from="sleep" to="." method="_on_sleep_body_entered"]
 [connection signal="body_entered" from="TVSet1" to="TVSet1" method="_on_body_entered"]
 [connection signal="is_sitting" from="TVSet1" to="." method="teleport_player"]

@@ -1671,6 +1671,23 @@ transform = Transform3D(0.465, 0, 0, 0, 0.465, 0, 0, 0, 0.465, 0, -0.445628, 0)
 mesh = SubResource("PlaneMesh_o7dxi")
 skeleton = NodePath("../..")
 
+[node name="TVSetMarker1" type="Marker3D" parent="." index="48"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46360528, 1.1358856, -6.307384)
+
+[node name="TVSetMarker2" type="Marker3D" parent="." index="49"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46360528, 1.1358856, -7.66242)
+
+[node name="TVSetMarker3" type="Marker3D" parent="." index="50"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.46360528, 1.1358856, -8.991421)
+
+[node name="Go to nap" type="Label3D" parent="." index="51"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.784418, 1.2958138, -6.664529)
+billboard = 2
+shaded = true
+outline_modulate = Color(0.0901961, 0.192157, 0.239216, 1)
+text = "Take a nap"
+font_size = 26
+
 [connection signal="body_entered" from="Chair1" to="Chair1" method="_on_body_entered"]
 [connection signal="is_sitting" from="Chair1" to="." method="teleport_player"]
 [connection signal="body_entered" from="Chair2" to="Chair2" method="_on_body_entered"]

@@ -32,6 +32,7 @@ func _ready():
 	GlobalTime.connect("midnight_reached", _on_midnight_reached)
 	
 	$XROrigin3D.is_game_over.connect(restart_day) 
+	$plushie/Sketchfab_Scene.is_crying.connect(teleport_player)
 	GlobalVar.set_permanently_overstimulated()
 	
 	$"Cant calm down".play()
@@ -110,7 +111,7 @@ func teleport_player(marker):
 	
 	anim_player.play("blinking")
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(5.0/time_mult).timeout
 	
 	anim_player.play("open_eyes")
 	
