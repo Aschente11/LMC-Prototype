@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cgettxdui2mmi" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-state-machine/ois_one_hand_tool_asm.gd" id="15_r5vjs"]
 [ext_resource type="Script" uid="uid://b4ao0gdf7khuq" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-colliders/ois_collider_area3d.gd" id="16_0amff"]
 [ext_resource type="Texture2D" uid="uid://b3tqu7mdxa3hr" path="res://assets/others/Journal-1.png" id="17_1dcfd"]
+[ext_resource type="Texture2D" uid="uid://b2aywb2x5jm4s" path="res://assets/others/Journal-0.png" id="17_5chbu"]
 [ext_resource type="Texture2D" uid="uid://yiesdu5hgnbl" path="res://assets/others/Journal-2.png" id="18_5chbu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bq28y"]
@@ -1371,12 +1372,9 @@ radius = 0.1
 [sub_resource type="PlaneMesh" id="PlaneMesh_xydmw"]
 size = Vector2(0.115, 0.195)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ytnie"]
-load_path = "res://.godot/imported/Journal-0.png-df3f48850a544ebdd301acadb69092f3.s3tc.ctex"
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fsdh6"]
 transparency = 1
-albedo_texture = SubResource("CompressedTexture2D_ytnie")
+albedo_texture = ExtResource("17_5chbu")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_8xpsh"]
 size = Vector2(0.115, 0.195)

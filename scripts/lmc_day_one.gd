@@ -28,8 +28,7 @@ func _ready():
 	
 	$WakingUpPlayer/XROrigin3D.current = true
 	$WakingUpPlayer/XROrigin3D/XRCamera3D.current = true
-	#
-#
+	
 	$sleep.visible = false
 	$sleep.monitoring = false
 	$sleep.monitorable = false
@@ -44,10 +43,10 @@ func _ready():
 	
 	# QTE/Waking up scene
 	handle_qte()
+	$"Event0 text".visible = true
+	$"Event1 text".visible = false
 	$"Event2 text".visible = false
 	$"Event3 text".visible = false
-	
-	GlobalVar.default_state()
 	
 func handle_qte():
 	$WakingUpPlayer/QTE.start_qte()
@@ -86,6 +85,10 @@ func on_qte_success():
 		$WakingUpPlayer.queue_free()
 		print("Changed player")
 		
+	GlobalVar.default_state()
+	
+	$XROrigin3D.is_game_over.connect(restart_day) 
+	
 	$Audio/Alarm.stop()
 	
 	$Audio/wake_up.play()
@@ -93,12 +96,56 @@ func on_qte_success():
 	$Audio/note_tutorial.play()
 	
 	
+func restart_day():
+	self.reset_scene("day_one")
+	
+func _randomize_effect(rand: int):
+	if rand == -1:
+		GlobalVar.decrease_emotional()
+	elif rand == 1:
+		GlobalVar.increase_emotional()
+
 # Only works the first time fsr :'[
 func teleport_player(marker):
 	var pos
 	
+	var rng = RandomNumberGenerator.new()
+	
 	if marker == "bed":
 		pos = $BedMarker.global_position
+		print("teleported to bed")
+		
+	elif marker == "TVSet1":
+		pos = $TVSetMarker1.global_position
+		_randomize_effect(rng.randi_range(-1,1))
+		print("teleported to TVSet1")
+		
+	elif marker == "TVSet2":
+		pos = $TVSetMarker2.global_position
+		_randomize_effect(rng.randi_range(-1,1))
+		print("teleported to TVSet2")
+	
+	elif marker == "TVSet3":
+		pos = $TVSetMarker3.global_position
+		_randomize_effect(rng.randi_range(-1,1))
+		print("teleported to TVSet3")
+	
+	elif marker == "Chair1":
+		pos = $ChairMarker1.global_position
+		GlobalVar.increase_emotional()
+		print("teleported to Chair1")
+	
+	elif marker == "Chair2":
+		pos = $ChairMarker2.global_position
+		GlobalVar.increase_emotional()
+		print("teleported to Chair2")
+		
+	elif marker == "Nap":
+		pos = $BedMarker.global_position
+		GlobalVar.increase_emotional()
+		GlobalVar.increase_emotional()
+		GlobalVar.increase_physical()
+		GlobalVar.increase_physical()
 		print("teleported to bed")
 		
 	xr_player.global_position = pos
@@ -144,7 +191,8 @@ func equip_watch(hand: Hand) -> void:
 	watch_display.visible = false
 	left_watch.visible = hand == Hand.LEFT
 	right_watch.visible = hand == Hand.RIGHT
-
+	$"Event0 text".visible = false
+	$"Event1 text".visible = true
 
 func _on_wear_watch_button_left_button_pressed() -> void:
 	equip_watch(Hand.LEFT)

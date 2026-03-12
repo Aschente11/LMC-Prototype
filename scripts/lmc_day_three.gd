@@ -31,11 +31,15 @@ func _ready():
 		GlobalTime.resume_time() 
 	GlobalTime.connect("midnight_reached", _on_midnight_reached)
 	
+	$XROrigin3D.is_game_over.connect(restart_day) 
 	GlobalVar.set_permanently_overstimulated()
 	
 	$"Cant calm down".play()
 	await get_tree().create_timer(5.0).timeout
 	$"Huffing sfx".play()
+	
+func restart_day():
+	self.reset_scene()
 	
 func _on_sleep_body_entered(body: Node3D) -> void:
 	self.load_scene("res://scenes/lmc_day_end.tscn", "day_end")

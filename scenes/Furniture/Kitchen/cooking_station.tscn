@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dcj3aeqvitt61" path="res://scenes/tools/kitchen/plate.tscn" id="11_thf8c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_thf8c"]
-size = Vector3(3.052246, 4.4201813, 3.2528076)
+size = Vector3(3.052246, 4.5238504, 3.2528076)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pva7w"]
 resource_name = "White"
@@ -326,7 +326,7 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.135537, -0.26973, -0.
 [node name="StaticBody3D" type="StaticBody3D" parent="Dishwasher2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Dishwasher2/StaticBody3D"]
-transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0.25607726, 0.20310122, -0.55676615)
+transform = Transform3D(0.99999976, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0.25607726, 0.2549358, -0.55676615)
 shape = SubResource("BoxShape3D_thf8c")
 
 [node name="Oven" type="Node3D" parent="."]

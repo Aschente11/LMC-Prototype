@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://dcj3aeqvitt61"]
+[gd_scene load_steps=11 format=4 uid="uid://dcj3aeqvitt61"]
 
 [ext_resource type="Script" uid="uid://bs5crmi43kekt" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_ly1d1"]
 [ext_resource type="Shader" uid="uid://djrf7ouidowr4" path="res://shaders/outline.gdshader" id="1_rnggg"]
 [ext_resource type="Shader" uid="uid://pnea2qngoavf" path="res://shaders/cel-shader-base.gdshader" id="2_ly1d1"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="4_ly1d1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wy2e"]
 resource_name = "plate"
@@ -76,3 +77,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_o80cs")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0114723, 0)
 shape = SubResource("CylinderShape3D_lq0nw")
+
+[node name="HighlightRing" parent="." instance=ExtResource("4_ly1d1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048343826, 0)

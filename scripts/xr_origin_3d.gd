@@ -8,6 +8,8 @@ var watch_is_left: bool = true
 var distraction_running: bool = false
 var distraction_sounds = []
 
+signal is_game_over()
+
 # Text configuration class
 class TextConfig:
 	var text: String
@@ -41,7 +43,7 @@ var display_duration: float = 2.0  # How long texts stay visible after fully typ
 var typewriter_speed: float = 0.04  # Time between each letter
 var spawn_range: Vector3 = Vector3(4.0, 3.0, 1.6) # Range of the spawning text
 
-var is_game_over: bool = false
+var player_game_over: bool = false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -139,7 +141,7 @@ func trigger_indicator(old_value: int, new_value: int) -> void:
 	if old_value > new_value: # if decreased, blue
 		change_indicator.set_shader_parameter("color", Color(0, 0, 255, 255))
 		change_indicator.set_shader_parameter("speed", 1.0)
-	elif old_value < new_value: # if increased, orange
+	elif old_value < new_value: # if increased, yellow
 		change_indicator.set_shader_parameter("color", Color(255, 100, 0, 255))
 		change_indicator.set_shader_parameter("speed", 4.0)
 		
@@ -402,17 +404,17 @@ func clear_all_overthinking_texts() -> void:
 	available_positions.shuffle()
 
 func game_over() -> void:
-	is_game_over = true
+	player_game_over = true
 	disable_teleport()
 	$XRCamera3D/Cloudy.visible = true
 	$"XRCamera3D/LOST IN THOUGHTS".visible = true
 
-func new_day() -> void:
-	is_game_over = false
-	$LeftHand/FunctionTeleport.enabled = true
-	$RightHand/FunctionTeleport.enabled = true
-	$XRCamera3D/Cloudy.visible = false
-	$"XRCamera3D/LOST IN THOUGHTS".visible = false
+#func new_day() -> void:
+	#is_game_over = false
+	#$LeftHand/FunctionTeleport.enabled = true
+	#$RightHand/FunctionTeleport.enabled = true
+	#$XRCamera3D/Cloudy.visible = false
+	#$"XRCamera3D/LOST IN THOUGHTS".visible = false
 	
 func play_distraction_loop() -> void:
 	while distraction_running:
@@ -463,13 +465,8 @@ func _left_on_button_pressed(button_name: String):
 					#notebook.visible = !notebook.visible
 					
 func _right_on_button_pressed(button_name: String):
-	if is_game_over and button_name == "ax_button":
-		var root_scene = get_tree().current_scene
-		if root_scene.has_method("load_scene"):
-			root_scene.load_scene("res://scenes/lmc_title.tscn", "title")
-		else:
-			# Fallback to standard scene change
-			get_tree().change_scene_to_file("res://scenes/lmc_title.tscn")
+	if player_game_over and button_name == "ax_button":
+		emit_signal("is_game_over")
 		
 	#if $XRCamera3D and $RightHand and $LeftHand and !$XRCamera3D.current and button_name == "ax_button":
 		#self.current = true

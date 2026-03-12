@@ -5,7 +5,7 @@ extends Node3D
 
 var is_open: bool = true
 
-func _on_ois_directional_swipe_receiver_action_started(requirement: Variant, total_progress: Variant) -> void:
+func _on_ois_directional_swipe_receiver_action_started(_requirement: Variant, _total_progress: Variant) -> void:
 	if is_open:
 		anim_player.play("open_fridge")
 	else:

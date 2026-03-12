@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://b4jvtawq6mux5"]
+[gd_scene load_steps=17 format=3 uid="uid://b4jvtawq6mux5"]
 
 [ext_resource type="Script" uid="uid://b4to7j0qjm3y6" path="res://scenes/UI/wear_watch_button_right.gd" id="1_k1djl"]
+[ext_resource type="Shader" uid="uid://di7mar5ot6v0a" path="res://shaders/highlighter.gdshader" id="2_5km5e"]
 [ext_resource type="FontFile" uid="uid://n5cd37mmqxvl" path="res://assets/others/fonts/LuckiestGuy-Regular.ttf" id="2_b0vxv"]
 [ext_resource type="AudioStream" uid="uid://ocy5fs2ccx15" path="res://assets/sfx/button.mp3" id="3_5km5e"]
 [ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="4_r2kqe"]
@@ -16,7 +17,20 @@ material = SubResource("StandardMaterial3D_3qw2m")
 left_to_right = 0.0
 size = Vector3(0.25, 0.1, 0.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r2kqe"]
+render_priority = 0
+shader = ExtResource("2_5km5e")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_width = 0.1230000058425
+shader_parameter/cycle_interval = 1.0
+shader_parameter/angle_fade = 1.0
+shader_parameter/x_direction = 0.8400000874
+shader_parameter/y_direction = 0.0
+shader_parameter/z_direction = 1.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3abc"]
+next_pass = SubResource("ShaderMaterial_r2kqe")
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3qw2m"]

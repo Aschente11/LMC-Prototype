@@ -38,6 +38,7 @@ func _ready():
 
 	GlobalVar.default_state()
 	
+	$XROrigin3D.is_game_over.connect(restart_day) 
 	$plushie/Sketchfab_Scene.is_crying.connect(teleport_player)
 	
 	$"Event1 text2".visible = false
@@ -49,6 +50,9 @@ func _ready():
 	$sleep.monitorable = false
 	
 	$"XROrigin3D/XRCamera3D/LOST IN THOUGHTS".visible = false
+	
+func restart_day():
+	self.reset_scene()
 	
 func _on_sleep_body_entered(body: Node3D) -> void:
 	var root_scene = get_tree().current_scene

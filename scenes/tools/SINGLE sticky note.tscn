@@ -82,12 +82,12 @@ script = ExtResource("1_rpyl8")
 metadata/_custom_type_script = "uid://bs5crmi43kekt"
 
 [node name="Single Post it" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, -4.37114e-07, 2.851, 0, -10, -1.24621e-07, -0.720623, 0.0265264, 0.00425567)
+transform = Transform3D(10, 0, 0, 0, -4.371139e-07, 2.851, 0, -10, -1.2462117e-07, -0.720623, 0.0265264, 0.00425567)
 mesh = SubResource("ArrayMesh_cik24")
 skeleton = NodePath("")
 
 [node name="Single Post it" type="MeshInstance3D" parent="Single Post it"]
-transform = Transform3D(0.99999976, 0, 0, 0, -0.99999976, 2.4915476e-08, 0, -8.742285e-08, -0.285, -0.00012892485, 0, 0)
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, -0.02)
 mesh = SubResource("ArrayMesh_cik24")
 skeleton = NodePath("")
 

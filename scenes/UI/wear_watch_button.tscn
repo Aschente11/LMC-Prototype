@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxc4momvyj18r"]
+[gd_scene load_steps=17 format=3 uid="uid://dxc4momvyj18r"]
 
 [ext_resource type="Script" uid="uid://c2l1w840v8ohl" path="res://scenes/UI/wear_watch_button.gd" id="1_3qw2m"]
+[ext_resource type="Shader" uid="uid://di7mar5ot6v0a" path="res://shaders/highlighter.gdshader" id="2_bc3yo"]
 [ext_resource type="AudioStream" uid="uid://ocy5fs2ccx15" path="res://assets/sfx/button.mp3" id="2_ua2xu"]
 [ext_resource type="FontFile" uid="uid://n5cd37mmqxvl" path="res://assets/others/fonts/LuckiestGuy-Regular.ttf" id="2_vghaf"]
 [ext_resource type="Script" uid="uid://cci3xkvnplit7" path="res://addons/ateneo-virtual-reality-escape/object-interaction-system/ois-receiver/ois_strike_receiver.gd" id="3_0xig3"]
@@ -16,7 +17,20 @@ material = SubResource("StandardMaterial3D_3qw2m")
 left_to_right = 0.0
 size = Vector3(0.25, 0.1, 0.5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gkcdf"]
+render_priority = 0
+shader = ExtResource("2_bc3yo")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_speed = 1.0
+shader_parameter/shine_width = 0.1030000048925
+shader_parameter/cycle_interval = 1.0
+shader_parameter/angle_fade = 1.0
+shader_parameter/x_direction = 0.8770000891575
+shader_parameter/y_direction = 0.0
+shader_parameter/z_direction = 1.0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j3abc"]
+next_pass = SubResource("ShaderMaterial_gkcdf")
 albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3qw2m"]
@@ -26,6 +40,21 @@ size = Vector3(0.03, 0.15, 0.36)
 [sub_resource type="TextMesh" id="TextMesh_ua2xu"]
 text = "EQUIP LEFT"
 font = ExtResource("2_vghaf")
+
+[sub_resource type="Animation" id="Animation_3qw2m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("button:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.0039354786, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_j3abc"]
 resource_name = "press"
@@ -41,21 +70,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0.0039354786, 0), Vector3(0, -0.01420816, 0), Vector3(0, 0.0039354786, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_3qw2m"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("button:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.0039354786, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ua2xu"]
