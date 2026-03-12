@@ -108,40 +108,48 @@ func _randomize_effect(rand: int):
 # Only works the first time fsr :'[
 func teleport_player(marker):
 	var pos
+	var time_mult = 1.0
 	
 	var rng = RandomNumberGenerator.new()
 	
 	if marker == "bed":
 		pos = $BedMarker.global_position
+		time_mult = 2.0
 		print("teleported to bed")
 		
 	elif marker == "TVSet1":
 		pos = $TVSetMarker1.global_position
+		time_mult = 2.0
 		_randomize_effect(rng.randi_range(-1,1))
 		print("teleported to TVSet1")
 		
 	elif marker == "TVSet2":
 		pos = $TVSetMarker2.global_position
+		time_mult = 2.0
 		_randomize_effect(rng.randi_range(-1,1))
 		print("teleported to TVSet2")
 	
 	elif marker == "TVSet3":
 		pos = $TVSetMarker3.global_position
+		time_mult = 2.0
 		_randomize_effect(rng.randi_range(-1,1))
 		print("teleported to TVSet3")
 	
 	elif marker == "Chair1":
 		pos = $ChairMarker1.global_position
+		time_mult = 2.0
 		GlobalVar.increase_emotional()
 		print("teleported to Chair1")
 	
 	elif marker == "Chair2":
 		pos = $ChairMarker2.global_position
+		time_mult = 2.0
 		GlobalVar.increase_emotional()
 		print("teleported to Chair2")
 		
 	elif marker == "Nap":
 		pos = $BedMarker.global_position
+		time_mult = 4.0
 		GlobalVar.increase_emotional()
 		GlobalVar.increase_emotional()
 		GlobalVar.increase_physical()
@@ -150,11 +158,15 @@ func teleport_player(marker):
 		
 	xr_player.global_position = pos
 	
+	GlobalTime.set_time_speed(time_mult)
+	
 	anim_player.play("blinking")
 	
 	await get_tree().create_timer(1).timeout
 	
 	anim_player.play("open_eyes")
+	
+	GlobalTime.set_time_speed(1.0)
 
 func is_xr_class(name : String) -> bool:
 	return name == "XRToolsSceneBase" or super(name)

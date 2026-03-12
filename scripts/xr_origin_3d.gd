@@ -123,15 +123,21 @@ func setup_text_spawn_timer() -> void:
 func trigger_indicator(old_value: int, new_value: int) -> void:
 	$XRCamera3D/ChangeIndicator.visible = true
 	
-	if new_value == 1 or new_value == 5 or GlobalVar.is_permanently_overstimulated:
+	if new_value == 5:
+		GlobalTime.set_time_speed(5.0)
+		return
+	
+	if new_value == 1 or GlobalVar.is_permanently_overstimulated:
 		change_indicator.set_shader_parameter("color", Color(0, 0, 0, 255))
 		change_indicator.set_shader_parameter("transparency_level", 12.5)
 		change_indicator.set_shader_parameter("speed", 1.0)
 		change_indicator.set_shader_parameter("zoom_amplitude", 12.9)
 		_on_stimulation_changed(old_value, new_value)
+		GlobalTime.set_time_speed(2.0)
 		return
 	
 	# Stimulation must change before vignette goes away
+	GlobalTime.set_time_speed(1.0)
 	change_indicator.set_shader_parameter("transparency_level", 12.8)
 	change_indicator.set_shader_parameter("speed", 0.0)
 	change_indicator.set_shader_parameter("zoom_amplitude", 12.555)
