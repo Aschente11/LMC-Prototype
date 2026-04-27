@@ -111,7 +111,7 @@ func teleport_player(marker):
 	
 	anim_player.play("blinking")
 	
-	await get_tree().create_timer(5.0/time_mult).timeout
+	await get_tree().create_timer(5.0).timeout
 	
 	anim_player.play("open_eyes")
 	

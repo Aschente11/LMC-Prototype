@@ -11,7 +11,7 @@ var current_hour: int = 7
 var current_minute: int = 0
 var is_pm: bool = false
 
-# 7 seconds irl = 10 minutes game time
+# 5 seconds irl = 10 minutes game time
 var time_timer: Timer
 
 # Game day
@@ -20,7 +20,7 @@ var current_day: int = 1
 
 func start_time(hour = 7, minute = 0, pm = false):
 	time_timer = Timer.new()
-	time_timer.wait_time = 5.0  # 7 seconds irl = 10 minutes game time
+	time_timer.wait_time = 5.0  # 5 seconds irl = 10 minutes game time
 	time_timer.autostart = true
 	time_timer.timeout.connect(_on_time_update)
 	add_child(time_timer)
